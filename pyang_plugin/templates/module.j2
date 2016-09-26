@@ -1,0 +1,21 @@
+"""{{ module.name }}."""
+
+__module__ = "{{ module.name }}"
+
+__namespace__ = "{{ module.info.namespace }}"
+
+__prefix__ = "{{ module.info.prefix }}"
+
+__organization__ = "{{ module.info.organization }}"
+
+__contact__ = """{{ module.info.contact }}"""
+
+__description__ = """{{ module.info.description }}"""
+
+{% for name, typedef in module.typedefs.items() %}
+    class {{ name }}:
+    """
+    {{ typedef.description }}
+    """
+
+{% endfor %}
