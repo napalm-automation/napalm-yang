@@ -12,7 +12,9 @@ from collections import defaultdict
 
 from pyang import plugin
 
-from jinja2 import Environment, FileSystemLoader
+from helpers import jinja_filters
+
+import jinja2
 
 
 def configure_logging(logger, debug):
@@ -107,7 +109,13 @@ def emit_napalm(ctx, modules, fd):
         modules(list of pyang.statements.Statement): List of yang models being processed
         fd(file): File open to written to
     """
-    env = Environment(loader=FileSystemLoader('./pyang_plugin/templates/'))
+    filters = jinja_filters.FilterModule()
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader('./pyang_plugin/templates/'),
+                             undefined=jinja2.StrictUndefined)
+
+    for n, f in filters.filters().items():
+        env.filters[n] = f
+
     template = env.get_template('module.j2')
 
     global logger
