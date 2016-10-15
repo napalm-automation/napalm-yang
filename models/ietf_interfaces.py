@@ -153,6 +153,7 @@ class InterfaceState(yang_types.Base):
         self.if_index == yang_types.Int32(options={
               'range': '1..2147483647',
              })
+        self.statistics == Statistics()
 
     @property
     def speed(self):
@@ -237,6 +238,14 @@ class InterfaceState(yang_types.Base):
         self.if_index = yang_types.Int32(value, options={
               'range': '1..2147483647',
              })
+
+    @property
+    def statistics(self):
+        return self.statistics
+
+    @statistics.setter
+    def statistics(self, value):
+        self.statistics = yang_types.Statistics(value)
 
 
 class Statistics(yang_types.Base):

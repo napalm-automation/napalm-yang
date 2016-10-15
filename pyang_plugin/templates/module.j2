@@ -29,6 +29,9 @@ class {{ name|safe_class_name }}(yang_types.Base):
 {%- for leaf, leaf_data in typedef.leaf.items() %}
         self.{{ leaf|safe_attr_name }} == yang_types.{{ leaf_data.type.value.replace('yang:', '')|safe_class_name }}(options={{ leaf_data.type.options|to_dict(level=3) }})
 {%- endfor %}
+{%- for ctr, ctr_data in typedef.container.items() %}
+        self.{{ ctr|safe_attr_name }} == {{ ctr_data.type|safe_class_name }}()
+{%- endfor %}
 {% for leaf, leaf_data in typedef.leaf.items() %}
     @property
     def {{ leaf|safe_attr_name }}(self):
@@ -37,5 +40,14 @@ class {{ name|safe_class_name }}(yang_types.Base):
     @{{ leaf|safe_attr_name }}.setter
     def {{ leaf|safe_attr_name }}(self, value):
         self.{{ leaf|safe_attr_name }} = yang_types.{{ leaf_data.type.value.replace('yang:', '')|safe_class_name }}(value, options={{ leaf_data.type.options|to_dict(level=3) }})
+{% endfor %}
+{%- for ctr, ctr_data in typedef.container.items() %}
+    @property
+    def {{ ctr|safe_attr_name }}(self):
+        return self.{{ ctr|safe_attr_name }}
+
+    @{{ ctr|safe_attr_name }}.setter
+    def {{ ctr|safe_attr_name }}(self, value):
+        self.{{ ctr|safe_attr_name }} = yang_types.{{ ctr_data.type|safe_class_name }}(value)
 {% endfor %}
 {%- endfor -%}
