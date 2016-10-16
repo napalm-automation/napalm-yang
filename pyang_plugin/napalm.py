@@ -53,7 +53,7 @@ class NapalmPlugin(plugin.PyangPlugin):
             optparse.make_option("--napalm-path",
                                  dest="napalm_models_path",
                                  action="store",
-                                 default="./models",
+                                 default="./napalm_yang/models",
                                  help="Where to store generated modules"),
         ]
         g = optparser.add_option_group("NAPALM output specific options")

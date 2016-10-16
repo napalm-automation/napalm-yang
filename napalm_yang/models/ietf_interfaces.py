@@ -1,6 +1,6 @@
 """ietf-interfaces."""
 
-import yang_types
+from napalm_yang import yang_types
 
 __module__ = "ietf-interfaces"
 
