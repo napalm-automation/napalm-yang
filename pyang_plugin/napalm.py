@@ -6,9 +6,7 @@ import os
 import re
 import sys
 
-import json
-
-from collections import defaultdict
+import pprint
 
 from pyang import plugin
 
@@ -80,19 +78,44 @@ def print_help():
 
 
 def _stupid_insepct(obj):
-    print("# {}".format(obj.__class__.__name__))
+    text = "# {}\n".format(obj.__class__.__name__)
     for k, v in obj.__dict__.items():
         l = 30 - len(k)
-        print("{}{}{}".format(k, " " * l, v))
-    print("======================")
+        text += "{}{}{}\n".format(k, " " * l, v)
+    text += "======================"
+    return text
 
 
-MODULE_INFORMATIONAL_STATEMENTS = [
+INFORMATIONAL_STATEMENTS = [
     'namespace',
     'organization',
     'contact',
     'description',
+    'yang-version',
+    'prefix',
+    'config',
+    'reference',
+    'key',
+]
+
+SIMPLE_STATEMENTS = [
     'revision',
+    'uses',
+]
+
+GROUPING_STATEMENTS = [
+    'grouping',
+    'typedef',
+]
+
+NESTED_STATEMENTS = [
+    'container',
+    'list',
+]
+
+TYPE_STATEMENTS = [
+    'leaf',
+    'type',
 ]
 
 
@@ -100,6 +123,71 @@ def safe(name):
     """Given a string, return a safe version."""
     name = re.sub('-', '_', name)
     return name
+
+
+def error_stmt(stmt):
+    raise Exception("Not sure about this type of statement: {}\n{}".format(
+                                            stmt.keyword, _stupid_insepct(stmt)))
+
+
+def parse_imports(substmts):
+    result = []
+    for stmt in substmts:
+        if stmt.keyword == 'prefix':
+            result.append(stmt.arg)
+        else:
+            error_stmt(stmt)
+    return result
+
+
+def parse_simple(substmts):
+    return {s.keyword: s.arg for s in substmts}
+
+
+def create_store(store_type):
+    store_map = {}
+    store_map['typedef'] = {'info': {}, 'type': {},
+                            }
+    store_map['grouping'] = {'info': {}, 'leaf': {}, 'uses': {}, 'list': {},
+                             'container': {}, 'config': False,
+                             }
+    store_map['leaf'] = store_map['typedef']
+    store_map['container'] = store_map['grouping']
+    store_map['list'] = store_map['grouping']
+    return store_map[store_type]
+
+
+def main_parser(stmts, store, nsglobal):
+    for substmt in stmts:
+        logger.debug("Found statement: {}".format(substmt.keyword))
+        if substmt.keyword in INFORMATIONAL_STATEMENTS:
+            logger.debug("Parsing information_statements")
+            store['info'][substmt.keyword] = substmt.arg
+        elif substmt.keyword == 'import':
+            logger.debug("Parsing import")
+            store['imports'][substmt.arg] = parse_imports(substmt.substmts)
+        elif 'openconfig-extensions' in substmt.keyword:
+            logger.debug("Parsing openconfig-extensions")
+            store['openconfig-extensions'][substmt.keyword[1]] = substmt.arg
+        elif substmt.keyword in SIMPLE_STATEMENTS:
+            logger.debug("Parsing simple block")
+            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts)
+        elif substmt.keyword in GROUPING_STATEMENTS:
+            logger.debug("Parsing grouping block")
+            store[substmt.keyword][substmt.arg] = create_store(substmt.keyword)
+            main_parser(substmt.substmts, store[substmt.keyword][substmt.arg], nsglobal)
+        elif substmt.keyword in NESTED_STATEMENTS:
+            logger.debug("Parsing nested block")
+            name = '{}_{}'.format(substmt.parent.arg, substmt.arg)
+            nsglobal['discovered_classes'][name] = create_store(substmt.keyword)
+            store[substmt.keyword][substmt.arg] = name
+            main_parser(substmt.substmts, nsglobal['discovered_classes'][name], nsglobal)
+        elif substmt.keyword in TYPE_STATEMENTS:
+            logger.debug("Parsing type block")
+            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts)
+        else:
+            pprint.pprint(store)
+            error_stmt(substmt)
 
 
 def emit_napalm(ctx, modules, fd):
@@ -124,34 +212,13 @@ def emit_napalm(ctx, modules, fd):
 
     for module in modules:
         logger.info("Processing model {}".format(module.pos))
-        parsed_module = {'info': {}, 'containers': {}, 'typedefs': {}, }
+        parsed_module = {'info': {}, 'containers': {}, 'typedef': {}, 'imports': {}, 'uses': {},
+                         'openconfig-extensions': {}, 'grouping': {}, 'revision': {},
+                         'discovered_classes': {},
+                         }
         parsed_module['name'] = module.i_modulename
-
-        for substmt in module.substmts:
-            logger.debug("Found statement: {}".format(substmt.keyword))
-            if substmt.keyword in MODULE_INFORMATIONAL_STATEMENTS:
-                parsed_module['info'][substmt.keyword] = substmt.arg
-            elif substmt.keyword == 'prefix':
-                parsed_module['info']['prefix'] = substmt.arg
-                prefix = substmt.arg
-            elif substmt.keyword == 'typedef':
-                parsed_module['typedefs'][substmt.arg.replace('-ref', '')] = process_containers(
-                                                                          substmt,
-                                                                          parsed_module['typedefs'],
-                                                                          prefix,
-                                                                          '')
-            elif substmt.keyword in ['import', 'identity', 'feature', ]:
-                # TODO
-                pass
-            elif substmt.keyword == "container":
-                parsed_module['containers'][substmt.arg] = process_containers(
-                                                                       substmt,
-                                                                       parsed_module['typedefs'],
-                                                                       prefix,
-                                                                       '/{}:{}'.format(prefix,
-                                                                                       substmt.arg))
-            else:
-                raise Exception("Not sure about this type of statement: {}".format(substmt.keyword))
+        main_parser(module.substmts, parsed_module, parsed_module)
+        pprint.pprint(parsed_module['typedef'])
 
         code = template.render(module=parsed_module)
 
@@ -159,41 +226,4 @@ def emit_napalm(ctx, modules, fd):
         with open(filename, 'w') as f:
             f.write(code)
 
-        print(json.dumps(parsed_module))
-
-
-def process_containers(container, typedefs, prefix, path):
-    logger.debug("Processing container {} in path {}".format(container.arg, path))
-    parsed = defaultdict(dict)
-
-    for substmt in container.substmts:
-        logger.debug("Processing substmt: {}".format(substmt.keyword))
-        if substmt.keyword in ['description', 'key', 'reference', 'mandatory', 'default',
-                               'if-feature', 'units', 'config', 'base', 'range', 'path',
-                               'value']:
-            parsed[substmt.keyword] = substmt.arg
-        elif substmt.keyword in ['enum', ]:
-            parsed['enum'][substmt.arg] = substmt.i_value
-        elif substmt.keyword in ['type', ]:
-            parsed[substmt.keyword] = {
-                'value': substmt.arg,
-                'options': process_containers(substmt, typedefs, prefix, path)
-            }
-        elif substmt.keyword in ['leaf', 'leaf-list']:
-            parsed[substmt.keyword][substmt.arg] = process_containers(substmt, typedefs,
-                                                                      prefix, path)
-        elif substmt.keyword in ['list', 'container']:
-            path = '{}/{}:{}'.format(path, prefix, substmt.arg)
-            for t, d in typedefs.items():
-                # TODO build entire path rather than do this naive comparison
-                if path in d['type']['options']['path']:
-                    parsed[substmt.keyword][substmt.arg] = {'type': t}
-                    d.update(process_containers(substmt, typedefs, prefix, path))
-                    break
-            else:
-                parsed[substmt.keyword][substmt.arg] = {'type': substmt.arg}
-                typedefs[substmt.arg] = process_containers(substmt, typedefs, prefix, path)
-        else:
-            raise Exception("Not sure about this type of statement: {}".format(substmt.keyword))
-
-    return parsed
+        print(code)

@@ -1,0 +1,29 @@
+{%- macro typedef(classes) %}
+{%- for n, c in classes.items() -%}
+# typedef
+class {{ n|safe_class_name }}(yang_types.{{ c.type.keys()[0] }}):
+    """
+{{ c.info.description|indent }}
+    """
+{%- for k, v in c.type.values()[0].items() %}
+    {{ k }} = "{{ v }}"
+{%- endfor %}
+{{ "\n" if loop.last else "\n\n" }}
+{%- endfor -%}
+{%- endmacro -%}
+
+{%- macro classes(classes, header) %}
+{%- for n, c in classes.items() -%}
+# {{ header }}
+class {{ n|safe_class_name }}(yang_types.BaseBinding):
+    """
+{{ c.info.description|indent }}
+    """
+    config = {{ c.config }}
+    container = {{ c.container }}
+    leaf = {{ c.leaf|to_dict(1) }}
+    list_ = {{ c.list }}
+    uses = {{ c.uses.keys() }}
+{{ "" if loop.last else "\n\n" }}
+{%- endfor -%}
+{%- endmacro %}

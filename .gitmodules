@@ -1,0 +1,3 @@
+[submodule "yang_models/public"]
+	path = yang_models/public
+	url = git@github.com:openconfig/public.git

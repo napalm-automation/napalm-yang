@@ -13,7 +13,13 @@ class FilterModule(object):
             'safe_class_name': safe_class_name,
             'to_json': to_json,
             'to_dict': to_dict,
+            'to_string': to_string,
+            'raise_error': raise_error,
         }
+
+
+def raise_error(value, args=None):
+    raise Exception("{}\n{}".format(value, to_dict(args)))
 
 
 def safe_class_name(value):
@@ -39,6 +45,10 @@ def to_json(value):
     return json.dumps(value, sort_keys=True, indent=4)
 
 
+def to_string(value):
+    return '"""{}"""'.format(value) if len(value.splitlines()) > 1 else "'{}'".format(value)
+
+
 def to_dict(value, level=0):
     """Returns a dict object."""
     if isinstance(value, dict) and value:
@@ -50,6 +60,6 @@ def to_dict(value, level=0):
     elif isinstance(value, dict) and not value:
         return "{}"
     elif isinstance(value, basestring):
-        return "'{}'".format(value)
+        return to_string(value)
     else:
-        return str(value)
+        return value
