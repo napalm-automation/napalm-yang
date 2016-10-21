@@ -3,6 +3,7 @@
 """{{ module.name }}."""
 
 from napalm_yang import yang_types
+from napalm_yang import yang_base
 
 __module__ = "{{ module.name }}"
 {% for k, v in module.info.items() %}
@@ -20,8 +21,4 @@ __revision__ = {{ module.revision|to_dict }}
 groupings = {{ module.grouping|to_dict }}
 
 
-"""
-['uses', 'imports', ]
-   
-{{ module.imports }}
-"""
+{{ parsers.tl_uses(module.uses, module.grouping) }}

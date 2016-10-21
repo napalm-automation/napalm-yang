@@ -1,6 +1,7 @@
 """openconfig-interfaces."""
 
 from napalm_yang import yang_types
+from napalm_yang import yang_base
 
 __module__ = "openconfig-interfaces"
 
@@ -64,7 +65,7 @@ class BaseInterfaceRef(yang_types.leafref):
 
 
 # discovered_classes
-class InterfacesTop_Interfaces(yang_types.BaseBinding):
+class InterfacesTop_Interfaces(yang_base.BaseBinding):
     """
     Top level container for interfaces, including configuration
     and state data.
@@ -77,7 +78,7 @@ class InterfacesTop_Interfaces(yang_types.BaseBinding):
 
 
 # discovered_classes
-class InterfacePhysHoldtimeTop_HoldTime(yang_types.BaseBinding):
+class InterfacePhysHoldtimeTop_HoldTime(yang_base.BaseBinding):
     """
     Top-level container for hold-time settings to enable
     dampening advertisements of interface transitions.
@@ -90,7 +91,7 @@ class InterfacePhysHoldtimeTop_HoldTime(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Interface_Config(yang_types.BaseBinding):
+class Interface_Config(yang_base.BaseBinding):
     """
     Configurable items at the global, physical interface
     level
@@ -103,7 +104,7 @@ class Interface_Config(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Unnumbered_Config(yang_types.BaseBinding):
+class Unnumbered_Config(yang_base.BaseBinding):
     """
     Configuration data for unnumbered interface
     """
@@ -115,7 +116,7 @@ class Unnumbered_Config(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Subinterfaces_Subinterface(yang_types.BaseBinding):
+class Subinterfaces_Subinterface(yang_base.BaseBinding):
     """
     The list of subinterfaces (logical interfaces) associated
     with a physical interface
@@ -134,7 +135,7 @@ the logical interface""",
 
 
 # discovered_classes
-class Interfaces_Interface(yang_types.BaseBinding):
+class Interfaces_Interface(yang_base.BaseBinding):
     """
     The list of named interfaces on the device.
     """
@@ -151,7 +152,7 @@ class Interfaces_Interface(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Subinterface_Config(yang_types.BaseBinding):
+class Subinterface_Config(yang_base.BaseBinding):
     """
     Configurable items at the subinterface level
     """
@@ -163,7 +164,7 @@ class Subinterface_Config(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Interface_State(yang_types.BaseBinding):
+class Interface_State(yang_base.BaseBinding):
     """
     Operational state data at the global interface level
     """
@@ -175,7 +176,7 @@ class Interface_State(yang_types.BaseBinding):
 
 
 # discovered_classes
-class InterfaceRef_Config(yang_types.BaseBinding):
+class InterfaceRef_Config(yang_base.BaseBinding):
     """
     Configured reference to interface / subinterface
     """
@@ -187,7 +188,7 @@ class InterfaceRef_Config(yang_types.BaseBinding):
 
 
 # discovered_classes
-class InterfaceCountersState_Counters(yang_types.BaseBinding):
+class InterfaceCountersState_Counters(yang_base.BaseBinding):
     """
     A collection of interface-related statistics objects.
     """
@@ -419,7 +420,7 @@ other times as indicated by the value of
 
 
 # discovered_classes
-class InterfaceRefState_InterfaceRef(yang_types.BaseBinding):
+class InterfaceRefState_InterfaceRef(yang_base.BaseBinding):
     """
     Reference to an interface or subinterface
     """
@@ -431,7 +432,7 @@ class InterfaceRefState_InterfaceRef(yang_types.BaseBinding):
 
 
 # discovered_classes
-class InterfaceRefStateContainer_State(yang_types.BaseBinding):
+class InterfaceRefStateContainer_State(yang_base.BaseBinding):
     """
     Operational state for interface-ref
     """
@@ -443,7 +444,7 @@ class InterfaceRefStateContainer_State(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Unnumbered_State(yang_types.BaseBinding):
+class Unnumbered_State(yang_base.BaseBinding):
     """
     Operational state data for unnumbered interfaces
     """
@@ -455,7 +456,7 @@ class Unnumbered_State(yang_types.BaseBinding):
 
 
 # discovered_classes
-class HoldTime_Config(yang_types.BaseBinding):
+class HoldTime_Config(yang_base.BaseBinding):
     """
     Configuration data for interface hold-time settings.
     """
@@ -467,7 +468,7 @@ class HoldTime_Config(yang_types.BaseBinding):
 
 
 # discovered_classes
-class HoldTime_State(yang_types.BaseBinding):
+class HoldTime_State(yang_base.BaseBinding):
     """
     Operational state data for interface hold-time.
     """
@@ -479,7 +480,7 @@ class HoldTime_State(yang_types.BaseBinding):
 
 
 # discovered_classes
-class Subinterface_State(yang_types.BaseBinding):
+class Subinterface_State(yang_base.BaseBinding):
     """
     Operational state data for logical interfaces
     """
@@ -491,7 +492,7 @@ class Subinterface_State(yang_types.BaseBinding):
 
 
 # discovered_classes
-class SubinterfacesTop_Subinterfaces(yang_types.BaseBinding):
+class SubinterfacesTop_Subinterfaces(yang_base.BaseBinding):
     """
     Enclosing container for the list of subinterfaces associated
     with a physical interface
@@ -504,7 +505,7 @@ class SubinterfacesTop_Subinterfaces(yang_types.BaseBinding):
 
 
 # discovered_classes
-class InterfaceRef_InterfaceRef(yang_types.BaseBinding):
+class InterfaceRef_InterfaceRef(yang_base.BaseBinding):
     """
     Reference to an interface or subinterface
     """
@@ -516,7 +517,7 @@ class InterfaceRef_InterfaceRef(yang_types.BaseBinding):
 
 
 # discovered_classes
-class SubUnnumberedTop_Unnumbered(yang_types.BaseBinding):
+class SubUnnumberedTop_Unnumbered(yang_base.BaseBinding):
     """
     Top-level container for setting unnumbered interfaces.
     Includes reference the interface that provides the
@@ -946,8 +947,9 @@ and statistics.  Some of these are adapted from RFC 7223""",
  }
 
 
-"""
-['uses', 'imports', ]
-   
-{u'openconfig-extensions': [u'oc-ext'], u'ietf-yang-types': [u'yang'], u'ietf-interfaces': [u'ietf-if']}
-"""
+class Interfaces(yang_base.BaseBinding):
+    """
+    Top-level grouping for interface configuration and
+    operational state data
+    """
+    uses = ['interfaces-top_interfaces']

@@ -15,7 +15,7 @@ class {{ n|safe_class_name }}(yang_types.{{ c.type.keys()[0] }}):
 {%- macro classes(classes, header) %}
 {%- for n, c in classes.items() -%}
 # {{ header }}
-class {{ n|safe_class_name }}(yang_types.BaseBinding):
+class {{ n|safe_class_name }}(yang_base.BaseBinding):
     """
 {{ c.info.description|indent }}
     """
@@ -25,5 +25,18 @@ class {{ n|safe_class_name }}(yang_types.BaseBinding):
     list_ = {{ c.list }}
     uses = {{ c.uses.keys() }}
 {{ "" if loop.last else "\n\n" }}
+{%- endfor -%}
+{%- endmacro %}
+
+
+{%- macro tl_uses(uses, grouping) %}
+{%- for use in uses -%}
+{% for n, c in grouping[use].container.items() -%}
+class {{ n|safe_class_name }}(yang_base.BaseBinding):
+    """
+{{ grouping[use].info.description|indent }}
+    """
+    uses = [{{ c|to_string }}]
+{% endfor -%}
 {%- endfor -%}
 {%- endmacro %}
