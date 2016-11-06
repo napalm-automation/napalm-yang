@@ -141,7 +141,15 @@ def parse_imports(substmts):
 
 
 def parse_simple(substmts):
-    return {s.keyword: s.arg for s in substmts}
+    result = {}
+
+    for s in substmts:
+        result[s.keyword] = {'value': s.arg,
+                             'options': {}, }
+        for o in s.substmts:
+            result[s.keyword]['options'][o.arg] = parse_simple(o.substmts)
+
+    return result
 
 
 def create_store(store_type):
