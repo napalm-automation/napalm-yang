@@ -27,6 +27,10 @@ test_types = [
     (yang_types.counter64, 0, True),
     (yang_types.counter64, 4294967295, True),
     (yang_types.counter64, 7, True),
+    (yang_types.string, 'asd', True),
+    (yang_types.string, u'asd', True),
+    (yang_types.string, None, False),
+    (yang_types.string, 1, False),
 ]
 
 enumeration = {

@@ -14,3 +14,8 @@ class YangType:
 
     def __str__(self):
         return "{}".format(self.value)
+
+
+def attach_childs(cls, ns):
+    for k, v in cls.container.items():
+        setattr(cls, k, ns[v]())

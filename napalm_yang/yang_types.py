@@ -1,17 +1,7 @@
 """Yang Types"""
+from builtins import super
 
-
-class Base:
-    pass
-
-
-class YangType:
-
-    def __repr__(self):
-        return "{}: {}".format(self.__class__.__name__, self.__str__())
-
-    def __str__(self):
-        return "{}".format(self.value)
+from yang_base import YangType
 
 
 class boolean(YangType):
@@ -54,3 +44,19 @@ class enumeration(YangType):
     @property
     def value(self):
         return self.map[self.description]
+
+
+class string(YangType):
+    # TODO ensure py3 compatibility
+
+    def __init__(self, value, options=None):
+        if isinstance(value, basestring):
+            self.value = value
+        else:
+            raise ValueError("Wrong value for string: {}".format(value))
+
+
+class leafref(string):
+
+    def __init__(self, value, options=None):
+        super().__init__(value, options)

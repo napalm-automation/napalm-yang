@@ -1,6 +1,8 @@
 """Useful jinja2 filters"""
 import json
 
+from utils import text_helpers
+
 
 class FilterModule(object):
     """Useful jinja2 filters"""
@@ -9,8 +11,8 @@ class FilterModule(object):
         """Return jinja2 filters that this module provide."""
         return {
             'indent': indent,
-            'safe_attr_name': safe_attr_name,
-            'safe_class_name': safe_class_name,
+            'safe_attr_name': text_helpers.safe_attr_name,
+            'safe_class_name': text_helpers.safe_class_name,
             'to_json': to_json,
             'to_dict': to_dict,
             'to_string': to_string,
@@ -20,19 +22,6 @@ class FilterModule(object):
 
 def raise_error(value, args=None):
     raise Exception("{}\n{}".format(value, to_dict(args)))
-
-
-def safe_class_name(value):
-    """Return a safe class name. For example, from interface-state to InterfaceState"""
-    return ''.join([t.title() for t in value.split('-')])
-
-
-def safe_attr_name(value):
-    """Return a safe attr name. For example, from in-octets to in_octets"""
-    reserved_keywords = []
-    if value in reserved_keywords:
-        value = "{}_".format(value)
-    return '_'.join([t for t in value.split('-')])
 
 
 def indent(value, indentation=4):

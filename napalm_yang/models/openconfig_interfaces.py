@@ -84,7 +84,7 @@ class InterfacePhysHoldtimeTop_HoldTime(yang_base.BaseBinding):
     dampening advertisements of interface transitions.
     """
     config = False
-    container = {u'state': 'hold-time_state', u'config': 'hold-time_config'}
+    container = {'state': 'HoldTime_State', 'config': 'HoldTime_Config', }
     leaf = {}
     list_ = {}
     uses = []
@@ -122,7 +122,7 @@ class Subinterfaces_Subinterface(yang_base.BaseBinding):
     with a physical interface
     """
     config = False
-    container = {u'state': 'subinterface_state', u'config': 'subinterface_config'}
+    container = {'state': 'Subinterface_State', 'config': 'Subinterface_Config', }
     leaf = {
       'index': {
           'type': 'leafref',
@@ -140,7 +140,7 @@ class Interfaces_Interface(yang_base.BaseBinding):
     The list of named interfaces on the device.
     """
     config = False
-    container = {u'state': 'interface_state', u'config': 'interface_config'}
+    container = {'state': 'Interface_State', 'config': 'Interface_Config', }
     leaf = {
       'name': {
           'type': 'leafref',
@@ -510,7 +510,7 @@ class InterfaceRef_InterfaceRef(yang_base.BaseBinding):
     Reference to an interface or subinterface
     """
     config = False
-    container = {u'config': 'interface-ref_config'}
+    container = {'config': 'InterfaceRef_Config', }
     leaf = {}
     list_ = {}
     uses = [u'interface-ref-state-container']
@@ -524,7 +524,7 @@ class SubUnnumberedTop_Unnumbered(yang_base.BaseBinding):
     address information
     """
     config = False
-    container = {u'state': 'unnumbered_state', u'config': 'unnumbered_config'}
+    container = {'state': 'Unnumbered_State', 'config': 'Unnumbered_Config', }
     leaf = {}
     list_ = {}
     uses = [u'oc-if:interface-ref']
