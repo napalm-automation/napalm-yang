@@ -66,7 +66,8 @@ class TestYangTypes:
     def test_type_values_no_options(self, yang_type, value, is_valid):
         """Test that each type accepts correct values."""
         try:
-            yang_type(value)
+            test = yang_type()
+            test.value = value
         except ValueError:
             if is_valid:
                 assert False, "{} wasn't a valid value for type {}".format(value, yang_type)

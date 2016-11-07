@@ -9,6 +9,10 @@ class BaseBinding(object):
 class YangType(object):
     """All YANG types inherit from this class."""
 
+    def __init__(self, options=None):
+        self._value = None
+        self.options = options
+
     def __repr__(self):
         return "{}: {}".format(self.__class__.__name__, self.__str__())
 
