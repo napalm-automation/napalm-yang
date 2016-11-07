@@ -1,4 +1,6 @@
 from napalm_yang import yang_base
+from napalm_yang import yang_types
+from napalm_yang import bindings
 
 
 class Top(yang_base.BaseBinding):
@@ -6,11 +8,13 @@ class Top(yang_base.BaseBinding):
     config = False
     container = {'child': 'Child', }
     leaf = {
-      'name': {
-          'type': 'leafref',
-          'description': 'References the configured name of the interface',
-         },
-     }
+        'out-octets': {
+            'type': {
+                'options': {},
+                'value': 'yang:counter32',
+            }
+        }
+    }
     list_ = {}
     uses = []
 
@@ -24,7 +28,8 @@ class Child(yang_base.BaseBinding):
     uses = []
 
 
-def test_container():
+def test_bindings():
     """Test that containers are attached."""
-    yang_base.attach_childs(Top, globals())
+    bindings.attach_childs(Top, globals())
     assert isinstance(Top.child, Child)
+    assert isinstance(Top.out_octets, yang_types.counter32)

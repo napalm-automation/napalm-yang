@@ -26,7 +26,7 @@ class counter32(YangType):
 
     @value.setter
     def value(self, value):
-        if 0 <= value <= 4294967295:
+        if 0 <= value <= 4294967295 and not isinstance(value, bool):
             self._value = value
         else:
             raise ValueError("Wrong value for counter32: {}".format(value))
@@ -40,7 +40,7 @@ class counter64(YangType):
 
     @value.setter
     def value(self, value):
-        if 0 <= value <= 18446744073709551615:
+        if 0 <= value <= 18446744073709551615 and not isinstance(value, bool):
             self._value = value
         else:
             raise ValueError("Wrong value for counter64: {}".format(value))
