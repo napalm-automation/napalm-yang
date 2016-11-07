@@ -33,16 +33,29 @@ test_types = [
     (yang_types.string, 1, False),
 ]
 
-enumeration = {
-    'a': 1,
-    'b': 2,
-    'c': 3,
-}
+enumeration_with_values = {
+                           'UP': {
+                               'value': {
+                                   'value': '1',
+                                  },
+                              },
+                           'DOWN': {
+                               'value': {
+                                   'value': '2',
+                                  },
+                              },
+                           }
+
+enumeration_without_values = {
+                                'UP': {},
+                                'DOWN': {},
+                               }
 
 test_enumeration = [
-    (enumeration, 'a', 1, True),
-    (enumeration, 'b', 2, True),
-    (enumeration, 'd', None, False),
+    (enumeration_with_values, 'UP', 1, True),
+    (enumeration_with_values, 'asdasd', None, False),
+    (enumeration_without_values, 'UP', None, True),
+    (enumeration_without_values, 'asdasd', None, False),
 ]
 
 
@@ -64,7 +77,8 @@ class TestYangTypes:
     def test_enumeration(self, enumeration, description, value, is_valid):
         """Test that each type accepts correct values."""
         try:
-            e = yang_types.enumeration(description, options={'enum': enumeration})
+            e = yang_types.enumeration(options=enumeration)
+            e.enum = description
             assert e.value == value
         except ValueError:
             if is_valid:

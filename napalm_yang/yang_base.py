@@ -1,12 +1,12 @@
 """Base classes for Yang Types and bindings."""
 
 
-class BaseBinding:
+class BaseBinding(object):
     """All YANG bindings inherit from this class."""
     pass
 
 
-class YangType:
+class YangType(object):
     """All YANG types inherit from this class."""
 
     def __repr__(self):

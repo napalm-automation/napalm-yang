@@ -33,21 +33,31 @@ class counter64(YangType):
 
 class enumeration(YangType):
 
-    def __init__(self, description, options):
-        self.map = options['enum']
-        if description in options['enum'].keys():
-            self.description = description
+    def __init__(self, options):
+        self._enum = None
+        self.map = options
+
+    @property
+    def enum(self):
+        return self._enum
+
+    @enum.setter
+    def enum(self, value):
+        if value in self.map.keys():
+            self._enum = value
         else:
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
-            raise ValueError(error_msg.format(description, options['enum'].keys()))
+            raise ValueError(error_msg.format(value, self.map.keys()))
 
     @property
     def value(self):
-        return self.map[self.description]
+        try:
+            return int(self.map[self._enum]['value']['value'])
+        except KeyError:
+            return None
 
 
 class string(YangType):
-    # TODO ensure py3 compatibility
 
     def __init__(self, value, options=None):
         if isinstance(value, basestring):
