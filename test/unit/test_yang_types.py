@@ -86,3 +86,55 @@ class TestYangTypes:
                 assert False, "{} wasn't a valid value for boolean".format(value)
             else:
                 assert True, "{} was a valid value for boolean".format(value)
+
+
+yang_lists_init = [
+    (int, {}, True),
+    (int, {'a': 1}, True),
+    (int, {'a': 1, 'b': 2}, True),
+    (int, {'a': "1"}, False),
+    (int, {'a': 1, 'b': "2"}, False),
+    (int, {'a': 1, 'b': None}, False),
+]
+
+
+class TestYangList:
+    """Wrap tests and fixtures."""
+
+    @pytest.mark.parametrize("list_type, data, is_valid", yang_lists_init)
+    def test_initialization(self, list_type, data, is_valid):
+        """Test the initialization process of a yang_list"""
+        try:
+            yl = yang_types.yang_list(list_type, data)
+            assert yl.type == list_type
+            assert yl.value == data
+            assert all([isinstance(x, list_type) for x in yl.value.values()])
+        except AttributeError:
+            if is_valid:
+                assert False, "An element of {} wasn't of the correct type".format(data)
+            else:
+                assert True
+
+    def test_add_correct_elements(self):
+        """Test adding correct elements to a yang_list."""
+        yl = yang_types.yang_list(int, {})
+        yl['a'] = 1
+        yl['b'] = 2
+        assert yl['a'] == 1
+        assert yl['b'] == 2
+
+    def test_add_wrong_elements(self):
+        """Test adding correct elements to a yang_list."""
+        yl = yang_types.yang_list(int, {})
+        with pytest.raises(AttributeError):
+            yl['a'] = 1.0
+
+    def test_normal_dict_like_methods(self):
+        """Test it actually behaves like a dict."""
+        d = {'a': 1, 'b': 2}
+        yl = yang_types.yang_list(int, d)
+
+        assert d.values() == yl.values()
+        assert d.keys() == yl.keys()
+        assert d == {k: v for k, v in yl.items()}
+        assert len(yl)

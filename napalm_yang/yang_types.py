@@ -98,3 +98,56 @@ class leafref(string):
     @value.setter
     def value(self, value):
         self._value = value
+
+
+class yang_list(YangType):
+
+    def __init__(self, list_type, value=None):
+        same_type = all([isinstance(x, list_type) for x in value.values()])
+
+        if not same_type:
+            raise AttributeError("Some element of {} is not of type {}".format(list_type, value))
+
+        self._type = list_type
+        self._value = value if value else {}
+
+    @property
+    def value(self):
+        return self._value
+
+    @property
+    def type(self):
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        raise AttributeError("Type can't be changed once the object is created")
+
+    def __getitem__(self, name):
+        return self._value.__getitem__(name)
+
+    def __delitem__(self, name):
+        self._value.__delitem__(name)
+
+    def __setitem__(self, name, value):
+        if not isinstance(value, self.type):
+            raise AttributeError("{} is not of type {}".format(value, self.type))
+        self._value.__setitem__(name, value)
+
+    def __contains__(self, item):
+        return self._value.__contains__(item)
+
+    def __iter__(self):
+        return self._value.__iter__()
+
+    def __len__(self):
+        return len(self._value)
+
+    def items(self):
+        return self._value.items()
+
+    def keys(self):
+        return self._value.keys()
+
+    def values(self):
+        return self._value.values()
