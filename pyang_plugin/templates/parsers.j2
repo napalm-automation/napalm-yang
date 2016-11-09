@@ -22,7 +22,7 @@ class {{ n|safe_class_name }}(yang_base.BaseBinding):
     config = {{ c.config }}
     container = { {%- for container, ctr_class in c.container.items() %}'{{ container }}': '{{ ctr_class|safe_class_name }}', {% endfor %}}
     leaf = {{ c.leaf|to_dict(1) }}
-    list_ = {{ c.list }}
+    list = {{ c.list }}
     uses = {{ c.uses.keys() }}
 {{ "" if loop.last else "\n\n" }}
 {%- endfor -%}

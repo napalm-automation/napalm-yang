@@ -79,7 +79,7 @@ class InterfacesTop_Interfaces(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {u'interface': 'interfaces_interface'}
+    list = {u'interface': 'interfaces_interface'}
     uses = []
 
 
@@ -92,7 +92,7 @@ class InterfacePhysHoldtimeTop_HoldTime(yang_base.BaseBinding):
     config = False
     container = {'state': 'HoldTime_State', 'config': 'HoldTime_Config', }
     leaf = {}
-    list_ = {}
+    list = {}
     uses = []
 
 
@@ -105,7 +105,7 @@ class Interface_Config(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-phys-config']
 
 
@@ -117,7 +117,7 @@ class Unnumbered_Config(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'sub-unnumbered-config']
 
 
@@ -144,7 +144,7 @@ the logical interface""",
              },
          },
      }
-    list_ = {}
+    list = {}
     uses = []
 
 
@@ -169,7 +169,7 @@ class Interfaces_Interface(yang_base.BaseBinding):
              },
          },
      }
-    list_ = {}
+    list = {}
     uses = [u'subinterfaces-top', u'interface-phys-holdtime-top']
 
 
@@ -181,7 +181,7 @@ class Subinterface_Config(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'subinterfaces-config']
 
 
@@ -193,7 +193,7 @@ class Interface_State(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-common-state', u'interface-phys-config', u'interface-counters-state']
 
 
@@ -205,7 +205,7 @@ class InterfaceRef_Config(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-ref-common']
 
 
@@ -560,7 +560,7 @@ other times as indicated by the value of
              },
          },
      }
-    list_ = {}
+    list = {}
     uses = []
 
 
@@ -572,7 +572,7 @@ class InterfaceRefState_InterfaceRef(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-ref-state-container']
 
 
@@ -584,7 +584,7 @@ class InterfaceRefStateContainer_State(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-ref-common']
 
 
@@ -596,7 +596,7 @@ class Unnumbered_State(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'sub-unnumbered-state', u'sub-unnumbered-config']
 
 
@@ -608,7 +608,7 @@ class HoldTime_Config(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-phys-holdtime-config']
 
 
@@ -620,7 +620,7 @@ class HoldTime_State(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-phys-holdtime-state', u'interface-phys-holdtime-config']
 
 
@@ -632,7 +632,7 @@ class Subinterface_State(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'subinterfaces-config', u'subinterfaces-state']
 
 
@@ -645,7 +645,7 @@ class SubinterfacesTop_Subinterfaces(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list_ = {u'subinterface': 'subinterfaces_subinterface'}
+    list = {u'subinterface': 'subinterfaces_subinterface'}
     uses = []
 
 
@@ -657,7 +657,7 @@ class InterfaceRef_InterfaceRef(yang_base.BaseBinding):
     config = False
     container = {'config': 'InterfaceRef_Config', }
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'interface-ref-state-container']
 
 
@@ -671,7 +671,7 @@ class SubUnnumberedTop_Unnumbered(yang_base.BaseBinding):
     config = False
     container = {'state': 'Unnumbered_State', 'config': 'Unnumbered_Config', }
     leaf = {}
-    list_ = {}
+    list = {}
     uses = [u'oc-if:interface-ref']
 
 
@@ -1059,7 +1059,7 @@ to indicate the base interface.""",
           'subinterface': {
               'type': {
                   'options': {
-                      '/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index': {},
+                      '/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index':{},#noqa
                      },
                   'value': 'leafref',
                  },

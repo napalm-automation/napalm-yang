@@ -15,7 +15,7 @@ class Top(yang_base.BaseBinding):
             }
         }
     }
-    list_ = {}
+    list = {'child_list': 'Child'}
     uses = []
 
 
@@ -24,7 +24,7 @@ class Child(yang_base.BaseBinding):
     config = False
     container = {'child': 'Child', }
     leaf = {}
-    list_ = {}
+    list = {}
     uses = []
 
 
@@ -33,3 +33,9 @@ def test_bindings():
     bindings.attach_childs(Top, globals())
     assert isinstance(Top.child, Child)
     assert isinstance(Top.out_octets, yang_types.counter32)
+    assert isinstance(Top.child_list, yang_types.yang_list)
+    assert Child == Top.child_list.type
+    assert not Top.child_list
+    Top.child_list['a'] = Child()
+    Top.child_list['b'] = Child()
+    assert Top.child_list

@@ -103,13 +103,13 @@ class leafref(string):
 class yang_list(YangType):
 
     def __init__(self, list_type, value=None):
-        same_type = all([isinstance(x, list_type) for x in value.values()])
+        self._value = value if value else {}
+        same_type = all([isinstance(x, list_type) for x in self._value.values()])
 
         if not same_type:
             raise AttributeError("Some element of {} is not of type {}".format(list_type, value))
 
         self._type = list_type
-        self._value = value if value else {}
 
     @property
     def value(self):
