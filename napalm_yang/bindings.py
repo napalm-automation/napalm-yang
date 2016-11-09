@@ -18,17 +18,24 @@ def safe_attr_name(value):
 
 
 def attach_childs(cls, ns):
-    for k, v in cls.container.items():
-        setattr(cls, k, ns[v]())
+    def _attach_childs(cls, containers, leafs, lists, ns):
+        for k, v in containers.items():
+            setattr(cls, k, ns[v]())
 
-    for k, v in cls.leaf.items():
-        # cls_name is of type 'yang:counter64'
-        cls_name = v['type']['value'].split(':')[1]
-        yang_type = getattr(yang_types, cls_name)
-        options = v['type']['options']
-        setattr(cls, k.replace('-', '_'), yang_type(options))
+        for k, v in leafs.items():
+            # cls_name is of type 'yang:counter64'
+            cls_name = v['type']['value'].split(':')[1]
+            yang_type = getattr(yang_types, cls_name)
+            options = v['type']['options']
+            setattr(cls, safe_attr_name(k), yang_type(options))
 
-    for k, v in cls.list.items():
-        cls_name = safe_class_name(v)
-        yang_type = ns[cls_name]
-        setattr(cls, k, yang_types.yang_list(yang_type))
+        for k, v in lists.items():
+            cls_name = safe_class_name(v)
+            yang_type = ns[cls_name]
+            setattr(cls, safe_attr_name(k), yang_types.yang_list(yang_type))
+
+    _attach_childs(cls, cls.container, cls.leaf, cls.list, ns)
+
+    grouping = ns['groupings']
+    for u in cls.uses:
+        _attach_childs(cls, grouping[u]['container'], grouping[u]['leaf'], grouping[u]['list'], ns)

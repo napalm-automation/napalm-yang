@@ -16,16 +16,34 @@ class Top(yang_base.BaseBinding):
         }
     }
     list = {'child_list': 'Child'}
-    uses = []
+    uses = [u'something']
 
 
 class Child(yang_base.BaseBinding):
     """Top class for testing."""
     config = False
-    container = {'child': 'Child', }
+    container = {}
     leaf = {}
     list = {}
     uses = []
+
+
+groupings = {
+    'something': {
+        'config': False,
+        'container': {'uses_test': 'Child', },
+        'leaf': {
+            'uses-var': {
+                'type': {
+                    'options': {},
+                    'value': 'yang:counter64',
+                }
+            },
+        },
+        'list': {'uses_child_list': 'Child'},
+        'uses': []
+    }
+}
 
 
 def test_bindings():
@@ -39,3 +57,12 @@ def test_bindings():
     Top.child_list['a'] = Child()
     Top.child_list['b'] = Child()
     assert Top.child_list
+
+    assert isinstance(Top.uses_test, Child)
+    assert isinstance(Top.uses_var, yang_types.counter64)
+    assert isinstance(Top.uses_child_list, yang_types.yang_list)
+    assert Child == Top.uses_child_list.type
+    assert not Top.uses_child_list
+    Top.uses_child_list['a'] = Child()
+    Top.uses_child_list['b'] = Child()
+    assert Top.uses_child_list
