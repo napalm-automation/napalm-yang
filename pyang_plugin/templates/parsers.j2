@@ -1,7 +1,7 @@
 {%- macro typedef(classes) %}
 {%- for n, c in classes.items() -%}
 # typedef
-class {{ n|safe_class_name }}(yang_types.{{ c.type.keys()[0] }}):
+class {{ n|safe_class_name }}(yang_types.{{ c.type.keys()[0]|safe_class_name }}):
     """
 {{ c.info.description|indent }}
     """
@@ -20,7 +20,7 @@ class {{ n|safe_class_name }}(yang_base.BaseBinding):
 {{ c.info.description|indent }}
     """
     config = {{ c.config }}
-    container = { {%- for container, ctr_class in c.container.items() %}'{{ container }}': '{{ ctr_class|safe_class_name }}', {% endfor %}}
+    container = { {%- for container, ctr_class in c.container.items() %}'{{ container }}': '{{ ctr_class }}', {% endfor %}}
     leaf = {{ c.leaf|to_dict(1) }}
     list = {{ c.list }}
     uses = {{ c.uses.keys() }}
@@ -32,11 +32,26 @@ class {{ n|safe_class_name }}(yang_base.BaseBinding):
 {%- macro tl_uses(uses, grouping) %}
 {%- for use in uses -%}
 {% for n, c in grouping[use].container.items() -%}
-class {{ n|safe_class_name }}(yang_base.BaseBinding):
+class {{ n|safe_class_name }}({{ c }}):
     """
 {{ grouping[use].info.description|indent }}
     """
-    uses = [{{ c|to_string }}]
+    pass
 {% endfor -%}
 {%- endfor -%}
 {%- endmacro %}
+
+{%- macro bindings(module) %}
+{%- for k in module.discovered_classes.keys() -%}
+bindings.attach_childs({{k|safe_class_name}}, globals())
+{% endfor %}
+{%- for k in module.containers.keys() -%}
+bindings.attach_childs({{k|safe_class_name}}, globals())
+{%- endfor %}
+{%- for use in module.uses -%}
+{% for k in module.grouping[use].container.keys() -%}
+bindings.attach_childs({{k|safe_class_name}}, globals())
+{% endfor -%}
+{%- endfor -%}
+{% endmacro %}
+

@@ -4,6 +4,7 @@
 
 from napalm_yang import yang_types
 from napalm_yang import yang_base
+from napalm_yang import bindings
 
 __module__ = "{{ module.name }}"
 {% for k, v in module.info.items() %}
@@ -22,3 +23,5 @@ groupings = {{ module.grouping|to_dict }}
 
 
 {{ parsers.tl_uses(module.uses, module.grouping) }}
+
+{{ parsers.bindings(module) }}

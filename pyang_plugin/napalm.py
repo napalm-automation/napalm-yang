@@ -7,6 +7,7 @@ import re
 import sys
 
 import pprint
+from utils import text_helpers
 
 from pyang import plugin
 
@@ -140,11 +141,11 @@ def parse_imports(substmts):
     return result
 
 
-def parse_simple(substmts):
+def parse_simple(substmts, safe_arg=False):
     result = {}
 
     for s in substmts:
-        result[s.keyword] = {'value': s.arg,
+        result[s.keyword] = {'value': text_helpers.safe_class_name(s.arg) if safe_arg else s.arg,
                              'options': {}, }
         for o in s.substmts:
             result[s.keyword]['options'][o.arg] = parse_simple(o.substmts)
@@ -179,7 +180,9 @@ def main_parser(stmts, store, nsglobal):
             store['openconfig-extensions'][substmt.keyword[1]] = substmt.arg
         elif substmt.keyword in SIMPLE_STATEMENTS:
             logger.debug("Parsing simple block")
-            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts)
+            store[substmt.keyword][substmt.arg] = parse_simple(
+                substmt.substmts,
+                safe_arg=substmt.keyword in ['uses', ])
         elif substmt.keyword in GROUPING_STATEMENTS:
             logger.debug("Parsing grouping block")
             store[substmt.keyword][substmt.arg] = create_store(substmt.keyword)
@@ -188,11 +191,11 @@ def main_parser(stmts, store, nsglobal):
             logger.debug("Parsing nested block")
             name = '{}_{}'.format(substmt.parent.arg, substmt.arg)
             nsglobal['discovered_classes'][name] = create_store(substmt.keyword)
-            store[substmt.keyword][substmt.arg] = name
+            store[substmt.keyword][substmt.arg] = text_helpers.safe_class_name(name)
             main_parser(substmt.substmts, nsglobal['discovered_classes'][name], nsglobal)
         elif substmt.keyword in TYPE_STATEMENTS:
             logger.debug("Parsing type block")
-            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts)
+            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts, safe_arg=True)
         else:
             pprint.pprint(store)
             error_stmt(substmt)

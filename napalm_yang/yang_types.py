@@ -4,7 +4,18 @@ from builtins import super
 from yang_base import YangType
 
 
-class boolean(YangType):
+class Identityref(YangType):
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+
+class Boolean(YangType):
 
     @property
     def value(self):
@@ -18,7 +29,9 @@ class boolean(YangType):
             raise ValueError("Wrong value for boolean: {}".format(value))
 
 
-class counter32(YangType):
+class Baseint(YangType):
+    min = 0
+    max = 0
 
     @property
     def value(self):
@@ -26,27 +39,61 @@ class counter32(YangType):
 
     @value.setter
     def value(self, value):
-        if 0 <= value <= 4294967295 and not isinstance(value, bool):
+        if self.min <= value <= self.max and not isinstance(value, bool):
             self._value = value
         else:
-            raise ValueError("Wrong value for counter32: {}".format(value))
+            raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
 
 
-class counter64(YangType):
-
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        if 0 <= value <= 18446744073709551615 and not isinstance(value, bool):
-            self._value = value
-        else:
-            raise ValueError("Wrong value for counter64: {}".format(value))
+class Int8(Baseint):
+    min = -128
+    max = 127
 
 
-class enumeration(YangType):
+class Int16(Baseint):
+    min = -32768
+    max = 32767
+
+
+class Int32(Baseint):
+    min = -2147483648
+    max = 2147483647
+
+
+class Int64(Baseint):
+    min = -9223372036854775808
+    max = 9223372036854775807
+
+
+class Uint8(Baseint):
+    min = 0
+    max = 255
+
+
+class Uint16(Baseint):
+    min = 0
+    max = 65535
+
+
+class Uint32(Baseint):
+    min = 0
+    max = 4294967295
+
+
+class Uint64(Baseint):
+    min = 0
+    max = 18446744073709551615
+
+
+class Counter32(Uint32):
+    pass
+
+
+class Counter64(Uint64):
+    pass
+
+
+class Enumeration(YangType):
 
     def __init__(self, options):
         super().__init__(options)
@@ -75,7 +122,7 @@ class enumeration(YangType):
         return "{}, {}".format(self.enum, self.value)
 
 
-class string(YangType):
+class String(YangType):
 
     @property
     def value(self):
@@ -89,7 +136,7 @@ class string(YangType):
             raise ValueError("Wrong value for string: {}".format(value))
 
 
-class leafref(string):
+class Leafref(String):
 
     @property
     def value(self):
@@ -100,7 +147,7 @@ class leafref(string):
         self._value = value
 
 
-class yang_list(YangType):
+class Yang_list(YangType):
 
     def __init__(self, list_type, value=None):
         self._value = value if value else {}
@@ -151,3 +198,11 @@ class yang_list(YangType):
 
     def values(self):
         return self._value.values()
+
+
+class Timeticks(Uint32):
+    pass
+
+
+class DateAndTime(YangType):
+    pass

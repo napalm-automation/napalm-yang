@@ -2,6 +2,7 @@
 
 from napalm_yang import yang_types
 from napalm_yang import yang_base
+from napalm_yang import bindings
 
 __module__ = "openconfig-interfaces"
 
@@ -51,7 +52,7 @@ __revision__ = {
 
 
 # typedef
-class InterfaceId(yang_types.string):
+class InterfaceId(yang_types.String):
     """
     User-defined identifier for an interface, generally used to
     name a interface reference.  The id can be arbitrary but a
@@ -61,13 +62,13 @@ class InterfaceId(yang_types.string):
 
 
 # typedef
-class BaseInterfaceRef(yang_types.leafref):
+class BaseInterfaceRef(yang_types.Leafref):
     """
     Reusable type for by-name reference to a base interface.
     This type may be used in cases where ability to reference
     a subinterface is not required.
     """
-    path = "{'options': {}, 'value': u'/oc-if:interfaces/oc-if:interface/oc-if:name'}"
+    path = "{'options': {}, 'value': u'/OcIf:Interfaces/OcIf:Interface/OcIf:Name'}"
 
 
 # discovered_classes
@@ -79,7 +80,7 @@ class InterfacesTop_Interfaces(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list = {u'interface': 'interfaces_interface'}
+    list = {u'interface': 'Interfaces_Interface'}
     uses = []
 
 
@@ -135,12 +136,12 @@ class Subinterfaces_Subinterface(yang_base.BaseBinding):
               'options': {
                   '../config/index': {},
                  },
-              'value': 'leafref',
+              'value': 'Leafref',
              },
           'description': {
               'options': {},
-              'value': """The index number of the subinterface -- used to address
-the logical interface""",
+              'value': """The Index Number Of The Subinterface  Used To Address
+The Logical Interface""",
              },
          },
      }
@@ -161,11 +162,11 @@ class Interfaces_Interface(yang_base.BaseBinding):
               'options': {
                   '../config/name': {},
                  },
-              'value': 'leafref',
+              'value': 'Leafref',
              },
           'description': {
               'options': {},
-              'value': 'References the configured name of the interface',
+              'value': 'References The Configured Name Of The Interface',
              },
          },
      }
@@ -220,343 +221,343 @@ class InterfaceCountersState_Counters(yang_base.BaseBinding):
       'out-octets': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-The total number of octets transmitted out of the
-interface, including framing characters.
+The Total Number Of Octets Transmitted Out Of The
+Interface, Including Framing Characters.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifHCOutOctets',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifhcoutoctets',
              },
          },
       'out-errors': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-For packet-oriented interfaces, the number of outbound
-packets that could not be transmitted because of errors.
-For character-oriented or fixed-length interfaces, the
-number of outbound transmission units that could not be
-transmitted because of errors.
+For PacketOriented Interfaces, The Number Of Outbound
+Packets That Could Not Be Transmitted Because Of Errors.
+For CharacterOriented Or FixedLength Interfaces, The
+Number Of Outbound Transmission Units That Could Not Be
+Transmitted Because Of Errors.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifOutErrors',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifouterrors',
              },
          },
       'in-multicast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
 
-The number of packets, delivered by this sub-layer to a
-higher (sub-)layer, that were addressed to a multicast
-address at this sub-layer.  For a MAC-layer protocol,
-this includes both Group and Functional addresses.
+The Number Of Packets, Delivered By This SubLayer To A
+Higher (Sub)Layer, That Were Addressed To A Multicast
+Address At This SubLayer.  For A MacLayer Protocol,
+This Includes Both Group And Functional Addresses.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': """RFC 2863: The Interfaces Group MIB -
-          ifHCInMulticastPkts""",
+              'value': """Rfc 2863: The Interfaces Group Mib 
+          Ifhcinmulticastpkts""",
              },
          },
       'out-unicast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The total number of packets that higher-level protocols
-requested be transmitted, and that were not addressed
-to a multicast or broadcast address at this sub-layer,
-including those that were discarded or not sent.
+The Total Number Of Packets That HigherLevel Protocols
+Requested Be Transmitted, And That Were Not Addressed
+To A Multicast Or Broadcast Address At This SubLayer,
+Including Those That Were Discarded Or Not Sent.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifHCOutUcastPkts',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifhcoutucastpkts',
              },
          },
       'in-errors': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-For packet-oriented interfaces, the number of inbound
-packets that contained errors preventing them from being
-deliverable to a higher-layer protocol.  For character-
-oriented or fixed-length interfaces, the number of
-inbound transmission units that contained errors
-preventing them from being deliverable to a higher-layer
-protocol.
+For PacketOriented Interfaces, The Number Of Inbound
+Packets That Contained Errors Preventing Them From Being
+Deliverable To A HigherLayer Protocol.  For Character
+Oriented Or FixedLength Interfaces, The Number Of
+Inbound Transmission Units That Contained Errors
+Preventing Them From Being Deliverable To A HigherLayer
+Protocol.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifInErrors',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifinerrors',
              },
          },
       'out-multicast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-The total number of packets that higher-level protocols
-requested be transmitted, and that were addressed to a
-multicast address at this sub-layer, including those
-that were discarded or not sent.  For a MAC-layer
-protocol, this includes both Group and Functional
-addresses.
+The Total Number Of Packets That HigherLevel Protocols
+Requested Be Transmitted, And That Were Addressed To A
+Multicast Address At This SubLayer, Including Those
+That Were Discarded Or Not Sent.  For A MacLayer
+Protocol, This Includes Both Group And Functional
+Addresses.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': """RFC 2863: The Interfaces Group MIB -
-          ifHCOutMulticastPkts""",
+              'value': """Rfc 2863: The Interfaces Group Mib 
+          Ifhcoutmulticastpkts""",
              },
          },
       'in-discards': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-The number of inbound packets that were chosen to be
-discarded even though no errors had been detected to
-prevent their being deliverable to a higher-layer
-protocol.  One possible reason for discarding such a
-packet could be to free up buffer space.
+The Number Of Inbound Packets That Were Chosen To Be
+Discarded Even Though No Errors Had Been Detected To
+Prevent Their Being Deliverable To A HigherLayer
+Protocol.  One Possible Reason For Discarding Such A
+Packet Could Be To Free Up Buffer Space.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifInDiscards',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifindiscards',
              },
          },
       'last-clear': {
           'type': {
               'options': {},
-              'value': 'yang:date-and-time',
+              'value': 'Yang:DateAndTime',
              },
           'description': {
               'options': {},
-              'value': """Indicates the last time the interface counters were
-cleared.""",
+              'value': """Indicates The Last Time The Interface Counters Were
+Cleared.""",
              },
          },
       'in-unicast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The number of packets, delivered by this sub-layer to a
-higher (sub-)layer, that were not addressed to a
-multicast or broadcast address at this sub-layer.
+The Number Of Packets, Delivered By This SubLayer To A
+Higher (Sub)Layer, That Were Not Addressed To A
+Multicast Or Broadcast Address At This SubLayer.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifHCInUcastPkts',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifhcinucastpkts',
              },
          },
       'out-broadcast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The total number of packets that higher-level protocols
-requested be transmitted, and that were addressed to a
-broadcast address at this sub-layer, including those
-that were discarded or not sent.
+The Total Number Of Packets That HigherLevel Protocols
+Requested Be Transmitted, And That Were Addressed To A
+Broadcast Address At This SubLayer, Including Those
+That Were Discarded Or Not Sent.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': """RFC 2863: The Interfaces Group MIB -
-          ifHCOutBroadcastPkts""",
+              'value': """Rfc 2863: The Interfaces Group Mib 
+          Ifhcoutbroadcastpkts""",
              },
          },
       'out-discards': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-The number of outbound packets that were chosen to be
-discarded even though no errors had been detected to
-prevent their being transmitted.  One possible reason
-for discarding such a packet could be to free up buffer
-space.
+The Number Of Outbound Packets That Were Chosen To Be
+Discarded Even Though No Errors Had Been Detected To
+Prevent Their Being Transmitted.  One Possible Reason
+For Discarding Such A Packet Could Be To Free Up Buffer
+Space.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifOutDiscards',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifoutdiscards',
              },
          },
       'in-broadcast-pkts': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The number of packets, delivered by this sub-layer to a
-higher (sub-)layer, that were addressed to a broadcast
-address at this sub-layer.
+The Number Of Packets, Delivered By This SubLayer To A
+Higher (Sub)Layer, That Were Addressed To A Broadcast
+Address At This SubLayer.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': """RFC 2863: The Interfaces Group MIB -
-          ifHCInBroadcastPkts""",
+              'value': """Rfc 2863: The Interfaces Group Mib 
+          Ifhcinbroadcastpkts""",
              },
          },
       'in-unknown-protos': {
           'type': {
               'options': {},
-              'value': 'yang:counter32',
+              'value': 'Yang:Counter32',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
-Changed the counter type to counter64.
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
+Changed The Counter Type To Counter64.
 
-For packet-oriented interfaces, the number of packets
-received via the interface that were discarded because
-of an unknown or unsupported protocol.  For
-character-oriented or fixed-length interfaces that
-support protocol multiplexing, the number of
-transmission units received via the interface that were
-discarded because of an unknown or unsupported protocol.
-For any interface that does not support protocol
-multiplexing, this counter is not present.
+For PacketOriented Interfaces, The Number Of Packets
+Received Via The Interface That Were Discarded Because
+Of An Unknown Or Unsupported Protocol.  For
+CharacterOriented Or FixedLength Interfaces That
+Support Protocol Multiplexing, The Number Of
+Transmission Units Received Via The Interface That Were
+Discarded Because Of An Unknown Or Unsupported Protocol.
+For Any Interface That Does Not Support Protocol
+Multiplexing, This Counter Is Not Present.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifInUnknownProtos',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifinunknownprotos',
              },
          },
       'in-octets': {
           'type': {
               'options': {},
-              'value': 'yang:counter64',
+              'value': 'Yang:Counter64',
              },
           'description': {
               'options': {},
-              'value': """[adapted from IETF interfaces model (RFC 7223)]
+              'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The total number of octets received on the interface,
-including framing characters.
+The Total Number Of Octets Received On The Interface,
+Including Framing Characters.
 
-Discontinuities in the value of this counter can occur
-at re-initialization of the management system, and at
-other times as indicated by the value of
-'discontinuity-time'.""",
+Discontinuities In The Value Of This Counter Can Occur
+At ReInitialization Of The Management System, And At
+Other Times As Indicated By The Value Of
+'DiscontinuityTime'.""",
              },
           'reference': {
               'options': {},
-              'value': 'RFC 2863: The Interfaces Group MIB - ifHCInOctets',
+              'value': 'Rfc 2863: The Interfaces Group Mib  Ifhcinoctets',
              },
          },
      }
@@ -645,7 +646,7 @@ class SubinterfacesTop_Subinterfaces(yang_base.BaseBinding):
     config = False
     container = {}
     leaf = {}
-    list = {u'subinterface': 'subinterfaces_subinterface'}
+    list = {u'subinterface': 'Subinterfaces_Subinterface'}
     uses = []
 
 
@@ -682,7 +683,7 @@ groupings = {
 dampening on physical and other types of interfaces.""",
          },
       'container': {
-          'hold-time': 'interface-phys-holdtime-top_hold-time',
+          'hold-time': 'InterfacePhysHoldtimeTop_HoldTime',
          },
       'list': {},
       'uses': {},
@@ -695,7 +696,7 @@ dampening on physical and other types of interfaces.""",
 interface or subinterface""",
          },
       'container': {
-          'interface-ref': 'interface-ref-state_interface-ref',
+          'interface-ref': 'InterfaceRefState_InterfaceRef',
          },
       'list': {},
       'uses': {},
@@ -708,7 +709,7 @@ interface or subinterface""",
 operational state data""",
          },
       'container': {
-          'interfaces': 'interfaces-top_interfaces',
+          'interfaces': 'InterfacesTop_Interfaces',
          },
       'list': {},
       'uses': {},
@@ -736,17 +737,17 @@ operational state data""",
           'enabled': {
               'default': {
                   'options': {},
-                  'value': 'false',
+                  'value': 'False',
                  },
               'type': {
                   'options': {},
-                  'value': 'boolean',
+                  'value': 'Boolean',
                  },
               'description': {
                   'options': {},
-                  'value': """Indicates that the subinterface is unnumbered.  By default
-the subinterface is numbered, i.e., expected to have an
-IP address configuration.""",
+                  'value': """Indicates That The Subinterface Is Unnumbered.  By Default
+The Subinterface Is Numbered, I.E., Expected To Have An
+Ip Address Configuration.""",
                  },
              },
          },
@@ -769,14 +770,14 @@ IP address configuration.""",
                  },
               'type': {
                   'options': {},
-                  'value': 'uint32',
+                  'value': 'Uint32',
                  },
               'description': {
                   'options': {},
-                  'value': """The index of the subinterface, or logical interface number.
-On systems with no support for subinterfaces, or not using
-subinterfaces, this value should default to 0, i.e., the
-default subinterface.""",
+                  'value': """The Index Of The Subinterface, Or Logical Interface Number.
+On Systems With No Support For Subinterfaces, Or Not Using
+Subinterfaces, This Value Should Default To 0, I.E., The
+Default Subinterface.""",
                  },
              },
          },
@@ -807,22 +808,22 @@ at the global level for this interface""",
           'ifindex': {
               'type': {
                   'options': {},
-                  'value': 'uint32',
+                  'value': 'Uint32',
                  },
               'description': {
                   'options': {},
-                  'value': """System assigned number for each interface.  Corresponds to
-ifIndex object in SNMP Interface MIB""",
+                  'value': """System Assigned Number For Each Interface.  Corresponds To
+Ifindex Object In Snmp Interface Mib""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863 - The Interfaces Group MIB',
+                  'value': 'Rfc 2863  The Interfaces Group Mib',
                  },
              },
           'oper-status': {
               'mandatory': {
                   'options': {},
-                  'value': 'true',
+                  'value': 'True',
                  },
               'type': {
                   'options': {
@@ -898,41 +899,41 @@ be passed.""",
                              },
                          },
                      },
-                  'value': 'enumeration',
+                  'value': 'Enumeration',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The current operational state of the interface.
+The Current Operational State Of The Interface.
 
-This leaf has the same semantics as ifOperStatus.""",
+This Leaf Has The Same Semantics As Ifoperstatus.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifOperStatus',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Ifoperstatus',
                  },
              },
           'last-change': {
               'type': {
                   'options': {},
-                  'value': 'yang:timeticks',
+                  'value': 'Yang:Timeticks',
                  },
               'description': {
                   'options': {},
-                  'value': """Date and time of the last state change of the interface
-(e.g., up-to-down transition).   This corresponds to the
-ifLastChange object in the standard interface MIB.""",
+                  'value': """Date And Time Of The Last State Change Of The Interface
+(E.G., UpToDown Transition).   This Corresponds To The
+Iflastchange Object In The Standard Interface Mib.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifLastChange',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Iflastchange',
                  },
              },
           'admin-status': {
               'mandatory': {
                   'options': {},
-                  'value': 'true',
+                  'value': 'True',
                  },
               'type': {
                   'options': {
@@ -955,20 +956,20 @@ ifLastChange object in the standard interface MIB.""",
                              },
                          },
                      },
-                  'value': 'enumeration',
+                  'value': 'Enumeration',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The desired state of the interface.  In RFC 7223 this leaf
-has the same read semantics as ifAdminStatus.  Here, it
-reflects the administrative state as set by enabling or
-disabling the interface.""",
+The Desired State Of The Interface.  In Rfc 7223 This Leaf
+Has The Same Read Semantics As Ifadminstatus.  Here, It
+Reflects The Administrative State As Set By Enabling Or
+Disabling The Interface.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifAdminStatus',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Ifadminstatus',
                  },
              },
          },
@@ -987,48 +988,48 @@ disabling the interface.""",
           'type': {
               'mandatory': {
                   'options': {},
-                  'value': 'true',
+                  'value': 'True',
                  },
               'type': {
                   'options': {
                       'ietf-if:interface-type': {},
                      },
-                  'value': 'identityref',
+                  'value': 'Identityref',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The type of the interface.
+The Type Of The Interface.
 
-When an interface entry is created, a server MAY
-initialize the type leaf with a valid value, e.g., if it
-is possible to derive the type from the name of the
-interface.
+When An Interface Entry Is Created, A Server May
+Initialize The Type Leaf With A Valid Value, E.G., If It
+Is Possible To Derive The Type From The Name Of The
+Interface.
 
-If a client tries to set the type of an interface to a
-value that can never be used by the system, e.g., if the
-type is not supported or if the type does not match the
-name of the interface, the server MUST reject the request.
-A NETCONF server MUST reply with an rpc-error with the
-error-tag 'invalid-value' in this case.""",
+If A Client Tries To Set The Type Of An Interface To A
+Value That Can Never Be Used By The System, E.G., If The
+Type Is Not Supported Or If The Type Does Not Match The
+Name Of The Interface, The Server Must Reject The Request.
+A Netconf Server Must Reply With An RpcError With The
+ErrorTag 'InvalidValue' In This Case.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifType',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Iftype',
                  },
              },
           'mtu': {
               'type': {
                   'options': {},
-                  'value': 'uint16',
+                  'value': 'Uint16',
                  },
               'description': {
                   'options': {},
-                  'value': """Set the max transmission unit size in octets
-for the physical interface.  If this is not set, the mtu is
-set to the operational default -- e.g., 1514 bytes on an
-Ethernet interface.""",
+                  'value': """Set The Max Transmission Unit Size In Octets
+For The Physical Interface.  If This Is Not Set, The Mtu Is
+Set To The Operational Default  E.G., 1514 Bytes On An
+Ethernet Interface.""",
                  },
              },
          },
@@ -1047,28 +1048,28 @@ Ethernet interface.""",
                   'options': {
                       '/oc-if:interfaces/oc-if:interface/oc-if:name': {},
                      },
-                  'value': 'leafref',
+                  'value': 'Leafref',
                  },
               'description': {
                   'options': {},
-                  'value': """Reference to a base interface.  If a reference to a
-subinterface is required, this leaf must be specified
-to indicate the base interface.""",
+                  'value': """Reference To A Base Interface.  If A Reference To A
+Subinterface Is Required, This Leaf Must Be Specified
+To Indicate The Base Interface.""",
                  },
              },
           'subinterface': {
               'type': {
                   'options': {
-                      '/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index':{},#noqa
+                      '/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index': {},
                      },
-                  'value': 'leafref',
+                  'value': 'Leafref',
                  },
               'description': {
                   'options': {},
-                  'value': """Reference to a subinterface -- this requires the base
-interface to be specified using the interface leaf in
-this container.  If only a reference to a base interface
-is requuired, this leaf should not be set.""",
+                  'value': """Reference To A Subinterface  This Requires The Base
+Interface To Be Specified Using The Interface Leaf In
+This Container.  If Only A Reference To A Base Interface
+Is Requuired, This Leaf Should Not Be Set.""",
                  },
              },
          },
@@ -1080,7 +1081,7 @@ is requuired, this leaf should not be set.""",
 given interface""",
          },
       'container': {
-          'subinterfaces': 'subinterfaces-top_subinterfaces',
+          'subinterfaces': 'SubinterfacesTop_Subinterfaces',
          },
       'list': {},
       'uses': {},
@@ -1092,7 +1093,7 @@ given interface""",
           'description': 'Top-level grouping unnumbered subinterfaces',
          },
       'container': {
-          'unnumbered': 'sub-unnumbered-top_unnumbered',
+          'unnumbered': 'SubUnnumberedTop_Unnumbered',
          },
       'list': {},
       'uses': {},
@@ -1111,7 +1112,7 @@ applies to physical interfaces.""",
           'down': {
               'units': {
                   'options': {},
-                  'value': 'milliseconds',
+                  'value': 'Milliseconds',
                  },
               'default': {
                   'options': {},
@@ -1119,19 +1120,19 @@ applies to physical interfaces.""",
                  },
               'type': {
                   'options': {},
-                  'value': 'uint32',
+                  'value': 'Uint32',
                  },
               'description': {
                   'options': {},
-                  'value': """Dampens advertisement when the interface transitions from
-up to down.  A zero value means dampening is turned off,
-i.e., immediate notification.""",
+                  'value': """Dampens Advertisement When The Interface Transitions From
+Up To Down.  A Zero Value Means Dampening Is Turned Off,
+I.E., Immediate Notification.""",
                  },
              },
           'up': {
               'units': {
                   'options': {},
-                  'value': 'milliseconds',
+                  'value': 'Milliseconds',
                  },
               'default': {
                   'options': {},
@@ -1139,13 +1140,13 @@ i.e., immediate notification.""",
                  },
               'type': {
                   'options': {},
-                  'value': 'uint32',
+                  'value': 'Uint32',
                  },
               'description': {
                   'options': {},
-                  'value': """Dampens advertisement when the interface
-transitions from down to up.  A zero value means dampening
-is turned off, i.e., immediate notification.""",
+                  'value': """Dampens Advertisement When The Interface
+Transitions From Down To Up.  A Zero Value Means Dampening
+Is Turned Off, I.E., Immediate Notification.""",
                  },
              },
          },
@@ -1157,7 +1158,7 @@ is turned off, i.e., immediate notification.""",
 interface or subinterface""",
          },
       'container': {
-          'state': 'interface-ref-state-container_state',
+          'state': 'InterfaceRefStateContainer_State',
          },
       'list': {},
       'uses': {},
@@ -1176,119 +1177,119 @@ and subinterfaces""",
           'enabled': {
               'default': {
                   'options': {},
-                  'value': 'true',
+                  'value': 'True',
                  },
               'type': {
                   'options': {},
-                  'value': 'boolean',
+                  'value': 'Boolean',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-This leaf contains the configured, desired state of the
-interface.
+This Leaf Contains The Configured, Desired State Of The
+Interface.
 
-Systems that implement the IF-MIB use the value of this
-leaf in the 'running' datastore to set
-IF-MIB.ifAdminStatus to 'up' or 'down' after an ifEntry
-has been initialized, as described in RFC 2863.
+Systems That Implement The IfMib Use The Value Of This
+Leaf In The 'Running' Datastore To Set
+IfMib.Ifadminstatus To 'Up' Or 'Down' After An Ifentry
+Has Been Initialized, As Described In Rfc 2863.
 
-Changes in this leaf in the 'running' datastore are
-reflected in ifAdminStatus, but if ifAdminStatus is
-changed over SNMP, this leaf is not affected.""",
+Changes In This Leaf In The 'Running' Datastore Are
+Reflected In Ifadminstatus, But If Ifadminstatus Is
+Changed Over Snmp, This Leaf Is Not Affected.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifAdminStatus',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Ifadminstatus',
                  },
              },
           'name': {
               'type': {
                   'options': {},
-                  'value': 'string',
+                  'value': 'String',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-The name of the interface.
+The Name Of The Interface.
 
-A device MAY restrict the allowed values for this leaf,
-possibly depending on the type of the interface.
-For system-controlled interfaces, this leaf is the
-device-specific name of the interface.  The 'config false'
-list interfaces/interface[name]/state contains the currently
-existing interfaces on the device.
+A Device May Restrict The Allowed Values For This Leaf,
+Possibly Depending On The Type Of The Interface.
+For SystemControlled Interfaces, This Leaf Is The
+DeviceSpecific Name Of The Interface.  The 'Config False'
+List Interfaces/Interface[Name]/State Contains The Currently
+Existing Interfaces On The Device.
 
-If a client tries to create configuration for a
-system-controlled interface that is not present in the
-corresponding state list, the server MAY reject
-the request if the implementation does not support
-pre-provisioning of interfaces or if the name refers to
-an interface that can never exist in the system.  A
-NETCONF server MUST reply with an rpc-error with the
-error-tag 'invalid-value' in this case.
+If A Client Tries To Create Configuration For A
+SystemControlled Interface That Is Not Present In The
+Corresponding State List, The Server May Reject
+The Request If The Implementation Does Not Support
+PreProvisioning Of Interfaces Or If The Name Refers To
+An Interface That Can Never Exist In The System.  A
+Netconf Server Must Reply With An RpcError With The
+ErrorTag 'InvalidValue' In This Case.
 
-The IETF model in RFC 7223 provides YANG features for the
-following (i.e., pre-provisioning and arbitrary-names),
-however they are omitted here:
+The Ietf Model In Rfc 7223 Provides Yang Features For The
+Following (I.E., PreProvisioning And ArbitraryNames),
+However They Are Omitted Here:
 
- If the device supports pre-provisioning of interface
- configuration, the 'pre-provisioning' feature is
- advertised.
+ If The Device Supports PreProvisioning Of Interface
+ Configuration, The 'PreProvisioning' Feature Is
+ Advertised.
 
- If the device allows arbitrarily named user-controlled
- interfaces, the 'arbitrary-names' feature is advertised.
+ If The Device Allows Arbitrarily Named UserControlled
+ Interfaces, The 'ArbitraryNames' Feature Is Advertised.
 
-When a configured user-controlled interface is created by
-the system, it is instantiated with the same name in the
-/interfaces/interface[name]/state list.""",
+When A Configured UserControlled Interface Is Created By
+The System, It Is Instantiated With The Same Name In The
+/Interfaces/Interface[Name]/State List.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 7223: A YANG Data Model for Interface Management',
+                  'value': 'Rfc 7223: A Yang Data Model For Interface Management',
                  },
              },
           'description': {
               'type': {
                   'options': {},
-                  'value': 'string',
+                  'value': 'String',
                  },
               'description': {
                   'options': {},
-                  'value': """[adapted from IETF interfaces model (RFC 7223)]
+                  'value': """[Adapted From Ietf Interfaces Model (Rfc 7223)]
 
-A textual description of the interface.
+A Textual Description Of The Interface.
 
-A server implementation MAY map this leaf to the ifAlias
-MIB object.  Such an implementation needs to use some
-mechanism to handle the differences in size and characters
-allowed between this leaf and ifAlias.  The definition of
-such a mechanism is outside the scope of this document.
+A Server Implementation May Map This Leaf To The Ifalias
+Mib Object.  Such An Implementation Needs To Use Some
+Mechanism To Handle The Differences In Size And Characters
+Allowed Between This Leaf And Ifalias.  The Definition Of
+Such A Mechanism Is Outside The Scope Of This Document.
 
-Since ifAlias is defined to be stored in non-volatile
-storage, the MIB implementation MUST map ifAlias to the
-value of 'description' in the persistently stored
-datastore.
+Since Ifalias Is Defined To Be Stored In NonVolatile
+Storage, The Mib Implementation Must Map Ifalias To The
+Value Of 'Description' In The Persistently Stored
+Datastore.
 
-Specifically, if the device supports ':startup', when
-ifAlias is read the device MUST return the value of
-'description' in the 'startup' datastore, and when it is
-written, it MUST be written to the 'running' and 'startup'
-datastores.  Note that it is up to the implementation to
+Specifically, If The Device Supports ':Startup', When
+Ifalias Is Read The Device Must Return The Value Of
+'Description' In The 'Startup' Datastore, And When It Is
+Written, It Must Be Written To The 'Running' And 'Startup'
+Datastores.  Note That It Is Up To The Implementation To
 
-decide whether to modify this single leaf in 'startup' or
-perform an implicit copy-config from 'running' to
-'startup'.
+Decide Whether To Modify This Single Leaf In 'Startup' Or
+Perform An Implicit CopyConfig From 'Running' To
+'Startup'.
 
-If the device does not support ':startup', ifAlias MUST
-be mapped to the 'description' leaf in the 'running'
-datastore.""",
+If The Device Does Not Support ':Startup', Ifalias Must
+Be Mapped To The 'Description' Leaf In The 'Running'
+Datastore.""",
                  },
               'reference': {
                   'options': {},
-                  'value': 'RFC 2863: The Interfaces Group MIB - ifAlias',
+                  'value': 'Rfc 2863: The Interfaces Group Mib  Ifalias',
                  },
              },
          },
@@ -1300,7 +1301,7 @@ datastore.""",
 subinterface""",
          },
       'container': {
-          'interface-ref': 'interface-ref_interface-ref',
+          'interface-ref': 'InterfaceRef_InterfaceRef',
          },
       'list': {},
       'uses': {},
@@ -1323,7 +1324,7 @@ subinterface""",
 and statistics.  Some of these are adapted from RFC 7223""",
          },
       'container': {
-          'counters': 'interface-counters-state_counters',
+          'counters': 'InterfaceCountersState_Counters',
          },
       'list': {},
       'uses': {},
@@ -1333,9 +1334,31 @@ and statistics.  Some of these are adapted from RFC 7223""",
  }
 
 
-class Interfaces(yang_base.BaseBinding):
+class Interfaces(InterfacesTop_Interfaces):
     """
     Top-level grouping for interface configuration and
     operational state data
     """
-    uses = ['interfaces-top_interfaces']
+    pass
+
+
+bindings.attach_childs(InterfacesTop_Interfaces, globals())
+bindings.attach_childs(InterfacePhysHoldtimeTop_HoldTime, globals())
+bindings.attach_childs(Interface_Config, globals())
+bindings.attach_childs(Unnumbered_Config, globals())
+bindings.attach_childs(Subinterfaces_Subinterface, globals())
+bindings.attach_childs(Interfaces_Interface, globals())
+bindings.attach_childs(Subinterface_Config, globals())
+bindings.attach_childs(Interface_State, globals())
+bindings.attach_childs(InterfaceRef_Config, globals())
+bindings.attach_childs(InterfaceCountersState_Counters, globals())
+bindings.attach_childs(InterfaceRefState_InterfaceRef, globals())
+bindings.attach_childs(InterfaceRefStateContainer_State, globals())
+bindings.attach_childs(Unnumbered_State, globals())
+bindings.attach_childs(HoldTime_Config, globals())
+bindings.attach_childs(HoldTime_State, globals())
+bindings.attach_childs(Subinterface_State, globals())
+bindings.attach_childs(SubinterfacesTop_Subinterfaces, globals())
+bindings.attach_childs(InterfaceRef_InterfaceRef, globals())
+bindings.attach_childs(SubUnnumberedTop_Unnumbered, globals())
+bindings.attach_childs(Interfaces, globals())
