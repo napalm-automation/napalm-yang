@@ -6,6 +6,7 @@ import os
 import sys
 
 from pyang import plugin
+from pyang.statements import Statement
 
 from collections import defaultdict
 
@@ -13,6 +14,8 @@ from helpers import jinja_filters
 import jinja2
 
 from utils import text_helpers
+
+import pprint
 
 
 def configure_logging(logger, debug):
@@ -100,8 +103,11 @@ def save(result, path):
         print(template.render(module=data))
 
 
-def inspect(obj, indent=0):
-    print(jinja_filters.to_json(obj))
+def inspect(obj):
+    if isinstance(obj, Statement):
+        pprint.pprint(obj.__dict__)
+    else:
+        print(jinja_filters.to_json(obj))
 
 
 SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units", )
@@ -143,7 +149,8 @@ NESTED = ("grouping", "container", "leaf", "type", "list", "enum", "typedef", )
 
 def _parse_nested(sub, store, root):
     if sub.keyword in ("container", "list", ):
-        unique_name = "{}_{}".format(sub.parent.arg, sub.arg)
+        pos = "{}".format(sub.pos).split(":")[-1]
+        unique_name = "{}_{}_{}".format(sub.parent.arg, sub.arg, pos)
         root["order"].append((sub.keyword, unique_name))
         _parse(sub.substmts, root[sub.keyword][unique_name], root)
         try:
@@ -188,6 +195,8 @@ def _process_uses(statements, groupings, store):
         while obj["uses"]:
             u = groupings[obj["uses"].pop()]
             merge_two_dicts(obj, u)
+
+        obj.pop("uses")
         store[name] = obj
 
 
@@ -202,11 +211,13 @@ def _process(statements, store):
     store["info"] = statements.pop("info")
     store["identity"] = statements.pop("identity")
     store["order"] = statements.pop("order")
+    store["order"].reverse()
     _process_uses(statements.pop("container"), grouping, store["container"])
     _process_uses(statements.pop("list"), grouping, store["list"])
     _process_uses_top(statements.pop("uses"), grouping, store["top"])
-    inspect(store["container"]["acl-top_acl"])
-    raise Exception(store["container"]["acl-top_acl"])
+    if statements:
+        inspect(statements)
+        raise Exception("Not the entire object was processed")
 
 
 def emit_napalm(ctx, modules, fd):
@@ -217,7 +228,6 @@ def emit_napalm(ctx, modules, fd):
         fd(file): File open to written to
     """
     parsed = defaultdict(_nested_default_dict)
-    print(parsed)
     result = defaultdict(_nested_default_dict)
     for module in modules:
         logger.info("Parsing model {}".format(module.pos))

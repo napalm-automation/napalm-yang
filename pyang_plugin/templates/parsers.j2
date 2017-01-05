@@ -1,8 +1,6 @@
-{%- import "processors.j2" as processors -%}
-
-{%- macro identities(identities) -%}
+{%- macro process_identities(module) -%}
 ### Identities
-{% for k, v in identities.items() %}
+{% for k, v in module.identity.items() %}
 {{ k }} = yang_types.Identity(
     base = {{ v.get("base", None) }},
     value = "{{ k }}",
@@ -11,36 +9,38 @@
 {% endfor %}
 {%- endmacro %}
 
+{%- macro process_classes(module) -%}
+# Classes to support containers and lists
 
-{%- macro lists(lists, groupings) -%}
-{% for k, v in lists.items() -%}
-class {{ k }}(Yang_list):
+
+{% for m in module.order -%}
+class {{ m[1]|safe_class_name }}({{ "yang_base.Yang_list" if m[0] == "list" else "yang_base.Yang_base" }}):
     """
-    {{ v.pop("info").pop("description") }}
+{{ module[m[0]][m[1]].pop("info", {}).pop("description")|indent }}
     """
-    # list attributes
-    list_type = {{ k }}
-    list_key = {{ v.pop("key") }}
-
-{{ processors.p_containers(v.pop("container", {}).pop("container", []))|indent }}
-
-{{ processors.p_leafs(v.pop("leaf", {}))|indent }}
-
-{{ processors.p_uses(v.pop("uses", {}), groupings)|indent(8) }}
-
-lists --- {{ v|to_json }}
+{{ _process_attributes(module[m[0]][m[1]], "container")|indent }}
+{{ _process_attributes(module[m[0]][m[1]], "list")|indent }}
+{{ _process_leafs(module[m[0]][m[1]])|indent }}
+    # Meta
+    _config = {{ module[m[0]][m[1]].pop("config", True)|safe_class_name }}
+{% if m[0] == "list" %}    _key = {{ module[m[0]][m[1]].pop("key")|safe_attr_name }}{% endif %}
+{{ module[m[0]][m[1]]|raise_if_not_empty(m) }}
 {% endfor %}
 {%- endmacro %}
 
-{%- macro containers(containers, groupings) -%}
-{% for k, v in containers.items() -%}
-{% set base_class = "YangList" if "list" in v.keys() else "YangBase" -%}
-class {{ k }}({{ base_class }}):
-    """
-    {{ v.pop("info").pop("description") }}
-    """
-    {{ processors.p_lists(v.pop("list", {})) }}
+{%- macro _process_attributes(module, type_of_attr) -%}
+# {{ type_of_attr }}
+{% for a in module.pop(type_of_attr, {}).pop(type_of_attr, []) -%}
+{{ a[0]|safe_attr_name }} = {{ a[1]|safe_class_name }}()
+{% endfor %}
+{%- endmacro %}
 
-containers {{ v|to_json }}
+
+{%- macro _process_leafs(module) -%}
+# leaf
+{% for k, v in module.pop("leaf", {}).items() -%}
+{% for kk, vv in v.pop("type", {}).items() -%}
+{{ k|safe_attr_name }} = yang_types.{{ kk|safe_class_name }}({% for kkk, vvv in vv.items() %}{{ kkk }}="{{ vvv }}"{% endfor %})
+{% endfor %}
 {% endfor %}
 {%- endmacro %}

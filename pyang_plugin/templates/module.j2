@@ -1,15 +1,16 @@
-{# {%- import "parsers.j2" as parsers -%} #}
-{# """ #}
-{# {{ module|to_json }} #}
-{# """ #}
-{# from napalm_yang import yang_types #}
-{# from napalm_yang import yang_base #}
-
-{# {% for k, v in module.info.items() %} #}
-{# __{{ k.replace('-', '_') }}__ = {{ v|to_json }} #}
-{# {% endfor %} #}
-
-{# {{ parsers.identities(module.identity) }} #}
-{# {{ parsers.lists(module.list, module.grouping) }} #}
-{# [> {{ parsers.classes(module.container) }} <] #}
+{%- import "parsers.j2" as p -%}
+"""
 {{ module|to_json }}
+"""
+from napalm_yang import yang_types
+from napalm_yang import yang_base
+
+{% for k, v in module.pop("info").items() %}
+__{{ k.replace('-', '_') }}__ = {{ v|to_json }}
+{% endfor %}
+
+{{ p.process_identities(module) }}
+
+{{ p.process_classes(module) }}
+
+{{ module }}

@@ -17,6 +17,7 @@ class FilterModule(object):
             'to_dict': to_dict,
             'to_string': to_string,
             'raise_error': raise_error,
+            'raise_if_not_empty': raise_if_not_empty,
         }
 
 
@@ -26,7 +27,13 @@ def raise_error(value, args=None):
 
 def indent(value, indentation=4):
     """Indent text."""
-    return '\n'.join(["{}{}".format(" " * indentation, t) for t in value.splitlines()])
+    new_value = []
+    for v in value.splitlines():
+        if v != "":
+            new_value.append("{}{}".format(" " * indentation, v))
+        else:
+            new_value.append(v)
+    return "\n".join(new_value)
 
 
 def to_json(value):
@@ -52,3 +59,10 @@ def to_dict(value, level=0):
         return to_string(value)
     else:
         return value
+
+
+def raise_if_not_empty(value, msg=""):
+    if value:
+        msg = "{}\n{}".format(msg, value) if msg else value
+        raise Exception(msg)
+    return ""
