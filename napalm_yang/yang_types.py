@@ -4,15 +4,13 @@ from builtins import super
 from yang_base import YangType
 
 
-class Identityref(YangType):
+class Identity(YangType):
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        self._value = value
+    def __init__(self, value, base=None, description="", options=None):
+        super().__init__(options)
+        self.base = base
+        self.description = description
+        self.value = value
 
 
 class Boolean(YangType):
@@ -148,15 +146,14 @@ class Leafref(String):
 
 
 class Yang_list(YangType):
+    _type = None
 
-    def __init__(self, list_type, value=None):
+    def __init__(self, value=None):
         self._value = value if value else {}
-        same_type = all([isinstance(x, list_type) for x in self._value.values()])
+        same_type = all([isinstance(x, self._type) for x in self._value.values()])
 
         if not same_type:
-            raise AttributeError("Some element of {} is not of type {}".format(list_type, value))
-
-        self._type = list_type
+            raise AttributeError("Some element of {} is not of type {}".format(self._type, value))
 
     @property
     def value(self):

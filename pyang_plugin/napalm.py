@@ -3,17 +3,16 @@
 import logging
 import optparse
 import os
-import re
 import sys
-
-import pprint
-from utils import text_helpers
 
 from pyang import plugin
 
-from helpers import jinja_filters
+from collections import defaultdict
 
+from helpers import jinja_filters
 import jinja2
+
+from utils import text_helpers
 
 
 def configure_logging(logger, debug):
@@ -71,6 +70,9 @@ class NapalmPlugin(plugin.PyangPlugin):
         ctx.implicit_errors = False
 
     def emit(self, ctx, modules, fd):
+        global logger
+        logger = logging.getLogger("napalm_pyang_plugin")
+        logger = configure_logging(logger, ctx.opts.verbose)
         emit_napalm(ctx, modules, fd)
 
 
@@ -78,136 +80,11 @@ def print_help():
     print("TDB")
 
 
-def _stupid_insepct(obj):
-    text = "# {}\n".format(obj.__class__.__name__)
-    for k, v in obj.__dict__.items():
-        l = 30 - len(k)
-        text += "{}{}{}\n".format(k, " " * l, v)
-    text += "======================"
-    return text
+def _nested_default_dict():
+    return defaultdict(_nested_default_dict)
 
 
-INFORMATIONAL_STATEMENTS = [
-    'namespace',
-    'organization',
-    'contact',
-    'description',
-    'yang-version',
-    'prefix',
-    'config',
-    'reference',
-    'key',
-]
-
-SIMPLE_STATEMENTS = [
-    'revision',
-    'uses',
-]
-
-GROUPING_STATEMENTS = [
-    'grouping',
-    'typedef',
-]
-
-NESTED_STATEMENTS = [
-    'container',
-    'list',
-]
-
-TYPE_STATEMENTS = [
-    'leaf',
-    'type',
-]
-
-
-def safe(name):
-    """Given a string, return a safe version."""
-    name = re.sub('-', '_', name)
-    return name
-
-
-def error_stmt(stmt):
-    raise Exception("Not sure about this type of statement: {}\n{}".format(
-                                            stmt.keyword, _stupid_insepct(stmt)))
-
-
-def parse_imports(substmts):
-    result = []
-    for stmt in substmts:
-        if stmt.keyword == 'prefix':
-            result.append(stmt.arg)
-        else:
-            error_stmt(stmt)
-    return result
-
-
-def parse_simple(substmts, safe_arg=False):
-    result = {}
-
-    for s in substmts:
-        result[s.keyword] = {'value': text_helpers.safe_class_name(s.arg) if safe_arg else s.arg,
-                             'options': {}, }
-        for o in s.substmts:
-            result[s.keyword]['options'][o.arg] = parse_simple(o.substmts)
-
-    return result
-
-
-def create_store(store_type):
-    store_map = {}
-    store_map['typedef'] = {'info': {}, 'type': {},
-                            }
-    store_map['grouping'] = {'info': {}, 'leaf': {}, 'uses': {}, 'list': {},
-                             'container': {}, 'config': False,
-                             }
-    store_map['leaf'] = store_map['typedef']
-    store_map['container'] = store_map['grouping']
-    store_map['list'] = store_map['grouping']
-    return store_map[store_type]
-
-
-def main_parser(stmts, store, nsglobal):
-    for substmt in stmts:
-        logger.debug("Found statement: {}".format(substmt.keyword))
-        if substmt.keyword in INFORMATIONAL_STATEMENTS:
-            logger.debug("Parsing information_statements")
-            store['info'][substmt.keyword] = substmt.arg
-        elif substmt.keyword == 'import':
-            logger.debug("Parsing import")
-            store['imports'][substmt.arg] = parse_imports(substmt.substmts)
-        elif 'openconfig-extensions' in substmt.keyword:
-            logger.debug("Parsing openconfig-extensions")
-            store['openconfig-extensions'][substmt.keyword[1]] = substmt.arg
-        elif substmt.keyword in SIMPLE_STATEMENTS:
-            logger.debug("Parsing simple block")
-            store[substmt.keyword][substmt.arg] = parse_simple(
-                substmt.substmts,
-                safe_arg=substmt.keyword in ['uses', ])
-        elif substmt.keyword in GROUPING_STATEMENTS:
-            logger.debug("Parsing grouping block")
-            store[substmt.keyword][substmt.arg] = create_store(substmt.keyword)
-            main_parser(substmt.substmts, store[substmt.keyword][substmt.arg], nsglobal)
-        elif substmt.keyword in NESTED_STATEMENTS:
-            logger.debug("Parsing nested block")
-            name = '{}_{}'.format(substmt.parent.arg, substmt.arg)
-            nsglobal['discovered_classes'][name] = create_store(substmt.keyword)
-            store[substmt.keyword][substmt.arg] = text_helpers.safe_class_name(name)
-            main_parser(substmt.substmts, nsglobal['discovered_classes'][name], nsglobal)
-        elif substmt.keyword in TYPE_STATEMENTS:
-            logger.debug("Parsing type block")
-            store[substmt.keyword][substmt.arg] = parse_simple(substmt.substmts, safe_arg=True)
-        else:
-            pprint.pprint(store)
-            error_stmt(substmt)
-
-
-def emit_napalm(ctx, modules, fd):
-    """
-    Args:
-        ctx(pyang.Context): Options passed via the CLI.
-        modules(list of pyang.statements.Statement): List of yang models being processed
-        fd(file): File open to written to
-    """
+def save(result, path):
     filters = jinja_filters.FilterModule()
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./pyang_plugin/templates/'),
                              undefined=jinja2.StrictUndefined)
@@ -217,24 +94,138 @@ def emit_napalm(ctx, modules, fd):
 
     template = env.get_template('module.j2')
 
-    global logger
-    logger = logging.getLogger("napalm_pyang_plugin")
-    logger = configure_logging(logger, ctx.opts.verbose)
+    for module, data in result.items():
+        filename = "{}.py".format(text_helpers.safe_attr_name(module))
+        logger.info("Saving module: {}".format(filename))
+        print(template.render(module=data))
 
+
+def inspect(obj, indent=0):
+    print(jinja_filters.to_json(obj))
+
+
+SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units", )
+
+
+def _parse_simple(sub, store):
+    if sub.keyword == "uses":
+        try:
+            store[sub.keyword].append(sub.arg)
+        except:
+            store[sub.keyword] = [sub.arg]
+    else:
+        store[sub.keyword] = sub.arg
+
+
+IDENTITY = ("identity", )
+
+
+def _parse_identities(sub, store, root):
+    _parse(sub.substmts, store[sub.arg], root)
+
+
+INFO = ("yang-version", "namespace", "prefix", "organization", "contact", "reference",
+        "description", (u'openconfig-extensions', u'openconfig-version'), "import", "revision", )
+
+
+def _parse_info(sub, store):
+    if sub.keyword in ("yang-version", "namespace", "prefix", "organization", "contact",
+                       "description", ):
+        store[sub.keyword] = sub.arg
+    elif sub.keyword == (u'openconfig-extensions', u'openconfig-version'):
+        store[sub.keyword[0]][sub.keyword[1]] = sub.arg
+    elif sub.keyword in ("import", "revision", ):
+        _parse_simple(sub, store[sub.keyword][sub.arg])
+
+
+NESTED = ("grouping", "container", "leaf", "type", "list", "enum", "typedef", )
+
+
+def _parse_nested(sub, store, root):
+    if sub.keyword in ("container", "list", ):
+        unique_name = "{}_{}".format(sub.parent.arg, sub.arg)
+        root["order"].append((sub.keyword, unique_name))
+        _parse(sub.substmts, root[sub.keyword][unique_name], root)
+        try:
+            store[sub.keyword].append((sub.arg, unique_name))
+        except AttributeError:
+            store[sub.keyword] = [(sub.arg, unique_name)]
+    else:
+        _parse(sub.substmts, store[sub.arg], root)
+
+
+def _parse(substmts, store, root):
+    while len(substmts):
+        sub = substmts.pop()
+        logger.debug("Parsing {} - {}, {}".format(sub.keyword, sub.arg[0:20], sub.pos))
+        if sub.keyword in INFO:
+            _parse_info(sub, store["info"])
+        elif sub.keyword in IDENTITY:
+            _parse_identities(sub, store[sub.keyword], root)
+        elif sub.keyword in NESTED:
+            _parse_nested(sub, store[sub.keyword], root)
+        elif sub.keyword in SIMPLE:
+            _parse_simple(sub, store)
+        else:
+            raise Exception("We are not parsing {}".format(sub.keyword))
+
+
+def merge_two_dicts(x, y):
+    """Given two dicts, merge them into a new dict as a shallow copy."""
+    for k, v in y.items():
+        if k == "info":
+            continue
+        if isinstance(v, dict) and k in x.keys():
+            merge_two_dicts(x[k], v)
+        elif isinstance(v, list) and k in x.keys():
+            x[k].extend(v)
+        else:
+            x[k] = v
+
+
+def _process_uses(statements, groupings, store):
+    for name, obj in statements.items():
+        while obj["uses"]:
+            u = groupings[obj["uses"].pop()]
+            merge_two_dicts(obj, u)
+        store[name] = obj
+
+
+def _process_uses_top(uses, groupings, store):
+    while uses:
+        u = groupings[uses.pop()]
+        merge_two_dicts(store, u)
+
+
+def _process(statements, store):
+    grouping = statements.pop("grouping")
+    store["info"] = statements.pop("info")
+    store["identity"] = statements.pop("identity")
+    store["order"] = statements.pop("order")
+    _process_uses(statements.pop("container"), grouping, store["container"])
+    _process_uses(statements.pop("list"), grouping, store["list"])
+    _process_uses_top(statements.pop("uses"), grouping, store["top"])
+    inspect(store["container"]["acl-top_acl"])
+    raise Exception(store["container"]["acl-top_acl"])
+
+
+def emit_napalm(ctx, modules, fd):
+    """
+    Args:
+        ctx(pyang.Context): Options passed via the CLI.
+        modules(list of pyang.statements.Statement): List of yang models being processed
+        fd(file): File open to written to
+    """
+    parsed = defaultdict(_nested_default_dict)
+    print(parsed)
+    result = defaultdict(_nested_default_dict)
     for module in modules:
-        logger.info("Processing model {}".format(module.pos))
-        parsed_module = {'info': {}, 'containers': {}, 'typedef': {}, 'imports': {}, 'uses': {},
-                         'openconfig-extensions': {}, 'grouping': {}, 'revision': {},
-                         'discovered_classes': {},
-                         }
-        parsed_module['name'] = module.i_modulename
-        main_parser(module.substmts, parsed_module, parsed_module)
-        pprint.pprint(parsed_module['typedef'])
+        logger.info("Parsing model {}".format(module.pos))
+        parsed[module.arg]["order"] = []
+        _parse(module.substmts, parsed[module.arg], parsed[module.arg])
 
-        code = template.render(module=parsed_module)
+    for module, statements in parsed.items():
+        logger.info("Processing model {}".format(module))
+        _process(statements, result[module])
 
-        filename = "{}/{}.py".format(ctx.opts.napalm_models_path, safe(parsed_module['name']))
-        with open(filename, 'w') as f:
-            f.write(code)
-
-        print(code)
+    save(result, ctx.opts.napalm_models_path)

@@ -1,27 +1,15 @@
-{%- import "parsers.j2" as parsers -%}
+{# {%- import "parsers.j2" as parsers -%} #}
+{# """ #}
+{# {{ module|to_json }} #}
+{# """ #}
+{# from napalm_yang import yang_types #}
+{# from napalm_yang import yang_base #}
 
-"""{{ module.name }}."""
+{# {% for k, v in module.info.items() %} #}
+{# __{{ k.replace('-', '_') }}__ = {{ v|to_json }} #}
+{# {% endfor %} #}
 
-from napalm_yang import yang_types
-from napalm_yang import yang_base
-from napalm_yang import bindings
-
-__module__ = "{{ module.name }}"
-{% for k, v in module.info.items() %}
-__{{ k.replace('-', '_') }}__ = {{ v|to_string }}
-{% endfor %}
-
-__openconfig_extensions__ = {{ module['openconfig-extensions']|to_dict }}
-
-__revision__ = {{ module.revision|to_dict }}
-
-
-{{ parsers.typedef(module.typedef) }}
-{{ parsers.classes(module.discovered_classes, 'discovered_classes') }}
-{{ parsers.classes(module.containers, 'containers') }}
-groupings = {{ module.grouping|to_dict }}
-
-
-{{ parsers.tl_uses(module.uses, module.grouping) }}
-
-{{ parsers.bindings(module) }}
+{# {{ parsers.identities(module.identity) }} #}
+{# {{ parsers.lists(module.list, module.grouping) }} #}
+{# [> {{ parsers.classes(module.container) }} <] #}
+{{ module|to_json }}

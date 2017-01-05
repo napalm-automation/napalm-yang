@@ -1,57 +1,46 @@
-{%- macro typedef(classes) %}
-{%- for n, c in classes.items() -%}
-# typedef
-class {{ n|safe_class_name }}(yang_types.{{ c.type.keys()[0]|safe_class_name }}):
-    """
-{{ c.info.description|indent }}
-    """
-{%- for k, v in c.type.values()[0].items() %}
-    {{ k }} = "{{ v }}"
-{%- endfor %}
-{{ "\n" if loop.last else "\n\n" }}
-{%- endfor -%}
-{%- endmacro -%}
+{%- import "processors.j2" as processors -%}
 
-{%- macro classes(classes, header) %}
-{%- for n, c in classes.items() -%}
-# {{ header }}
-class {{ n|safe_class_name }}(yang_base.BaseBinding):
-    """
-{{ c.info.description|indent }}
-    """
-    config = {{ c.config }}
-    container = { {%- for container, ctr_class in c.container.items() %}'{{ container }}': '{{ ctr_class }}', {% endfor %}}
-    leaf = {{ c.leaf|to_dict(1) }}
-    list = {{ c.list }}
-    uses = {{ c.uses.keys() }}
-{{ "" if loop.last else "\n\n" }}
-{%- endfor -%}
-{%- endmacro %}
-
-
-{%- macro tl_uses(uses, grouping) %}
-{%- for use in uses -%}
-{% for n, c in grouping[use].container.items() -%}
-class {{ n|safe_class_name }}({{ c }}):
-    """
-{{ grouping[use].info.description|indent }}
-    """
-    pass
-{% endfor -%}
-{%- endfor -%}
-{%- endmacro %}
-
-{%- macro bindings(module) %}
-{%- for k in module.discovered_classes.keys() -%}
-bindings.attach_childs({{k|safe_class_name}}, globals())
+{%- macro identities(identities) -%}
+### Identities
+{% for k, v in identities.items() %}
+{{ k }} = yang_types.Identity(
+    base = {{ v.get("base", None) }},
+    value = "{{ k }}",
+    description = """{{v.info.description}}"""
+    )
 {% endfor %}
-{%- for k in module.containers.keys() -%}
-bindings.attach_childs({{k|safe_class_name}}, globals())
-{%- endfor %}
-{%- for use in module.uses -%}
-{% for k in module.grouping[use].container.keys() -%}
-bindings.attach_childs({{k|safe_class_name}}, globals())
-{% endfor -%}
-{%- endfor -%}
-{% endmacro %}
+{%- endmacro %}
 
+
+{%- macro lists(lists, groupings) -%}
+{% for k, v in lists.items() -%}
+class {{ k }}(Yang_list):
+    """
+    {{ v.pop("info").pop("description") }}
+    """
+    # list attributes
+    list_type = {{ k }}
+    list_key = {{ v.pop("key") }}
+
+{{ processors.p_containers(v.pop("container", {}).pop("container", []))|indent }}
+
+{{ processors.p_leafs(v.pop("leaf", {}))|indent }}
+
+{{ processors.p_uses(v.pop("uses", {}), groupings)|indent(8) }}
+
+lists --- {{ v|to_json }}
+{% endfor %}
+{%- endmacro %}
+
+{%- macro containers(containers, groupings) -%}
+{% for k, v in containers.items() -%}
+{% set base_class = "YangList" if "list" in v.keys() else "YangBase" -%}
+class {{ k }}({{ base_class }}):
+    """
+    {{ v.pop("info").pop("description") }}
+    """
+    {{ processors.p_lists(v.pop("list", {})) }}
+
+containers {{ v|to_json }}
+{% endfor %}
+{%- endmacro %}
