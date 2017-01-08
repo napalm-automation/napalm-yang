@@ -1,5 +1,5 @@
-from napalm_yang.models.openconfig_interfaces import oc_if
-from napalm_yang.models.openconfig_acl import oc_acl
+from napalm_yang.models.interfaces import oc_if
+from napalm_yang.models.acl import oc_acl
 
 import random
 
@@ -54,13 +54,13 @@ def print_data(name, data, indentation=""):
             print_data(attr, attr_data, indentation)
 
 
-interfaces = oc_if.Interfaces()
-model = interfaces.model_represenation()
-print_model("interfaces", model)
+oc_if = oc_if.Interfaces()
+model = oc_if.model_represenation()
+print_model("openconfig-interfaces", model)
 
 
 for eth_name in ["Ethernet1", "Ethernet2"]:
-    eth = interfaces.interface.new_element(eth_name)
+    eth = oc_if.interfaces.interface.new_element(eth_name)
     eth.config.description("This is a description for {}".format(eth_name))
     eth.config.enabled(random.choice([True, False]))
     eth.config.mtu(1500)
@@ -71,11 +71,13 @@ for eth_name in ["Ethernet1", "Ethernet2"]:
     eth.state.admin_status("UP")
 
 print("\nData:")
-data = interfaces.data_representation()
+data = oc_if.data_representation()
 print_data("interfaces", data)
 
 print("\n=========================================\n")
 
+"""
 acl = oc_acl.Acl()
 model = acl.model_represenation()
 print_model("acls", model)
+"""

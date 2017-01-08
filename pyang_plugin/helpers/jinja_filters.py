@@ -63,6 +63,6 @@ def to_dict(value, level=0):
 
 def raise_if_not_empty(value, msg=""):
     if value:
-        msg = "{}\n{}".format(msg, value) if msg else value
+        msg = "{}\n{}".format(msg, to_json(value)) if msg else to_json(value)
         raise Exception(msg)
     return ""

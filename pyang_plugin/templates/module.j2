@@ -1,8 +1,6 @@
 {%- import "parsers.j2" as p -%}
 """
 {{ module.info.pop("description") }}
-
-{{ module|to_json }}
 """
 from napalm_yang import yang_base
 from napalm_yang.ietf_yang_types.yang import *
@@ -21,5 +19,9 @@ __{{ k.replace('-', '_') }}__ = {{ v|to_json }}
 {{ p.process_identities(module) }}
 
 {{ p.process_classes(module) }}
-{{ p.process_top(module) }}
-{{- module|raise_if_not_empty -}}
+
+{{ p.process_top_uses(module) }}
+{{ p.process_top_container(module) }}
+
+{{- module|to_json -}}
+{# {{- module|raise_if_not_empty -}} #}

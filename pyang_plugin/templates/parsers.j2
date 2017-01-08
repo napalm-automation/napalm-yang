@@ -1,9 +1,9 @@
 {%- macro process_imports(module) -%}
 # Imports
-{%- set import = module.pop("import") -%}
+{%- set import = module.pop("import", {}) -%}
 {% for k, v in import.items() %}
 {% for kk, vv in v.pop("info").items() -%}
-from napalm_yang.{{ k|safe_attr_name }} import {{ vv|safe_attr_name }}
+from napalm_yang import {{ vv|safe_attr_name }}
 {%- endfor -%}
 {% endfor %}
 {%- endmacro %}
@@ -11,7 +11,7 @@ from napalm_yang.{{ k|safe_attr_name }} import {{ vv|safe_attr_name }}
 
 {%- macro process_openconfig_extensions(module) -%}
 # openconfig-extensions
-{% set oc = module.info.pop("openconfig-extensions") -%}
+{% set oc = module.info.pop("openconfig-extensions", {}) -%}
 openconfig_extensions = oc_ext.OpenConfigExtensions()
 {% for k, v in oc.items() -%}
 openconfig_extensions.{{ k|safe_attr_name }} = "{{ v }}"
@@ -20,7 +20,7 @@ openconfig_extensions.{{ k|safe_attr_name }} = "{{ v }}"
 
 {%- macro process_typedef(module) -%}
 # typedef
-{%- set typedef = module.pop("typedef") %}
+{%- set typedef = module.pop("typedef", {}) %}
 {% for k, v in typedef.items() %}
 class {{ k|safe_class_name }}(yang_base.BaseBinding):
     """
@@ -29,7 +29,7 @@ class {{ k|safe_class_name }}(yang_base.BaseBinding):
     def __init__(self, _meta=None):
         super().__init__(_meta)
 {%- for kk, vv in v.pop("type", {}).items() %}
-        self.{{ k|safe_attr_name }} = yang.{{ kk|safe_class_name }}({% for kkk, vvv in vv.items() %}{{ kkk }}="{{ vvv }}"{% endfor %})
+        self.{{ k|safe_attr_name }} = yang.{{ kk|safe_class_name }}({% for kkk, vvv in vv.items() %}{{ kkk }}="{{ vvv }}", {% endfor %})
 {% endfor %}
 {% endfor %}
 {%- endmacro %}
@@ -37,9 +37,9 @@ class {{ k|safe_class_name }}(yang_base.BaseBinding):
 
 {%- macro process_identities(module) -%}
 # Identities
-{%- set identity = module.pop("identity") -%}
+{%- set identity = module.pop("identity", {}) -%}
 {% for k, v in identity.items() %}
-{{ k }} = yang.Identity(
+{{ k|safe_class_name }} = yang.Identity(
     base="{{ v.get("base", None) }}",
     value="{{ k }}",
     description="""{{v.info.description}}"""
@@ -47,29 +47,56 @@ class {{ k|safe_class_name }}(yang_base.BaseBinding):
 {% endfor %}
 {%- endmacro %}
 
-
 {%- macro process_classes(module) -%}
 # Classes to support containers and lists
 
 {%- set order = module.pop("order") %}
 {% for m in order -%}
-class {{ m[1]|safe_class_name }}({{ "yang.List" if m[0] == "list" else "yang_base.BaseBinding" }}):
-    """
-{{ module[m[0]][m[1]].pop("info", {}).pop("description")|indent }}
-    """
-    def __init__(self):
-        super().__init__()
-{{ _process_attributes(module[m[0]][m[1]], "container")|indent(8) }}
-{{ _process_attributes(module[m[0]][m[1]], "list")|indent(8) }}
-{{ _process_leafs(module[m[0]][m[1]])|indent(8) }}
-        # Meta
-        self._meta["config"] = {{ module[m[0]][m[1]].pop("config", True)|title  }}
-        {% if m[0] == "list" %}self._meta["key"] = "{{ module[m[0]][m[1]].pop("key")|safe_attr_name }}"
-{% endif %}
-{% set ignore = module[m[0]].pop(m[1]) -%}{{ ignore|raise_if_not_empty }}
+{%- set cls = module[m[0]].pop(m[1]) %}
+{{ _process_class(cls, m[1], m[0])}}
+{{ cls|raise_if_not_empty }}
 {% endfor -%}
-{%- set ignore = module.pop("container") -%}{{ ignore|raise_if_not_empty -}}
-{%- set ignore = module.pop("list") -%}{{ ignore|raise_if_not_empty -}}
+{%- set ignore = module.pop("list", {}) -%}{{ ignore|raise_if_not_empty -}}
+{%- set ignore = module.pop("grouping", {}) -%}{{ ignore|raise_if_not_empty -}}
+{%- endmacro %}
+
+{%- macro _process_class(cls, name, cls_type) -%}
+{%- set uses = cls.pop("uses", []) %}{%- set subclasses = [] %}
+{% for u in uses %}{% set ignore = subclasses.append(u|safe_class_name) %}{% endfor %}{% set subclasses = ", ".join(subclasses) %}
+class {{ name|safe_class_name }}({{ "yang.List, " if cls_type in ["list", "leaf-list"] else "" }}{{ subclasses or "yang_base.BaseBinding" }}):
+    """
+{{ cls.pop("info", {}).pop("description")|indent }}
+    """
+    def __init__(self, _meta=None):
+        super().__init__(_meta)
+{{ _process_attributes(cls, "container")|indent(8) }}
+{{ _process_attributes(cls, "list")|indent(8) }}
+{{ _process_leafs(cls)|indent(8) }}
+{{ _process_leaf_lists(cls)|indent(8) }}
+        # Meta
+        self._meta["config"] = {{ cls.pop("config", True)|title  }}
+        {% if cls_type == "list" %}self._meta["key"] = "{{ cls.pop("key")|safe_attr_name }}"
+{% endif %}
+{%- endmacro %}
+
+
+{%- macro process_top_uses(module) -%}
+# Top-uses
+{%- set uses = module.pop("uses", []) -%}
+{% for t in uses %}
+class {{ t.split("-")[0]|safe_class_name }}({{t|safe_class_name}}):
+    pass
+{% endfor %}
+{%- endmacro %}
+
+{%- macro process_top_container(module) -%}
+# Top-containers
+{%- set containers = module.pop("container", []) -%}
+{% for c in containers %}
+class {{ c[0]|safe_class_name }}({{ c[1]|safe_class_name }}):
+    pass
+{% endfor %}
+{%- set ignore = module.pop("container", {}) -%}{{ ignore|raise_if_not_empty -}}
 {%- endmacro %}
 
 
@@ -91,12 +118,11 @@ self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.
 {%- endmacro %}
 
 
-{%- macro process_top(module) -%}
-# Top level
-{%- set top = module.pop("top") -%}
-{% for a in top.pop("container").pop("container") %}
-class {{ a[0]|safe_class_name }}({{ a[1]|safe_class_name }}):
-    """Top level class"""
-    pass
-{% endfor %}
+{%- macro _process_leaf_lists(module) -%}
+# leaflist
+{% for k, v in module.pop("leaf-list", {}).items() -%}
+{% for kk, vv in v.pop("type", {}).items() -%}
+self.{{ k|safe_attr_name }} = yang.LeafList({{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk }}={{ vvv|to_json }}{% endfor %}))
+{% endfor -%}
+{% endfor -%}
 {%- endmacro %}

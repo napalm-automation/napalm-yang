@@ -4,7 +4,6 @@ import logging
 import optparse
 import os
 import sys
-import copy
 
 from pyang import plugin
 from pyang.statements import Statement
@@ -57,6 +56,11 @@ class NapalmPlugin(plugin.PyangPlugin):
                                  action="store",
                                  default="./napalm_yang/models",
                                  help="Where to store generated modules"),
+            optparse.make_option("--napalm-module",
+                                 dest="napalm_module",
+                                 action="store",
+                                 default="",
+                                 help="Module name"),
         ]
         g = optparser.add_option_group("NAPALM output specific options")
         g.add_options(optlist)
@@ -94,7 +98,7 @@ def _create_package(package):
         open("{}/__init__.py".format(package), "w")
 
 
-def save(result, path):
+def save(result, path, module_name):
     filters = jinja_filters.FilterModule()
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./pyang_plugin/templates/'),
                              undefined=jinja2.StrictUndefined)
@@ -105,7 +109,7 @@ def save(result, path):
     template = env.get_template('module.j2')
 
     for module, data in result.items():
-        package = "{}/{}".format(path, text_helpers.safe_attr_name(module))
+        package = "{}/{}".format(path, module_name)
         _create_package(package)
         filename = "{}/{}.py".format(package,
                                      text_helpers.safe_attr_name(data["info"].pop("prefix")))
@@ -122,7 +126,8 @@ def inspect(obj):
         print(jinja_filters.to_json(obj))
 
 
-SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units", )
+SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units",
+          "range", "pattern", "when", "length", "if-feature", )
 
 
 def _parse_simple(sub, store):
@@ -156,19 +161,23 @@ def _parse_info(sub, store):
         _parse_simple(sub, store[sub.keyword][sub.arg])
 
 
-NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import")
+NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import",
+          "leaf-list", "feature", )
 
 
 def _parse_nested(sub, store, root):
-    if sub.keyword in ("container", "list", ):
+    if sub.keyword in ("container", "list"):
         pos = "{}".format(sub.pos).split(":")[-1]
         unique_name = "{}_{}_{}".format(sub.parent.arg, sub.arg, pos)
-        root["order"].append((sub.keyword, unique_name))
+        root["order"].insert(0, (sub.keyword, unique_name))
         _parse(sub.substmts, root[sub.keyword][unique_name], root)
         try:
-            store[sub.keyword].append((sub.arg, unique_name))
+            store[sub.keyword].insert(0, (sub.arg, unique_name))
         except AttributeError:
             store[sub.keyword] = [(sub.arg, unique_name)]
+    elif sub.keyword in ("grouping", ):
+        root["order"].insert(0, (sub.keyword, sub.arg))
+        _parse(sub.substmts, root[sub.keyword][sub.arg], root)
     else:
         _parse(sub.substmts, store[sub.arg], root)
 
@@ -189,8 +198,9 @@ def _parse(substmts, store, root):
             raise Exception("We are not parsing {}".format(sub.keyword))
 
 
+"""
 def merge_two_dicts(x, y):
-    """Given two dicts, merge them into a new dict as a shallow copy."""
+    ""Given two dicts, merge them into a new dict as a shallow copy.""
     for k, v in y.items():
         if k == "info":
             continue
@@ -224,7 +234,6 @@ def _process_uses_top(uses, groupings, store):
         u = groupings[uses.pop()]
         merge_two_dicts(store, u)
 
-
 def _process(statements, store):
     grouping = statements.pop("grouping")
     store["info"] = statements.pop("info")
@@ -239,6 +248,7 @@ def _process(statements, store):
     if statements:
         inspect(statements)
         raise Exception("Not the entire object was processed")
+"""
 
 
 def emit_napalm(ctx, modules, fd):
@@ -249,14 +259,15 @@ def emit_napalm(ctx, modules, fd):
         fd(file): File open to written to
     """
     parsed = defaultdict(_nested_default_dict)
-    result = defaultdict(_nested_default_dict)
+    #  result = defaultdict(_nested_default_dict)
     for module in modules:
         logger.info("Parsing model {}".format(module.pos))
         parsed[module.arg]["order"] = []
         _parse(module.substmts, parsed[module.arg], parsed[module.arg])
 
+    """
     for module, statements in parsed.items():
         logger.info("Processing model {}".format(module))
         _process(statements, result[module])
-
-    save(result, ctx.opts.napalm_models_path)
+    """
+    save(parsed, ctx.opts.napalm_models_path, ctx.opts.napalm_module)
