@@ -12,15 +12,14 @@ Relating to IETF Documents
 This version of this YANG module is part of RFC 7223; see
 the RFC itself for full legal notices.
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+
 
 # Imports
 from napalm_yang import yang
-
-# openconfig-extensions
-openconfig_extensions = oc_ext.OpenConfigExtensions()
-
 
 __namespace__ = "urn:ietf:params:xml:ns:yang:ietf-interfaces"
 __contact__ = "WG Web:   <http://tools.ietf.org/wg/netmod/>\nWG List:  <mailto:netmod@ietf.org>\nWG Chair: Thomas Nadeau\n          <mailto:tnadeau@lucidvision.com>\nWG Chair: Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>\nEditor:   Martin Bjorklund\n          <mailto:mbj@tail-f.com>"
@@ -33,31 +32,54 @@ __revision__ = {
 
 
 
+# features
+
+"""
+This feature indicates that the device allows user-controlled
+interfaces to be named arbitrarily.
+"""
+ArbitraryNames = Feature("ArbitraryNames")
+
+"""
+This feature indicates that the device implements
+the IF-MIB.
+"""
+IfMib = Feature("IfMib")
+
+"""
+This feature indicates that the device supports
+pre-provisioning of interface configuration, i.e., it is
+possible to configure an interface whose physical interface
+hardware is not present on the device.
+"""
+PreProvisioning = Feature("PreProvisioning")
+
+
 # typedef
 
-class InterfaceRef(yang_base.BaseBinding):
+class InterfaceRef(BaseTypeDef):
     """
     This type is used by data models that need to reference
     configured interfaces.
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.interface_ref = yang.Leafref(path="/if:interfaces/if:interface/if:name", )
+        self.interface_ref = Leafref(path="/if:interfaces/if:interface/if:name", )
 
 
-class InterfaceStateRef(yang_base.BaseBinding):
+class InterfaceStateRef(BaseTypeDef):
     """
     This type is used by data models that need to reference
     the operationally present interfaces.
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.interface_state_ref = yang.Leafref(path="/if:interfaces-state/if:interface/if:name", )
+        self.interface_state_ref = Leafref(path="/if:interfaces-state/if:interface/if:name", )
 
 
 
 # Identities
-InterfaceType = yang.Identity(
+InterfaceType = Identity(
     base="None",
     value="interface-type",
     description="""Base identity from which specific interface types are
@@ -69,7 +91,7 @@ derived."""
 
 
 
-class Interfaces_Interface_92(yang.List, yang_base.BaseBinding):
+class Interfaces_Interface_92(List, BaseBinding):
     """
     The list of configured interfaces on the device.
     The operational state of an interface is available in the
@@ -109,7 +131,7 @@ class Interfaces_Interface_92(yang.List, yang_base.BaseBinding):
 
 
 
-class IetfInterfaces_Interfaces_89(yang_base.BaseBinding):
+class IetfInterfaces_Interfaces_89(BaseBinding):
     """
     Interface configuration parameters.
     """
@@ -127,7 +149,7 @@ class IetfInterfaces_Interfaces_89(yang_base.BaseBinding):
 
 
 
-class Interface_Statistics_392(yang_base.BaseBinding):
+class Interface_Statistics_392(BaseBinding):
     """
     A collection of interface-related statistics objects.
     """
@@ -158,7 +180,7 @@ class Interface_Statistics_392(yang_base.BaseBinding):
 
 
 
-class InterfacesState_Interface_226(yang.List, yang_base.BaseBinding):
+class InterfacesState_Interface_226(List, BaseBinding):
     """
     The list of interfaces on the device.
     System-controlled interfaces created by the system are
@@ -242,8 +264,8 @@ class InterfacesState_Interface_226(yang.List, yang_base.BaseBinding):
         })
         self.if_index = Int32(_meta={"mandatory": True}, range="1..2147483647")
         # leaflist
-        self.lower_layer_if = yang.LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
-        self.higher_layer_if = yang.LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
+        self.lower_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
+        self.higher_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
         # Meta
         self._meta["config"] = True
         self._meta["key"] = "name"
@@ -252,7 +274,7 @@ class InterfacesState_Interface_226(yang.List, yang_base.BaseBinding):
 
 
 
-class IetfInterfaces_InterfacesState_222(yang_base.BaseBinding):
+class IetfInterfaces_InterfacesState_222(BaseBinding):
     """
     Data nodes for the operational state of interfaces.
     """
@@ -270,25 +292,11 @@ class IetfInterfaces_InterfacesState_222(yang_base.BaseBinding):
 
 
 # Top-uses
+
 # Top-containers
-class C(O):
+class Interfaces(IetfInterfaces_Interfaces_89):
     pass
-{
-    "feature": {
-        "arbitrary-names": {
-            "info": {
-                "description": "This feature indicates that the device allows user-controlled\ninterfaces to be named arbitrarily."
-            }
-        }, 
-        "if-mib": {
-            "info": {
-                "description": "This feature indicates that the device implements\nthe IF-MIB."
-            }
-        }, 
-        "pre-provisioning": {
-            "info": {
-                "description": "This feature indicates that the device supports\npre-provisioning of interface configuration, i.e., it is\npossible to configure an interface whose physical interface\nhardware is not present on the device."
-            }
-        }
-    }
-}
+
+class InterfacesState(IetfInterfaces_InterfacesState_222):
+    pass
+{}

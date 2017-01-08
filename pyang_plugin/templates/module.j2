@@ -2,17 +2,25 @@
 """
 {{ module.info.pop("description") }}
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+{% set oc_ext = "openconfig-extensions" in module.get("import", {}).keys() %}
 
 {{ p.process_imports(module) }}
 
+{% if oc_ext -%}
 {{ p.process_openconfig_extensions(module) }}
+{% endif -%}
+
 
 {% for k, v in module.pop("info").items() -%}
 __{{ k.replace('-', '_') }}__ = {{ v|to_json }}
 {% endfor %}
 
+
+{{ p.process_feature(module) }}
 
 {{ p.process_typedef(module) }}
 
@@ -21,6 +29,7 @@ __{{ k.replace('-', '_') }}__ = {{ v|to_json }}
 {{ p.process_classes(module) }}
 
 {{ p.process_top_uses(module) }}
+
 {{ p.process_top_container(module) }}
 
 {{- module|to_json -}}

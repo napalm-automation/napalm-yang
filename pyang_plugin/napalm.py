@@ -111,8 +111,11 @@ def save(result, path, module_name):
     for module, data in result.items():
         package = "{}/{}".format(path, module_name)
         _create_package(package)
+
+        filename = "ietf_{}".format(data["info"].pop("prefix")) if "ietf" in package else \
+            data["info"].pop("prefix")
         filename = "{}/{}.py".format(package,
-                                     text_helpers.safe_attr_name(data["info"].pop("prefix")))
+                                     text_helpers.safe_attr_name(filename))
         logger.info("Saving module: {}".format(filename))
 
         with open(filename, "w") as f:

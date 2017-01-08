@@ -14,8 +14,11 @@ interfaces described by RFC 7223 with an alternate structure
 (particularly for operational state data) and and with
 additional configuration items.
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+
 
 # Imports
 from napalm_yang import oc_ext
@@ -24,24 +27,26 @@ from napalm_yang import ietf_if
 
 # openconfig-extensions
 openconfig_extensions = oc_ext.OpenConfigExtensions()
-openconfig_extensions.openconfig_version = "1.0.2"
-
+openconfig_extensions.openconfig_version = "1.1.0"
 
 __namespace__ = "http://openconfig.net/yang/interfaces"
 __yang_version__ = "1"
 __contact__ = "OpenConfig working group\nnetopenconfig@googlegroups.com"
 __organization__ = "OpenConfig working group"
 __revision__ = {
-    "2016-05-26": {
-        "revision": "2016-05-26"
+    "2016-12-22": {
+        "revision": "2016-12-22"
     }
 }
 
 
 
+# features
+
+
 # typedef
 
-class InterfaceId(yang_base.BaseBinding):
+class InterfaceId(BaseTypeDef):
     """
     User-defined identifier for an interface, generally used to
     name a interface reference.  The id can be arbitrary but a
@@ -50,10 +55,10 @@ class InterfaceId(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.interface_id = yang.String()
+        self.interface_id = String()
 
 
-class BaseInterfaceRef(yang_base.BaseBinding):
+class BaseInterfaceRef(BaseTypeDef):
     """
     Reusable type for by-name reference to a base interface.
     This type may be used in cases where ability to reference
@@ -61,7 +66,7 @@ class BaseInterfaceRef(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.base_interface_ref = yang.Leafref(path="/oc-if:interfaces/oc-if:interface/oc-if:name")
+        self.base_interface_ref = Leafref(path="/oc-if:interfaces/oc-if:interface/oc-if:name", )
 
 
 
@@ -71,7 +76,7 @@ class BaseInterfaceRef(yang_base.BaseBinding):
 
 
 
-class InterfaceRefCommon(yang_base.BaseBinding):
+class InterfaceRefCommon(BaseBinding):
     """
     Reference leafrefs to interface / subinterface
     """
@@ -107,7 +112,7 @@ class InterfaceRefStateContainer_State_103(InterfaceRefCommon):
 
 
 
-class InterfaceRefStateContainer(yang_base.BaseBinding):
+class InterfaceRefStateContainer(BaseBinding):
     """
     Reusable opstate w/container for a reference to an
     interface or subinterface
@@ -161,7 +166,7 @@ class InterfaceRef_InterfaceRef_117(InterfaceRefStateContainer):
 
 
 
-class InterfaceRef(yang_base.BaseBinding):
+class InterfaceRef(BaseBinding):
     """
     Reusable definition for a reference to an interface or
     subinterface
@@ -197,7 +202,7 @@ class InterfaceRefState_InterfaceRef_137(InterfaceRefStateContainer):
 
 
 
-class InterfaceRefState(yang_base.BaseBinding):
+class InterfaceRefState(BaseBinding):
     """
     Reusable opstate w/container for a reference to an
     interface or subinterface
@@ -216,7 +221,7 @@ class InterfaceRefState(yang_base.BaseBinding):
 
 
 
-class InterfaceCommonConfig(yang_base.BaseBinding):
+class InterfaceCommonConfig(BaseBinding):
     """
     Configuration data data nodes common to physical interfaces
     and subinterfaces
@@ -256,7 +261,7 @@ class InterfacePhysConfig(InterfaceCommonConfig):
 
 
 
-class InterfacePhysHoldtimeConfig(yang_base.BaseBinding):
+class InterfacePhysHoldtimeConfig(BaseBinding):
     """
     Configuration data for interface hold-time settings --
     applies to physical interfaces.
@@ -276,7 +281,7 @@ class InterfacePhysHoldtimeConfig(yang_base.BaseBinding):
 
 
 
-class InterfacePhysHoldtimeState(yang_base.BaseBinding):
+class InterfacePhysHoldtimeState(BaseBinding):
     """
     Operational state data for interface hold-time.
     """
@@ -327,7 +332,7 @@ class HoldTime_State_339(InterfacePhysHoldtimeState, InterfacePhysHoldtimeConfig
 
 
 
-class InterfacePhysHoldtimeTop_HoldTime_327(yang_base.BaseBinding):
+class InterfacePhysHoldtimeTop_HoldTime_327(BaseBinding):
     """
     Top-level container for hold-time settings to enable
     dampening advertisements of interface transitions.
@@ -347,7 +352,7 @@ class InterfacePhysHoldtimeTop_HoldTime_327(yang_base.BaseBinding):
 
 
 
-class InterfacePhysHoldtimeTop(yang_base.BaseBinding):
+class InterfacePhysHoldtimeTop(BaseBinding):
     """
     Top-level grouping for setting link transition
     dampening on physical and other types of interfaces.
@@ -366,7 +371,7 @@ class InterfacePhysHoldtimeTop(yang_base.BaseBinding):
 
 
 
-class InterfaceCommonState(yang_base.BaseBinding):
+class InterfaceCommonState(BaseBinding):
     """
     Operational state data (in addition to intended configuration)
     at the global level for this interface
@@ -447,7 +452,7 @@ class InterfaceCommonState(yang_base.BaseBinding):
 
 
 
-class InterfaceCountersState_Counters_475(yang_base.BaseBinding):
+class InterfaceCountersState_Counters_475(BaseBinding):
     """
     A collection of interface-related statistics objects.
     """
@@ -478,7 +483,7 @@ class InterfaceCountersState_Counters_475(yang_base.BaseBinding):
 
 
 
-class InterfaceCountersState(yang_base.BaseBinding):
+class InterfaceCountersState(BaseBinding):
     """
     Operational state representing interface counters
     and statistics.  Some of these are adapted from RFC 7223
@@ -497,7 +502,7 @@ class InterfaceCountersState(yang_base.BaseBinding):
 
 
 
-class SubUnnumberedConfig(yang_base.BaseBinding):
+class SubUnnumberedConfig(BaseBinding):
     """
     Configuration data for unnumbered subinterfaces
     """
@@ -515,7 +520,7 @@ class SubUnnumberedConfig(yang_base.BaseBinding):
 
 
 
-class SubUnnumberedState(yang_base.BaseBinding):
+class SubUnnumberedState(BaseBinding):
     """
     Operational state data unnumbered subinterfaces
     """
@@ -587,7 +592,7 @@ class SubUnnumberedTop_Unnumbered_773(InterfaceRef):
 
 
 
-class SubUnnumberedTop(yang_base.BaseBinding):
+class SubUnnumberedTop(BaseBinding):
     """
     Top-level grouping unnumbered subinterfaces
     """
@@ -674,7 +679,7 @@ class Subinterface_State_860(SubinterfacesState, SubinterfacesConfig):
 
 
 
-class Subinterfaces_Subinterface_837(yang.List, yang_base.BaseBinding):
+class Subinterfaces_Subinterface_837(List, BaseBinding):
     """
     The list of subinterfaces (logical interfaces) associated
     with a physical interface
@@ -696,7 +701,7 @@ class Subinterfaces_Subinterface_837(yang.List, yang_base.BaseBinding):
 
 
 
-class SubinterfacesTop_Subinterfaces_832(yang_base.BaseBinding):
+class SubinterfacesTop_Subinterfaces_832(BaseBinding):
     """
     Enclosing container for the list of subinterfaces associated
     with a physical interface
@@ -715,7 +720,7 @@ class SubinterfacesTop_Subinterfaces_832(yang_base.BaseBinding):
 
 
 
-class SubinterfacesTop(yang_base.BaseBinding):
+class SubinterfacesTop(BaseBinding):
     """
     Subinterface data for logical interfaces associated with a
     given interface
@@ -769,7 +774,7 @@ class Interface_State_913(InterfaceCountersState, InterfaceCommonState, Interfac
 
 
 
-class Interfaces_Interface_884(yang.List, SubinterfacesTop, InterfacePhysHoldtimeTop):
+class Interfaces_Interface_884(List, SubinterfacesTop, InterfacePhysHoldtimeTop):
     """
     The list of named interfaces on the device.
     """
@@ -790,7 +795,7 @@ class Interfaces_Interface_884(yang.List, SubinterfacesTop, InterfacePhysHoldtim
 
 
 
-class InterfacesTop_Interfaces_878(yang_base.BaseBinding):
+class InterfacesTop_Interfaces_878(BaseBinding):
     """
     Top level container for interfaces, including configuration
     and state data.
@@ -809,7 +814,7 @@ class InterfacesTop_Interfaces_878(yang_base.BaseBinding):
 
 
 
-class InterfacesTop(yang_base.BaseBinding):
+class InterfacesTop(BaseBinding):
     """
     Top-level grouping for interface configuration and
     operational state data
@@ -830,4 +835,6 @@ class InterfacesTop(yang_base.BaseBinding):
 # Top-uses
 class Interfaces(InterfacesTop):
     pass
-{}
+
+
+# Top-containers{}

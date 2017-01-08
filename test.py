@@ -59,7 +59,7 @@ model = oc_if.model_represenation()
 print_model("openconfig-interfaces", model)
 
 
-for eth_name in ["Ethernet1", "Ethernet2"]:
+for eth_name in ["eth1", "eth2"]:
     eth = oc_if.interfaces.interface.new_element(eth_name)
     eth.config.description("This is a description for {}".format(eth_name))
     eth.config.enabled(random.choice([True, False]))
@@ -70,14 +70,29 @@ for eth_name in ["Ethernet1", "Ethernet2"]:
     eth.state.oper_status("LOWER_LAYER_DOWN")
     eth.state.admin_status("UP")
 
+print("\n=========================================\n")
+print("Trying to set admin_status of eth2 to something wonky")
+try:
+    oc_if.interfaces.interface["eth2"].state.oper_status("WONKY")
+except ValueError as e:
+    print("ERROR!!!")
+    print(e.message)
+
+print("\n=========================================\n")
+print("Trying to set description of eth2 to an int")
+try:
+    oc_if.interfaces.interface["eth2"].state.description(1)
+except ValueError as e:
+    print("ERROR!!!")
+    print(e.message)
+
+print("\n=========================================\n")
 print("\nData:")
 data = oc_if.data_representation()
 print_data("interfaces", data)
 
 print("\n=========================================\n")
 
-"""
 acl = oc_acl.Acl()
 model = acl.model_represenation()
 print_model("acls", model)
-"""

@@ -32,6 +32,10 @@ class Baseint(YangType):
     min = 0
     max = 0
 
+    def __init__(self, range=None, _meta=None):
+        super().__init__(_meta)
+        self.range = range
+
     @property
     def value(self):
         return self._value
@@ -122,13 +126,18 @@ class Enumeration(YangType):
                 self._meta["enum_value"] = sorted(self.enum_map.keys()).index(value)
         else:
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
-            raise ValueError(error_msg.format(value, self.options.keys()))
+            raise ValueError(error_msg.format(value, self.enum_map.keys()))
 
     def __str__(self):
         return "{}, {}".format(self.enum, self.value)
 
 
 class String(YangType):
+
+    def __init__(self, _meta=None, pattern=None):
+        super().__init__(_meta)
+
+        self.pattern = pattern
 
     @property
     def value(self):

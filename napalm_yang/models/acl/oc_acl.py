@@ -14,8 +14,11 @@ device implementations may require separate entries for match
 criteria that cross protocol layers, e.g., MAC layer and IP
 layer matches.
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+
 
 # Imports
 from napalm_yang import oc_ext
@@ -26,7 +29,6 @@ from napalm_yang import oc_match
 # openconfig-extensions
 openconfig_extensions = oc_ext.OpenConfigExtensions()
 openconfig_extensions.openconfig_version = "0.2.0"
-
 
 __namespace__ = "http://openconfig.net/yang/acl"
 __yang_version__ = "1"
@@ -43,74 +45,77 @@ __revision__ = {
 
 
 
+# features
+
+
 # typedef
 
 
 # Identities
-Drop = yang.Identity(
+Drop = Identity(
     base="FORWARDING_ACTION",
     value="DROP",
     description="""Drop packet without sending any ICMP error message"""
     )
 
-Accept = yang.Identity(
+Accept = Identity(
     base="FORWARDING_ACTION",
     value="ACCEPT",
     description="""Accept the packet"""
     )
 
-Forwarding_Action = yang.Identity(
+Forwarding_Action = Identity(
     base="None",
     value="FORWARDING_ACTION",
     description="""Base identity for actions in the forwarding category"""
     )
 
-Interface_Only = yang.Identity(
+Interface_Only = Identity(
     base="ACL_COUNTER_CAPABILITY",
     value="INTERFACE_ONLY",
     description="""ACL counters are available and reported only per interface"""
     )
 
-Log_Action = yang.Identity(
+Log_Action = Identity(
     base="None",
     value="LOG_ACTION",
     description="""Base identity for defining the destination for logging
 actions"""
     )
 
-Interface_Aggregate = yang.Identity(
+Interface_Aggregate = Identity(
     base="ACL_COUNTER_CAPABILITY",
     value="INTERFACE_AGGREGATE",
     description="""ACL counters are reported per interface, and also aggregated
 and reported per ACL entry."""
     )
 
-Reject = yang.Identity(
+Reject = Identity(
     base="FORWARDING_ACTION",
     value="REJECT",
     description="""Drop the packet and send an ICMP error message to the source"""
     )
 
-Log_Syslog = yang.Identity(
+Log_Syslog = Identity(
     base="LOG_ACTION",
     value="LOG_SYSLOG",
     description="""Log the packet in Syslog"""
     )
 
-Aggregate_Only = yang.Identity(
+Aggregate_Only = Identity(
     base="ACL_COUNTER_CAPABILITY",
     value="AGGREGATE_ONLY",
     description="""ACL counters are aggregated over all interfaces, and reported
 only per ACL entry"""
     )
 
-Log_None = yang.Identity(
+Log_None = Identity(
     base="LOG_ACTION",
     value="LOG_NONE",
     description="""No logging"""
     )
 
-Acl_Counter_Capability = yang.Identity(
+Acl_Counter_Capability = Identity(
     base="None",
     value="ACL_COUNTER_CAPABILITY",
     description="""Base identity for system to indicate how it is able to report
@@ -122,7 +127,7 @@ counters"""
 
 
 
-class InputInterfaceConfig(yang_base.BaseBinding):
+class InputInterfaceConfig(BaseBinding):
     """
     Config of interface
     """
@@ -139,7 +144,7 @@ class InputInterfaceConfig(yang_base.BaseBinding):
 
 
 
-class InputInterfaceState(yang_base.BaseBinding):
+class InputInterfaceState(BaseBinding):
     """
     State information of interface
     """
@@ -209,7 +214,7 @@ class InputInterfaceTop_InputInterface_140(oc_if.InterfaceRef):
 
 
 
-class InputInterfaceTop(yang_base.BaseBinding):
+class InputInterfaceTop(BaseBinding):
     """
     Input interface top level container
     """
@@ -227,7 +232,7 @@ class InputInterfaceTop(yang_base.BaseBinding):
 
 
 
-class ActionConfig(yang_base.BaseBinding):
+class ActionConfig(BaseBinding):
     """
     Config of action type
     """
@@ -246,7 +251,7 @@ class ActionConfig(yang_base.BaseBinding):
 
 
 
-class ActionState(yang_base.BaseBinding):
+class ActionState(BaseBinding):
     """
     State information of action type
     """
@@ -297,7 +302,7 @@ class Actions_State_214(ActionState, ActionConfig):
 
 
 
-class ActionTop_Actions_203(yang_base.BaseBinding):
+class ActionTop_Actions_203(BaseBinding):
     """
     Enclosing container for list of ACL actions associated
     with an entry
@@ -317,7 +322,7 @@ class ActionTop_Actions_203(yang_base.BaseBinding):
 
 
 
-class ActionTop(yang_base.BaseBinding):
+class ActionTop(BaseBinding):
     """
     ACL action type top level container
     """
@@ -335,7 +340,7 @@ class ActionTop(yang_base.BaseBinding):
 
 
 
-class AclCountersState(yang_base.BaseBinding):
+class AclCountersState(BaseBinding):
     """
     Common grouping for ACL counters
     """
@@ -354,7 +359,7 @@ class AclCountersState(yang_base.BaseBinding):
 
 
 
-class AccessListEntriesConfig(yang_base.BaseBinding):
+class AccessListEntriesConfig(BaseBinding):
     """
     Access List Entries (ACE) config.
     """
@@ -424,7 +429,7 @@ class AclEntry_State_327(AccessListEntriesState, AccessListEntriesConfig):
 
 
 
-class AclEntries_AclEntry_308(yang.List, ActionTop, InputInterfaceTop, oc_match.TransportFieldsTop, oc_match.IpProtocolFieldsTop, oc_match.EthernetHeaderTop):
+class AclEntries_AclEntry_308(List, ActionTop, InputInterfaceTop, oc_match.TransportFieldsTop, oc_match.IpProtocolFieldsTop, oc_match.EthernetHeaderTop):
     """
     List of ACL entries comprising an ACL set
     """
@@ -445,7 +450,7 @@ class AclEntries_AclEntry_308(yang.List, ActionTop, InputInterfaceTop, oc_match.
 
 
 
-class AccessListEntriesTop_AclEntries_304(yang_base.BaseBinding):
+class AccessListEntriesTop_AclEntries_304(BaseBinding):
     """
     Access list entries container
     """
@@ -463,7 +468,7 @@ class AccessListEntriesTop_AclEntries_304(yang_base.BaseBinding):
 
 
 
-class AccessListEntriesTop(yang_base.BaseBinding):
+class AccessListEntriesTop(BaseBinding):
     """
     Access list entries to level container
     """
@@ -481,7 +486,7 @@ class AccessListEntriesTop(yang_base.BaseBinding):
 
 
 
-class AclSetConfig(yang_base.BaseBinding):
+class AclSetConfig(BaseBinding):
     """
     Access Control List config
     """
@@ -500,7 +505,7 @@ class AclSetConfig(yang_base.BaseBinding):
 
 
 
-class AclSetState(yang_base.BaseBinding):
+class AclSetState(BaseBinding):
     """
     Access Control List state
     """
@@ -551,7 +556,7 @@ class AclSet_State_396(AclSetState, AclSetConfig):
 
 
 
-class AclSets_AclSet_376(yang.List, AccessListEntriesTop):
+class AclSets_AclSet_376(List, AccessListEntriesTop):
     """
     List of ACL sets, each comprising of a list of ACL
     entries
@@ -573,7 +578,7 @@ class AclSets_AclSet_376(yang.List, AccessListEntriesTop):
 
 
 
-class AclSetTop_AclSets_372(yang_base.BaseBinding):
+class AclSetTop_AclSets_372(BaseBinding):
     """
     Access list entries variables enclosing container
     """
@@ -591,7 +596,7 @@ class AclSetTop_AclSets_372(yang_base.BaseBinding):
 
 
 
-class AclSetTop(yang_base.BaseBinding):
+class AclSetTop(BaseBinding):
     """
     Access list entries variables top level container
     """
@@ -609,7 +614,7 @@ class AclSetTop(yang_base.BaseBinding):
 
 
 
-class InterfaceAclEntriesConfig(yang_base.BaseBinding):
+class InterfaceAclEntriesConfig(BaseBinding):
     """
     Configuration data for per-interface ACLs
     """
@@ -661,7 +666,7 @@ class AclEntry_State_458(InterfaceAclEntriesState, InterfaceAclEntriesConfig):
 
 
 
-class AclEntries_AclEntry_442(yang.List, yang_base.BaseBinding):
+class AclEntries_AclEntry_442(List, BaseBinding):
     """
     List of ACL entries assigned to an interface
     """
@@ -681,7 +686,7 @@ class AclEntries_AclEntry_442(yang.List, yang_base.BaseBinding):
 
 
 
-class InterfaceAclEntriesTop_AclEntries_437(yang_base.BaseBinding):
+class InterfaceAclEntriesTop_AclEntries_437(BaseBinding):
     """
     Enclosing container for list of references to ACLs
     """
@@ -699,7 +704,7 @@ class InterfaceAclEntriesTop_AclEntries_437(yang_base.BaseBinding):
 
 
 
-class InterfaceAclEntriesTop(yang_base.BaseBinding):
+class InterfaceAclEntriesTop(BaseBinding):
     """
     Top-level grouping for per-interface ACL entries
     """
@@ -717,7 +722,7 @@ class InterfaceAclEntriesTop(yang_base.BaseBinding):
 
 
 
-class InterfaceIngressAclConfig(yang_base.BaseBinding):
+class InterfaceIngressAclConfig(BaseBinding):
     """
     Configuration data for per-interface ingress ACLs
     """
@@ -735,7 +740,7 @@ class InterfaceIngressAclConfig(yang_base.BaseBinding):
 
 
 
-class InterfaceIngressAclState(yang_base.BaseBinding):
+class InterfaceIngressAclState(BaseBinding):
     """
     Operational state data for the per-interface ingress ACL
     """
@@ -786,7 +791,7 @@ class IngressAclSet_State_519(InterfaceIngressAclState, InterfaceIngressAclConfi
 
 
 
-class IngressAclSets_IngressAclSet_499(yang.List, InterfaceAclEntriesTop):
+class IngressAclSets_IngressAclSet_499(List, InterfaceAclEntriesTop):
     """
     List of ingress ACLs on the interface
     """
@@ -807,7 +812,7 @@ class IngressAclSets_IngressAclSet_499(yang.List, InterfaceAclEntriesTop):
 
 
 
-class InterfaceIngressAclTop_IngressAclSets_494(yang_base.BaseBinding):
+class InterfaceIngressAclTop_IngressAclSets_494(BaseBinding):
     """
     Enclosing container the list of ingress ACLs on the
     interface
@@ -826,7 +831,7 @@ class InterfaceIngressAclTop_IngressAclSets_494(yang_base.BaseBinding):
 
 
 
-class InterfaceIngressAclTop(yang_base.BaseBinding):
+class InterfaceIngressAclTop(BaseBinding):
     """
     Top-level grouping for per-interface ingress ACL data
     """
@@ -844,7 +849,7 @@ class InterfaceIngressAclTop(yang_base.BaseBinding):
 
 
 
-class InterfaceEgressAclConfig(yang_base.BaseBinding):
+class InterfaceEgressAclConfig(BaseBinding):
     """
     Configuration data for per-interface egress ACLs
     """
@@ -862,7 +867,7 @@ class InterfaceEgressAclConfig(yang_base.BaseBinding):
 
 
 
-class InterfaceEgressAclState(yang_base.BaseBinding):
+class InterfaceEgressAclState(BaseBinding):
     """
     Operational state data for the per-interface egress ACL
     """
@@ -913,7 +918,7 @@ class EgressAclSet_State_582(InterfaceEgressAclState, InterfaceEgressAclConfig):
 
 
 
-class EgressAclSets_EgressAclSet_562(yang.List, InterfaceAclEntriesTop):
+class EgressAclSets_EgressAclSet_562(List, InterfaceAclEntriesTop):
     """
     List of egress ACLs on the interface
     """
@@ -934,7 +939,7 @@ class EgressAclSets_EgressAclSet_562(yang.List, InterfaceAclEntriesTop):
 
 
 
-class InterfaceEgressAclTop_EgressAclSets_557(yang_base.BaseBinding):
+class InterfaceEgressAclTop_EgressAclSets_557(BaseBinding):
     """
     Enclosing container the list of egress ACLs on the
     interface
@@ -953,7 +958,7 @@ class InterfaceEgressAclTop_EgressAclSets_557(yang_base.BaseBinding):
 
 
 
-class InterfaceEgressAclTop(yang_base.BaseBinding):
+class InterfaceEgressAclTop(BaseBinding):
     """
     Top-level grouping for per-interface egress ACL data
     """
@@ -971,7 +976,7 @@ class InterfaceEgressAclTop(yang_base.BaseBinding):
 
 
 
-class AclInterfacesConfig(yang_base.BaseBinding):
+class AclInterfacesConfig(BaseBinding):
     """
     Configuration data for interface references
     """
@@ -989,7 +994,7 @@ class AclInterfacesConfig(yang_base.BaseBinding):
 
 
 
-class AclInterfacesState(yang_base.BaseBinding):
+class AclInterfacesState(BaseBinding):
     """
     Operational state data for interface references
     """
@@ -1040,7 +1045,7 @@ class Interface_State_644(AclInterfacesState, AclInterfacesConfig):
 
 
 
-class Interfaces_Interface_624(yang.List, InterfaceEgressAclTop, InterfaceIngressAclTop, oc_if.InterfaceRef):
+class Interfaces_Interface_624(List, InterfaceEgressAclTop, InterfaceIngressAclTop, oc_if.InterfaceRef):
     """
     List of interfaces on which ACLs are set
     """
@@ -1061,7 +1066,7 @@ class Interfaces_Interface_624(yang.List, InterfaceEgressAclTop, InterfaceIngres
 
 
 
-class AclInterfacesTop_Interfaces_619(yang_base.BaseBinding):
+class AclInterfacesTop_Interfaces_619(BaseBinding):
     """
     Enclosing container for the list of interfaces on which
     ACLs are set
@@ -1080,7 +1085,7 @@ class AclInterfacesTop_Interfaces_619(yang_base.BaseBinding):
 
 
 
-class AclInterfacesTop(yang_base.BaseBinding):
+class AclInterfacesTop(BaseBinding):
     """
     Top-level grouping for interface-specific ACL data
     """
@@ -1098,7 +1103,7 @@ class AclInterfacesTop(yang_base.BaseBinding):
 
 
 
-class AclConfig(yang_base.BaseBinding):
+class AclConfig(BaseBinding):
     """
     Global configuration data for ACLs
     """
@@ -1115,7 +1120,7 @@ class AclConfig(yang_base.BaseBinding):
 
 
 
-class AclState(yang_base.BaseBinding):
+class AclState(BaseBinding):
     """
     Global operational state data for ACLs
     """
@@ -1187,7 +1192,7 @@ class AclTop_Acl_684(AclInterfacesTop, AclSetTop):
 
 
 
-class AclTop(yang_base.BaseBinding):
+class AclTop(BaseBinding):
     """
     Top level grouping for ACL data and structure
     """
@@ -1207,5 +1212,6 @@ class AclTop(yang_base.BaseBinding):
 # Top-uses
 class Acl(AclTop):
     pass
+
 
 # Top-containers{}

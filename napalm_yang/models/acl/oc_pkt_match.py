@@ -4,8 +4,11 @@ used in matching operations, for example in ACLs.  When a
 field is omitted from a match expression, the effect is a
 wildcard ('any') for that field.
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+
 
 # Imports
 from napalm_yang import oc_ext
@@ -16,7 +19,6 @@ from napalm_yang import inet
 # openconfig-extensions
 openconfig_extensions = oc_ext.OpenConfigExtensions()
 openconfig_extensions.openconfig_version = "0.2.0"
-
 
 __namespace__ = "http://openconfig.net/yang/header-fields"
 __yang_version__ = "1"
@@ -33,6 +35,9 @@ __revision__ = {
 
 
 
+# features
+
+
 # typedef
 
 
@@ -42,7 +47,7 @@ __revision__ = {
 
 
 
-class EthernetHeaderConfig(yang_base.BaseBinding):
+class EthernetHeaderConfig(BaseBinding):
     """
     Configuration data of fields in Ethernet header.
     """
@@ -64,7 +69,7 @@ class EthernetHeaderConfig(yang_base.BaseBinding):
 
 
 
-class EthernetHeaderState(yang_base.BaseBinding):
+class EthernetHeaderState(BaseBinding):
     """
     State information of fields in Ethernet header.
     """
@@ -115,7 +120,7 @@ class L2_State_100(EthernetHeaderState, EthernetHeaderConfig):
 
 
 
-class EthernetHeaderTop_L2_90(yang_base.BaseBinding):
+class EthernetHeaderTop_L2_90(BaseBinding):
     """
     Ethernet header fields
     """
@@ -134,7 +139,7 @@ class EthernetHeaderTop_L2_90(yang_base.BaseBinding):
 
 
 
-class EthernetHeaderTop(yang_base.BaseBinding):
+class EthernetHeaderTop(BaseBinding):
     """
     Top level container for fields in Ethernet header.
     """
@@ -152,7 +157,7 @@ class EthernetHeaderTop(yang_base.BaseBinding):
 
 
 
-class IpProtocolFieldsConfig(yang_base.BaseBinding):
+class IpProtocolFieldsConfig(BaseBinding):
     """
     Configuration data of IP protocol fields
     common to ipv4 and ipv6
@@ -178,7 +183,7 @@ class IpProtocolFieldsConfig(yang_base.BaseBinding):
 
 
 
-class IpProtocolFieldsState(yang_base.BaseBinding):
+class IpProtocolFieldsState(BaseBinding):
     """
     State information of IP header fields common to ipv4 and ipv6
     """
@@ -229,7 +234,7 @@ class Ip_State_190(IpProtocolFieldsState, IpProtocolFieldsConfig):
 
 
 
-class IpProtocolFieldsTop_Ip_180(yang_base.BaseBinding):
+class IpProtocolFieldsTop_Ip_180(BaseBinding):
     """
     Top level container
     """
@@ -248,7 +253,7 @@ class IpProtocolFieldsTop_Ip_180(yang_base.BaseBinding):
 
 
 
-class IpProtocolFieldsTop(yang_base.BaseBinding):
+class IpProtocolFieldsTop(BaseBinding):
     """
     IP header fields common to ipv4 and ipv6
     """
@@ -266,7 +271,7 @@ class IpProtocolFieldsTop(yang_base.BaseBinding):
 
 
 
-class TransportFieldsConfig(yang_base.BaseBinding):
+class TransportFieldsConfig(BaseBinding):
     """
     Configuration data of transport-layer packet fields
     """
@@ -278,7 +283,7 @@ class TransportFieldsConfig(yang_base.BaseBinding):
         self.destination_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False}, )
         self.source_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False}, )
         # leaflist
-        self.tcp_flags = yang.LeafList(Identityref(_meta={"mandatory": False}, base="oc-pkt-match-types:TCP_FLAGS"))
+        self.tcp_flags = LeafList(Identityref(_meta={"mandatory": False}, base="oc-pkt-match-types:TCP_FLAGS"))
         # Meta
         self._meta["config"] = True
         
@@ -286,7 +291,7 @@ class TransportFieldsConfig(yang_base.BaseBinding):
 
 
 
-class TransportFieldsState(yang_base.BaseBinding):
+class TransportFieldsState(BaseBinding):
     """
     State data of transport-fields
     """
@@ -337,7 +342,7 @@ class Transport_State_245(TransportFieldsState, TransportFieldsConfig):
 
 
 
-class TransportFieldsTop_Transport_235(yang_base.BaseBinding):
+class TransportFieldsTop_Transport_235(BaseBinding):
     """
     Transport fields container
     """
@@ -356,7 +361,7 @@ class TransportFieldsTop_Transport_235(yang_base.BaseBinding):
 
 
 
-class TransportFieldsTop(yang_base.BaseBinding):
+class TransportFieldsTop(BaseBinding):
     """
     Destination transport-fields top level grouping
     """
@@ -374,4 +379,5 @@ class TransportFieldsTop(yang_base.BaseBinding):
 
 
 # Top-uses
+
 # Top-containers{}

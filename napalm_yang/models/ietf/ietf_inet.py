@@ -12,14 +12,13 @@ Relating to IETF Documents
 This version of this YANG module is part of RFC 6991; see
 the RFC itself for full legal notices.
 """
-from napalm_yang import yang_base
-from napalm_yang.ietf_yang_types.yang import *
+from builtins import super
+
+from napalm_yang import *
+
+
 
 # Imports
-
-# openconfig-extensions
-openconfig_extensions = oc_ext.OpenConfigExtensions()
-
 
 __namespace__ = "urn:ietf:params:xml:ns:yang:ietf-inet-types"
 __contact__ = "WG Web:   <http://tools.ietf.org/wg/netmod/>\nWG List:  <mailto:netmod@ietf.org>\nWG Chair: David Kessens\n          <mailto:david.kessens@nsn.com>\nWG Chair: Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>\nEditor:   Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>"
@@ -35,9 +34,12 @@ __revision__ = {
 
 
 
+# features
+
+
 # typedef
 
-class Ipv4Prefix(yang_base.BaseBinding):
+class Ipv4Prefix(BaseTypeDef):
     """
     The ipv4-prefix type represents an IPv4 address prefix.
     The prefix length is given by the number following the
@@ -51,10 +53,10 @@ class Ipv4Prefix(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv4_prefix = yang.String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))", )
+        self.ipv4_prefix = String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))", )
 
 
-class Ipv6Prefix(yang_base.BaseBinding):
+class Ipv6Prefix(BaseTypeDef):
     """
     The ipv6-prefix type represents an IPv6 address prefix.
     The prefix length is given by the number following the
@@ -71,10 +73,10 @@ class Ipv6Prefix(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv6_prefix = yang.String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))", )
+        self.ipv6_prefix = String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))", )
 
 
-class IpAddressNoZone(yang_base.BaseBinding):
+class IpAddressNoZone(BaseTypeDef):
     """
     The ip-address-no-zone type represents an IP address and is
     IP version neutral.  The format of the textual representation
@@ -84,10 +86,13 @@ class IpAddressNoZone(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ip_address_no_zone = yang.Union(type="defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'inet:ipv4-address-no-zone': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {}), u'inet:ipv6-address-no-zone': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {})})", )
+        self.ip_address_no_zone = Union(type={
+    "inet:ipv4-address-no-zone": {}, 
+    "inet:ipv6-address-no-zone": {}
+}, )
 
 
-class IpVersion(yang_base.BaseBinding):
+class IpVersion(BaseTypeDef):
     """
     This value represents the version of the IP protocol.
     In the value set and its semantics, this type is equivalent
@@ -95,10 +100,29 @@ class IpVersion(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ip_version = yang.Enumeration(enum="defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'unknown': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {'info': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'description': u'An unknown or unspecified version of the Internet\nprotocol.'}), u'value': u'0'}), u'ipv4': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {'info': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'description': u'The IPv4 protocol as defined in RFC 791.'}), u'value': u'1'}), u'ipv6': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {'info': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'description': u'The IPv6 protocol as defined in RFC 2460.'}), u'value': u'2'})})", )
+        self.ip_version = Enumeration(enum={
+    "ipv4": {
+        "info": {
+            "description": "The IPv4 protocol as defined in RFC 791."
+        }, 
+        "value": "1"
+    }, 
+    "ipv6": {
+        "info": {
+            "description": "The IPv6 protocol as defined in RFC 2460."
+        }, 
+        "value": "2"
+    }, 
+    "unknown": {
+        "info": {
+            "description": "An unknown or unspecified version of the Internet\nprotocol."
+        }, 
+        "value": "0"
+    }
+}, )
 
 
-class Dscp(yang_base.BaseBinding):
+class Dscp(BaseTypeDef):
     """
     The dscp type represents a Differentiated Services Code Point
     that may be used for marking packets in a traffic stream.
@@ -107,10 +131,10 @@ class Dscp(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.dscp = yang.Uint8(range="0..63", )
+        self.dscp = Uint8(range="0..63", )
 
 
-class IpPrefix(yang_base.BaseBinding):
+class IpPrefix(BaseTypeDef):
     """
     The ip-prefix type represents an IP prefix and is IP
     version neutral.  The format of the textual representations
@@ -118,10 +142,13 @@ class IpPrefix(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ip_prefix = yang.Union(type="defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'inet:ipv6-prefix': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {}), u'inet:ipv4-prefix': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {})})", )
+        self.ip_prefix = Union(type={
+    "inet:ipv4-prefix": {}, 
+    "inet:ipv6-prefix": {}
+}, )
 
 
-class Ipv6AddressNoZone(yang_base.BaseBinding):
+class Ipv6AddressNoZone(BaseTypeDef):
     """
     An IPv6 address without a zone index.  This type, derived from
     ipv6-address, may be used in situations where the zone is
@@ -129,10 +156,10 @@ class Ipv6AddressNoZone(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv6_address_no_zone = yang.inet.Ipv6Address(pattern="[0-9a-fA-F:\.]*", )
+        self.ipv6_address_no_zone = inet.Ipv6Address(pattern="[0-9a-fA-F:\\.]*", )
 
 
-class Uri(yang_base.BaseBinding):
+class Uri(BaseTypeDef):
     """
     The uri type represents a Uniform Resource Identifier
     (URI) as defined by STD 66.
@@ -158,10 +185,10 @@ class Uri(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.uri = yang.String()
+        self.uri = String()
 
 
-class PortNumber(yang_base.BaseBinding):
+class PortNumber(BaseTypeDef):
     """
     The port-number type represents a 16-bit port number of an
     Internet transport-layer protocol such as UDP, TCP, DCCP, or
@@ -175,10 +202,10 @@ class PortNumber(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.port_number = yang.Uint16(range="0..65535", )
+        self.port_number = Uint16(range="0..65535", )
 
 
-class Ipv4AddressNoZone(yang_base.BaseBinding):
+class Ipv4AddressNoZone(BaseTypeDef):
     """
     An IPv4 address without a zone index.  This type, derived from
     ipv4-address, may be used in situations where the zone is
@@ -186,20 +213,23 @@ class Ipv4AddressNoZone(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv4_address_no_zone = yang.inet.Ipv4Address(pattern="[0-9\.]*", )
+        self.ipv4_address_no_zone = inet.Ipv4Address(pattern="[0-9\\.]*", )
 
 
-class Host(yang_base.BaseBinding):
+class Host(BaseTypeDef):
     """
     The host type represents either an IP address or a DNS
     domain name.
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.host = yang.Union(type="defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'inet:domain-name': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {}), u'inet:ip-address': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {})})", )
+        self.host = Union(type={
+    "inet:domain-name": {}, 
+    "inet:ip-address": {}
+}, )
 
 
-class DomainName(yang_base.BaseBinding):
+class DomainName(BaseTypeDef):
     """
     The domain-name type represents a DNS domain name.  The
     name SHOULD be fully qualified whenever possible.
@@ -234,10 +264,10 @@ class DomainName(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.domain_name = yang.String(pattern="((([a-zA-Z0-9_]([a-zA-Z0-9\-_]){0,61})?[a-zA-Z0-9]\.)*([a-zA-Z0-9_]([a-zA-Z0-9\-_]){0,61})?[a-zA-Z0-9]\.?)|\.", length="1..253", )
+        self.domain_name = String(pattern="((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.", length="1..253", )
 
 
-class Ipv6FlowLabel(yang_base.BaseBinding):
+class Ipv6FlowLabel(BaseTypeDef):
     """
     The ipv6-flow-label type represents the flow identifier or Flow
     Label in an IPv6 packet header that may be used to
@@ -247,10 +277,10 @@ class Ipv6FlowLabel(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv6_flow_label = yang.Uint32(range="0..1048575", )
+        self.ipv6_flow_label = Uint32(range="0..1048575", )
 
 
-class IpAddress(yang_base.BaseBinding):
+class IpAddress(BaseTypeDef):
     """
     The ip-address type represents an IP address and is IP
     version neutral.  The format of the textual representation
@@ -259,10 +289,13 @@ class IpAddress(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ip_address = yang.Union(type="defaultdict(<function _nested_default_dict at 0x10e1c8578>, {u'inet:ipv6-address': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {}), u'inet:ipv4-address': defaultdict(<function _nested_default_dict at 0x10e1c8578>, {})})", )
+        self.ip_address = Union(type={
+    "inet:ipv4-address": {}, 
+    "inet:ipv6-address": {}
+}, )
 
 
-class Ipv6Address(yang_base.BaseBinding):
+class Ipv6Address(BaseTypeDef):
     """
     The ipv6-address type represents an IPv6 address in full,
     mixed, shortened, and shortened-mixed notation.  The IPv6
@@ -279,10 +312,10 @@ class Ipv6Address(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv6_address = yang.String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\p{N}\p{L}]+)?", )
+        self.ipv6_address = String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?", )
 
 
-class Ipv4Address(yang_base.BaseBinding):
+class Ipv4Address(BaseTypeDef):
     """
     The ipv4-address type represents an IPv4 address in
     dotted-quad notation.  The IPv4 address may include a zone
@@ -297,10 +330,10 @@ class Ipv4Address(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.ipv4_address = yang.String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\p{N}\p{L}]+)?", )
+        self.ipv4_address = String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?", )
 
 
-class AsNumber(yang_base.BaseBinding):
+class AsNumber(BaseTypeDef):
     """
     The as-number type represents autonomous system numbers
     which identify an Autonomous System (AS).  An AS is a set
@@ -321,7 +354,7 @@ class AsNumber(yang_base.BaseBinding):
     """
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self.as_number = yang.Uint32()
+        self.as_number = Uint32()
 
 
 
@@ -331,4 +364,5 @@ class AsNumber(yang_base.BaseBinding):
 
 
 # Top-uses
+
 # Top-containers{}
