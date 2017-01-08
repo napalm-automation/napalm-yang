@@ -1,16 +1,25 @@
 {%- import "parsers.j2" as p -%}
 """
+{{ module.info.pop("description") }}
+
 {{ module|to_json }}
 """
-from napalm_yang import yang_types
 from napalm_yang import yang_base
+from napalm_yang.ietf_yang_types.yang import *
 
-{% for k, v in module.pop("info").items() %}
+{{ p.process_imports(module) }}
+
+{{ p.process_openconfig_extensions(module) }}
+
+{% for k, v in module.pop("info").items() -%}
 __{{ k.replace('-', '_') }}__ = {{ v|to_json }}
 {% endfor %}
+
+
+{{ p.process_typedef(module) }}
 
 {{ p.process_identities(module) }}
 
 {{ p.process_classes(module) }}
-
-{{ module }}
+{{ p.process_top(module) }}
+{{- module|raise_if_not_empty -}}

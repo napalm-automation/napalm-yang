@@ -4,6 +4,7 @@ import logging
 import optparse
 import os
 import sys
+import copy
 
 from pyang import plugin
 from pyang.statements import Statement
@@ -87,6 +88,12 @@ def _nested_default_dict():
     return defaultdict(_nested_default_dict)
 
 
+def _create_package(package):
+    if not os.path.exists(package):
+        os.makedirs(package)
+        open("{}/__init__.py".format(package), "w")
+
+
 def save(result, path):
     filters = jinja_filters.FilterModule()
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./pyang_plugin/templates/'),
@@ -98,9 +105,14 @@ def save(result, path):
     template = env.get_template('module.j2')
 
     for module, data in result.items():
-        filename = "{}.py".format(text_helpers.safe_attr_name(module))
+        package = "{}/{}".format(path, text_helpers.safe_attr_name(module))
+        _create_package(package)
+        filename = "{}/{}.py".format(package,
+                                     text_helpers.safe_attr_name(data["info"].pop("prefix")))
         logger.info("Saving module: {}".format(filename))
-        print(template.render(module=data))
+
+        with open(filename, "w") as f:
+            f.write(template.render(module=data))
 
 
 def inspect(obj):
@@ -131,7 +143,7 @@ def _parse_identities(sub, store, root):
 
 
 INFO = ("yang-version", "namespace", "prefix", "organization", "contact", "reference",
-        "description", (u'openconfig-extensions', u'openconfig-version'), "import", "revision", )
+        "description", (u'openconfig-extensions', u'openconfig-version'), "revision", )
 
 
 def _parse_info(sub, store):
@@ -140,11 +152,11 @@ def _parse_info(sub, store):
         store[sub.keyword] = sub.arg
     elif sub.keyword == (u'openconfig-extensions', u'openconfig-version'):
         store[sub.keyword[0]][sub.keyword[1]] = sub.arg
-    elif sub.keyword in ("import", "revision", ):
+    elif sub.keyword in ("revision", ):
         _parse_simple(sub, store[sub.keyword][sub.arg])
 
 
-NESTED = ("grouping", "container", "leaf", "type", "list", "enum", "typedef", )
+NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import")
 
 
 def _parse_nested(sub, store, root):
@@ -187,13 +199,20 @@ def merge_two_dicts(x, y):
         elif isinstance(v, list) and k in x.keys():
             x[k].extend(v)
         else:
-            x[k] = v
+            x[k] = copy.deepcopy(v)
 
 
 def _process_uses(statements, groupings, store):
     for name, obj in statements.items():
         while obj["uses"]:
-            u = groupings[obj["uses"].pop()]
+            group_name = obj["uses"].pop()
+            u = groupings.get(group_name)
+
+            if not u:
+                print(u)
+                raise Exception("Couldn't find grouping: {}\nAvailable: {}".format(
+                                                                            group_name,
+                                                                            groupings.keys()))
             merge_two_dicts(obj, u)
 
         obj.pop("uses")
@@ -209,7 +228,9 @@ def _process_uses_top(uses, groupings, store):
 def _process(statements, store):
     grouping = statements.pop("grouping")
     store["info"] = statements.pop("info")
-    store["identity"] = statements.pop("identity")
+    store["import"] = statements.pop("import")
+    store["identity"] = statements.pop("identity", {})
+    store["typedef"] = statements.pop("typedef", {})
     store["order"] = statements.pop("order")
     store["order"].reverse()
     _process_uses(statements.pop("container"), grouping, store["container"])

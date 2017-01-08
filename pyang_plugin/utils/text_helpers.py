@@ -3,8 +3,13 @@
 
 def safe_class_name(value):
     """Return a safe class name. For example, from interface-state to InterfaceState"""
-    value = value.replace(":", "_")
-    return ''.join([t.title() for t in value.split('-')])
+    if ":" in value:
+        module, cls = value.split(":")
+        module = safe_attr_name(module)
+        cls = ''.join([t.title() for t in cls.split('-')])
+        return "{}.{}".format(module, cls)
+    else:
+        return ''.join([t.title() for t in value.split('-')])
 
 
 def safe_attr_name(value):

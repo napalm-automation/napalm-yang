@@ -1,13 +1,14 @@
 """Yang Types"""
 from builtins import super
+import copy
 
-from yang_base import YangType
+from napalm_yang.yang_base import YangType, BaseBinding
 
 
 class Identity(YangType):
 
-    def __init__(self, value, base=None, description="", options=None):
-        super().__init__(options)
+    def __init__(self, value, base=None, description="", _meta=None):
+        super().__init__(_meta)
         self.base = base
         self.description = description
         self.value = value
@@ -93,28 +94,35 @@ class Counter64(Uint64):
 
 class Enumeration(YangType):
 
-    def __init__(self, options):
-        super().__init__(options)
-        self._enum = None
-        self.options = options
+    def __init__(self, enum, _meta=None):
+        super().__init__(_meta)
+        self.enum_map = enum
+        self._meta["enum"] = None
 
     @property
     def enum(self):
-        return self._enum
+        return self._meta["enum"]
 
     @enum.setter
-    def enum(self, value):
-        if value in self.options.keys():
-            self._enum = value
-            self._value = self.options[self._enum].get('value', {'value': None})['value']
-            self._value = int(self._value) if self._value is not None else None
-        else:
-            error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
-            raise ValueError(error_msg.format(value, self.options.keys()))
+    def enum(self, enum):
+        raise AttributeError("Can't change enumeration once it's been initialized")
 
     @property
     def value(self):
         return self._value
+
+    @value.setter
+    def value(self, value):
+        if value in self.enum_map.keys():
+            self._value = value
+
+            if "value" in self.enum_map[value].keys():
+                self._meta["enum_value"] = int(self.enum_map[value]['value'])
+            else:
+                self._meta["enum_value"] = sorted(self.enum_map.keys()).index(value)
+        else:
+            error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
+            raise ValueError(error_msg.format(value, self.options.keys()))
 
     def __str__(self):
         return "{}, {}".format(self.enum, self.value)
@@ -134,7 +142,11 @@ class String(YangType):
             raise ValueError("Wrong value for string: {}".format(value))
 
 
-class Leafref(String):
+class Identityref(String):
+
+    def __init__(self, base, _meta=None):
+        super().__init__(_meta)
+        self.base = base
 
     @property
     def value(self):
@@ -145,27 +157,59 @@ class Leafref(String):
         self._value = value
 
 
-class Yang_list(YangType):
-    _type = None
+class Leafref(String):
 
-    def __init__(self, value=None):
-        self._value = value if value else {}
-        same_type = all([isinstance(x, self._type) for x in self._value.values()])
-
-        if not same_type:
-            raise AttributeError("Some element of {} is not of type {}".format(self._type, value))
+    def __init__(self, path, _meta=None):
+        super().__init__(_meta)
+        self.path = path
 
     @property
     def value(self):
         return self._value
 
-    @property
-    def type(self):
-        return self._type
+    @value.setter
+    def value(self, value):
+        self._value = value
 
-    @type.setter
-    def type(self, value):
-        raise AttributeError("Type can't be changed once the object is created")
+
+class ListElement(BaseBinding):
+    def __init__(self, parent):
+        super().__init__(parent._meta)
+        self.type = parent.__class__.__name__
+
+        self._meta = copy.deepcopy(parent._meta)
+
+        attrs = dir(parent)
+        for a in attrs:
+            attr = getattr(parent, a)
+            if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
+                setattr(self, a, copy.deepcopy(attr))
+
+
+class List(BaseBinding):
+
+    def __init__(self, _meta=None):
+        super().__init__(_meta)
+        self._value = {}
+
+    @property
+    def value(self):
+        return self._value
+
+    def new_element(self, name):
+        self._value[name] = ListElement(self)
+        return self._value[name]
+
+    def data_representation(self):
+        res = {}
+        res["_meta"] = copy.deepcopy(self._meta) or {}
+        res["list"] = {}
+
+        for element, data in self.items():
+            res["list"][element] = data.data_representation()
+            res["list"][element]["_meta"] = copy.deepcopy(self._meta) or {}
+
+        return res
 
     def __getitem__(self, name):
         return self._value.__getitem__(name)
