@@ -1,5 +1,4 @@
 """Base classes for Yang Types and bindings."""
-from builtins import super
 
 import copy
 
@@ -98,26 +97,7 @@ class YangType(object):
             return {}
 
 
-class BaseTypeDef(YangType):
+class Extension(YangType):
+    """An base class to create extensions"""
+    # TBD
     pass
-
-
-class Feature(YangType):
-
-    def __init__(self, name, _meta=None):
-        super().__init__(_meta)
-        self._value = name
-
-
-class Union(YangType):
-
-    def __init__(self, type, _meta=None):
-        super().__init__(_meta)
-        self._value = type
-
-
-class LeafList(YangType):
-
-    def __init__(self, type, _meta=None):
-        super().__init__(_meta)
-        self._value = type

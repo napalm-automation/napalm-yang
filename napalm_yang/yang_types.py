@@ -88,14 +88,6 @@ class Uint64(Baseint):
     max = 18446744073709551615
 
 
-class Counter32(Uint32):
-    pass
-
-
-class Counter64(Uint64):
-    pass
-
-
 class Enumeration(YangType):
 
     def __init__(self, enum, _meta=None):
@@ -250,9 +242,26 @@ class List(BaseBinding):
         return self._value.values()
 
 
-class Timeticks(Uint32):
+class BaseTypeDef(YangType):
     pass
 
 
-class DateAndTime(YangType):
-    pass
+class Feature(YangType):
+
+    def __init__(self, name, _meta=None):
+        super().__init__(_meta)
+        self._value = name
+
+
+class Union(YangType):
+
+    def __init__(self, type, _meta=None):
+        super().__init__(_meta)
+        self._value = type
+
+
+class LeafList(YangType):
+
+    def __init__(self, type, _meta=None):
+        super().__init__(_meta)
+        self._value = type

@@ -1,11 +1,12 @@
+# pylama:skip=1
 from napalm_yang.yang_base import *
-from napalm_yang.ietf_yang_types.yang import *
+from napalm_yang.yang_types import *
 
 from napalm_yang.models.ietf import ietf_yang as yang
 from napalm_yang.models.ietf import ietf_if
 from napalm_yang.models.ietf import ietf_inet as inet
 
-from napalm_yang.openconfig_extensions import oc_ext
+from napalm_yang.models.openconfig_extensions import ocext as oc_ext
 
 from napalm_yang.models.interfaces import oc_if
 
