@@ -6,13 +6,19 @@ from builtins import super
 
 from napalm_yang import *
 
+
+class LocalNamespace(object):
+    def __getattr__(self, name):
+        import sys
+        return globals()[name]
+
+{{ module.info.prefix|safe_attr_name }} = LocalNamespace()
+
 {% set oc_ext = "openconfig-extensions" in module.get("import", {}).keys() %}
 
 {{ p.process_imports(module) }}
 
-{% if oc_ext -%}
 {{ p.process_openconfig_extensions(module) }}
-{% endif -%}
 
 
 {% for k, v in module.pop("info").items() -%}

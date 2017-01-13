@@ -12,10 +12,9 @@ from napalm_yang import {{ vv|safe_attr_name }}
 {%- macro process_openconfig_extensions(module) -%}
 # openconfig-extensions
 {% set oc = module.info.pop("openconfig-extensions", {}) -%}
-openconfig_extensions = oc_ext.OpenConfigExtensions()
 {% for k, v in oc.items() -%}
-openconfig_extensions.{{ k|safe_attr_name }} = "{{ v }}"
-{% endfor -%}
+{{ k|safe_attr_name }} = oc_ext.{{k|safe_class_name}}("{{ v }}")
+{% endfor %}
 {%- endmacro %}
 
 
@@ -122,7 +121,7 @@ class {{ k|safe_class_name }}(Extension):
     """
  {{ v.pop("info", {}).pop("description")|indent }}
     """
-    def __init__(self, {% for kk, vv in v.get("argument", {}).items() %}{{kk|safe_attr_name}}, {% endfor %})
+    def __init__(self, {% for kk, vv in v.get("argument", {}).items() %}{{kk|safe_attr_name}}, {% endfor %}):
     {% for kk, vv in v.pop("argument", {}).items() %}
         self.{{kk|safe_attr_name}} = "{{ kk|safe_attr_name }}"
         self._yin_element_{{kk|safe_attr_name}} = {{ vv.pop("yin-element", False)|title }}
