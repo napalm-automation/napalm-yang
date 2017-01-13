@@ -114,6 +114,24 @@ class {{ c[0]|safe_class_name }}({{ c[1]|safe_class_name }}):
 {%- endmacro %}
 
 
+{%- macro process_extensions(module) -%}
+# extensions
+{%- set extension = module.pop("extension", {}) -%}
+{% for k, v in extension.items() %}
+class {{ k|safe_class_name }}(Extension):
+    """
+ {{ v.pop("info", {}).pop("description")|indent }}
+    """
+    def __init__(self, {% for kk, vv in v.get("argument", {}).items() %}{{kk|safe_attr_name}}, {% endfor %})
+    {% for kk, vv in v.pop("argument", {}).items() %}
+        self.{{kk|safe_attr_name}} = "{{ kk|safe_attr_name }}"
+        self._yin_element_{{kk|safe_attr_name}} = {{ vv.pop("yin-element", False)|title }}
+    {% endfor -%}
+{{ v|raise_if_not_empty -}}
+{% endfor %}
+{%- endmacro %}
+
+
 {%- macro _process_attributes(module, type_of_attr) -%}
 # {{ type_of_attr }}
 {% for a in module.pop(type_of_attr, {}).pop(type_of_attr, []) -%}

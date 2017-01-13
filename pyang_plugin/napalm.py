@@ -130,7 +130,7 @@ def inspect(obj):
 
 
 SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units",
-          "range", "pattern", "when", "length", "if-feature", )
+          "range", "pattern", "when", "length", "if-feature", "yin-element", )
 
 
 def _parse_simple(sub, store):
@@ -165,7 +165,7 @@ def _parse_info(sub, store):
 
 
 NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import",
-          "leaf-list", "feature", )
+          "leaf-list", "feature", "extension", "argument", )
 
 
 def _parse_nested(sub, store, root):
