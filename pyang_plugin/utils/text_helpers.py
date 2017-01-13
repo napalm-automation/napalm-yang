@@ -19,4 +19,8 @@ def safe_class_name(value):
 
 def safe_attr_name(value):
     """Return a safe attr name. For example, from in-octets to in_octets"""
+    RESERVED_KEYWORDS = ("if", )
+
+    if value in RESERVED_KEYWORDS:
+        value = "{}_".format(value)
     return re.sub(regexp, '_', value)
