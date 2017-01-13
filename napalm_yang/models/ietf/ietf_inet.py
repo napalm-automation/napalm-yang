@@ -17,10 +17,23 @@ from builtins import super
 from napalm_yang import *
 
 
+class LocalNamespace(object):
+    def __getattr__(self, name):
+        import sys
+        return globals()[name]
+
+inet = LocalNamespace()
+
+
 
 # Imports
 
+# openconfig-extensions
+
+
+
 __namespace__ = "urn:ietf:params:xml:ns:yang:ietf-inet-types"
+__prefix__ = "inet"
 __contact__ = "WG Web:   <http://tools.ietf.org/wg/netmod/>\nWG List:  <mailto:netmod@ietf.org>\nWG Chair: David Kessens\n          <mailto:david.kessens@nsn.com>\nWG Chair: Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>\nEditor:   Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>"
 __organization__ = "IETF NETMOD (NETCONF Data Modeling Language) Working Group"
 __revision__ = {
@@ -33,6 +46,8 @@ __revision__ = {
 }
 
 
+
+# extensions
 
 # features
 
@@ -365,4 +380,4 @@ class AsNumber(BaseTypeDef):
 
 # Top-uses
 
-# Top-containers{}
+# Top-containers

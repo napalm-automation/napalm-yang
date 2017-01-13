@@ -19,6 +19,14 @@ from builtins import super
 from napalm_yang import *
 
 
+class LocalNamespace(object):
+    def __getattr__(self, name):
+        import sys
+        return globals()[name]
+
+oc_if = LocalNamespace()
+
+
 
 # Imports
 from napalm_yang import oc_ext
@@ -26,11 +34,13 @@ from napalm_yang import yang
 from napalm_yang import ietf_if
 
 # openconfig-extensions
-openconfig_extensions = oc_ext.OpenConfigExtensions()
-openconfig_extensions.openconfig_version = "1.1.0"
+openconfig_version = oc_ext.OpenconfigVersion("1.1.0")
+
+
 
 __namespace__ = "http://openconfig.net/yang/interfaces"
 __yang_version__ = "1"
+__prefix__ = "oc-if"
 __contact__ = "OpenConfig working group\nnetopenconfig@googlegroups.com"
 __organization__ = "OpenConfig working group"
 __revision__ = {
@@ -40,6 +50,8 @@ __revision__ = {
 }
 
 
+
+# extensions
 
 # features
 
@@ -571,7 +583,7 @@ class Unnumbered_State_786(SubUnnumberedState, SubUnnumberedConfig):
 
 
 
-class SubUnnumberedTop_Unnumbered_773(InterfaceRef):
+class SubUnnumberedTop_Unnumbered_773(oc_if.InterfaceRef):
     """
     Top-level container for setting unnumbered interfaces.
     Includes reference the interface that provides the
@@ -837,4 +849,4 @@ class Interfaces(InterfacesTop):
     pass
 
 
-# Top-containers{}
+# Top-containers

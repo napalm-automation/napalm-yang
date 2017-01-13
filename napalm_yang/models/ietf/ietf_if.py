@@ -17,11 +17,24 @@ from builtins import super
 from napalm_yang import *
 
 
+class LocalNamespace(object):
+    def __getattr__(self, name):
+        import sys
+        return globals()[name]
+
+if_ = LocalNamespace()
+
+
 
 # Imports
 from napalm_yang import yang
 
+# openconfig-extensions
+
+
+
 __namespace__ = "urn:ietf:params:xml:ns:yang:ietf-interfaces"
+__prefix__ = "if"
 __contact__ = "WG Web:   <http://tools.ietf.org/wg/netmod/>\nWG List:  <mailto:netmod@ietf.org>\nWG Chair: Thomas Nadeau\n          <mailto:tnadeau@lucidvision.com>\nWG Chair: Juergen Schoenwaelder\n          <mailto:j.schoenwaelder@jacobs-university.de>\nEditor:   Martin Bjorklund\n          <mailto:mbj@tail-f.com>"
 __organization__ = "IETF NETMOD (NETCONF Data Modeling Language) Working Group"
 __revision__ = {
@@ -31,6 +44,8 @@ __revision__ = {
 }
 
 
+
+# extensions
 
 # features
 
@@ -299,4 +314,3 @@ class Interfaces(IetfInterfaces_Interfaces_89):
 
 class InterfacesState(IetfInterfaces_InterfacesState_222):
     pass
-{}

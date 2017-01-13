@@ -9,6 +9,14 @@ from builtins import super
 from napalm_yang import *
 
 
+class LocalNamespace(object):
+    def __getattr__(self, name):
+        import sys
+        return globals()[name]
+
+oc_pkt_match = LocalNamespace()
+
+
 
 # Imports
 from napalm_yang import oc_ext
@@ -17,11 +25,13 @@ from napalm_yang import oc_pkt_match_types
 from napalm_yang import inet
 
 # openconfig-extensions
-openconfig_extensions = oc_ext.OpenConfigExtensions()
-openconfig_extensions.openconfig_version = "0.2.0"
+openconfig_version = oc_ext.OpenconfigVersion("0.2.0")
+
+
 
 __namespace__ = "http://openconfig.net/yang/header-fields"
 __yang_version__ = "1"
+__prefix__ = "oc-pkt-match"
 __contact__ = "OpenConfig working group\nwww.openconfig.net"
 __organization__ = "OpenConfig working group"
 __revision__ = {
@@ -34,6 +44,8 @@ __revision__ = {
 }
 
 
+
+# extensions
 
 # features
 
@@ -380,4 +392,4 @@ class TransportFieldsTop(BaseBinding):
 
 # Top-uses
 
-# Top-containers{}
+# Top-containers
