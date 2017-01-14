@@ -58,28 +58,26 @@ __revision__ = {
 
 # typedef
 
-class InterfaceId(BaseTypeDef):
+class BaseInterfaceRef(Leafref):
+    """
+    Reusable type for by-name reference to a base interface.
+    This type may be used in cases where ability to reference
+    a subinterface is not required.
+    """
+    def __init__(self, _meta=None, path = "/oc-if:interfaces/oc-if:interface/oc-if:name", ):
+        super().__init__(_meta)
+        self.path = path
+
+
+class InterfaceId(String):
     """
     User-defined identifier for an interface, generally used to
     name a interface reference.  The id can be arbitrary but a
     useful convention is to use a combination of base interface
     name and subinterface index.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, ):
         super().__init__(_meta)
-        self.interface_id = String()
-
-
-class BaseInterfaceRef(BaseTypeDef):
-    """
-    Reusable type for by-name reference to a base interface.
-    This type may be used in cases where ability to reference
-    a subinterface is not required.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.base_interface_ref = Leafref(path="/oc-if:interfaces/oc-if:interface/oc-if:name", )
-
 
 
 # Identities

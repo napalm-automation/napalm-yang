@@ -178,6 +178,9 @@ def _parse_nested(sub, store, root):
             store[sub.keyword].insert(0, (sub.arg, unique_name))
         except AttributeError:
             store[sub.keyword] = [(sub.arg, unique_name)]
+    elif sub.keyword in ("typedef", ):
+        root["order_typedef"].insert(0, sub.arg)
+        _parse(sub.substmts, root[sub.keyword][sub.arg], root)
     elif sub.keyword in ("grouping", ):
         root["order"].insert(0, (sub.keyword, sub.arg))
         _parse(sub.substmts, root[sub.keyword][sub.arg], root)
@@ -266,6 +269,7 @@ def emit_napalm(ctx, modules, fd):
     for module in modules:
         logger.info("Parsing model {}".format(module.pos))
         parsed[module.arg]["order"] = []
+        parsed[module.arg]["order_typedef"] = []
         _parse(module.substmts, parsed[module.arg], parsed[module.arg])
 
     """

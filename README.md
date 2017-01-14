@@ -12,7 +12,7 @@ Structure
 	│   ├── __init__.py                # Main entry point for all the imports, provides namespace
 	│   ├── models                     # OC/IETF models generated automagically
 	│   ├── yang_base.py               # Base classes to use for bindings and data types
-	│   ├── yang_types.py              # YANG basic data type
+	│   ├── yang_types.py              # YANG builtin types
 	├── pyang_plugin                   # pyang plugin to generate bindings
 	├── test                           # Tests
 	├── yang_ietf                      # Git submodule with IETF models

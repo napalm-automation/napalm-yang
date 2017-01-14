@@ -54,68 +54,13 @@ __revision__ = {
 
 # typedef
 
-class Ipv4Prefix(BaseTypeDef):
-    """
-    The ipv4-prefix type represents an IPv4 address prefix.
-    The prefix length is given by the number following the
-    slash character and must be less than or equal to 32.
-    A prefix length value of n corresponds to an IP address
-    mask that has n contiguous 1-bits from the most
-    significant bit (MSB) and all other bits set to 0.
-    The canonical format of an IPv4 prefix has all bits of
-    the IPv4 address set to zero that are not part of the
-    IPv4 prefix.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ipv4_prefix = String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))", )
-
-
-class Ipv6Prefix(BaseTypeDef):
-    """
-    The ipv6-prefix type represents an IPv6 address prefix.
-    The prefix length is given by the number following the
-    slash character and must be less than or equal to 128.
-    A prefix length value of n corresponds to an IP address
-    mask that has n contiguous 1-bits from the most
-    significant bit (MSB) and all other bits set to 0.
-    The IPv6 address should have all bits that do not belong
-    to the prefix set to zero.
-    The canonical format of an IPv6 prefix has all bits of
-    the IPv6 address set to zero that are not part of the
-    IPv6 prefix.  Furthermore, the IPv6 address is represented
-    as defined in Section 4 of RFC 5952.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ipv6_prefix = String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))", )
-
-
-class IpAddressNoZone(BaseTypeDef):
-    """
-    The ip-address-no-zone type represents an IP address and is
-    IP version neutral.  The format of the textual representation
-    implies the IP version.  This type does not support scoped
-    addresses since it does not allow zone identifiers in the
-    address format.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ip_address_no_zone = Union(type={
-    "inet:ipv4-address-no-zone": {}, 
-    "inet:ipv6-address-no-zone": {}
-}, )
-
-
-class IpVersion(BaseTypeDef):
+class IpVersion(Enumeration):
     """
     This value represents the version of the IP protocol.
     In the value set and its semantics, this type is equivalent
     to the InetVersion textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ip_version = Enumeration(enum={
+    def __init__(self, _meta=None, enum = {
     "ipv4": {
         "info": {
             "description": "The IPv4 protocol as defined in RFC 791."
@@ -134,76 +79,37 @@ class IpVersion(BaseTypeDef):
         }, 
         "value": "0"
     }
-}, )
+}, ):
+        super().__init__(_meta)
+        self.enum = enum
 
 
-class Dscp(BaseTypeDef):
+class Dscp(Uint8):
     """
     The dscp type represents a Differentiated Services Code Point
     that may be used for marking packets in a traffic stream.
     In the value set and its semantics, this type is equivalent
     to the Dscp textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, range = "0..63", ):
         super().__init__(_meta)
-        self.dscp = Uint8(range="0..63", )
+        self.range = range
 
 
-class IpPrefix(BaseTypeDef):
+class Ipv6FlowLabel(Uint32):
     """
-    The ip-prefix type represents an IP prefix and is IP
-    version neutral.  The format of the textual representations
-    implies the IP version.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ip_prefix = Union(type={
-    "inet:ipv4-prefix": {}, 
-    "inet:ipv6-prefix": {}
-}, )
-
-
-class Ipv6AddressNoZone(BaseTypeDef):
-    """
-    An IPv6 address without a zone index.  This type, derived from
-    ipv6-address, may be used in situations where the zone is
-    known from the context and hence no zone index is needed.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ipv6_address_no_zone = inet.Ipv6Address(pattern="[0-9a-fA-F:\\.]*", )
-
-
-class Uri(BaseTypeDef):
-    """
-    The uri type represents a Uniform Resource Identifier
-    (URI) as defined by STD 66.
-    Objects using the uri type MUST be in US-ASCII encoding,
-    and MUST be normalized as described by RFC 3986 Sections
-    6.2.1, 6.2.2.1, and 6.2.2.2.  All unnecessary
-    percent-encoding is removed, and all case-insensitive
-    characters are set to lowercase except for hexadecimal
-    digits, which are normalized to uppercase as described in
-    Section 6.2.2.1.
-    The purpose of this normalization is to help provide
-    unique URIs.  Note that this normalization is not
-    sufficient to provide uniqueness.  Two URIs that are
-    textually distinct after this normalization may still be
-    equivalent.
-    Objects using the uri type may restrict the schemes that
-    they permit.  For example, 'data:' and 'urn:' schemes
-    might not be appropriate.
-    A zero-length URI is not a valid URI.  This can be used to
-    express 'URI absent' where required.
+    The ipv6-flow-label type represents the flow identifier or Flow
+    Label in an IPv6 packet header that may be used to
+    discriminate traffic flows.
     In the value set and its semantics, this type is equivalent
-    to the Uri SMIv2 textual convention defined in RFC 5017.
+    to the IPv6FlowLabel textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, range = "0..1048575", ):
         super().__init__(_meta)
-        self.uri = String()
+        self.range = range
 
 
-class PortNumber(BaseTypeDef):
+class PortNumber(Uint16):
     """
     The port-number type represents a 16-bit port number of an
     Internet transport-layer protocol such as UDP, TCP, DCCP, or
@@ -215,36 +121,176 @@ class PortNumber(BaseTypeDef):
     In the value set and its semantics, this type is equivalent
     to the InetPortNumber textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, range = "0..65535", ):
         super().__init__(_meta)
-        self.port_number = Uint16(range="0..65535", )
+        self.range = range
 
 
-class Ipv4AddressNoZone(BaseTypeDef):
+class AsNumber(Uint32):
+    """
+    The as-number type represents autonomous system numbers
+    which identify an Autonomous System (AS).  An AS is a set
+    of routers under a single technical administration, using
+    an interior gateway protocol and common metrics to route
+    packets within the AS, and using an exterior gateway
+    protocol to route packets to other ASes.  IANA maintains
+    the AS number space and has delegated large parts to the
+    regional registries.
+    Autonomous system numbers were originally limited to 16
+    bits.  BGP extensions have enlarged the autonomous system
+    number space to 32 bits.  This type therefore uses an uint32
+    base type without a range restriction in order to support
+    a larger autonomous system number space.
+    In the value set and its semantics, this type is equivalent
+    to the InetAutonomousSystemNumber textual convention of
+    the SMIv2.
+    """
+    def __init__(self, _meta=None, ):
+        super().__init__(_meta)
+
+class IpAddress(Union):
+    """
+    The ip-address type represents an IP address and is IP
+    version neutral.  The format of the textual representation
+    implies the IP version.  This type supports scoped addresses
+    by allowing zone identifiers in the address format.
+    """
+    def __init__(self, _meta=None, type = {
+    "inet:ipv4-address": {}, 
+    "inet:ipv6-address": {}
+}, ):
+        super().__init__(_meta)
+        self.type = type
+
+
+class Ipv4Address(String):
+    """
+    The ipv4-address type represents an IPv4 address in
+    dotted-quad notation.  The IPv4 address may include a zone
+    index, separated by a % sign.
+    The zone index is used to disambiguate identical address
+    values.  For link-local addresses, the zone index will
+    typically be the interface index number or the name of an
+    interface.  If the zone index is not present, the default
+    zone of the device will be used.
+    The canonical format for the zone index is the numerical
+    format
+    """
+    def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?", ):
+        super().__init__(_meta)
+        self.pattern = pattern
+
+
+class Ipv6Address(String):
+    """
+    The ipv6-address type represents an IPv6 address in full,
+    mixed, shortened, and shortened-mixed notation.  The IPv6
+    address may include a zone index, separated by a % sign.
+    The zone index is used to disambiguate identical address
+    values.  For link-local addresses, the zone index will
+    typically be the interface index number or the name of an
+    interface.  If the zone index is not present, the default
+    zone of the device will be used.
+    The canonical format of IPv6 addresses uses the textual
+    representation defined in Section 4 of RFC 5952.  The
+    canonical format for the zone index is the numerical
+    format as described in Section 11.2 of RFC 4007.
+    """
+    def __init__(self, _meta=None, pattern = "((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?", ):
+        super().__init__(_meta)
+        self.pattern = pattern
+
+
+class IpAddressNoZone(Union):
+    """
+    The ip-address-no-zone type represents an IP address and is
+    IP version neutral.  The format of the textual representation
+    implies the IP version.  This type does not support scoped
+    addresses since it does not allow zone identifiers in the
+    address format.
+    """
+    def __init__(self, _meta=None, type = {
+    "inet:ipv4-address-no-zone": {}, 
+    "inet:ipv6-address-no-zone": {}
+}, ):
+        super().__init__(_meta)
+        self.type = type
+
+
+class Ipv4AddressNoZone(inet.Ipv4Address):
     """
     An IPv4 address without a zone index.  This type, derived from
     ipv4-address, may be used in situations where the zone is
     known from the context and hence no zone index is needed.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, pattern = "[0-9\\.]*", ):
         super().__init__(_meta)
-        self.ipv4_address_no_zone = inet.Ipv4Address(pattern="[0-9\\.]*", )
+        self.pattern = pattern
 
 
-class Host(BaseTypeDef):
+class Ipv6AddressNoZone(inet.Ipv6Address):
     """
-    The host type represents either an IP address or a DNS
-    domain name.
+    An IPv6 address without a zone index.  This type, derived from
+    ipv6-address, may be used in situations where the zone is
+    known from the context and hence no zone index is needed.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, pattern = "[0-9a-fA-F:\\.]*", ):
         super().__init__(_meta)
-        self.host = Union(type={
-    "inet:domain-name": {}, 
-    "inet:ip-address": {}
-}, )
+        self.pattern = pattern
 
 
-class DomainName(BaseTypeDef):
+class IpPrefix(Union):
+    """
+    The ip-prefix type represents an IP prefix and is IP
+    version neutral.  The format of the textual representations
+    implies the IP version.
+    """
+    def __init__(self, _meta=None, type = {
+    "inet:ipv4-prefix": {}, 
+    "inet:ipv6-prefix": {}
+}, ):
+        super().__init__(_meta)
+        self.type = type
+
+
+class Ipv4Prefix(String):
+    """
+    The ipv4-prefix type represents an IPv4 address prefix.
+    The prefix length is given by the number following the
+    slash character and must be less than or equal to 32.
+    A prefix length value of n corresponds to an IP address
+    mask that has n contiguous 1-bits from the most
+    significant bit (MSB) and all other bits set to 0.
+    The canonical format of an IPv4 prefix has all bits of
+    the IPv4 address set to zero that are not part of the
+    IPv4 prefix.
+    """
+    def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))", ):
+        super().__init__(_meta)
+        self.pattern = pattern
+
+
+class Ipv6Prefix(String):
+    """
+    The ipv6-prefix type represents an IPv6 address prefix.
+    The prefix length is given by the number following the
+    slash character and must be less than or equal to 128.
+    A prefix length value of n corresponds to an IP address
+    mask that has n contiguous 1-bits from the most
+    significant bit (MSB) and all other bits set to 0.
+    The IPv6 address should have all bits that do not belong
+    to the prefix set to zero.
+    The canonical format of an IPv6 prefix has all bits of
+    the IPv6 address set to zero that are not part of the
+    IPv6 prefix.  Furthermore, the IPv6 address is represented
+    as defined in Section 4 of RFC 5952.
+    """
+    def __init__(self, _meta=None, pattern = "((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))", ):
+        super().__init__(_meta)
+        self.pattern = pattern
+
+
+class DomainName(String):
     """
     The domain-name type represents a DNS domain name.  The
     name SHOULD be fully qualified whenever possible.
@@ -277,100 +323,52 @@ class DomainName(BaseTypeDef):
     format uses lowercase US-ASCII characters.  Internationalized
     domain names MUST be A-labels as per RFC 5890.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, pattern = "((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.", length = "1..253", ):
         super().__init__(_meta)
-        self.domain_name = String(pattern="((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.", length="1..253", )
+        self.pattern = pattern
+
+        self.length = length
 
 
-class Ipv6FlowLabel(BaseTypeDef):
+class Host(Union):
     """
-    The ipv6-flow-label type represents the flow identifier or Flow
-    Label in an IPv6 packet header that may be used to
-    discriminate traffic flows.
+    The host type represents either an IP address or a DNS
+    domain name.
+    """
+    def __init__(self, _meta=None, type = {
+    "inet:domain-name": {}, 
+    "inet:ip-address": {}
+}, ):
+        super().__init__(_meta)
+        self.type = type
+
+
+class Uri(String):
+    """
+    The uri type represents a Uniform Resource Identifier
+    (URI) as defined by STD 66.
+    Objects using the uri type MUST be in US-ASCII encoding,
+    and MUST be normalized as described by RFC 3986 Sections
+    6.2.1, 6.2.2.1, and 6.2.2.2.  All unnecessary
+    percent-encoding is removed, and all case-insensitive
+    characters are set to lowercase except for hexadecimal
+    digits, which are normalized to uppercase as described in
+    Section 6.2.2.1.
+    The purpose of this normalization is to help provide
+    unique URIs.  Note that this normalization is not
+    sufficient to provide uniqueness.  Two URIs that are
+    textually distinct after this normalization may still be
+    equivalent.
+    Objects using the uri type may restrict the schemes that
+    they permit.  For example, 'data:' and 'urn:' schemes
+    might not be appropriate.
+    A zero-length URI is not a valid URI.  This can be used to
+    express 'URI absent' where required.
     In the value set and its semantics, this type is equivalent
-    to the IPv6FlowLabel textual convention of the SMIv2.
+    to the Uri SMIv2 textual convention defined in RFC 5017.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, ):
         super().__init__(_meta)
-        self.ipv6_flow_label = Uint32(range="0..1048575", )
-
-
-class IpAddress(BaseTypeDef):
-    """
-    The ip-address type represents an IP address and is IP
-    version neutral.  The format of the textual representation
-    implies the IP version.  This type supports scoped addresses
-    by allowing zone identifiers in the address format.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ip_address = Union(type={
-    "inet:ipv4-address": {}, 
-    "inet:ipv6-address": {}
-}, )
-
-
-class Ipv6Address(BaseTypeDef):
-    """
-    The ipv6-address type represents an IPv6 address in full,
-    mixed, shortened, and shortened-mixed notation.  The IPv6
-    address may include a zone index, separated by a % sign.
-    The zone index is used to disambiguate identical address
-    values.  For link-local addresses, the zone index will
-    typically be the interface index number or the name of an
-    interface.  If the zone index is not present, the default
-    zone of the device will be used.
-    The canonical format of IPv6 addresses uses the textual
-    representation defined in Section 4 of RFC 5952.  The
-    canonical format for the zone index is the numerical
-    format as described in Section 11.2 of RFC 4007.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ipv6_address = String(pattern="((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?", )
-
-
-class Ipv4Address(BaseTypeDef):
-    """
-    The ipv4-address type represents an IPv4 address in
-    dotted-quad notation.  The IPv4 address may include a zone
-    index, separated by a % sign.
-    The zone index is used to disambiguate identical address
-    values.  For link-local addresses, the zone index will
-    typically be the interface index number or the name of an
-    interface.  If the zone index is not present, the default
-    zone of the device will be used.
-    The canonical format for the zone index is the numerical
-    format
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ipv4_address = String(pattern="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?", )
-
-
-class AsNumber(BaseTypeDef):
-    """
-    The as-number type represents autonomous system numbers
-    which identify an Autonomous System (AS).  An AS is a set
-    of routers under a single technical administration, using
-    an interior gateway protocol and common metrics to route
-    packets within the AS, and using an exterior gateway
-    protocol to route packets to other ASes.  IANA maintains
-    the AS number space and has delegated large parts to the
-    regional registries.
-    Autonomous system numbers were originally limited to 16
-    bits.  BGP extensions have enlarged the autonomous system
-    number space to 32 bits.  This type therefore uses an uint32
-    base type without a range restriction in order to support
-    a larger autonomous system number space.
-    In the value set and its semantics, this type is equivalent
-    to the InetAutonomousSystemNumber textual convention of
-    the SMIv2.
-    """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.as_number = Uint32()
-
 
 
 # Identities

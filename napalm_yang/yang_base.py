@@ -13,6 +13,9 @@ class BaseBinding(object):
         if _meta:
             self._meta.update(_meta)
 
+    def __iter__():
+        pass
+
     def model_represenation(self):
         attrs = dir(self)
 
@@ -45,11 +48,23 @@ class BaseBinding(object):
 
 
 class YangType(object):
-    """All YANG types inherit from this class."""
+    """
+    All YANG types inherit from this class.
+
+    Notes:
+    * Yang types are callable. When a parameter is passed, the type will set the parameter
+      as its value. Without a paremeter it will return the value.
+    * The value is stored in the attribute `_value` but it's set and accessed via the `value`
+      property.
+    * Most types inheriting from this class will mostly have to care about implementing
+    the `_verify_value` class.
+    """
 
     def __init__(self, _meta=None):
+        # Actual value of the type, accessed via the value property
         self._value = None
 
+        # Meta information about the type as defined by the model
         self._meta = {
             "config": False,
             "mandatory": False
@@ -69,15 +84,27 @@ class YangType(object):
         else:
             return self.value
 
+    def _verify_value(self, value):
+        """
+        Each type has to implement this method. The method returns whether the value is
+        correct for the type.
+        """
+        raise NotImplementedError("{} is missing the implementation of this method".format(
+                                                                    self.__class__.__name__))
+
     @property
     def value(self):
         return self._value
 
     @value.setter
     def value(self, value):
-        self._value = value
+        if self._verify_value(value):
+            self._value = value
+        else:
+            raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
 
     def model_represenation(self):
+        """Returns a dict with information about the model itself."""
         return {
             "_meta": {
                 "type": self.__class__.__name__,
@@ -87,6 +114,7 @@ class YangType(object):
         }
 
     def data_representation(self):
+        """Returns a dict with information about the data (if any) contained by the model."""
         res = {"value": self.value}
         res["_meta"] = copy.deepcopy(self._meta)
         res["_meta"]["type"] = self.__class__.__name__

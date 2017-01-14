@@ -13,19 +13,14 @@ class Identity(YangType):
         self.description = description
         self.value = value
 
+    def _verify_value(self, value):
+        return True
+
 
 class Boolean(YangType):
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        if value in [True, False]:
-            self._value = value
-        else:
-            raise ValueError("Wrong value for boolean: {}".format(value))
+    def _verify_value(self, value):
+        return value in [True, False]
 
 
 class Baseint(YangType):
@@ -36,16 +31,8 @@ class Baseint(YangType):
         super().__init__(_meta)
         self.range = range
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        if self.min <= value <= self.max and not isinstance(value, bool):
-            self._value = value
-        else:
-            raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
+    def _verify_value(self, value):
+        return self.min <= value <= self.max and not isinstance(value, bool)
 
 
 class Int8(Baseint):
@@ -92,16 +79,8 @@ class Enumeration(YangType):
 
     def __init__(self, enum, _meta=None):
         super().__init__(_meta)
-        self.enum_map = enum
+        self.enum = enum
         self._meta["enum"] = None
-
-    @property
-    def enum(self):
-        return self._meta["enum"]
-
-    @enum.setter
-    def enum(self, enum):
-        raise AttributeError("Can't change enumeration once it's been initialized")
 
     @property
     def value(self):
@@ -109,38 +88,30 @@ class Enumeration(YangType):
 
     @value.setter
     def value(self, value):
-        if value in self.enum_map.keys():
+        if value in self.enum.keys():
             self._value = value
 
-            if "value" in self.enum_map[value].keys():
-                self._meta["enum_value"] = int(self.enum_map[value]['value'])
+            if "value" in self.enum[value].keys():
+                self._meta["enum_value"] = int(self.enum[value]['value'])
             else:
-                self._meta["enum_value"] = sorted(self.enum_map.keys()).index(value)
+                self._meta["enum_value"] = sorted(self.enum.keys()).index(value)
         else:
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
-            raise ValueError(error_msg.format(value, self.enum_map.keys()))
+            raise ValueError(error_msg.format(value, self.enum.keys()))
 
     def __str__(self):
-        return "{}, {}".format(self.enum, self.value)
+        return "{}, {}".format(self.value, self._meta["enum"])
 
 
 class String(YangType):
 
-    def __init__(self, _meta=None, pattern=None):
+    def __init__(self, _meta=None, pattern=None, length=None):
         super().__init__(_meta)
-
         self.pattern = pattern
+        self.length = length
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        if isinstance(value, basestring):
-            self._value = value
-        else:
-            raise ValueError("Wrong value for string: {}".format(value))
+    def _verify_value(self, value):
+        return isinstance(value, basestring)
 
 
 class Identityref(String):
@@ -149,13 +120,8 @@ class Identityref(String):
         super().__init__(_meta)
         self.base = base
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        self._value = value
+    def _verify_value(self, value):
+        return True
 
 
 class Leafref(String):
@@ -164,13 +130,8 @@ class Leafref(String):
         super().__init__(_meta)
         self.path = path
 
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        self._value = value
+    def _verify_value(self, value):
+        return True
 
 
 class ListElement(BaseBinding):
@@ -196,6 +157,10 @@ class List(BaseBinding):
     @property
     def value(self):
         return self._value
+
+    @value.setter
+    def value(self, value):
+        raise ValueError("You can't set a value to a list. Use new_element method")
 
     def new_element(self, name):
         self._value[name] = ListElement(self)

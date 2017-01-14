@@ -72,24 +72,24 @@ PreProvisioning = Feature("PreProvisioning")
 
 # typedef
 
-class InterfaceRef(BaseTypeDef):
+class InterfaceRef(Leafref):
     """
     This type is used by data models that need to reference
     configured interfaces.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, path = "/if:interfaces/if:interface/if:name", ):
         super().__init__(_meta)
-        self.interface_ref = Leafref(path="/if:interfaces/if:interface/if:name", )
+        self.path = path
 
 
-class InterfaceStateRef(BaseTypeDef):
+class InterfaceStateRef(Leafref):
     """
     This type is used by data models that need to reference
     the operationally present interfaces.
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, path = "/if:interfaces-state/if:interface/if:name", ):
         super().__init__(_meta)
-        self.interface_state_ref = Leafref(path="/if:interfaces-state/if:interface/if:name", )
+        self.path = path
 
 
 

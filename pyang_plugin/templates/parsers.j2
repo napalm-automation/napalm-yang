@@ -33,16 +33,19 @@ from napalm_yang import {{ vv|safe_attr_name }}
 
 {%- macro process_typedef(module) -%}
 # typedef
+{%- set order = module.pop("order_typedef") %}
 {%- set typedef = module.pop("typedef", {}) %}
-{% for k, v in typedef.items() %}
-class {{ k|safe_class_name }}(BaseTypeDef):
+{% for m in order -%}
+{%- set typename = typedef[m].type.keys()[0] %}
+{%- set typeargs = typedef[m].type[typename] %}
+class {{ m|safe_class_name }}({{ typename|safe_class_name }}):
     """
-{{ v.pop("info").pop("description")|indent }}
+{{ typedef[m].pop("info").pop("description")|indent }}
     """
-    def __init__(self, _meta=None):
+    def __init__(self, _meta=None, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ val|to_json }}, {% endfor %}):
         super().__init__(_meta)
-{%- for kk, vv in v.pop("type", {}).items() %}
-        self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}({% for kkk, vvv in vv.items() %}{{ kkk }}={{ vvv|to_json }}, {% endfor %})
+{%- for arg, val in typeargs.items() %}
+        self.{{ arg }} = {{ arg }}
 {% endfor %}
 {% endfor %}
 {%- endmacro %}

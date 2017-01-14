@@ -48,15 +48,13 @@ __revision__ = {
 
 # typedef
 
-class PortNumRange(BaseTypeDef):
+class PortNumRange(Union):
     """
     Port numbers may be represented as a single value,
     an inclusive range as <lower>..<higher>, or as ANY to
     indicate a wildcard.
     """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.port_num_range = Union(type={
+    def __init__(self, _meta=None, type = {
     "enumeration": {
         "enum": {
             "ANY": {
@@ -70,43 +68,45 @@ class PortNumRange(BaseTypeDef):
     "string": {
         "pattern": "^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$"
     }
-}, )
-
-
-class EthertypeType(BaseTypeDef):
-    """
-    The Ethertype value may be expressed as a 16-bit number in
-    hexadecimal notation, or using a type defined by the
-    ETHERTYPE identity
-    """
-    def __init__(self, _meta=None):
+}, ):
         super().__init__(_meta)
-        self.ethertype_type = Union(type={
-    "identityref": {
-        "base": "ETHERTYPE"
-    }, 
-    "uint16": {
-        "range": "1..65535"
-    }
-}, )
+        self.type = type
 
 
-class IpProtocolType(BaseTypeDef):
+class IpProtocolType(Union):
     """
     The IP protocol number may be expressed as a valid protocol
     number (integer) or using a protocol type defined by the
     IP_PROTOCOL identity
     """
-    def __init__(self, _meta=None):
-        super().__init__(_meta)
-        self.ip_protocol_type = Union(type={
+    def __init__(self, _meta=None, type = {
     "identityref": {
         "base": "IP_PROTOCOL"
     }, 
     "uint8": {
         "range": "0..254"
     }
-}, )
+}, ):
+        super().__init__(_meta)
+        self.type = type
+
+
+class EthertypeType(Union):
+    """
+    The Ethertype value may be expressed as a 16-bit number in
+    hexadecimal notation, or using a type defined by the
+    ETHERTYPE identity
+    """
+    def __init__(self, _meta=None, type = {
+    "identityref": {
+        "base": "ETHERTYPE"
+    }, 
+    "uint16": {
+        "range": "1..65535"
+    }
+}, ):
+        super().__init__(_meta)
+        self.type = type
 
 
 
