@@ -166,6 +166,9 @@ class List(BaseBinding):
         self._value[name] = ListElement(self)
         return self._value[name]
 
+    def model_represenation(self):
+        return ListElement(self).model_represenation()
+
     def data_representation(self):
         res = {}
         res["_meta"] = copy.deepcopy(self._meta) or {}

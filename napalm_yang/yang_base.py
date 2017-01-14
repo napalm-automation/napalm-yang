@@ -13,34 +13,30 @@ class BaseBinding(object):
         if _meta:
             self._meta.update(_meta)
 
-    def __iter__():
-        pass
+    def items(self):
+        attrs = dir(self)
+        for a in attrs:
+            attr = getattr(self, a)
+            if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
+                yield a, attr
 
     def model_represenation(self):
-        attrs = dir(self)
-
         result = {}
         result["_meta"] = copy.deepcopy(self._meta)
         result["_meta"]["nested"] = True
 
-        for a in attrs:
-            attr = getattr(self, a)
-            if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
-                result[a] = attr.model_represenation()
+        for attr_name, attr in self.items():
+            result[attr_name] = attr.model_represenation()
 
         return result
 
     def data_representation(self):
-        attrs = dir(self)
-
         result = {}
 
-        for a in attrs:
-            attr = getattr(self, a)
-            if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
-                res = attr.data_representation()
-                if res:
-                    result[a] = res
+        for attr_name, attr in self.items():
+            res = attr.data_representation()
+            if res:
+                result[attr_name] = res
 
         if result:
             result["_meta"] = copy.deepcopy(self._meta)
