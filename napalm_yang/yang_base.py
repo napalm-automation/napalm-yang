@@ -14,6 +14,7 @@ class BaseBinding(object):
             self._meta.update(_meta)
 
     def items(self):
+        """Allows the user to iterate the container as if it was a dictionary."""
         attrs = dir(self)
         for a in attrs:
             attr = getattr(self, a)
@@ -21,6 +22,7 @@ class BaseBinding(object):
                 yield a, attr
 
     def model_represenation(self):
+        """Returns a dict with information about the model itself."""
         result = {}
         result["_meta"] = copy.deepcopy(self._meta)
         result["_meta"]["nested"] = True
@@ -31,6 +33,7 @@ class BaseBinding(object):
         return result
 
     def data_representation(self):
+        """Returns a dict with information about the data (if any) contained in the model."""
         result = {}
 
         for attr_name, attr in self.items():
@@ -110,7 +113,7 @@ class YangType(object):
         }
 
     def data_representation(self):
-        """Returns a dict with information about the data (if any) contained by the model."""
+        """Returns a dict with information about the data (if any) contained in the model."""
         res = {"value": self.value}
         res["_meta"] = copy.deepcopy(self._meta)
         res["_meta"]["type"] = self.__class__.__name__
