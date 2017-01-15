@@ -20,3 +20,8 @@ models: clean
 .PHONY: submodule
 submodule:
 	git submodule update --init --recursive
+
+.PHONY: tests
+tests:
+	python test.py
+	py.test
