@@ -277,7 +277,7 @@ class InterfacesState_Interface_226(List, BaseBinding):
                 "value": "1"
             }
         })
-        self.if_index = Int32(_meta={"mandatory": True}, range="1..2147483647")
+        self.if_index = Int32(_meta={"mandatory": True}, range_="1..2147483647")
         # leaflist
         self.lower_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
         self.higher_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))

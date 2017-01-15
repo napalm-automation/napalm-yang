@@ -186,7 +186,7 @@ class IpProtocolFieldsConfig(BaseBinding):
         self.ip_version = inet.IpVersion(_meta={"mandatory": False}, )
         self.source_ip_address = inet.IpPrefix(_meta={"mandatory": False}, )
         self.destination_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False}, )
-        self.hop_limit = Uint8(_meta={"mandatory": False}, range="0..255")
+        self.hop_limit = Uint8(_meta={"mandatory": False}, range_="0..255")
         # leaflist
         # Meta
         self._meta["config"] = True

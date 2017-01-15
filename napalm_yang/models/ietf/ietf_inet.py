@@ -91,9 +91,9 @@ class Dscp(Uint8):
     In the value set and its semantics, this type is equivalent
     to the Dscp textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None, range = "0..63", ):
+    def __init__(self, _meta=None, range_ = "0..63", ):
         super().__init__(_meta)
-        self.range = range
+        self.range_ = range_
 
 
 class Ipv6FlowLabel(Uint32):
@@ -104,9 +104,9 @@ class Ipv6FlowLabel(Uint32):
     In the value set and its semantics, this type is equivalent
     to the IPv6FlowLabel textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None, range = "0..1048575", ):
+    def __init__(self, _meta=None, range_ = "0..1048575", ):
         super().__init__(_meta)
-        self.range = range
+        self.range_ = range_
 
 
 class PortNumber(Uint16):
@@ -121,9 +121,9 @@ class PortNumber(Uint16):
     In the value set and its semantics, this type is equivalent
     to the InetPortNumber textual convention of the SMIv2.
     """
-    def __init__(self, _meta=None, range = "0..65535", ):
+    def __init__(self, _meta=None, range_ = "0..65535", ):
         super().__init__(_meta)
-        self.range = range
+        self.range_ = range_
 
 
 class AsNumber(Uint32):
