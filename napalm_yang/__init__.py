@@ -1,6 +1,6 @@
 # pylama:skip=1
 from napalm_yang.yang_base import *
-from napalm_yang.yang_types import *
+from napalm_yang.yang_builtin_types import *
 
 from napalm_yang.models.ietf import ietf_yang as yang
 from napalm_yang.models.ietf import ietf_if
