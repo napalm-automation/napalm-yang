@@ -77,11 +77,13 @@ class YangType(object):
     def __str__(self):
         return "{}".format(self.value)
 
-    def __call__(self, value=None):
-        if value is not None:
-            self.value = value
-        else:
+    def __call__(self, *args):
+        if len(args) == 0:
             return self.value
+        elif len(args) == 1:
+            self.value = args[0]
+        else:
+            raise Exception("Too many arguments passed")
 
     def _verify_value(self, value):
         """
