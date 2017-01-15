@@ -2,6 +2,8 @@
 from napalm_yang import yang_builtin_types
 import pytest
 
+from decimal import Decimal
+
 
 integer_tests = [
     (yang_builtin_types.Int8, [-128, -100, 0, 100, 127, 052, 0xf], True),
@@ -38,6 +40,16 @@ integer_range_tests = [
 ]
 
 
+decimal64_tests = [
+    (1, None, ['-922337203685477580.8', '922337203685477580.7', -1, -1.2, 0, 20], True),
+    (1, None, ['-922337203685477580.9', '922337203685477580.8'], False),
+    (18, None, ['-9.223372036854775808', '9.223372036854775807', -1, -1.2, 0, 9], True),
+    (18, None, ['-9.223372036854775809', '9.223372036854775808', -10, -9.3, 21, 25], False),
+    (18, "-1.5..1.5|1.1", ['-1.49999999', '1.4999999', -1, -1.2, 0, 1.1], True),
+    (18, "-1.5..1.5|10.5", ['-1.500001', '1.500001', -10, -9.3, 21, 25], False),
+]
+
+
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
     try:
@@ -66,6 +78,14 @@ class TestYangBuiltinTypes:
         """Test that each type accepts correct values when a range is passed."""
         for value in values:
             yang_obj = yang_builtin_types.Int8(range_=range_)
+            obj_value_test(yang_obj, value, is_valid)
+
+    @pytest.mark.parametrize("fraction_digits, range_, values, is_valid", decimal64_tests)
+    def test_decimal64(self, fraction_digits, range_, values, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        for value in values:
+            value = Decimal(value)
+            yang_obj = yang_builtin_types.Decimal64(fraction_digits=fraction_digits, range_=range_)
             obj_value_test(yang_obj, value, is_valid)
 
 

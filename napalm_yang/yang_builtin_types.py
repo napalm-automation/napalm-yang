@@ -2,32 +2,36 @@
 from builtins import super
 import copy
 
+from decimal import Decimal
+
 from napalm_yang.yang_base import YangType, BaseBinding
 
 
-def value_in_range(range_, value, min_, max_):
+def value_in_range(range_, value, min_, max_, num_type):
     """Implements `range-stmt` as defined in rfc6020#section-12."""
-    def _value_in_subrange(sr, v, min_, max_):
+    def _value_in_subrange(sr, v, min_, max_, num_type):
         valid = sr.split("..")
 
         if len(valid) == 1:
-            return int(valid[0]) == v
+            return num_type(valid[0]) == v
         elif len(valid) == 2:
-            min_ = int(min_) if valid[0] == "min" else int(valid[0])
-            max_ = int(max_) if valid[1] == "max" else int(valid[1])
+            min_ = num_type(min_) if valid[0] == "min" else num_type(valid[0])
+            max_ = num_type(max_) if valid[1] == "max" else num_type(valid[1])
             return min_ <= v <= max_
         else:
             raise Exception("Invalid range: {}".format(sr))
 
-    if isinstance(value, bool) or not (isinstance(value, int) or isinstance(value, long)):
+    if isinstance(value, bool) or not (isinstance(value, num_type), isinstance(value, int)):
         # Bool is of type int as well and evaluates 1
         return False
 
-    return any([_value_in_subrange(sr, value, min_, max_) for sr in range_.split("|")])
+    return any([_value_in_subrange(sr, value, min_, max_, num_type)
+                for sr in range_.split("|")])
 
 
 class Baseint(YangType):
     """Implments rfc6020 section-9.2."""
+    num_type = int
 
     def __init__(self, range_=None, _meta=None):
         super().__init__(_meta)
@@ -39,7 +43,8 @@ class Baseint(YangType):
 
     def _verify_value(self, value):
         min_, max_ = self.ranges[0].split("..")
-        return all([value_in_range(r, value, min_, max_) for r in self.ranges])
+        return all([value_in_range(r, value, min_, max_, self.num_type)
+                    for r in self.ranges])
 
 
 class Int8(Baseint):
@@ -62,7 +67,7 @@ class Int32(Baseint):
 
 class Int64(Baseint):
     """Implments rfc6020 section-9.2."""
-    min = -9223372036854775808
+    min = Decimal('-9223372036854775808')
     max = 9223372036854775807
 
 
@@ -86,8 +91,47 @@ class Uint32(Baseint):
 
 class Uint64(Baseint):
     """Implments rfc6020 section-9.2."""
+    num_type = long
     min = 0
     max = 18446744073709551615
+
+
+class Decimal64(Baseint):
+    """Implments rfc6020 section-9.3."""
+    num_type = Decimal
+
+    fraction_map = {
+        "1": (Decimal('-922337203685477580.8'), Decimal('922337203685477580.7')),
+        "2": (Decimal('-92233720368547758.08'), Decimal('92233720368547758.07')),
+        "3": (Decimal('-9223372036854775.808'), Decimal('9223372036854775.807')),
+        "4": (Decimal('-922337203685477.5808'), Decimal('922337203685477.5807')),
+        "5": (Decimal('-92233720368547.75808'), Decimal('92233720368547.75807')),
+        "6": (Decimal('-9223372036854.775808'), Decimal('9223372036854.775807')),
+        "7": (Decimal('-922337203685.4775808'), Decimal('922337203685.4775807')),
+        "8": (Decimal('-92233720368.54775808'), Decimal('92233720368.54775807')),
+        "9": (Decimal('-9223372036.854775808'), Decimal('9223372036.854775807')),
+        "10": (Decimal('-922337203.6854775808'), Decimal('922337203.6854775807')),
+        "11": (Decimal('-92233720.36854775808'), Decimal('92233720.36854775807')),
+        "12": (Decimal('-9223372.036854775808'), Decimal('9223372.036854775807')),
+        "13": (Decimal('-922337.2036854775808'), Decimal('922337.2036854775807')),
+        "14": (Decimal('-92233.72036854775808'), Decimal('92233.72036854775807')),
+        "15": (Decimal('-9223.372036854775808'), Decimal('9223.372036854775807')),
+        "16": (Decimal('-922.3372036854775808'), Decimal('922.3372036854775807')),
+        "17": (Decimal('-92.23372036854775808'), Decimal('92.23372036854775807')),
+        "18": (Decimal('-9.223372036854775808'), Decimal('9.223372036854775807')),
+    }
+
+    def __init__(self, fraction_digits=0, range_=None, _meta=None):
+        try:
+            self.min, self.max = self.fraction_map[str(fraction_digits)]
+        except KeyError:
+            raise ValueError("Wrong value ({}) for fraction_digits. Valid values are 1..18".format(
+                fraction_digits))
+        super().__init__(_meta=_meta, range_=range_)
+
+    def _verify_value(self, value):
+        value = Decimal(value)
+        return super()._verify_value(value)
 
 
 class Identity(YangType):
