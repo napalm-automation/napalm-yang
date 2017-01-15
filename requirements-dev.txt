@@ -2,4 +2,7 @@ pyang
 pylama
 jinja2
 pytest
+pytest-cov
+pytest-json
 pytest-pythonpath
+-r requirements.txt
