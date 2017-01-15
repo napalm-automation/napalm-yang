@@ -27,6 +27,8 @@ integer_tests = [
 integer_range_tests = [
     ("10..20", [10, 15, 20, 020, 0xf], True),
     ("10..20", [-129, 128, 9, 21, 25, True, False, None, "asd"], False),
+    ("10..20|30|40..50", [10, 15, 20, 30, 45, 020, 0xf], True),
+    ("10..20|30|40..50", [-129, 128, 9, 21, 25, True, False, None, "asd"], False),
     ("min..20", [-128, 15, 20, 020, 0xf], True),
     ("min..20", [-129, 128, 21, 25, True, False, None, "asd"], False),
     ("10..max", [10, 15, 20, 020, 0xf, 127], True),

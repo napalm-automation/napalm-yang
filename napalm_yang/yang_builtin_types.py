@@ -5,6 +5,91 @@ import copy
 from napalm_yang.yang_base import YangType, BaseBinding
 
 
+def value_in_range(range_, value, min_, max_):
+    """Implements `range-stmt` as defined in rfc6020#section-12."""
+    def _value_in_subrange(sr, v, min_, max_):
+        valid = sr.split("..")
+
+        if len(valid) == 1:
+            return int(valid[0]) == v
+        elif len(valid) == 2:
+            min_ = int(min_) if valid[0] == "min" else int(valid[0])
+            max_ = int(max_) if valid[1] == "max" else int(valid[1])
+            return min_ <= v <= max_
+        else:
+            raise Exception("Invalid range: {}".format(sr))
+
+    if isinstance(value, bool) or not (isinstance(value, int) or isinstance(value, long)):
+        # Bool is of type int as well and evaluates 1
+        return False
+
+    return any([_value_in_subrange(sr, value, min_, max_) for sr in range_.split("|")])
+
+
+class Baseint(YangType):
+    """Implments rfc6020 section-9.2."""
+
+    def __init__(self, range_=None, _meta=None):
+        super().__init__(_meta)
+
+        self.ranges = ["{}..{}".format(self.min, self.max)]
+
+        if range_ is not None:
+            self.ranges.append(range_)
+
+    def _verify_value(self, value):
+        min_, max_ = self.ranges[0].split("..")
+        return all([value_in_range(r, value, min_, max_) for r in self.ranges])
+
+
+class Int8(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = -128
+    max = 127
+
+
+class Int16(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = -32768
+    max = 32767
+
+
+class Int32(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = -2147483648
+    max = 2147483647
+
+
+class Int64(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = -9223372036854775808
+    max = 9223372036854775807
+
+
+class Uint8(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = 0
+    max = 255
+
+
+class Uint16(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = 0
+    max = 65535
+
+
+class Uint32(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = 0
+    max = 4294967295
+
+
+class Uint64(Baseint):
+    """Implments rfc6020 section-9.2."""
+    min = 0
+    max = 18446744073709551615
+
+
 class Identity(YangType):
 
     def __init__(self, value, base=None, description="", _meta=None):
@@ -21,65 +106,6 @@ class Boolean(YangType):
 
     def _verify_value(self, value):
         return value in [True, False]
-
-
-class Baseint(YangType):
-    min = 0
-    max = 0
-
-    def __init__(self, range_=None, _meta=None):
-        super().__init__(_meta)
-
-        if range_ is not None:
-            new_min, new_max = range_.split("..")
-            if new_min != "min":
-                self.min = int(new_min)
-
-            if new_max != "max":
-                self.max = int(new_max)
-
-    def _verify_value(self, value):
-        return self.min <= value <= self.max and not isinstance(value, bool)
-
-
-class Int8(Baseint):
-    min = -128
-    max = 127
-
-
-class Int16(Baseint):
-    min = -32768
-    max = 32767
-
-
-class Int32(Baseint):
-    min = -2147483648
-    max = 2147483647
-
-
-class Int64(Baseint):
-    min = -9223372036854775808
-    max = 9223372036854775807
-
-
-class Uint8(Baseint):
-    min = 0
-    max = 255
-
-
-class Uint16(Baseint):
-    min = 0
-    max = 65535
-
-
-class Uint32(Baseint):
-    min = 0
-    max = 4294967295
-
-
-class Uint64(Baseint):
-    min = 0
-    max = 18446744073709551615
 
 
 class Enumeration(YangType):
