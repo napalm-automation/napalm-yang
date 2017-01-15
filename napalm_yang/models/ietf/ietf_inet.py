@@ -80,9 +80,7 @@ class IpVersion(Enumeration):
         "value": "0"
     }
 }, ):
-        super().__init__(_meta)
-        self.enum = enum
-
+        super().__init__(_meta=_meta, enum = enum, )
 
 class Dscp(Uint8):
     """
@@ -92,9 +90,7 @@ class Dscp(Uint8):
     to the Dscp textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, range_ = "0..63", ):
-        super().__init__(_meta)
-        self.range_ = range_
-
+        super().__init__(_meta=_meta, range_ = range_, )
 
 class Ipv6FlowLabel(Uint32):
     """
@@ -105,9 +101,7 @@ class Ipv6FlowLabel(Uint32):
     to the IPv6FlowLabel textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, range_ = "0..1048575", ):
-        super().__init__(_meta)
-        self.range_ = range_
-
+        super().__init__(_meta=_meta, range_ = range_, )
 
 class PortNumber(Uint16):
     """
@@ -122,9 +116,7 @@ class PortNumber(Uint16):
     to the InetPortNumber textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, range_ = "0..65535", ):
-        super().__init__(_meta)
-        self.range_ = range_
-
+        super().__init__(_meta=_meta, range_ = range_, )
 
 class AsNumber(Uint32):
     """
@@ -146,7 +138,7 @@ class AsNumber(Uint32):
     the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class IpAddress(Union):
     """
@@ -155,13 +147,11 @@ class IpAddress(Union):
     implies the IP version.  This type supports scoped addresses
     by allowing zone identifiers in the address format.
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "inet:ipv4-address": {}, 
     "inet:ipv6-address": {}
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class Ipv4Address(String):
     """
@@ -177,9 +167,7 @@ class Ipv4Address(String):
     format
     """
     def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Ipv6Address(String):
     """
@@ -197,9 +185,7 @@ class Ipv6Address(String):
     format as described in Section 11.2 of RFC 4007.
     """
     def __init__(self, _meta=None, pattern = "((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class IpAddressNoZone(Union):
     """
@@ -209,13 +195,11 @@ class IpAddressNoZone(Union):
     addresses since it does not allow zone identifiers in the
     address format.
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "inet:ipv4-address-no-zone": {}, 
     "inet:ipv6-address-no-zone": {}
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class Ipv4AddressNoZone(inet.Ipv4Address):
     """
@@ -224,9 +208,7 @@ class Ipv4AddressNoZone(inet.Ipv4Address):
     known from the context and hence no zone index is needed.
     """
     def __init__(self, _meta=None, pattern = "[0-9\\.]*", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Ipv6AddressNoZone(inet.Ipv6Address):
     """
@@ -235,9 +217,7 @@ class Ipv6AddressNoZone(inet.Ipv6Address):
     known from the context and hence no zone index is needed.
     """
     def __init__(self, _meta=None, pattern = "[0-9a-fA-F:\\.]*", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class IpPrefix(Union):
     """
@@ -245,13 +225,11 @@ class IpPrefix(Union):
     version neutral.  The format of the textual representations
     implies the IP version.
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "inet:ipv4-prefix": {}, 
     "inet:ipv6-prefix": {}
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class Ipv4Prefix(String):
     """
@@ -266,9 +244,7 @@ class Ipv4Prefix(String):
     IPv4 prefix.
     """
     def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Ipv6Prefix(String):
     """
@@ -286,9 +262,7 @@ class Ipv6Prefix(String):
     as defined in Section 4 of RFC 5952.
     """
     def __init__(self, _meta=None, pattern = "((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class DomainName(String):
     """
@@ -324,24 +298,18 @@ class DomainName(String):
     domain names MUST be A-labels as per RFC 5890.
     """
     def __init__(self, _meta=None, pattern = "((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.", length = "1..253", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
-        self.length = length
-
+        super().__init__(_meta=_meta, pattern = pattern, length = length, )
 
 class Host(Union):
     """
     The host type represents either an IP address or a DNS
     domain name.
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "inet:domain-name": {}, 
     "inet:ip-address": {}
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class Uri(String):
     """
@@ -368,7 +336,7 @@ class Uri(String):
     to the Uri SMIv2 textual convention defined in RFC 5017.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 
 # Identities

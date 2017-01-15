@@ -144,7 +144,7 @@ class InputInterfaceConfig(BaseBinding):
     Config of interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -161,7 +161,7 @@ class InputInterfaceState(BaseBinding):
     State information of interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -178,7 +178,7 @@ class InputInterface_Config_144(InputInterfaceConfig):
     Config data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -195,7 +195,7 @@ class InputInterface_State_150(InputInterfaceState, InputInterfaceConfig):
     State information
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -212,7 +212,7 @@ class InputInterfaceTop_InputInterface_140(oc_if.InterfaceRef):
     Input interface container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = InputInterface_Config_144()
         self.state = InputInterface_State_150()
@@ -231,7 +231,7 @@ class InputInterfaceTop(BaseBinding):
     Input interface top level container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.input_interface = InputInterfaceTop_InputInterface_140()
         # list
@@ -249,7 +249,7 @@ class ActionConfig(BaseBinding):
     Config of action type
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -268,7 +268,7 @@ class ActionState(BaseBinding):
     State information of action type
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -285,7 +285,7 @@ class Actions_Config_208(ActionConfig):
     Config data for ACL actions
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -302,7 +302,7 @@ class Actions_State_214(ActionState, ActionConfig):
     State information for ACL actions
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -320,7 +320,7 @@ class ActionTop_Actions_203(BaseBinding):
     with an entry
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Actions_Config_208()
         self.state = Actions_State_214()
@@ -339,7 +339,7 @@ class ActionTop(BaseBinding):
     ACL action type top level container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.actions = ActionTop_Actions_203()
         # list
@@ -357,7 +357,7 @@ class AclCountersState(BaseBinding):
     Common grouping for ACL counters
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -376,7 +376,7 @@ class AccessListEntriesConfig(BaseBinding):
     Access List Entries (ACE) config.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -395,7 +395,7 @@ class AccessListEntriesState(AclCountersState):
     Access List Entries state.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -412,7 +412,7 @@ class AclEntry_Config_321(AccessListEntriesConfig):
     Access list entries config
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -429,7 +429,7 @@ class AclEntry_State_327(AccessListEntriesState, AccessListEntriesConfig):
     State information for ACL entries
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -446,7 +446,7 @@ class AclEntries_AclEntry_308(List, ActionTop, InputInterfaceTop, oc_match.Trans
     List of ACL entries comprising an ACL set
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = AclEntry_Config_321()
         self.state = AclEntry_State_327()
@@ -467,7 +467,7 @@ class AccessListEntriesTop_AclEntries_304(BaseBinding):
     Access list entries container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.acl_entry = AclEntries_AclEntry_308()
@@ -485,7 +485,7 @@ class AccessListEntriesTop(BaseBinding):
     Access list entries to level container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.acl_entries = AccessListEntriesTop_AclEntries_304()
         # list
@@ -503,7 +503,7 @@ class AclSetConfig(BaseBinding):
     Access Control List config
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -522,7 +522,7 @@ class AclSetState(BaseBinding):
     Access Control List state
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -539,7 +539,7 @@ class AclSet_Config_390(AclSetConfig):
     Access list config
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -556,7 +556,7 @@ class AclSet_State_396(AclSetState, AclSetConfig):
     Access list state information
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -574,7 +574,7 @@ class AclSets_AclSet_376(List, AccessListEntriesTop):
     entries
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = AclSet_Config_390()
         self.state = AclSet_State_396()
@@ -595,7 +595,7 @@ class AclSetTop_AclSets_372(BaseBinding):
     Access list entries variables enclosing container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.acl_set = AclSets_AclSet_376()
@@ -613,7 +613,7 @@ class AclSetTop(BaseBinding):
     Access list entries variables top level container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.acl_sets = AclSetTop_AclSets_372()
         # list
@@ -631,7 +631,7 @@ class InterfaceAclEntriesConfig(BaseBinding):
     Configuration data for per-interface ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -648,7 +648,7 @@ class InterfaceAclEntriesState(AclCountersState):
     Operational state data for per-interface ACL entries
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -666,7 +666,7 @@ class AclEntry_State_458(InterfaceAclEntriesState, InterfaceAclEntriesConfig):
     Operational state data for per-interface ACL entries
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -683,7 +683,7 @@ class AclEntries_AclEntry_442(List, BaseBinding):
     List of ACL entries assigned to an interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.state = AclEntry_State_458()
         # list
@@ -703,7 +703,7 @@ class InterfaceAclEntriesTop_AclEntries_437(BaseBinding):
     Enclosing container for list of references to ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.acl_entry = AclEntries_AclEntry_442()
@@ -721,7 +721,7 @@ class InterfaceAclEntriesTop(BaseBinding):
     Top-level grouping for per-interface ACL entries
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.acl_entries = InterfaceAclEntriesTop_AclEntries_437()
         # list
@@ -739,7 +739,7 @@ class InterfaceIngressAclConfig(BaseBinding):
     Configuration data for per-interface ingress ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -757,7 +757,7 @@ class InterfaceIngressAclState(BaseBinding):
     Operational state data for the per-interface ingress ACL
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -774,7 +774,7 @@ class IngressAclSet_Config_512(InterfaceIngressAclConfig):
     Configuration data 
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -791,7 +791,7 @@ class IngressAclSet_State_519(InterfaceIngressAclState, InterfaceIngressAclConfi
     Operational state data for interface ingress ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -808,7 +808,7 @@ class IngressAclSets_IngressAclSet_499(List, InterfaceAclEntriesTop):
     List of ingress ACLs on the interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = IngressAclSet_Config_512()
         self.state = IngressAclSet_State_519()
@@ -830,7 +830,7 @@ class InterfaceIngressAclTop_IngressAclSets_494(BaseBinding):
     interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.ingress_acl_set = IngressAclSets_IngressAclSet_499()
@@ -848,7 +848,7 @@ class InterfaceIngressAclTop(BaseBinding):
     Top-level grouping for per-interface ingress ACL data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.ingress_acl_sets = InterfaceIngressAclTop_IngressAclSets_494()
         # list
@@ -866,7 +866,7 @@ class InterfaceEgressAclConfig(BaseBinding):
     Configuration data for per-interface egress ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -884,7 +884,7 @@ class InterfaceEgressAclState(BaseBinding):
     Operational state data for the per-interface egress ACL
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -901,7 +901,7 @@ class EgressAclSet_Config_575(InterfaceEgressAclConfig):
     Configuration data 
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -918,7 +918,7 @@ class EgressAclSet_State_582(InterfaceEgressAclState, InterfaceEgressAclConfig):
     Operational state data for interface egress ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -935,7 +935,7 @@ class EgressAclSets_EgressAclSet_562(List, InterfaceAclEntriesTop):
     List of egress ACLs on the interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = EgressAclSet_Config_575()
         self.state = EgressAclSet_State_582()
@@ -957,7 +957,7 @@ class InterfaceEgressAclTop_EgressAclSets_557(BaseBinding):
     interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.egress_acl_set = EgressAclSets_EgressAclSet_562()
@@ -975,7 +975,7 @@ class InterfaceEgressAclTop(BaseBinding):
     Top-level grouping for per-interface egress ACL data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.egress_acl_sets = InterfaceEgressAclTop_EgressAclSets_557()
         # list
@@ -993,7 +993,7 @@ class AclInterfacesConfig(BaseBinding):
     Configuration data for interface references
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1011,7 +1011,7 @@ class AclInterfacesState(BaseBinding):
     Operational state data for interface references
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1028,7 +1028,7 @@ class Interface_Config_637(AclInterfacesConfig):
     Configuration for ACL per-interface data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1045,7 +1045,7 @@ class Interface_State_644(AclInterfacesState, AclInterfacesConfig):
     Operational state for ACL per-interface data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1062,7 +1062,7 @@ class Interfaces_Interface_624(List, InterfaceEgressAclTop, InterfaceIngressAclT
     List of interfaces on which ACLs are set
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Interface_Config_637()
         self.state = Interface_State_644()
@@ -1084,7 +1084,7 @@ class AclInterfacesTop_Interfaces_619(BaseBinding):
     ACLs are set
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.interface = Interfaces_Interface_624()
@@ -1102,7 +1102,7 @@ class AclInterfacesTop(BaseBinding):
     Top-level grouping for interface-specific ACL data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.interfaces = AclInterfacesTop_Interfaces_619()
         # list
@@ -1120,7 +1120,7 @@ class AclConfig(BaseBinding):
     Global configuration data for ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1137,7 +1137,7 @@ class AclState(BaseBinding):
     Global operational state data for ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1155,7 +1155,7 @@ class Acl_Config_689(AclConfig):
     Global config data for ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1172,7 +1172,7 @@ class Acl_State_696(AclState, AclConfig):
     Global operational state data for ACLs
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -1190,7 +1190,7 @@ class AclTop_Acl_684(AclInterfacesTop, AclSetTop):
     and operational state data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Acl_Config_689()
         self.state = Acl_State_696()
@@ -1209,7 +1209,7 @@ class AclTop(BaseBinding):
     Top level grouping for ACL data and structure
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.acl = AclTop_Acl_684()
         # list

@@ -65,9 +65,7 @@ class BaseInterfaceRef(Leafref):
     a subinterface is not required.
     """
     def __init__(self, _meta=None, path = "/oc-if:interfaces/oc-if:interface/oc-if:name", ):
-        super().__init__(_meta)
-        self.path = path
-
+        super().__init__(_meta=_meta, path = path, )
 
 class InterfaceId(String):
     """
@@ -77,7 +75,7 @@ class InterfaceId(String):
     name and subinterface index.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 
 # Identities
@@ -91,7 +89,7 @@ class InterfaceRefCommon(BaseBinding):
     Reference leafrefs to interface / subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -110,7 +108,7 @@ class InterfaceRefStateContainer_State_103(InterfaceRefCommon):
     Operational state for interface-ref
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -128,7 +126,7 @@ class InterfaceRefStateContainer(BaseBinding):
     interface or subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.state = InterfaceRefStateContainer_State_103()
         # list
@@ -146,7 +144,7 @@ class InterfaceRef_Config_121(InterfaceRefCommon):
     Configured reference to interface / subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -163,7 +161,7 @@ class InterfaceRef_InterfaceRef_117(InterfaceRefStateContainer):
     Reference to an interface or subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = InterfaceRef_Config_121()
         # list
@@ -182,7 +180,7 @@ class InterfaceRef(BaseBinding):
     subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.interface_ref = InterfaceRef_InterfaceRef_117()
         # list
@@ -200,7 +198,7 @@ class InterfaceRefState_InterfaceRef_137(InterfaceRefStateContainer):
     Reference to an interface or subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -218,7 +216,7 @@ class InterfaceRefState(BaseBinding):
     interface or subinterface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.interface_ref = InterfaceRefState_InterfaceRef_137()
         # list
@@ -237,7 +235,7 @@ class InterfaceCommonConfig(BaseBinding):
     and subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -257,11 +255,11 @@ class InterfacePhysConfig(InterfaceCommonConfig):
     Configuration data for physical interfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
-        self.type = Identityref(_meta={"mandatory": True}, base="ietf-if:interface-type")
+        self.type_ = Identityref(_meta={"mandatory": True}, base="ietf-if:interface-type")
         self.mtu = Uint16(_meta={"mandatory": False}, )
         # leaflist
         # Meta
@@ -277,7 +275,7 @@ class InterfacePhysHoldtimeConfig(BaseBinding):
     applies to physical interfaces.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -296,7 +294,7 @@ class InterfacePhysHoldtimeState(BaseBinding):
     Operational state data for interface hold-time.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -313,7 +311,7 @@ class HoldTime_Config_332(InterfacePhysHoldtimeConfig):
     Configuration data for interface hold-time settings.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -330,7 +328,7 @@ class HoldTime_State_339(InterfacePhysHoldtimeState, InterfacePhysHoldtimeConfig
     Operational state data for interface hold-time.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -348,7 +346,7 @@ class InterfacePhysHoldtimeTop_HoldTime_327(BaseBinding):
     dampening advertisements of interface transitions.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = HoldTime_Config_332()
         self.state = HoldTime_State_339()
@@ -368,7 +366,7 @@ class InterfacePhysHoldtimeTop(BaseBinding):
     dampening on physical and other types of interfaces.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.hold_time = InterfacePhysHoldtimeTop_HoldTime_327()
         # list
@@ -387,7 +385,7 @@ class InterfaceCommonState(BaseBinding):
     at the global level for this interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -467,7 +465,7 @@ class InterfaceCountersState_Counters_475(BaseBinding):
     A collection of interface-related statistics objects.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -499,7 +497,7 @@ class InterfaceCountersState(BaseBinding):
     and statistics.  Some of these are adapted from RFC 7223
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.counters = InterfaceCountersState_Counters_475()
         # list
@@ -517,7 +515,7 @@ class SubUnnumberedConfig(BaseBinding):
     Configuration data for unnumbered subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -535,7 +533,7 @@ class SubUnnumberedState(BaseBinding):
     Operational state data unnumbered subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -552,7 +550,7 @@ class Unnumbered_Config_779(SubUnnumberedConfig):
     Configuration data for unnumbered interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -569,7 +567,7 @@ class Unnumbered_State_786(SubUnnumberedState, SubUnnumberedConfig):
     Operational state data for unnumbered interfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -588,7 +586,7 @@ class SubUnnumberedTop_Unnumbered_773(oc_if.InterfaceRef):
     address information
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Unnumbered_Config_779()
         self.state = Unnumbered_State_786()
@@ -607,7 +605,7 @@ class SubUnnumberedTop(BaseBinding):
     Top-level grouping unnumbered subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.unnumbered = SubUnnumberedTop_Unnumbered_773()
         # list
@@ -625,7 +623,7 @@ class SubinterfacesConfig(InterfaceCommonConfig):
     Configuration data for subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -643,7 +641,7 @@ class SubinterfacesState(InterfaceCountersState, InterfaceCommonState):
     Operational state data for subinterfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -660,7 +658,7 @@ class Subinterface_Config_853(SubinterfacesConfig):
     Configurable items at the subinterface level
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -677,7 +675,7 @@ class Subinterface_State_860(SubinterfacesState, SubinterfacesConfig):
     Operational state data for logical interfaces
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -695,7 +693,7 @@ class Subinterfaces_Subinterface_837(List, BaseBinding):
     with a physical interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Subinterface_Config_853()
         self.state = Subinterface_State_860()
@@ -717,7 +715,7 @@ class SubinterfacesTop_Subinterfaces_832(BaseBinding):
     with a physical interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.subinterface = Subinterfaces_Subinterface_837()
@@ -736,7 +734,7 @@ class SubinterfacesTop(BaseBinding):
     given interface
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.subinterfaces = SubinterfacesTop_Subinterfaces_832()
         # list
@@ -755,7 +753,7 @@ class Interface_Config_905(InterfacePhysConfig):
     level
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -772,7 +770,7 @@ class Interface_State_913(InterfaceCountersState, InterfaceCommonState, Interfac
     Operational state data at the global interface level
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -789,7 +787,7 @@ class Interfaces_Interface_884(List, SubinterfacesTop, InterfacePhysHoldtimeTop)
     The list of named interfaces on the device.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Interface_Config_905()
         self.state = Interface_State_913()
@@ -811,7 +809,7 @@ class InterfacesTop_Interfaces_878(BaseBinding):
     and state data.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.interface = Interfaces_Interface_884()
@@ -830,7 +828,7 @@ class InterfacesTop(BaseBinding):
     operational state data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.interfaces = InterfacesTop_Interfaces_878()
         # list

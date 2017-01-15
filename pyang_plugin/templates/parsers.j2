@@ -43,10 +43,7 @@ class {{ m|safe_class_name }}({{ typename|safe_class_name }}):
 {{ typedef[m].pop("info").pop("description")|indent }}
     """
     def __init__(self, _meta=None, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ val|to_json }}, {% endfor %}):
-        super().__init__(_meta)
-{%- for arg, val in typeargs.items() %}
-        self.{{ arg|safe_attr_name }} = {{ arg|safe_attr_name }}
-{% endfor %}
+        super().__init__(_meta=_meta, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ arg|safe_attr_name }}, {% endfor %})
 {% endfor %}
 {%- endmacro %}
 
@@ -84,7 +81,7 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
 {{ cls.pop("info", {}).pop("description")|indent }}
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
 {{ _process_attributes(cls, "container")|indent(8) }}
 {{ _process_attributes(cls, "list")|indent(8) }}
 {{ _process_leafs(cls)|indent(8) }}

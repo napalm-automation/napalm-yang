@@ -64,7 +64,7 @@ class EthernetHeaderConfig(BaseBinding):
     Configuration data of fields in Ethernet header.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -86,7 +86,7 @@ class EthernetHeaderState(BaseBinding):
     State information of fields in Ethernet header.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -103,7 +103,7 @@ class L2_Config_94(EthernetHeaderConfig):
     Configuration data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -120,7 +120,7 @@ class L2_State_100(EthernetHeaderState, EthernetHeaderConfig):
     State Information.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -137,7 +137,7 @@ class EthernetHeaderTop_L2_90(BaseBinding):
     Ethernet header fields
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = L2_Config_94()
         self.state = L2_State_100()
@@ -156,7 +156,7 @@ class EthernetHeaderTop(BaseBinding):
     Top level container for fields in Ethernet header.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.l2 = EthernetHeaderTop_L2_90()
         # list
@@ -175,7 +175,7 @@ class IpProtocolFieldsConfig(BaseBinding):
     common to ipv4 and ipv6
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -200,7 +200,7 @@ class IpProtocolFieldsState(BaseBinding):
     State information of IP header fields common to ipv4 and ipv6
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -217,7 +217,7 @@ class Ip_Config_184(IpProtocolFieldsConfig):
     Configuration data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -234,7 +234,7 @@ class Ip_State_190(IpProtocolFieldsState, IpProtocolFieldsConfig):
     State information
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -251,7 +251,7 @@ class IpProtocolFieldsTop_Ip_180(BaseBinding):
     Top level container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Ip_Config_184()
         self.state = Ip_State_190()
@@ -270,7 +270,7 @@ class IpProtocolFieldsTop(BaseBinding):
     IP header fields common to ipv4 and ipv6
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.ip = IpProtocolFieldsTop_Ip_180()
         # list
@@ -288,7 +288,7 @@ class TransportFieldsConfig(BaseBinding):
     Configuration data of transport-layer packet fields
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -308,7 +308,7 @@ class TransportFieldsState(BaseBinding):
     State data of transport-fields
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -325,7 +325,7 @@ class Transport_Config_239(TransportFieldsConfig):
     Configuration data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -342,7 +342,7 @@ class Transport_State_245(TransportFieldsState, TransportFieldsConfig):
     State data
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -359,7 +359,7 @@ class TransportFieldsTop_Transport_235(BaseBinding):
     Transport fields container
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.config = Transport_Config_239()
         self.state = Transport_State_245()
@@ -378,7 +378,7 @@ class TransportFieldsTop(BaseBinding):
     Destination transport-fields top level grouping
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.transport = TransportFieldsTop_Transport_235()
         # list

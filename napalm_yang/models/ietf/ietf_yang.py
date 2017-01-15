@@ -78,7 +78,7 @@ class Counter32(Uint32):
     to the Counter32 type of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class ZeroBasedCounter32(yang.Counter32):
     """
@@ -98,7 +98,7 @@ class ZeroBasedCounter32(yang.Counter32):
     to the ZeroBasedCounter32 textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class Counter64(Uint64):
     """
@@ -124,7 +124,7 @@ class Counter64(Uint64):
     to the Counter64 type of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class ZeroBasedCounter64(yang.Counter64):
     """
@@ -144,7 +144,7 @@ class ZeroBasedCounter64(yang.Counter64):
     to the ZeroBasedCounter64 textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class Gauge32(Uint32):
     """
@@ -164,7 +164,7 @@ class Gauge32(Uint32):
     to the Gauge32 type of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class Gauge64(Uint64):
     """
@@ -185,7 +185,7 @@ class Gauge64(Uint64):
     in RFC 2856
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class ObjectIdentifier(String):
     """
@@ -214,9 +214,7 @@ class ObjectIdentifier(String):
     used instead.
     """
     def __init__(self, _meta=None, pattern = "(([0-1](\\.[1-3]?[0-9]))|(2\\.(0|([1-9]\\d*))))(\\.(0|([1-9]\\d*)))*", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class ObjectIdentifier128(ObjectIdentifier):
     """
@@ -226,9 +224,7 @@ class ObjectIdentifier128(ObjectIdentifier):
     to the OBJECT IDENTIFIER type of the SMIv2.
     """
     def __init__(self, _meta=None, pattern = "\\d*(\\.\\d*){1,127}", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class YangIdentifier(String):
     """
@@ -242,11 +238,7 @@ class YangIdentifier(String):
     sequence 'xml'.
     """
     def __init__(self, _meta=None, pattern = "[a-zA-Z_][a-zA-Z0-9\\-_.]*", length = "1..max", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
-        self.length = length
-
+        super().__init__(_meta=_meta, pattern = pattern, length = length, )
 
 class DateAndTime(String):
     """
@@ -280,9 +272,7 @@ class DateAndTime(String):
     -00:00.
     """
     def __init__(self, _meta=None, pattern = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Timeticks(Uint32):
     """
@@ -295,7 +285,7 @@ class Timeticks(Uint32):
     to the TimeTicks type of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class Timestamp(yang.Timeticks):
     """
@@ -314,7 +304,7 @@ class Timestamp(yang.Timeticks):
     to the TimeStamp textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class PhysAddress(String):
     """
@@ -326,9 +316,7 @@ class PhysAddress(String):
     to the PhysAddress textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, pattern = "([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class MacAddress(String):
     """
@@ -338,9 +326,7 @@ class MacAddress(String):
     to the MacAddress textual convention of the SMIv2.
     """
     def __init__(self, _meta=None, pattern = "[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Xpath10(String):
     """
@@ -350,7 +336,7 @@ class Xpath10(String):
     context in which the XPath expression is evaluated.
     """
     def __init__(self, _meta=None, ):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta, )
 
 class HexString(String):
     """
@@ -359,9 +345,7 @@ class HexString(String):
     lowercase characters.
     """
     def __init__(self, _meta=None, pattern = "([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class Uuid(String):
     """
@@ -372,9 +356,7 @@ class Uuid(String):
     f81d4fae-7dec-11d0-a765-00a0c91e6bf6
     """
     def __init__(self, _meta=None, pattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 class DottedQuad(String):
     """
@@ -383,9 +365,7 @@ class DottedQuad(String):
     and separated with the '.' (full stop) character.
     """
     def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", ):
-        super().__init__(_meta)
-        self.pattern = pattern
-
+        super().__init__(_meta=_meta, pattern = pattern, )
 
 
 # Identities

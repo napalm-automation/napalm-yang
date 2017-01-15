@@ -78,9 +78,7 @@ class InterfaceRef(Leafref):
     configured interfaces.
     """
     def __init__(self, _meta=None, path = "/if:interfaces/if:interface/if:name", ):
-        super().__init__(_meta)
-        self.path = path
-
+        super().__init__(_meta=_meta, path = path, )
 
 class InterfaceStateRef(Leafref):
     """
@@ -88,9 +86,7 @@ class InterfaceStateRef(Leafref):
     the operationally present interfaces.
     """
     def __init__(self, _meta=None, path = "/if:interfaces-state/if:interface/if:name", ):
-        super().__init__(_meta)
-        self.path = path
-
+        super().__init__(_meta=_meta, path = path, )
 
 
 # Identities
@@ -121,11 +117,11 @@ class Interfaces_Interface_92(List, BaseBinding):
     /interfaces-state/interface list.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
-        self.type = Identityref(_meta={"mandatory": True}, base="interface-type")
+        self.type_ = Identityref(_meta={"mandatory": True}, base="interface-type")
         self.link_up_down_trap_enable = Enumeration(_meta={"mandatory": False}, enum={
             "disabled": {
                 "value": "2"
@@ -151,7 +147,7 @@ class IetfInterfaces_Interfaces_89(BaseBinding):
     Interface configuration parameters.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.interface = Interfaces_Interface_92()
@@ -169,7 +165,7 @@ class Interface_Statistics_392(BaseBinding):
     A collection of interface-related statistics objects.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         # leaf
@@ -203,7 +199,7 @@ class InterfacesState_Interface_226(List, BaseBinding):
     not.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         self.statistics = Interface_Statistics_392()
         # list
@@ -231,7 +227,7 @@ class InterfacesState_Interface_226(List, BaseBinding):
                 "value": "1"
             }
         })
-        self.type = Identityref(_meta={"mandatory": True}, base="interface-type")
+        self.type_ = Identityref(_meta={"mandatory": True}, base="interface-type")
         self.last_change = yang.DateAndTime(_meta={"mandatory": False}, )
         self.oper_status = Enumeration(_meta={"mandatory": True}, enum={
             "dormant": {
@@ -294,7 +290,7 @@ class IetfInterfaces_InterfacesState_222(BaseBinding):
     Data nodes for the operational state of interfaces.
     """
     def __init__(self, _meta=None):
-        super().__init__(_meta)
+        super().__init__(_meta=_meta)
         # container
         # list
         self.interface = InterfacesState_Interface_226()

@@ -54,7 +54,7 @@ class PortNumRange(Union):
     an inclusive range as <lower>..<higher>, or as ANY to
     indicate a wildcard.
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "enumeration": {
         "enum": {
             "ANY": {
@@ -69,9 +69,7 @@ class PortNumRange(Union):
         "pattern": "^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$"
     }
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class IpProtocolType(Union):
     """
@@ -79,7 +77,7 @@ class IpProtocolType(Union):
     number (integer) or using a protocol type defined by the
     IP_PROTOCOL identity
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "identityref": {
         "base": "IP_PROTOCOL"
     }, 
@@ -87,9 +85,7 @@ class IpProtocolType(Union):
         "range": "0..254"
     }
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 class EthertypeType(Union):
     """
@@ -97,7 +93,7 @@ class EthertypeType(Union):
     hexadecimal notation, or using a type defined by the
     ETHERTYPE identity
     """
-    def __init__(self, _meta=None, type = {
+    def __init__(self, _meta=None, type_ = {
     "identityref": {
         "base": "ETHERTYPE"
     }, 
@@ -105,9 +101,7 @@ class EthertypeType(Union):
         "range": "1..65535"
     }
 }, ):
-        super().__init__(_meta)
-        self.type = type
-
+        super().__init__(_meta=_meta, type_ = type_, )
 
 
 # Identities
