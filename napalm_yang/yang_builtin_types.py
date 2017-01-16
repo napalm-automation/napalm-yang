@@ -43,7 +43,7 @@ def value_in_range(range_, value, min_, max_, num_type=int):
 
 
 class Baseint(YangType):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     num_type = int
 
     def __init__(self, range_=None, _meta=None):
@@ -61,56 +61,56 @@ class Baseint(YangType):
 
 
 class Int8(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = -128
     max = 127
 
 
 class Int16(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = -32768
     max = 32767
 
 
 class Int32(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = -2147483648
     max = 2147483647
 
 
 class Int64(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = Decimal('-9223372036854775808')
     max = 9223372036854775807
 
 
 class Uint8(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = 0
     max = 255
 
 
 class Uint16(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = 0
     max = 65535
 
 
 class Uint32(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     min = 0
     max = 4294967295
 
 
 class Uint64(Baseint):
-    """Implments rfc6020 section-9.2."""
+    """Implements rfc6020 section-9.2."""
     num_type = long
     min = 0
     max = 18446744073709551615
 
 
 class Decimal64(Baseint):
-    """Implments rfc6020 section-9.3."""
+    """Implements rfc6020 section-9.3."""
     num_type = Decimal
 
     fraction_map = {
@@ -148,7 +148,7 @@ class Decimal64(Baseint):
 
 
 class String(YangType):
-    """Implments rfc6020 section-9.4."""
+    """Implements rfc6020 section-9.4."""
 
     def __init__(self, _meta=None, pattern=None, length=None):
         super().__init__(_meta)
@@ -188,6 +188,24 @@ class String(YangType):
         return True
 
 
+class Boolean(YangType):
+    """Implements rfc6020 section-9.5."""
+
+    def _verify_value(self, value):
+        if isinstance(value, basestring):
+            if value == "true":
+                value = True
+            elif value == "false":
+                value = False
+        elif not isinstance(value, (basestring, bool)):
+            return False
+        return value in [True, False]
+
+    def __str__(self):
+        """Lexical form"""
+        return "true" if self.value else "false"
+
+
 class Identity(YangType):
 
     def __init__(self, value, base=None, description="", _meta=None):
@@ -198,12 +216,6 @@ class Identity(YangType):
 
     def _verify_value(self, value):
         return True
-
-
-class Boolean(YangType):
-
-    def _verify_value(self, value):
-        return value in [True, False]
 
 
 class Enumeration(YangType):

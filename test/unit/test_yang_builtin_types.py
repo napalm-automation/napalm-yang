@@ -66,6 +66,13 @@ string_tests = [
 ]
 
 
+boolean_tests = [
+    # values to test, are they valid?
+    ([True, False, "true", "false"], True),
+    (["True", "False", "asd", 0, 1, None], False),
+]
+
+
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
     try:
@@ -109,4 +116,11 @@ class TestYangBuiltinTypes:
         """Test that each type accepts correct values when a range is passed."""
         for value in values:
             yang_obj = yang_builtin_types.String(length=length, pattern=pattern)
+            obj_value_test(yang_obj, value, is_valid)
+
+    @pytest.mark.parametrize("values, is_valid", boolean_tests)
+    def test_boolean(self, values, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        for value in values:
+            yang_obj = yang_builtin_types.Boolean()
             obj_value_test(yang_obj, value, is_valid)
