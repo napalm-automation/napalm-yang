@@ -4,10 +4,23 @@ import copy
 
 from decimal import Decimal
 
+import re
+
 from napalm_yang.yang_base import YangType, BaseBinding
 
 
-def value_in_range(range_, value, min_, max_, num_type):
+def value_in_pattern(pattern, value):
+    if "^" not in pattern:
+        pattern = "^{}".format(pattern)
+    if "$" not in pattern:
+        pattern = "{}$".format(pattern)
+
+    pattern = re.compile(pattern)
+    match = pattern.match(value)
+    return match is not None
+
+
+def value_in_range(range_, value, min_, max_, num_type=int):
     """Implements `range-stmt` as defined in rfc6020#section-12."""
     def _value_in_subrange(sr, v, min_, max_, num_type):
         valid = sr.split("..")
@@ -134,6 +147,47 @@ class Decimal64(Baseint):
         return super()._verify_value(value)
 
 
+class String(YangType):
+    """Implments rfc6020 section-9.4."""
+
+    def __init__(self, _meta=None, pattern=None, length=None):
+        super().__init__(_meta)
+        self.pattern = pattern
+        self.length = length
+
+        self.ranges = ["0..18446744073709551615"]
+        if length is not None:
+            try:
+                min_, max_ = self.ranges[0].split("..")
+                min_ = int(min_)
+                max_ = int(max_)
+                self.ranges = [length]
+            except:
+                # If we get here it means we can't use length as new min|max
+                self.ranges.append(length)
+
+        if pattern is not None:
+            self.patterns = [pattern]
+        else:
+            self.patterns = []
+
+    def _verify_value(self, value):
+        min_, max_ = self.ranges[0].split("..")
+
+        if not isinstance(value, basestring):
+            return False
+
+        if not all([value_in_range(r, len(value), min_, max_)
+                    for r in self.ranges]):
+            return False
+
+        if not all([value_in_pattern(p, value)
+                    for p in self.patterns]):
+            return False
+
+        return True
+
+
 class Identity(YangType):
 
     def __init__(self, value, base=None, description="", _meta=None):
@@ -178,17 +232,6 @@ class Enumeration(YangType):
 
     def __str__(self):
         return "{}, {}".format(self.value, self._meta["enum"])
-
-
-class String(YangType):
-
-    def __init__(self, _meta=None, pattern=None, length=None):
-        super().__init__(_meta)
-        self.pattern = pattern
-        self.length = length
-
-    def _verify_value(self, value):
-        return isinstance(value, basestring)
 
 
 class Identityref(String):

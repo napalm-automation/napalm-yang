@@ -6,6 +6,7 @@ from decimal import Decimal
 
 
 integer_tests = [
+    # Type, range of values to test, are they valid?
     (yang_builtin_types.Int8, [-128, -100, 0, 100, 127, 052, 0xf], True),
     (yang_builtin_types.Int8, [-129, 128, True, False, None, "asd"], False),
     (yang_builtin_types.Int16, [-32768, -100, 0, 100, 32767, 052, 0xff], True),
@@ -27,6 +28,7 @@ integer_tests = [
 ]
 
 integer_range_tests = [
+    # range, values to test, are they valid?
     ("10..20", [10, 15, 20, 020, 0xf], True),
     ("10..20", [-129, 128, 9, 21, 25, True, False, None, "asd"], False),
     ("10..20|30|40..50", [10, 15, 20, 30, 45, 020, 0xf], True),
@@ -41,12 +43,26 @@ integer_range_tests = [
 
 
 decimal64_tests = [
+    # fraction_digits, range, values to test, are they valid?
     (1, None, ['-922337203685477580.8', '922337203685477580.7', -1, -1.2, 0, 20], True),
     (1, None, ['-922337203685477580.9', '922337203685477580.8'], False),
     (18, None, ['-9.223372036854775808', '9.223372036854775807', -1, -1.2, 0, 9], True),
     (18, None, ['-9.223372036854775809', '9.223372036854775808', -10, -9.3, 21, 25], False),
     (18, "-1.5..1.5|1.1", ['-1.49999999', '1.4999999', -1, -1.2, 0, 1.1], True),
     (18, "-1.5..1.5|10.5", ['-1.500001', '1.500001', -10, -9.3, 21, 25], False),
+]
+
+dotted_regex = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"  # noqa
+string_tests = [
+    # length, pattern, values to test, are they valid?
+    (None, None, ["", "asd", u"asdasd"], True),
+    (None, None, [0, False, True, None], False),
+    ("0|10..20", None, ["", "0123456789", "01234567890", "01234567890123456789"], True),
+    ("0|10..20", None, [True, "012345678", "012345678901234567890"], False),
+    (None, dotted_regex, ["1.2.3.4", "10.20.123.248"], True),
+    (None, dotted_regex, ["1.2.3", "1.10.20.123.248", "", False, 1, None], False),
+    ("1..5", "[a-z]+", ["word"], True),
+    ("1..5", "[a-z]+", ["Word", "longword", "two words", "1word"], False),
 ]
 
 
@@ -88,125 +104,9 @@ class TestYangBuiltinTypes:
             yang_obj = yang_builtin_types.Decimal64(fraction_digits=fraction_digits, range_=range_)
             obj_value_test(yang_obj, value, is_valid)
 
-
-test_types = [
-    (yang_builtin_types.Boolean, True, True),
-    (yang_builtin_types.Boolean, False, True),
-    (yang_builtin_types.Boolean, 1, False),
-    (yang_builtin_types.Boolean, 'asdasd', False),
-    (yang_builtin_types.Boolean, None, False),
-    (yang_builtin_types.String, 'asd', True),
-    (yang_builtin_types.String, u'asd', True),
-    (yang_builtin_types.String, None, False),
-    (yang_builtin_types.String, 1, False),
-]
-
-
-enumeration_with_values = {
-                           'UP': {
-                               'value': {
-                                   'value': '1',
-                                  },
-                              },
-                           'DOWN': {
-                               'value': {
-                                   'value': '2',
-                                  },
-                              },
-                           }
-
-enumeration_without_values = {
-                                'UP': {},
-                                'DOWN': {},
-                               }
-
-test_enumeration = [
-    (enumeration_with_values, 'UP', 1, True),
-    (enumeration_with_values, 'asdasd', None, False),
-    (enumeration_without_values, 'UP', None, True),
-    (enumeration_without_values, 'asdasd', None, False),
-]
-
-
-@pytest.mark.skip
-class TestYangTypes:
-    """Wrap tests and fixtures."""
-
-    @pytest.mark.parametrize("yang_type, value, is_valid", test_types)
-    def test_type_values_no_options(self, yang_type, value, is_valid):
-        """Test that each type accepts correct values."""
-        try:
-            test = yang_type()
-            test.value = value
-        except ValueError:
-            if is_valid:
-                assert False, "{} wasn't a valid value for type {}".format(value, yang_type)
-            else:
-                assert True, "{} was a valid value for type {}".format(value, yang_type)
-
-    @pytest.mark.skip
-    @pytest.mark.parametrize("enumeration, description, value, is_valid", test_enumeration)
-    def test_enumeration(self, enumeration, description, value, is_valid):
-        """Test that each type accepts correct values."""
-        try:
-            e = yang_builtin_types.Enumeration(options=enumeration)
-            e.enum = description
-            assert e.value == value
-        except ValueError:
-            if is_valid:
-                assert False, "{} wasn't a valid value for boolean".format(value)
-            else:
-                assert True, "{} was a valid value for boolean".format(value)
-
-
-yang_lists_init = [
-    (int, {}, True),
-    (int, {'a': 1}, True),
-    (int, {'a': 1, 'b': 2}, True),
-    (int, {'a': "1"}, False),
-    (int, {'a': 1, 'b': "2"}, False),
-    (int, {'a': 1, 'b': None}, False),
-]
-
-
-@pytest.mark.skip
-class TestYangList:
-    """Wrap tests and fixtures."""
-
-    @pytest.mark.parametrize("list_type, data, is_valid", yang_lists_init)
-    def test_initialization(self, list_type, data, is_valid):
-        """Test the initialization process of a yang_list"""
-        try:
-            yl = yang_builtin_types.yang_list(list_type, data)
-            assert yl.type == list_type
-            assert yl.value == data
-            assert all([isinstance(x, list_type) for x in yl.value.values()])
-        except AttributeError:
-            if is_valid:
-                assert False, "An element of {} wasn't of the correct type".format(data)
-            else:
-                assert True
-
-    def test_add_correct_elements(self):
-        """Test adding correct elements to a yang_list."""
-        yl = yang_builtin_types.yang_list(int, {})
-        yl['a'] = 1
-        yl['b'] = 2
-        assert yl['a'] == 1
-        assert yl['b'] == 2
-
-    def test_add_wrong_elements(self):
-        """Test adding correct elements to a yang_list."""
-        yl = yang_builtin_types.yang_list(int, {})
-        with pytest.raises(AttributeError):
-            yl['a'] = 1.0
-
-    def test_normal_dict_like_methods(self):
-        """Test it actually behaves like a dict."""
-        d = {'a': 1, 'b': 2}
-        yl = yang_builtin_types.yang_list(int, d)
-
-        assert d.values() == yl.values()
-        assert d.keys() == yl.keys()
-        assert d == {k: v for k, v in yl.items()}
-        assert len(yl)
+    @pytest.mark.parametrize("length, pattern, values, is_valid", string_tests)
+    def test_string(self, length, pattern, values, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        for value in values:
+            yang_obj = yang_builtin_types.String(length=length, pattern=pattern)
+            obj_value_test(yang_obj, value, is_valid)
