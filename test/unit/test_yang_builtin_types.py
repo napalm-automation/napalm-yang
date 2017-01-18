@@ -72,6 +72,24 @@ boolean_tests = [
     (["True", "False", "asd", 0, 1, None], False),
 ]
 
+enumeration_with_values = {
+            "disabled": {"value": "2"},
+            "enabled": {"value": "1"},
+}
+
+enumeration_without_values = {
+            "disabled": {},
+            "enabled": {},
+}
+
+enumeration_tests = [
+    # object, canonical value, enum_value, is_valid?
+    (enumeration_with_values, "disabled", 2, True),
+    (enumeration_with_values, "blah", None, False),
+    (enumeration_without_values, "disabled", 0, True),
+    (enumeration_without_values, "blah", None, False),
+]
+
 
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
@@ -124,3 +142,10 @@ class TestYangBuiltinTypes:
         for value in values:
             yang_obj = yang_builtin_types.Boolean()
             obj_value_test(yang_obj, value, is_valid)
+
+    @pytest.mark.parametrize("enum, value, enum_value, is_valid", enumeration_tests)
+    def test_enumeration(self, enum, value, enum_value, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        yang_obj = yang_builtin_types.Enumeration(enum=enum)
+        obj_value_test(yang_obj, value, is_valid)
+        assert yang_obj.enum_value == enum_value

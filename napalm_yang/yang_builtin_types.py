@@ -206,6 +206,73 @@ class Boolean(YangType):
         return "true" if self.value else "false"
 
 
+class Enumeration(YangType):
+    """
+    Implements rfc6020 section-9.6.
+
+    Note: Do not mistake what we call here value (the real value for the object) and
+    what the value of an enum is (which we store under `self.enum_value` which
+    is an optional statement.
+    """
+
+    def __init__(self, enum, _meta=None):
+        super().__init__(_meta)
+        self.enum = enum
+        self._meta["enum"] = None
+        self.enum_value = None
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        if value in self.enum.keys():
+            self._value = value
+
+            if "value" in self.enum[value].keys():
+                self.enum_value = int(self.enum[value]['value'])
+            else:
+                self.enum_value = sorted(self.enum.keys()).index(value)
+        else:
+            error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
+            raise ValueError(error_msg.format(value, self.enum.keys()))
+
+
+class Bits(YangType):
+    """
+    Implements rfc6020 section-9.7.
+
+    TBD
+    """
+    pass
+
+
+class Binary(YangType):
+    """
+    Implements rfc6020 section-9.8.
+
+    TBD
+    """
+    pass
+
+
+class Leafref(String):
+    """
+    Implements rfc6020 section-9.9.
+
+
+    TBD Use path to validate when importing/exporting from/to JSON/XML
+    """
+
+    def __init__(self, path, _meta=None):
+        super().__init__(_meta)
+        self.path = path
+
+    def _verify_value(self, value):
+        return True
+
+
 class Identity(YangType):
 
     def __init__(self, value, base=None, description="", _meta=None):
@@ -218,49 +285,11 @@ class Identity(YangType):
         return True
 
 
-class Enumeration(YangType):
-
-    def __init__(self, enum, _meta=None):
-        super().__init__(_meta)
-        self.enum = enum
-        self._meta["enum"] = None
-
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        if value in self.enum.keys():
-            self._value = value
-
-            if "value" in self.enum[value].keys():
-                self._meta["enum_value"] = int(self.enum[value]['value'])
-            else:
-                self._meta["enum_value"] = sorted(self.enum.keys()).index(value)
-        else:
-            error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
-            raise ValueError(error_msg.format(value, self.enum.keys()))
-
-    def __str__(self):
-        return "{}, {}".format(self.value, self._meta["enum"])
-
-
 class Identityref(String):
 
     def __init__(self, base, _meta=None):
         super().__init__(_meta)
         self.base = base
-
-    def _verify_value(self, value):
-        return True
-
-
-class Leafref(String):
-
-    def __init__(self, path, _meta=None):
-        super().__init__(_meta)
-        self.path = path
 
     def _verify_value(self, value):
         return True
