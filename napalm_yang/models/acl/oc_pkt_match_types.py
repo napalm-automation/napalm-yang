@@ -105,92 +105,8 @@ class EthertypeType(Union):
 
 
 # Identities
-Tcp_Ack = Identity(
-    base="TCP_FLAGS",
-    value="TCP_ACK",
-    description="""TCP ACK flag"""
-    )
-
-Ip_Protocol = Identity(
-    base="None",
-    value="IP_PROTOCOL",
-    description="""Base identity for commonly used IP protocols used in
-packet header matches"""
-    )
-
-Ip_Udp = Identity(
-    base="IP_PROTOCOL",
-    value="IP_UDP",
-    description="""User Datagram Protocol (17)"""
-    )
-
-Ethertype_Arp = Identity(
-    base="ETHERTYPE",
-    value="ETHERTYPE_ARP",
-    description="""Address resolution protocol (0x0806)"""
-    )
-
-Tcp_Syn = Identity(
-    base="TCP_FLAGS",
-    value="TCP_SYN",
-    description="""TCP SYN flag"""
-    )
-
-Ethertype_Vlan = Identity(
-    base="ETHERTYPE",
-    value="ETHERTYPE_VLAN",
-    description="""VLAN-tagged frame (as defined by IEEE 802.1q) (0x8100). Note
-that this value is also used to represent Shortest Path
-Bridging (IEEE 801.1aq) frames."""
-    )
-
-Ip_Pim = Identity(
-    base="IP_PROTOCOL",
-    value="IP_PIM",
-    description="""Protocol Independent Multicast (103)"""
-    )
-
-Ip_Icmp = Identity(
-    base="IP_PROTOCOL",
-    value="IP_ICMP",
-    description="""Internet Control Message Protocol (1)"""
-    )
-
-Tcp_Fin = Identity(
-    base="TCP_FLAGS",
-    value="TCP_FIN",
-    description="""TCP FIN flag"""
-    )
-
-Ethertype_Roce = Identity(
-    base="ETHERTYPE",
-    value="ETHERTYPE_ROCE",
-    description="""RDMA over Converged Ethernet (0x8915)"""
-    )
-
-Tcp_Ece = Identity(
-    base="TCP_FLAGS",
-    value="TCP_ECE",
-    description="""TCP ECN-Echo flag.  If the SYN flag is set, indicates that
-the TCP peer is ECN-capable, otherwise indicates that a
-packet with Congestion Experienced flag in the IP header
-is set"""
-    )
-
-Tcp_Flags = Identity(
-    base="None",
-    value="TCP_FLAGS",
-    description="""Common TCP flags used in packet header matches"""
-    )
-
-Tcp_Rst = Identity(
-    base="TCP_FLAGS",
-    value="TCP_RST",
-    description="""TCP RST flag"""
-    )
-
 Ethertype = Identity(
-    base="None",
+    base=None,
     value="ETHERTYPE",
     description="""Base identity for commonly used Ethertype values used
 in packet header matches on Ethernet frames.  The Ethertype
@@ -199,81 +115,165 @@ payload."""
     )
 
 Ethertype_Ipv4 = Identity(
-    base="ETHERTYPE",
+    base=Ethertype,
     value="ETHERTYPE_IPV4",
     description="""IPv4 protocol (0x0800)"""
     )
 
-Ip_Tcp = Identity(
-    base="IP_PROTOCOL",
-    value="IP_TCP",
-    description="""Transmission Control Protocol (6)"""
+Ethertype_Arp = Identity(
+    base=Ethertype,
+    value="ETHERTYPE_ARP",
+    description="""Address resolution protocol (0x0806)"""
+    )
+
+Ethertype_Vlan = Identity(
+    base=Ethertype,
+    value="ETHERTYPE_VLAN",
+    description="""VLAN-tagged frame (as defined by IEEE 802.1q) (0x8100). Note
+that this value is also used to represent Shortest Path
+Bridging (IEEE 801.1aq) frames."""
     )
 
 Ethertype_Ipv6 = Identity(
-    base="ETHERTYPE",
+    base=Ethertype,
     value="ETHERTYPE_IPV6",
     description="""IPv6 protocol (0x86DD)"""
     )
 
-Tcp_Urg = Identity(
-    base="TCP_FLAGS",
-    value="TCP_URG",
-    description="""TCP urgent flag"""
-    )
-
-Ip_Igmp = Identity(
-    base="IP_PROTOCOL",
-    value="IP_IGMP",
-    description="""Internet Group Membership Protocol (2)"""
-    )
-
 Ethertype_Mpls = Identity(
-    base="ETHERTYPE",
+    base=Ethertype,
     value="ETHERTYPE_MPLS",
     description="""MPLS unicast (0x8847)"""
     )
 
-Tcp_Psh = Identity(
-    base="TCP_FLAGS",
-    value="TCP_PSH",
-    description="""TCP push flag"""
-    )
-
-Ip_Auth = Identity(
-    base="IP_PROTOCOL",
-    value="IP_AUTH",
-    description="""Authentication header, e.g., for IPSEC (51)"""
-    )
-
-Ip_Gre = Identity(
-    base="IP_PROTOCOL",
-    value="IP_GRE",
-    description="""Generic Routing Encapsulation (47)"""
-    )
-
-Ip_Rsvp = Identity(
-    base="IP_PROTOCOL",
-    value="IP_RSVP",
-    description="""Resource Reservation Protocol (46)"""
-    )
-
 Ethertype_Lldp = Identity(
-    base="ETHERTYPE",
+    base=Ethertype,
     value="ETHERTYPE_LLDP",
     description="""Link Layer Discovery Protocol (0x88CC)"""
     )
 
-Tcp_Cwr = Identity(
-    base="TCP_FLAGS",
-    value="TCP_CWR",
-    description="""TCP Congestion Window Reduced flag"""
+Ethertype_Roce = Identity(
+    base=Ethertype,
+    value="ETHERTYPE_ROCE",
+    description="""RDMA over Converged Ethernet (0x8915)"""
+    )
+
+Ip_Protocol = Identity(
+    base=None,
+    value="IP_PROTOCOL",
+    description="""Base identity for commonly used IP protocols used in
+packet header matches"""
+    )
+
+Ip_Tcp = Identity(
+    base=Ip_Protocol,
+    value="IP_TCP",
+    description="""Transmission Control Protocol (6)"""
+    )
+
+Ip_Udp = Identity(
+    base=Ip_Protocol,
+    value="IP_UDP",
+    description="""User Datagram Protocol (17)"""
+    )
+
+Ip_Icmp = Identity(
+    base=Ip_Protocol,
+    value="IP_ICMP",
+    description="""Internet Control Message Protocol (1)"""
+    )
+
+Ip_Igmp = Identity(
+    base=Ip_Protocol,
+    value="IP_IGMP",
+    description="""Internet Group Membership Protocol (2)"""
+    )
+
+Ip_Pim = Identity(
+    base=Ip_Protocol,
+    value="IP_PIM",
+    description="""Protocol Independent Multicast (103)"""
+    )
+
+Ip_Rsvp = Identity(
+    base=Ip_Protocol,
+    value="IP_RSVP",
+    description="""Resource Reservation Protocol (46)"""
+    )
+
+Ip_Gre = Identity(
+    base=Ip_Protocol,
+    value="IP_GRE",
+    description="""Generic Routing Encapsulation (47)"""
+    )
+
+Ip_Auth = Identity(
+    base=Ip_Protocol,
+    value="IP_AUTH",
+    description="""Authentication header, e.g., for IPSEC (51)"""
     )
 
 Ip_L2Tp = Identity(
-    base="IP_PROTOCOL",
+    base=Ip_Protocol,
     value="IP_L2TP",
     description="""Layer Two Tunneling Protocol v.3 (115)"""
+    )
+
+Tcp_Flags = Identity(
+    base=None,
+    value="TCP_FLAGS",
+    description="""Common TCP flags used in packet header matches"""
+    )
+
+Tcp_Syn = Identity(
+    base=Tcp_Flags,
+    value="TCP_SYN",
+    description="""TCP SYN flag"""
+    )
+
+Tcp_Fin = Identity(
+    base=Tcp_Flags,
+    value="TCP_FIN",
+    description="""TCP FIN flag"""
+    )
+
+Tcp_Rst = Identity(
+    base=Tcp_Flags,
+    value="TCP_RST",
+    description="""TCP RST flag"""
+    )
+
+Tcp_Psh = Identity(
+    base=Tcp_Flags,
+    value="TCP_PSH",
+    description="""TCP push flag"""
+    )
+
+Tcp_Ack = Identity(
+    base=Tcp_Flags,
+    value="TCP_ACK",
+    description="""TCP ACK flag"""
+    )
+
+Tcp_Urg = Identity(
+    base=Tcp_Flags,
+    value="TCP_URG",
+    description="""TCP urgent flag"""
+    )
+
+Tcp_Ece = Identity(
+    base=Tcp_Flags,
+    value="TCP_ECE",
+    description="""TCP ECN-Echo flag.  If the SYN flag is set, indicates that
+the TCP peer is ECN-capable, otherwise indicates that a
+packet with Congestion Experienced flag in the IP header
+is set"""
+    )
+
+Tcp_Cwr = Identity(
+    base=Tcp_Flags,
+    value="TCP_CWR",
+    description="""TCP Congestion Window Reduced flag"""
     )
 
 

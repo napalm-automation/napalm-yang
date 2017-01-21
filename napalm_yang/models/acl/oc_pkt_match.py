@@ -68,11 +68,16 @@ class EthernetHeaderConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.source_mac_mask = yang.MacAddress(_meta={"mandatory": False}, )
-        self.ethertype = oc_pkt_match_types.EthertypeType(_meta={"mandatory": False}, )
-        self.source_mac = yang.MacAddress(_meta={"mandatory": False}, )
-        self.destination_mac = yang.MacAddress(_meta={"mandatory": False}, )
-        self.destination_mac_mask = yang.MacAddress(_meta={"mandatory": False}, )
+        self.source_mac_mask = yang.MacAddress(_meta={"mandatory": False},
+        )
+        self.ethertype = oc_pkt_match_types.EthertypeType(_meta={"mandatory": False},
+        )
+        self.source_mac = yang.MacAddress(_meta={"mandatory": False},
+        )
+        self.destination_mac = yang.MacAddress(_meta={"mandatory": False},
+        )
+        self.destination_mac_mask = yang.MacAddress(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -179,14 +184,23 @@ class IpProtocolFieldsConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.protocol = oc_pkt_match_types.IpProtocolType(_meta={"mandatory": False}, )
-        self.source_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False}, )
-        self.destination_ip_address = inet.IpPrefix(_meta={"mandatory": False}, )
-        self.dscp = inet.Dscp(_meta={"mandatory": False}, )
-        self.ip_version = inet.IpVersion(_meta={"mandatory": False}, )
-        self.source_ip_address = inet.IpPrefix(_meta={"mandatory": False}, )
-        self.destination_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False}, )
-        self.hop_limit = Uint8(_meta={"mandatory": False}, range_="0..255")
+        self.protocol = oc_pkt_match_types.IpProtocolType(_meta={"mandatory": False},
+        )
+        self.source_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False},
+        )
+        self.destination_ip_address = inet.IpPrefix(_meta={"mandatory": False},
+        )
+        self.dscp = inet.Dscp(_meta={"mandatory": False},
+        )
+        self.ip_version = inet.IpVersion(_meta={"mandatory": False},
+        )
+        self.source_ip_address = inet.IpPrefix(_meta={"mandatory": False},
+        )
+        self.destination_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False},
+        )
+        self.hop_limit = Uint8(_meta={"mandatory": False},
+            range_="0..255",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -292,8 +306,10 @@ class TransportFieldsConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.destination_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False}, )
-        self.source_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False}, )
+        self.destination_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False},
+        )
+        self.source_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False},
+        )
         # leaflist
         self.tcp_flags = LeafList(Identityref(_meta={"mandatory": False}, base="oc-pkt-match-types:TCP_FLAGS"))
         # Meta

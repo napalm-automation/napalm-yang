@@ -91,7 +91,7 @@ class InterfaceStateRef(Leafref):
 
 # Identities
 InterfaceType = Identity(
-    base="None",
+    base=None,
     value="interface-type",
     description="""Base identity from which specific interface types are
 derived."""
@@ -121,18 +121,25 @@ class Interfaces_Interface_92(List, BaseBinding):
         # container
         # list
         # leaf
-        self.type_ = Identityref(_meta={"mandatory": True}, base="interface-type")
-        self.link_up_down_trap_enable = Enumeration(_meta={"mandatory": False}, enum={
+        self.type_ = Identityref(_meta={"mandatory": True},
+            base=InterfaceType,
+        )
+        self.link_up_down_trap_enable = Enumeration(_meta={"mandatory": False},
+            enum={
             "disabled": {
                 "value": "2"
             }, 
             "enabled": {
                 "value": "1"
             }
-        })
-        self.enabled = Boolean(_meta={"mandatory": False}, )
-        self.description = String(_meta={"mandatory": False}, )
-        self.name = String(_meta={"mandatory": False}, )
+        },
+        )
+        self.enabled = Boolean(_meta={"mandatory": False},
+        )
+        self.description = String(_meta={"mandatory": False},
+        )
+        self.name = String(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -169,20 +176,34 @@ class Interface_Statistics_392(BaseBinding):
         # container
         # list
         # leaf
-        self.out_octets = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_errors = yang.Counter32(_meta={"mandatory": False}, )
-        self.discontinuity_time = yang.DateAndTime(_meta={"mandatory": True}, )
-        self.in_discards = yang.Counter32(_meta={"mandatory": False}, )
-        self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_errors = yang.Counter32(_meta={"mandatory": False}, )
-        self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_discards = yang.Counter32(_meta={"mandatory": False}, )
-        self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False}, )
-        self.in_octets = yang.Counter64(_meta={"mandatory": False}, )
+        self.out_octets = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_errors = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.discontinuity_time = yang.DateAndTime(_meta={"mandatory": True},
+        )
+        self.in_discards = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_errors = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_discards = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.in_octets = yang.Counter64(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -204,10 +225,14 @@ class InterfacesState_Interface_226(List, BaseBinding):
         self.statistics = Interface_Statistics_392()
         # list
         # leaf
-        self.name = String(_meta={"mandatory": False}, )
-        self.speed = yang.Gauge64(_meta={"mandatory": False}, )
-        self.phys_address = yang.PhysAddress(_meta={"mandatory": False}, )
-        self.admin_status = Enumeration(_meta={"mandatory": True}, enum={
+        self.name = String(_meta={"mandatory": False},
+        )
+        self.speed = yang.Gauge64(_meta={"mandatory": False},
+        )
+        self.phys_address = yang.PhysAddress(_meta={"mandatory": False},
+        )
+        self.admin_status = Enumeration(_meta={"mandatory": True},
+            enum={
             "down": {
                 "info": {
                     "description": "Not ready to pass packets and not in some test mode."
@@ -226,10 +251,15 @@ class InterfacesState_Interface_226(List, BaseBinding):
                 }, 
                 "value": "1"
             }
-        })
-        self.type_ = Identityref(_meta={"mandatory": True}, base="interface-type")
-        self.last_change = yang.DateAndTime(_meta={"mandatory": False}, )
-        self.oper_status = Enumeration(_meta={"mandatory": True}, enum={
+        },
+        )
+        self.type_ = Identityref(_meta={"mandatory": True},
+            base=InterfaceType,
+        )
+        self.last_change = yang.DateAndTime(_meta={"mandatory": False},
+        )
+        self.oper_status = Enumeration(_meta={"mandatory": True},
+            enum={
             "dormant": {
                 "info": {
                     "description": "Waiting for some external event."
@@ -272,8 +302,11 @@ class InterfacesState_Interface_226(List, BaseBinding):
                 }, 
                 "value": "1"
             }
-        })
-        self.if_index = Int32(_meta={"mandatory": True}, range_="1..2147483647")
+        },
+        )
+        self.if_index = Int32(_meta={"mandatory": True},
+            range_="1..2147483647",
+        )
         # leaflist
         self.lower_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
         self.higher_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))

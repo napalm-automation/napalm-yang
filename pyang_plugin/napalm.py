@@ -143,9 +143,6 @@ def _parse_simple(sub, store):
         store[sub.keyword] = sub.arg
 
 
-IDENTITY = ("identity", )
-
-
 def _parse_identities(sub, store, root):
     _parse(sub.substmts, store[sub.arg], root)
 
@@ -165,7 +162,7 @@ def _parse_info(sub, store):
 
 
 NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import",
-          "leaf-list", "feature", "extension", "argument", )
+          "leaf-list", "feature", "extension", "argument", "identity", )
 
 
 def _parse_nested(sub, store, root):
@@ -178,8 +175,9 @@ def _parse_nested(sub, store, root):
             store[sub.keyword].insert(0, (sub.arg, unique_name))
         except AttributeError:
             store[sub.keyword] = [(sub.arg, unique_name)]
-    elif sub.keyword in ("typedef", ):
-        root["order_typedef"].insert(0, sub.arg)
+    elif sub.keyword in ("typedef", "identity"):
+        order_kw = "order_{}".format(sub.keyword)
+        root[order_kw].insert(0, sub.arg)
         _parse(sub.substmts, root[sub.keyword][sub.arg], root)
     elif sub.keyword in ("grouping", ):
         root["order"].insert(0, (sub.keyword, sub.arg))
@@ -194,67 +192,12 @@ def _parse(substmts, store, root):
         logger.debug("Parsing {} - {}, {}".format(sub.keyword, sub.arg[0:20], sub.pos))
         if sub.keyword in INFO:
             _parse_info(sub, store["info"])
-        elif sub.keyword in IDENTITY:
-            _parse_identities(sub, store[sub.keyword], root)
         elif sub.keyword in NESTED:
             _parse_nested(sub, store[sub.keyword], root)
         elif sub.keyword in SIMPLE:
             _parse_simple(sub, store)
         else:
             raise Exception("We are not parsing {}".format(sub.keyword))
-
-
-"""
-def merge_two_dicts(x, y):
-    ""Given two dicts, merge them into a new dict as a shallow copy.""
-    for k, v in y.items():
-        if k == "info":
-            continue
-        if isinstance(v, dict) and k in x.keys():
-            merge_two_dicts(x[k], v)
-        elif isinstance(v, list) and k in x.keys():
-            x[k].extend(v)
-        else:
-            x[k] = copy.deepcopy(v)
-
-
-def _process_uses(statements, groupings, store):
-    for name, obj in statements.items():
-        while obj["uses"]:
-            group_name = obj["uses"].pop()
-            u = groupings.get(group_name)
-
-            if not u:
-                print(u)
-                raise Exception("Couldn't find grouping: {}\nAvailable: {}".format(
-                                                                            group_name,
-                                                                            groupings.keys()))
-            merge_two_dicts(obj, u)
-
-        obj.pop("uses")
-        store[name] = obj
-
-
-def _process_uses_top(uses, groupings, store):
-    while uses:
-        u = groupings[uses.pop()]
-        merge_two_dicts(store, u)
-
-def _process(statements, store):
-    grouping = statements.pop("grouping")
-    store["info"] = statements.pop("info")
-    store["import"] = statements.pop("import")
-    store["identity"] = statements.pop("identity", {})
-    store["typedef"] = statements.pop("typedef", {})
-    store["order"] = statements.pop("order")
-    store["order"].reverse()
-    _process_uses(statements.pop("container"), grouping, store["container"])
-    _process_uses(statements.pop("list"), grouping, store["list"])
-    _process_uses_top(statements.pop("uses"), grouping, store["top"])
-    if statements:
-        inspect(statements)
-        raise Exception("Not the entire object was processed")
-"""
 
 
 def emit_napalm(ctx, modules, fd):
@@ -270,6 +213,7 @@ def emit_napalm(ctx, modules, fd):
         logger.info("Parsing model {}".format(module.pos))
         parsed[module.arg]["order"] = []
         parsed[module.arg]["order_typedef"] = []
+        parsed[module.arg]["order_identity"] = []
         _parse(module.substmts, parsed[module.arg], parsed[module.arg])
 
     """

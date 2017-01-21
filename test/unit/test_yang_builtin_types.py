@@ -91,6 +91,42 @@ enumeration_tests = [
 ]
 
 
+Forwarding_Action = yang_builtin_types.Identity(
+    base=None,
+    value="FORWARDING_ACTION",
+    description="""Base identity for actions in the forwarding category"""
+    )
+
+Accept = yang_builtin_types.Identity(
+    base=Forwarding_Action,
+    value="ACCEPT",
+    description="""Accept the packet"""
+    )
+
+Log_Action = yang_builtin_types.Identity(
+    base=None,
+    value="LOG_ACTION",
+    description="""Base identity for defining the destination for logging
+actions"""
+    )
+
+Log_Syslog = yang_builtin_types.Identity(
+    base=Log_Action,
+    value="LOG_SYSLOG",
+    description="""Log the packet in Syslog"""
+    )
+
+forwarding_action = yang_builtin_types.Identityref(_meta={"mandatory": True},
+                                                   base=Forwarding_Action, )
+
+
+identity_tests = [
+    # values to test, are they valid?
+    ([Accept], True),
+    ([Log_Syslog, True, None, "Accept", 0, 1], False),
+]
+
+
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
     try:
@@ -149,3 +185,10 @@ class TestYangBuiltinTypes:
         yang_obj = yang_builtin_types.Enumeration(enum=enum)
         obj_value_test(yang_obj, value, is_valid)
         assert yang_obj.enum_value == enum_value
+
+    @pytest.mark.parametrize("values, is_valid", identity_tests)
+    def test_identity(self, values, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        for value in values:
+            yang_obj = forwarding_action
+            obj_value_test(yang_obj, value, is_valid)

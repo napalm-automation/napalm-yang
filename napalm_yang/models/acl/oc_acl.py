@@ -64,74 +64,74 @@ __revision__ = {
 
 
 # Identities
-Drop = Identity(
-    base="FORWARDING_ACTION",
-    value="DROP",
-    description="""Drop packet without sending any ICMP error message"""
-    )
-
-Accept = Identity(
-    base="FORWARDING_ACTION",
-    value="ACCEPT",
-    description="""Accept the packet"""
-    )
-
 Forwarding_Action = Identity(
-    base="None",
+    base=None,
     value="FORWARDING_ACTION",
     description="""Base identity for actions in the forwarding category"""
     )
 
-Interface_Only = Identity(
-    base="ACL_COUNTER_CAPABILITY",
-    value="INTERFACE_ONLY",
-    description="""ACL counters are available and reported only per interface"""
+Accept = Identity(
+    base=Forwarding_Action,
+    value="ACCEPT",
+    description="""Accept the packet"""
+    )
+
+Drop = Identity(
+    base=Forwarding_Action,
+    value="DROP",
+    description="""Drop packet without sending any ICMP error message"""
+    )
+
+Reject = Identity(
+    base=Forwarding_Action,
+    value="REJECT",
+    description="""Drop the packet and send an ICMP error message to the source"""
     )
 
 Log_Action = Identity(
-    base="None",
+    base=None,
     value="LOG_ACTION",
     description="""Base identity for defining the destination for logging
 actions"""
     )
 
-Interface_Aggregate = Identity(
-    base="ACL_COUNTER_CAPABILITY",
-    value="INTERFACE_AGGREGATE",
-    description="""ACL counters are reported per interface, and also aggregated
-and reported per ACL entry."""
-    )
-
-Reject = Identity(
-    base="FORWARDING_ACTION",
-    value="REJECT",
-    description="""Drop the packet and send an ICMP error message to the source"""
-    )
-
 Log_Syslog = Identity(
-    base="LOG_ACTION",
+    base=Log_Action,
     value="LOG_SYSLOG",
     description="""Log the packet in Syslog"""
     )
 
-Aggregate_Only = Identity(
-    base="ACL_COUNTER_CAPABILITY",
-    value="AGGREGATE_ONLY",
-    description="""ACL counters are aggregated over all interfaces, and reported
-only per ACL entry"""
-    )
-
 Log_None = Identity(
-    base="LOG_ACTION",
+    base=Log_Action,
     value="LOG_NONE",
     description="""No logging"""
     )
 
 Acl_Counter_Capability = Identity(
-    base="None",
+    base=None,
     value="ACL_COUNTER_CAPABILITY",
     description="""Base identity for system to indicate how it is able to report
 counters"""
+    )
+
+Interface_Only = Identity(
+    base=Acl_Counter_Capability,
+    value="INTERFACE_ONLY",
+    description="""ACL counters are available and reported only per interface"""
+    )
+
+Aggregate_Only = Identity(
+    base=Acl_Counter_Capability,
+    value="AGGREGATE_ONLY",
+    description="""ACL counters are aggregated over all interfaces, and reported
+only per ACL entry"""
+    )
+
+Interface_Aggregate = Identity(
+    base=Acl_Counter_Capability,
+    value="INTERFACE_AGGREGATE",
+    description="""ACL counters are reported per interface, and also aggregated
+and reported per ACL entry."""
     )
 
 
@@ -253,8 +253,12 @@ class ActionConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.forwarding_action = Identityref(_meta={"mandatory": True}, base="FORWARDING_ACTION")
-        self.log_action = Identityref(_meta={"mandatory": False}, base="LOG_ACTION")
+        self.forwarding_action = Identityref(_meta={"mandatory": True},
+            base=Forwarding_Action,
+        )
+        self.log_action = Identityref(_meta={"mandatory": False},
+            base=Log_Action,
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -361,8 +365,10 @@ class AclCountersState(BaseBinding):
         # container
         # list
         # leaf
-        self.matched_octets = yang.Counter64(_meta={"mandatory": False}, )
-        self.matched_packets = yang.Counter64(_meta={"mandatory": False}, )
+        self.matched_octets = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.matched_packets = yang.Counter64(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -380,8 +386,10 @@ class AccessListEntriesConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.sequence_id = Uint32(_meta={"mandatory": False}, )
-        self.description = String(_meta={"mandatory": False}, )
+        self.sequence_id = Uint32(_meta={"mandatory": False},
+        )
+        self.description = String(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -452,7 +460,9 @@ class AclEntries_AclEntry_308(List, ActionTop, InputInterfaceTop, oc_match.Trans
         self.state = AclEntry_State_327()
         # list
         # leaf
-        self.sequence_id = Leafref(_meta={"mandatory": False}, path="../config/sequence-id")
+        self.sequence_id = Leafref(_meta={"mandatory": False},
+            path="../config/sequence-id",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -507,8 +517,10 @@ class AclSetConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.description = String(_meta={"mandatory": False}, )
-        self.name = String(_meta={"mandatory": False}, )
+        self.description = String(_meta={"mandatory": False},
+        )
+        self.name = String(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -580,7 +592,9 @@ class AclSets_AclSet_376(List, AccessListEntriesTop):
         self.state = AclSet_State_396()
         # list
         # leaf
-        self.name = Leafref(_meta={"mandatory": False}, path="../config/name")
+        self.name = Leafref(_meta={"mandatory": False},
+            path="../config/name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -652,7 +666,9 @@ class InterfaceAclEntriesState(AclCountersState):
         # container
         # list
         # leaf
-        self.sequence_id = Leafref(_meta={"mandatory": False}, path="/acl/acl-sets/acl-set[name=current()/../../../../set-name]/acl-entries/acl-entry/sequence-id")
+        self.sequence_id = Leafref(_meta={"mandatory": False},
+            path="/acl/acl-sets/acl-set[name=current()/../../../../set-name]/acl-entries/acl-entry/sequence-id",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -688,7 +704,9 @@ class AclEntries_AclEntry_442(List, BaseBinding):
         self.state = AclEntry_State_458()
         # list
         # leaf
-        self.sequence_id = Leafref(_meta={"mandatory": False}, path="../state/sequence-id")
+        self.sequence_id = Leafref(_meta={"mandatory": False},
+            path="../state/sequence-id",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -743,7 +761,9 @@ class InterfaceIngressAclConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.set_name = Leafref(_meta={"mandatory": False}, path="/acl/acl-sets/acl-set/config/name")
+        self.set_name = Leafref(_meta={"mandatory": False},
+            path="/acl/acl-sets/acl-set/config/name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -814,7 +834,9 @@ class IngressAclSets_IngressAclSet_499(List, InterfaceAclEntriesTop):
         self.state = IngressAclSet_State_519()
         # list
         # leaf
-        self.set_name = Leafref(_meta={"mandatory": False}, path="../config/set-name")
+        self.set_name = Leafref(_meta={"mandatory": False},
+            path="../config/set-name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -870,7 +892,9 @@ class InterfaceEgressAclConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.set_name = Leafref(_meta={"mandatory": False}, path="/acl/acl-sets/acl-set/config/name")
+        self.set_name = Leafref(_meta={"mandatory": False},
+            path="/acl/acl-sets/acl-set/config/name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -941,7 +965,9 @@ class EgressAclSets_EgressAclSet_562(List, InterfaceAclEntriesTop):
         self.state = EgressAclSet_State_582()
         # list
         # leaf
-        self.set_name = Leafref(_meta={"mandatory": False}, path="../config/set-name")
+        self.set_name = Leafref(_meta={"mandatory": False},
+            path="../config/set-name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -997,7 +1023,8 @@ class AclInterfacesConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.id = oc_if.InterfaceId(_meta={"mandatory": False}, )
+        self.id = oc_if.InterfaceId(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1068,7 +1095,9 @@ class Interfaces_Interface_624(List, InterfaceEgressAclTop, InterfaceIngressAclT
         self.state = Interface_State_644()
         # list
         # leaf
-        self.id = Leafref(_meta={"mandatory": False}, path="../config/id")
+        self.id = Leafref(_meta={"mandatory": False},
+            path="../config/id",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1141,7 +1170,9 @@ class AclState(BaseBinding):
         # container
         # list
         # leaf
-        self.counter_capability = Identityref(_meta={"mandatory": False}, base="ACL_COUNTER_CAPABILITY")
+        self.counter_capability = Identityref(_meta={"mandatory": False},
+            base=Acl_Counter_Capability,
+        )
         # leaflist
         # Meta
         self._meta["config"] = True

@@ -93,8 +93,12 @@ class InterfaceRefCommon(BaseBinding):
         # container
         # list
         # leaf
-        self.interface = Leafref(_meta={"mandatory": False}, path="/oc-if:interfaces/oc-if:interface/oc-if:name")
-        self.subinterface = Leafref(_meta={"mandatory": False}, path="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index")
+        self.interface = Leafref(_meta={"mandatory": False},
+            path="/oc-if:interfaces/oc-if:interface/oc-if:name",
+        )
+        self.subinterface = Leafref(_meta={"mandatory": False},
+            path="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -239,9 +243,12 @@ class InterfaceCommonConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.enabled = Boolean(_meta={"mandatory": False}, )
-        self.description = String(_meta={"mandatory": False}, )
-        self.name = String(_meta={"mandatory": False}, )
+        self.enabled = Boolean(_meta={"mandatory": False},
+        )
+        self.description = String(_meta={"mandatory": False},
+        )
+        self.name = String(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -259,8 +266,11 @@ class InterfacePhysConfig(InterfaceCommonConfig):
         # container
         # list
         # leaf
-        self.type_ = Identityref(_meta={"mandatory": True}, base="ietf-if:interface-type")
-        self.mtu = Uint16(_meta={"mandatory": False}, )
+        self.type_ = Identityref(_meta={"mandatory": True},
+            base=ietf_if.InterfaceType,
+        )
+        self.mtu = Uint16(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -279,8 +289,10 @@ class InterfacePhysHoldtimeConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.down = Uint32(_meta={"mandatory": False}, )
-        self.up = Uint32(_meta={"mandatory": False}, )
+        self.down = Uint32(_meta={"mandatory": False},
+        )
+        self.up = Uint32(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -389,8 +401,10 @@ class InterfaceCommonState(BaseBinding):
         # container
         # list
         # leaf
-        self.ifindex = Uint32(_meta={"mandatory": False}, )
-        self.admin_status = Enumeration(_meta={"mandatory": True}, enum={
+        self.ifindex = Uint32(_meta={"mandatory": False},
+        )
+        self.admin_status = Enumeration(_meta={"mandatory": True},
+            enum={
             "DOWN": {
                 "info": {
                     "description": "Not ready to pass packets and not in some test mode."
@@ -406,9 +420,12 @@ class InterfaceCommonState(BaseBinding):
                     "description": "Ready to pass packets."
                 }
             }
-        })
-        self.last_change = yang.Timeticks(_meta={"mandatory": False}, )
-        self.oper_status = Enumeration(_meta={"mandatory": True}, enum={
+        },
+        )
+        self.last_change = yang.Timeticks(_meta={"mandatory": False},
+        )
+        self.oper_status = Enumeration(_meta={"mandatory": True},
+            enum={
             "DORMANT": {
                 "info": {
                     "description": "Waiting for some external event."
@@ -451,7 +468,8 @@ class InterfaceCommonState(BaseBinding):
                 }, 
                 "value": "1"
             }
-        })
+        },
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -469,20 +487,34 @@ class InterfaceCountersState_Counters_475(BaseBinding):
         # container
         # list
         # leaf
-        self.out_octets = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_errors = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_discards = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_errors = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.last_clear = yang.DateAndTime(_meta={"mandatory": False}, )
-        self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.out_discards = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False}, )
-        self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False}, )
-        self.in_octets = yang.Counter64(_meta={"mandatory": False}, )
+        self.out_octets = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_errors = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_discards = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_errors = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.last_clear = yang.DateAndTime(_meta={"mandatory": False},
+        )
+        self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.out_discards = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
+        )
+        self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False},
+        )
+        self.in_octets = yang.Counter64(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -519,7 +551,8 @@ class SubUnnumberedConfig(BaseBinding):
         # container
         # list
         # leaf
-        self.enabled = Boolean(_meta={"mandatory": False}, )
+        self.enabled = Boolean(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -627,7 +660,8 @@ class SubinterfacesConfig(InterfaceCommonConfig):
         # container
         # list
         # leaf
-        self.index = Uint32(_meta={"mandatory": False}, )
+        self.index = Uint32(_meta={"mandatory": False},
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -699,7 +733,9 @@ class Subinterfaces_Subinterface_837(List, BaseBinding):
         self.state = Subinterface_State_860()
         # list
         # leaf
-        self.index = Leafref(_meta={"mandatory": False}, path="../config/index")
+        self.index = Leafref(_meta={"mandatory": False},
+            path="../config/index",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -793,7 +829,9 @@ class Interfaces_Interface_884(List, SubinterfacesTop, InterfacePhysHoldtimeTop)
         self.state = Interface_State_913()
         # list
         # leaf
-        self.name = Leafref(_meta={"mandatory": False}, path="../config/name")
+        self.name = Leafref(_meta={"mandatory": False},
+            path="../config/name",
+        )
         # leaflist
         # Meta
         self._meta["config"] = True

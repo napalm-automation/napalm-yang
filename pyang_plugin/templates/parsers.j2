@@ -50,12 +50,15 @@ class {{ m|safe_class_name }}({{ typename|safe_class_name }}):
 
 {%- macro process_identities(module) -%}
 # Identities
+{%- set order = module.pop("order_identity") %}
 {%- set identity = module.pop("identity", {}) -%}
-{% for k, v in identity.items() %}
-{{ k|safe_class_name }} = Identity(
-    base="{{ v.get("base", None) }}",
-    value="{{ k }}",
-    description="""{{v.info.description}}"""
+{% for m in order %}
+{%- set typename = m %}
+{%- set typeargs = identity[m] %}
+{{ typename|safe_class_name }} = Identity(
+    base={{ typeargs.get("base", "None")|safe_class_name }},
+    value="{{ typename }}",
+    description="""{{typeargs.info.description}}"""
     )
 {% endfor %}
 {%- endmacro %}
@@ -143,7 +146,12 @@ self.{{ a[0]|safe_attr_name }} = {{ a[1]|safe_class_name }}()
 # leaf
 {% for k, v in module.pop("leaf", {}).items() -%}
 {% for kk, vv in v.pop("type", {}).items() -%}
-self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk|safe_attr_name }}={{ vvv|to_json }}{% endfor %})
+self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}},
+{% for kkk, vvv in vv.items() -%}
+{% if kkk == "base" %}    {{ kkk|safe_attr_name }}={{ vvv|safe_class_name }},
+{% else %}    {{ kkk|safe_attr_name }}={{ vvv|to_json }},
+{% endif -%}
+{% endfor %})
 {% endfor -%}
 {% endfor -%}
 {%- endmacro %}

@@ -279,6 +279,41 @@ class Leafref(String):
         return True
 
 
+class Identityref(String):
+    """
+    Implements rfc6020 section-9.10.
+
+
+    TBD Use path to validate when importing/exporting from/to JSON/XML
+    """
+
+    def __init__(self, base, _meta=None):
+        super().__init__(_meta)
+        self.base = base
+
+    def _verify_value(self, value):
+        if not isinstance(value, Identity):
+            return False
+        else:
+            return self.base == value.base
+
+
+class Empty(YangType):
+    """
+    Implements rfc6020 section-9.11.
+
+    TBD
+    """
+    pass
+
+
+class Union(YangType):
+
+    def __init__(self, type_, _meta=None):
+        super().__init__(_meta)
+        self._value = type
+
+
 class Identity(YangType):
 
     def __init__(self, value, base=None, description="", _meta=None):
@@ -286,16 +321,6 @@ class Identity(YangType):
         self.base = base
         self.description = description
         self.value = value
-
-    def _verify_value(self, value):
-        return True
-
-
-class Identityref(String):
-
-    def __init__(self, base, _meta=None):
-        super().__init__(_meta)
-        self.base = base
 
     def _verify_value(self, value):
         return True
@@ -386,13 +411,6 @@ class Feature(YangType):
     def __init__(self, name, _meta=None):
         super().__init__(_meta)
         self._value = name
-
-
-class Union(YangType):
-
-    def __init__(self, type_, _meta=None):
-        super().__init__(_meta)
-        self._value = type
 
 
 class LeafList(YangType):

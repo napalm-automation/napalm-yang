@@ -23,5 +23,5 @@ submodule:
 
 .PHONY: tests
 tests:
-	# python test.py
+	python test.py
 	py.test
