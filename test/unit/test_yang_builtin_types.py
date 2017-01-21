@@ -1,8 +1,12 @@
 """Tests for yang types."""
+from builtins import super
+
 from napalm_yang import yang_builtin_types
 import pytest
 
 from decimal import Decimal
+
+from napalm_yang import inet
 
 
 integer_tests = [
@@ -127,6 +131,22 @@ identity_tests = [
 ]
 
 
+class IpAddress(yang_builtin_types.Union):
+    def __init__(self, _meta=None):
+        self.types = []
+        self.types.append(inet.Ipv6Address({}))
+        self.types.append(inet.Ipv4Address({}))
+        super().__init__(_meta=_meta, type_=None, )
+
+
+union_tests = [
+    # values to test, are they valid?
+    (["10.0.1.1", "2001:db8::1"], True),
+    (["10.0.1.1.1", True, False, 0, 1], False),
+]
+
+
+
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
     try:
@@ -191,4 +211,11 @@ class TestYangBuiltinTypes:
         """Test that each type accepts correct values when a range is passed."""
         for value in values:
             yang_obj = forwarding_action
+            obj_value_test(yang_obj, value, is_valid)
+
+    @pytest.mark.parametrize("values, is_valid", union_tests)
+    def test_identity(self, values, is_valid):
+        """Test that each type accepts correct values when a range is passed."""
+        for value in values:
+            yang_obj = IpAddress()
             obj_value_test(yang_obj, value, is_valid)

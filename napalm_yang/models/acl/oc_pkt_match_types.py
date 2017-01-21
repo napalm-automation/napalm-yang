@@ -69,6 +69,23 @@ class PortNumRange(Union):
         "pattern": "^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$"
     }
 }, ):
+
+        self.types = []
+        self.types.append(inet.PortNumber({}))
+        self.types.append(String({
+    "pattern": "^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$"
+}))
+        self.types.append(Enumeration({
+    "enum": {
+        "ANY": {
+            "info": {
+                "description": "Indicates any valid port number (e.g., wildcard)"
+            }
+        }
+    }
+}))
+        
+
         super().__init__(_meta=_meta, type_ = type_, )
 
 class IpProtocolType(Union):
@@ -85,6 +102,16 @@ class IpProtocolType(Union):
         "range": "0..254"
     }
 }, ):
+
+        self.types = []
+        self.types.append(Identityref({
+    "base": "IP_PROTOCOL"
+}))
+        self.types.append(Uint8({
+    "range": "0..254"
+}))
+        
+
         super().__init__(_meta=_meta, type_ = type_, )
 
 class EthertypeType(Union):
@@ -101,6 +128,16 @@ class EthertypeType(Union):
         "range": "1..65535"
     }
 }, ):
+
+        self.types = []
+        self.types.append(Identityref({
+    "base": "ETHERTYPE"
+}))
+        self.types.append(Uint16({
+    "range": "1..65535"
+}))
+        
+
         super().__init__(_meta=_meta, type_ = type_, )
 
 

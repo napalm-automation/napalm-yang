@@ -78,6 +78,7 @@ class InterfaceRef(Leafref):
     configured interfaces.
     """
     def __init__(self, _meta=None, path = "/if:interfaces/if:interface/if:name", ):
+
         super().__init__(_meta=_meta, path = path, )
 
 class InterfaceStateRef(Leafref):
@@ -86,6 +87,7 @@ class InterfaceStateRef(Leafref):
     the operationally present interfaces.
     """
     def __init__(self, _meta=None, path = "/if:interfaces-state/if:interface/if:name", ):
+
         super().__init__(_meta=_meta, path = path, )
 
 

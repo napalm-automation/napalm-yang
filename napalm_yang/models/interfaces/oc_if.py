@@ -65,6 +65,7 @@ class BaseInterfaceRef(Leafref):
     a subinterface is not required.
     """
     def __init__(self, _meta=None, path = "/oc-if:interfaces/oc-if:interface/oc-if:name", ):
+
         super().__init__(_meta=_meta, path = path, )
 
 class InterfaceId(String):
@@ -75,6 +76,7 @@ class InterfaceId(String):
     name and subinterface index.
     """
     def __init__(self, _meta=None, ):
+
         super().__init__(_meta=_meta, )
 
 

@@ -308,10 +308,41 @@ class Empty(YangType):
 
 
 class Union(YangType):
+    """
+    Implements rfc6020 section-9.12.
 
+    TBD
+    """
     def __init__(self, type_, _meta=None):
         super().__init__(_meta)
-        self._value = type
+        self._value = None
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        valid = False
+        for t in self.types:
+            try:
+                t(value)
+                self._value = t
+                valid = True
+            except ValueError:
+                pass
+        if not valid:
+            raise ValueError("Value '{}' is not valid for any of the types '{}'".format(value,
+                                                                                        self.types))
+
+
+class InstanceIdentifier(YangType):
+    """
+    Implements rfc6020 section-9.13.
+
+    TBD
+    """
+    pass
 
 
 class Identity(YangType):
