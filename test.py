@@ -42,7 +42,10 @@ def print_data(name, data, indentation=""):
             sm = attr_data["_meta"]
 
             if sm["type"] == "Enumeration":
-                value = "{} ({})".format(attr_data["value"], sm["enum_value"])
+                try:
+                    value = "{} ({})".format(attr_data["value"], attr_data["enum_value"])
+                except:
+                    raise Exception(attr_data)
             else:
                 value = attr_data["value"]
 

@@ -238,6 +238,12 @@ class Enumeration(YangType):
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
             raise ValueError(error_msg.format(value, self.enum.keys()))
 
+    def data_representation(self):
+        """Returns a dict with information about the model itself."""
+        model = super().data_representation()
+        model["enum_value"] = self.enum_value
+        return model
+
 
 class Bits(YangType):
     """
