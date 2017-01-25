@@ -295,7 +295,7 @@ class Identityref(String):
         if not isinstance(value, Identity):
             return False
         else:
-            return self.base == value.base
+            return self.base == value.base or issubclass(value.base.__class__, self.base.__class__)
 
 
 class Empty(YangType):
@@ -386,8 +386,16 @@ class List(BaseBinding):
         raise ValueError("You can't set a value to a list. Use new_element method")
 
     def new_element(self, name):
+        """Force the ceration of a new element."""
         self._value[name] = ListElement(self)
         return self._value[name]
+
+    def get_element(self, name):
+        """Returns an existing element if it exists or create a new one."""
+        if name not in self._value:
+            return self.new_element(name)
+        else:
+            return self._value[name]
 
     def model_represenation(self):
         return ListElement(self).model_represenation()
@@ -403,6 +411,9 @@ class List(BaseBinding):
 
         return res
 
+    def __contains__(self, key):
+        return key in self._value
+
     def __getitem__(self, name):
         return self._value.__getitem__(name)
 
@@ -413,9 +424,6 @@ class List(BaseBinding):
         if not isinstance(value, self.type):
             raise AttributeError("{} is not of type {}".format(value, self.type))
         self._value.__setitem__(name, value)
-
-    def __contains__(self, item):
-        return self._value.__contains__(item)
 
     def __iter__(self):
         return self._value.__iter__()

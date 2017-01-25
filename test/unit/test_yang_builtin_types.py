@@ -146,7 +146,6 @@ union_tests = [
 ]
 
 
-
 def obj_value_test(yang_obj, value, is_valid):
     failed = False
     try:
@@ -214,7 +213,7 @@ class TestYangBuiltinTypes:
             obj_value_test(yang_obj, value, is_valid)
 
     @pytest.mark.parametrize("values, is_valid", union_tests)
-    def test_identity(self, values, is_valid):
+    def test_union(self, values, is_valid):
         """Test that each type accepts correct values when a range is passed."""
         for value in values:
             yang_obj = IpAddress()

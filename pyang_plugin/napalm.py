@@ -130,7 +130,7 @@ def inspect(obj):
 
 
 SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units",
-          "range", "pattern", "when", "length", "if-feature", "yin-element", )
+          "range", "pattern", "when", "length", "if-feature", "yin-element", "status", )
 
 
 def _parse_simple(sub, store):
