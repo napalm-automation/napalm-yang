@@ -295,7 +295,7 @@ class Identityref(String):
         if not isinstance(value, Identity):
             return False
         else:
-            return self.base == value.base or issubclass(value.base.__class__, self.base.__class__)
+            return self.base == value.base
 
 
 class Empty(YangType):
