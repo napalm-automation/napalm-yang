@@ -1,0 +1,6 @@
+[submodule "yang"]
+	path = yang_ietf
+	url = git@github.com:YangModels/yang.git
+[submodule "yang_oc"]
+	path = yang_oc
+	url = git@github.com:openconfig/public.git

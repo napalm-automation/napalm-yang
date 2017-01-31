@@ -1,0 +1,172 @@
+{%- macro process_imports(module) -%}
+# Imports
+{%- set import = module.pop("import", {}) -%}
+{% for k, v in import.items() %}
+{% for kk, vv in v.pop("info").items() -%}
+from napalm_yang import {{ vv|safe_attr_name }}
+{%- endfor -%}
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro process_openconfig_extensions(module) -%}
+# openconfig-extensions
+{% set oc = module.info.pop("openconfig-extensions", {}) -%}
+{% for k, v in oc.items() -%}
+{{ k|safe_attr_name }} = oc_ext.{{k|safe_class_name}}("{{ v }}")
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro process_feature(module) -%}
+# features
+{%- set features = module.pop("feature", {}) %}
+{% for k, v in features.items() %}
+"""
+{{ v.pop("info")["description"] }}
+"""
+{{ k|safe_class_name }} = Feature("{{ k|safe_class_name }}")
+{{ v|raise_if_not_empty -}}
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro process_typedef(module) -%}
+# typedef
+{%- set order = module.pop("order_typedef") %}
+{%- set typedef = module.pop("typedef", {}) %}
+{% for m in order -%}
+{%- set typename = typedef[m].type.keys()[0] %}
+{%- set typeargs = typedef[m].type[typename] %}
+class {{ m|safe_class_name }}({{ typename|safe_class_name }}):
+    """
+{{ typedef[m].pop("info").pop("description")|indent }}
+    """
+    def __init__(self, _meta=None, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ val|to_json }}, {% endfor %}):
+{% if "type" in typeargs.keys() %}
+        self.types = []
+        {% for k, v in typeargs["type"].items() %}self.types.append({{k|safe_class_name}}({{v|to_json}}))
+        {% endfor %}
+{% endif %}
+        super().__init__(_meta=_meta, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ arg|safe_attr_name }}, {% endfor %})
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro process_identities(module) -%}
+# Identities
+{%- set order = module.pop("order_identity") %}
+{%- set identity = module.pop("identity", {}) -%}
+{% for m in order %}
+{%- set typename = m %}
+{%- set typeargs = identity[m] %}
+{{ typename|safe_class_name }} = Identity(
+    base={{ typeargs.get("base", "None")|safe_class_name }},
+    value="{{ typename }}",
+    description="""{{typeargs.info.description}}"""
+    )
+{% endfor %}
+{%- endmacro %}
+
+{%- macro process_classes(module) -%}
+# Classes to support containers and lists
+
+{%- set order = module.pop("order") %}
+{% for m in order -%}
+{%- set cls = module[m[0]].pop(m[1]) %}
+{{ _process_class(cls, m[1], m[0])}}
+{{ cls|raise_if_not_empty }}
+{% endfor -%}
+{%- set ignore = module.pop("list", {}) -%}{{ ignore|raise_if_not_empty -}}
+{%- set ignore = module.pop("grouping", {}) -%}{{ ignore|raise_if_not_empty -}}
+{%- endmacro %}
+
+{%- macro _process_class(cls, name, cls_type) -%}
+{%- set uses = cls.pop("uses", []) %}{%- set subclasses = [] %}
+{% for u in uses %}{% set ignore = subclasses.append(u|safe_class_name) %}{% endfor %}{% set subclasses = ", ".join(subclasses) %}
+class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"] else "" }}{{ subclasses or "BaseBinding" }}):
+    """
+{{ cls.pop("info", {}).pop("description")|indent }}
+    """
+    def __init__(self, _meta=None):
+        super().__init__(_meta=_meta)
+{{ _process_attributes(cls, "container")|indent(8) }}
+{{ _process_attributes(cls, "list")|indent(8) }}
+{{ _process_leafs(cls)|indent(8) }}
+{{ _process_leaf_lists(cls)|indent(8) }}
+        # Meta
+        self._meta["config"] = {{ cls.pop("config", True)|title  }}
+        {% if cls_type == "list" %}self._meta["key"] = "{{ cls.pop("key")|safe_attr_name }}"
+{% endif %}
+{%- endmacro %}
+
+
+{%- macro process_top_uses(module) -%}
+# Top-uses
+{%- set uses = module.pop("uses", []) -%}
+{% for t in uses %}
+class {{ t.split("-")[0]|safe_class_name }}({{t|safe_class_name}}):
+    pass
+{% endfor %}
+{%- endmacro %}
+
+{%- macro process_top_container(module) -%}
+# Top-containers
+{%- set containers = module.pop("container", {}).get("container", []) -%}
+{% for c in containers %}
+class {{ c[0]|safe_class_name }}({{ c[1]|safe_class_name }}):
+    pass
+{% endfor %}
+{%- set ignore = module.pop("container", {}) -%}{{ ignore|raise_if_not_empty -}}
+{%- endmacro %}
+
+
+{%- macro process_extensions(module) -%}
+# extensions
+{%- set extension = module.pop("extension", {}) -%}
+{% for k, v in extension.items() %}
+class {{ k|safe_class_name }}(Extension):
+    """
+ {{ v.pop("info", {}).pop("description")|indent }}
+    """
+    def __init__(self, {% for kk, vv in v.get("argument", {}).items() %}{{kk|safe_attr_name}}, {% endfor %}):
+    {% for kk, vv in v.pop("argument", {}).items() %}
+        self.{{kk|safe_attr_name}} = "{{ kk|safe_attr_name }}"
+        self._yin_element_{{kk|safe_attr_name}} = {{ vv.pop("yin-element", False)|title }}
+    {% endfor -%}
+{{ v|raise_if_not_empty -}}
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro _process_attributes(module, type_of_attr) -%}
+# {{ type_of_attr }}
+{% for a in module.pop(type_of_attr, {}).pop(type_of_attr, []) -%}
+self.{{ a[0]|safe_attr_name }} = {{ a[1]|safe_class_name }}()
+{% endfor %}
+{%- endmacro %}
+
+
+{%- macro _process_leafs(module) -%}
+# leaf
+{% for k, v in module.pop("leaf", {}).items() -%}
+{% for kk, vv in v.pop("type", {}).items() -%}
+self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}},
+{% for kkk, vvv in vv.items() -%}
+{% if kkk == "base" %}    {{ kkk|safe_attr_name }}={{ vvv|safe_class_name }},
+{% else %}    {{ kkk|safe_attr_name }}={{ vvv|to_json }},
+{% endif -%}
+{% endfor %})
+{% endfor -%}
+{% endfor -%}
+{%- endmacro %}
+
+
+{%- macro _process_leaf_lists(module) -%}
+# leaflist
+{% for k, v in module.pop("leaf-list", {}).items() -%}
+{% for kk, vv in v.pop("type", {}).items() -%}
+self.{{ k|safe_attr_name }} = LeafList({{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk }}={{ vvv|to_json }}{% endfor %}))
+{% endfor -%}
+{% endfor -%}
+{%- endmacro %}
