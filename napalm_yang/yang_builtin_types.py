@@ -162,7 +162,7 @@ class String(YangType):
                 min_ = int(min_)
                 max_ = int(max_)
                 self.ranges = [length]
-            except:
+            except Exception:
                 # If we get here it means we can't use length as new min|max
                 self.ranges.append(length)
 
@@ -397,8 +397,8 @@ class List(BaseBinding):
         else:
             return self._value[name]
 
-    def model_represenation(self):
-        return ListElement(self).model_represenation()
+    def model_representation(self):
+        return ListElement(self).model_representation()
 
     def data_representation(self):
         res = {}

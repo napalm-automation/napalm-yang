@@ -3,6 +3,59 @@
 import copy
 
 
+def print_model(name, model, indentation=""):
+    meta = model["_meta"]
+    mode = "rw" if meta["config"] else "ro"
+    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
+    print("{}+-- {} {}{}".format(indentation, mode, name, key))
+    indentation = indentation + "|  "
+
+    for attr, data in model.items():
+        if attr == "_meta":
+            continue
+
+        sm = data.get("_meta")
+        if sm["nested"]:
+            print_model(attr, data, indentation)
+        else:
+            mandatory = "" if sm["mandatory"] else "?"
+            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
+            spacing = " " * (60 - len(body))
+            print("{}{}{}".format(body, spacing, sm["type"]))
+
+
+def print_data(name, data, indentation=""):
+    meta = data["_meta"]
+    mode = "rw" if meta["config"] else "ro"
+    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
+    print("{}+-- {} {}{}".format(indentation, mode, name, key))
+    indentation = indentation + "|  "
+
+    for attr, attr_data in data.items():
+        if attr == "_meta":
+            continue
+        elif attr == "list":
+            for e, d in attr_data.items():
+                print_data(e, d, indentation)
+        elif "value" in attr_data.keys():
+            sm = attr_data["_meta"]
+
+            if sm["type"] == "Enumeration":
+                try:
+                    value = "{} ({})".format(attr_data["value"], attr_data["enum_value"])
+                except Exception:
+                    raise Exception(attr_data)
+            else:
+                value = attr_data["value"]
+
+            mandatory = "" if sm["mandatory"] else "?"
+            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
+            spacing = " " * (60 - len(body))
+            print("{}{}{}".format(body, spacing, value))
+        else:
+            print_data(attr, attr_data, indentation)
+
+
 class BaseBinding(object):
     """All YANG bindings inherit from this class."""
 
@@ -21,14 +74,14 @@ class BaseBinding(object):
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
 
-    def model_represenation(self):
+    def model_representation(self):
         """Returns a dict with information about the model itself."""
         result = {}
         result["_meta"] = copy.deepcopy(self._meta)
         result["_meta"]["nested"] = True
 
         for attr_name, attr in self.items():
-            result[attr_name] = attr.model_represenation()
+            result[attr_name] = attr.model_representation()
 
         return result
 
@@ -44,6 +97,12 @@ class BaseBinding(object):
         if result:
             result["_meta"] = copy.deepcopy(self._meta)
         return result
+
+    def print_model(self, indentation=""):
+        print_model(self.__class__.__name__, self.model_representation())
+
+    def print_data(self, indentation=""):
+        print_data(self.__class__.__name__, self.data_representation())
 
 
 class YangType(object):
@@ -104,7 +163,7 @@ class YangType(object):
         else:
             raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
 
-    def model_represenation(self):
+    def model_representation(self):
         """Returns a dict with information about the model itself."""
         return {
             "_meta": {
