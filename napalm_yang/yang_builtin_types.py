@@ -238,9 +238,9 @@ class Enumeration(YangType):
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
             raise ValueError(error_msg.format(value, self.enum.keys()))
 
-    def data_representation(self):
+    def data_to_dict(self):
         """Returns a dict with information about the model itself."""
-        model = super().data_representation()
+        model = super().data_to_dict()
         model["enum_value"] = self.enum_value
         return model
 
@@ -397,16 +397,16 @@ class List(BaseBinding):
         else:
             return self._value[name]
 
-    def model_representation(self):
-        return ListElement(self).model_representation()
+    def model_to_dict(self):
+        return ListElement(self).model_to_dict()
 
-    def data_representation(self):
+    def data_to_dict(self):
         res = {}
         res["_meta"] = copy.deepcopy(self._meta) or {}
         res["list"] = {}
 
         for element, data in self.items():
-            res["list"][element] = data.data_representation()
+            res["list"][element] = data.data_to_dict()
             res["list"][element]["_meta"] = copy.deepcopy(self._meta) or {}
 
         return res

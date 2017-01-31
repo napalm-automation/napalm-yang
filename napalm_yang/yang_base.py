@@ -3,11 +3,12 @@
 import copy
 
 
-def print_model(name, model, indentation=""):
+def model_to_text(name, model, indentation=""):
+    text = ""
     meta = model["_meta"]
     mode = "rw" if meta["config"] else "ro"
     key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
-    print("{}+-- {} {}{}".format(indentation, mode, name, key))
+    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
     indentation = indentation + "|  "
 
     for attr, data in model.items():
@@ -16,19 +17,22 @@ def print_model(name, model, indentation=""):
 
         sm = data.get("_meta")
         if sm["nested"]:
-            print_model(attr, data, indentation)
+            text += model_to_text(attr, data, indentation)
         else:
             mandatory = "" if sm["mandatory"] else "?"
             body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
             spacing = " " * (60 - len(body))
-            print("{}{}{}".format(body, spacing, sm["type"]))
+            text += "{}{}{}\n".format(body, spacing, sm["type"])
+
+    return text
 
 
-def print_data(name, data, indentation=""):
+def data_to_text(name, data, indentation=""):
+    text = ""
     meta = data["_meta"]
     mode = "rw" if meta["config"] else "ro"
     key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
-    print("{}+-- {} {}{}".format(indentation, mode, name, key))
+    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
     indentation = indentation + "|  "
 
     for attr, attr_data in data.items():
@@ -36,7 +40,7 @@ def print_data(name, data, indentation=""):
             continue
         elif attr == "list":
             for e, d in attr_data.items():
-                print_data(e, d, indentation)
+                text += data_to_text(e, d, indentation)
         elif "value" in attr_data.keys():
             sm = attr_data["_meta"]
 
@@ -51,9 +55,11 @@ def print_data(name, data, indentation=""):
             mandatory = "" if sm["mandatory"] else "?"
             body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
             spacing = " " * (60 - len(body))
-            print("{}{}{}".format(body, spacing, value))
+            text += "{}{}{}\n".format(body, spacing, value)
         else:
-            print_data(attr, attr_data, indentation)
+            text += data_to_text(attr, attr_data, indentation)
+
+    return text
 
 
 class BaseBinding(object):
@@ -74,23 +80,23 @@ class BaseBinding(object):
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
 
-    def model_representation(self):
+    def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         result = {}
         result["_meta"] = copy.deepcopy(self._meta)
         result["_meta"]["nested"] = True
 
         for attr_name, attr in self.items():
-            result[attr_name] = attr.model_representation()
+            result[attr_name] = attr.model_to_dict()
 
         return result
 
-    def data_representation(self):
+    def data_to_dict(self):
         """Returns a dict with information about the data (if any) contained in the model."""
         result = {}
 
         for attr_name, attr in self.items():
-            res = attr.data_representation()
+            res = attr.data_to_dict()
             if res:
                 result[attr_name] = res
 
@@ -98,11 +104,11 @@ class BaseBinding(object):
             result["_meta"] = copy.deepcopy(self._meta)
         return result
 
-    def print_model(self, indentation=""):
-        print_model(self.__class__.__name__, self.model_representation())
+    def model_to_text(self, indentation=""):
+        return model_to_text(self.__class__.__name__, self.model_to_dict())
 
-    def print_data(self, indentation=""):
-        print_data(self.__class__.__name__, self.data_representation())
+    def data_to_text(self, indentation=""):
+        return data_to_text(self.__class__.__name__, self.data_to_dict())
 
 
 class YangType(object):
@@ -163,7 +169,7 @@ class YangType(object):
         else:
             raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
 
-    def model_representation(self):
+    def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         return {
             "_meta": {
@@ -173,7 +179,7 @@ class YangType(object):
             }
         }
 
-    def data_representation(self):
+    def data_to_dict(self):
         """Returns a dict with information about the data (if any) contained in the model."""
         res = {"value": self.value}
         res["_meta"] = copy.deepcopy(self._meta)
