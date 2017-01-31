@@ -3,6 +3,65 @@
 import copy
 
 
+def model_to_text(name, model, indentation=""):
+    text = ""
+    meta = model["_meta"]
+    mode = "rw" if meta["config"] else "ro"
+    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
+    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
+    indentation = indentation + "|  "
+
+    for attr, data in model.items():
+        if attr == "_meta":
+            continue
+
+        sm = data.get("_meta")
+        if sm["nested"]:
+            text += model_to_text(attr, data, indentation)
+        else:
+            mandatory = "" if sm["mandatory"] else "?"
+            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
+            spacing = " " * (60 - len(body))
+            text += "{}{}{}\n".format(body, spacing, sm["type"])
+
+    return text
+
+
+def data_to_text(name, data, indentation=""):
+    text = ""
+    meta = data["_meta"]
+    mode = "rw" if meta["config"] else "ro"
+    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
+    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
+    indentation = indentation + "|  "
+
+    for attr, attr_data in data.items():
+        if attr == "_meta":
+            continue
+        elif attr == "list":
+            for e, d in attr_data.items():
+                text += data_to_text(e, d, indentation)
+        elif "value" in attr_data.keys():
+            sm = attr_data["_meta"]
+
+            if sm["type"] == "Enumeration":
+                try:
+                    value = "{} ({})".format(attr_data["value"], attr_data["enum_value"])
+                except Exception:
+                    raise Exception(attr_data)
+            else:
+                value = attr_data["value"]
+
+            mandatory = "" if sm["mandatory"] else "?"
+            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
+            spacing = " " * (60 - len(body))
+            text += "{}{}{}\n".format(body, spacing, value)
+        else:
+            text += data_to_text(attr, attr_data, indentation)
+
+    return text
+
+
 class BaseBinding(object):
     """All YANG bindings inherit from this class."""
 
@@ -21,29 +80,35 @@ class BaseBinding(object):
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
 
-    def model_represenation(self):
+    def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         result = {}
         result["_meta"] = copy.deepcopy(self._meta)
         result["_meta"]["nested"] = True
 
         for attr_name, attr in self.items():
-            result[attr_name] = attr.model_represenation()
+            result[attr_name] = attr.model_to_dict()
 
         return result
 
-    def data_representation(self):
+    def data_to_dict(self):
         """Returns a dict with information about the data (if any) contained in the model."""
         result = {}
 
         for attr_name, attr in self.items():
-            res = attr.data_representation()
+            res = attr.data_to_dict()
             if res:
                 result[attr_name] = res
 
         if result:
             result["_meta"] = copy.deepcopy(self._meta)
         return result
+
+    def model_to_text(self, indentation=""):
+        return model_to_text(self.__class__.__name__, self.model_to_dict())
+
+    def data_to_text(self, indentation=""):
+        return data_to_text(self.__class__.__name__, self.data_to_dict())
 
 
 class YangType(object):
@@ -104,7 +169,7 @@ class YangType(object):
         else:
             raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
 
-    def model_represenation(self):
+    def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         return {
             "_meta": {
@@ -114,7 +179,7 @@ class YangType(object):
             }
         }
 
-    def data_representation(self):
+    def data_to_dict(self):
         """Returns a dict with information about the data (if any) contained in the model."""
         res = {"value": self.value}
         res["_meta"] = copy.deepcopy(self._meta)
