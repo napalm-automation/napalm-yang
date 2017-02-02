@@ -411,6 +411,25 @@ class List(BaseBinding):
 
         return res
 
+    def diff(self, other):
+        res = {"both": {}, "mine": {}, "other": {}}
+
+        for k, v in self.items():
+            if k in other:
+                r = v.diff(other[k])
+                if r:
+                    res["both"][k] = r
+            else:
+                res["mine"][k] = v.data_to_dict()
+
+        for k in set(set(other.keys()) - set(self.keys())):
+            res["other"][k] = other[k].data_to_dict()
+
+        if res["both"] or res["mine"] or res["other"]:
+            return res
+        else:
+            return {}
+
     def __contains__(self, key):
         return key in self._value
 

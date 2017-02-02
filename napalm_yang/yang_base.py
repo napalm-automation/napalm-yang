@@ -80,6 +80,9 @@ class BaseBinding(object):
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
 
+    def __eq__(self, other):
+        return self.diff(other) == {}
+
     def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         result = {}
@@ -109,6 +112,16 @@ class BaseBinding(object):
 
     def data_to_text(self, indentation=""):
         return data_to_text(self.__class__.__name__, self.data_to_dict())
+
+    def diff(self, other):
+        result = {}
+
+        for attr_name, attr in self.items():
+            res = attr.diff(getattr(other, attr_name))
+            if res:
+                result[attr_name] = res
+
+        return result
 
 
 class YangType(object):
@@ -168,6 +181,12 @@ class YangType(object):
             self._value = value
         else:
             raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
+
+    def diff(self, other):
+        if self.value != other.value:
+            return {"mine": self.value, "other": other.value}
+        else:
+            return {}
 
     def model_to_dict(self):
         """Returns a dict with information about the model itself."""
