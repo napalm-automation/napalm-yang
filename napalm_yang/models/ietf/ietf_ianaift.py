@@ -70,31 +70,31 @@ defined in the 'ifType definitions' registry."""
 Other = Identity(
     base=IanaInterfaceType,
     value="other",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Regular1822 = Identity(
     base=IanaInterfaceType,
     value="regular1822",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Hdh1822 = Identity(
     base=IanaInterfaceType,
     value="hdh1822",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Ddnx25 = Identity(
     base=IanaInterfaceType,
     value="ddnX25",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Rfc877X25 = Identity(
     base=IanaInterfaceType,
     value="rfc877x25",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Ethernetcsmacd = Identity(
@@ -114,19 +114,19 @@ Use ethernetCsmacd(6) instead."""
 Iso88024Tokenbus = Identity(
     base=IanaInterfaceType,
     value="iso88024TokenBus",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Iso88025Tokenring = Identity(
     base=IanaInterfaceType,
     value="iso88025TokenRing",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Iso88026Man = Identity(
     base=IanaInterfaceType,
     value="iso88026Man",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Starlan = Identity(
@@ -139,37 +139,37 @@ Use ethernetCsmacd(6) instead."""
 Proteon10Mbit = Identity(
     base=IanaInterfaceType,
     value="proteon10Mbit",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Proteon80Mbit = Identity(
     base=IanaInterfaceType,
     value="proteon80Mbit",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Hyperchannel = Identity(
     base=IanaInterfaceType,
     value="hyperchannel",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Fddi = Identity(
     base=IanaInterfaceType,
     value="fddi",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Lapb = Identity(
     base=IanaInterfaceType,
     value="lapb",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Sdlc = Identity(
     base=IanaInterfaceType,
     value="sdlc",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Ds1 = Identity(
@@ -205,13 +205,13 @@ Proppointtopointserial = Identity(
 Ppp = Identity(
     base=IanaInterfaceType,
     value="ppp",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Softwareloopback = Identity(
     base=IanaInterfaceType,
     value="softwareLoopback",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Eon = Identity(
@@ -223,7 +223,7 @@ Eon = Identity(
 Ethernet3Mbit = Identity(
     base=IanaInterfaceType,
     value="ethernet3Mbit",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Nsip = Identity(
@@ -265,7 +265,7 @@ Framerelay = Identity(
 Rs232 = Identity(
     base=IanaInterfaceType,
     value="rs232",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Para = Identity(
@@ -295,7 +295,7 @@ Atm = Identity(
 Miox25 = Identity(
     base=IanaInterfaceType,
     value="miox25",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Sonet = Identity(
@@ -307,25 +307,25 @@ Sonet = Identity(
 X25Ple = Identity(
     base=IanaInterfaceType,
     value="x25ple",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Iso88022Llc = Identity(
     base=IanaInterfaceType,
     value="iso88022llc",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Localtalk = Identity(
     base=IanaInterfaceType,
     value="localTalk",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Smdsdxi = Identity(
     base=IanaInterfaceType,
     value="smdsDxi",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Framerelayservice = Identity(
@@ -337,19 +337,19 @@ Framerelayservice = Identity(
 V35 = Identity(
     base=IanaInterfaceType,
     value="v35",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Hssi = Identity(
     base=IanaInterfaceType,
     value="hssi",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Hippi = Identity(
     base=IanaInterfaceType,
     value="hippi",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Modem = Identity(
@@ -367,13 +367,13 @@ Aal5 = Identity(
 Sonetpath = Identity(
     base=IanaInterfaceType,
     value="sonetPath",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Sonetvt = Identity(
     base=IanaInterfaceType,
     value="sonetVT",
-    description="""defaultdict(<function _nested_default_dict at 0x1030355f0>, {})"""
+    description="""defaultdict(<function _nested_default_dict at 0x10fc3c5f0>, {})"""
     )
 
 Smdsicip = Identity(
