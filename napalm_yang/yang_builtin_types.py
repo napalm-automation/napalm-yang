@@ -465,6 +465,12 @@ class List(BaseBinding):
     def values(self):
         return self._value.values()
 
+    def pop(self, name):
+        return self._value.pop(name)
+
+    def get(self, name, default=None):
+        return self._value.get(name, default)
+
 
 class BaseTypeDef(YangType):
     pass
