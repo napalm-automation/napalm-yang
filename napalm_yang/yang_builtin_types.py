@@ -8,6 +8,12 @@ import re
 
 from napalm_yang.yang_base import YangType, BaseBinding
 
+import sys
+
+# py23 compatibility
+if sys.version_info > (3,):
+    long = int
+
 
 def value_in_pattern(pattern, value):
     if "^" not in pattern:
