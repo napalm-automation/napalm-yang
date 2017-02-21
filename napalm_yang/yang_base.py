@@ -1,14 +1,15 @@
 """Base classes for Yang Types and bindings."""
-
+import text_helpers
 import copy
 
 
-def model_to_text(name, model, indentation=""):
+def model_to_text(name, model, indentation="", augment=""):
     text = ""
     meta = model["_meta"]
     mode = "rw" if meta["config"] else "ro"
     key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
     text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
+    text += augment
     indentation = indentation + "|  "
 
     for attr, data in model.items():
@@ -16,13 +17,23 @@ def model_to_text(name, model, indentation=""):
             continue
 
         sm = data.get("_meta")
+        if attr in model["_meta"]["augments"].keys():
+            when = model["_meta"]["augments"][attr].when or "always"
+            augment = "{}|    \ [augment] {} - when: {}\n".format(
+                indentation,
+                model["_meta"]["augments"][attr].prefix,
+                when,
+            )
+        else:
+            augment = ""
         if sm["nested"]:
-            text += model_to_text(attr, data, indentation)
+            text += model_to_text(attr, data, indentation, augment)
         else:
             mandatory = "" if sm["mandatory"] else "?"
             body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
             spacing = " " * (60 - len(body))
             text += "{}{}{}\n".format(body, spacing, sm["type"])
+            text += augment
 
     return text
 
@@ -64,10 +75,12 @@ def data_to_text(name, data, indentation=""):
 
 class BaseBinding(object):
     """All YANG bindings inherit from this class."""
+    __prefix__ = None
 
     def __init__(self, _meta=None):
         self._meta = {
             "config": False,
+            "augments": {},
         }
         if _meta:
             self._meta.update(_meta)
@@ -82,6 +95,54 @@ class BaseBinding(object):
 
     def __eq__(self, other):
         return self.diff(other) == {}
+
+    def augment(self, yang_module):
+        if not yang_module.__class__.__name__ == 'module':
+            raise ValueError("Augment must receive a module with augments")
+
+        for element in sorted(yang_module.__dict__):
+            if not element.startswith("Augment_"):
+                continue
+            element = getattr(yang_module, element)
+
+            if issubclass(element, BaseAugment):
+                self._add_augment(element)
+
+    def _add_augment(self, augment):
+        augment = augment()
+
+        self_attr = self
+        for p in augment.path:
+            attr = p.split(":")
+
+            if len(attr) == 1:
+                attr = attr[0]
+                prefix = self_attr.prefix
+            else:
+                prefix, attr = attr
+
+            self_attr = getattr(self_attr, text_helpers.safe_attr_name(attr))
+
+            if not self_attr.prefix == prefix:
+                return
+
+        self_attr.add_model(augment, is_augment=True)
+
+    def add_model(self, model, is_augment=False):
+        """Merges model into existing object."""
+        for k, v in model.items():
+            setattr(self, k, v)
+
+            if is_augment:
+                self._meta["augments"][k] = model
+
+        if not is_augment:
+            if model._meta["config"]:
+                self._meta["config"] = True
+
+    @property
+    def prefix(self):
+        return self.__prefix__
 
     def model_to_dict(self):
         """Returns a dict with information about the model itself."""
@@ -211,6 +272,11 @@ class YangType(object):
 
 
 class Extension(YangType):
-    """An base class to create extensions"""
+    """A base class to create extensions"""
     # TBD
     pass
+
+
+class BaseAugment(BaseBinding):
+    """A base class for augments."""
+    when = None

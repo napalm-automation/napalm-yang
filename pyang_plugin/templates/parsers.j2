@@ -42,6 +42,8 @@ class {{ m|safe_class_name }}({{ typename|safe_class_name }}):
     """
 {{ typedef[m].pop("info").pop("description")|indent }}
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None, {% for arg, val in typeargs.items() %}{{ arg|safe_attr_name }} = {{ val|to_json }}, {% endfor %}):
 {% if "type" in typeargs.keys() %}
         self.types = []
@@ -88,6 +90,8 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
     """
 {{ cls.pop("info", {}).pop("description")|indent }}
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
 {{ _process_attributes(cls, "container")|indent(8) }}
@@ -96,7 +100,7 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
 {{ _process_leaf_lists(cls)|indent(8) }}
         # Meta
         self._meta["config"] = {{ cls.pop("config", True)|title  }}
-        {% if cls_type == "list" %}self._meta["key"] = "{{ cls.pop("key")|safe_attr_name }}"
+        {% if cls_type == "list" %}self._meta["key"] = "{{ cls.pop("key", "")|safe_attr_name }}"
 {% endif %}
 {%- endmacro %}
 
@@ -105,8 +109,7 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
 # Top-uses
 {%- set uses = module.pop("uses", []) -%}
 {% for t in uses %}
-class {{ t.split("-")[0]|safe_class_name }}({{t|safe_class_name}}):
-    pass
+{{ t.split("-")[0]|safe_attr_name }} = {{ t|safe_class_name }}()
 {% endfor %}
 {%- endmacro %}
 
@@ -115,7 +118,7 @@ class {{ t.split("-")[0]|safe_class_name }}({{t|safe_class_name}}):
 {%- set containers = module.pop("container", {}).get("container", []) -%}
 {% for c in containers %}
 class {{ c[0]|safe_class_name }}({{ c[1]|safe_class_name }}):
-    pass
+    prefix = __prefix__
 {% endfor %}
 {%- set ignore = module.pop("container", {}) -%}{{ ignore|raise_if_not_empty -}}
 {%- endmacro %}
@@ -129,6 +132,8 @@ class {{ k|safe_class_name }}(Extension):
     """
  {{ v.pop("info", {}).pop("description")|indent }}
     """
+    prefix = __prefix__
+
     def __init__(self, {% for kk, vv in v.get("argument", {}).items() %}{{kk|safe_attr_name}}, {% endfor %}):
     {% for kk, vv in v.pop("argument", {}).items() %}
         self.{{kk|safe_attr_name}} = "{{ kk|safe_attr_name }}"
@@ -166,7 +171,7 @@ self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.
 # leaflist
 {% for k, v in module.pop("leaf-list", {}).items() -%}
 {% for kk, vv in v.pop("type", {}).items() -%}
-self.{{ k|safe_attr_name }} = LeafList({{ kk|safe_class_name }}(_meta={"mandatory": {{ v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk }}={{ vvv|to_json }}{% endfor %}))
+self.{{ k|safe_attr_name }} = LeafList({{ kk|safe_class_name }}(_meta={"mandatory": {{v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk|safe_attr_name }}={{ vvv|to_json }}{% endfor %}))
 {% endfor -%}
 {% endfor -%}
 {%- endmacro %}

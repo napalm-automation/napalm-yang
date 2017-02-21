@@ -77,6 +77,8 @@ class InterfaceRef(Leafref):
     This type is used by data models that need to reference
     configured interfaces.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None, path = "/if:interfaces/if:interface/if:name", ):
 
         super().__init__(_meta=_meta, path = path, )
@@ -86,6 +88,8 @@ class InterfaceStateRef(Leafref):
     This type is used by data models that need to reference
     the operationally present interfaces.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None, path = "/if:interfaces-state/if:interface/if:name", ):
 
         super().__init__(_meta=_meta, path = path, )
@@ -118,6 +122,8 @@ class Interfaces_Interface_92(List, BaseBinding):
     the configured interface is not instantiated in the
     /interfaces-state/interface list.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
         # container
@@ -155,6 +161,8 @@ class IetfInterfaces_Interfaces_89(BaseBinding):
     """
     Interface configuration parameters.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
         # container
@@ -173,6 +181,8 @@ class Interface_Statistics_392(BaseBinding):
     """
     A collection of interface-related statistics objects.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
         # container
@@ -221,6 +231,8 @@ class InterfacesState_Interface_226(List, BaseBinding):
     always present in this list, whether they are configured or
     not.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
         # container
@@ -324,6 +336,8 @@ class IetfInterfaces_InterfacesState_222(BaseBinding):
     """
     Data nodes for the operational state of interfaces.
     """
+    prefix = __prefix__
+
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
         # container
@@ -341,7 +355,11 @@ class IetfInterfaces_InterfacesState_222(BaseBinding):
 
 # Top-containers
 class Interfaces(IetfInterfaces_Interfaces_89):
-    pass
+    prefix = __prefix__
 
 class InterfacesState(IetfInterfaces_InterfacesState_222):
-    pass
+    prefix = __prefix__
+
+
+
+# augments

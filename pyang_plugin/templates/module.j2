@@ -1,4 +1,5 @@
 {%- import "parsers.j2" as p -%}
+{%- import "parsers2.j2" as p2 -%}
 """
 {{ module.info.pop("description") }}
 """
@@ -39,5 +40,7 @@ __{{ k.replace('-', '_') }}__ = {{ v|to_json }}
 {{ p.process_top_uses(module) }}
 
 {{ p.process_top_container(module) }}
+
+{{ p2.process_augments(module) }}
 
 {{- module|raise_if_not_empty -}}

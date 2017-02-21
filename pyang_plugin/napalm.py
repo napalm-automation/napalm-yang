@@ -11,6 +11,8 @@ from pyang.statements import Statement
 from collections import defaultdict
 
 from helpers import jinja_filters
+from helpers import parsers
+
 import jinja2
 
 from utils import text_helpers
@@ -99,11 +101,12 @@ def _create_package(package):
 
 
 def save(result, path, module_name):
-    filters = jinja_filters.FilterModule()
+    filters = jinja_filters.FilterModule().filters()
+    filters.update(parsers.FilterModule().filters())
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('./pyang_plugin/templates/'),
                              undefined=jinja2.StrictUndefined)
 
-    for n, f in filters.filters().items():
+    for n, f in filters.items():
         env.filters[n] = f
 
     template = env.get_template('module.j2')
@@ -130,14 +133,15 @@ def inspect(obj):
 
 
 SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units",
-          "range", "pattern", "when", "length", "if-feature", "yin-element", "status", )
+          "range", "pattern", "when", "length", "if-feature", "yin-element", "status",
+          "fraction-digits")
 
 
 def _parse_simple(sub, store):
     if sub.keyword == "uses":
         try:
             store[sub.keyword].append(sub.arg)
-        except:
+        except Exception:
             store[sub.keyword] = [sub.arg]
     else:
         store[sub.keyword] = sub.arg
@@ -162,7 +166,7 @@ def _parse_info(sub, store):
 
 
 NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import",
-          "leaf-list", "feature", "extension", "argument", "identity", )
+          "leaf-list", "feature", "extension", "argument", "identity", "augment")
 
 
 def _parse_nested(sub, store, root):
