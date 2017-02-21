@@ -1,0 +1,26 @@
+{% macro process_class(c) %}
+class {{ c.pop("name") }}({{ c.pop("parent") }}):
+    """{{ c.pop("docstring") }}"""
+    prefix = __prefix__
+
+    def __init__(self):
+        {% for k, v in c.pop("attrs").items() %}
+        self.{{ k }} = {{ v }}
+        {% endfor %}
+        self._meta = {{ c.pop("_meta") }}
+
+        {% for s in c.pop("super") %}
+        {{ s }}.__init__(self)
+        {% endfor %}
+{{ c|raise_if_not_empty -}}
+{% endmacro %}
+
+{% macro process_augments(module) %}
+# augments
+{%- set augments = module.pop("augment", {})|augment2class -%}
+{% for c in augments %}
+{%- set name = c["name"] -%}
+{{ process_class(c) }}
+
+{% endfor %}
+{%- endmacro -%}
