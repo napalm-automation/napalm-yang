@@ -248,6 +248,9 @@ class Augment_0(BaseAugment, AggregationLogicalTop):
 
 
 
+# Load the augmentation
+Augment_0()()
+
 class Augment_1(BaseAugment, EthernetIfAggregationConfig):
     """Adds LAG settings to individual Ethernet
 interfaces"""
@@ -267,6 +270,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_1()()
+
 class Augment_2(BaseAugment, EthernetIfAggregationConfig):
     """Adds LAG settings to individual Ethernet
 interfaces"""
@@ -285,3 +291,6 @@ interfaces"""
         
 
 
+
+# Load the augmentation
+Augment_2()()

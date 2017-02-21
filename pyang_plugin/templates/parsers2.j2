@@ -22,5 +22,8 @@ class {{ c.pop("name") }}({{ c.pop("parent") }}):
 {%- set name = c["name"] -%}
 {{ process_class(c) }}
 
+
+# Load the augmentation
+{{ name }}()()
 {% endfor %}
 {%- endmacro -%}

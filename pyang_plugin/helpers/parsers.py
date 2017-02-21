@@ -34,7 +34,6 @@ def augment2class(augs):
 def _parse_attrs(attrs):
     result = {}
     for a, d in attrs.items():
-        print(a, d)
         for t, v in d["type"].items():
             arguments = []
             for argument_name, argument_value in v.items():
@@ -70,7 +69,8 @@ def yang2class(class_name, data, parent, extra_attrs):
     if data or info:
         for k, v in data.items():
             for kk, vv in v.items():
-                print(k, kk, vv)
+                pass
+                #  print(k, kk, vv)
         raise Exception("We forgot to parse something:\ndata: {}\ninfo:{}".format(data, info))
 
     return result

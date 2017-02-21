@@ -701,6 +701,9 @@ class Augment_0(BaseAugment, VlanLogicalTop):
 
 
 
+# Load the augmentation
+Augment_0()()
+
 class Augment_1(BaseAugment, VlanRoutedTop):
     """Adds configuration and state for routed VLAN interfaces"""
     prefix = __prefix__
@@ -718,6 +721,9 @@ class Augment_1(BaseAugment, VlanRoutedTop):
         
 
 
+
+# Load the augmentation
+Augment_1()()
 
 class Augment_2(BaseAugment, VlanEthernetTop):
     """Adds VLAN settings to individual Ethernet
@@ -738,6 +744,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_2()()
+
 class Augment_3(BaseAugment, VlanEthernetTop):
     """Adds VLAN settings to a LAG interface"""
     prefix = __prefix__
@@ -755,3 +764,6 @@ class Augment_3(BaseAugment, VlanEthernetTop):
         
 
 
+
+# Load the augmentation
+Augment_3()()

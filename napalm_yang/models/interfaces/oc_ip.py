@@ -1290,6 +1290,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_0()()
+
 class Augment_1(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
@@ -1308,6 +1311,9 @@ interfaces"""
         
 
 
+
+# Load the augmentation
+Augment_1()()
 
 class Augment_2(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
@@ -1328,6 +1334,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_2()()
+
 class Augment_3(BaseAugment, IpVrrpIpv6Config):
     """Additional VRRP data for IPv6 interfaces"""
     prefix = __prefix__
@@ -1345,6 +1354,9 @@ class Augment_3(BaseAugment, IpVrrpIpv6Config):
         
 
 
+
+# Load the augmentation
+Augment_3()()
 
 class Augment_4(BaseAugment, Ipv6Top, Ipv4Top):
     """IPv4 addr family configuration for
@@ -1367,6 +1379,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_4()()
+
 class Augment_5(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
@@ -1386,6 +1401,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_5()()
+
 class Augment_6(BaseAugment, IpVrrpIpv6Config):
     """Additional VRRP data for IPv6 interfaces"""
     prefix = __prefix__
@@ -1403,6 +1421,9 @@ class Augment_6(BaseAugment, IpVrrpIpv6Config):
         
 
 
+
+# Load the augmentation
+Augment_6()()
 
 class Augment_7(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
@@ -1423,6 +1444,9 @@ interfaces"""
 
 
 
+# Load the augmentation
+Augment_7()()
+
 class Augment_8(BaseAugment, IpVrrpIpv6State):
     """Additional VRRP data for IPv6 interfaces"""
     prefix = __prefix__
@@ -1441,6 +1465,9 @@ class Augment_8(BaseAugment, IpVrrpIpv6State):
 
 
 
+# Load the augmentation
+Augment_8()()
+
 class Augment_9(BaseAugment, IpVrrpIpv6State):
     """Additional VRRP data for IPv6 interfaces"""
     prefix = __prefix__
@@ -1458,3 +1485,6 @@ class Augment_9(BaseAugment, IpVrrpIpv6State):
         
 
 
+
+# Load the augmentation
+Augment_9()()

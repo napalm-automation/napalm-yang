@@ -2,6 +2,8 @@
 import text_helpers
 import copy
 
+import napalm_yang
+
 
 def model_to_text(name, model, indentation="", augment=""):
     text = ""
@@ -96,21 +98,7 @@ class BaseBinding(object):
     def __eq__(self, other):
         return self.diff(other) == {}
 
-    def augment(self, yang_module):
-        if not yang_module.__class__.__name__ == 'module':
-            raise ValueError("Augment must receive a module with augments")
-
-        for element in sorted(yang_module.__dict__):
-            if not element.startswith("Augment_"):
-                continue
-            element = getattr(yang_module, element)
-
-            if issubclass(element, BaseAugment):
-                self._add_augment(element)
-
-    def _add_augment(self, augment):
-        augment = augment()
-
+    def augment(self, augment):
         self_attr = self
         for p in augment.path:
             attr = p.split(":")
@@ -280,3 +268,11 @@ class Extension(YangType):
 class BaseAugment(BaseBinding):
     """A base class for augments."""
     when = None
+    path = None
+
+    def __call__(self):
+        module, model = self.path[0].split(":")
+
+        module = getattr(napalm_yang, text_helpers.safe_attr_name(module))
+        model = getattr(module, text_helpers.safe_attr_name(model))
+        model.augment(self)

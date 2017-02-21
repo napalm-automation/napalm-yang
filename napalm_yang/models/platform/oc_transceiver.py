@@ -535,6 +535,9 @@ physical channels."""
 
 
 
+# Load the augmentation
+Augment_0()()
+
 class Augment_1(BaseAugment, PortTransceiverTop):
     """Adding transceiver data to physical inventory"""
     prefix = __prefix__
@@ -552,3 +555,6 @@ class Augment_1(BaseAugment, PortTransceiverTop):
         
 
 
+
+# Load the augmentation
+Augment_1()()

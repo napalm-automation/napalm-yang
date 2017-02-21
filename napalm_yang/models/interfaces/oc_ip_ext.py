@@ -203,3 +203,6 @@ class Augment_0(BaseAugment, Ipv6AutoconfTop):
         
 
 
+
+# Load the augmentation
+Augment_0()()

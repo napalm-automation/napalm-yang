@@ -55,17 +55,6 @@ print(running.model_to_text())  # Empty model
 running.add_model(napalm_yang.oc_if.interfaces)
 print(running.model_to_text())  # Should've interfaces model
 
-# We can now augment the interface model with the oc_platform stuff
-running.augment(napalm_yang.oc_platform)
-print(running.model_to_text())  # Should've hardware_port inside state
-
-running.augment(napalm_yang.oc_eth)
-running.augment(napalm_yang.oc_lag)
-running.augment(napalm_yang.oc_vlan)
-print(running.model_to_text())  # Should've ip stuff
-running.augment(napalm_yang.oc_ip)
-print(running.model_to_text())  # Should've ip stuff
-
 
 # Get current interfaces configuration
 #  running = e.parse_config("interfaces")
