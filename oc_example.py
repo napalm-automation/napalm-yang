@@ -53,7 +53,13 @@ print(running.model_to_text())  # Empty model
 
 # We can now load the interfaces into it
 running.add_model(napalm_yang.oc_if.interfaces)
-print(running.model_to_text())  # Should've interfaces model
+running.add_model(napalm_yang.oc_vlan.vlan)
+running.add_model(napalm_yang.oc_platform.platform)
+print(running.model_to_text())  # Should've interfaces model and all of the augmentations
+
+running.interfaces.interface.new_element("test")
+running.interfaces.interface["test"].config.description("asds")
+print(running.data_to_text())
 
 
 # Get current interfaces configuration

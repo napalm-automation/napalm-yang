@@ -248,7 +248,11 @@ class Enumeration(YangType):
         """Returns a dict with information about the model itself."""
         model = super().data_to_dict()
         model["enum_value"] = self.enum_value
-        return model
+
+        if self.value:
+            return model
+        else:
+            return {}
 
 
 class Bits(YangType):
@@ -412,6 +416,9 @@ class List(BaseBinding):
         return ListElement(self).model_to_dict()
 
     def data_to_dict(self):
+        if not self:
+            return {}
+
         res = {}
         res["_meta"] = copy.deepcopy(self._meta) or {}
         res["list"] = {}

@@ -42,7 +42,11 @@ def model_to_text(name, model, indentation="", augment=""):
 
 def data_to_text(name, data, indentation=""):
     text = ""
-    meta = data["_meta"]
+    try:
+        meta = data["_meta"]
+    except:
+        print(name, data)
+        raise
     mode = "rw" if meta["config"] else "ro"
     key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
     text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
@@ -212,6 +216,9 @@ class YangType(object):
         else:
             raise Exception("Too many arguments passed")
 
+    def __nonzero__(self):
+        return bool(self.value)
+
     def _verify_value(self, value):
         """
         Each type has to implement this method. The method returns whether the value is
@@ -253,7 +260,7 @@ class YangType(object):
         res["_meta"] = copy.deepcopy(self._meta)
         res["_meta"]["type"] = self.__class__.__name__
         res["_meta"]["nested"] = False
-        if res["value"] is not None or res["_meta"]["mandatory"]:
+        if res["value"] or res["_meta"]["mandatory"]:
             return res
         else:
             return {}
