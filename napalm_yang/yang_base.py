@@ -44,7 +44,7 @@ def data_to_text(name, data, indentation=""):
     text = ""
     try:
         meta = data["_meta"]
-    except:
+    except Exception:
         print(name, data)
         raise
     mode = "rw" if meta["config"] else "ro"
@@ -102,7 +102,7 @@ class BaseBinding(object):
     def __eq__(self, other):
         return self.diff(other) == {}
 
-    def augment(self, augment):
+    def augment_model(self, augment):
         self_attr = self
         for p in augment.path:
             attr = p.split(":")
@@ -283,3 +283,19 @@ class BaseAugment(BaseBinding):
         module = getattr(napalm_yang, text_helpers.safe_attr_name(module))
         model = getattr(module, text_helpers.safe_attr_name(model))
         model.augment(self)
+
+
+def model_factory(model):
+    class ModelFactory(model):
+        augments = []
+
+        def augment(self, augment):
+            self.augments.append(augment)
+
+        def __call__(self):
+            m = model()
+            for augment in self.augments:
+                m.augment_model(augment)
+            return m
+
+    return ModelFactory()

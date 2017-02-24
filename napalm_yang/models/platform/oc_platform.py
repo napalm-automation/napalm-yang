@@ -596,7 +596,7 @@ class PlatformComponentTop(BaseBinding):
 
 
 # Top-uses
-platform = PlatformComponentTop()
+platform = model_factory(PlatformComponentTop)
 
 
 # Top-containers

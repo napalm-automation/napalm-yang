@@ -109,7 +109,7 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
 # Top-uses
 {%- set uses = module.pop("uses", []) -%}
 {% for t in uses %}
-{{ t.split("-")[0]|safe_attr_name }} = {{ t|safe_class_name }}()
+{{ t.split("-")[0]|safe_attr_name }} = model_factory({{ t|safe_class_name }})
 {% endfor %}
 {%- endmacro %}
 

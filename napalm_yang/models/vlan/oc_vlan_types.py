@@ -133,6 +133,7 @@ class VlanModeType(Enumeration):
         }
     }
 }, ):
+
         super().__init__(_meta=_meta, enum = enum, )
 
 class VlanRef(Union):

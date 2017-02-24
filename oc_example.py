@@ -52,13 +52,20 @@ running = napalm_yang.BaseBinding()
 print(running.model_to_text())  # Empty model
 
 # We can now load the interfaces into it
-running.add_model(napalm_yang.oc_if.interfaces)
-running.add_model(napalm_yang.oc_vlan.vlan)
-running.add_model(napalm_yang.oc_platform.platform)
+running.add_model(napalm_yang.oc_if.interfaces())
+running.add_model(napalm_yang.oc_vlan.vlan())
+running.add_model(napalm_yang.oc_platform.platform())
 print(running.model_to_text())  # Should've interfaces model and all of the augmentations
 
 running.interfaces.interface.new_element("test")
 running.interfaces.interface["test"].config.description("asds")
+print(running.data_to_text())
+
+candidate = napalm_yang.BaseBinding()
+candidate.add_model(napalm_yang.oc_if.interfaces())
+candidate.interfaces.interface.new_element("qweqwe")
+candidate.interfaces.interface["qweqwe"].config.description("poi")
+print(candidate.data_to_text())
 print(running.data_to_text())
 
 

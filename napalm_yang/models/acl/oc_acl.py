@@ -1373,7 +1373,7 @@ class AclTop(BaseBinding):
 
 
 # Top-uses
-acl = AclTop()
+acl = model_factory(AclTop)
 
 
 # Top-containers

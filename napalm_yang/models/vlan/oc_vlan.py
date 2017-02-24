@@ -676,7 +676,7 @@ class VlanRoutedTop(BaseBinding):
 
 
 # Top-uses
-vlan = VlanTop()
+vlan = model_factory(VlanTop)
 
 
 # Top-containers

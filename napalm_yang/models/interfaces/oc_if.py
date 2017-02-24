@@ -959,7 +959,7 @@ class InterfacesTop(BaseBinding):
 
 
 # Top-uses
-interfaces = InterfacesTop()
+interfaces = model_factory(InterfacesTop)
 
 
 # Top-containers
