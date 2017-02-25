@@ -43,9 +43,9 @@ print(new_config)
 """
 
 # Connect to devices
-#  eos = get_network_driver("eos")
-#  e = eos(**eos_configuration)
-#  e.open()
+eos = get_network_driver("eos")
+e = eos(**eos_configuration)
+e.open()
 
 # Let's create the running configuration object
 running = napalm_yang.BaseBinding()
@@ -69,8 +69,12 @@ print(candidate.data_to_text())
 print(running.data_to_text())
 
 
-# Get current interfaces configuration
-#  running = e.parse_config("interfaces")
+# Get current configuration for loaded models
+config = napalm_yang.BaseBinding()
+config.add_model(napalm_yang.oc_if.interfaces())
+print(config.model_to_text())
+config.get_config(e)
+print(config.data_to_text())
 
 """
 # Print the exact model as defined by OC

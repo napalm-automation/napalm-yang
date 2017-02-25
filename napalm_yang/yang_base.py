@@ -3,6 +3,9 @@ import text_helpers
 import copy
 
 import napalm_yang
+from napalm_yang import parsers
+
+import os
 
 
 def model_to_text(name, model, indentation="", augment=""):
@@ -175,6 +178,16 @@ class BaseBinding(object):
                 result[attr_name] = res
 
         return result
+
+
+        if os.path.exists(full_path):
+            return full_path
+        else:
+            raise IOError("Couldn't find file with mocked data: {}".format(full_path))
+
+    def get_config(self, device):
+        for k, v in self.items():
+            parsers.parse(device, k, v)
 
 
 class YangType(object):

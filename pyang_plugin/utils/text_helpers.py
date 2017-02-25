@@ -24,3 +24,10 @@ def safe_attr_name(value):
     if value in RESERVED_KEYWORDS:
         value = "{}_".format(value)
     return re.sub(regexp, '_', value)
+
+
+def translate_string(string, **kwargs):
+    if string:
+        return string.format(**kwargs)
+    else:
+        return ""

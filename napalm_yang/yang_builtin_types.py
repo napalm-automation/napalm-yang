@@ -378,6 +378,7 @@ class ListElement(BaseBinding):
         self.type = parent.__class__.__name__
 
         self._meta = copy.deepcopy(parent._meta)
+        self.__prefix__ = parent.prefix
 
         attrs = dir(parent)
         for a in attrs:
