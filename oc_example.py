@@ -2,6 +2,15 @@ from napalm_base import get_network_driver
 
 import napalm_yang
 
+import sys
+import logging
+logger = logging.getLogger("napalm-yang")
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
 
 junos_configuration = {
     'hostname': '127.0.0.1',
@@ -74,6 +83,7 @@ config = napalm_yang.BaseBinding()
 config.add_model(napalm_yang.oc_if.interfaces())
 print(config.model_to_text())
 config.get_config(e)
+
 print(config.data_to_text())
 
 """

@@ -5,8 +5,6 @@ import copy
 import napalm_yang
 from napalm_yang import parsers
 
-import os
-
 
 def model_to_text(name, model, indentation="", augment=""):
     text = ""
@@ -48,7 +46,6 @@ def data_to_text(name, data, indentation=""):
     try:
         meta = data["_meta"]
     except Exception:
-        print(name, data)
         raise
     mode = "rw" if meta["config"] else "ro"
     key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
@@ -179,15 +176,9 @@ class BaseBinding(object):
 
         return result
 
-
-        if os.path.exists(full_path):
-            return full_path
-        else:
-            raise IOError("Couldn't find file with mocked data: {}".format(full_path))
-
     def get_config(self, device):
         for k, v in self.items():
-            parsers.parse(device, k, v)
+            parsers.Parser(device, k, v).parse()
 
 
 class YangType(object):
@@ -230,7 +221,10 @@ class YangType(object):
             raise Exception("Too many arguments passed")
 
     def __nonzero__(self):
-        return bool(self.value)
+        if isinstance(self.value, YangType):
+            return self.value.__nonzero__()
+        else:
+            return self.value is not None and not self._meta["mandatory"]
 
     def _verify_value(self, value):
         """
@@ -269,14 +263,14 @@ class YangType(object):
 
     def data_to_dict(self):
         """Returns a dict with information about the data (if any) contained in the model."""
+        if not self:
+            return {}
+
         res = {"value": self.value}
         res["_meta"] = copy.deepcopy(self._meta)
         res["_meta"]["type"] = self.__class__.__name__
         res["_meta"]["nested"] = False
-        if res["value"] or res["_meta"]["mandatory"]:
-            return res
-        else:
-            return {}
+        return res
 
 
 class Extension(YangType):
