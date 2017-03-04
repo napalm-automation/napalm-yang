@@ -42,7 +42,7 @@ def find_yang_file(device, filename, path):
 
 class Parser(object):
 
-    def __init__(self, device, attribute, model, texts=None, keys=None):
+    def __init__(self, device, attribute, model, texts=None, keys=None, extra_vars=None):
         self.device = device
         self.attribute = attribute
         self.model = model
@@ -51,6 +51,7 @@ class Parser(object):
         self.texts = texts or {}
         # Placeholder for storing keys
         self.keys = keys or {}
+        self.extra_vars = extra_vars or {}
 
     def _read_yang_map(self):
         filename = os.path.join(self.model.prefix, "{}.yaml".format(self.attribute))
@@ -91,7 +92,8 @@ class Parser(object):
                 if model.prefix == self.prefix:
                     raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
-                    #  parse(self.device, k, v, config, partial_config)
+                    Parser(self.device, attribute, model,
+                           self.texts, self.keys, self.extra_vars).parse()
                     continue
 
             if issubclass(model.__class__, napalm_yang.List):
@@ -106,14 +108,25 @@ class Parser(object):
         # for each individual element of the list
         self.texts[attribute] = {}
 
-        for key, block in self.parser.parse_list(mapping, self.texts, self.keys):
+        for key, block, extra_vars in self.parser.parse_list(mapping, self.texts, self.keys,
+                                                             self.extra_vars):
             obj = model.get_element(key)
-            self.keys["{}_key".format(attribute)] = key
+
+            key_name = "{}_key".format(attribute)
+            self.keys[key_name] = key
             self.texts[attribute][key] = block
+            self.extra_vars[attribute] = extra_vars
+
+            # These two are necessary in cases where an element may be present in subtress. For
+            # example, ipv4.config.enabled is present in both interfaces and subinterfaces
+            self.keys["parent_key"] = key
+            self.texts["parent"] = block
+            self.extra_vars["parent"] = extra_vars
+
             self._parse(mapping, obj)
 
     def _parse_leaf(self, attr, mapping):
-        value = self.parser.parse_leaf(mapping, self.texts, self.keys)
+        value = self.parser.parse_leaf(mapping, self.texts, self.keys, self.extra_vars)
 
         if value is None:
             return
@@ -133,20 +146,23 @@ class Parser(object):
 class TextExtractor:
 
     @classmethod
-    def _get_text(cls, texts, path, keys):
-        path = [text_helpers.translate_string(p, **keys) for p in path.split(".")]
+    def _get_text(cls, texts, path, keys, extra_vars):
+        vars = dict(keys)
+        vars.update(extra_vars)
+
+        path = [text_helpers.translate_string(p, **vars) for p in path.split(".")]
         for p in path:
             texts = texts[p]
         return texts
 
     @classmethod
-    def parse_list(cls, mapping, texts, keys):
+    def parse_list(cls, mapping, texts, keys, extra_vars):
         method_name = "_parse_list_{}".format(mapping["_list_extraction"]["mode"])
-        for key, block in getattr(cls, method_name)(mapping, texts, keys):
-            yield key, block
+        for key, block, extra_vars in getattr(cls, method_name)(mapping, texts, keys, extra_vars):
+            yield key, block, extra_vars
 
     @classmethod
-    def _parse_list_block(cls, mapping, texts, keys):
+    def _parse_list_block(cls, mapping, texts, keys, extra_vars):
         list_extraction = mapping["_list_extraction"]
         texts = texts[list_extraction["from"]]
         block_regexp = list_extraction["regexp"]
@@ -155,45 +171,59 @@ class TextExtractor:
         block_matches = re.finditer(regexp, texts, re.MULTILINE)
 
         for match in block_matches:
-            key = match.group("key")
-            block = match.group("block")
-            yield key, block
+            extra_vars = match.groupdict()
+            key = extra_vars.pop("key")
+            block = extra_vars.pop("block")
+            yield key, block, extra_vars
 
     @classmethod
-    def _parse_list_not_implemented(cls, mapping, texts, keys):
+    def _parse_list_not_implemented(cls, mapping, texts, keys, extra_vars):
         return {}
 
     @classmethod
-    def parse_leaf(cls, mapping, texts, keys):
+    def parse_leaf(cls, mapping, texts, keys, extra_vars):
         method_name = "_parse_leaf_{}".format(mapping["_leaf_extraction"]["mode"])
-        return getattr(cls, method_name)(mapping, texts, keys)
+        return getattr(cls, method_name)(mapping, texts, keys, extra_vars)
 
     @classmethod
-    def _parse_leaf_search(cls, mapping, texts, keys):
+    def _parse_leaf_search(cls, mapping, texts, keys, extra_vars, check_default=True):
         leaf_extraction = mapping["_leaf_extraction"]
-        texts = cls._get_text(texts, leaf_extraction["from"], keys)
+        texts = cls._get_text(texts, leaf_extraction["from"], keys, extra_vars)
         regexp = text_helpers.translate_string(leaf_extraction["regexp"], **keys)
 
         match = re.search(regexp, texts, re.MULTILINE)
+
         if match:
             return match.group("value")
-        else:
+        elif check_default:
             return mapping["_leaf_extraction"]["default"]
+        else:
+            return None
 
     @classmethod
-    def _parse_leaf_is_present(cls, mapping, texts, keys):
-        value = cls._parse_leaf_search(mapping, texts, keys)
+    def _parse_leaf_is_present(cls, mapping, texts, keys, extra_vars):
+        value = cls._parse_leaf_search(mapping, texts, keys, extra_vars, check_default=False)
         return bool(value)
 
     @classmethod
-    def _parse_leaf_map(cls, mapping, texts, keys):
-        value = cls._parse_leaf_search(mapping, texts, keys)
+    def _parse_leaf_is_absent(cls, mapping, texts, keys, extra_vars):
+        value = cls._parse_leaf_search(mapping, texts, keys, extra_vars, check_default=False)
+        return not bool(value)
+
+    @classmethod
+    def _parse_leaf_map(cls, mapping, texts, keys, extra_vars):
+        value = cls._parse_leaf_search(mapping, texts, keys, extra_vars)
         return mapping["_leaf_extraction"]["map"][value]
 
     @classmethod
-    def _parse_leaf_key(cls, mapping, texts, keys):
+    def _parse_leaf_key(cls, mapping, texts, keys, extra_vars):
         return keys[mapping["_leaf_extraction"]["value"]]
 
     @classmethod
-    def _parse_leaf_not_implemented(cls, mapping, texts, keys):
+    def _parse_leaf_extra_vars(cls, mapping, texts, keys, extra_vars):
+        leaf_extraction = mapping["_leaf_extraction"]
+        return cls._get_text(extra_vars, leaf_extraction["var"], keys, extra_vars)
+
+    @classmethod
+    def _parse_leaf_not_implemented(cls, mapping, texts, keys, extra_vars):
         pass
