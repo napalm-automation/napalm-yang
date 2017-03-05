@@ -65,14 +65,14 @@ class Parser(object):
         with open(filepath, "r") as f:
             return yaml.load(f.read())
 
-    def _execute_raw(self, device, raw):
+    def _execute_method(self, device, methods):
         result = []
-        for element in raw:
+        for m in methods:
             attr = device
-            for p in element["path"].split("."):
+            for p in m["method"].split("."):
                 attr = getattr(attr, p)
 
-            result.append(attr(**element["args"]))
+            result.append(attr(**m["args"]))
 
         return result
 
@@ -85,14 +85,8 @@ class Parser(object):
         self.parser = get_parsers(metadata["parser"])
         self.prefix = metadata["prefix"]
 
-        if "cli" in metadata["execute"]["config"].keys():
-            # TODO make this a list
-            self.texts[self.attribute] = "\n".join(self.device.cli(
-                metadata["execute"]["config"]["cli"]).values()
-            )
-        elif "raw" in metadata["execute"]["config"].keys():
-            self.texts[self.attribute] = self._execute_raw(self.device,
-                                                           metadata["execute"]["config"]["raw"])
+        self.texts[self.attribute] = self._execute_method(self.device,
+                                                          metadata["execute"]["config"])
 
         self._parse(self.parser_map[self.attribute], self.model)
 
@@ -264,7 +258,7 @@ class TextExtractor(BaseExtractor):
     @classmethod
     def _parse_list_block(cls, mapping, texts, keys, extra_vars):
         list_extraction = mapping["_list_extraction"]
-        texts = texts[list_extraction["from"]]
+        texts = cls._get_text(texts, list_extraction["from"], keys, extra_vars)
         block_regexp = list_extraction["regexp"]
 
         regexp = text_helpers.translate_string(block_regexp, **keys)
