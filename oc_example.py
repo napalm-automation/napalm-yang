@@ -3,13 +3,19 @@ from napalm_base import get_network_driver
 import napalm_yang
 
 import sys
+
 import logging
 logger = logging.getLogger("napalm-yang")
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-ch.setFormatter(formatter)
-logger.addHandler(ch)
+
+
+def config_logging():
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+#  config_logging()
 
 
 junos_configuration = {
@@ -26,36 +32,22 @@ eos_configuration = {
     'optional_args': {'port': 12443}
 }
 
-"""
 junos = get_network_driver("junos")
 j = junos(**junos_configuration)
 j.open()
 
-# Let's parse the configuration
-j_running = j.parse_config("interfaces")
+j_running = napalm_yang.BaseBinding()
+j_running.add_model(napalm_yang.oc_if.interfaces())
+j_running.get_config(j)
 
-# Print the exact model as defined by OC
-# This is mostly informative, as quick reference
-print(j_running.model_to_text())
-
-# We can get a representation of the data in text
 print(j_running.data_to_text())
-
-# Translate model
-new_config = j.translate_model(j_running, "interfaces")
-print(new_config)
-
-# Change a description and Translate model
-j_running.interfaces.interface["lo0"].config.description("asadqweqwe")
-new_config = j.translate_model(j_running, "interfaces")
-print(new_config)
-"""
 
 # Connect to devices
 eos = get_network_driver("eos")
 e = eos(**eos_configuration)
 e.open()
 
+"""
 # Let's create the running configuration object
 running = napalm_yang.BaseBinding()
 print(running.model_to_text())  # Empty model
@@ -76,12 +68,12 @@ candidate.interfaces.interface.new_element("qweqwe")
 candidate.interfaces.interface["qweqwe"].config.description("poi")
 print(candidate.data_to_text())
 print(running.data_to_text())
-
+"""
 
 # Get current configuration for loaded models
 config = napalm_yang.BaseBinding()
 config.add_model(napalm_yang.oc_if.interfaces())
-print(config.model_to_text())
+#  print(config.model_to_text())
 config.get_config(e)
 
 print(config.data_to_text())
