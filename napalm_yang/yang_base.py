@@ -3,7 +3,7 @@ import text_helpers
 import copy
 
 import napalm_yang
-from napalm_yang import parsers
+from napalm_yang import framework
 
 
 def model_to_text(name, model, indentation="", augment=""):
@@ -178,7 +178,7 @@ class BaseBinding(object):
 
     def get_config(self, device):
         for k, v in self.items():
-            parsers.Parser(device, k, v).parse()
+            framework.Parser(device, k, v).parse()
 
 
 class YangType(object):
