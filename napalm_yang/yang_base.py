@@ -5,6 +5,8 @@ import copy
 import napalm_yang
 from napalm_yang import framework
 
+import weakref
+
 
 def model_to_text(name, model, indentation="", augment=""):
     text = ""
@@ -101,6 +103,11 @@ class BaseBinding(object):
             attr = getattr(self, a)
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
+
+    def update_parent_refs(self):
+        for k, v in self.items():
+            v._parent = weakref.ref(self)
+            v.update_parent_refs()
 
     def __eq__(self, other):
         return self.diff(other) == {}
@@ -226,6 +233,9 @@ class YangType(object):
         }
         if _meta:
             self._meta.update(_meta)
+
+    def update_parent_refs(self):
+        pass
 
     def __repr__(self):
         return "{}: {}".format(self.__class__.__name__, self.__str__())
