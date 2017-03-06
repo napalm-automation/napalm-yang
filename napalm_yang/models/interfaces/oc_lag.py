@@ -2,6 +2,7 @@
 Model for managing aggregated (aka bundle, LAG) interfaces.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -88,8 +89,10 @@ class AggregationLogicalConfig(BaseBinding):
         # leaf
         self.min_links = Uint16(_meta={"mandatory": False},
         )
+        self.min_links._parent = weakref.ref(self)
         self.lag_type = AggregationType(_meta={"mandatory": False},
         )
+        self.lag_type._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -111,8 +114,10 @@ class AggregationLogicalState(BaseBinding):
         # leaf
         self.lag_speed = Uint32(_meta={"mandatory": False},
         )
+        self.lag_speed._parent = weakref.ref(self)
         # leaflist
         self.member = LeafList(oc_if.BaseInterfaceRef(_meta={"mandatory": False}, ))
+        self.member._parent = weakref.ref(self)
         # Meta
         self._meta["config"] = True
         
@@ -171,7 +176,9 @@ class AggregationLogicalTop_Aggregation_110(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Aggregation_Config_116()
+        self.config._parent = weakref.ref(self)
         self.state = Aggregation_State_124()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -192,6 +199,7 @@ class AggregationLogicalTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.aggregation = AggregationLogicalTop_Aggregation_110()
+        self.aggregation._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -217,6 +225,7 @@ class EthernetIfAggregationConfig(BaseBinding):
         self.aggregate_id = Leafref(_meta={"mandatory": False},
             path="/oc-if:interfaces/oc-if:interface/oc-if:name",
         )
+        self.aggregate_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True

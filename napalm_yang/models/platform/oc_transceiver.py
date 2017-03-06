@@ -10,6 +10,7 @@ module defines a concrete schema for the associated data for
 components with type=TRANSCEIVER.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -150,8 +151,11 @@ class OpticalPowerState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.output_power = OpticalPowerState_OutputPower_58()
+        self.output_power._parent = weakref.ref(self)
         self.input_power = OpticalPowerState_InputPower_71()
+        self.input_power._parent = weakref.ref(self)
         self.laser_bias_current = OpticalPowerState_LaserBiasCurrent_84()
+        self.laser_bias_current._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -177,6 +181,7 @@ class OutputOpticalFrequency(BaseBinding):
         # leaf
         self.output_frequency = oc_opt_types.FrequencyType(_meta={"mandatory": False},
         )
+        self.output_frequency._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -199,13 +204,17 @@ class PhysicalChannelConfig(BaseBinding):
         self.index = Uint16(_meta={"mandatory": False},
             range_="0..max",
         )
+        self.index._parent = weakref.ref(self)
         self.tx_laser = Boolean(_meta={"mandatory": False},
         )
+        self.tx_laser._parent = weakref.ref(self)
         self.target_output_power = Decimal64(_meta={"mandatory": False},
             fraction_digits="2",
         )
+        self.target_output_power._parent = weakref.ref(self)
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -283,12 +292,15 @@ class PhysicalChannels_Channel_167(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Channel_Config_182()
+        self.config._parent = weakref.ref(self)
         self.state = Channel_State_189()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.index = Leafref(_meta={"mandatory": False},
             path="../config/index",
         )
+        self.index._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -309,6 +321,7 @@ class PhysicalChannelTop_PhysicalChannels_163(BaseBinding):
         # container
         # list
         self.channel = PhysicalChannels_Channel_167()
+        self.channel._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -328,6 +341,7 @@ class PhysicalChannelTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.physical_channels = PhysicalChannelTop_PhysicalChannels_163()
+        self.physical_channels._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -352,11 +366,14 @@ class PortTransceiverConfig(BaseBinding):
         self.form_factor_preconf = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Transceiver_Form_Factor_Type,
         )
+        self.form_factor_preconf._parent = weakref.ref(self)
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         self.ethernet_pmd_preconf = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Ethernet_Pmd_Type,
         )
+        self.ethernet_pmd_preconf._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -379,37 +396,49 @@ class PortTransceiverState(BaseBinding):
         self.vendor = String(_meta={"mandatory": False},
             length="1..16",
         )
+        self.vendor._parent = weakref.ref(self)
         self.form_factor = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Transceiver_Form_Factor_Type,
         )
+        self.form_factor._parent = weakref.ref(self)
         self.vendor_rev = String(_meta={"mandatory": False},
             length="1..2",
         )
+        self.vendor_rev._parent = weakref.ref(self)
         self.serial_no = String(_meta={"mandatory": False},
             length="1..16",
         )
+        self.serial_no._parent = weakref.ref(self)
         self.fault_condition = Boolean(_meta={"mandatory": False},
         )
+        self.fault_condition._parent = weakref.ref(self)
         self.date_code = yang.DateAndTime(_meta={"mandatory": False},
         )
+        self.date_code._parent = weakref.ref(self)
         self.otn_compliance_code = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Otn_Application_Code,
         )
+        self.otn_compliance_code._parent = weakref.ref(self)
         self.ethernet_pmd = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Ethernet_Pmd_Type,
         )
+        self.ethernet_pmd._parent = weakref.ref(self)
         self.vendor_part = String(_meta={"mandatory": False},
             length="1..16",
         )
+        self.vendor_part._parent = weakref.ref(self)
         self.connector_type = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Fiber_Connector_Type,
         )
+        self.connector_type._parent = weakref.ref(self)
         self.internal_temp = Int16(_meta={"mandatory": False},
             range_="-40..125",
         )
+        self.internal_temp._parent = weakref.ref(self)
         self.sonet_sdh_compliance_code = Identityref(_meta={"mandatory": False},
             base=oc_opt_types.Sonet_Application_Code,
         )
+        self.sonet_sdh_compliance_code._parent = weakref.ref(self)
         self.present = Enumeration(_meta={"mandatory": False},
             enum={
             "NOT_PRESENT": {
@@ -424,6 +453,7 @@ class PortTransceiverState(BaseBinding):
             }
         },
         )
+        self.present._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -480,7 +510,9 @@ class PortTransceiverTop_Transceiver_399(PhysicalChannelTop):
         super().__init__(_meta=_meta)
         # container
         self.config = Transceiver_Config_403()
+        self.config._parent = weakref.ref(self)
         self.state = Transceiver_State_410()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -501,6 +533,7 @@ class PortTransceiverTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.transceiver = PortTransceiverTop_Transceiver_399()
+        self.transceiver._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

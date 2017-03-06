@@ -13,6 +13,7 @@ This version of this YANG module is part of RFC 6991; see
 the RFC itself for full legal notices.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 

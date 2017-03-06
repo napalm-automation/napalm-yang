@@ -3,6 +3,7 @@ This module defines data types (e.g., YANG identities)
 to support the OpenConfig component inventory model.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -150,15 +151,19 @@ class AvgMinMaxInstantStatsPrecision1Celsius(BaseBinding):
         self.max = Decimal64(_meta={"mandatory": False},
             fraction_digits="1",
         )
+        self.max._parent = weakref.ref(self)
         self.avg = Decimal64(_meta={"mandatory": False},
             fraction_digits="1",
         )
+        self.avg._parent = weakref.ref(self)
         self.instant = Decimal64(_meta={"mandatory": False},
             fraction_digits="1",
         )
+        self.instant._parent = weakref.ref(self)
         self.min = Decimal64(_meta={"mandatory": False},
             fraction_digits="1",
         )
+        self.min._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True

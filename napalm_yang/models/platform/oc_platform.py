@@ -42,6 +42,7 @@ specific physical data in one location, including inventory
 attributes or status).
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -105,6 +106,7 @@ class PlatformComponentPropertiesConfig(BaseBinding):
         # leaf
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         self.value = Union(_meta={"mandatory": False},
             type_={
             "boolean": {}, 
@@ -116,6 +118,7 @@ class PlatformComponentPropertiesConfig(BaseBinding):
             "uint64": {}
         },
         )
+        self.value._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -137,6 +140,7 @@ class PlatformComponentPropertiesState(BaseBinding):
         # leaf
         self.configurable = Boolean(_meta={"mandatory": False},
         )
+        self.configurable._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -193,12 +197,15 @@ class Properties_Property_123(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Property_Config_136()
+        self.config._parent = weakref.ref(self)
         self.state = Property_State_143()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.name = Leafref(_meta={"mandatory": False},
             path="../config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -219,6 +226,7 @@ class PlatformComponentPropertiesTop_Properties_119(BaseBinding):
         # container
         # list
         self.property = Properties_Property_123()
+        self.property._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -238,6 +246,7 @@ class PlatformComponentPropertiesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.properties = PlatformComponentPropertiesTop_Properties_119()
+        self.properties._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -262,6 +271,7 @@ class PlatformSubcomponentRefConfig(BaseBinding):
         self.name = Leafref(_meta={"mandatory": False},
             path="../../../../../component/config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -337,12 +347,15 @@ class Subcomponents_Subcomponent_184(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Subcomponent_Config_197()
+        self.config._parent = weakref.ref(self)
         self.state = Subcomponent_State_204()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.name = Leafref(_meta={"mandatory": False},
             path="../config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -363,6 +376,7 @@ class PlatformSubcomponentRefTop_Subcomponents_180(BaseBinding):
         # container
         # list
         self.subcomponent = Subcomponents_Subcomponent_184()
+        self.subcomponent._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -382,6 +396,7 @@ class PlatformSubcomponentRefTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.subcomponents = PlatformSubcomponentRefTop_Subcomponents_180()
+        self.subcomponents._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -405,6 +420,7 @@ class PlatformComponentConfig(BaseBinding):
         # leaf
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -426,14 +442,19 @@ class PlatformComponentState(BaseBinding):
         # leaf
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         self.serial_no = String(_meta={"mandatory": False},
         )
+        self.serial_no._parent = weakref.ref(self)
         self.part_no = String(_meta={"mandatory": False},
         )
+        self.part_no._parent = weakref.ref(self)
         self.mfg_name = String(_meta={"mandatory": False},
         )
+        self.mfg_name._parent = weakref.ref(self)
         self.version = String(_meta={"mandatory": False},
         )
+        self.version._parent = weakref.ref(self)
         self.type_ = Union(_meta={"mandatory": False},
             type_={
             "identityref": {
@@ -441,8 +462,10 @@ class PlatformComponentState(BaseBinding):
             }
         },
         )
+        self.type_._parent = weakref.ref(self)
         self.id = String(_meta={"mandatory": False},
         )
+        self.id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -483,6 +506,7 @@ class PlatformComponentTempState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.temperature = PlatformComponentTempState_Temperature_295()
+        self.temperature._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -541,12 +565,15 @@ class Components_Component_314(List, PlatformSubcomponentRefTop, PlatformCompone
         super().__init__(_meta=_meta)
         # container
         self.config = Component_Config_327()
+        self.config._parent = weakref.ref(self)
         self.state = Component_State_334()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.name = Leafref(_meta={"mandatory": False},
             path="../config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -567,6 +594,7 @@ class PlatformComponentTop_Components_310(BaseBinding):
         # container
         # list
         self.component = Components_Component_314()
+        self.component._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -586,6 +614,7 @@ class PlatformComponentTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.components = PlatformComponentTop_Components_310()
+        self.components._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

@@ -5,6 +5,7 @@ field is omitted from a match expression, the effect is a
 wildcard ('any') for that field.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -72,14 +73,19 @@ class EthernetHeaderConfig(BaseBinding):
         # leaf
         self.source_mac_mask = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.source_mac_mask._parent = weakref.ref(self)
         self.ethertype = oc_pkt_match_types.EthertypeType(_meta={"mandatory": False},
         )
+        self.ethertype._parent = weakref.ref(self)
         self.source_mac = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.source_mac._parent = weakref.ref(self)
         self.destination_mac = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.destination_mac._parent = weakref.ref(self)
         self.destination_mac_mask = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.destination_mac_mask._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -155,7 +161,9 @@ class EthernetHeaderTop_L2_90(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = L2_Config_94()
+        self.config._parent = weakref.ref(self)
         self.state = L2_State_100()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -176,6 +184,7 @@ class EthernetHeaderTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.l2 = EthernetHeaderTop_L2_90()
+        self.l2._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -200,21 +209,29 @@ class IpProtocolFieldsConfig(BaseBinding):
         # leaf
         self.protocol = oc_pkt_match_types.IpProtocolType(_meta={"mandatory": False},
         )
+        self.protocol._parent = weakref.ref(self)
         self.source_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False},
         )
+        self.source_ip_flow_label._parent = weakref.ref(self)
         self.destination_ip_address = inet.IpPrefix(_meta={"mandatory": False},
         )
+        self.destination_ip_address._parent = weakref.ref(self)
         self.dscp = inet.Dscp(_meta={"mandatory": False},
         )
+        self.dscp._parent = weakref.ref(self)
         self.ip_version = inet.IpVersion(_meta={"mandatory": False},
         )
+        self.ip_version._parent = weakref.ref(self)
         self.source_ip_address = inet.IpPrefix(_meta={"mandatory": False},
         )
+        self.source_ip_address._parent = weakref.ref(self)
         self.destination_ip_flow_label = inet.Ipv6FlowLabel(_meta={"mandatory": False},
         )
+        self.destination_ip_flow_label._parent = weakref.ref(self)
         self.hop_limit = Uint8(_meta={"mandatory": False},
             range_="0..255",
         )
+        self.hop_limit._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -290,7 +307,9 @@ class IpProtocolFieldsTop_Ip_180(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Ip_Config_184()
+        self.config._parent = weakref.ref(self)
         self.state = Ip_State_190()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -311,6 +330,7 @@ class IpProtocolFieldsTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.ip = IpProtocolFieldsTop_Ip_180()
+        self.ip._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -334,10 +354,13 @@ class TransportFieldsConfig(BaseBinding):
         # leaf
         self.destination_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False},
         )
+        self.destination_port._parent = weakref.ref(self)
         self.source_port = oc_pkt_match_types.PortNumRange(_meta={"mandatory": False},
         )
+        self.source_port._parent = weakref.ref(self)
         # leaflist
         self.tcp_flags = LeafList(Identityref(_meta={"mandatory": False}, base="oc-pkt-match-types:TCP_FLAGS"))
+        self.tcp_flags._parent = weakref.ref(self)
         # Meta
         self._meta["config"] = True
         
@@ -412,7 +435,9 @@ class TransportFieldsTop_Transport_235(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Transport_Config_239()
+        self.config._parent = weakref.ref(self)
         self.state = Transport_State_245()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -433,6 +458,7 @@ class TransportFieldsTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.transport = TransportFieldsTop_Transport_235()
+        self.transport._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

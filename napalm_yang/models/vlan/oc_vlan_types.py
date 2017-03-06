@@ -3,6 +3,7 @@ This module defines configuration and state variables for VLANs,
 in addition to VLAN parameters associated with interfaces
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 

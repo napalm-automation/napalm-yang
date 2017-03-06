@@ -15,6 +15,7 @@ interfaces described by RFC 7223 with an alternate structure
 additional configuration items.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -104,9 +105,11 @@ class InterfaceRefCommon(BaseBinding):
         self.interface = Leafref(_meta={"mandatory": False},
             path="/oc-if:interfaces/oc-if:interface/oc-if:name",
         )
+        self.interface._parent = weakref.ref(self)
         self.subinterface = Leafref(_meta={"mandatory": False},
             path="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index",
         )
+        self.subinterface._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -145,6 +148,7 @@ class InterfaceRefStateContainer(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.state = InterfaceRefStateContainer_State_103()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -184,6 +188,7 @@ class InterfaceRef_InterfaceRef_117(InterfaceRefStateContainer):
         super().__init__(_meta=_meta)
         # container
         self.config = InterfaceRef_Config_121()
+        self.config._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -205,6 +210,7 @@ class InterfaceRef(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.interface_ref = InterfaceRef_InterfaceRef_117()
+        self.interface_ref._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -245,6 +251,7 @@ class InterfaceRefState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.interface_ref = InterfaceRefState_InterfaceRef_137()
+        self.interface_ref._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -269,10 +276,13 @@ class InterfaceCommonConfig(BaseBinding):
         # leaf
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -295,8 +305,10 @@ class InterfacePhysConfig(InterfaceCommonConfig):
         self.type_ = Identityref(_meta={"mandatory": True},
             base=ietf_if.InterfaceType,
         )
+        self.type_._parent = weakref.ref(self)
         self.mtu = Uint16(_meta={"mandatory": False},
         )
+        self.mtu._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -319,8 +331,10 @@ class InterfacePhysHoldtimeConfig(BaseBinding):
         # leaf
         self.down = Uint32(_meta={"mandatory": False},
         )
+        self.down._parent = weakref.ref(self)
         self.up = Uint32(_meta={"mandatory": False},
         )
+        self.up._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -397,7 +411,9 @@ class InterfacePhysHoldtimeTop_HoldTime_327(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = HoldTime_Config_332()
+        self.config._parent = weakref.ref(self)
         self.state = HoldTime_State_339()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -419,6 +435,7 @@ class InterfacePhysHoldtimeTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.hold_time = InterfacePhysHoldtimeTop_HoldTime_327()
+        self.hold_time._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -443,6 +460,7 @@ class InterfaceCommonState(BaseBinding):
         # leaf
         self.ifindex = Uint32(_meta={"mandatory": False},
         )
+        self.ifindex._parent = weakref.ref(self)
         self.admin_status = Enumeration(_meta={"mandatory": True},
             enum={
             "DOWN": {
@@ -462,8 +480,10 @@ class InterfaceCommonState(BaseBinding):
             }
         },
         )
+        self.admin_status._parent = weakref.ref(self)
         self.last_change = yang.Timeticks(_meta={"mandatory": False},
         )
+        self.last_change._parent = weakref.ref(self)
         self.oper_status = Enumeration(_meta={"mandatory": True},
             enum={
             "DORMANT": {
@@ -510,6 +530,7 @@ class InterfaceCommonState(BaseBinding):
             }
         },
         )
+        self.oper_status._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -531,32 +552,46 @@ class InterfaceCountersState_Counters_475(BaseBinding):
         # leaf
         self.out_octets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_octets._parent = weakref.ref(self)
         self.in_errors = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_errors._parent = weakref.ref(self)
         self.in_discards = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_discards._parent = weakref.ref(self)
         self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_unicast_pkts._parent = weakref.ref(self)
         self.out_errors = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_errors._parent = weakref.ref(self)
         self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_multicast_pkts._parent = weakref.ref(self)
         self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_multicast_pkts._parent = weakref.ref(self)
         self.last_clear = yang.DateAndTime(_meta={"mandatory": False},
         )
+        self.last_clear._parent = weakref.ref(self)
         self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_unicast_pkts._parent = weakref.ref(self)
         self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_broadcast_pkts._parent = weakref.ref(self)
         self.out_discards = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_discards._parent = weakref.ref(self)
         self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_broadcast_pkts._parent = weakref.ref(self)
         self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False},
         )
+        self.in_unknown_protos._parent = weakref.ref(self)
         self.in_octets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_octets._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -576,6 +611,7 @@ class InterfaceCountersState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.counters = InterfaceCountersState_Counters_475()
+        self.counters._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -599,6 +635,7 @@ class SubUnnumberedConfig(BaseBinding):
         # leaf
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -676,7 +713,9 @@ class SubUnnumberedTop_Unnumbered_773(oc_if.InterfaceRef):
         super().__init__(_meta=_meta)
         # container
         self.config = Unnumbered_Config_779()
+        self.config._parent = weakref.ref(self)
         self.state = Unnumbered_State_786()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -697,6 +736,7 @@ class SubUnnumberedTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.unnumbered = SubUnnumberedTop_Unnumbered_773()
+        self.unnumbered._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -720,6 +760,7 @@ class SubinterfacesConfig(InterfaceCommonConfig):
         # leaf
         self.index = Uint32(_meta={"mandatory": False},
         )
+        self.index._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -796,12 +837,15 @@ class Subinterfaces_Subinterface_837(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Subinterface_Config_853()
+        self.config._parent = weakref.ref(self)
         self.state = Subinterface_State_860()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.index = Leafref(_meta={"mandatory": False},
             path="../config/index",
         )
+        self.index._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -823,6 +867,7 @@ class SubinterfacesTop_Subinterfaces_832(BaseBinding):
         # container
         # list
         self.subinterface = Subinterfaces_Subinterface_837()
+        self.subinterface._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -843,6 +888,7 @@ class SubinterfacesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.subinterfaces = SubinterfacesTop_Subinterfaces_832()
+        self.subinterfaces._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -902,12 +948,15 @@ class Interfaces_Interface_884(List, SubinterfacesTop, InterfacePhysHoldtimeTop)
         super().__init__(_meta=_meta)
         # container
         self.config = Interface_Config_905()
+        self.config._parent = weakref.ref(self)
         self.state = Interface_State_913()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.name = Leafref(_meta={"mandatory": False},
             path="../config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -929,6 +978,7 @@ class InterfacesTop_Interfaces_878(BaseBinding):
         # container
         # list
         self.interface = Interfaces_Interface_884()
+        self.interface._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -949,6 +999,7 @@ class InterfacesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.interfaces = InterfacesTop_Interfaces_878()
+        self.interfaces._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

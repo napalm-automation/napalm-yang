@@ -3,6 +3,7 @@ This module defines configuration and state variables for VLANs,
 in addition to VLAN parameters associated with interfaces
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -81,13 +82,17 @@ class VlanConfig(BaseBinding):
             }
         },
         )
+        self.status._parent = weakref.ref(self)
         self.vlan_id = oc_vlan_types.VlanId(_meta={"mandatory": False},
         )
+        self.vlan_id._parent = weakref.ref(self)
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         self.tpid = Identityref(_meta={"mandatory": False},
             base=oc_vlan_types.Tpid_Types,
         )
+        self.tpid._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -147,6 +152,7 @@ class VlanMembersState_Members_88(BaseBinding):
         # container
         # list
         self.member = Members_Member_92()
+        self.member._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -166,6 +172,7 @@ class VlanMembersState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.members = VlanMembersState_Members_88()
+        self.members._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -190,18 +197,21 @@ class VlanEthernetConfig(BaseBinding):
         # leaf
         self.interface_mode = oc_vlan_types.VlanModeType(_meta={"mandatory": False},
         )
+        self.interface_mode._parent = weakref.ref(self)
         self.native_vlan = Union(_meta={"mandatory": False},
             type_={
             "oc-vlan-types:qinq-id": {}, 
             "oc-vlan-types:vlan-id": {}
         },
         )
+        self.native_vlan._parent = weakref.ref(self)
         self.access_vlan = Union(_meta={"mandatory": False},
             type_={
             "oc-vlan-types:qinq-id": {}, 
             "oc-vlan-types:vlan-id": {}
         },
         )
+        self.access_vlan._parent = weakref.ref(self)
         # leaflist
         self.trunk_vlans = LeafList(Union(_meta={"mandatory": False}, type_={
             "oc-vlan-types:qinq-id": {}, 
@@ -209,6 +219,7 @@ class VlanEthernetConfig(BaseBinding):
             "oc-vlan-types:vlan-id": {}, 
             "oc-vlan-types:vlan-range": {}
         }))
+        self.trunk_vlans._parent = weakref.ref(self)
         # Meta
         self._meta["config"] = True
         
@@ -286,7 +297,9 @@ class VlanEthernetTop_SwitchedVlan_178(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = SwitchedVlan_Config_184()
+        self.config._parent = weakref.ref(self)
         self.state = SwitchedVlan_State_190()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -308,6 +321,7 @@ class VlanEthernetTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.switched_vlan = VlanEthernetTop_SwitchedVlan_178()
+        self.switched_vlan._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -337,6 +351,7 @@ class VlanLogicalConfig(BaseBinding):
             "oc-vlan-types:vlan-id": {}
         },
         )
+        self.vlan_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -413,12 +428,15 @@ class Vlans_Vlan_237(List, VlanMembersState):
         super().__init__(_meta=_meta)
         # container
         self.config = Vlan_Config_249()
+        self.config._parent = weakref.ref(self)
         self.state = Vlan_State_255()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.vlan_id = Leafref(_meta={"mandatory": False},
             path="../config/vlan-id",
         )
+        self.vlan_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -440,6 +458,7 @@ class VlanTop_Vlans_233(BaseBinding):
         # container
         # list
         self.vlan = Vlans_Vlan_237()
+        self.vlan._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -459,6 +478,7 @@ class VlanTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.vlans = VlanTop_Vlans_233()
+        self.vlans._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -518,7 +538,9 @@ class VlanLogicalTop_Vlan_273(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Vlan_Config_278()
+        self.config._parent = weakref.ref(self)
         self.state = Vlan_State_284()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -540,6 +562,7 @@ class VlanLogicalTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.vlan = VlanLogicalTop_Vlan_273()
+        self.vlan._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -567,6 +590,7 @@ class VlanRoutedConfig(BaseBinding):
             "uint16": {}
         },
         )
+        self.vlan._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -645,7 +669,9 @@ class VlanRoutedTop_RoutedVlan_325(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = RoutedVlan_Config_332()
+        self.config._parent = weakref.ref(self)
         self.state = RoutedVlan_State_339()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -666,6 +692,7 @@ class VlanRoutedTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.routed_vlan = VlanRoutedTop_RoutedVlan_325()
+        self.routed_vlan._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

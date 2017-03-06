@@ -3,6 +3,7 @@ Model for managing Ethernet interfaces -- augments the IETF YANG
 model for interfaces described by RFC 7223
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -130,13 +131,17 @@ class EthernetInterfaceConfig(BaseBinding):
         # leaf
         self.auto_negotiate = Boolean(_meta={"mandatory": False},
         )
+        self.auto_negotiate._parent = weakref.ref(self)
         self.enable_flow_control = Boolean(_meta={"mandatory": False},
         )
+        self.enable_flow_control._parent = weakref.ref(self)
         self.port_speed = Identityref(_meta={"mandatory": False},
             base=Ethernet_Speed,
         )
+        self.port_speed._parent = weakref.ref(self)
         self.mac_address = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.mac_address._parent = weakref.ref(self)
         self.duplex_mode = Enumeration(_meta={"mandatory": False},
             enum={
             "FULL": {
@@ -151,6 +156,7 @@ class EthernetInterfaceConfig(BaseBinding):
             }
         },
         )
+        self.duplex_mode._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -172,24 +178,34 @@ class EthernetInterfaceStateCounters(BaseBinding):
         # leaf
         self.in_fragment_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_fragment_frames._parent = weakref.ref(self)
         self.in_oversize_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_oversize_frames._parent = weakref.ref(self)
         self.in_8021q_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_8021q_frames._parent = weakref.ref(self)
         self.out_8021q_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_8021q_frames._parent = weakref.ref(self)
         self.in_mac_pause_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_mac_pause_frames._parent = weakref.ref(self)
         self.in_jabber_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_jabber_frames._parent = weakref.ref(self)
         self.in_crc_errors = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_crc_errors._parent = weakref.ref(self)
         self.in_mac_control_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_mac_control_frames._parent = weakref.ref(self)
         self.out_mac_control_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_mac_control_frames._parent = weakref.ref(self)
         self.out_mac_pause_frames = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_mac_pause_frames._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -227,15 +243,19 @@ class EthernetInterfaceState(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.counters = EthernetInterfaceState_Counters_288()
+        self.counters._parent = weakref.ref(self)
         # list
         # leaf
         self.hw_mac_address = yang.MacAddress(_meta={"mandatory": False},
         )
+        self.hw_mac_address._parent = weakref.ref(self)
         self.negotiated_port_speed = Identityref(_meta={"mandatory": False},
             base=Ethernet_Speed,
         )
+        self.negotiated_port_speed._parent = weakref.ref(self)
         self.effective_speed = Uint32(_meta={"mandatory": False},
         )
+        self.effective_speed._parent = weakref.ref(self)
         self.negotiated_duplex_mode = Enumeration(_meta={"mandatory": False},
             enum={
             "FULL": {
@@ -250,6 +270,7 @@ class EthernetInterfaceState(BaseBinding):
             }
         },
         )
+        self.negotiated_duplex_mode._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -307,7 +328,9 @@ class EthernetTop_Ethernet_302(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Ethernet_Config_307()
+        self.config._parent = weakref.ref(self)
         self.state = Ethernet_State_314()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -328,6 +351,7 @@ class EthernetTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.ethernet = EthernetTop_Ethernet_302()
+        self.ethernet._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

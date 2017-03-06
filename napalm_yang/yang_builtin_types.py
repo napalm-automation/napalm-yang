@@ -1,6 +1,7 @@
 """Yang Types"""
 from builtins import super
 import copy
+import weakref
 
 from decimal import Decimal
 
@@ -389,6 +390,7 @@ class ListElement(BaseBinding):
             attr = getattr(parent, a)
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 setattr(self, a, copy.deepcopy(attr))
+            self._parent = weakref.ref(parent)
 
 
 class List(BaseBinding):

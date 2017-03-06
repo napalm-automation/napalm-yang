@@ -15,6 +15,7 @@ criteria that cross protocol layers, e.g., MAC layer and IP
 layer matches.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -225,7 +226,9 @@ class InputInterfaceTop_InputInterface_140(oc_if.InterfaceRef):
         super().__init__(_meta=_meta)
         # container
         self.config = InputInterface_Config_144()
+        self.config._parent = weakref.ref(self)
         self.state = InputInterface_State_150()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -246,6 +249,7 @@ class InputInterfaceTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.input_interface = InputInterfaceTop_InputInterface_140()
+        self.input_interface._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -270,9 +274,11 @@ class ActionConfig(BaseBinding):
         self.forwarding_action = Identityref(_meta={"mandatory": True},
             base=Forwarding_Action,
         )
+        self.forwarding_action._parent = weakref.ref(self)
         self.log_action = Identityref(_meta={"mandatory": False},
             base=Log_Action,
         )
+        self.log_action._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -349,7 +355,9 @@ class ActionTop_Actions_203(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Actions_Config_208()
+        self.config._parent = weakref.ref(self)
         self.state = Actions_State_214()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -370,6 +378,7 @@ class ActionTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.actions = ActionTop_Actions_203()
+        self.actions._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -393,8 +402,10 @@ class AclCountersState(BaseBinding):
         # leaf
         self.matched_octets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.matched_octets._parent = weakref.ref(self)
         self.matched_packets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.matched_packets._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -416,8 +427,10 @@ class AccessListEntriesConfig(BaseBinding):
         # leaf
         self.sequence_id = Uint32(_meta={"mandatory": False},
         )
+        self.sequence_id._parent = weakref.ref(self)
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -493,12 +506,15 @@ class AclEntries_AclEntry_308(List, ActionTop, InputInterfaceTop, oc_match.Trans
         super().__init__(_meta=_meta)
         # container
         self.config = AclEntry_Config_321()
+        self.config._parent = weakref.ref(self)
         self.state = AclEntry_State_327()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.sequence_id = Leafref(_meta={"mandatory": False},
             path="../config/sequence-id",
         )
+        self.sequence_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -519,6 +535,7 @@ class AccessListEntriesTop_AclEntries_304(BaseBinding):
         # container
         # list
         self.acl_entry = AclEntries_AclEntry_308()
+        self.acl_entry._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -538,6 +555,7 @@ class AccessListEntriesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.acl_entries = AccessListEntriesTop_AclEntries_304()
+        self.acl_entries._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -561,8 +579,10 @@ class AclSetConfig(BaseBinding):
         # leaf
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -639,12 +659,15 @@ class AclSets_AclSet_376(List, AccessListEntriesTop):
         super().__init__(_meta=_meta)
         # container
         self.config = AclSet_Config_390()
+        self.config._parent = weakref.ref(self)
         self.state = AclSet_State_396()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.name = Leafref(_meta={"mandatory": False},
             path="../config/name",
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -665,6 +688,7 @@ class AclSetTop_AclSets_372(BaseBinding):
         # container
         # list
         self.acl_set = AclSets_AclSet_376()
+        self.acl_set._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -684,6 +708,7 @@ class AclSetTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.acl_sets = AclSetTop_AclSets_372()
+        self.acl_sets._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -727,6 +752,7 @@ class InterfaceAclEntriesState(AclCountersState):
         self.sequence_id = Leafref(_meta={"mandatory": False},
             path="/acl/acl-sets/acl-set[name=current()/../../../../set-name]/acl-entries/acl-entry/sequence-id",
         )
+        self.sequence_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -764,11 +790,13 @@ class AclEntries_AclEntry_442(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.state = AclEntry_State_458()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.sequence_id = Leafref(_meta={"mandatory": False},
             path="../state/sequence-id",
         )
+        self.sequence_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -789,6 +817,7 @@ class InterfaceAclEntriesTop_AclEntries_437(BaseBinding):
         # container
         # list
         self.acl_entry = AclEntries_AclEntry_442()
+        self.acl_entry._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -808,6 +837,7 @@ class InterfaceAclEntriesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.acl_entries = InterfaceAclEntriesTop_AclEntries_437()
+        self.acl_entries._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -832,6 +862,7 @@ class InterfaceIngressAclConfig(BaseBinding):
         self.set_name = Leafref(_meta={"mandatory": False},
             path="/acl/acl-sets/acl-set/config/name",
         )
+        self.set_name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -907,12 +938,15 @@ class IngressAclSets_IngressAclSet_499(List, InterfaceAclEntriesTop):
         super().__init__(_meta=_meta)
         # container
         self.config = IngressAclSet_Config_512()
+        self.config._parent = weakref.ref(self)
         self.state = IngressAclSet_State_519()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.set_name = Leafref(_meta={"mandatory": False},
             path="../config/set-name",
         )
+        self.set_name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -934,6 +968,7 @@ class InterfaceIngressAclTop_IngressAclSets_494(BaseBinding):
         # container
         # list
         self.ingress_acl_set = IngressAclSets_IngressAclSet_499()
+        self.ingress_acl_set._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -953,6 +988,7 @@ class InterfaceIngressAclTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.ingress_acl_sets = InterfaceIngressAclTop_IngressAclSets_494()
+        self.ingress_acl_sets._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -977,6 +1013,7 @@ class InterfaceEgressAclConfig(BaseBinding):
         self.set_name = Leafref(_meta={"mandatory": False},
             path="/acl/acl-sets/acl-set/config/name",
         )
+        self.set_name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1052,12 +1089,15 @@ class EgressAclSets_EgressAclSet_562(List, InterfaceAclEntriesTop):
         super().__init__(_meta=_meta)
         # container
         self.config = EgressAclSet_Config_575()
+        self.config._parent = weakref.ref(self)
         self.state = EgressAclSet_State_582()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.set_name = Leafref(_meta={"mandatory": False},
             path="../config/set-name",
         )
+        self.set_name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1079,6 +1119,7 @@ class InterfaceEgressAclTop_EgressAclSets_557(BaseBinding):
         # container
         # list
         self.egress_acl_set = EgressAclSets_EgressAclSet_562()
+        self.egress_acl_set._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -1098,6 +1139,7 @@ class InterfaceEgressAclTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.egress_acl_sets = InterfaceEgressAclTop_EgressAclSets_557()
+        self.egress_acl_sets._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1121,6 +1163,7 @@ class AclInterfacesConfig(BaseBinding):
         # leaf
         self.id = oc_if.InterfaceId(_meta={"mandatory": False},
         )
+        self.id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1196,12 +1239,15 @@ class Interfaces_Interface_624(List, InterfaceEgressAclTop, InterfaceIngressAclT
         super().__init__(_meta=_meta)
         # container
         self.config = Interface_Config_637()
+        self.config._parent = weakref.ref(self)
         self.state = Interface_State_644()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.id = Leafref(_meta={"mandatory": False},
             path="../config/id",
         )
+        self.id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1223,6 +1269,7 @@ class AclInterfacesTop_Interfaces_619(BaseBinding):
         # container
         # list
         self.interface = Interfaces_Interface_624()
+        self.interface._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -1242,6 +1289,7 @@ class AclInterfacesTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.interfaces = AclInterfacesTop_Interfaces_619()
+        self.interfaces._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1285,6 +1333,7 @@ class AclState(BaseBinding):
         self.counter_capability = Identityref(_meta={"mandatory": False},
             base=Acl_Counter_Capability,
         )
+        self.counter_capability._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1342,7 +1391,9 @@ class AclTop_Acl_684(AclInterfacesTop, AclSetTop):
         super().__init__(_meta=_meta)
         # container
         self.config = Acl_Config_689()
+        self.config._parent = weakref.ref(self)
         self.state = Acl_State_696()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1363,6 +1414,7 @@ class AclTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.acl = AclTop_Acl_684()
+        self.acl._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

@@ -3,6 +3,7 @@ This module defines common types for use in models requiring
 data definitions related to packet matches.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 

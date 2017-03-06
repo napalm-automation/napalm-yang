@@ -6,6 +6,7 @@ described by RFC 7277.  The primary differences are in the
 structure of configuration and state data.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -134,9 +135,11 @@ class Ipv4GlobalConfig(BaseBinding):
         # leaf
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         self.mtu = Uint16(_meta={"mandatory": False},
             range_="68..max",
         )
+        self.mtu._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -159,9 +162,11 @@ class Ipv4AddressConfig(BaseBinding):
         # leaf
         self.ip = inet.Ipv4AddressNoZone(_meta={"mandatory": False},
         )
+        self.ip._parent = weakref.ref(self)
         self.prefix_length = Uint8(_meta={"mandatory": False},
             range_="0..32",
         )
+        self.prefix_length._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -187,8 +192,10 @@ class Ipv4NeighborConfig(BaseBinding):
         # leaf
         self.ip = inet.Ipv4AddressNoZone(_meta={"mandatory": False},
         )
+        self.ip._parent = weakref.ref(self)
         self.link_layer_address = yang.PhysAddress(_meta={"mandatory": True},
         )
+        self.link_layer_address._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -210,6 +217,7 @@ class Ipv4AddressState(BaseBinding):
         # leaf
         self.origin = IpAddressOrigin(_meta={"mandatory": False},
         )
+        self.origin._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -231,6 +239,7 @@ class Ipv4NeighborState(BaseBinding):
         # leaf
         self.origin = NeighborOrigin(_meta={"mandatory": False},
         )
+        self.origin._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -253,11 +262,14 @@ class Ipv6GlobalConfig(BaseBinding):
         # leaf
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         self.dup_addr_detect_transmits = Uint32(_meta={"mandatory": False},
         )
+        self.dup_addr_detect_transmits._parent = weakref.ref(self)
         self.mtu = Uint32(_meta={"mandatory": False},
             range_="1280..max",
         )
+        self.mtu._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -279,9 +291,11 @@ class Ipv6AddressConfig(BaseBinding):
         # leaf
         self.ip = inet.Ipv6AddressNoZone(_meta={"mandatory": False},
         )
+        self.ip._parent = weakref.ref(self)
         self.prefix_length = Uint8(_meta={"mandatory": True},
             range_="0..128",
         )
+        self.prefix_length._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -345,8 +359,10 @@ class Ipv6AddressState(BaseBinding):
             }
         },
         )
+        self.status._parent = weakref.ref(self)
         self.origin = IpAddressOrigin(_meta={"mandatory": False},
         )
+        self.origin._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -368,8 +384,10 @@ class Ipv6NeighborConfig(BaseBinding):
         # leaf
         self.ip = inet.Ipv6AddressNoZone(_meta={"mandatory": False},
         )
+        self.ip._parent = weakref.ref(self)
         self.link_layer_address = yang.PhysAddress(_meta={"mandatory": True},
         )
+        self.link_layer_address._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -391,6 +409,7 @@ class Ipv6NeighborState(BaseBinding):
         # leaf
         self.origin = NeighborOrigin(_meta={"mandatory": False},
         )
+        self.origin._parent = weakref.ref(self)
         self.neighbor_state = Enumeration(_meta={"mandatory": False},
             enum={
             "DELAY": {
@@ -420,8 +439,10 @@ class Ipv6NeighborState(BaseBinding):
             }
         },
         )
+        self.neighbor_state._parent = weakref.ref(self)
         self.is_router = Empty(_meta={"mandatory": False},
         )
+        self.is_router._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -444,6 +465,7 @@ class IpVrrpIpv6Config(BaseBinding):
         # leaf
         self.virtual_link_local = inet.IpAddress(_meta={"mandatory": False},
         )
+        self.virtual_link_local._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -486,9 +508,11 @@ class IpVrrpTrackingConfig(BaseBinding):
         self.track_interface = Leafref(_meta={"mandatory": False},
             path="/oc-if:interfaces/oc-if:interface/oc-if:name",
         )
+        self.track_interface._parent = weakref.ref(self)
         self.priority_decrement = Uint8(_meta={"mandatory": False},
             range_="0..254",
         )
+        self.priority_decrement._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -565,7 +589,9 @@ class IpVrrpTrackingTop_InterfaceTracking_511(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = InterfaceTracking_Config_515()
+        self.config._parent = weakref.ref(self)
         self.state = InterfaceTracking_State_522()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -586,6 +612,7 @@ class IpVrrpTrackingTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.interface_tracking = IpVrrpTrackingTop_InterfaceTracking_511()
+        self.interface_tracking._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -610,21 +637,28 @@ class IpVrrpConfig(BaseBinding):
         self.advertisement_interval = Uint16(_meta={"mandatory": False},
             range_="1..4095",
         )
+        self.advertisement_interval._parent = weakref.ref(self)
         self.accept_mode = Boolean(_meta={"mandatory": False},
         )
+        self.accept_mode._parent = weakref.ref(self)
         self.virtual_router_id = Uint8(_meta={"mandatory": False},
             range_="1..255",
         )
+        self.virtual_router_id._parent = weakref.ref(self)
         self.preempt_delay = Uint16(_meta={"mandatory": False},
             range_="0..3600",
         )
+        self.preempt_delay._parent = weakref.ref(self)
         self.priority = Uint8(_meta={"mandatory": False},
             range_="1..254",
         )
+        self.priority._parent = weakref.ref(self)
         self.preempt = Boolean(_meta={"mandatory": False},
         )
+        self.preempt._parent = weakref.ref(self)
         # leaflist
         self.virtual_address = LeafList(inet.IpAddress(_meta={"mandatory": False}, ))
+        self.virtual_address._parent = weakref.ref(self)
         # Meta
         self._meta["config"] = True
         
@@ -645,6 +679,7 @@ class IpVrrpState(BaseBinding):
         # leaf
         self.current_priority = Uint8(_meta={"mandatory": False},
         )
+        self.current_priority._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -701,12 +736,15 @@ class Vrrp_VrrpGroup_630(List, IpVrrpTrackingTop):
         super().__init__(_meta=_meta)
         # container
         self.config = VrrpGroup_Config_644()
+        self.config._parent = weakref.ref(self)
         self.state = VrrpGroup_State_651()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.virtual_router_id = Leafref(_meta={"mandatory": False},
             path="../config/virtual-router-id",
         )
+        self.virtual_router_id._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -728,6 +766,7 @@ class IpVrrpTop_Vrrp_622(BaseBinding):
         # container
         # list
         self.vrrp_group = Vrrp_VrrpGroup_630()
+        self.vrrp_group._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -747,6 +786,7 @@ class IpVrrpTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.vrrp = IpVrrpTop_Vrrp_622()
+        self.vrrp._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -807,12 +847,15 @@ class Addresses_Address_679(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Address_Config_691()
+        self.config._parent = weakref.ref(self)
         self.state = Address_State_699()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.ip = Leafref(_meta={"mandatory": False},
             path="../oc-ip:config/oc-ip:ip",
         )
+        self.ip._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -833,6 +876,7 @@ class Ipv4_Addresses_675(BaseBinding):
         # container
         # list
         self.address = Addresses_Address_679()
+        self.address._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -896,12 +940,15 @@ class Neighbors_Neighbor_716(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Neighbor_Config_734()
+        self.config._parent = weakref.ref(self)
         self.state = Neighbor_State_742()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.ip = Leafref(_meta={"mandatory": False},
             path="../oc-ip:config/oc-ip:ip",
         )
+        self.ip._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -922,6 +969,7 @@ class Ipv4_Neighbors_712(BaseBinding):
         # container
         # list
         self.neighbor = Neighbors_Neighbor_716()
+        self.neighbor._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -979,9 +1027,13 @@ class Ipv4Top_Ipv4_671(oc_if.SubUnnumberedTop):
         super().__init__(_meta=_meta)
         # container
         self.addresses = Ipv4_Addresses_675()
+        self.addresses._parent = weakref.ref(self)
         self.neighbors = Ipv4_Neighbors_712()
+        self.neighbors._parent = weakref.ref(self)
         self.config = Ipv4_Config_756()
+        self.config._parent = weakref.ref(self)
         self.state = Ipv4_State_763()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1003,6 +1055,7 @@ class Ipv4Top(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.ipv4 = Ipv4Top_Ipv4_671()
+        self.ipv4._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1063,12 +1116,15 @@ class Addresses_Address_786(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Address_Config_798()
+        self.config._parent = weakref.ref(self)
         self.state = Address_State_807()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.ip = Leafref(_meta={"mandatory": False},
             path="../oc-ip:config/oc-ip:ip",
         )
+        self.ip._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1089,6 +1145,7 @@ class Ipv6_Addresses_782(BaseBinding):
         # container
         # list
         self.address = Addresses_Address_786()
+        self.address._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -1148,12 +1205,15 @@ class Neighbors_Neighbor_824(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Neighbor_Config_837()
+        self.config._parent = weakref.ref(self)
         self.state = Neighbor_State_845()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         self.ip = Leafref(_meta={"mandatory": False},
             path="../oc-ip:config/oc-ip:ip",
         )
+        self.ip._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -1174,6 +1234,7 @@ class Ipv6_Neighbors_820(BaseBinding):
         # container
         # list
         self.neighbor = Neighbors_Neighbor_824()
+        self.neighbor._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -1231,9 +1292,13 @@ class Ipv6Top_Ipv6_778(oc_if.SubUnnumberedTop):
         super().__init__(_meta=_meta)
         # container
         self.addresses = Ipv6_Addresses_782()
+        self.addresses._parent = weakref.ref(self)
         self.neighbors = Ipv6_Neighbors_820()
+        self.neighbors._parent = weakref.ref(self)
         self.config = Ipv6_Config_858()
+        self.config._parent = weakref.ref(self)
         self.state = Ipv6_State_864()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -1254,6 +1319,7 @@ class Ipv6Top(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.ipv6 = Ipv6Top_Ipv6_778()
+        self.ipv6._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist

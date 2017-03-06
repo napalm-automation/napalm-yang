@@ -13,6 +13,7 @@ This version of this YANG module is part of RFC 7223; see
 the RFC itself for full legal notices.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -132,6 +133,7 @@ class Interfaces_Interface_92(List, BaseBinding):
         self.type_ = Identityref(_meta={"mandatory": True},
             base=InterfaceType,
         )
+        self.type_._parent = weakref.ref(self)
         self.link_up_down_trap_enable = Enumeration(_meta={"mandatory": False},
             enum={
             "disabled": {
@@ -142,12 +144,16 @@ class Interfaces_Interface_92(List, BaseBinding):
             }
         },
         )
+        self.link_up_down_trap_enable._parent = weakref.ref(self)
         self.enabled = Boolean(_meta={"mandatory": False},
         )
+        self.enabled._parent = weakref.ref(self)
         self.description = String(_meta={"mandatory": False},
         )
+        self.description._parent = weakref.ref(self)
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -168,6 +174,7 @@ class IetfInterfaces_Interfaces_89(BaseBinding):
         # container
         # list
         self.interface = Interfaces_Interface_92()
+        self.interface._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta
@@ -190,32 +197,46 @@ class Interface_Statistics_392(BaseBinding):
         # leaf
         self.out_octets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_octets._parent = weakref.ref(self)
         self.in_errors = yang.Counter32(_meta={"mandatory": False},
         )
+        self.in_errors._parent = weakref.ref(self)
         self.discontinuity_time = yang.DateAndTime(_meta={"mandatory": True},
         )
+        self.discontinuity_time._parent = weakref.ref(self)
         self.in_discards = yang.Counter32(_meta={"mandatory": False},
         )
+        self.in_discards._parent = weakref.ref(self)
         self.out_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_unicast_pkts._parent = weakref.ref(self)
         self.out_errors = yang.Counter32(_meta={"mandatory": False},
         )
+        self.out_errors._parent = weakref.ref(self)
         self.out_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_multicast_pkts._parent = weakref.ref(self)
         self.in_multicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_multicast_pkts._parent = weakref.ref(self)
         self.in_unicast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_unicast_pkts._parent = weakref.ref(self)
         self.out_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.out_broadcast_pkts._parent = weakref.ref(self)
         self.out_discards = yang.Counter32(_meta={"mandatory": False},
         )
+        self.out_discards._parent = weakref.ref(self)
         self.in_broadcast_pkts = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_broadcast_pkts._parent = weakref.ref(self)
         self.in_unknown_protos = yang.Counter32(_meta={"mandatory": False},
         )
+        self.in_unknown_protos._parent = weakref.ref(self)
         self.in_octets = yang.Counter64(_meta={"mandatory": False},
         )
+        self.in_octets._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -237,14 +258,18 @@ class InterfacesState_Interface_226(List, BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.statistics = Interface_Statistics_392()
+        self.statistics._parent = weakref.ref(self)
         # list
         # leaf
         self.name = String(_meta={"mandatory": False},
         )
+        self.name._parent = weakref.ref(self)
         self.speed = yang.Gauge64(_meta={"mandatory": False},
         )
+        self.speed._parent = weakref.ref(self)
         self.phys_address = yang.PhysAddress(_meta={"mandatory": False},
         )
+        self.phys_address._parent = weakref.ref(self)
         self.admin_status = Enumeration(_meta={"mandatory": True},
             enum={
             "down": {
@@ -267,11 +292,14 @@ class InterfacesState_Interface_226(List, BaseBinding):
             }
         },
         )
+        self.admin_status._parent = weakref.ref(self)
         self.type_ = Identityref(_meta={"mandatory": True},
             base=InterfaceType,
         )
+        self.type_._parent = weakref.ref(self)
         self.last_change = yang.DateAndTime(_meta={"mandatory": False},
         )
+        self.last_change._parent = weakref.ref(self)
         self.oper_status = Enumeration(_meta={"mandatory": True},
             enum={
             "dormant": {
@@ -318,12 +346,16 @@ class InterfacesState_Interface_226(List, BaseBinding):
             }
         },
         )
+        self.oper_status._parent = weakref.ref(self)
         self.if_index = Int32(_meta={"mandatory": True},
             range_="1..2147483647",
         )
+        self.if_index._parent = weakref.ref(self)
         # leaflist
         self.lower_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
+        self.lower_layer_if._parent = weakref.ref(self)
         self.higher_layer_if = LeafList(InterfaceStateRef(_meta={"mandatory": False}, ))
+        self.higher_layer_if._parent = weakref.ref(self)
         # Meta
         self._meta["config"] = True
         self._meta["key"] = "name"
@@ -343,6 +375,7 @@ class IetfInterfaces_InterfacesState_222(BaseBinding):
         # container
         # list
         self.interface = InterfacesState_Interface_226()
+        self.interface._parent = weakref.ref(self)
         # leaf
         # leaflist
         # Meta

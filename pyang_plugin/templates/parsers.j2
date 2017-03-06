@@ -148,6 +148,7 @@ class {{ k|safe_class_name }}(Extension):
 # {{ type_of_attr }}
 {% for a in module.pop(type_of_attr, {}).pop(type_of_attr, []) -%}
 self.{{ a[0]|safe_attr_name }} = {{ a[1]|safe_class_name }}()
+self.{{ a[0]|safe_attr_name }}._parent = weakref.ref(self)
 {% endfor %}
 {%- endmacro %}
 
@@ -162,6 +163,7 @@ self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.
 {% else %}    {{ kkk|safe_attr_name }}={{ vvv|to_json }},
 {% endif -%}
 {% endfor %})
+self.{{ k|safe_attr_name }}._parent = weakref.ref(self)
 {% endfor -%}
 {% endfor -%}
 {%- endmacro %}
@@ -172,6 +174,7 @@ self.{{ k|safe_attr_name }} = {{ kk|safe_class_name }}(_meta={"mandatory": {{ v.
 {% for k, v in module.pop("leaf-list", {}).items() -%}
 {% for kk, vv in v.pop("type", {}).items() -%}
 self.{{ k|safe_attr_name }} = LeafList({{ kk|safe_class_name }}(_meta={"mandatory": {{v.get("mandatory", False)|title}}}, {% for kkk, vvv in vv.items() %}{{ kkk|safe_attr_name }}={{ vvv|to_json }}{% endfor %}))
+self.{{ k|safe_attr_name }}._parent = weakref.ref(self)
 {% endfor -%}
 {% endfor -%}
 {%- endmacro %}

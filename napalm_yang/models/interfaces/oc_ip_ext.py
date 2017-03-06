@@ -3,6 +3,7 @@ This module adds extensions to the base IP configuration and
 operational state model to support additional use cases.
 """
 from builtins import super
+import weakref
 
 from napalm_yang import *
 
@@ -66,12 +67,16 @@ class Ipv6AutoconfConfig(BaseBinding):
         # leaf
         self.create_temporary_addresses = Boolean(_meta={"mandatory": False},
         )
+        self.create_temporary_addresses._parent = weakref.ref(self)
         self.create_global_addresses = Boolean(_meta={"mandatory": False},
         )
+        self.create_global_addresses._parent = weakref.ref(self)
         self.temporary_preferred_lifetime = Uint32(_meta={"mandatory": False},
         )
+        self.temporary_preferred_lifetime._parent = weakref.ref(self)
         self.temporary_valid_lifetime = Uint32(_meta={"mandatory": False},
         )
+        self.temporary_valid_lifetime._parent = weakref.ref(self)
         # leaflist
         # Meta
         self._meta["config"] = True
@@ -150,7 +155,9 @@ class Ipv6AutoconfTop_Autoconf_108(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.config = Autoconf_Config_112()
+        self.config._parent = weakref.ref(self)
         self.state = Autoconf_State_124()
+        self.state._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
@@ -171,6 +178,7 @@ class Ipv6AutoconfTop(BaseBinding):
         super().__init__(_meta=_meta)
         # container
         self.autoconf = Ipv6AutoconfTop_Autoconf_108()
+        self.autoconf._parent = weakref.ref(self)
         # list
         # leaf
         # leaflist
