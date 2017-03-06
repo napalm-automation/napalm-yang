@@ -338,6 +338,9 @@ class Union(YangType):
 
     @value.setter
     def value(self, value):
+        self._value = value
+        # TODO
+        """
         valid = False
         for t in self.types:
             try:
@@ -349,6 +352,7 @@ class Union(YangType):
         if not valid:
             raise ValueError("Value '{}' is not valid for any of the types '{}'".format(value,
                                                                                         self.types))
+        """
 
 
 class InstanceIdentifier(YangType):

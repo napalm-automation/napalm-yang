@@ -180,6 +180,13 @@ class BaseBinding(object):
         for k, v in self.items():
             framework.Parser(device, k, v).parse()
 
+    def translate(self, device):
+        translator = framework.Translator()
+        for k, v in self.items():
+            translator = framework.Translator(device, k, v, translator.translation).parse()
+
+        return translator
+
 
 class YangType(object):
     """

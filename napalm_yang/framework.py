@@ -1,6 +1,7 @@
 import napalm_yang
 
 from napalm_yang.parsers.extractors import TextExtractor, XMLExtractor
+from napalm_yang.parsers.translators import TextTranslator, XMLTranslator
 
 import yaml
 
@@ -16,6 +17,8 @@ def get_parsers(type_):
     parsers = {
         "TextExtractor": TextExtractor,
         "XMLExtractor": XMLExtractor,
+        "TextTranslator": TextTranslator,
+        "XMLTranslator": XMLTranslator,
     }
     return parsers[type_]
 
@@ -41,6 +44,94 @@ def find_yang_file(device, filename, path):
         raise IOError(msg)
 
 
+def read_yang_map(prefix, attribute, device, parser_path):
+    filename = os.path.join(prefix, "{}.yaml".format(attribute))
+
+    try:
+        filepath = find_yang_file(device, filename, parser_path)
+    except IOError:
+        return
+
+    with open(filepath, "r") as f:
+        return yaml.load(f.read())
+
+
+class Translator(object):
+
+    def __init__(self, device=None, attribute=None, model=None, translation=None):
+        self.device = device
+        self.attribute = attribute
+        self.model = model
+
+        self.translation = translation
+
+        if model:
+            self.prefix = model.prefix
+
+    def parse(self):
+
+        self.parser_map = read_yang_map(self.model.prefix, self.attribute, self.device,
+                                        "translators")
+        if not self.parser_map:
+            return
+
+        metadata = self.parser_map["metadata"]
+        self.translator = get_parsers(metadata["parser"])()
+
+        self.translation = self.translator.init_translation(metadata, self.translation)
+
+        # Let's parse the root element
+        self._parse_element(self.attribute, self.model, self.parser_map[self.attribute],
+                            self.translation)
+
+        return self.translator.post_processing(self)
+
+    def _parse_element(self, attribute, model, mapping, translation):
+        if issubclass(model.__class__, napalm_yang.List):
+            self._parse_list(attribute, model, mapping, translation)
+        elif issubclass(model.__class__, napalm_yang.BaseBinding):
+            translation = self._parse_container(attribute, model, mapping, translation)
+            self._parse(mapping, model, translation)
+        else:
+            self._parse_leaf(attribute, model, mapping, translation)
+
+        return translation
+
+    def _parse(self, parser_map, obj, translation):
+        for attribute, model in obj.items():
+            logger.debug("Processing '{}'".format(attribute))
+            if not model._meta["config"] and issubclass(model.__class__, napalm_yang.BaseBinding):
+                continue
+
+            try:
+                mapping = parser_map[attribute]
+            except KeyError:
+                if model.prefix == self.prefix:
+                    raise KeyError("Couldn't find parser for field '{}'".format(attribute))
+                else:
+                    Translator(self.device, attribute, model, translation).parse()
+                    continue
+            self._parse_element(attribute, model, mapping, translation)
+
+    def _parse_list(self, attribute, model, mapping, translation):
+        for key, element in model.items():
+            logger.debug("Translating {} {}".format(attribute, key))
+
+            et = self.translator.init_element(attribute, element, mapping, translation)
+
+            if et is None:
+                # if we got None this means we didn't implement this
+                break
+
+            self._parse(mapping, element, et)
+
+    def _parse_leaf(self, attribute, model, mapping, translation):
+        self.translator.parse_leaf(attribute, model, mapping, translation)
+
+    def _parse_container(self, attribute, model, mapping, translation):
+        return self.translator.parse_container(attribute, model, mapping, translation)
+
+
 class Parser(object):
 
     def __init__(self, device, attribute, model, texts=None, keys=None, extra_vars=None):
@@ -54,17 +145,6 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {"parent": None}
 
-    def _read_yang_map(self):
-        filename = os.path.join(self.model.prefix, "{}.yaml".format(self.attribute))
-
-        try:
-            filepath = find_yang_file(self.device, filename, "parsers")
-        except IOError:
-            return
-
-        with open(filepath, "r") as f:
-            return yaml.load(f.read())
-
     def _execute_method(self, device, methods):
         result = []
         for m in methods:
@@ -77,7 +157,8 @@ class Parser(object):
         return result
 
     def parse(self):
-        self.parser_map = self._read_yang_map()
+        self.parser_map = read_yang_map(self.model.prefix, self.attribute, self.device,
+                                        "extractors")
         if not self.parser_map:
             return
 

@@ -15,7 +15,8 @@ def config_logging():
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
-#  config_logging()
+
+config_logging()
 
 
 junos_configuration = {
@@ -38,16 +39,22 @@ j.open()
 
 j_running = napalm_yang.BaseBinding()
 j_running.add_model(napalm_yang.oc_if.interfaces())
+
 j_running.get_config(j)
 
 print(j_running.data_to_text())
+print("========================")
+config = j_running.translate(j)
+print(config)
+j.load_merge_candidate(config=config)
+print(j.compare_config())
 
+"""
 # Connect to devices
 eos = get_network_driver("eos")
 e = eos(**eos_configuration)
 e.open()
 
-"""
 # Let's create the running configuration object
 running = napalm_yang.BaseBinding()
 print(running.model_to_text())  # Empty model
@@ -68,7 +75,6 @@ candidate.interfaces.interface.new_element("qweqwe")
 candidate.interfaces.interface["qweqwe"].config.description("poi")
 print(candidate.data_to_text())
 print(running.data_to_text())
-"""
 
 # Get current configuration for loaded models
 config = napalm_yang.BaseBinding()
@@ -77,6 +83,7 @@ config.add_model(napalm_yang.oc_if.interfaces())
 config.get_config(e)
 
 print(config.data_to_text())
+"""
 
 """
 # Print the exact model as defined by OC
