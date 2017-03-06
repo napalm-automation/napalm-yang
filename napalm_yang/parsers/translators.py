@@ -7,22 +7,58 @@ from lxml import etree
 class BaseTranslator(object):
 
     @classmethod
-    def init_element(cls, attribute, model, mapping, translation):
-        method_name = "_init_element_{}".format(mapping["_translation"]["mode"])
+    def _resolve_translation_mapping(cls, attribute, model, mapping, translation, bookmarks, keys):
+        kwargs = dict(keys)
+        mapping = dict(mapping)
+        kwargs["model"] = model
+        kwargs["attribute"] = attribute
+
+        for k, v in mapping.items():
+            if isinstance(v, dict):
+                cls._resolve_translation_mapping(attribute, model, v, translation, bookmarks, keys)
+            elif isinstance(v, list):
+                for e in k:
+                    cls._resolve_translation_mapping(attribute, model, e, translation, bookmarks,
+                                                     keys)
+            elif isinstance(v, str):
+                mapping[k] = text_helpers.translate_string(v, **kwargs)
+
+        return mapping
+
+    @classmethod
+    def _find_translation(cls, mapping, bookmarks, translation):
+        if "in" in mapping.keys():
+            t = bookmarks
+            for p in mapping["in"].split("."):
+                try:
+                    t = t[p]
+                except TypeError:
+                    t = t[int(p)]
+                translation = t
+        return translation
+
+    @classmethod
+    def init_element(cls, attribute, model, mapping, translation, bookmarks, keys):
+        mapping = cls._resolve_translation_mapping(attribute, model, mapping["_translation"],
+                                                   translation, bookmarks, keys)
+        translation = cls._find_translation(mapping, bookmarks, translation)
+        method_name = "_init_element_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
-    def _init_element_not_implemented(cls, attribute, model, mapping, translation):
-        return
-
-    @classmethod
-    def parse_leaf(cls, attribute, model, mapping, translation):
-        method_name = "_parse_leaf_{}".format(mapping["_translation"]["mode"])
+    def parse_leaf(cls, attribute, model, mapping, translation, bookmarks, keys):
+        mapping = cls._resolve_translation_mapping(attribute, model, mapping,
+                                                   translation, bookmarks, keys)
+        translation = cls._find_translation(mapping, bookmarks, translation)
+        method_name = "_parse_leaf_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
-    def parse_container(cls, attribute, model, mapping, translation):
-        method_name = "_parse_container_{}".format(mapping["_translation"]["mode"])
+    def parse_container(cls, attribute, model, mapping, translation, bookmarks, keys):
+        mapping = cls._resolve_translation_mapping(attribute, model, mapping["_translation"],
+                                                   translation, bookmarks, keys)
+        translation = cls._find_translation(mapping, bookmarks, translation)
+        method_name = "_parse_container_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
@@ -35,8 +71,8 @@ class BaseTranslator(object):
     _parse_container_not_implemented = _parse_leaf_not_implemented
 
     @classmethod
-    def _parse_leaf_format_string(cls, attribute, model, mapping, translation):
-        print(model.config.ip.value)
+    def _init_element_not_implemented(cls, attribute, model, mapping, translation):
+        return
 
 
 class XMLTranslator(BaseTranslator):
@@ -56,7 +92,7 @@ class XMLTranslator(BaseTranslator):
     def _init_element_container(cls, attribute, model, mapping, translation):
         t = translation
 
-        condition = mapping["_translation"].get("when", None)
+        condition = mapping.get("when", None)
         if condition:
             value = model
 
@@ -66,20 +102,20 @@ class XMLTranslator(BaseTranslator):
             if not value:
                 return t
 
-        for element in mapping["_translation"]["container"].split("."):
+        for element in mapping["container"].split("."):
             t = etree.SubElement(t, element)
 
-        key_element = mapping["_translation"].get("key_element", None)
+        key_element = mapping.get("key_element", None)
         if key_element:
             attr = model
 
-            for e in mapping["_translation"]["key_value"].split("."):
+            for e in mapping["key_value"].split("."):
                 attr = getattr(attr, e)
 
             key = etree.SubElement(t, key_element)
             key.text = "{}".format(attr.value)
 
-        replace = mapping["_translation"].get("replace", None)
+        replace = mapping.get("replace", None)
         if replace:
             t.set("replace", "replace")
 
@@ -92,8 +128,10 @@ class XMLTranslator(BaseTranslator):
         if not model.value:
             return
 
-        e = etree.SubElement(translation, mapping["_translation"]["element"])
-        e.text = "{}".format(model.value)
+        value = mapping.get("format_value", model.value)
+
+        e = etree.SubElement(translation, mapping["element"])
+        e.text = "{}".format(value)
 
     @classmethod
     def _parse_leaf_if_false(cls, attribute, model, mapping, translation):
@@ -104,15 +142,6 @@ class XMLTranslator(BaseTranslator):
     def _parse_leaf_if_true(cls, attribute, model, mapping, translation):
         if model.value:
             return cls._init_element_container(attribute, model, mapping, translation)
-
-    @classmethod
-    def _parse_leaf_format_existing_element(cls, attribute, model, mapping, translation):
-        string = mapping["_translation"]["string"]
-        previous_xml = translation.xpath("name")[0]
-        previous = previous_xml.text
-        value = model.value
-
-        previous_xml.text = string.format(previous=previous, value=value)
 
 
 class TextTranslator:

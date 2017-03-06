@@ -58,7 +58,8 @@ def read_yang_map(prefix, attribute, device, parser_path):
 
 class Translator(object):
 
-    def __init__(self, device=None, attribute=None, model=None, translation=None):
+    def __init__(self, device=None, attribute=None, model=None, translation=None,
+                 bookmarks=None, keys=None):
         self.device = device
         self.attribute = attribute
         self.model = model
@@ -67,6 +68,10 @@ class Translator(object):
 
         if model:
             self.prefix = model.prefix
+
+        # Placeholder for storing keys
+        self.keys = keys or {"parent_key": None}
+        self.bookmarks = bookmarks or {"parent": None}
 
     def parse(self):
 
@@ -90,6 +95,8 @@ class Translator(object):
         if issubclass(model.__class__, napalm_yang.List):
             self._parse_list(attribute, model, mapping, translation)
         elif issubclass(model.__class__, napalm_yang.BaseBinding):
+            self.bookmarks[attribute] = translation
+            self.bookmarks["parent"] = translation
             translation = self._parse_container(attribute, model, mapping, translation)
             self._parse(mapping, model, translation)
         else:
@@ -109,27 +116,55 @@ class Translator(object):
                 if model.prefix == self.prefix:
                     raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
-                    Translator(self.device, attribute, model, translation).parse()
+                    Translator(self.device, attribute, model, translation,
+                               self.bookmarks, self.keys).parse()
                     continue
             self._parse_element(attribute, model, mapping, translation)
 
     def _parse_list(self, attribute, model, mapping, translation):
+        # Saving state to restore them later
+        old_parent_key = self.keys["parent_key"]
+        old_parent_bookmark = self.bookmarks["parent"]
+
+        # We will use this to store blocks of configuration
+        # for each individual element of the list
+        self.bookmarks[attribute] = {}
+
         for key, element in model.items():
             logger.debug("Translating {} {}".format(attribute, key))
 
-            et = self.translator.init_element(attribute, element, mapping, translation)
+            et = self.translator.init_element(attribute, element, mapping, translation,
+                                              self.bookmarks, self.keys)
 
             if et is None:
                 # if we got None this means we didn't implement this
                 break
 
+            key_name = "{}_key".format(attribute)
+            self.keys[key_name] = key
+            self.bookmarks[attribute][key] = et
+            self.keys["parent_key"] = key
+            self.bookmarks["parent"] = et
+
             self._parse(mapping, element, et)
 
+        # Restore state
+        self.keys["parent_key"] = old_parent_key
+        self.bookmarks["parent"] = old_parent_bookmark
+
     def _parse_leaf(self, attribute, model, mapping, translation):
-        self.translator.parse_leaf(attribute, model, mapping, translation)
+        action = mapping["_translation"]
+        if isinstance(action, list):
+            for a in action:
+                self.translator.parse_leaf(attribute, model, a, translation,
+                                           self.bookmarks, self.keys)
+        else:
+            self.translator.parse_leaf(attribute, model, action, translation,
+                                       self.bookmarks, self.keys)
 
     def _parse_container(self, attribute, model, mapping, translation):
-        return self.translator.parse_container(attribute, model, mapping, translation)
+        return self.translator.parse_container(attribute, model, mapping, translation,
+                                               self.bookmarks, self.keys)
 
 
 class Parser(object):

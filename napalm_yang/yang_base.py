@@ -95,12 +95,26 @@ class BaseBinding(object):
         """Allows the user to iterate the container as if it was a dictionary."""
         attrs = dir(self)
         for a in attrs:
+            if a == "_parent":
+                continue
+
             attr = getattr(self, a)
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 yield a, attr
 
     def __eq__(self, other):
         return self.diff(other) == {}
+
+    @property
+    def _parent(self):
+        try:
+            return self.parent()
+        except AttributeError:
+            return None
+
+    @_parent.setter
+    def _parent(self, parent):
+        self.parent = parent
 
     def augment_model(self, augment):
         self_attr = self
@@ -240,6 +254,17 @@ class YangType(object):
         """
         raise NotImplementedError("{} is missing the implementation of this method".format(
                                                                     self.__class__.__name__))
+
+    @property
+    def _parent(self):
+        try:
+            return self.parent()
+        except AttributeError:
+            return None
+
+    @_parent.setter
+    def _parent(self, parent):
+        self.parent = parent
 
     @property
     def value(self):
