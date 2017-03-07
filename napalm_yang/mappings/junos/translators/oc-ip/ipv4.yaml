@@ -7,7 +7,7 @@ ipv4:
     _translation:
         mode: container
         container: family.inet
-        when: "config.enabled"
+        when: "{model.config.enabled}"
     config:
         _translation: unnecessary
         enabled:

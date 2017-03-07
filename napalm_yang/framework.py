@@ -82,6 +82,9 @@ def _resolve_translation_rule(rule, attribute, model, keys):
         elif isinstance(v, str):
             rule[k] = text_helpers.translate_string(v, **kwargs)
 
+    if "when" in rule.items():
+        raise Exception(rule)
+
     return rule
 
 
