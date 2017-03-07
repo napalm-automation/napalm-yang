@@ -3,7 +3,6 @@ import napalm_yang
 from napalm_yang.parsers.extractors import TextExtractor, XMLExtractor
 from napalm_yang.parsers.translators import TextTranslator, XMLTranslator
 
-#  from napalm_yang import jinja_helper
 from napalm_yang import text_helpers
 
 import yaml
@@ -63,7 +62,7 @@ def _resolve_translation_rule(rule, attribute, model, keys):
         raise Exception("Wrong rule for attr: {}. List can be used only on leafs".format(attribute))
     elif isinstance(rule, str):
         if rule in ["unnecessary", "not_implemented"]:
-            return {"mode": "skip"}
+            return {"mode": "skip", "reason": rule}
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
@@ -80,10 +79,18 @@ def _resolve_translation_rule(rule, attribute, model, keys):
             for e in k:
                 _resolve_translation_rule(e, attribute, model, keys)
         elif isinstance(v, str):
-            rule[k] = text_helpers.translate_string(v, **kwargs)
+            rule[k] = text_helpers.template(v, **kwargs)
 
-    if "when" in rule.items():
-        raise Exception(rule)
+    if "when" in rule.keys():
+        w = rule["when"]
+        try:
+            import ast
+            w = ast.literal_eval(w)
+        except Exception:
+            w = True if w in ["true", "True"] else False
+        if not w:
+            return {"mode": "skip", "reason": "criteria failed"}
+        rule["when"] = bool(w)
 
     return rule
 
@@ -205,7 +212,6 @@ class Translator(object):
         rules = [mapping["_translation"]] if isinstance(mapping["_translation"], str) \
                 else mapping["_translation"]
         for rule in rules:
-            print(rule)
             rule = _resolve_translation_rule(rule, attribute,
                                              model, self.keys)
             translation_point = _find_translation_point(rule, self.bookmarks,

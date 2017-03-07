@@ -46,16 +46,6 @@ class XMLTranslator(BaseTranslator):
     def _init_element_container(cls, attribute, model, mapping, translation):
         t = translation
 
-        condition = mapping.get("when", None)
-        if condition:
-            value = model
-
-            for attr in condition.split("."):
-                value = getattr(value, attr)
-
-            if not value:
-                return t
-
         for element in mapping["container"].split("."):
             t = etree.SubElement(t, element)
 
@@ -79,23 +69,19 @@ class XMLTranslator(BaseTranslator):
 
     @classmethod
     def _parse_leaf_element(cls, attribute, model, mapping, translation):
-        if not model.value:
+        if model.value is None:
             return
 
-        value = mapping.get("format_value", model.value)
+        try:
+            # We want to make sure we capture None
+            value = mapping["value"]
+        except Exception:
+            value = model.value
 
         e = etree.SubElement(translation, mapping["element"])
-        e.text = "{}".format(value)
 
-    @classmethod
-    def _parse_leaf_if_false(cls, attribute, model, mapping, translation):
-        if not model.value:
-            return cls._init_element_container(attribute, model, mapping, translation)
-
-    @classmethod
-    def _parse_leaf_if_true(cls, attribute, model, mapping, translation):
-        if model.value:
-            return cls._init_element_container(attribute, model, mapping, translation)
+        if value is not None:
+            e.text = "{}".format(value)
 
 
 class TextTranslator:

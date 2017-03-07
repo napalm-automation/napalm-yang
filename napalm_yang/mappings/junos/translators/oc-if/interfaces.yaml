@@ -33,8 +33,10 @@ interfaces:
                 _translation: unnecessary
             enabled:
                 _translation:
-                    - mode: if_false
-                      container: "disable"
+                    - mode: element
+                      element: "disable"
+                      when: "{{ not model.value }}"
+                      value: null
             description:
                 _translation:
                     - mode: element
@@ -61,8 +63,10 @@ interfaces:
                         _translation: unnecessary
                     enabled:
                         _translation:
-                            - mode: if_false
-                              container: "disable"
+                            - mode: element
+                              element: "disable"
+                              when: "{{ not model.value }}"
+                              value: null
                     description:
                             _translation:
                                 - mode: element

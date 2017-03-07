@@ -7,7 +7,7 @@ ipv4:
     _translation:
         mode: container
         container: family.inet
-        when: "{model.config.enabled}"
+        when: "{{ model.config.enabled }}"
     config:
         _translation: unnecessary
         enabled:
@@ -30,7 +30,7 @@ ipv4:
                     _translation:
                         - mode: element
                           element: name
-                          format_value: "{model._parent.ip.value}/{model.value}"
+                          value: "{{ model._parent.ip.value }}/{{ model.value }}"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:

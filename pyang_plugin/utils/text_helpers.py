@@ -1,7 +1,13 @@
 """Some functions utils to normalize text."""
 import re
+import jinja2
 
 regexp = '[^a-zA-Z0-9_]'
+
+
+def translate_string(string, **kwargs):
+    template = jinja2.Environment().from_string(string)
+    return template.render(**kwargs)
 
 
 def safe_class_name(value):
@@ -24,10 +30,3 @@ def safe_attr_name(value):
     if value in RESERVED_KEYWORDS:
         value = "{}_".format(value)
     return re.sub(regexp, '_', value)
-
-
-def translate_string(string, **kwargs):
-    if string:
-        return string.format(**kwargs)
-    else:
-        return ""

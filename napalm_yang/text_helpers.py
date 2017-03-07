@@ -1,7 +1,13 @@
 """Some functions utils to normalize text."""
 import re
+import jinja2
 
 regexp = '[^a-zA-Z0-9_]'
+
+
+def template(string, **kwargs):
+    template = jinja2.Environment().from_string(string)
+    return template.render(**kwargs)
 
 
 def safe_class_name(value):

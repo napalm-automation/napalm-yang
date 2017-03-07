@@ -9,8 +9,10 @@ vlan:
         _translation: unnecessary
         vlan_id:
             _translation:
-                - mode: if_true
-                  container: "vlan-tagging"
-                  in: interface.{interface_key}
+                - mode: element
+                  element: "vlan-tagging"
+                  in: "interface.{{ interface_key }}"
+                  when: "{{ model.value }}"
+                  value: null
                 - mode: element
                   element: "vlan-id"
