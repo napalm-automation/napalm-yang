@@ -1,0 +1,18 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    parser: XMLTranslator
+
+vlan:
+    _translation:
+        mode: unnecessary
+    config:
+        _translation:
+            mode: unnecessary
+        vlan_id:
+            _translation:
+                - mode: if_true
+                  container: "vlan-tagging"
+                  in: interface.{interface_key}
+                - mode: element
+                  element: "vlan-id"

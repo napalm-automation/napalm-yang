@@ -33,8 +33,8 @@ def find_yang_file(device, filename, path):
         path(str): where to find it relative to where the module is installed
     """
     # Find base_dir of submodule
-    module_dir = os.path.dirname(sys.modules[device.__module__].__file__)
-    full_path = os.path.join(module_dir, 'yang_mappings', path, filename)
+    module_dir = os.path.dirname(__file__)
+    full_path = os.path.join(module_dir, 'mappings', device.profile, path, filename)
 
     if os.path.exists(full_path):
         return full_path

@@ -16,7 +16,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-#  config_logging()
+config_logging()
 
 
 junos_configuration = {

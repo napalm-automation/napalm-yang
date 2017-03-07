@@ -1,0 +1,82 @@
+---
+metadata:
+    prefix: "oc-if"
+    parser: XMLTranslator
+    xml_root: configuration
+
+interfaces:
+    _translation:
+        mode: container
+        container: interfaces
+        replace: true
+    interface:
+        _translation:
+            mode: container
+            container: interface
+            key_element: name
+            key_value: name
+        name:
+            _translation:
+                mode: unnecessary
+        hold_time:
+            _translation:
+                mode: unnecessary
+            config:
+                _translation:
+                    mode: unnecessary
+                down:
+                    _translation:
+                        mode: not_implemented
+                up:
+                    _translation:
+                        mode: not_implemented
+        config:
+            _translation:
+                mode: unnecessary
+            name:
+                _translation:
+                    mode: unnecessary
+            type_:
+                _translation:
+                    mode: unnecessary
+            enabled:
+                _translation:
+                    mode: if_false
+                    container: "disable"
+            description:
+                _translation:
+                    mode: element
+                    element: description
+            mtu:
+                _translation:
+                    mode: element
+                    element: mtu
+        subinterfaces:
+            _translation:
+                mode: unnecessary
+            subinterface:
+                _translation:
+                    mode: container
+                    container: unit
+                    key_element: name
+                    key_value: config.name
+                index:
+                    _translation:
+                        mode: unnecessary
+                config:
+                    _translation:
+                        mode: unnecessary
+                    index:
+                        _translation:
+                            mode: not_implemented
+                    name:
+                        _translation:
+                            mode: unnecessary
+                    enabled:
+                        _translation:
+                            mode: if_false
+                            container: "disable"
+                    description:
+                            _translation:
+                                mode: element
+                                element: description
