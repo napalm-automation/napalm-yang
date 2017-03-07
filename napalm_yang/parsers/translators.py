@@ -25,12 +25,8 @@ class BaseTranslator(object):
     @classmethod
     def _parse_leaf_skip(cls, attribute, model, mapping, translation):
         return translation
-    _init_list_skip = _parse_leaf_skip
+    _init_element_skip = _parse_leaf_skip
     _parse_container_skip = _parse_leaf_skip
-
-    @classmethod
-    def _init_element_not_implemented(cls, attribute, model, mapping, translation):
-        return
 
 
 class XMLTranslator(BaseTranslator):
