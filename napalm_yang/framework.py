@@ -3,11 +3,13 @@ import napalm_yang
 from napalm_yang.parsers.extractors import TextExtractor, XMLExtractor
 from napalm_yang.parsers.translators import TextTranslator, XMLTranslator
 
+#  from napalm_yang import jinja_helper
+from napalm_yang import text_helpers
+
 import yaml
 
 import logging
 import os
-import sys
 
 
 logger = logging.getLogger("napalm-yang")
@@ -54,6 +56,45 @@ def read_yang_map(prefix, attribute, device, parser_path):
 
     with open(filepath, "r") as f:
         return yaml.load(f.read())
+
+
+def _resolve_translation_rule(rule, attribute, model, keys):
+    if isinstance(rule, list):
+        raise Exception("Wrong rule for attr: {}. List can be used only on leafs".format(attribute))
+    elif isinstance(rule, str):
+        if rule in ["unnecessary", "not_implemented"]:
+            return {"mode": "skip"}
+        else:
+            raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
+                                                                                      attribute))
+
+    kwargs = dict(keys)
+    rule = dict(rule)
+    kwargs["model"] = model
+    kwargs["attribute"] = attribute
+
+    for k, v in rule.items():
+        if isinstance(v, dict):
+            _resolve_translation_rule(v, attribute, model, keys)
+        elif isinstance(v, list):
+            for e in k:
+                _resolve_translation_rule(e, attribute, model, keys)
+        elif isinstance(v, str):
+            rule[k] = text_helpers.translate_string(v, **kwargs)
+
+    return rule
+
+
+def _find_translation_point(rule, bookmarks, translation):
+    if "in" in rule.keys():
+        t = bookmarks
+        for p in rule["in"].split("."):
+            try:
+                t = t[p]
+            except TypeError:
+                t = t[int(p)]
+            translation = t
+    return translation
 
 
 class Translator(object):
@@ -133,8 +174,13 @@ class Translator(object):
         for key, element in model.items():
             logger.debug("Translating {} {}".format(attribute, key))
 
-            et = self.translator.init_element(attribute, element, mapping, translation,
-                                              self.bookmarks, self.keys)
+            translation_rule = _resolve_translation_rule(mapping["_translation"], attribute,
+                                                         element, self.keys)
+            translation_point = _find_translation_point(translation_rule, self.bookmarks,
+                                                        translation)
+
+            et = self.translator.init_element(attribute, element, translation_rule,
+                                              translation_point)
 
             if et is None:
                 # if we got None this means we didn't implement this
@@ -153,18 +199,22 @@ class Translator(object):
         self.bookmarks["parent"] = old_parent_bookmark
 
     def _parse_leaf(self, attribute, model, mapping, translation):
-        action = mapping["_translation"]
-        if isinstance(action, list):
-            for a in action:
-                self.translator.parse_leaf(attribute, model, a, translation,
-                                           self.bookmarks, self.keys)
-        else:
-            self.translator.parse_leaf(attribute, model, action, translation,
-                                       self.bookmarks, self.keys)
+        rules = [mapping["_translation"]] if isinstance(mapping["_translation"], str) \
+                else mapping["_translation"]
+        for rule in rules:
+            print(rule)
+            rule = _resolve_translation_rule(rule, attribute,
+                                             model, self.keys)
+            translation_point = _find_translation_point(rule, self.bookmarks,
+                                                        translation)
+            self.translator.parse_leaf(attribute, model, rule, translation_point)
 
     def _parse_container(self, attribute, model, mapping, translation):
-        return self.translator.parse_container(attribute, model, mapping, translation,
-                                               self.bookmarks, self.keys)
+        rule = _resolve_translation_rule(mapping["_translation"], attribute,
+                                         model, self.keys)
+        translation_point = _find_translation_point(rule, self.bookmarks,
+                                                    translation)
+        return self.translator.parse_container(attribute, model, rule, translation_point)
 
 
 class Parser(object):

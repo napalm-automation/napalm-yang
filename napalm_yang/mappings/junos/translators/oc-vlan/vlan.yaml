@@ -4,11 +4,9 @@ metadata:
     parser: XMLTranslator
 
 vlan:
-    _translation:
-        mode: unnecessary
+    _translation: unnecessary
     config:
-        _translation:
-            mode: unnecessary
+        _translation: unnecessary
         vlan_id:
             _translation:
                 - mode: if_true

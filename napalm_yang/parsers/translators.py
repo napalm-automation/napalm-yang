@@ -7,68 +7,26 @@ from lxml import etree
 class BaseTranslator(object):
 
     @classmethod
-    def _resolve_translation_mapping(cls, attribute, model, mapping, translation, bookmarks, keys):
-        kwargs = dict(keys)
-        mapping = dict(mapping)
-        kwargs["model"] = model
-        kwargs["attribute"] = attribute
-
-        for k, v in mapping.items():
-            if isinstance(v, dict):
-                cls._resolve_translation_mapping(attribute, model, v, translation, bookmarks, keys)
-            elif isinstance(v, list):
-                for e in k:
-                    cls._resolve_translation_mapping(attribute, model, e, translation, bookmarks,
-                                                     keys)
-            elif isinstance(v, str):
-                mapping[k] = text_helpers.translate_string(v, **kwargs)
-
-        return mapping
-
-    @classmethod
-    def _find_translation(cls, mapping, bookmarks, translation):
-        if "in" in mapping.keys():
-            t = bookmarks
-            for p in mapping["in"].split("."):
-                try:
-                    t = t[p]
-                except TypeError:
-                    t = t[int(p)]
-                translation = t
-        return translation
-
-    @classmethod
-    def init_element(cls, attribute, model, mapping, translation, bookmarks, keys):
-        mapping = cls._resolve_translation_mapping(attribute, model, mapping["_translation"],
-                                                   translation, bookmarks, keys)
-        translation = cls._find_translation(mapping, bookmarks, translation)
+    def init_element(cls, attribute, model, mapping, translation):
+        print(mapping)
         method_name = "_init_element_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
-    def parse_leaf(cls, attribute, model, mapping, translation, bookmarks, keys):
-        mapping = cls._resolve_translation_mapping(attribute, model, mapping,
-                                                   translation, bookmarks, keys)
-        translation = cls._find_translation(mapping, bookmarks, translation)
+    def parse_leaf(cls, attribute, model, mapping, translation):
         method_name = "_parse_leaf_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
-    def parse_container(cls, attribute, model, mapping, translation, bookmarks, keys):
-        mapping = cls._resolve_translation_mapping(attribute, model, mapping["_translation"],
-                                                   translation, bookmarks, keys)
-        translation = cls._find_translation(mapping, bookmarks, translation)
+    def parse_container(cls, attribute, model, mapping, translation):
         method_name = "_parse_container_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 
     @classmethod
-    def _parse_leaf_not_implemented(cls, attribute, model, mapping, translation):
+    def _parse_leaf_skip(cls, attribute, model, mapping, translation):
         return translation
-
-    _parse_leaf_unnecessary = _parse_leaf_not_implemented
-    _init_list_not_implemented = _parse_leaf_not_implemented
-    _parse_container_unnecessary = _parse_leaf_not_implemented
-    _parse_container_not_implemented = _parse_leaf_not_implemented
+    _init_list_skip = _parse_leaf_skip
+    _parse_container_skip = _parse_leaf_skip
 
     @classmethod
     def _init_element_not_implemented(cls, attribute, model, mapping, translation):

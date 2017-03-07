@@ -9,67 +9,49 @@ ipv4:
         container: family.inet
         when: "config.enabled"
     config:
-        _translation:
-            mode: unnecessary
+        _translation: unnecessary
         enabled:
-            _translation:
-                mode: unnecessary
+            _translation: unnecessary
         mtu:
-            _translation:
-                mode: not_implemented
+            _translation: not_implemented
     addresses:
-        _translation:
-            mode: unnecessary
+        _translation: unnecessary
         address:
             _translation:
                 mode: container
                 container: address
             ip:
-                _translation:
-                    mode: unnecessary
+                _translation: unnecessary
             config:
-                _translation:
-                    mode: unnecessary
+                _translation: unnecessary
                 ip:
-                    _translation:
-                        mode: unnecessary
+                    _translation: unnecessary
                 prefix_length:
                     _translation:
-                        mode: element
-                        element: name
-                        format_value: "{model._parent.ip.value}/{model.value}"
+                        - mode: element
+                          element: name
+                          format_value: "{model._parent.ip.value}/{model.value}"
             vrrp:
-                _translation:
-                    mode: not_implemented
+                _translation: not_implemented
                 vrrp_group:
-                    _translation:
-                        mode: not_implemented
+                    _translation: not_implemented
                     virtual_router_id:
                     config:
                         virtual_address:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         priority:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         preempt:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         advertisement_interval:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         virtual_router_id:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         preempt_delay:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
                         accept_mode:
-                            _leaf_extraction:
-                                mode: not_implemented
+                            _translation: not_implemented
     neighbors:
-        _translation:
-            mode: not_implemented
+        _translation: not_implemented
         neighbor:
-            _translation:
-                mode: not_implemented
+            _translation: not_implemented
