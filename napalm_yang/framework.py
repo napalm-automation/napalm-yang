@@ -45,8 +45,8 @@ def find_yang_file(device, filename, path):
         raise IOError(msg)
 
 
-def read_yang_map(prefix, attribute, device, parser_path):
-    filename = os.path.join(prefix, "{}.yaml".format(attribute))
+def read_yang_map(yang_prefix, attribute, device, parser_path):
+    filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
 
     try:
         filepath = find_yang_file(device, filename, parser_path)
@@ -118,7 +118,7 @@ class Translator(object):
         self.translation = translation
 
         if model:
-            self.prefix = model.prefix
+            self.yang_prefix = model.yang_prefix
 
         # Placeholder for storing keys
         self.keys = keys or {"parent_key": None}
@@ -126,7 +126,7 @@ class Translator(object):
 
     def parse(self):
 
-        self.parser_map = read_yang_map(self.model.prefix, self.attribute, self.device,
+        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device,
                                         "translators")
         if not self.parser_map:
             return
@@ -164,7 +164,7 @@ class Translator(object):
             try:
                 mapping = parser_map[attribute]
             except KeyError:
-                if model.prefix == self.prefix:
+                if model.yang_prefix == self.yang_prefix:
                     raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
                     Translator(self.device, attribute, model, translation,
@@ -251,14 +251,14 @@ class Parser(object):
         return result
 
     def parse(self):
-        self.parser_map = read_yang_map(self.model.prefix, self.attribute, self.device,
+        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device,
                                         "extractors")
         if not self.parser_map:
             return
 
         metadata = self.parser_map["metadata"]
         self.parser = get_parsers(metadata["parser"])
-        self.prefix = metadata["prefix"]
+        self.yang_prefix = metadata["prefix"]
 
         self.texts[self.attribute] = self._execute_method(self.device,
                                                           metadata["execute"]["config"])
@@ -274,7 +274,7 @@ class Parser(object):
             try:
                 mapping = parser_map[attribute]
             except KeyError:
-                if model.prefix == self.prefix:
+                if model.yang_prefix == self.yang_prefix:
                     raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
                     Parser(self.device, attribute, model,

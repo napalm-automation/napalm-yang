@@ -52,7 +52,7 @@ class AggregationType(Enumeration):
     Type to define the lag-type, i.e., how the LAG is
     defined and managed
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, enum = {
     "LACP": {
@@ -80,7 +80,7 @@ class AggregationLogicalConfig(BaseBinding):
     """
     Configuration data for aggregate interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -105,7 +105,7 @@ class AggregationLogicalState(BaseBinding):
     """
     Operational state data for aggregate interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -130,7 +130,7 @@ class Aggregation_Config_116(AggregationLogicalConfig):
     Configuration variables for logical aggregate /
     LAG interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -150,7 +150,7 @@ class Aggregation_State_124(AggregationLogicalState, AggregationLogicalConfig):
     Operational state variables for logical
     aggregate / LAG interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -170,7 +170,7 @@ class AggregationLogicalTop_Aggregation_110(BaseBinding):
     Options for logical interfaces representing
     aggregates
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -193,7 +193,7 @@ class AggregationLogicalTop(BaseBinding):
     """
     Top-level data definitions for LAGs
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -215,7 +215,7 @@ class EthernetIfAggregationConfig(BaseBinding):
     Adds configuration items for Ethernet interfaces
     belonging to a logical aggregate / LAG
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -241,7 +241,7 @@ class EthernetIfAggregationConfig(BaseBinding):
 # augments
 class Augment_0(BaseAugment, AggregationLogicalTop):
     """Adds LAG configuration to the interface module"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -263,7 +263,7 @@ Augment_0()()
 class Augment_1(BaseAugment, EthernetIfAggregationConfig):
     """Adds LAG settings to individual Ethernet
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -285,7 +285,7 @@ Augment_1()()
 class Augment_2(BaseAugment, EthernetIfAggregationConfig):
     """Adds LAG settings to individual Ethernet
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

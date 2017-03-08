@@ -49,7 +49,7 @@ class VlanId(Uint16):
     """
     Type definition representing a single-tagged VLAN
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, range_ = "1..4094", ):
 
@@ -63,7 +63,7 @@ class VlanRange(String):
     assumed to be inclusive, such that any VLAN-ID matching
     x <= VLAN-ID <= y falls within the range.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])", ):
 
@@ -80,7 +80,7 @@ class QinqId(String):
     VLAN identifiers where the outer VLAN identifier is equal to
     x
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)", ):
 
@@ -100,7 +100,7 @@ class QinqIdRange(Union):
     wildcard). Inner VLANs are accepted if they meet the inequality
     y <= inner-vlan-id <= z.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, type_ = {
     "string": {
@@ -120,7 +120,7 @@ class VlanModeType(Enumeration):
     """
     VLAN interface mode (trunk or access)
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, enum = {
     "ACCESS": {
@@ -141,7 +141,7 @@ class VlanRef(Union):
     """
     Reference to a VLAN by name or id
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, type_ = {
     "string": {}, 

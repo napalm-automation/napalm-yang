@@ -58,7 +58,7 @@ class Ipv6AutoconfConfig(BaseBinding):
     """
     Configuration data for IPv6 address autoconfiguration
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -89,7 +89,7 @@ class Ipv6AutoconfState(BaseBinding):
     """
     Operational state data for IPv6 address autoconfiguration
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -111,7 +111,7 @@ class Autoconf_Config_112(Ipv6AutoconfConfig):
     Parameters to control the autoconfiguration of IPv6
     addresses, as described in RFC 4862.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -130,7 +130,7 @@ class Autoconf_State_124(Ipv6AutoconfState, Ipv6AutoconfConfig):
     """
     Operational state data 
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -149,7 +149,7 @@ class Ipv6AutoconfTop_Autoconf_108(BaseBinding):
     """
     Top-level container for IPv6 autoconf
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -172,7 +172,7 @@ class Ipv6AutoconfTop(BaseBinding):
     """
     Top-level grouping for IPv6 address autoconfiguration
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -196,7 +196,7 @@ class Ipv6AutoconfTop(BaseBinding):
 # augments
 class Augment_0(BaseAugment, Ipv6AutoconfTop):
     """Adds address autoconfiguration to the base IP model"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

@@ -97,7 +97,7 @@ class PlatformComponentPropertiesConfig(BaseBinding):
     """
     System-defined configuration data for component properties
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -131,7 +131,7 @@ class PlatformComponentPropertiesState(BaseBinding):
     """
     Operational state data for component properties
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -153,7 +153,7 @@ class Property_Config_136(PlatformComponentPropertiesConfig):
     """
     Configuration data for each property
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -172,7 +172,7 @@ class Property_State_143(PlatformComponentPropertiesState, PlatformComponentProp
     """
     Operational state data for each property
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -191,7 +191,7 @@ class Properties_Property_123(List, BaseBinding):
     """
     List of system properties for the component
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -219,7 +219,7 @@ class PlatformComponentPropertiesTop_Properties_119(BaseBinding):
     """
     Enclosing container 
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -240,7 +240,7 @@ class PlatformComponentPropertiesTop(BaseBinding):
     """
     Top-level grouping 
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -261,7 +261,7 @@ class PlatformSubcomponentRefConfig(BaseBinding):
     """
     Configuration data for subcomponent references
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -284,7 +284,7 @@ class PlatformSubcomponentRefState(BaseBinding):
     """
     Operational state data for subcomponent references
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -303,7 +303,7 @@ class Subcomponent_Config_197(PlatformSubcomponentRefConfig):
     """
     Configuration data 
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -322,7 +322,7 @@ class Subcomponent_State_204(PlatformSubcomponentRefState, PlatformSubcomponentR
     """
     Operational state data 
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -341,7 +341,7 @@ class Subcomponents_Subcomponent_184(List, BaseBinding):
     """
     List of subcomponent references
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -369,7 +369,7 @@ class PlatformSubcomponentRefTop_Subcomponents_180(BaseBinding):
     """
     Enclosing container for subcomponent references
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -390,7 +390,7 @@ class PlatformSubcomponentRefTop(BaseBinding):
     """
     Top-level grouping for list of subcomponent references
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -411,7 +411,7 @@ class PlatformComponentConfig(BaseBinding):
     """
     Configuration data for components
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -433,7 +433,7 @@ class PlatformComponentState(BaseBinding):
     """
     Operational state data for device components.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -481,7 +481,7 @@ class PlatformComponentTempState_Temperature_295(oc_platform_types.AvgMinMaxInst
     avg/min/max statistics are not supported, the target is expected
     to just supply the instant value
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -500,7 +500,7 @@ class PlatformComponentTempState(BaseBinding):
     """
     Temperature state data for device components
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -521,7 +521,7 @@ class Component_Config_327(PlatformComponentConfig):
     """
     Configuration data for each component
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -540,7 +540,7 @@ class Component_State_334(PlatformComponentTempState, PlatformComponentState, Pl
     """
     Operational state data for each component
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -559,7 +559,7 @@ class Components_Component_314(List, PlatformSubcomponentRefTop, PlatformCompone
     """
     List of components, keyed by component name.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -587,7 +587,7 @@ class PlatformComponentTop_Components_310(BaseBinding):
     """
     Enclosing container for the components in the system.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -608,7 +608,7 @@ class PlatformComponentTop(BaseBinding):
     """
     Top-level grouping for components in the device inventory
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -635,7 +635,7 @@ platform = model_factory(PlatformComponentTop)
 class Augment_0(BaseAugment):
     """Adds a reference from the base interface to the corresponding
 port component in the device inventory."""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

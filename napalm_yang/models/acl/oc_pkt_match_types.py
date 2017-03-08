@@ -55,7 +55,7 @@ class PortNumRange(Union):
     an inclusive range as <lower>..<higher>, or as ANY to
     indicate a wildcard.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, type_ = {
     "enumeration": {
@@ -97,7 +97,7 @@ class IpProtocolType(Union):
     number (integer) or using a protocol type defined by the
     IP_PROTOCOL identity
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, type_ = {
     "identityref": {
@@ -125,7 +125,7 @@ class EthertypeType(Union):
     hexadecimal notation, or using a type defined by the
     ETHERTYPE identity
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, type_ = {
     "identityref": {

@@ -64,7 +64,7 @@ class EthernetHeaderConfig(BaseBinding):
     """
     Configuration data of fields in Ethernet header.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -98,7 +98,7 @@ class EthernetHeaderState(BaseBinding):
     """
     State information of fields in Ethernet header.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -117,7 +117,7 @@ class L2_Config_94(EthernetHeaderConfig):
     """
     Configuration data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -136,7 +136,7 @@ class L2_State_100(EthernetHeaderState, EthernetHeaderConfig):
     """
     State Information.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -155,7 +155,7 @@ class EthernetHeaderTop_L2_90(BaseBinding):
     """
     Ethernet header fields
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -178,7 +178,7 @@ class EthernetHeaderTop(BaseBinding):
     """
     Top level container for fields in Ethernet header.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -200,7 +200,7 @@ class IpProtocolFieldsConfig(BaseBinding):
     Configuration data of IP protocol fields
     common to ipv4 and ipv6
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -244,7 +244,7 @@ class IpProtocolFieldsState(BaseBinding):
     """
     State information of IP header fields common to ipv4 and ipv6
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -263,7 +263,7 @@ class Ip_Config_184(IpProtocolFieldsConfig):
     """
     Configuration data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -282,7 +282,7 @@ class Ip_State_190(IpProtocolFieldsState, IpProtocolFieldsConfig):
     """
     State information
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -301,7 +301,7 @@ class IpProtocolFieldsTop_Ip_180(BaseBinding):
     """
     Top level container
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -324,7 +324,7 @@ class IpProtocolFieldsTop(BaseBinding):
     """
     IP header fields common to ipv4 and ipv6
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -345,7 +345,7 @@ class TransportFieldsConfig(BaseBinding):
     """
     Configuration data of transport-layer packet fields
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -372,7 +372,7 @@ class TransportFieldsState(BaseBinding):
     """
     State data of transport-fields
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -391,7 +391,7 @@ class Transport_Config_239(TransportFieldsConfig):
     """
     Configuration data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -410,7 +410,7 @@ class Transport_State_245(TransportFieldsState, TransportFieldsConfig):
     """
     State data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -429,7 +429,7 @@ class TransportFieldsTop_Transport_235(BaseBinding):
     """
     Transport fields container
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -452,7 +452,7 @@ class TransportFieldsTop(BaseBinding):
     """
     Destination transport-fields top level grouping
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)

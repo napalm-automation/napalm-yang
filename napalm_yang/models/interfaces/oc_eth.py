@@ -122,7 +122,7 @@ class EthernetInterfaceConfig(BaseBinding):
     """
     Configuration items for Ethernet interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -169,7 +169,7 @@ class EthernetInterfaceStateCounters(BaseBinding):
     """
     Ethernet-specific counters and statistics
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -218,7 +218,7 @@ class EthernetInterfaceState_Counters_288(EthernetInterfaceStateCounters):
     """
     Ethernet interface counters
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -237,7 +237,7 @@ class EthernetInterfaceState(BaseBinding):
     """
     Grouping for defining Ethernet-specific operational state
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -283,7 +283,7 @@ class Ethernet_Config_307(EthernetInterfaceConfig):
     """
     Configuration data for ethernet interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -302,7 +302,7 @@ class Ethernet_State_314(EthernetInterfaceState, EthernetInterfaceConfig):
     """
     State variables for Ethernet interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -322,7 +322,7 @@ class EthernetTop_Ethernet_302(BaseBinding):
     Top-level container for ethernet configuration
     and state
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -345,7 +345,7 @@ class EthernetTop(BaseBinding):
     """
     top-level Ethernet config and state containers
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -370,7 +370,7 @@ class EthernetTop(BaseBinding):
 class Augment_0(BaseAugment, EthernetTop):
     """Adds addtional Ethernet-specific configuration to
 interfaces model"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

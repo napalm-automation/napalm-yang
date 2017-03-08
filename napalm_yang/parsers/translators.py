@@ -8,7 +8,6 @@ class BaseTranslator(object):
 
     @classmethod
     def init_element(cls, attribute, model, mapping, translation):
-        print(mapping)
         method_name = "_init_element_{}".format(mapping["mode"])
         return getattr(cls, method_name)(attribute, model, mapping, translation)
 

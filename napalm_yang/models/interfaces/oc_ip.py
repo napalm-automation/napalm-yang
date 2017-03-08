@@ -56,7 +56,7 @@ class IpAddressOrigin(Enumeration):
     """
     The origin of an address.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, enum = {
     "DHCP": {
@@ -92,7 +92,7 @@ class NeighborOrigin(Enumeration):
     """
     The origin of a neighbor entry.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, enum = {
     "DYNAMIC": {
@@ -126,7 +126,7 @@ class Ipv4GlobalConfig(BaseBinding):
     Configuration data for IPv4 interfaces across
     all addresses assigned to the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -153,7 +153,7 @@ class Ipv4AddressConfig(BaseBinding):
     Per IPv4 adresss configuration data for the
     interface.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -183,7 +183,7 @@ class Ipv4NeighborConfig(BaseBinding):
     entries are analagous to static ARP entries, i.e., they
     create a correspondence between IP and link-layer addresses
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -208,7 +208,7 @@ class Ipv4AddressState(BaseBinding):
     """
     State variables for IPv4 addresses on the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -230,7 +230,7 @@ class Ipv4NeighborState(BaseBinding):
     """
     State variables for IPv4 neighbor entries on the interface.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -253,7 +253,7 @@ class Ipv6GlobalConfig(BaseBinding):
     Configuration data at the global level for each
     IPv6 interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -282,7 +282,7 @@ class Ipv6AddressConfig(BaseBinding):
     """
     Per-address configuration data for IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -308,7 +308,7 @@ class Ipv6AddressState(BaseBinding):
     """
     Per-address operational state data for IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -375,7 +375,7 @@ class Ipv6NeighborConfig(BaseBinding):
     """
     Per-neighbor configuration data for IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -400,7 +400,7 @@ class Ipv6NeighborState(BaseBinding):
     """
     Per-neighbor state variables for IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -456,7 +456,7 @@ class IpVrrpIpv6Config(BaseBinding):
     IPv6-specific configuration data for VRRP on IPv6
     interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -478,7 +478,7 @@ class IpVrrpIpv6State(IpVrrpIpv6Config):
     """
     IPv6-specific operational state for VRRP on IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -498,7 +498,7 @@ class IpVrrpTrackingConfig(BaseBinding):
     Configuration data for tracking interfaces
     in a VRRP group
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -526,7 +526,7 @@ class IpVrrpTrackingState(BaseBinding):
     Operational state data for tracking interfaces in a VRRP
     group
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -545,7 +545,7 @@ class InterfaceTracking_Config_515(IpVrrpTrackingConfig):
     """
     Configuration data for VRRP interface tracking
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -564,7 +564,7 @@ class InterfaceTracking_State_522(IpVrrpTrackingState, IpVrrpTrackingConfig):
     """
     Operational state data for VRRP interface tracking
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -583,7 +583,7 @@ class IpVrrpTrackingTop_InterfaceTracking_511(BaseBinding):
     """
     Top-level container for VRRP interface tracking
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -606,7 +606,7 @@ class IpVrrpTrackingTop(BaseBinding):
     """
     Top-level grouping for VRRP interface tracking
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -627,7 +627,7 @@ class IpVrrpConfig(BaseBinding):
     """
     Configuration data for VRRP on IP interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -670,7 +670,7 @@ class IpVrrpState(BaseBinding):
     """
     Operational state data for VRRP on IP interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -692,7 +692,7 @@ class VrrpGroup_Config_644(IpVrrpConfig):
     """
     Configuration data for the VRRP group
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -711,7 +711,7 @@ class VrrpGroup_State_651(IpVrrpState, IpVrrpConfig):
     """
     Operational state data for the VRRP group
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -730,7 +730,7 @@ class Vrrp_VrrpGroup_630(List, IpVrrpTrackingTop):
     """
     List of VRRP groups, keyed by virtual router id
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -759,7 +759,7 @@ class IpVrrpTop_Vrrp_622(BaseBinding):
     Enclosing container for VRRP groups handled by this
     IP interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -780,7 +780,7 @@ class IpVrrpTop(BaseBinding):
     """
     Top-level grouping for Virtual Router Redundancy Protocol
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -802,7 +802,7 @@ class Address_Config_691(Ipv4AddressConfig):
     Configuration data for each configured IPv4
     address on the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -822,7 +822,7 @@ class Address_State_699(Ipv4AddressState, Ipv4AddressConfig):
     Operational state data for each IPv4 address
     configured on the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -841,7 +841,7 @@ class Addresses_Address_679(List, BaseBinding):
     """
     The list of configured IPv4 addresses on the interface.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -869,7 +869,7 @@ class Ipv4_Addresses_675(BaseBinding):
     """
     Enclosing container for address list
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -891,7 +891,7 @@ class Neighbor_Config_734(Ipv4NeighborConfig):
     Configuration data for each configured IPv4
     address on the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -911,7 +911,7 @@ class Neighbor_State_742(Ipv4NeighborState, Ipv4NeighborConfig):
     Operational state data for each IPv4 address
     configured on the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -934,7 +934,7 @@ class Neighbors_Neighbor_716(List, BaseBinding):
     Entries in this list are used as static entries in the
     ARP Cache.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -962,7 +962,7 @@ class Ipv4_Neighbors_712(BaseBinding):
     """
     Enclosing container for neighbor list
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -983,7 +983,7 @@ class Ipv4_Config_756(Ipv4GlobalConfig):
     """
     Top-level IPv4 configuration data for the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1002,7 +1002,7 @@ class Ipv4_State_763(Ipv4GlobalConfig):
     """
     Top level IPv4 operational state data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1021,7 +1021,7 @@ class Ipv4Top_Ipv4_671(oc_if.SubUnnumberedTop):
     """
     Parameters for the IPv4 address family.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1049,7 +1049,7 @@ class Ipv4Top(BaseBinding):
     Top-level configuration and state for IPv4
     interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1071,7 +1071,7 @@ class Address_Config_798(Ipv6AddressConfig):
     Configuration data for each IPv6 address on
     the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1091,7 +1091,7 @@ class Address_State_807(Ipv6AddressState, Ipv6AddressConfig):
     State data for each IPv6 address on the
     interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1110,7 +1110,7 @@ class Addresses_Address_786(List, BaseBinding):
     """
     The list of configured IPv6 addresses on the interface.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1138,7 +1138,7 @@ class Ipv6_Addresses_782(BaseBinding):
     """
     Enclosing container for address list
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1160,7 +1160,7 @@ class Neighbor_Config_837(Ipv6NeighborConfig):
     Configuration data for each IPv6 address on
     the interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1180,7 +1180,7 @@ class Neighbor_State_845(Ipv6NeighborState, Ipv6NeighborConfig):
     State data for each IPv6 address on the
     interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1199,7 +1199,7 @@ class Neighbors_Neighbor_824(List, BaseBinding):
     """
     List of IPv6 neighbors
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1227,7 +1227,7 @@ class Ipv6_Neighbors_820(BaseBinding):
     """
     Enclosing container for list of IPv6 neighbors
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1248,7 +1248,7 @@ class Ipv6_Config_858(Ipv6GlobalConfig):
     """
     Top-level config data for the IPv6 interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1267,7 +1267,7 @@ class Ipv6_State_864(Ipv6GlobalConfig):
     """
     Top-level operational state data for the IPv6 interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1286,7 +1286,7 @@ class Ipv6Top_Ipv6_778(oc_if.SubUnnumberedTop):
     """
     Parameters for the IPv6 address family.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1313,7 +1313,7 @@ class Ipv6Top(BaseBinding):
     """
     Top-level configuration and state for IPv6 interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -1338,7 +1338,7 @@ class Ipv6Top(BaseBinding):
 class Augment_0(BaseAugment, Ipv6Top, Ipv4Top):
     """IPv4 addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1362,7 +1362,7 @@ Augment_0()()
 class Augment_1(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1384,7 +1384,7 @@ Augment_1()()
 class Augment_2(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1405,7 +1405,7 @@ Augment_2()()
 
 class Augment_3(BaseAugment, IpVrrpIpv6Config):
     """Additional VRRP data for IPv6 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1427,7 +1427,7 @@ Augment_3()()
 class Augment_4(BaseAugment, Ipv6Top, Ipv4Top):
     """IPv4 addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1451,7 +1451,7 @@ Augment_4()()
 class Augment_5(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1472,7 +1472,7 @@ Augment_5()()
 
 class Augment_6(BaseAugment, IpVrrpIpv6Config):
     """Additional VRRP data for IPv6 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1494,7 +1494,7 @@ Augment_6()()
 class Augment_7(BaseAugment, IpVrrpTop):
     """Additional IP addr family configuration for
 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1515,7 +1515,7 @@ Augment_7()()
 
 class Augment_8(BaseAugment, IpVrrpIpv6State):
     """Additional VRRP data for IPv6 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -1536,7 +1536,7 @@ Augment_8()()
 
 class Augment_9(BaseAugment, IpVrrpIpv6State):
     """Additional VRRP data for IPv6 interfaces"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

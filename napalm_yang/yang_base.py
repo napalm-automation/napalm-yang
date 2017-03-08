@@ -26,7 +26,7 @@ def model_to_text(name, model, indentation="", augment=""):
             when = model["_meta"]["augments"][attr].when or "always"
             augment = "{}|    \ [augment] {} - when: {}\n".format(
                 indentation,
-                model["_meta"]["augments"][attr].prefix,
+                model["_meta"]["augments"][attr].yang_prefix,
                 when,
             )
         else:
@@ -115,13 +115,13 @@ class BaseBinding(object):
     @property
     def _parent(self):
         try:
-            return self.parent()
+            return self.parent_object()
         except AttributeError:
             return None
 
     @_parent.setter
     def _parent(self, parent):
-        self.parent = parent
+        self.parent_object = parent
 
     def augment_model(self, augment):
         self_attr = self
@@ -130,13 +130,13 @@ class BaseBinding(object):
 
             if len(attr) == 1:
                 attr = attr[0]
-                prefix = self_attr.prefix
+                yang_prefix = self_attr.yang_prefix
             else:
-                prefix, attr = attr
+                yang_prefix, attr = attr
 
             self_attr = getattr(self_attr, text_helpers.safe_attr_name(attr))
 
-            if not self_attr.prefix == prefix:
+            if not self_attr.yang_prefix == yang_prefix:
                 return
 
         self_attr.add_model(augment, is_augment=True)
@@ -154,7 +154,7 @@ class BaseBinding(object):
                 self._meta["config"] = True
 
     @property
-    def prefix(self):
+    def yang_prefix(self):
         return self.__prefix__
 
     def model_to_dict(self):
@@ -207,6 +207,11 @@ class BaseBinding(object):
             translator = framework.Translator(device, k, v, translator.translation).parse()
 
         return translator
+
+    def load_dict(self, data):
+        for k, v in data.items():
+            attr = getattr(self, k)
+            attr.load_dict(v)
 
 
 class YangType(object):
@@ -313,6 +318,9 @@ class YangType(object):
         res["_meta"]["type"] = self.__class__.__name__
         res["_meta"]["nested"] = False
         return res
+
+    def load_dict(self, data):
+        self(data)
 
 
 class Extension(YangType):

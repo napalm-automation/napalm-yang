@@ -141,7 +141,7 @@ class AvgMinMaxInstantStatsPrecision1Celsius(BaseBinding):
     Celsius with 1 decimal precision. Values include the
     instantaneous, average, minimum, and maximum statistics
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)

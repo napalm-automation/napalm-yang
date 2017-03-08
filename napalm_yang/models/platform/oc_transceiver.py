@@ -74,7 +74,7 @@ class OpticalPowerState_OutputPower_58(oc_types.AvgMinMaxInstantStatsPrecision2D
     supported, the target is expected to just supply the
     instant value
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -99,7 +99,7 @@ class OpticalPowerState_InputPower_71(oc_types.AvgMinMaxInstantStatsPrecision2Db
     supported, the target is expected to just supply the
     instant value
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -123,7 +123,7 @@ class OpticalPowerState_LaserBiasCurrent_84(oc_types.AvgMinMaxInstantStatsPrecis
     If avg/min/max statistics are not supported, the target is
     expected to just supply the instant value
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -145,7 +145,7 @@ class OpticalPowerState(BaseBinding):
     not supported, the target is expected to just supply the
     instant value
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -172,7 +172,7 @@ class OutputOpticalFrequency(BaseBinding):
     typically configurable on line side and read-only on the
     client-side
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -194,7 +194,7 @@ class PhysicalChannelConfig(BaseBinding):
     """
     Configuration data for physical client channels
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -227,7 +227,7 @@ class PhysicalChannelState(OpticalPowerState, OutputOpticalFrequency):
     """
     Operational state data for client channels.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -246,7 +246,7 @@ class Channel_Config_182(PhysicalChannelConfig):
     """
     Configuration data for physical channels
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -265,7 +265,7 @@ class Channel_State_189(PhysicalChannelState, PhysicalChannelConfig):
     """
     Operational state data for channels
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -286,7 +286,7 @@ class PhysicalChannels_Channel_167(List, BaseBinding):
     client port.  A physical port with a single channel would
     have a single zero-indexed element
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -314,7 +314,7 @@ class PhysicalChannelTop_PhysicalChannels_163(BaseBinding):
     """
     Enclosing container for client channels
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -335,7 +335,7 @@ class PhysicalChannelTop(BaseBinding):
     """
     Top-level grouping for physical client channels
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -356,7 +356,7 @@ class PortTransceiverConfig(BaseBinding):
     """
     Configuration data for client port transceivers
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -386,7 +386,7 @@ class PortTransceiverState(BaseBinding):
     """
     Operational state data for client port transceivers
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -466,7 +466,7 @@ class Transceiver_Config_403(PortTransceiverConfig):
     """
     Configuration data for client port transceivers
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -485,7 +485,7 @@ class Transceiver_State_410(PortTransceiverState, PortTransceiverConfig):
     """
     Operational state data for client port transceivers
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -504,7 +504,7 @@ class PortTransceiverTop_Transceiver_399(PhysicalChannelTop):
     """
     Top-level container for client port transceiver data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -527,7 +527,7 @@ class PortTransceiverTop(BaseBinding):
     """
     Top-level grouping for client port transceiver data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -552,7 +552,7 @@ class PortTransceiverTop(BaseBinding):
 class Augment_0(BaseAugment):
     """Adds a reference from the base interface to its corresponding
 physical channels."""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         
@@ -573,7 +573,7 @@ Augment_0()()
 
 class Augment_1(BaseAugment, PortTransceiverTop):
     """Adding transceiver data to physical inventory"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         

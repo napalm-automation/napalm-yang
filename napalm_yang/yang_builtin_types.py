@@ -383,7 +383,7 @@ class ListElement(BaseBinding):
         self.type = parent.__class__.__name__
 
         self._meta = copy.deepcopy(parent._meta)
-        self.__prefix__ = parent.prefix
+        self.__prefix__ = parent.yang_prefix
 
         attrs = dir(parent)
         for a in attrs:
@@ -391,8 +391,8 @@ class ListElement(BaseBinding):
             if issubclass(attr.__class__, BaseBinding) or issubclass(attr.__class__, YangType):
                 setattr(self, a, copy.deepcopy(attr))
 
-                self._parent = weakref.ref(parent)
-                attr.update_parent_refs()
+        self._parent = weakref.ref(parent)
+        self.update_parent_refs()
 
 
 class List(BaseBinding):
@@ -491,6 +491,11 @@ class List(BaseBinding):
 
     def get(self, name, default=None):
         return self._value.get(name, default)
+
+    def load_dict(self, data):
+        for k, v in data.items():
+            element = self.get_element(k)
+            element.load_dict(v)
 
 
 class BaseTypeDef(YangType):

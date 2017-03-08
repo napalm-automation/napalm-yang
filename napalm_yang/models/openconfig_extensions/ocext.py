@@ -73,7 +73,7 @@ class OpenconfigVersion(Extension):
 
     The version number is stored in the module meta-data.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, semver, ):
     

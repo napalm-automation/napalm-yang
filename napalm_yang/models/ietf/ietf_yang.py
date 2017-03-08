@@ -78,7 +78,7 @@ class Counter32(Uint32):
     In the value set and its semantics, this type is equivalent
     to the Counter32 type of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -101,7 +101,7 @@ class ZeroBasedCounter32(yang.Counter32):
     In the value set and its semantics, this type is equivalent
     to the ZeroBasedCounter32 textual convention of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -130,7 +130,7 @@ class Counter64(Uint64):
     In the value set and its semantics, this type is equivalent
     to the Counter64 type of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -153,7 +153,7 @@ class ZeroBasedCounter64(yang.Counter64):
     In the value set and its semantics, this type is equivalent
     to the ZeroBasedCounter64 textual convention of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -176,7 +176,7 @@ class Gauge32(Uint32):
     In the value set and its semantics, this type is equivalent
     to the Gauge32 type of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -200,7 +200,7 @@ class Gauge64(Uint64):
     to the CounterBasedGauge64 SMIv2 textual convention defined
     in RFC 2856
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -232,7 +232,7 @@ class ObjectIdentifier(String):
     IDENTIFIER type; the object-identifier-128 type SHOULD be
     used instead.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "(([0-1](\\.[1-3]?[0-9]))|(2\\.(0|([1-9]\\d*))))(\\.(0|([1-9]\\d*)))*", ):
 
@@ -245,7 +245,7 @@ class ObjectIdentifier128(ObjectIdentifier):
     In the value set and its semantics, this type is equivalent
     to the OBJECT IDENTIFIER type of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "\\d*(\\.\\d*){1,127}", ):
 
@@ -262,7 +262,7 @@ class YangIdentifier(String):
     combination of the lowercase or uppercase character
     sequence 'xml'.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "[a-zA-Z_][a-zA-Z0-9\\-_.]*", length = "1..max", ):
 
@@ -299,7 +299,7 @@ class DateAndTime(String):
     referring to the notion of local time) uses the time-offset
     -00:00.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})", ):
 
@@ -315,7 +315,7 @@ class Timeticks(Uint32):
     In the value set and its semantics, this type is equivalent
     to the TimeTicks type of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -337,7 +337,7 @@ class Timestamp(yang.Timeticks):
     In the value set and its semantics, this type is equivalent
     to the TimeStamp textual convention of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -352,7 +352,7 @@ class PhysAddress(String):
     In the value set and its semantics, this type is equivalent
     to the PhysAddress textual convention of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?", ):
 
@@ -365,7 +365,7 @@ class MacAddress(String):
     In the value set and its semantics, this type is equivalent
     to the MacAddress textual convention of the SMIv2.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}", ):
 
@@ -378,7 +378,7 @@ class Xpath10(String):
     description of the schema node MUST specify the XPath
     context in which the XPath expression is evaluated.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -390,7 +390,7 @@ class HexString(String):
     separated by colons.  The canonical representation uses
     lowercase characters.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?", ):
 
@@ -404,7 +404,7 @@ class Uuid(String):
     The following is an example of a UUID in string representation:
     f81d4fae-7dec-11d0-a765-00a0c91e6bf6
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", ):
 
@@ -416,7 +416,7 @@ class DottedQuad(String):
     notation, i.e., four octets written as decimal numbers
     and separated with the '.' (full stop) character.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, pattern = "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", ):
 

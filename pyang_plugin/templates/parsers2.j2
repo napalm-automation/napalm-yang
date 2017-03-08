@@ -1,7 +1,7 @@
 {% macro process_class(c) %}
 class {{ c.pop("name") }}({{ c.pop("parent") }}):
     """{{ c.pop("docstring") }}"""
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self):
         {% for k, v in c.pop("attrs").items() %}

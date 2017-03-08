@@ -16,7 +16,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-config_logging()
+#  config_logging()
 
 
 junos_configuration = {
@@ -46,6 +46,42 @@ print(j_running.data_to_text())
 print("========================")
 config = j_running.translate(j)
 print(config)
+j.load_merge_candidate(config=config)
+print(j.compare_config())
+
+config_dict = {
+    "interfaces": {
+        "interface": {
+            "lo0": {
+                "config": {
+                    "description": "New description"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "10.0.0.1/24": {
+                                            "config": {
+                                                "ip": "10.0.0.1",
+                                                "prefix_length": 24
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+j_running.load_dict(config_dict)
+config = j_running.translate(j)
+print(config)
+
 j.load_merge_candidate(config=config)
 print(j.compare_config())
 

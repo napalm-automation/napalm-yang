@@ -65,7 +65,7 @@ class BaseInterfaceRef(Leafref):
     This type may be used in cases where ability to reference
     a subinterface is not required.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, path = "/oc-if:interfaces/oc-if:interface/oc-if:name", ):
 
@@ -78,7 +78,7 @@ class InterfaceId(String):
     useful convention is to use a combination of base interface
     name and subinterface index.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None, ):
 
@@ -95,7 +95,7 @@ class InterfaceRefCommon(BaseBinding):
     """
     Reference leafrefs to interface / subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -122,7 +122,7 @@ class InterfaceRefStateContainer_State_103(InterfaceRefCommon):
     """
     Operational state for interface-ref
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -142,7 +142,7 @@ class InterfaceRefStateContainer(BaseBinding):
     Reusable opstate w/container for a reference to an
     interface or subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -163,7 +163,7 @@ class InterfaceRef_Config_121(InterfaceRefCommon):
     """
     Configured reference to interface / subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -182,7 +182,7 @@ class InterfaceRef_InterfaceRef_117(InterfaceRefStateContainer):
     """
     Reference to an interface or subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -204,7 +204,7 @@ class InterfaceRef(BaseBinding):
     Reusable definition for a reference to an interface or
     subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -225,7 +225,7 @@ class InterfaceRefState_InterfaceRef_137(InterfaceRefStateContainer):
     """
     Reference to an interface or subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -245,7 +245,7 @@ class InterfaceRefState(BaseBinding):
     Reusable opstate w/container for a reference to an
     interface or subinterface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -267,7 +267,7 @@ class InterfaceCommonConfig(BaseBinding):
     Configuration data data nodes common to physical interfaces
     and subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -295,7 +295,7 @@ class InterfacePhysConfig(InterfaceCommonConfig):
     """
     Configuration data for physical interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -322,7 +322,7 @@ class InterfacePhysHoldtimeConfig(BaseBinding):
     Configuration data for interface hold-time settings --
     applies to physical interfaces.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -347,7 +347,7 @@ class InterfacePhysHoldtimeState(BaseBinding):
     """
     Operational state data for interface hold-time.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -366,7 +366,7 @@ class HoldTime_Config_332(InterfacePhysHoldtimeConfig):
     """
     Configuration data for interface hold-time settings.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -385,7 +385,7 @@ class HoldTime_State_339(InterfacePhysHoldtimeState, InterfacePhysHoldtimeConfig
     """
     Operational state data for interface hold-time.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -405,7 +405,7 @@ class InterfacePhysHoldtimeTop_HoldTime_327(BaseBinding):
     Top-level container for hold-time settings to enable
     dampening advertisements of interface transitions.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -429,7 +429,7 @@ class InterfacePhysHoldtimeTop(BaseBinding):
     Top-level grouping for setting link transition
     dampening on physical and other types of interfaces.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -451,7 +451,7 @@ class InterfaceCommonState(BaseBinding):
     Operational state data (in addition to intended configuration)
     at the global level for this interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -543,7 +543,7 @@ class InterfaceCountersState_Counters_475(BaseBinding):
     """
     A collection of interface-related statistics objects.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -605,7 +605,7 @@ class InterfaceCountersState(BaseBinding):
     Operational state representing interface counters
     and statistics.  Some of these are adapted from RFC 7223
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -626,7 +626,7 @@ class SubUnnumberedConfig(BaseBinding):
     """
     Configuration data for unnumbered subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -648,7 +648,7 @@ class SubUnnumberedState(BaseBinding):
     """
     Operational state data unnumbered subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -667,7 +667,7 @@ class Unnumbered_Config_779(SubUnnumberedConfig):
     """
     Configuration data for unnumbered interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -686,7 +686,7 @@ class Unnumbered_State_786(SubUnnumberedState, SubUnnumberedConfig):
     """
     Operational state data for unnumbered interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -707,7 +707,7 @@ class SubUnnumberedTop_Unnumbered_773(oc_if.InterfaceRef):
     Includes reference the interface that provides the
     address information
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -730,7 +730,7 @@ class SubUnnumberedTop(BaseBinding):
     """
     Top-level grouping unnumbered subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -751,7 +751,7 @@ class SubinterfacesConfig(InterfaceCommonConfig):
     """
     Configuration data for subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -773,7 +773,7 @@ class SubinterfacesState(InterfaceCountersState, InterfaceCommonState):
     """
     Operational state data for subinterfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -792,7 +792,7 @@ class Subinterface_Config_853(SubinterfacesConfig):
     """
     Configurable items at the subinterface level
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -811,7 +811,7 @@ class Subinterface_State_860(SubinterfacesState, SubinterfacesConfig):
     """
     Operational state data for logical interfaces
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -831,7 +831,7 @@ class Subinterfaces_Subinterface_837(List, BaseBinding):
     The list of subinterfaces (logical interfaces) associated
     with a physical interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -860,7 +860,7 @@ class SubinterfacesTop_Subinterfaces_832(BaseBinding):
     Enclosing container for the list of subinterfaces associated
     with a physical interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -882,7 +882,7 @@ class SubinterfacesTop(BaseBinding):
     Subinterface data for logical interfaces associated with a
     given interface
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -904,7 +904,7 @@ class Interface_Config_905(InterfacePhysConfig):
     Configurable items at the global, physical interface
     level
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -923,7 +923,7 @@ class Interface_State_913(InterfaceCountersState, InterfaceCommonState, Interfac
     """
     Operational state data at the global interface level
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -942,7 +942,7 @@ class Interfaces_Interface_884(List, SubinterfacesTop, InterfacePhysHoldtimeTop)
     """
     The list of named interfaces on the device.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -971,7 +971,7 @@ class InterfacesTop_Interfaces_878(BaseBinding):
     Top level container for interfaces, including configuration
     and state data.
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
@@ -993,7 +993,7 @@ class InterfacesTop(BaseBinding):
     Top-level grouping for interface configuration and
     operational state data
     """
-    prefix = __prefix__
+    yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
         super().__init__(_meta=_meta)
