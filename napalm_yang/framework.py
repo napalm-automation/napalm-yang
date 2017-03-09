@@ -97,6 +97,7 @@ def _resolve_translation_rule(rule, attribute, model, keys):
 
 def _find_translation_point(rule, bookmarks, translation):
     if "in" in rule.keys():
+        print(bookmarks)
         t = bookmarks
         for p in rule["in"].split("."):
             try:
@@ -146,9 +147,9 @@ class Translator(object):
         if issubclass(model.__class__, napalm_yang.List):
             self._parse_list(attribute, model, mapping, translation)
         elif issubclass(model.__class__, napalm_yang.BaseBinding):
-            self.bookmarks[attribute] = translation
             self.bookmarks["parent"] = translation
             translation = self._parse_container(attribute, model, mapping, translation)
+            self.bookmarks[attribute] = translation
             self._parse(mapping, model, translation)
         else:
             self._parse_leaf(attribute, model, mapping, translation)
@@ -184,6 +185,10 @@ class Translator(object):
         for key, element in model.items():
             logger.debug("Translating {} {}".format(attribute, key))
 
+            key_name = "{}_key".format(attribute)
+            self.keys[key_name] = key
+            self.keys["parent_key"] = key
+
             translation_rule = _resolve_translation_rule(mapping["_translation"], attribute,
                                                          element, self.keys)
             translation_point = _find_translation_point(translation_rule, self.bookmarks,
@@ -193,13 +198,10 @@ class Translator(object):
                                               translation_point)
 
             if et is None:
-                # if we got None this means we didn't implement this
+                logger.info("Skipping {} as it seems to be not implemented".format(attribute))
                 break
 
-            key_name = "{}_key".format(attribute)
-            self.keys[key_name] = key
             self.bookmarks[attribute][key] = et
-            self.keys["parent_key"] = key
             self.bookmarks["parent"] = et
 
             self._parse(mapping, element, et)

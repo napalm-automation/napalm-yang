@@ -50,13 +50,8 @@ class XMLTranslator(BaseTranslator):
 
         key_element = mapping.get("key_element", None)
         if key_element:
-            attr = model
-
-            for e in mapping["key_value"].split("."):
-                attr = getattr(attr, e)
-
             key = etree.SubElement(t, key_element)
-            key.text = "{}".format(attr.value)
+            key.text = "{}".format(mapping["key_value"])
 
         replace = mapping.get("replace", None)
         if replace:
@@ -83,7 +78,21 @@ class XMLTranslator(BaseTranslator):
             e.text = "{}".format(value)
 
 
-class TextTranslator:
+class TextTranslator(XMLTranslator):
+
+    @classmethod
+    def init_translation(cls, metadata, translation):
+        if metadata.get("root", False):
+            return etree.Element("configuration")
+        return translation
+
+    @classmethod
+    def post_processing(cls, translator):
+        print(etree.tounicode(translator.translation, pretty_print=True))
+        #  raise Exception()
+
+
+class TextTranslator2:
 
     def translate(self, obj, translation_map, previous=None):
         return self._translate_yang_model(obj, translation_map, previous, None, None)

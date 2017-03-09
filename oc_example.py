@@ -16,7 +16,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-#  config_logging()
+config_logging()
 
 
 junos_configuration = {
@@ -33,6 +33,7 @@ eos_configuration = {
     'optional_args': {'port': 12443}
 }
 
+"""
 junos = get_network_driver("junos")
 j = junos(**junos_configuration)
 j.open()
@@ -84,13 +85,34 @@ print(config)
 
 j.load_merge_candidate(config=config)
 print(j.compare_config())
+"""
 
 """
+eos = get_network_driver("eos")
+e = eos(**eos_configuration)
+e.open()
+print(j_running.data_to_text())
+config = j_running.translate(e)
+print(config)
+"""
+
 # Connect to devices
 eos = get_network_driver("eos")
 e = eos(**eos_configuration)
 e.open()
+e_running = napalm_yang.BaseBinding()
+e_running.add_model(napalm_yang.oc_if.interfaces())
 
+e_running.get_config(e)
+
+print(e_running.data_to_text())
+print("========================")
+config = e_running.translate(e)
+print(config)
+e.load_merge_candidate(config=config)
+print(e.compare_config())
+
+"""
 # Let's create the running configuration object
 running = napalm_yang.BaseBinding()
 print(running.model_to_text())  # Empty model
