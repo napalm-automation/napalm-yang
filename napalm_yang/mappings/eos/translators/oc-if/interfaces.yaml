@@ -52,7 +52,7 @@ interfaces:
                     mode: container
                     container: interface
                     key_value: "interface {{ subinterface_key }}\n"
-                    negate: "default interface {{ subinterface_key }}\n"
+                    negate: "no interface {{ subinterface_key }}\n"
                     in: "interfaces"
                 index:
                     _translation: unnecessary

@@ -59,19 +59,40 @@ class XMLTranslator(BaseTranslator):
             key = etree.SubElement(t, key_element)
             key.text = "{}".format(mapping["key_value"])
 
-        #  replace = mapping.get("replace", None)
-        #  if replace:
-            #  t.set("replace", "replace")
+        replace = mapping.get("replace", None)
+        if replace and self.replace:
+            t.set("replace", "replace")
 
         return t
 
     _parse_container_container = _init_element_container
 
     def _default_element_container(self, mapping, translation, replacing):
-        pass
+        if not self.merge:
+            return
+
+        if self.merge and replacing:
+            return
+
+        t = translation
+
+        for element in mapping["container"].split("."):
+            t = etree.SubElement(t, element)
+
+        key_element = mapping.get("key_element", None)
+        if key_element:
+            key = etree.SubElement(t, key_element)
+            key.text = "{}".format(mapping["key_value"])
+
+        t.set("delete", "delete")
+
+        return t
 
     def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
-        if model.value is None and not force:
+        delete = False
+        if model.value is None and other and self.merge:
+            delete = True
+        elif model.value is None and not force:
             return
 
         try:
@@ -81,6 +102,9 @@ class XMLTranslator(BaseTranslator):
             value = model.value
 
         e = etree.SubElement(translation, mapping["element"])
+
+        if delete:
+            e.set("delete", "delete")
 
         if value is not None:
             e.text = "{}".format(value)

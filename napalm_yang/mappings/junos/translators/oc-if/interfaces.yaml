@@ -14,7 +14,7 @@ interfaces:
             mode: container
             container: interface
             key_element: name
-            key_value: name
+            key_value: "{{ interface_key }}"
         name:
             _translation: unnecessary
         hold_time:
@@ -52,7 +52,7 @@ interfaces:
                     mode: container
                     container: unit
                     key_element: name
-                    key_value: config.name
+                    key_value: "{{ subinterface_key }}"
                 index:
                     _translation: unnecessary
                 config:
