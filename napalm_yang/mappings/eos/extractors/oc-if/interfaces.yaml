@@ -60,7 +60,7 @@ interfaces:
                     regexp: "mtu (?P<value>[0-9]+)"
                     from: "interface.{interface_key}"
                     type: int
-                    default: 1500
+                    default: null
         subinterfaces:
             subinterface:
                 _list_extraction:

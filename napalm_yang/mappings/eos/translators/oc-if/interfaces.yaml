@@ -13,6 +13,7 @@ interfaces:
             mode: container
             container: interface
             key_value: "interface {{ interface_key }}\n"
+            negate: "default interface {{ interface_key }}\n"
         name:
             _translation: unnecessary
         hold_time:
@@ -43,7 +44,7 @@ interfaces:
                 _translation:
                     - mode: element
                       value: "    mtu {{ model.value }}\n"
-                      negate: "    default mtu"
+                      negate: "    default mtu\n"
         subinterfaces:
             _translation: unnecessary
             subinterface:
@@ -51,6 +52,7 @@ interfaces:
                     mode: container
                     container: interface
                     key_value: "interface {{ subinterface_key }}\n"
+                    negate: "default interface {{ subinterface_key }}\n"
                     in: "interfaces"
                 index:
                     _translation: unnecessary

@@ -201,10 +201,11 @@ class BaseBinding(object):
         for k, v in self.items():
             framework.Parser(device, k, v).parse()
 
-    def translate(self, device, replace=False):
+    def translate(self, device, merge=None, replace=None):
         translator = framework.Translator()
         for k, v in self.items():
-            translator = framework.Translator(device, k, v, replace, translator.translation).parse()
+            translator = framework.Translator(device, k, v, merge, replace,
+                                              translator.translation).parse()
 
         return translator
 
@@ -287,7 +288,7 @@ class YangType(object):
 
     @value.setter
     def value(self, value):
-        if self._verify_value(value):
+        if value is None or self._verify_value(value):
             self._value = value
         else:
             raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))

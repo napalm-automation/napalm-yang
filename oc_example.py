@@ -16,7 +16,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-config_logging()
+#  config_logging()
 
 
 junos_configuration = {
@@ -38,6 +38,7 @@ j = junos(**junos_configuration)
 
 eos = get_network_driver("eos")
 e = eos(**eos_configuration)
+
 
 def test_config_dict(device):
     with open(device) as d:
@@ -113,7 +114,7 @@ def config_generation(d):
     running_config.add_model(napalm_yang.oc_if.interfaces())
     running_config.get_config(d)
     config = running_config.translate(d)
-    print(config.__class__)
+    print(config)
 
 
 config_generation(e)
@@ -132,13 +133,56 @@ def merge_config(d):
     candidate_config.add_model(napalm_yang.oc_if.interfaces())
     candidate_config.get_config(d)
 
-    config = running_config.translate(d, merge=candidate_config)
+    # Eliminate lo1 and create lo0
+    candidate_config.interfaces.interface.pop("Loopback1")
+    loopback = candidate_config.interfaces.interface.get_element("Loopback0")
+    loopback.config.description("Creating new loopback interace")
+
+    # Default mtu of Po1
+    candidate_config.interfaces.interface["Port-Channel1"].config.mtu(None)
+
+    config = candidate_config.translate(d, merge=running_config)
     print(config)
     print("diff:")
+    e.load_merge_candidate(config=config)
     print(e.compare_config())
+    e.discard_config()
 
 
 merge_config(e)
+
+
+def replace_config(d):
+    print("")
+    print("REPLACE CONFIGURATION GENERATION")
+    print("================================")
+    d.open()
+    running_config = napalm_yang.BaseBinding()
+    running_config.add_model(napalm_yang.oc_if.interfaces())
+    running_config.get_config(d)
+
+    candidate_config = napalm_yang.BaseBinding()
+    candidate_config.add_model(napalm_yang.oc_if.interfaces())
+    candidate_config.get_config(d)
+
+    # Eliminate lo1 and create lo0
+    candidate_config.interfaces.interface.pop("Loopback1")
+    loopback = candidate_config.interfaces.interface.get_element("Loopback0")
+    loopback.config.description("Creating new loopback interace")
+
+    # Default mtu of Po1
+    candidate_config.interfaces.interface["Port-Channel1"].config.mtu(None)
+
+    config = candidate_config.translate(d, replace=running_config)
+    print(config)
+    print("diff:")
+    e.load_merge_candidate(config=config)
+    print(e.compare_config())
+    e.discard_config()
+
+
+replace_config(e)
+
 
 """
 # Let's create the running configuration object

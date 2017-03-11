@@ -98,7 +98,6 @@ def _resolve_translation_rule(rule, attribute, model, keys):
 
 def _find_translation_point(rule, bookmarks, translation):
     if "in" in rule.keys():
-        print(bookmarks)
         t = bookmarks
         for p in rule["in"].split("."):
             try:
@@ -141,26 +140,37 @@ class Translator(object):
         self.translation = self.translator.init_translation(metadata, self.translation)
 
         # Let's parse the root element
-        self._parse_element(self.attribute, self.model, self.parser_map[self.attribute],
+        if self.merge:
+            other = getattr(self.merge, self.attribute)
+        elif self.replace:
+            other = getattr(self.replace, self.attribute)
+        else:
+            other = None
+        self._parse_element(self.attribute, self.model, other, self.parser_map[self.attribute],
                             self.translation)
 
         return self.translator.post_processing(self)
 
-    def _parse_element(self, attribute, model, mapping, translation):
+    def _parse_element(self, attribute, model, other, mapping, translation):
         if issubclass(model.__class__, napalm_yang.List):
-            self._parse_list(attribute, model, mapping, translation)
+            self._parse_list(attribute, model, other, mapping, translation)
         elif issubclass(model.__class__, napalm_yang.BaseBinding):
             self.bookmarks["parent"] = translation
-            translation = self._parse_container(attribute, model, mapping, translation)
+            translation = self._parse_container(attribute, model, other, mapping, translation)
             self.bookmarks[attribute] = translation
-            self._parse(mapping, model, translation)
+            self._parse(mapping, model, other, translation)
         else:
-            self._parse_leaf(attribute, model, mapping, translation)
+            self._parse_leaf(attribute, model, other, mapping, translation)
 
         return translation
 
-    def _parse(self, parser_map, obj, translation):
+    def _parse(self, parser_map, obj, other, translation):
         for attribute, model in obj.items():
+            if other:
+                other_attr = getattr(other, attribute)
+            else:
+                other_attr = None
+
             logger.debug("Processing '{}'".format(attribute))
             if not model._meta["config"] and issubclass(model.__class__, napalm_yang.BaseBinding):
                 continue
@@ -172,15 +182,22 @@ class Translator(object):
                     if model.yang_prefix == self.yang_prefix:
                         raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                     else:
-                        Translator(self.device, attribute, model, self.merge, self.replace,
+                        merge = None
+                        replace = None
+                        if self.merge:
+                            merge = other
+                        elif self.replace:
+                            replace = other
+
+                        Translator(self.device, attribute, model, merge, replace,
                                    translation, self.bookmarks, self.keys).parse()
                         continue
                 else:
                     raise KeyError("You forgot attribute {} in {}".format(attribute,
                                                                           self.yang_prefix))
-            self._parse_element(attribute, model, mapping, translation)
+            self._parse_element(attribute, model, other_attr, mapping, translation)
 
-    def _parse_list(self, attribute, model, mapping, translation):
+    def _parse_list(self, attribute, model, other, mapping, translation):
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -192,6 +209,11 @@ class Translator(object):
         for key, element in model.items():
             logger.debug("Translating {} {}".format(attribute, key))
 
+            if other:
+                other_element = other.get(key, None)
+            else:
+                other_element = None
+
             key_name = "{}_key".format(attribute)
             self.keys[key_name] = key
             self.keys["parent_key"] = key
@@ -201,7 +223,8 @@ class Translator(object):
             translation_point = _find_translation_point(translation_rule, self.bookmarks,
                                                         translation)
 
-            et = self.translator.init_element(attribute, element, translation_rule,
+            self.translator.default_element(translation_rule, translation_point, replacing=True)
+            et = self.translator.init_element(attribute, element, other_element, translation_rule,
                                               translation_point)
 
             if et is None:
@@ -211,13 +234,28 @@ class Translator(object):
             self.bookmarks[attribute][key] = et
             self.bookmarks["parent"] = et
 
-            self._parse(mapping, element, et)
+            self._parse(mapping, element, other_element, et)
 
         # Restore state
         self.keys["parent_key"] = old_parent_key
         self.bookmarks["parent"] = old_parent_bookmark
 
-    def _parse_leaf(self, attribute, model, mapping, translation):
+        if other:
+            # Let's default elements not present in the model
+            for key, element in other.items():
+                if key not in model.keys():
+                    key_name = "{}_key".format(attribute)
+                    self.keys[key_name] = key
+                    self.keys["parent_key"] = key
+
+                    translation_rule = _resolve_translation_rule(mapping["_translation"], attribute,
+                                                                 element, self.keys)
+                    translation_point = _find_translation_point(translation_rule, self.bookmarks,
+                                                                translation)
+
+                    self.translator.default_element(translation_rule, translation_point)
+
+    def _parse_leaf(self, attribute, model, other, mapping, translation):
         rules = [mapping["_translation"]] if isinstance(mapping["_translation"], str) \
                 else mapping["_translation"]
         for rule in rules:
@@ -225,14 +263,14 @@ class Translator(object):
                                              model, self.keys)
             translation_point = _find_translation_point(rule, self.bookmarks,
                                                         translation)
-            self.translator.parse_leaf(attribute, model, rule, translation_point)
+            self.translator.parse_leaf(attribute, model, other, rule, translation_point)
 
-    def _parse_container(self, attribute, model, mapping, translation):
+    def _parse_container(self, attribute, model, other, mapping, translation):
         rule = _resolve_translation_rule(mapping["_translation"], attribute,
                                          model, self.keys)
         translation_point = _find_translation_point(rule, self.bookmarks,
                                                     translation)
-        return self.translator.parse_container(attribute, model, rule, translation_point)
+        return self.translator.parse_container(attribute, model, other, rule, translation_point)
 
 
 class Parser(object):

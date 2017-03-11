@@ -12,27 +12,34 @@ class BaseTranslator(object):
         self.merge = merge
         self.replace = replace
 
-    def init_element(self, attribute, model, mapping, translation, replace):
+    def init_element(self, attribute, model, other, mapping, translation):
         method_name = "_init_element_{}".format(mapping["mode"])
-        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
+        return getattr(self, method_name)(attribute, model, other, mapping, translation)
 
-    def parse_leaf(self, attribute, model, mapping, translation, replace):
+    def default_element(self, mapping, translation, replacing=False):
+        method_name = "_default_element_{}".format(mapping["mode"])
+        return getattr(self, method_name)(mapping, translation, replacing)
+
+    def parse_leaf(self, attribute, model, other, mapping, translation):
         method_name = "_parse_leaf_{}".format(mapping["mode"])
-        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
+        return getattr(self, method_name)(attribute, model, other, mapping, translation)
 
-    def parse_container(self, attribute, model, mapping, translation, replace):
+    def parse_container(self, attribute, model, other, mapping, translation):
         method_name = "_parse_container_{}".format(mapping["mode"])
-        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
+        return getattr(self, method_name)(attribute, model, other, mapping, translation)
 
-    def _parse_leaf_skip(self, attribute, model, mapping, translation, replace):
+    def _parse_leaf_skip(self, attribute, model, other, mapping, translation):
         return translation
     _init_element_skip = _parse_leaf_skip
     _parse_container_skip = _parse_leaf_skip
 
+    def _default_element_skip(self, mapping, translation, replacing):
+        return
+
 
 class XMLTranslator(BaseTranslator):
 
-    def post_processing(self, translator, replace):
+    def post_processing(self, translator):
         return etree.tounicode(translator.translation, pretty_print=True)
 
     def init_translation(self, metadata, translation):
@@ -41,7 +48,7 @@ class XMLTranslator(BaseTranslator):
         else:
             return translation
 
-    def _init_element_container(self, attribute, model, mapping, translation, replace):
+    def _init_element_container(self, attribute, model, other, mapping, translation):
         t = translation
 
         for element in mapping["container"].split("."):
@@ -52,16 +59,19 @@ class XMLTranslator(BaseTranslator):
             key = etree.SubElement(t, key_element)
             key.text = "{}".format(mapping["key_value"])
 
-        replace = mapping.get("replace", None)
-        if replace:
-            t.set("replace", "replace")
+        #  replace = mapping.get("replace", None)
+        #  if replace:
+            #  t.set("replace", "replace")
 
         return t
 
     _parse_container_container = _init_element_container
 
-    def _parse_leaf_element(self, attribute, model, mapping, translation, replace):
-        if model.value is None:
+    def _default_element_container(self, mapping, translation, replacing):
+        pass
+
+    def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
+        if model.value is None and not force:
             return
 
         try:
@@ -83,19 +93,34 @@ class TextTranslator(XMLTranslator):
             return etree.Element("configuration")
         return translation
 
-    def post_processing(self, translator, replace):
+    def post_processing(self, translator):
         return self._xml_to_text(translator.translation)
 
-    def _parse_leaf_element(self, attribute, model, mapping, translation, replace):
-        if model.value is not None:
-            mapping["element"] = "command"
-        elif not replace:
-            mapping["value"] = mapping["negate"]
-        super()._parse_leaf_element(attribute, model, mapping, translation, replace)
+    def _parse_leaf_element(self, attribute, model, other, mapping, translation):
+        force = False
+        if self.merge and other:
+            if model.value == other.value:
+                return
+            elif model.value is None:
+                force = True
+                mapping["value"] = mapping["negate"]
 
-    def _init_element_container(self, attribute, model, mapping, translation, replace):
+        mapping["element"] = "command"
+        super()._parse_leaf_element(attribute, model, other, mapping, translation, force)
+
+    def _init_element_container(self, attribute, model, other, mapping, translation):
         mapping["key_element"] = "command"
-        return super()._init_element_container(attribute, model, mapping, translation, replace)
+        return super()._init_element_container(attribute, model, other, mapping, translation)
+
+    def _default_element_container(self, mapping, translation, replacing):
+        if not self.merge and not self.replace:
+            return
+
+        if self.merge and replacing:
+            return
+
+        e = etree.SubElement(translation, "command")
+        e.text = mapping["negate"]
 
     def _xml_to_text(self, xml, text=""):
         for element in xml:

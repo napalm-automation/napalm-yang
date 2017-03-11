@@ -13,7 +13,7 @@ ipv4:
                   value: "    no switchport\n"
                   negate: "    switchport\n"
                   in: "interface.{{ interface_key }}"
-                  when: "{{ model.value }} and {{ not interface_key.startswith('Loopback') }}"
+                  when: "{{ model.value and not ( interface_key.startswith('Loop') or interface_key.startswith('Mana') ) }}"
         mtu:
             _translation: not_implemented
     addresses:
@@ -30,6 +30,7 @@ ipv4:
                     _translation:
                         - mode: element
                           value: "    ip address {{ model._parent.ip.value }}/{{ model.value }}\n"
+                          negate: "    default ip address {{ model._parent.ip.value }}/{{ model.value }}\n"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:
