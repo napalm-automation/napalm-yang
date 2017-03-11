@@ -117,6 +117,7 @@ def config_generation(d):
     print(config)
 
 
+config_generation(j)
 config_generation(e)
 
 
