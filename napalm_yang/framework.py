@@ -46,6 +46,7 @@ def find_yang_file(device, filename, path):
 
 
 def read_yang_map(yang_prefix, attribute, device, parser_path):
+    logger.info("Finding parser for {}:{}".format(yang_prefix, attribute))
     filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
 
     try:
@@ -110,11 +111,14 @@ def _find_translation_point(rule, bookmarks, translation):
 
 class Translator(object):
 
-    def __init__(self, device=None, attribute=None, model=None, translation=None,
-                 bookmarks=None, keys=None):
+    def __init__(self, device=None, attribute=None, model=None, merge=None,
+                 replace=None, translation=None, bookmarks=None, keys=None):
         self.device = device
         self.attribute = attribute
         self.model = model
+
+        self.merge = merge
+        self.replace = replace
 
         self.translation = translation
 
@@ -126,14 +130,13 @@ class Translator(object):
         self.bookmarks = bookmarks or {"parent": None}
 
     def parse(self):
-
         self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device,
                                         "translators")
         if not self.parser_map:
             return
 
         metadata = self.parser_map["metadata"]
-        self.translator = get_parsers(metadata["parser"])()
+        self.translator = get_parsers(metadata["parser"])(merge=self.merge, replace=self.replace)
 
         self.translation = self.translator.init_translation(metadata, self.translation)
 
@@ -165,12 +168,16 @@ class Translator(object):
             try:
                 mapping = parser_map[attribute]
             except KeyError:
-                if model.yang_prefix == self.yang_prefix:
-                    raise KeyError("Couldn't find parser for field '{}'".format(attribute))
+                if issubclass(model.__class__, napalm_yang.BaseBinding):
+                    if model.yang_prefix == self.yang_prefix:
+                        raise KeyError("Couldn't find parser for field '{}'".format(attribute))
+                    else:
+                        Translator(self.device, attribute, model, self.merge, self.replace,
+                                   translation, self.bookmarks, self.keys).parse()
+                        continue
                 else:
-                    Translator(self.device, attribute, model, translation,
-                               self.bookmarks, self.keys).parse()
-                    continue
+                    raise KeyError("You forgot attribute {} in {}".format(attribute,
+                                                                          self.yang_prefix))
             self._parse_element(attribute, model, mapping, translation)
 
     def _parse_list(self, attribute, model, mapping, translation):

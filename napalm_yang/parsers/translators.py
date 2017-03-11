@@ -1,3 +1,5 @@
+from builtins import super
+
 import napalm_yang
 from napalm_yang import text_helpers
 
@@ -6,23 +8,23 @@ from lxml import etree
 
 class BaseTranslator(object):
 
-    @classmethod
-    def init_element(cls, attribute, model, mapping, translation):
+    def __init__(self, merge, replace):
+        self.merge = merge
+        self.replace = replace
+
+    def init_element(self, attribute, model, mapping, translation, replace):
         method_name = "_init_element_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(attribute, model, mapping, translation)
+        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
 
-    @classmethod
-    def parse_leaf(cls, attribute, model, mapping, translation):
+    def parse_leaf(self, attribute, model, mapping, translation, replace):
         method_name = "_parse_leaf_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(attribute, model, mapping, translation)
+        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
 
-    @classmethod
-    def parse_container(cls, attribute, model, mapping, translation):
+    def parse_container(self, attribute, model, mapping, translation, replace):
         method_name = "_parse_container_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(attribute, model, mapping, translation)
+        return getattr(self, method_name)(attribute, model, mapping, translation, replace)
 
-    @classmethod
-    def _parse_leaf_skip(cls, attribute, model, mapping, translation):
+    def _parse_leaf_skip(self, attribute, model, mapping, translation, replace):
         return translation
     _init_element_skip = _parse_leaf_skip
     _parse_container_skip = _parse_leaf_skip
@@ -30,19 +32,16 @@ class BaseTranslator(object):
 
 class XMLTranslator(BaseTranslator):
 
-    @classmethod
-    def post_processing(cls, translator):
+    def post_processing(self, translator, replace):
         return etree.tounicode(translator.translation, pretty_print=True)
 
-    @classmethod
-    def init_translation(cls, metadata, translation):
+    def init_translation(self, metadata, translation):
         if "xml_root" in metadata.keys():
             return etree.Element(metadata["xml_root"])
         else:
             return translation
 
-    @classmethod
-    def _init_element_container(cls, attribute, model, mapping, translation):
+    def _init_element_container(self, attribute, model, mapping, translation, replace):
         t = translation
 
         for element in mapping["container"].split("."):
@@ -61,8 +60,7 @@ class XMLTranslator(BaseTranslator):
 
     _parse_container_container = _init_element_container
 
-    @classmethod
-    def _parse_leaf_element(cls, attribute, model, mapping, translation):
+    def _parse_leaf_element(self, attribute, model, mapping, translation, replace):
         if model.value is None:
             return
 
@@ -80,16 +78,31 @@ class XMLTranslator(BaseTranslator):
 
 class TextTranslator(XMLTranslator):
 
-    @classmethod
-    def init_translation(cls, metadata, translation):
+    def init_translation(self, metadata, translation):
         if metadata.get("root", False):
             return etree.Element("configuration")
         return translation
 
-    @classmethod
-    def post_processing(cls, translator):
-        print(etree.tounicode(translator.translation, pretty_print=True))
-        #  raise Exception()
+    def post_processing(self, translator, replace):
+        return self._xml_to_text(translator.translation)
+
+    def _parse_leaf_element(self, attribute, model, mapping, translation, replace):
+        if model.value is not None:
+            mapping["element"] = "command"
+        elif not replace:
+            mapping["value"] = mapping["negate"]
+        super()._parse_leaf_element(attribute, model, mapping, translation, replace)
+
+    def _init_element_container(self, attribute, model, mapping, translation, replace):
+        mapping["key_element"] = "command"
+        return super()._init_element_container(attribute, model, mapping, translation, replace)
+
+    def _xml_to_text(self, xml, text=""):
+        for element in xml:
+            if element.tag == "command":
+                text += element.text
+            text += self._xml_to_text(element)
+        return text
 
 
 class TextTranslator2:

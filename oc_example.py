@@ -33,40 +33,45 @@ eos_configuration = {
     'optional_args': {'port': 12443}
 }
 
-"""
 junos = get_network_driver("junos")
 j = junos(**junos_configuration)
-j.open()
 
-j_running = napalm_yang.BaseBinding()
-j_running.add_model(napalm_yang.oc_if.interfaces())
+eos = get_network_driver("eos")
+e = eos(**eos_configuration)
 
-j_running.get_config(j)
+def test_config_dict(device):
+    with open(device) as d:
+        running_config = napalm_yang.BaseBinding()
+        running_config.add_model(napalm_yang.oc_if.interfaces())
 
-print(j_running.data_to_text())
-print("========================")
-config = j_running.translate(j)
-print(config)
-j.load_merge_candidate(config=config)
-print(j.compare_config())
+        running_config.get_config(d)
 
-config_dict = {
-    "interfaces": {
-        "interface": {
-            "lo0": {
-                "config": {
-                    "description": "New description"
-                },
-                "subinterfaces": {
-                    "subinterface": {
-                        "0": {
-                            "ipv4": {
-                                "addresses": {
-                                    "address": {
-                                        "10.0.0.1/24": {
-                                            "config": {
-                                                "ip": "10.0.0.1",
-                                                "prefix_length": 24
+        print(running_config.data_to_text())
+        print("========================")
+        config = running_config.translate(d)
+        print(config)
+        d.load_merge_candidate(config=config)
+        print(d.compare_config())
+
+        config_dict = {
+            "interfaces": {
+                "interface": {
+                    "lo0": {
+                        "config": {
+                            "description": "New description"
+                        },
+                        "subinterfaces": {
+                            "subinterface": {
+                                "0": {
+                                    "ipv4": {
+                                        "addresses": {
+                                            "address": {
+                                                "10.0.0.1/24": {
+                                                    "config": {
+                                                        "ip": "10.0.0.1",
+                                                        "prefix_length": 24
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -77,40 +82,63 @@ config_dict = {
                 }
             }
         }
-    }
-}
-j_running.load_dict(config_dict)
-config = j_running.translate(j)
-print(config)
+        running_config.load_dict(config_dict)
+        config = running_config.translate(d)
+        print(config)
 
-j.load_merge_candidate(config=config)
-print(j.compare_config())
-"""
+        d.load_merge_candidate(config=config)
+        print(d.compare_config())
 
-"""
-eos = get_network_driver("eos")
-e = eos(**eos_configuration)
-e.open()
-print(j_running.data_to_text())
-config = j_running.translate(e)
-print(config)
-"""
+#  test_config_dict(j)
 
-# Connect to devices
-eos = get_network_driver("eos")
-e = eos(**eos_configuration)
-e.open()
-e_running = napalm_yang.BaseBinding()
-e_running.add_model(napalm_yang.oc_if.interfaces())
 
-e_running.get_config(e)
+def translate_junos_to_eos():
+    """
+    eos = get_network_driver("eos")
+    e = eos(**eos_configuration)
+    e.open()
+    print(j_running.data_to_text())
+    config = j_running.translate(e)
+    print(config)
+    """
+    pass
 
-print(e_running.data_to_text())
-print("========================")
-config = e_running.translate(e)
-print(config)
-e.load_merge_candidate(config=config)
-print(e.compare_config())
+
+def config_generation(d):
+    print("")
+    print("CONFIGURATION GENERATION")
+    print("========================")
+    d.open()
+    running_config = napalm_yang.BaseBinding()
+    running_config.add_model(napalm_yang.oc_if.interfaces())
+    running_config.get_config(d)
+    config = running_config.translate(d)
+    print(config.__class__)
+
+
+config_generation(e)
+
+
+def merge_config(d):
+    print("")
+    print("MERGE CONFIGURATION GENERATION")
+    print("==============================")
+    d.open()
+    running_config = napalm_yang.BaseBinding()
+    running_config.add_model(napalm_yang.oc_if.interfaces())
+    running_config.get_config(d)
+
+    candidate_config = napalm_yang.BaseBinding()
+    candidate_config.add_model(napalm_yang.oc_if.interfaces())
+    candidate_config.get_config(d)
+
+    config = running_config.translate(d, merge=candidate_config)
+    print(config)
+    print("diff:")
+    print(e.compare_config())
+
+
+merge_config(e)
 
 """
 # Let's create the running configuration object

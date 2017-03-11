@@ -6,7 +6,10 @@ regexp = '[^a-zA-Z0-9_]'
 
 
 def template(string, **kwargs):
-    template = jinja2.Environment().from_string(string)
+    template = jinja2.Environment(
+                            undefined=jinja2.StrictUndefined,
+                            keep_trailing_newline=True,
+                            ).from_string(string)
     return template.render(**kwargs)
 
 

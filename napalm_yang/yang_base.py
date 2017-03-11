@@ -201,10 +201,10 @@ class BaseBinding(object):
         for k, v in self.items():
             framework.Parser(device, k, v).parse()
 
-    def translate(self, device):
+    def translate(self, device, replace=False):
         translator = framework.Translator()
         for k, v in self.items():
-            translator = framework.Translator(device, k, v, translator.translation).parse()
+            translator = framework.Translator(device, k, v, replace, translator.translation).parse()
 
         return translator
 

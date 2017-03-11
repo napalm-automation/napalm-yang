@@ -53,7 +53,7 @@ interfaces:
                     regexp: "description (?P<value>.*)"
                     type: py23_compat.text_type
                     from: "interface.{interface_key}"
-                    default: ""
+                    default: null
             mtu:
                 _leaf_extraction:
                     mode: search
@@ -90,4 +90,4 @@ interfaces:
                             regexp: "description (?P<value>.*)"
                             type: py23_compat.text_type
                             from: "subinterface.{subinterface_key}"
-                            default: ""
+                            default: null
