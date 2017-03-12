@@ -110,7 +110,12 @@ class BaseBinding(object):
         result = {}
 
         for attr_name, attr in self.items():
-            result[attr_name] = attr.model_to_dict()
+            if isinstance(attr, BaseBinding) or attr_name in self._meta["augments"]:
+                key = "{}:{}".format(attr.yang_prefix, attr_name)
+            else:
+                key = attr_name
+
+            result[key] = attr.model_to_dict()
 
         return result
 
