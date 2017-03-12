@@ -27,3 +27,5 @@ from napalm_yang.models.acl import oc_acl
 
 from napalm_yang.models.platform import oc_platform_types
 from napalm_yang.models.platform import oc_platform
+
+from napalm_yang.models.interfaces import napalm_ip

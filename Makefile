@@ -2,6 +2,7 @@ MODELS_PATH=napalm_yang/models
 
 YANG_OC=yang_oc/release/models
 YANG_IETF=yang_ietf/standard/ietf
+YANG_NAPALM=yang_napalm
 
 PYANG=pyang -V --napalm-path=$(MODELS_PATH) --plugindir pyang_plugin --format napalm --path $(YANG_OC)
 PYANG_TREE=pyang -V --format tree --path $(YANG_OC)
@@ -20,7 +21,10 @@ models:  clean
 	$(PYANG) --napalm-module=vlan $(YANG_OC)/vlan/*.yang
 	$(PYANG) --napalm-module=interfaces $(YANG_OC)/interfaces/*.yang
 	$(PYANG) --napalm-module=platform $(YANG_OC)/platform/*.yang
+
 	# $(PYANG) --napalm-module=bgp $(YANG_OC)/bgp/*.yang
+
+	$(PYANG) --napalm-module=interfaces $(YANG_NAPALM)/interfaces/*.yang
 
 .PHONY: tree
 tree:
