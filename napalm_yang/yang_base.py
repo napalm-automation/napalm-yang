@@ -41,16 +41,32 @@ class BaseBinding(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __setattr__(self, name, value):
+        try:
+            obj = getattr(self, name)
+        except Exception:
+            obj = None
+
+        if name in self.__dict__:
+            obj = getattr(self, name)
+
+            if isinstance(obj, YangType) and isinstance(value, obj.__class__):
+                pass
+            elif isinstance(obj, YangType):
+                obj(value)
+                return
+        object.__setattr__(self, name, value)
+
     @property
     def _parent(self):
         try:
-            return self.parent_object()
+            return self._parent_object()
         except AttributeError:
             return None
 
     @_parent.setter
     def _parent(self, parent):
-        self.parent_object = parent
+        self._parent_object = parent
 
     def augment_model(self, augment):
         self_attr = self

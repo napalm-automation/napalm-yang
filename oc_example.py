@@ -244,5 +244,8 @@ def diff():
     import pprint
     pprint.pprint(candidate.diff(running))
 
+    candidate.interfaces.interface["Port-Channel1"].config.mtu = "adasd"
+    pprint.pprint(candidate.diff(running))
+
 
 diff()
