@@ -20,7 +20,7 @@ ipv4:
         address:
             _list_extraction:
                 mode: block
-                regexp: "(?P<block>ip address (?P<key>(?P<ip>.*)\\/(?P<prefix>\\d+)))"
+                regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
                 from: parent
             ip:
                 _leaf_extraction:

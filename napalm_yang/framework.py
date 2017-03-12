@@ -178,23 +178,19 @@ class Translator(object):
             try:
                 mapping = parser_map[attribute]
             except KeyError:
-                if issubclass(model.__class__, napalm_yang.BaseBinding):
-                    if model.yang_prefix == self.yang_prefix:
-                        raise KeyError("Couldn't find parser for field '{}'".format(attribute))
-                    else:
-                        merge = None
-                        replace = None
-                        if self.merge:
-                            merge = other
-                        elif self.replace:
-                            replace = other
-
-                        Translator(self.device, attribute, model, merge, replace,
-                                   translation, self.bookmarks, self.keys).parse()
-                        continue
+                if model.yang_prefix == self.yang_prefix:
+                    raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
-                    raise KeyError("You forgot attribute {} in {}".format(attribute,
-                                                                          self.yang_prefix))
+                    merge = None
+                    replace = None
+                    if self.merge:
+                        merge = other
+                    elif self.replace:
+                        replace = other
+
+                    Translator(self.device, attribute, model, merge, replace,
+                               translation, self.bookmarks, self.keys).parse()
+                    continue
             self._parse_element(attribute, model, other_attr, mapping, translation)
 
     def _parse_list(self, attribute, model, other, mapping, translation):
@@ -318,6 +314,10 @@ class Parser(object):
         self._parse(self.parser_map[self.attribute], self.model)
 
     def _parse(self, parser_map, obj):
+        if isinstance(obj, napalm_yang.YangType):
+            self._parse_leaf(obj, parser_map)
+            return
+
         for attribute, model in obj.items():
             logger.debug("Processing '{}'".format(attribute))
             if not model._meta["config"] and issubclass(model.__class__, napalm_yang.BaseBinding):
@@ -382,7 +382,10 @@ class Parser(object):
             attr(value)
         except ValueError as e:
             try:
-                attr(eval(value))
+                if mapping["_leaf_extraction"].get("type", None) == "boolean":
+                    attr(bool(value))
+                else:
+                    attr(eval(value))
             except Exception:
                 logger.error(e)
                 logger.error("Problem parsing attr '{}' with value '{}' ({}).\n{}".format(

@@ -144,6 +144,9 @@ class BaseBinding(object):
     def add_model(self, model, is_augment=False):
         """Merges model into existing object."""
         for k, v in model.items():
+            if isinstance(v, YangType):
+                v.yang_prefix = model.yang_prefix
+
             setattr(self, k, v)
 
             if is_augment:

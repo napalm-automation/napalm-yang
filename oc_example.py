@@ -16,12 +16,8 @@ def config_logging():
     logger.addHandler(ch)
 
 
-#  config_logging()
+# config_logging()
 
-
-"""
-Creating a YANG base object
-"""
 
 def basic():
     config = napalm_yang.BaseBinding()
@@ -32,6 +28,7 @@ def basic():
 
     # Printing the model in a human readable format
     print(config.model_to_text())
+
 
 basic()
 
@@ -129,15 +126,20 @@ def config_generation(d):
     print("========================")
     d.open()
     running_config = napalm_yang.BaseBinding()
+
     running_config.add_model(napalm_yang.oc_if.interfaces())
     running_config.get_config(d)
+
+    import pprint
+    pprint.pprint(running_config.interfaces.interface["Ethernet2"].to_dict())
+
     config = running_config.translate(d)
     print(config)
     d.close()
 
 
 #  config_generation(j)
-#  config_generation(e)
+config_generation(e)
 
 
 def merge_config(d, example):

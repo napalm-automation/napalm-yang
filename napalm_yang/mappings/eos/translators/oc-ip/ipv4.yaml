@@ -29,7 +29,7 @@ ipv4:
                 prefix_length:
                     _translation:
                         - mode: element
-                          value: "    ip address {{ model._parent.ip.value }}/{{ model.value }}\n"
+                          value: "    ip address {{ model._parent.ip.value }}/{{ model.value }} {{ 'secondary' if model._parent.secondary else '' }}\n"
                           negate: "    default ip address {{ model._parent.ip.value }}/{{ model.value }}\n"
             vrrp:
                 _translation: not_implemented

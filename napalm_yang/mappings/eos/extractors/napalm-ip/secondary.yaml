@@ -1,0 +1,12 @@
+---
+metadata:
+    prefix: "napalm-ip"
+    parser: TextExtractor
+    execute:
+        config: {}
+
+secondary:
+    _leaf_extraction:
+        mode: extra_vars
+        var: "address.secondary"
+        type: boolean

@@ -1,5 +1,8 @@
 """Yang Types"""
 from builtins import super
+
+from collections import OrderedDict
+
 import copy
 import weakref
 
@@ -399,7 +402,7 @@ class List(BaseBinding):
 
     def __init__(self, _meta=None):
         super().__init__(_meta)
-        self._value = {}
+        self._value = OrderedDict()
 
     @property
     def value(self):
