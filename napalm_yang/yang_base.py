@@ -1,84 +1,10 @@
 """Base classes for Yang Types and bindings."""
 import text_helpers
-import copy
 
 import napalm_yang
 from napalm_yang import framework
 
 import weakref
-
-
-def model_to_text(name, model, indentation="", augment=""):
-    text = ""
-    meta = model["_meta"]
-    mode = "rw" if meta["config"] else "ro"
-    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
-    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
-    text += augment
-    indentation = indentation + "|  "
-
-    for attr, data in model.items():
-        if attr == "_meta":
-            continue
-
-        sm = data.get("_meta")
-        if attr in model["_meta"]["augments"].keys():
-            when = model["_meta"]["augments"][attr].when or "always"
-            augment = "{}|    \ [augment] {} - when: {}\n".format(
-                indentation,
-                model["_meta"]["augments"][attr].yang_prefix,
-                when,
-            )
-        else:
-            augment = ""
-        if sm["nested"]:
-            text += model_to_text(attr, data, indentation, augment)
-        else:
-            mandatory = "" if sm["mandatory"] else "?"
-            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
-            spacing = " " * (60 - len(body))
-            text += "{}{}{}\n".format(body, spacing, sm["type"])
-            text += augment
-
-    return text
-
-
-def data_to_text(name, data, indentation=""):
-    text = ""
-    try:
-        meta = data["_meta"]
-    except Exception:
-        raise
-    mode = "rw" if meta["config"] else "ro"
-    key = "* [{}]".format(meta.get("key", "")) if meta.get("key", "") else ""
-    text += "{}+-- {} {}{}\n".format(indentation, mode, name, key)
-    indentation = indentation + "|  "
-
-    for attr, attr_data in data.items():
-        if attr == "_meta":
-            continue
-        elif attr == "list":
-            for e, d in attr_data.items():
-                text += data_to_text(e, d, indentation)
-        elif "value" in attr_data.keys():
-            sm = attr_data["_meta"]
-
-            if sm["type"] == "Enumeration":
-                try:
-                    value = "{} ({})".format(attr_data["value"], attr_data["enum_value"])
-                except Exception:
-                    raise Exception(attr_data)
-            else:
-                value = attr_data["value"]
-
-            mandatory = "" if sm["mandatory"] else "?"
-            body = "{}+-- {} {}{}".format(indentation, mode, attr, mandatory)
-            spacing = " " * (60 - len(body))
-            text += "{}{}{}\n".format(body, spacing, value)
-        else:
-            text += data_to_text(attr, attr_data, indentation)
-
-    return text
 
 
 class BaseBinding(object):
@@ -111,6 +37,9 @@ class BaseBinding(object):
 
     def __eq__(self, other):
         return self.diff(other) == {}
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     @property
     def _parent(self):
@@ -163,25 +92,10 @@ class BaseBinding(object):
     def model_to_dict(self):
         """Returns a dict with information about the model itself."""
         result = {}
-        result["_meta"] = copy.deepcopy(self._meta)
-        result["_meta"]["nested"] = True
 
         for attr_name, attr in self.items():
             result[attr_name] = attr.model_to_dict()
 
-        return result
-
-    def data_to_dict(self):
-        """Returns a dict with information about the data (if any) contained in the model."""
-        result = {}
-
-        for attr_name, attr in self.items():
-            res = attr.data_to_dict()
-            if res:
-                result[attr_name] = res
-
-        if result:
-            result["_meta"] = copy.deepcopy(self._meta)
         return result
 
     def to_dict(self):
@@ -194,12 +108,6 @@ class BaseBinding(object):
                 result[attr_name] = res
 
         return result
-
-    def model_to_text(self, indentation=""):
-        return model_to_text(self.__class__.__name__, self.model_to_dict())
-
-    def data_to_text(self, indentation=""):
-        return data_to_text(self.__class__.__name__, self.data_to_dict())
 
     def diff(self, other):
         result = {}
@@ -265,8 +173,14 @@ class YangType(object):
     def update_parent_refs(self):
         pass
 
+    def __eq__(self, other):
+        return self.value == other
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __repr__(self):
-        return "{}: {}".format(self.__class__.__name__, self.__str__())
+        return "{}".format(self.__class__.__name__)
 
     def __str__(self):
         return "{}".format(self.value)
@@ -313,7 +227,7 @@ class YangType(object):
         if value is None or self._verify_value(value):
             self._value = value
         else:
-            raise ValueError("Wrong value for {}: {}".format(value, self.__class__.__name__))
+            raise ValueError("Wrong value for {}: {}".format(self.__class__.__name__, value))
 
     def diff(self, other):
         if self.value != other.value:
@@ -323,27 +237,14 @@ class YangType(object):
 
     def model_to_dict(self):
         """Returns a dict with information about the model itself."""
-        return {
-            "_meta": {
-                "type": self.__class__.__name__,
-                "mandatory": self._meta["mandatory"],
-                "nested": False,
-            }
-        }
-
-    def data_to_dict(self):
-        """Returns a dict with information about the data (if any) contained in the model."""
-        if not self:
-            return {}
-
-        res = {"value": self.value}
-        res["_meta"] = copy.deepcopy(self._meta)
-        res["_meta"]["type"] = self.__class__.__name__
-        res["_meta"]["nested"] = False
-        return res
+        question = "" if self._meta["mandatory"] else "? "
+        return "{}{}".format(question, self.__repr__())
 
     def to_dict(self):
-        return self.value
+        if isinstance(self.value, YangType):
+            return self.value.to_dict()
+        else:
+            return self.value
 
     def load_dict(self, data):
         self(data)

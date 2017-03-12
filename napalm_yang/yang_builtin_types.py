@@ -248,16 +248,6 @@ class Enumeration(YangType):
             error_msg = "Wrong description for enumeration: {}\n.Accepted values are {}"
             raise ValueError(error_msg.format(value, self.enum.keys()))
 
-    def data_to_dict(self):
-        """Returns a dict with information about the model itself."""
-        model = super().data_to_dict()
-        model["enum_value"] = self.enum_value
-
-        if self.value:
-            return model
-        else:
-            return {}
-
 
 class Bits(YangType):
     """
@@ -304,6 +294,9 @@ class Identityref(String):
     def __init__(self, base, _meta=None):
         super().__init__(_meta)
         self.base = base
+
+    def __repr__(self):
+        return "{}({})".format(self.__class__.__name__, self.base)
 
     def _verify_value(self, value):
         if not isinstance(value, Identity):
@@ -376,6 +369,12 @@ class Identity(YangType):
         self.description = description
         self.value = value
 
+    def __repr__(self):
+        return "{}({})".format(self.__class__.__name__, self.base)
+
+    def __str__(self):
+        return "{}".format(self.value)
+
     def _verify_value(self, value):
         return True
 
@@ -427,20 +426,6 @@ class List(BaseBinding):
     def model_to_dict(self):
         return ListElement(self).model_to_dict()
 
-    def data_to_dict(self):
-        if not self:
-            return {}
-
-        res = {}
-        res["_meta"] = copy.deepcopy(self._meta) or {}
-        res["list"] = {}
-
-        for element, data in self.items():
-            res["list"][element] = data.data_to_dict()
-            res["list"][element]["_meta"] = copy.deepcopy(self._meta) or {}
-
-        return res
-
     def diff(self, other):
         res = {"both": {}, "mine": {}, "other": {}}
 
@@ -450,10 +435,10 @@ class List(BaseBinding):
                 if r:
                     res["both"][k] = r
             else:
-                res["mine"][k] = v.data_to_dict()
+                res["mine"][k] = v.to_dict()
 
         for k in set(set(other.keys()) - set(self.keys())):
-            res["other"][k] = other[k].data_to_dict()
+            res["other"][k] = other[k].to_dict()
 
         if res["both"] or res["mine"] or res["other"]:
             return res

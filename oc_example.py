@@ -30,7 +30,7 @@ def basic():
     print(config.model_to_text())
 
 
-basic()
+#  basic()
 
 junos_configuration = {
     'hostname': '127.0.0.1',
@@ -108,18 +108,6 @@ def test_config_dict(device):
 #  test_config_dict(j)
 
 
-def translate_junos_to_eos():
-    """
-    eos = get_network_driver("eos")
-    e = eos(**eos_configuration)
-    e.open()
-    print(j_running.data_to_text())
-    config = j_running.translate(e)
-    print(config)
-    """
-    pass
-
-
 def config_generation(d):
     print("")
     print("CONFIGURATION GENERATION")
@@ -139,7 +127,7 @@ def config_generation(d):
 
 
 #  config_generation(j)
-config_generation(e)
+#  config_generation(e)
 
 
 def merge_config(d, example):
@@ -230,3 +218,31 @@ def replace_config(d, example):
 
 #  replace_config(e, "eos_example")
 #  replace_config(j, "junos_example")
+
+
+def diff():
+    e.open()
+    # first let's create a candidate config by retrieving the current state of the device
+    candidate = napalm_yang.BaseBinding()
+    candidate.add_model(napalm_yang.oc_if.interfaces())
+    candidate.get_config(device=e)
+
+    # now let's do a few changes, let's remove lo1 and create lo0
+    candidate.interfaces.interface.pop("Loopback1")
+    lo0 = candidate.interfaces.interface.new_element("Loopback0")
+    lo0.config.description("new loopback")
+
+    # Let's also default the mtu of ge-0/0/0 which is set to 1400
+    candidate.interfaces.interface["Port-Channel1"].config.mtu(None)
+
+    # We will also need a running configuration to compare against
+    running = napalm_yang.BaseBinding()
+    running.add_model(napalm_yang.oc_if.interfaces())
+    running.get_config(device=e)
+    e.close()
+
+    import pprint
+    pprint.pprint(candidate.diff(running))
+
+
+diff()
