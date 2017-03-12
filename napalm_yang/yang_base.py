@@ -53,7 +53,7 @@ class BaseBinding(object):
             if isinstance(obj, YangType) and isinstance(value, obj.__class__):
                 pass
             elif isinstance(obj, YangType):
-                obj(value)
+                obj.value = value
                 return
         object.__setattr__(self, name, value)
 
@@ -206,14 +206,6 @@ class YangType(object):
     def __str__(self):
         return "{}".format(self.value)
 
-    def __call__(self, *args):
-        if len(args) == 0:
-            return self.value
-        elif len(args) == 1:
-            self.value = args[0]
-        else:
-            raise Exception("Too many arguments passed")
-
     def __nonzero__(self):
         if isinstance(self.value, YangType):
             return self.value.__nonzero__()
@@ -268,7 +260,7 @@ class YangType(object):
             return self.value
 
     def load_dict(self, data):
-        self(data)
+        self.value = data
 
 
 class Extension(YangType):

@@ -379,13 +379,13 @@ class Parser(object):
             return
 
         try:
-            attr(value)
+            attr.value = value
         except ValueError as e:
             try:
                 if mapping["_leaf_extraction"].get("type", None) == "boolean":
-                    attr(bool(value))
+                    attr.value = bool(value)
                 else:
-                    attr(eval(value))
+                    attr.value = eval(value)
             except Exception:
                 logger.error(e)
                 logger.error("Problem parsing attr '{}' with value '{}' ({}).\n{}".format(
