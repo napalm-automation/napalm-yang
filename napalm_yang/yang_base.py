@@ -181,6 +181,17 @@ class BaseBinding(object):
             result["_meta"] = copy.deepcopy(self._meta)
         return result
 
+    def to_dict(self):
+        """Returns a dictionary with the data"""
+        result = {}
+
+        for attr_name, attr in self.items():
+            res = attr.to_dict()
+            if res:
+                result[attr_name] = res
+
+        return result
+
     def model_to_text(self, indentation=""):
         return model_to_text(self.__class__.__name__, self.model_to_dict())
 
@@ -197,9 +208,17 @@ class BaseBinding(object):
 
         return result
 
-    def get_config(self, device):
+    def get_config(self, device=None, config=None, profile=None):
+        profile = profile or device.profile
+
+        if device:
+            device.open()
+
         for k, v in self.items():
-            framework.Parser(device, k, v).parse()
+            framework.Parser(device, k, v).parse(config, profile)
+
+        if device:
+            device.close()
 
     def translate(self, device, merge=None, replace=None):
         translator = framework.Translator()
@@ -319,6 +338,9 @@ class YangType(object):
         res["_meta"]["type"] = self.__class__.__name__
         res["_meta"]["nested"] = False
         return res
+
+    def to_dict(self):
+        return self.value
 
     def load_dict(self, data):
         self(data)

@@ -8,4 +8,7 @@ vlan:
     config:
         _translation: unnecessary
         vlan_id:
-            _translation: unnecessary
+            _translation:
+                - mode: element
+                  value: "    encapsulation dot1q vlan {{ model.value }}\n"
+                  when: "{{ model.value }}"

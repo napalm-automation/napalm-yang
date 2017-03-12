@@ -24,7 +24,7 @@ def get_parsers(type_):
     return parsers[type_]
 
 
-def find_yang_file(device, filename, path):
+def find_yang_file(profile, filename, path):
     """
     Find the necessary file for the given test case.
 
@@ -35,7 +35,7 @@ def find_yang_file(device, filename, path):
     """
     # Find base_dir of submodule
     module_dir = os.path.dirname(__file__)
-    full_path = os.path.join(module_dir, 'mappings', device.profile, path, filename)
+    full_path = os.path.join(module_dir, 'mappings', profile, path, filename)
 
     if os.path.exists(full_path):
         return full_path
@@ -45,12 +45,12 @@ def find_yang_file(device, filename, path):
         raise IOError(msg)
 
 
-def read_yang_map(yang_prefix, attribute, device, parser_path):
+def read_yang_map(yang_prefix, attribute, profile, parser_path):
     logger.info("Finding parser for {}:{}".format(yang_prefix, attribute))
     filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
 
     try:
-        filepath = find_yang_file(device, filename, parser_path)
+        filepath = find_yang_file(profile, filename, parser_path)
     except IOError:
         return
 
@@ -129,7 +129,7 @@ class Translator(object):
         self.bookmarks = bookmarks or {"parent": None}
 
     def parse(self):
-        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device,
+        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device.profile,
                                         "translators")
         if not self.parser_map:
             return
@@ -297,8 +297,10 @@ class Parser(object):
 
         return result
 
-    def parse(self):
-        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.device,
+    def parse(self, config=None, profile=None):
+        self.profile = profile or self.device.profile
+
+        self.parser_map = read_yang_map(self.model.yang_prefix, self.attribute, self.profile,
                                         "extractors")
         if not self.parser_map:
             return
@@ -307,8 +309,11 @@ class Parser(object):
         self.parser = get_parsers(metadata["parser"])
         self.yang_prefix = metadata["prefix"]
 
-        self.texts[self.attribute] = self._execute_method(self.device,
-                                                          metadata["execute"]["config"])
+        if config is None:
+            config = self._execute_method(self.device,
+                                          metadata["execute"]["config"])
+
+        self.texts[self.attribute] = self.parser.init_config(config)
 
         self._parse(self.parser_map[self.attribute], self.model)
 
@@ -325,7 +330,7 @@ class Parser(object):
                     raise KeyError("Couldn't find parser for field '{}'".format(attribute))
                 else:
                     Parser(self.device, attribute, model,
-                           self.texts, self.keys, self.extra_vars).parse()
+                           self.texts, self.keys, self.extra_vars).parse(profile=self.profile)
                     continue
 
             if issubclass(model.__class__, napalm_yang.List):

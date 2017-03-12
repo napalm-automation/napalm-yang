@@ -1,5 +1,7 @@
 from napalm_yang import text_helpers
 
+from lxml import etree
+
 
 import logging
 import re
@@ -9,6 +11,10 @@ logger = logging.getLogger("napalm-yang")
 
 
 class BaseExtractor(object):
+
+    @classmethod
+    def init_config(cls, config):
+        return config
 
     @classmethod
     def _get_text(cls, texts, path, keys, extra_vars):
@@ -53,6 +59,13 @@ class BaseExtractor(object):
 
 
 class XMLExtractor(BaseExtractor):
+
+    @classmethod
+    def init_config(cls, config):
+        if isinstance(config, str):
+            return etree.fromstring(config)
+        else:
+            return config
 
     @classmethod
     def _parse_list_xpath(cls, mapping, texts, keys, extra_vars):

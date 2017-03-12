@@ -1,0 +1,16 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    parser: TextExtractor
+    execute:
+        config: {}
+
+vlan:
+    config:
+        vlan_id:
+            _leaf_extraction:
+                mode: search
+                regexp: "encapsulation dot1q vlan (?P<value>[0-9]+)"
+                from: "subinterface.{subinterface_key}"
+                type: int
+                default: null

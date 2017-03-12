@@ -19,6 +19,22 @@ def config_logging():
 #  config_logging()
 
 
+"""
+Creating a YANG base object
+"""
+
+def basic():
+    config = napalm_yang.BaseBinding()
+
+    # Adding models to the object
+    config.add_model(napalm_yang.oc_if.interfaces())
+    config.add_model(napalm_yang.oc_vlan.vlan())
+
+    # Printing the model in a human readable format
+    print(config.model_to_text())
+
+basic()
+
 junos_configuration = {
     'hostname': '127.0.0.1',
     'username': 'vagrant',
@@ -120,8 +136,8 @@ def config_generation(d):
     d.close()
 
 
-config_generation(j)
-config_generation(e)
+#  config_generation(j)
+#  config_generation(e)
 
 
 def merge_config(d, example):
@@ -165,8 +181,8 @@ def merge_config(d, example):
     d.close()
 
 
-merge_config(e, "eos_example")
-merge_config(j, "junos_example")
+#  merge_config(e, "eos_example")
+#  merge_config(j, "junos_example")
 
 
 def replace_config(d, example):
