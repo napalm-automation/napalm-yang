@@ -1,4 +1,4 @@
-pyang
+pyangbind
 pylama
 jinja2
 pytest

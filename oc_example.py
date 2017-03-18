@@ -1,7 +1,7 @@
-from napalm_base import get_network_driver
+from napalm_yang import models
+from napalm_yang import base
 
-import napalm_yang
-
+import json
 import sys
 
 import logging
@@ -11,241 +11,68 @@ logger = logging.getLogger("napalm-yang")
 def config_logging():
     logger.setLevel(logging.DEBUG)
     ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
 
-# config_logging()
+config_logging()
 
 
-def basic():
-    config = napalm_yang.BaseBinding()
-
-    # Adding models to the object
-    config.add_model(napalm_yang.oc_if.interfaces())
-    config.add_model(napalm_yang.oc_vlan.vlan())
-
-    # Printing the model in a human readable format
-    print(config.model_to_text())
+def pretty_print(dictionary):
+    print(json.dumps(dictionary, sort_keys=True, indent=4))
 
 
-#  basic()
+config = base.Root()
+config.add_model(models.openconfig_interfaces)
+config.add_model(models.openconfig_vlan)
 
-junos_configuration = {
-    'hostname': '127.0.0.1',
-    'username': 'vagrant',
-    'password': '',
-    'optional_args': {'port': 12203}
-}
+pretty_print(base.model_to_dict(config))
 
-eos_configuration = {
-    'hostname': '127.0.0.1',
-    'username': 'vagrant',
-    'password': 'vagrant',
-    'optional_args': {'port': 12443}
-}
+# Populating models
 
-junos = get_network_driver("junos")
-j = junos(**junos_configuration)
+et1 = config.interfaces.interface.add("eth1")
+et1.config.description = "My description"
+et1.config.mtu = 1500
 
-eos = get_network_driver("eos")
-e = eos(**eos_configuration)
+pretty_print(et1.get(filter=True))
 
+config.interfaces.interface.add("eth2")
+config.interfaces.interface["eth2"].config.description = "Another description"
+config.interfaces.interface["eth2"].config.mtu = 9000
 
-def test_config_dict(device):
-    with open(device) as d:
-        running_config = napalm_yang.BaseBinding()
-        running_config.add_model(napalm_yang.oc_if.interfaces())
+pretty_print(config.get(filter=True))
 
-        running_config.get_config(d)
+try:
+    et1.config.mtu = -1
+except ValueError as e:
+    print(e.message["error-string"])
 
-        print(running_config.data_to_text())
-        print("========================")
-        config = running_config.translate(d)
-        print(config)
-        d.load_merge_candidate(config=config)
-        print(d.compare_config())
-
-        config_dict = {
-            "interfaces": {
-                "interface": {
-                    "lo0": {
-                        "config": {
-                            "description": "New description"
-                        },
-                        "subinterfaces": {
-                            "subinterface": {
-                                "0": {
-                                    "ipv4": {
-                                        "addresses": {
-                                            "address": {
-                                                "10.0.0.1/24": {
-                                                    "config": {
-                                                        "ip": "10.0.0.1",
-                                                        "prefix_length": 24
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        running_config.load_dict(config_dict)
-        config = running_config.translate(d)
-        print(config)
-
-        d.load_merge_candidate(config=config)
-        print(d.compare_config())
-        d.discard_config()
-        d.close()
-
-#  test_config_dict(j)
+# Iterating
+for iface in config.interfaces.interface:
+    print(iface, config.interfaces.interface[iface].config.description)
 
 
-def config_generation(d):
-    print("")
-    print("CONFIGURATION GENERATION")
-    print("========================")
-    d.open()
-    running_config = napalm_yang.BaseBinding()
+# We can also delete interfaces
+print(config.interfaces.interface.keys())
+config.interfaces.interface.delete("eth2")
+print(config.interfaces.interface.keys())
 
-    running_config.add_model(napalm_yang.oc_if.interfaces())
-    running_config.get_config(d)
+# Populating the model from a dict
+vlans_dict = {
+    "vlans": {"vlan": {100: {
+                            "config": {
+                                "vlan_id": 100, "name": "production"}},
+                       200: {
+                            "config": {
+                                "vlan_id": 200, "name": "dev"}}}}}
 
-    import pprint
-    pprint.pprint(running_config.interfaces.interface["Ethernet2"].to_dict())
+config.load_dict(vlans_dict)
+pretty_print(config.vlans.get(filter=True))
 
-    config = running_config.translate(d)
-    print(config)
-    d.close()
+with open("interactive_demo/eos.config", "r") as f:
+    configuration = [{"show running-config all": f.read()}]
 
-
-#  config_generation(j)
-#  config_generation(e)
-
-
-def merge_config(d, example):
-    print("")
-    print("MERGE CONFIGURATION GENERATION: {}".format(example))
-    print("=============================================")
-
-    d.open()
-    running_config = napalm_yang.BaseBinding()
-    running_config.add_model(napalm_yang.oc_if.interfaces())
-    running_config.get_config(d)
-
-    candidate_config = napalm_yang.BaseBinding()
-    candidate_config.add_model(napalm_yang.oc_if.interfaces())
-    candidate_config.get_config(d)
-
-    if example == "eos_example":
-        # Default mtu of Po1
-        candidate_config.interfaces.interface["Port-Channel1"].config.mtu(None)
-
-        # Eliminate lo1 and create lo0
-        candidate_config.interfaces.interface.pop("Loopback1")
-        loopback = candidate_config.interfaces.interface.get_element("Loopback0")
-    elif example == "junos_example":
-        # Default mtu of ge-0/0/1
-        candidate_config.interfaces.interface["ge-0/0/1"].config.mtu(None)
-
-        # Eliinat lo0.0 and create lo0.1
-        lo = candidate_config.interfaces.interface["lo0"]
-        lo.subinterfaces.subinterface.pop("0")
-        loopback = lo.subinterfaces.subinterface.get_element("1")
-
-    loopback.config.description("Creating new loopback interace")
-
-    config = candidate_config.translate(d, merge=running_config)
-    print(config)
-    print("diff:")
-    d.load_merge_candidate(config=config)
-    print(d.compare_config())
-    d.discard_config()
-    d.close()
-
-
-#  merge_config(e, "eos_example")
-#  merge_config(j, "junos_example")
-
-
-def replace_config(d, example):
-    print("")
-    print("REPLACE CONFIGURATION GENERATION: {}".format(example))
-    print("====================================================")
-
-    d.open()
-    running_config = napalm_yang.BaseBinding()
-    running_config.add_model(napalm_yang.oc_if.interfaces())
-    running_config.get_config(d)
-
-    candidate_config = napalm_yang.BaseBinding()
-    candidate_config.add_model(napalm_yang.oc_if.interfaces())
-    candidate_config.get_config(d)
-
-    if example == "eos_example":
-        # Default mtu of Po1
-        candidate_config.interfaces.interface["Port-Channel1"].config.mtu(None)
-
-        # Eliminate lo1 and create lo0
-        candidate_config.interfaces.interface.pop("Loopback1")
-        loopback = candidate_config.interfaces.interface.get_element("Loopback0")
-    elif example == "junos_example":
-        # Default mtu of ge-0/0/1
-        candidate_config.interfaces.interface["ge-0/0/1"].config.mtu(None)
-
-        # Eliinat lo0.0 and create lo0.1
-        lo = candidate_config.interfaces.interface["lo0"]
-        lo.subinterfaces.subinterface.pop("0")
-        loopback = lo.subinterfaces.subinterface.get_element("1")
-
-    loopback.config.description("Creating new loopback interace")
-
-    config = candidate_config.translate(d, replace=running_config)
-    print(config)
-    print("diff:")
-    d.load_merge_candidate(config=config)
-    print(d.compare_config())
-    d.discard_config()
-    d.close()
-
-
-#  replace_config(e, "eos_example")
-#  replace_config(j, "junos_example")
-
-
-def diff():
-    e.open()
-    # first let's create a candidate config by retrieving the current state of the device
-    candidate = napalm_yang.BaseBinding()
-    candidate.add_model(napalm_yang.oc_if.interfaces())
-    candidate.get_config(device=e)
-
-    # now let's do a few changes, let's remove lo1 and create lo0
-    candidate.interfaces.interface.pop("Loopback1")
-    lo0 = candidate.interfaces.interface.new_element("Loopback0")
-    lo0.config.description("new loopback")
-
-    # Let's also default the mtu of ge-0/0/0 which is set to 1400
-    candidate.interfaces.interface["Port-Channel1"].config.mtu(None)
-
-    # We will also need a running configuration to compare against
-    running = napalm_yang.BaseBinding()
-    running.add_model(napalm_yang.oc_if.interfaces())
-    running.get_config(device=e)
-    e.close()
-
-    import pprint
-    pprint.pprint(candidate.diff(running))
-
-    candidate.interfaces.interface["Port-Channel1"].config.mtu = "adasd"
-    pprint.pprint(candidate.diff(running))
-
-
-diff()
+config.interfaces.interface.delete("eth1")
+config.parse(profile="eos", config=configuration)
+pretty_print(config.get(filter=True))
