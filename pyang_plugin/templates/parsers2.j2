@@ -4,6 +4,11 @@ class {{ c.pop("name") }}({{ c.pop("parent") }}):
     yang_prefix = __prefix__
 
     def __init__(self):
+        {% for k, v in c.pop("container", {}).items() -%}
+        self.{{ k }} = {{ v }}()
+        self.{{ k }}._parent = weakref.ref(self)
+        {% endfor %}
+
         {% for k, v in c.pop("attrs").items() %}
         self.{{ k }} = {{ v }}
         {% endfor %}

@@ -45,6 +45,11 @@ def _parse_attrs(attrs):
     return result
 
 
+def _parse_container_attrs(attrs):
+    return {text_helpers.safe_attr_name(a[0]): text_helpers.safe_class_name(a[1])
+            for a in attrs.get("container", [])}
+
+
 def yang2class(class_name, data, parent, extra_attrs):
     uses = [text_helpers.safe_class_name(x) for x in data.pop("uses", [])]
     uses.insert(0, parent)
@@ -58,12 +63,14 @@ def yang2class(class_name, data, parent, extra_attrs):
         "super": uses,
         "attrs": {"{}".format(text_helpers.safe_attr_name(k)): v
                   for k, v in extra_attrs.items()},
+        "container": _parse_container_attrs(data.pop("container", {})),
         "_meta": {}
     }
 
     result["_meta"]["when"] = data.pop("when", None)
 
     result["attrs"].update(_parse_attrs(data.pop("leaf", {})))
+    result["attrs"].update(_parse_attrs(data.pop("leaf-list", {})))
     result["attrs"].update(_parse_attrs(data.pop("leaf-list", {})))
 
     if data or info:

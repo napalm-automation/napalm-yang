@@ -10,10 +10,17 @@ ift = ianaift
 from napalm_yang.models.ietf import ietf_inet as inet
 
 from napalm_yang.models.openconfig_extensions import ocext as oc_ext
+from napalm_yang.models.openconfig_types import oc_types
 
 from napalm_yang.models.interfaces import oc_if
 from napalm_yang.models.interfaces import oc_eth
 from napalm_yang.models.interfaces import oc_lag
+
+from napalm_yang.models.policy import oc_pol_types
+from napalm_yang.models.policy import oc_rpol
+
+from napalm_yang.models.bgp import oc_bgp_types
+from napalm_yang.models.bgp import oc_bgp
 
 from napalm_yang.models.vlan import oc_vlan_types
 from napalm_yang.models.vlan import oc_vlan

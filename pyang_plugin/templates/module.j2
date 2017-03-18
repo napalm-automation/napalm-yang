@@ -19,6 +19,7 @@ class LocalNamespace(object):
 {% set oc_ext = "openconfig-extensions" in module.get("import", {}).keys() %}
 
 {{ p.process_imports(module) }}
+{{ p.process_includes(module) }}
 
 {{ p.process_openconfig_extensions(module) }}
 

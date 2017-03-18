@@ -8,6 +8,13 @@ from napalm_yang import {{ vv|safe_attr_name }}
 {% endfor %}
 {%- endmacro %}
 
+{%- macro process_includes(module) -%}
+# Imcludes
+{%- set include = module.pop("include", {}) -%}
+{% for i in include %}
+from {{ i|safe_attr_name }} import *
+{% endfor %}
+{%- endmacro %}
 
 {%- macro process_openconfig_extensions(module) -%}
 # openconfig-extensions
@@ -93,6 +100,9 @@ class {{ name|safe_class_name }}({{ "List, " if cls_type in ["list", "leaf-list"
     yang_prefix = __prefix__
 
     def __init__(self, _meta=None):
+        self._meta = _meta or {}
+        self._meta["when"] = "{{ cls.pop('when', '') }}"
+        {% if cls_type in ["list", "leaf-list"] and "ordered-by" in cls.keys() %}self._meta["ordered_by"] = "{{ cls.pop("ordered-by") }}"{% endif %}
         super().__init__(_meta=_meta)
 {{ _process_attributes(cls, "container")|indent(8) }}
 {{ _process_attributes(cls, "list")|indent(8) }}

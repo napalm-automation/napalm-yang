@@ -22,7 +22,10 @@ class BaseExtractor(object):
         vars.update(extra_vars)
 
         path = [text_helpers.translate_string(p, **vars) for p in path.split(".")]
+
         for p in path:
+            if isinstance(texts, str):
+                return texts
             try:
                 texts = texts[p]
             except TypeError:

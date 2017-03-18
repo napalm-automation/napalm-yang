@@ -27,7 +27,7 @@ def configure_logging(logger, debug):
         logger.setLevel(logging.INFO)
 
     ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
     ch.setFormatter(formatter)
     logger.addHandler(ch)
     return logger
@@ -115,13 +115,16 @@ def save(result, path, module_name):
         package = "{}/{}".format(path, module_name)
         _create_package(package)
 
-        filename = "ietf_{}".format(data["info"]["prefix"]) if "ietf" in package else \
-            data["info"]["prefix"]
-        filename = "{}/{}.py".format(package,
-                                     text_helpers.safe_attr_name(filename))
-        logger.info("Saving module: {}".format(filename))
+        if data.pop("_filename_is_module_name", False):
+            filename = module
+        else:
+            filename = data["info"]["prefix"]
 
-        with open(filename, "w") as f:
+        filename = "ietf_{}".format(filename) if "ietf" in package else filename
+        filepath = "{}/{}.py".format(package, text_helpers.safe_attr_name(filename))
+        logger.info("Saving module: {}".format(filepath))
+
+        with open(filepath, "w") as f:
             f.write(template.render(module=data))
 
 
@@ -134,11 +137,11 @@ def inspect(obj):
 
 SIMPLE = ("base", "uses", "mandatory", "default", "config", "path", "key", "value", "units",
           "range", "pattern", "when", "length", "if-feature", "yin-element", "status",
-          "fraction-digits")
+          "fraction-digits", "include", "ordered-by", )
 
 
 def _parse_simple(sub, store):
-    if sub.keyword == "uses":
+    if sub.keyword in ["uses", "include"]:
         try:
             store[sub.keyword].append(sub.arg)
         except Exception:
@@ -166,7 +169,10 @@ def _parse_info(sub, store):
 
 
 NESTED = ("typedef", "grouping", "container", "leaf", "type", "list", "enum", "typedef", "import",
-          "leaf-list", "feature", "extension", "argument", "identity", "augment")
+          "leaf-list", "feature", "extension", "argument", "identity", "augment", )
+
+
+TBD = ("choice")
 
 
 def _parse_nested(sub, store, root):
@@ -200,6 +206,12 @@ def _parse(substmts, store, root):
             _parse_nested(sub, store[sub.keyword], root)
         elif sub.keyword in SIMPLE:
             _parse_simple(sub, store)
+        elif sub.keyword in TBD:
+            continue
+        elif sub.keyword == "belongs-to":
+            # belongs to can and must have only prefix
+            _parse_info(sub.substmts[0], root["info"])
+            root["_filename_is_module_name"] = True
         else:
             raise Exception("We are not parsing {}".format(sub.keyword))
 
