@@ -6,11 +6,11 @@ metadata:
         config: {}
 
 vlan:
+    _parse: unnecessary
     config:
+        _parse: unnecessary
         vlan_id:
-            _leaf_extraction:
+            _parse:
                 mode: xpath
                 xpath: "vlan-id"
-                type: int
-                from: "parent"
-                default: null
+                from: "{{ parse_bookmarks['parent'] }}"

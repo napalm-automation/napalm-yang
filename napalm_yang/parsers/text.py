@@ -40,7 +40,3 @@ class TextExtractor(BaseParser):
     def _parse_leaf_map(cls, mapping):
         value = cls._parse_leaf_search(mapping)
         return mapping["map"][value]
-
-    @classmethod
-    def _parse_leaf_value(cls, mapping):
-        return mapping["value"]

@@ -1,12 +1,12 @@
 ---
 metadata:
-    prefix: "oc-vlan"
     parser: XMLExtractor
     execute:
         config: {}
 
 routed_vlan:
+    _parse: not_implemented
     config:
+        _parse: not_implemented
         vlan:
-            _leaf_extraction:
-                mode: not_implemented
+            _parse: not_implemented

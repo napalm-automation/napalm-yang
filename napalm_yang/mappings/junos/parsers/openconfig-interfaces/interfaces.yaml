@@ -1,0 +1,88 @@
+---
+metadata:
+    parser: XMLExtractor
+    execute:
+        config:
+            - method: _get_config_xml
+              args:
+                  filter_xml: "<configuration><interfaces></interfaces></configuration>"
+                  options:
+                      source: running
+
+interfaces:
+    _parse: unnecessary
+    interface:
+        _parse:
+            mode: xpath
+            xpath: "configuration/interfaces/interface"
+            key: name
+            from: "{{ parse_bookmarks['parent'] }}"
+        name:
+            _parse: unnecessary
+        hold_time:
+            _parse: not_implemented
+            config:
+                _parse: not_implemented
+                down:
+                    _parse: not_implemented
+                up:
+                    _parse: not_implemented
+        config:
+            _parse: unnecessary
+            name:
+                _parse:
+                    mode: value
+                    value: "{{ interface_key }}"
+            type:
+                _parse:
+                    mode: map
+                    xpath: name
+                    regexp: "(?P<value>[a-z]+).*"
+                    from: "{{ parse_bookmarks['parent'] }}"
+                    map:
+                        ge: ethernetCsmacd
+                        lo: softwareLoopback
+                        ae: ieee8023adLag
+            enabled:
+                _parse:
+                    mode: is_absent
+                    xpath: "disable"
+                    from: "{{ parse_bookmarks['parent'] }}"
+            description:
+                _parse:
+                    mode: xpath
+                    xpath: description
+                    from: "{{ parse_bookmarks['parent'] }}"
+            mtu:
+                _parse:
+                    mode: xpath
+                    xpath: mtu
+                    from: "{{ parse_bookmarks['parent'] }}"
+        subinterfaces:
+            _parse: not_implemented
+            subinterface:
+                _parse:
+                    mode: xpath
+                    xpath: "unit"
+                    key: name
+                    from: "{{ parse_bookmarks['parent'] }}"
+                index:
+                    _parse: unnecessary
+                config:
+                    _parse: not_implemented
+                    index:
+                        _parse: not_implemented
+                    name:
+                        _parse:
+                            mode: value
+                            value: "{{ subinterface_key }}"
+                    enabled:
+                        _parse:
+                            mode: is_absent
+                            xpath: "disable"
+                            from: "{{ parse_bookmarks['parent'] }}"
+                    description:
+                        _parse:
+                            mode: xpath
+                            xpath: description
+                            from: "{{ parse_bookmarks['parent'] }}"

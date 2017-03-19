@@ -4,6 +4,8 @@ import copy
 import yaml
 
 from napalm_yang.parsers.text import TextExtractor
+from napalm_yang.parsers.xml import XMLExtractor
+
 from napalm_yang import text_helpers
 
 
@@ -14,7 +16,7 @@ logger = logging.getLogger("napalm-yang")
 def get_parser(parser):
     parsers = {
         "TextExtractor": TextExtractor,
-        #  "XMLExtractor": XMLExtractor,
+        "XMLExtractor": XMLExtractor,
         #  "TextTranslator": TextTranslator,
         #  "XMLTranslator": XMLTranslator,
     }

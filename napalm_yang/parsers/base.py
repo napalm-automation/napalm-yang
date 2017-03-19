@@ -25,6 +25,10 @@ class BaseParser(object):
     def _parse_list_skip(cls, mapping):
         return {}
 
+    @classmethod
+    def _parse_leaf_value(cls, mapping):
+        return mapping["value"]
+
     """
     @classmethod
     def _parse_leaf_key(cls, mapping, texts, keys, extra_vars):
