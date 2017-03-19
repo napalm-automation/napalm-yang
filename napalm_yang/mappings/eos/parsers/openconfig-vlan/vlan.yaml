@@ -6,11 +6,11 @@ metadata:
         config: {}
 
 vlan:
+    _parse: unnecessary
     config:
+        _parse: unnecessary
         vlan_id:
-            _leaf_extraction:
+            _parse:
                 mode: search
-                regexp: "encapsulation dot1q vlan (?P<value>[0-9]+)"
-                from: "subinterface.{subinterface_key}"
-                type: int
-                default: null
+                regexp: "^\\W*encapsulation dot1q vlan (?P<value>[0-9]+)"
+                from: "{{ parse_bookmarks['parent'] }}"

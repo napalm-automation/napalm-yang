@@ -6,7 +6,6 @@ metadata:
         config: {}
 
 secondary:
-    _leaf_extraction:
-        mode: extra_vars
-        var: "address.secondary"
-        type: boolean
+    _parse:
+        mode: value
+        value: "{{ extra_vars.secondary != None }}"

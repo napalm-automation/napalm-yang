@@ -43,7 +43,6 @@ interfaces:
                     mode: is_present
                     regexp: "(?P<value>no shutdown)"
                     from: "{{ parse_bookmarks.interface[interface_key] }}"
-                    type: boolean
             description:
                 _parse:
                     mode: search
@@ -80,6 +79,4 @@ interfaces:
                         _parse:
                             mode: search
                             regexp: "description (?P<value>.*)"
-                            type: py23_compat.text_type
-                            from: "subinterface.{subinterface_key}"
-                            default: null
+                            from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"

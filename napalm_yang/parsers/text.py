@@ -28,9 +28,7 @@ class TextExtractor(BaseParser):
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping):
-        print(mapping)
         value = cls._parse_leaf_search(mapping, check_default=False)
-        print(666, value)
         return bool(value)
 
     @classmethod
