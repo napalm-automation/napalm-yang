@@ -61,7 +61,7 @@ class Root(object):
             attr = getattr(self, k)
             pybindJSONDecoder.load_json(v, None, None, obj=attr, overwrite=overwrite)
 
-    def parse(self, profile, config):
+    def parse_config(self, profile, config):
         for k, v in self:
-            parser = Parser(v, profile, config)
+            parser = Parser(v, profile, config=config, is_config=True)
             parser.parse()

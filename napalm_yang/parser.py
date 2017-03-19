@@ -99,14 +99,17 @@ def _resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None
 
 class Parser(object):
 
-    def __init__(self, model, profile, config=None, keys=None, bookmarks=None, extra_vars=None):
+    def __init__(self, model, profile, is_config,
+                 config=None, keys=None, bookmarks=None, extra_vars=None):
         self.model = model
         self.profile = profile
+        self.is_config = is_config
         self._defining_module = model._defining_module
         self._yang_name = model._yang_name
 
+        parser_path = os.path.join("parsers", "config" if is_config else "state")
         self.mapping = read_yang_map(model._defining_module, model._yang_name,
-                                     self.profile, "parsers")
+                                     self.profile, parser_path)
 
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
@@ -143,13 +146,16 @@ class Parser(object):
                                           None, self.bookmarks)
         for k, v in model:
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
+            if self.is_config and (not v._is_config or k == "state"):
+                continue
+            elif not self.is_config and (v._is_config or k == "config"):
+                continue
+
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                parser = Parser(v, self.profile, self.config, self.keys, self.bookmarks,
-                                self.extra_vars)
+                parser = Parser(v, self.profile, self.is_config, self.config,
+                                self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
-            elif not v._is_config or k == "state":
-                continue
             else:
                 self._parse(k, v, mapping[k])
 
