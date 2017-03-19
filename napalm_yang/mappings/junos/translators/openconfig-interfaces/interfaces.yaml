@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-if"
-    parser: XMLTranslator
+    translator: XMLTranslator
     xml_root: configuration
 
 interfaces:
@@ -29,13 +28,13 @@ interfaces:
             _translation: unnecessary
             name:
                 _translation: unnecessary
-            type_:
+            type:
                 _translation: unnecessary
             enabled:
                 _translation:
                     - mode: element
                       element: "disable"
-                      when: "{{ not model.value }}"
+                      when: "{{ not model }}"
                       value: null
             description:
                 _translation:
@@ -65,7 +64,7 @@ interfaces:
                         _translation:
                             - mode: element
                               element: "disable"
-                              when: "{{ not model.value }}"
+                              when: "{{ not model }}"
                               value: null
                     description:
                             _translation:

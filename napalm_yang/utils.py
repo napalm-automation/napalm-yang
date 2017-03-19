@@ -3,6 +3,9 @@ import yaml
 from napalm_yang.parsers.text import TextExtractor
 from napalm_yang.parsers.xml import XMLExtractor
 
+#  from napalm_yang.translators.text import TextTranslator
+from napalm_yang.translators.xml import XMLTranslator
+
 import os
 import jinja2
 
@@ -15,7 +18,7 @@ def get_parser(parser):
         "TextExtractor": TextExtractor,
         "XMLExtractor": XMLExtractor,
         #  "TextTranslator": TextTranslator,
-        #  "XMLTranslator": XMLTranslator,
+        "XMLTranslator": XMLTranslator,
     }
     return parsers[parser]
 
@@ -66,7 +69,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                                                                                       attribute))
     kwargs = dict(keys)
     rule = dict(rule)
-    kwargs["translation_model"] = translation_model
+    kwargs["model"] = translation_model
     kwargs["parse_bookmarks"] = parse_bookmarks
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars

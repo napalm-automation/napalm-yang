@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-ip"
-    parser: XMLTranslator
+    translator: XMLTranslator
 
 ipv4:
     _translation:
@@ -30,7 +29,8 @@ ipv4:
                     _translation:
                         - mode: element
                           element: name
-                          value: "{{ model._parent.ip.value }}/{{ model.value }}"
+                          value: "{{ model._parent.ip }}/{{ model }}"
+                          when: "{{ model }}"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:
@@ -51,7 +51,29 @@ ipv4:
                             _translation: not_implemented
                         accept_mode:
                             _translation: not_implemented
+    unnumbered:
+        _translation: not_implemented
+        config:
+            _translation: not_implemented
+            enabled:
+                _translation: not_implemented
+        interface_ref:
+            _translation: not_implemented
+            config:
+                _translation: not_implemented
+                interface:
+                    _translation: not_implemented
+                subinterface:
+                    _translation: not_implemented
     neighbors:
         _translation: not_implemented
         neighbor:
             _translation: not_implemented
+            ip:
+                _translation: not_implemented
+            config:
+                _translation: not_implemented
+                ip:
+                    _translation: not_implemented
+                link_layer_address:
+                    _translation: not_implemented

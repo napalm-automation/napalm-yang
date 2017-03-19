@@ -1,5 +1,7 @@
 from pyangbind.lib.serialise import pybindJSONDecoder
+
 from napalm_yang.parser import Parser
+from napalm_yang.translator import Translator
 
 
 def model_to_dict(model):
@@ -65,3 +67,13 @@ class Root(object):
         for k, v in self:
             parser = Parser(v, profile, config=config, is_config=True)
             parser.parse()
+
+    def translate_config(self, profile, merge=None, replace=None):
+        result = []
+        for k, v in self:
+            other_merge = getattr(merge, k) if merge else None
+            other_replace = getattr(replace, k) if merge else None
+            translator = Translator(v, profile, merge=other_merge, replace=other_replace)
+            result.append(translator.translate())
+
+        return "\n".join(result)

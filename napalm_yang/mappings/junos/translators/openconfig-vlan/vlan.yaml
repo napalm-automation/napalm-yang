@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-vlan"
-    parser: XMLTranslator
+    translator: XMLTranslator
 
 vlan:
     _translation: unnecessary
@@ -12,7 +11,7 @@ vlan:
                 - mode: element
                   element: "vlan-tagging"
                   in: "interface.{{ interface_key }}"
-                  when: "{{ model.value }}"
+                  when: "{{ model }}"
                   value: null
                 - mode: element
                   element: "vlan-id"

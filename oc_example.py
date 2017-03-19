@@ -70,12 +70,12 @@ vlans_dict = {
 config.load_dict(vlans_dict)
 pretty_print(config.vlans.get(filter=True))
 
-with open("interactive_demo/eos.config", "r") as f:
-    configuration = [{"show running-config all": f.read()}]
+#  with open("interactive_demo/eos.config", "r") as f:
+    #  configuration = [{"show running-config all": f.read()}]
 
-config.interfaces.interface.delete("eth1")
-config.parse_config(profile="eos", config=configuration)
-pretty_print(config.get(filter=True))
+#  config.interfaces.interface.delete("eth1")
+#  config.parse_config(profile="eos", config=configuration)
+#  pretty_print(config.get(filter=True))
 
 # JUNOS
 with open("interactive_demo/junos.config", "r") as f:
@@ -85,3 +85,6 @@ config = base.Root()
 config.add_model(models.openconfig_interfaces)
 config.parse_config(profile="junos", config=configuration)
 pretty_print(config.get(filter=True))
+
+text = config.translate_config("junos")
+print(text)

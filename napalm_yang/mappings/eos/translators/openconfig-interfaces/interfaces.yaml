@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-if"
-    parser: TextTranslator
+    translator: TextTranslator
     root: true
 
 interfaces:
