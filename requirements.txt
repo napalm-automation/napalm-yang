@@ -1,2 +1,4 @@
 future
+lxml
+jinja2
 pyangbind
