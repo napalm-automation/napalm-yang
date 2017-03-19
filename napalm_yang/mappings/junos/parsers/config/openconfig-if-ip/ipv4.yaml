@@ -1,8 +1,6 @@
 ---
 metadata:
     parser: XMLExtractor
-    execute:
-        config: {}
 
 ipv4:
     _parse: unnecessary

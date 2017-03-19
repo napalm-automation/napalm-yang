@@ -2,10 +2,9 @@
 metadata:
     parser: TextExtractor
     execute:
-        config:
-            - method: cli
-              args:
-                  commands: ["show running-config all"]
+        - method: cli
+          args:
+              commands: ["show running-config all"]
 interfaces:
     _parse: unnecessary
     interface:

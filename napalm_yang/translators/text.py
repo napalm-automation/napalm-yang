@@ -1,4 +1,6 @@
-from napalm_yang.translator.xml import XMLTranslator
+from builtins import super
+
+from napalm_yang.translators.xml import XMLTranslator
 
 from lxml import etree
 
@@ -16,9 +18,9 @@ class TextTranslator(XMLTranslator):
     def _parse_leaf_element(self, attribute, model, other, mapping, translation):
         force = False
         if self.merge and other:
-            if model.value == other.value:
+            if model == other:
                 return
-            elif model.value is None:
+            elif model is None:
                 force = True
                 mapping["value"] = mapping["negate"]
 

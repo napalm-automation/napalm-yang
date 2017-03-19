@@ -2,8 +2,6 @@
 metadata:
     prefix: "oc-vlan"
     parser: TextExtractor
-    execute:
-        config: {}
 
 vlan:
     _parse: unnecessary

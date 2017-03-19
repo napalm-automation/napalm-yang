@@ -56,7 +56,7 @@ class XMLTranslator(BaseTranslator):
 
     def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
         delete = False
-        if model is None and other and self.merge:
+        if not model and other and self.merge:
             delete = True
         elif model is None and not force:
             return

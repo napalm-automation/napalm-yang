@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-vlan"
-    parser: TextTranslator
+    translator: TextTranslator
 
 routed_vlan:
     _translation: unnecessary

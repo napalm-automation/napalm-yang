@@ -63,16 +63,16 @@ class Root(object):
             attr = getattr(self, k)
             pybindJSONDecoder.load_json(v, None, None, obj=attr, overwrite=overwrite)
 
-    def parse_config(self, profile, config):
+    def parse_config(self, device=None, profile=None, config=None):
         for k, v in self:
-            parser = Parser(v, profile, config=config, is_config=True)
+            parser = Parser(v, device=device, profile=profile, config=config, is_config=True)
             parser.parse()
 
     def translate_config(self, profile, merge=None, replace=None):
         result = []
         for k, v in self:
             other_merge = getattr(merge, k) if merge else None
-            other_replace = getattr(replace, k) if merge else None
+            other_replace = getattr(replace, k) if replace else None
             translator = Translator(v, profile, merge=other_merge, replace=other_replace)
             result.append(translator.translate())
 

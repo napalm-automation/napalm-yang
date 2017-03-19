@@ -9,10 +9,11 @@ logger = logging.getLogger("napalm-yang")
 
 class Parser(object):
 
-    def __init__(self, model, profile, is_config,
+    def __init__(self, model, device=None, profile=None, is_config=None,
                  config=None, keys=None, bookmarks=None, extra_vars=None):
         self.model = model
-        self.profile = profile
+        self.device = device
+        self.profile = profile or device.profile
         self.is_config = is_config
         self._defining_module = model._defining_module
         self._yang_name = model._yang_name
@@ -24,17 +25,35 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
-        if config:
-            self.bookmarks = {self._yang_name: config, "parent": config}
-            self.config = config
-        else:
-            # TODO
-            pass
+        self.config = config or []
 
+        if self.mapping and device:
+            device_config = self._execute_methods(device,
+                                                  self.mapping["metadata"].get("execute", []))
+        else:
+            device_config = []
+
+        self.config = self.config + device_config
+
+        if not self.config:
+            raise Exception("I don't have any data to operate with")
+
+        self.bookmarks = {self._yang_name: self.config, "parent": self.config}
         self.bookmarks = bookmarks or self.bookmarks
 
         if self.mapping:
             self.parser = utils.get_parser(self.mapping["metadata"]["parser"])
+
+    def _execute_methods(self, device, methods):
+        result = []
+        for m in methods:
+            attr = device
+            for p in m["method"].split("."):
+                attr = getattr(attr, p)
+
+            result.append(attr(**m["args"]))
+
+        return result
 
     def parse(self):
         if not self.mapping:
@@ -63,7 +82,7 @@ class Parser(object):
 
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                parser = Parser(v, self.profile, self.is_config, self.config,
+                parser = Parser(v, self.device, self.profile, self.is_config, self.config,
                                 self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
             else:

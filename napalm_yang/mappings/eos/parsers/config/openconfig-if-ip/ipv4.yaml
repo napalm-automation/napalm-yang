@@ -1,8 +1,6 @@
 ---
 metadata:
     parser: TextExtractor
-    execute:
-        config: {}
 
 ipv4:
     _parse: unnecessary

@@ -2,21 +2,20 @@
 metadata:
     parser: XMLExtractor
     execute:
-        config:
-            - method: _get_config_xml
-              args:
-                  filter_xml: "<configuration><interfaces></interfaces></configuration>"
-                  options:
-                      source: running
+        - method: _get_config_xml
+          args:
+              filter_xml: "<configuration><interfaces></interfaces></configuration>"
+              options:
+                  source: running
 
 interfaces:
     _parse: unnecessary
     interface:
         _parse:
             mode: xpath
-            xpath: "configuration/interfaces/interface"
+            xpath: "interfaces/interface"
             key: name
-            from: "{{ parse_bookmarks['parent'] }}"
+            from: "{{ parse_bookmarks.interfaces.0 }}"
         name:
             _parse: unnecessary
         hold_time:

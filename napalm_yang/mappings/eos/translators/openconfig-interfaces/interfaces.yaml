@@ -27,31 +27,32 @@ interfaces:
             _translation: unnecessary
             name:
                 _translation: unnecessary
-            type_:
+            type:
                 _translation: unnecessary
             enabled:
                 _translation:
                     - mode: element
                       value: "    shutdown\n"
-                      when: "{{ not model.value }}"
+                      when: "{{ not model }}"
             description:
                 _translation:
                     - mode: element
-                      value: "    description {{ model.value }}\n"
+                      value: "    description {{ model }}\n"
                       negate: "    default description"
             mtu:
                 _translation:
                     - mode: element
-                      value: "    mtu {{ model.value }}\n"
+                      value: "    mtu {{ model }}\n"
                       negate: "    default mtu\n"
+                      when: "{{ model > 0 }}"
         subinterfaces:
             _translation: unnecessary
             subinterface:
                 _translation:
                     mode: container
                     container: interface
-                    key_value: "interface {{ subinterface_key }}\n"
-                    negate: "no interface {{ subinterface_key }}\n"
+                    key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
+                    negate: "no interface {{ interface_key}}.{{ subinterface_key }}\n"
                     in: "interfaces"
                 index:
                     _translation: unnecessary
@@ -65,9 +66,9 @@ interfaces:
                         _translation:
                             - mode: element
                               value: "    shutdown\n"
-                              when: "{{ not model.value }}"
+                              when: "{{ not model }}"
                     description:
                         _translation:
                             - mode: element
-                              value: "    description {{ model.value }}\n"
+                              value: "    description {{ model }}\n"
                               negate: "    default description"

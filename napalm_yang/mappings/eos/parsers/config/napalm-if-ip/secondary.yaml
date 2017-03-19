@@ -2,8 +2,6 @@
 metadata:
     prefix: "napalm-ip"
     parser: TextExtractor
-    execute:
-        config: {}
 
 secondary:
     _parse:

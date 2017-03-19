@@ -54,7 +54,7 @@ class Translator(object):
         return self.translator.post_processing(self)
 
     def _translate(self, attribute, model, mapping, translation, other):
-        logger.debug("Parsing attribute: {}".format(model._yang_path()))
+        logger.debug("Translating attribute: {}".format(model._yang_path()))
 
         if model._is_container in ("container", ):
             self._translate_container(attribute, model, mapping, translation, other)
@@ -106,9 +106,9 @@ class Translator(object):
             element = model[key]
             logger.debug("Translating {} {}".format(attribute, key))
 
-            if other:
-                other_element = other.get(key, None)
-            else:
+            try:
+                other_element = other[key]
+            except Exception:
                 other_element = None
 
             key_name = "{}_key".format(attribute)
@@ -139,7 +139,8 @@ class Translator(object):
 
         if other:
             # Let's default elements not present in the model
-            for key, element in other.items():
+            for key in other:
+                element = other[key]
                 if key not in model.keys():
                     key_name = "{}_key".format(attribute)
                     self.keys[key_name] = key

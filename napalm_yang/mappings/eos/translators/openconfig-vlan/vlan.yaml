@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-vlan"
-    parser: TextTranslator
+    translator: TextTranslator
 
 vlan:
     _translation: unnecessary
@@ -10,5 +9,5 @@ vlan:
         vlan_id:
             _translation:
                 - mode: element
-                  value: "    encapsulation dot1q vlan {{ model.value }}\n"
-                  when: "{{ model.value }}"
+                  value: "    encapsulation dot1q vlan {{ model }}\n"
+                  when: "{{ model }}"

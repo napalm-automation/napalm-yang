@@ -1,8 +1,7 @@
 ---
 metadata:
     parser: XMLExtractor
-    execute:
-        config: {}
+    execute: []
 
 routed_vlan:
     _parse: not_implemented

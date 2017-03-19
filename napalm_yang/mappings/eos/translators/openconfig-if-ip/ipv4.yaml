@@ -1,7 +1,6 @@
 ---
 metadata:
-    prefix: "oc-ip"
-    parser: TextTranslator
+    translator: TextTranslator
 
 ipv4:
     _translation: unnecessary
@@ -13,7 +12,7 @@ ipv4:
                   value: "    no switchport\n"
                   negate: "    switchport\n"
                   in: "interface.{{ interface_key }}"
-                  when: "{{ model.value and not ( interface_key[0:4] in ['Mana', 'Loop'] ) }}"
+                  when: "{{ model and not ( interface_key[0:4] in ['Mana', 'Loop'] ) }}"
         mtu:
             _translation: not_implemented
     addresses:
@@ -29,8 +28,8 @@ ipv4:
                 prefix_length:
                     _translation:
                         - mode: element
-                          value: "    ip address {{ model._parent.ip.value }}/{{ model.value }} {{ 'secondary' if model._parent.secondary else '' }}\n"
-                          negate: "    default ip address {{ model._parent.ip.value }}/{{ model.value }}\n"
+                          value: "    ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
+                          negate: "    default ip address {{ model._parent.ip }}/{{ model }}\n"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:
@@ -51,8 +50,30 @@ ipv4:
                             _translation: not_implemented
                         accept_mode:
                             _translation: not_implemented
+    unnumbered:
+        _translation: not_implemented
+        config:
+            _translation: not_implemented
+            enabled:
+                _translation: not_implemented
+        interface_ref:
+            _translation: not_implemented
+            config:
+                _translation: not_implemented
+                interface:
+                    _translation: not_implemented
+                subinterface:
+                    _translation: not_implemented
     neighbors:
         _translation: not_implemented
         neighbor:
             _translation: not_implemented
+            ip:
+                _translation: not_implemented
+            config:
+                _translation: not_implemented
+                ip:
+                    _translation: not_implemented
+                link_layer_address:
+                    _translation: not_implemented
 

@@ -2,8 +2,7 @@
 metadata:
     prefix: "oc-vlan"
     parser: XMLExtractor
-    execute:
-        config: {}
+    execute: []
 
 vlan:
     _parse: unnecessary
