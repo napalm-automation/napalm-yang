@@ -44,7 +44,6 @@ interfaces:
                     - mode: element
                       value: "    mtu {{ model }}\n"
                       negate: "    default mtu\n"
-                      when: "{{ model > 0 }}"
         subinterfaces:
             _translation: unnecessary
             subinterface:

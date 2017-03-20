@@ -56,16 +56,16 @@ class XMLTranslator(BaseTranslator):
 
     def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
         delete = False
-        if not model and other and self.merge:
+        if not model._changed() and other and self.merge:
             delete = True
-        elif model is None and not force:
+        elif not model._changed() and not force:
             return
 
         try:
             # We want to make sure we capture None
             value = mapping["value"]
         except Exception:
-            value = model
+            value = None if not model._changed() else model
 
         e = etree.SubElement(translation, mapping["element"])
 

@@ -38,7 +38,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-config_logging()
+# config_logging()
 
 
 def pretty_print(dictionary):

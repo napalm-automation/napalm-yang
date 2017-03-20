@@ -44,7 +44,6 @@ interfaces:
                 _translation:
                     - mode: element
                       element: mtu
-                      when: "{{ model > 0 }}"
         subinterfaces:
             _translation: unnecessary
             subinterface:

@@ -10,4 +10,3 @@ vlan:
             _translation:
                 - mode: element
                   value: "    encapsulation dot1q vlan {{ model }}\n"
-                  when: "{{ model }}"
