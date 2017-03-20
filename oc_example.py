@@ -197,7 +197,7 @@ def test_eos(replace):
     eos_device.close()
 
 
-#  test_eos(replace=False)
+test_eos(replace=False)
 #  test_eos(replace=True)
 
 

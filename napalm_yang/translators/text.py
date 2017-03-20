@@ -20,7 +20,7 @@ class TextTranslator(XMLTranslator):
         if self.merge and other:
             if model == other:
                 return
-            elif model is None:
+            elif not model._changed():
                 force = True
                 mapping["value"] = mapping["negate"]
 
