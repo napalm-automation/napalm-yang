@@ -198,7 +198,7 @@ def test_eos(replace):
 
 
 #  test_eos(replace=False)
-test_eos(replace=True)
+#  test_eos(replace=True)
 
 
 def test_config_load_file(vendor):
@@ -240,3 +240,35 @@ def test():
 
 
 #  test()
+
+
+def test_eos_diff():
+    eos_device.open()
+
+    # first let's create a candidate config by retrieving the current state of the device
+    candidate = napalm_yang.base.Root()
+    candidate.add_model(napalm_yang.models.openconfig_interfaces)
+    candidate.parse_config(device=eos_device)
+
+    pretty_print(candidate.get(filter=True))
+
+    # now let's do a few changes, let's remove lo1 and create lo0
+    candidate.interfaces.interface.delete("Loopback1")
+    lo0 = candidate.interfaces.interface.add("Loopback0")
+    lo0.config.description = "new loopback"
+
+    # Let's also default the mtu of ge-0/0/0 which is set to 1400
+    candidate.interfaces.interface["Port-Channel1"].config._unset_mtu()
+
+    # We will also need a running configuration to compare against
+    running = napalm_yang.base.Root()
+    running.add_model(napalm_yang.models.openconfig_interfaces)
+    running.parse_config(device=eos_device)
+
+    diff = napalm_yang.utils.diff(candidate, running)
+    pretty_print(diff)
+
+    eos_device.close()
+
+
+test_eos_diff()
