@@ -24,13 +24,17 @@ models_openconfig:
 		$(YANG_OC)/vlan/*.yang \
 		$(YANG_NAPALM)/interfaces/*.yang
 
-.PHONY: models_ietf
-models_ietf:
-	rm -rf $(MODELS_PATH)/ietf/
-	$(PYANGBING) \
-		--path $(YANG_IETF) \
-		--split-class-dir=$(MODELS_PATH)/ietf/ \
-		$(YANG_IETF)/DRAFT/ietf-pim*
+# .PHONY: models_ietf
+# models_ietf:
+#     rm -rf $(MODELS_PATH)/ietf/
+#     $(PYANGBING) \
+#         --path $(YANG_IETF)/RFC \
+#         --path $(YANG_IETF)/DRAFT \
+#         --split-class-dir=$(MODELS_PATH)/ietf/ \
+#         $(YANG_IETF)/RFC/ietf-yang-types.yang \
+#         $(YANG_IETF)/RFC/ietf-interfaces@2014-05-08.yang \
+#         $(YANG_IETF)/RFC/ietf-routing@2016-11-04.yang \
+#         $(YANG_IETF)/DRAFT/ietf-pim*
 
 .PHONY: submodule
 submodule:
