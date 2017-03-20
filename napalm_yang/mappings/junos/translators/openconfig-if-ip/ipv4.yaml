@@ -1,0 +1,79 @@
+---
+metadata:
+    translator: XMLTranslator
+
+ipv4:
+    _translation:
+        mode: container
+        container: family.inet
+        when: "{{ model.config.enabled or model.addresses.address|length }}"
+    config:
+        _translation: unnecessary
+        enabled:
+            _translation: unnecessary
+        mtu:
+            _translation: not_implemented
+    addresses:
+        _translation: unnecessary
+        address:
+            _translation:
+                mode: container
+                container: address
+            ip:
+                _translation: unnecessary
+            config:
+                _translation: unnecessary
+                ip:
+                    _translation: unnecessary
+                prefix_length:
+                    _translation:
+                        - mode: element
+                          element: name
+                          value: "{{ model._parent.ip }}/{{ model }}"
+                          when: "{{ model }}"
+            vrrp:
+                _translation: not_implemented
+                vrrp_group:
+                    _translation: not_implemented
+                    virtual_router_id:
+                    config:
+                        virtual_address:
+                            _translation: not_implemented
+                        priority:
+                            _translation: not_implemented
+                        preempt:
+                            _translation: not_implemented
+                        advertisement_interval:
+                            _translation: not_implemented
+                        virtual_router_id:
+                            _translation: not_implemented
+                        preempt_delay:
+                            _translation: not_implemented
+                        accept_mode:
+                            _translation: not_implemented
+    unnumbered:
+        _translation: not_implemented
+        config:
+            _translation: not_implemented
+            enabled:
+                _translation: not_implemented
+        interface_ref:
+            _translation: not_implemented
+            config:
+                _translation: not_implemented
+                interface:
+                    _translation: not_implemented
+                subinterface:
+                    _translation: not_implemented
+    neighbors:
+        _translation: not_implemented
+        neighbor:
+            _translation: not_implemented
+            ip:
+                _translation: not_implemented
+            config:
+                _translation: not_implemented
+                ip:
+                    _translation: not_implemented
+                link_layer_address:
+                    _translation: not_implemented

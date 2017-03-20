@@ -1,4 +1,3 @@
-pyang
 pylama
 jinja2
 pytest

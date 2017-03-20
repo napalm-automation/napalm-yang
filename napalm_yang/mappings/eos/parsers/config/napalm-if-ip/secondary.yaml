@@ -1,0 +1,9 @@
+---
+metadata:
+    prefix: "napalm-ip"
+    parser: TextExtractor
+
+secondary:
+    _parse:
+        mode: value
+        value: "{{ extra_vars.secondary != None }}"

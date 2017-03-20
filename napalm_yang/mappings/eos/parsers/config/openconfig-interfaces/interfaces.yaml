@@ -1,0 +1,81 @@
+---
+metadata:
+    parser: TextExtractor
+    execute:
+        - method: cli
+          args:
+              commands: ["show running-config all"]
+interfaces:
+    _parse: unnecessary
+    interface:
+        _parse:
+            mode: block
+            regexp: "(?P<block>interface (?P<key>(Ethernet|Management|Loopback|Port-Channel|Vlan)\\d+)\n(?:.|\n)*?^!$)"
+            from: "{{ parse_bookmarks.interfaces.0['show running-config all'] }}"
+        name:
+            _parse: unnecessary
+        hold_time:
+            _parse: not_implemented
+            config:
+                _parse: not_implemented
+                down:
+                    _parse: not_implemented
+                up:
+                    _parse: not_implemented
+        config:
+            _parse: unnecessary
+            name:
+                _parse: unnecessary
+            type:
+                _parse:
+                    mode: map
+                    regexp: "interface (?P<value>(Ethernet|Management|Loopback|Port-Channel|Vlan)).*"
+                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    map:
+                        Ethernet: ethernetCsmacd
+                        Management: ethernetCsmacd
+                        Loopback: softwareLoopback
+                        Port-Channel: ieee8023adLag
+                        Vlan: l3ipvlan
+            enabled:
+                _parse:
+                    mode: is_present
+                    regexp: "(?P<value>no shutdown)"
+                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+            description:
+                _parse:
+                    mode: search
+                    regexp: "description (?P<value>.*)"
+                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+            mtu:
+                _parse:
+                    mode: search
+                    regexp: "mtu (?P<value>[0-9]+)"
+                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+        subinterfaces:
+            _parse: unnecessary
+            subinterface:
+                _parse:
+                    mode: block
+                    regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
+                    from: "{{ parse_bookmarks.interfaces.0['show running-config all'] }}"
+                index:
+                    _parse: unnecessary
+                config:
+                    _parse: unnecessary
+                    index:
+                        _parse: unnecessary
+                    name:
+                        _parse:
+                            mode: value
+                            value: "{{ interface_key }}.{{ subinterface_key}}"
+                    enabled:
+                        _parse:
+                            mode: is_present
+                            regexp: "(?P<value>no shutdown)"
+                            from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"
+                    description:
+                        _parse:
+                            mode: search
+                            regexp: "description (?P<value>.*)"
+                            from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"

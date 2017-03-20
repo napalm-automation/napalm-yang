@@ -1,0 +1,15 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    parser: XMLExtractor
+    execute: []
+
+vlan:
+    _parse: unnecessary
+    config:
+        _parse: unnecessary
+        vlan_id:
+            _parse:
+                mode: xpath
+                xpath: "vlan-id"
+                from: "{{ parse_bookmarks['parent'] }}"
