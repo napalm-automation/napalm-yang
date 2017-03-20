@@ -157,7 +157,7 @@ def test_junos(replace):
     junos_device.close()
 
 
-test_junos(replace=False)
+#  test_junos(replace=False)
 #  test_junos(replace=True)
 
 
@@ -197,8 +197,8 @@ def test_eos(replace):
     eos_device.close()
 
 
-test_eos(replace=False)
-#  test_eos(replace=True)
+#  test_eos(replace=False)
+test_eos(replace=True)
 
 
 def test_config_load_file(vendor):

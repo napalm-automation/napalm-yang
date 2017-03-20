@@ -134,5 +134,10 @@ class Parser(object):
 
         value = self.parser.parse_leaf(mapping["_parse"])
 
-        if value is not None and value != model.default():
-            setattr(model._parent, attribute, value)
+        if value is not None and (value != model.default() or isinstance(value, bool)):
+            setter = getattr(model._parent, "_set_{}".format(attribute))
+            setter(value)
+
+            # parent.model is now a new class
+            model = getattr(model._parent, attribute)
+            model._mchanged = True
