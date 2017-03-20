@@ -1,7 +1,6 @@
 from napalm_base import get_network_driver
 
-from napalm_yang import models
-from napalm_yang import base
+import napalm_yang
 
 import json
 import sys
@@ -39,7 +38,7 @@ def config_logging():
     logger.addHandler(ch)
 
 
-#  config_logging()
+config_logging()
 
 
 def pretty_print(dictionary):
@@ -104,8 +103,8 @@ def test_config_load_and_translation(vendor):
     #  with open("interactive_demo/{}.config".format(vendor), "r") as f:
     #      configuration = f.read()
 
-    config = base.Root()
-    config.add_model(models.openconfig_interfaces)
+    config = napalm_yang.base.Root()
+    config.add_model(napalm_yang.models.openconfig_interfaces)
     device.open()
     config.parse_config(device=device)
 
@@ -128,8 +127,8 @@ def test_junos(replace):
     junos_device.open()
 
     # first let's create a candidate config by retrieving the current state of the device
-    candidate = base.Root()
-    candidate.add_model(models.openconfig_interfaces)
+    candidate = napalm_yang.base.Root()
+    candidate.add_model(napalm_yang.models.openconfig_interfaces)
     candidate.parse_config(device=junos_device)
 
     # now let's do a few changes, let's remove lo0.0 and create lo0.1
@@ -138,11 +137,11 @@ def test_junos(replace):
     lo1.config.description = "new loopback"
 
     # Let's also default the mtu of ge-0/0/0 which is set to 1400
-    #  candidate.interfaces.interface["ge-0/0/0"].config.mtu = 0
+    candidate.interfaces.interface["ge-0/0/0"].config._unset_mtu()
 
     # We will also need a running configuration to compare against
-    running = base.Root()
-    running.add_model(models.openconfig_interfaces)
+    running = napalm_yang.base.Root()
+    running.add_model(napalm_yang.models.openconfig_interfaces)
     running.parse_config(device=junos_device)
 
     if replace:
@@ -158,7 +157,7 @@ def test_junos(replace):
     junos_device.close()
 
 
-#  test_junos(replace=False)
+test_junos(replace=False)
 #  test_junos(replace=True)
 
 
@@ -166,8 +165,8 @@ def test_eos(replace):
     eos_device.open()
 
     # first let's create a candidate config by retrieving the current state of the device
-    candidate = base.Root()
-    candidate.add_model(models.openconfig_interfaces)
+    candidate = napalm_yang.base.Root()
+    candidate.add_model(napalm_yang.models.openconfig_interfaces)
     candidate.parse_config(device=eos_device)
 
     pretty_print(candidate.get(filter=True))
@@ -181,8 +180,8 @@ def test_eos(replace):
     candidate.interfaces.interface["Port-Channel1"].config._unset_mtu()
 
     # We will also need a running configuration to compare against
-    running = base.Root()
-    running.add_model(models.openconfig_interfaces)
+    running = napalm_yang.base.Root()
+    running.add_model(napalm_yang.models.openconfig_interfaces)
     running.parse_config(device=eos_device)
 
     if replace:
@@ -195,9 +194,49 @@ def test_eos(replace):
     print(eos_device.compare_config())
     eos_device.discard_config()
 
-    eos_device.discard_config()
     eos_device.close()
 
 
-# test_eos(replace=False)
-test_eos(replace=True)
+#  test_eos(replace=False)
+#  test_eos(replace=True)
+
+
+def test_config_load_file(vendor):
+    with open("interactive_demo/{}.config".format(vendor), "r") as f:
+        configuration = f.read()
+    if vendor == "eos":
+        pass
+    elif vendor == "junos":
+        configuration = [configuration]
+
+    config = napalm_yang.base.Root()
+    config.add_model(napalm_yang.models.openconfig_interfaces)
+    config.parse_config(config=configuration, profile="junos")
+
+    pretty_print(config.get(filter=True))
+
+
+#  test_config_load_file("junos")
+#  test_config_load_file("eos")
+
+
+def test():
+    candidate = napalm_yang.base.Root()
+    candidate.add_model(napalm_yang.models.openconfig_interfaces())
+
+    def create_iface(candidate, name, description, mtu, prefix, prefix_length):
+        interface = candidate.interfaces.interface.add(name)
+        interface.config.description = description
+        interface.config.mtu = mtu
+        ip = interface.routed_vlan.ipv4.addresses.address.add(prefix)
+        ip.config.ip = prefix
+        ip.config.prefix_length = prefix_length
+
+    create_iface(candidate, "et1", "Uplink1", 9000, "192.168.1.1", 24)
+    create_iface(candidate, "et2", "Uplink2", 9000, "192.168.2.1", 24)
+
+    pretty_print(candidate.get(filter=True))
+    print(candidate.translate_config(profile=junos_device.profile))
+
+
+#  test()

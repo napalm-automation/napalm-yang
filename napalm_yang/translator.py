@@ -1,4 +1,4 @@
-from napalm_yang import utils
+from napalm_yang import helpers
 
 
 import logging
@@ -35,11 +35,11 @@ class Translator(object):
         self.replace = replace
         self.other = merge or replace
 
-        self.mapping = utils.read_yang_map(model._defining_module, model._yang_name,
-                                           self.profile, "translators")
+        self.mapping = helpers.read_yang_map(model._defining_module, model._yang_name,
+                                             self.profile, "translators")
 
         if self.mapping:
-            translator = utils.get_parser(self.mapping["metadata"]["translator"])
+            translator = helpers.get_parser(self.mapping["metadata"]["translator"])
             self.translator = translator(merge=bool(merge), replace=bool(replace))
 
             if translation is None:
@@ -67,8 +67,8 @@ class Translator(object):
         if model._yang_type:
             self.bookmarks["parent"] = translation
 
-            rule = utils.resolve_rule(mapping["_translation"], attribute, self.keys,
-                                      None, model, self.bookmarks)
+            rule = helpers.resolve_rule(mapping["_translation"], attribute, self.keys,
+                                        None, model, self.bookmarks)
 
             translation_point = _find_translation_point(rule, self.bookmarks, translation)
             et = self.translator.parse_container(attribute, model, other, rule, translation_point)
@@ -115,8 +115,8 @@ class Translator(object):
             self.keys[key_name] = key
             self.keys["parent_key"] = key
 
-            translation_rule = utils.resolve_rule(mapping["_translation"], attribute,
-                                                  self.keys, None, element, self.bookmarks)
+            translation_rule = helpers.resolve_rule(mapping["_translation"], attribute,
+                                                    self.keys, None, element, self.bookmarks)
             translation_point = _find_translation_point(translation_rule, self.bookmarks,
                                                         translation)
 
@@ -146,8 +146,9 @@ class Translator(object):
                     self.keys[key_name] = key
                     self.keys["parent_key"] = key
 
-                    translation_rule = utils.resolve_rule(mapping["_translation"], attribute,
-                                                          self.keys, None, element, self.bookmarks)
+                    translation_rule = helpers.resolve_rule(mapping["_translation"], attribute,
+                                                            self.keys, None, element,
+                                                            self.bookmarks)
                     translation_point = _find_translation_point(translation_rule, self.bookmarks,
                                                                 translation)
 
@@ -157,7 +158,7 @@ class Translator(object):
         rules = [mapping["_translation"]] if isinstance(mapping["_translation"], str) \
                 else mapping["_translation"]
         for rule in rules:
-            rule = utils.resolve_rule(rule, attribute, self.keys, None, model, self.bookmarks)
+            rule = helpers.resolve_rule(rule, attribute, self.keys, None, model, self.bookmarks)
             translation_point = _find_translation_point(rule, self.bookmarks,
                                                         translation)
             self.translator.parse_leaf(attribute, model, other, rule, translation_point)

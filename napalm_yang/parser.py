@@ -1,7 +1,7 @@
 import os
 import copy
 
-from napalm_yang import utils
+from napalm_yang import helpers
 
 import logging
 logger = logging.getLogger("napalm-yang")
@@ -19,8 +19,8 @@ class Parser(object):
         self._yang_name = model._yang_name
 
         parser_path = os.path.join("parsers", "config" if is_config else "state")
-        self.mapping = utils.read_yang_map(model._defining_module, model._yang_name,
-                                           self.profile, parser_path)
+        self.mapping = helpers.read_yang_map(model._defining_module, model._yang_name,
+                                             self.profile, parser_path)
 
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
@@ -42,7 +42,7 @@ class Parser(object):
         self.bookmarks = bookmarks or self.bookmarks
 
         if self.mapping:
-            self.parser = utils.get_parser(self.mapping["metadata"]["parser"])
+            self.parser = helpers.get_parser(self.mapping["metadata"]["parser"])
 
     def _execute_methods(self, device, methods):
         result = []
@@ -71,8 +71,8 @@ class Parser(object):
             self._parse_leaf(attribute, model, mapping)
 
     def _parse_container(self, attribute, model, mapping):
-        mapping["_parse"] = utils.resolve_rule(mapping["_parse"], attribute, self.keys,
-                                               self.extra_vars, None, self.bookmarks)
+        mapping["_parse"] = helpers.resolve_rule(mapping["_parse"], attribute, self.keys,
+                                                 self.extra_vars, None, self.bookmarks)
         for k, v in model:
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
@@ -90,8 +90,8 @@ class Parser(object):
 
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)
-        mapping_copy["_parse"] = utils.resolve_rule(mapping_copy["_parse"], attribute, self.keys,
-                                                    self.extra_vars, None, self.bookmarks)
+        mapping_copy["_parse"] = helpers.resolve_rule(mapping_copy["_parse"], attribute, self.keys,
+                                                      self.extra_vars, None, self.bookmarks)
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -125,8 +125,8 @@ class Parser(object):
         self.extra_vars = old_parent_extra_vars
 
     def _parse_leaf(self, attribute, model, mapping):
-        mapping["_parse"] = utils.resolve_rule(mapping["_parse"], attribute, self.keys,
-                                               self.extra_vars, None, self.bookmarks)
+        mapping["_parse"] = helpers.resolve_rule(mapping["_parse"], attribute, self.keys,
+                                                 self.extra_vars, None, self.bookmarks)
 
         # We can't set attributes that are keys
         if model._is_keyval:
@@ -134,7 +134,5 @@ class Parser(object):
 
         value = self.parser.parse_leaf(mapping["_parse"])
 
-        if value is None:
-            setattr(model._parent, attribute, getattr(model, "default")())
-        else:
+        if value is not None and value != model.default():
             setattr(model._parent, attribute, value)

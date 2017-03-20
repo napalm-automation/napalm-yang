@@ -2,7 +2,7 @@
 metadata:
     translator: TextTranslator
 
-routed_vlan:
+routed-vlan:
     _translation: unnecessary
     config:
         _translation: unnecessary
