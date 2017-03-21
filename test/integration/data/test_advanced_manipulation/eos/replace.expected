@@ -1,6 +1,5 @@
-default interface Port-Channel1
+no interface Port-Channel1
 interface Port-Channel1
-    no switchport
     no switchport
     description blah
 no interface Port-Channel1.1
@@ -12,8 +11,6 @@ default interface Ethernet2
 interface Ethernet2
     no switchport
     ip address 192.168.0.1/24 
-    no switchport
-    no switchport
     shutdown
     description so much oc
 no interface Ethernet2.1
@@ -30,7 +27,7 @@ interface Ethernet2.2
 default interface Management1
 interface Management1
     ip address 10.0.2.15/24 
-default interface Loopback0
+no interface Loopback0
 interface Loopback0
     description new loopback
-default interface Loopback1
+no interface Loopback1

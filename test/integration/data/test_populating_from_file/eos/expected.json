@@ -14,7 +14,7 @@
                             },
                             "ipv4": {
                                 "config": {
-                                    "enabled": true
+                                    "enabled": false
                                 },
                                 "addresses": {
                                     "address": {
@@ -52,7 +52,7 @@
                             },
                             "ipv4": {
                                 "config": {
-                                    "enabled": true
+                                    "enabled": false
                                 },
                                 "addresses": {
                                     "address": {
@@ -108,7 +108,7 @@
                             "index": "1",
                             "ipv4": {
                                 "config": {
-                                    "enabled": true
+                                    "enabled": false
                                 }
                             },
                             "config": {

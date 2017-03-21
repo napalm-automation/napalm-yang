@@ -9,7 +9,8 @@ ipv4:
         enabled:
             _parse:
                 mode: is_present
-                regexp: "(?P<value>^\\W*no switchport$)"
+                # regexp: "(?P<value>^\\W*no switchport$)"
+                regexp: "(?P<value>(^\\W*no switchport$)|(interface (Management|Loopback)\\d+))"
                 from: "{{ parse_bookmarks['parent'] }}"
         mtu:
             _parse: not_implemented

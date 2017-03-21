@@ -1,14 +1,11 @@
 interface Port-Channel1
     no switchport
-    no switchport
     default mtu
 interface Port-Channel1.1
 interface Ethernet1
 interface Ethernet2
     no switchport
     ip address 192.168.0.1/24 
-    no switchport
-    no switchport
     shutdown
 interface Ethernet2.1
     encapsulation dot1q vlan 1
@@ -21,4 +18,4 @@ interface Management1
     ip address 10.0.2.15/24 
 interface Loopback0
     description new loopback
-default interface Loopback1
+no interface Loopback1
