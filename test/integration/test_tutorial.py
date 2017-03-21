@@ -28,8 +28,7 @@ def config_logging():
 BASE_PATH = os.path.dirname(__file__)
 
 
-#  test_populating_from_file = ["eos", "junos"]
-test_populating_from_file = ["eos"]
+test_populating_from_file = ["eos", "junos"]
 
 
 def read_file_content(filename):
@@ -116,6 +115,7 @@ class Tests(object):
 
         config.parse_config(config=read_file_content(config_path), profile=profile)
 
+        #  print(json.dumps(config.get(filter=True), indent=4))
         assert config.get(filter=True) == read_json(expected_path)
 
     def test_translating_models(self):

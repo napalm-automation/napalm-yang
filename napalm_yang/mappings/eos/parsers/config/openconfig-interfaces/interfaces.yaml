@@ -4,7 +4,7 @@ metadata:
     execute:
         - method: cli
           args:
-              commands: ["show running-config"]
+              commands: ["show running-config all"]
 interfaces:
     _parse: unnecessary
     interface:
@@ -39,8 +39,8 @@ interfaces:
                         Vlan: l3ipvlan
             enabled:
                 _parse:
-                    mode: is_absent
-                    regexp: "(?P<value>\\W+shutdown)"
+                    mode: is_present
+                    regexp: "(?P<value>no shutdown)"
                     from: "{{ parse_bookmarks.interface[interface_key] }}"
             description:
                 _parse:
@@ -71,8 +71,8 @@ interfaces:
                             value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _parse:
-                            mode: is_absent
-                            regexp: "(?P<value>\\W+shutdown)"
+                            mode: is_present
+                            regexp: "(?P<value>no shutdown)"
                             from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"
                     description:
                         _parse:
