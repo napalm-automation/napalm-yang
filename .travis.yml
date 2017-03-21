@@ -4,8 +4,9 @@ python:
 # - 3.4
 # - 3.5
 install:
-- pip install tox-travis
-- pip install coveralls
+# - pip install tox-travis
+# - pip install coveralls
+- pip install -r requirements-dev.txt
 # deploy:
 #   provider: pypi
 #   user: dbarroso
@@ -15,7 +16,7 @@ install:
 #     tags: true
 #     branch: master
 script:
-- tox
+- py.test
 # after_success:
 # - coveralls
 # - if [ $TRAVIS_TAG ]; then curl -X POST https://readthedocs.org/build/napalm; fi
