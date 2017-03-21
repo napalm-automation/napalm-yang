@@ -15,7 +15,7 @@ interfaces:
             mode: xpath
             xpath: "interfaces/interface"
             key: name
-            from: "{{ parse_bookmarks.interfaces.0 }}"
+            from: "{{ parse_bookmarks.interfaces }}"
         name:
             _parse: unnecessary
         hold_time:

@@ -382,12 +382,12 @@ no aaa accounting dot1x default
 no aaa accounting commands all default
 !
 no enable secret
-aaa root secret 5 $1$.at5/MZb$kZyXEIKyxAwqbZD1eyLey/
+aaa root secret 5 $1$7isXjeg1$mYdacd2sdF6WCyy6mX.3v/
 no aaa authentication policy local allow-nopassword-remote-login
 no aaa authorization policy local default-role
 !
-username admin privilege 15 role network-admin secret 5 $1$oqIq6T9i$v4/sIgmTHr1fDZ5pYV5.j.
-username vagrant privilege 15 role network-admin secret 5 $1$jwnodQEc$zEBljgXSg43xpD4Wy/IxJ0
+username admin privilege 15 role network-admin secret 5 $1$6UeXkiJR$O49xIaa6WDTlonoSavu9P/
+username vagrant privilege 15 role network-admin secret 5 $1$do67wx0y$t3vLS2FRPcyaRFQtsqlM1/
 !
 role network-admin
    10 permit command .*
