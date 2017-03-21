@@ -694,7 +694,7 @@ interface Ethernet1
    no shutdown
    default load-interval
    logging event link-status use-global
-   no dcbx mode
+   dcbx mode ieee
    no mac-address
    no link-debounce
    no flowcontrol send
