@@ -1,5 +1,4 @@
 pylama
-jinja2
 pytest
 pytest-cov
 pytest-json
