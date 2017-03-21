@@ -8,8 +8,8 @@ ipv4:
         _parse: unnecessary
         enabled:
             _parse:
-                mode: is_absent
-                regexp: "(?P<value>^\\W*switchport$)"
+                mode: is_present
+                regexp: "(?P<value>^\\W*no switchport$)"
                 from: "{{ parse_bookmarks['parent'] }}"
         mtu:
             _parse: not_implemented

@@ -1,0 +1,22 @@
+{
+    "interfaces": {
+        "interface": {
+            "both": {
+                "Port-Channel1": {
+                    "config": {
+                        "mtu": {
+                            "first": "0", 
+                            "second": "9000"
+                        }
+                    }
+                }
+            }, 
+            "first_only": [
+                "Loopback0"
+            ], 
+            "second_only": [
+                "Loopback1"
+            ]
+        }
+    }
+}

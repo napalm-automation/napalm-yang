@@ -25,15 +25,16 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
-        self.config = config or []
+        self.config = config or ""
 
         if self.mapping and device:
             device_config = self._execute_methods(device,
                                                   self.mapping["metadata"].get("execute", []))
-        else:
-            device_config = []
 
-        self.config = self.config + device_config
+        else:
+            device_config = ""
+
+        self.config = "{}\n{}".format(self.config, device_config)
 
         if not self.config:
             raise Exception("I don't have any data to operate with")
@@ -50,10 +51,15 @@ class Parser(object):
             attr = device
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
+                r = attr(**m["args"])
 
-            result.append(attr(**m["args"]))
+                if isinstance(r, dict):
+                    # Some vendors like junos return commands enclosed by a key
+                    r = "\n".join(r.values())
 
-        return result
+                result.append(r)
+
+        return "\n".join(result)
 
     def parse(self):
         if not self.mapping:

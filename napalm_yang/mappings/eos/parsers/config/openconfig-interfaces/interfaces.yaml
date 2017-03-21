@@ -4,14 +4,14 @@ metadata:
     execute:
         - method: cli
           args:
-              commands: ["show running-config all"]
+              commands: ["show running-config"]
 interfaces:
     _parse: unnecessary
     interface:
         _parse:
             mode: block
             regexp: "(?P<block>interface (?P<key>(Ethernet|Management|Loopback|Port-Channel|Vlan)\\d+)\n(?:.|\n)*?^!$)"
-            from: "{{ parse_bookmarks.interfaces.0['show running-config all'] }}"
+            from: "{{ parse_bookmarks.interfaces }}"
         name:
             _parse: unnecessary
         hold_time:
@@ -39,8 +39,8 @@ interfaces:
                         Vlan: l3ipvlan
             enabled:
                 _parse:
-                    mode: is_present
-                    regexp: "(?P<value>no shutdown)"
+                    mode: is_absent
+                    regexp: "(?P<value>\\W+shutdown)"
                     from: "{{ parse_bookmarks.interface[interface_key] }}"
             description:
                 _parse:
@@ -58,7 +58,7 @@ interfaces:
                 _parse:
                     mode: block
                     regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
-                    from: "{{ parse_bookmarks.interfaces.0['show running-config all'] }}"
+                    from: "{{ parse_bookmarks.interfaces }}"
                 index:
                     _parse: unnecessary
                 config:
@@ -71,8 +71,8 @@ interfaces:
                             value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _parse:
-                            mode: is_present
-                            regexp: "(?P<value>no shutdown)"
+                            mode: is_absent
+                            regexp: "(?P<value>\\W+shutdown)"
                             from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"
                     description:
                         _parse:

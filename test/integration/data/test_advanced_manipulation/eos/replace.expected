@@ -1,0 +1,36 @@
+default interface Port-Channel1
+interface Port-Channel1
+    no switchport
+    no switchport
+    description blah
+no interface Port-Channel1.1
+interface Port-Channel1.1
+default interface Ethernet1
+interface Ethernet1
+    description This is a description
+default interface Ethernet2
+interface Ethernet2
+    no switchport
+    ip address 192.168.0.1/24 
+    no switchport
+    no switchport
+    shutdown
+    description so much oc
+no interface Ethernet2.1
+interface Ethernet2.1
+    encapsulation dot1q vlan 1
+    ip address 192.168.1.1/24 
+    ip address 172.20.0.1/24 secondary
+    description another subiface
+no interface Ethernet2.2
+interface Ethernet2.2
+    encapsulation dot1q vlan 2
+    ip address 192.168.2.1/24 
+    description asdasdasd
+default interface Management1
+interface Management1
+    ip address 10.0.2.15/24 
+default interface Loopback0
+interface Loopback0
+    description new loopback
+default interface Loopback1

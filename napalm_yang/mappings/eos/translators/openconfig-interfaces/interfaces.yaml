@@ -12,7 +12,7 @@ interfaces:
             mode: container
             container: interface
             key_value: "interface {{ interface_key }}\n"
-            negate: "default interface {{ interface_key }}\n"
+            negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
         name:
             _translation: unnecessary
         hold_time:

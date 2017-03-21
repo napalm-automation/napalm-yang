@@ -1,0 +1,21 @@
+{
+    "interfaces": {
+        "interface": {
+            "et1": {
+                "config": {
+                    "description": "My description", 
+                    "mtu": 1500
+                }, 
+                "name": "et1"
+            }, 
+            "et2": {
+                "config": {
+                    "description": "Another description", 
+                    "mtu": 9000
+                }, 
+                "name": "et2"
+            }
+        }
+    }
+}
+
