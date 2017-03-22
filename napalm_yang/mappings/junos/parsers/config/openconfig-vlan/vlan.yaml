@@ -1,6 +1,5 @@
 ---
 metadata:
-    prefix: "oc-vlan"
     parser: XMLExtractor
     execute: []
 

@@ -23,7 +23,10 @@ class XMLTranslator(BaseTranslator):
         key_element = mapping.get("key_element", None)
         if key_element:
             key = etree.SubElement(t, key_element)
-            key.text = "{}".format(mapping["key_value"])
+
+            value = mapping.get("key_value", None)
+            if value:
+                key.text = value
 
         replace = mapping.get("replace", None)
         if replace and self.replace:
