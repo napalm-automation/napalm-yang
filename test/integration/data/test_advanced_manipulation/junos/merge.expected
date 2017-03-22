@@ -16,7 +16,6 @@
       <name>ge-0/0/1</name>
       <disable/>
       <description>ge-0/0/1</description>
-      <mtu>1514</mtu>
     </interface>
     <interface>
       <name>ae0</name>
@@ -62,8 +61,6 @@
         <description>ae0.2</description>
       </unit>
       <vlan-tagging/>
-      <description>ae0</description>
-      <mtu>1514</mtu>
     </interface>
     <interface>
       <name>lo0</name>

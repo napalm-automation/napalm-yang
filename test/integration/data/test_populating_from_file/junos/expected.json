@@ -3,9 +3,7 @@
         "interface": {
             "ae0": {
                 "config": {
-                    "description": "ae0", 
                     "enabled": true, 
-                    "mtu": 1514, 
                     "name": "ae0", 
                     "type": "ieee8023adLag"
                 }, 
@@ -140,7 +138,6 @@
                 "config": {
                     "description": "ge-0/0/1", 
                     "enabled": false, 
-                    "mtu": 1514, 
                     "name": "ge-0/0/1", 
                     "type": "ethernetCsmacd"
                 }, 
