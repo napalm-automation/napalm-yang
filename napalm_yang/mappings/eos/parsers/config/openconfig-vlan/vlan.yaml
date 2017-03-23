@@ -11,4 +11,4 @@ vlan:
             _parse:
                 mode: search
                 regexp: "^\\W*encapsulation dot1q vlan (?P<value>[0-9]+)"
-                from: "{{ parse_bookmarks['parent'] }}"
+                from: "{{ bookmarks['parent'] }}"

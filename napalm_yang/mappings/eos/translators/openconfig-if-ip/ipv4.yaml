@@ -12,7 +12,7 @@ ipv4:
                   value: "    no switchport\n"
                   negate: "    switchport\n"
                   in: "interface.{{ interface_key }}"
-                  when: "{{ model and not ( interface_key[0:4] in ['Mana', 'Loop'] ) }}"
+                  when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
         mtu:
             _translation: not_implemented
     addresses:

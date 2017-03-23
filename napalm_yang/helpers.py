@@ -70,7 +70,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs = dict(keys)
     rule = dict(rule)
     kwargs["model"] = translation_model
-    kwargs["parse_bookmarks"] = parse_bookmarks
+    kwargs["bookmarks"] = parse_bookmarks
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars
 
