@@ -28,7 +28,10 @@ def config_logging():
 BASE_PATH = os.path.dirname(__file__)
 
 
-test_populating_from_file = ["eos", "junos"]
+test_populating_from_file = [
+    ["eos"],
+    ["junos"],
+]
 
 
 def read_file_content(filename):
@@ -107,8 +110,8 @@ class Tests(object):
 
     @pytest.mark.parametrize("profile", test_populating_from_file)
     def test_populating_from_file(self, profile):
-        config_path = "test_populating_from_file/{}/config.txt".format(profile)
-        expected_path = "test_populating_from_file/{}/expected.json".format(profile)
+        config_path = "test_populating_from_file/{}/config.txt".format(profile[0])
+        expected_path = "test_populating_from_file/{}/expected.json".format(profile[0])
 
         config = napalm_yang.base.Root()
         config.add_model(napalm_yang.models.openconfig_interfaces)
@@ -136,15 +139,15 @@ class Tests(object):
         expected_junos = read_file_content("test_translating_models_junos.expected")
         expected_eos = read_file_content("test_translating_models_eos.expected")
 
-        assert candidate.translate_config(profile="junos") == expected_junos
-        assert candidate.translate_config(profile="eos") == expected_eos
+        assert candidate.translate_config(profile=["junos"]) == expected_junos
+        assert candidate.translate_config(profile=["eos"]) == expected_eos
 
     def test_advanced_manipulation_junos(self):
-        profile = "junos"
+        profile = ["junos"]
 
-        config_file = "test_advanced_manipulation/{}/config.txt".format(profile)
-        merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile)
-        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile)
+        config_file = "test_advanced_manipulation/{}/config.txt".format(profile[0])
+        merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile[0])
+        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile[0])
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
@@ -170,11 +173,11 @@ class Tests(object):
         assert replace_config == read_file_content(replace_file)
 
     def test_advanced_manipulation_eos(self):
-        profile = "eos"
+        profile = ["eos"]
 
-        config_file = "test_advanced_manipulation/{}/config.txt".format(profile)
-        merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile)
-        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile)
+        config_file = "test_advanced_manipulation/{}/config.txt".format(profile[0])
+        merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile[0])
+        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile[0])
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
@@ -200,7 +203,7 @@ class Tests(object):
         assert replace_config == read_file_content(replace_file)
 
     def test_diffing_objects(self):
-        profile = "eos"
+        profile = ["eos"]
 
         config_file = "test_diffing_objects/config.txt"
         expected_file = "test_diffing_objects/expected.json"
