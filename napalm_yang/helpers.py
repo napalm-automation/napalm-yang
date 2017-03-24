@@ -1,7 +1,7 @@
 import yaml
 
-from napalm_yang.parsers.text import TextExtractor
-from napalm_yang.parsers.xml import XMLExtractor
+from napalm_yang.parsers.text import TextParser
+from napalm_yang.parsers.xml import XMLParser
 
 from napalm_yang.translators.text import TextTranslator
 from napalm_yang.translators.xml import XMLTranslator
@@ -15,8 +15,8 @@ logger = logging.getLogger("napalm-yang")
 
 def get_parser(parser):
     parsers = {
-        "TextExtractor": TextExtractor,
-        "XMLExtractor": XMLExtractor,
+        "TextParser": TextParser,
+        "XMLParser": XMLParser,
         "TextTranslator": TextTranslator,
         "XMLTranslator": XMLTranslator,
     }

@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: XMLExtractor
+    parser: XMLParser
     execute:
         - method: _rpc
           args:
@@ -35,7 +35,10 @@ interfaces:
                     mode: map
                     xpath: name
                     regexp: "(?P<value>[a-z]+).*"
-                    from: "{{ bookmarks['parent'] }}"
+                    # Next field could easily be
+                    # from: "{{ bookmarks['parent'] }}"
+                    # but this is more efficient
+                    from: "<interface><name>{{ parent_key }}</name></interface>"
                     map:
                         ge: ethernetCsmacd
                         lo: softwareLoopback

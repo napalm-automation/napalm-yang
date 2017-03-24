@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: TextExtractor
+    parser: TextParser
 
 ipv4:
     _parse: unnecessary

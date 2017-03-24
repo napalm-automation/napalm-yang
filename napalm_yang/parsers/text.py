@@ -3,7 +3,7 @@ from napalm_yang.parsers.base import BaseParser
 import re
 
 
-class TextExtractor(BaseParser):
+class TextParser(BaseParser):
 
     @classmethod
     def _parse_list_block(cls, mapping):

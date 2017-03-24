@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: TextExtractor
+    parser: TextParser
     execute:
         - method: cli
           args:
@@ -10,7 +10,7 @@ interfaces:
     interface:
         _parse:
             mode: block
-            regexp: "(?P<block>interface (?P<key>(Ethernet|Management|Loopback|Port-Channel|Vlan)\\d+)\n(?:.|\n)*?^!$)"
+            regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
             from: "{{ bookmarks.interfaces }}"
         name:
             _parse: unnecessary
@@ -29,8 +29,8 @@ interfaces:
             type:
                 _parse:
                     mode: map
-                    regexp: "interface (?P<value>(Ethernet|Management|Loopback|Port-Channel|Vlan)).*"
-                    from: "{{ bookmarks.interface[interface_key] }}"
+                    regexp: "(?P<value>(\\w|-)*)\\d+"
+                    from: "{{ interface_key }}"
                     map:
                         Ethernet: ethernetCsmacd
                         Management: ethernetCsmacd

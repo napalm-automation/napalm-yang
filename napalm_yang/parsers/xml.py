@@ -4,7 +4,7 @@ import re
 from napalm_yang.parsers.base import BaseParser
 
 
-class XMLExtractor(BaseParser):
+class XMLParser(BaseParser):
 
     @classmethod
     def _parse_list_xpath(cls, mapping):

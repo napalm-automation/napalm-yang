@@ -1,7 +1,7 @@
 ---
 metadata:
     prefix: "oc-vlan"
-    parser: TextExtractor
+    parser: TextParser
 
 vlan:
     _parse: unnecessary
