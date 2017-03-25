@@ -4,8 +4,7 @@ metadata:
     root: true
 
 interfaces:
-    _translation:
-        mode: container
+    _translation: unnecessary
     interface:
         _translation:
             mode: container

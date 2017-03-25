@@ -29,7 +29,7 @@ ipv4:
                     _translation:
                         - mode: element
                           value: "    ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
-                          negate: "    default ip address {{ model._parent.ip }}/{{ model }}\n"
+                          negate: "    default ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:
