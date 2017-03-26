@@ -112,7 +112,7 @@ def template(string, **kwargs):
                             undefined=jinja2.StrictUndefined,
                             keep_trailing_newline=True,
                             )
-    env.filters = ip_filters.filters()
+    env.filters.update(ip_filters.filters())
 
     template = env.from_string(string)
 
