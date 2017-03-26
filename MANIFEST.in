@@ -1,2 +1,2 @@
 include requirements.txt
-recursive-include napalm_yang/mappings/*
+recursive-include napalm_yang/mappings *.yaml *.yml
