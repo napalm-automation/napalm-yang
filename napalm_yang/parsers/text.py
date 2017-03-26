@@ -7,7 +7,7 @@ class TextParser(BaseParser):
 
     @classmethod
     def _parse_list_block(cls, mapping):
-        block_matches = re.finditer(mapping["regexp"], mapping["from"], re.MULTILINE)
+        block_matches = re.finditer(mapping["regexp"], mapping["from"], re.MULTILINE + re.I)
 
         for match in block_matches:
             extra_vars = match.groupdict()
@@ -17,7 +17,7 @@ class TextParser(BaseParser):
 
     @classmethod
     def _parse_leaf_search(cls, mapping, check_default=True):
-        match = re.search(mapping["regexp"], mapping["from"], re.MULTILINE)
+        match = re.search(mapping["regexp"], mapping["from"], re.MULTILINE + re.I)
 
         if match:
             return match.group("value")
