@@ -1,7 +1,7 @@
 ---
 metadata:
     prefix: "napalm-ip"
-    parser: TextExtractor
+    parser: TextParser
 
 secondary:
     _parse:

@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: TextExtractor
+    parser: TextParser
 
 ipv4:
     _parse: unnecessary
@@ -10,7 +10,7 @@ ipv4:
             _parse:
                 mode: is_absent
                 regexp: "(?P<value>^\\W*switchport$)"
-                from: "{{ parse_bookmarks['parent'] }}"
+                from: "{{ bookmarks['parent'] }}"
         mtu:
             _parse: not_implemented
     addresses:
@@ -19,7 +19,7 @@ ipv4:
             _parse:
                 mode: block
                 regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
-                from: "{{ parse_bookmarks['parent'] }}"
+                from: "{{ bookmarks['parent'] }}"
             ip:
                 _parse: unnecessary
             config:

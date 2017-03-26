@@ -1,7 +1,6 @@
 ---
 metadata:
-    parser: XMLExtractor
-    execute: []
+    parser: XMLParser
 
 routed-vlan:
     _parse: unnecessary

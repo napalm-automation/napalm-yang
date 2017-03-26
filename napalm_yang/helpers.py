@@ -1,7 +1,7 @@
 import yaml
 
-from napalm_yang.parsers.text import TextExtractor
-from napalm_yang.parsers.xml import XMLExtractor
+from napalm_yang.parsers.text import TextParser
+from napalm_yang.parsers.xml import XMLParser
 
 from napalm_yang.translators.text import TextTranslator
 from napalm_yang.translators.xml import XMLTranslator
@@ -15,8 +15,8 @@ logger = logging.getLogger("napalm-yang")
 
 def get_parser(parser):
     parsers = {
-        "TextExtractor": TextExtractor,
-        "XMLExtractor": XMLExtractor,
+        "TextParser": TextParser,
+        "XMLParser": XMLParser,
         "TextTranslator": TextTranslator,
         "XMLTranslator": XMLTranslator,
     }
@@ -46,11 +46,19 @@ def find_yang_file(profile, filename, path):
 
 def read_yang_map(yang_prefix, attribute, profile, parser_path):
     logger.info("Finding parser for {}:{}".format(yang_prefix, attribute))
-    filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
 
-    try:
-        filepath = find_yang_file(profile, filename, parser_path)
-    except IOError:
+    found = False
+    for p in profile:
+        filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
+
+        try:
+            filepath = find_yang_file(p, filename, parser_path)
+            found = True
+            logger.debug("Found on profile: {}".format(p))
+        except IOError:
+            pass
+
+    if not found:
         return
 
     with open(filepath, "r") as f:
@@ -70,7 +78,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs = dict(keys)
     rule = dict(rule)
     kwargs["model"] = translation_model
-    kwargs["parse_bookmarks"] = parse_bookmarks
+    kwargs["bookmarks"] = parse_bookmarks
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars
 

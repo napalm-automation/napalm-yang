@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: XMLExtractor
+    parser: XMLParser
 
 ipv4:
     _parse: unnecessary
@@ -10,7 +10,7 @@ ipv4:
             _parse:
                 mode: is_present
                 xpath: "family/inet"
-                from: "{{ parse_bookmarks['parent'] }}"
+                from: "{{ bookmarks['parent'] }}"
         mtu:
             _parse: not_implemented
     addresses:
@@ -20,7 +20,7 @@ ipv4:
                 mode: xpath
                 xpath: "family/inet/address"
                 key: name
-                from: "{{ parse_bookmarks['parent'] }}"
+                from: "{{ bookmarks['parent'] }}"
             ip:
                 _parse: unnecessary
             config:
@@ -30,13 +30,13 @@ ipv4:
                         mode: xpath
                         xpath: "name"
                         regexp: "(?P<value>.*)/\\d+"
-                        from: "{{ parse_bookmarks['parent'] }}"
+                        from: "{{ bookmarks['parent'] }}"
                 prefix_length:
                     _parse:
                         mode: xpath
                         xpath: "name"
                         regexp: ".*/(?P<value>\\d+)"
-                        from: "{{ parse_bookmarks['parent'] }}"
+                        from: "{{ bookmarks['parent'] }}"
             vrrp:
                 _parse: not_implemented
                 vrrp_group:

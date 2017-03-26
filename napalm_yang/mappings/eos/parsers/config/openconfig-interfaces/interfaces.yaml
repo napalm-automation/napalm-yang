@@ -1,6 +1,6 @@
 ---
 metadata:
-    parser: TextExtractor
+    parser: TextParser
     execute:
         - method: cli
           args:
@@ -10,8 +10,8 @@ interfaces:
     interface:
         _parse:
             mode: block
-            regexp: "(?P<block>interface (?P<key>(Ethernet|Management|Loopback|Port-Channel|Vlan)\\d+)\n(?:.|\n)*?^!$)"
-            from: "{{ parse_bookmarks.interfaces }}"
+            regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
+            from: "{{ bookmarks.interfaces }}"
         name:
             _parse: unnecessary
         hold_time:
@@ -29,8 +29,8 @@ interfaces:
             type:
                 _parse:
                     mode: map
-                    regexp: "interface (?P<value>(Ethernet|Management|Loopback|Port-Channel|Vlan)).*"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    regexp: "(?P<value>(\\w|-)*)\\d+"
+                    from: "{{ interface_key }}"
                     map:
                         Ethernet: ethernetCsmacd
                         Management: ethernetCsmacd
@@ -41,24 +41,24 @@ interfaces:
                 _parse:
                     mode: is_present
                     regexp: "(?P<value>no shutdown)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    from: "{{ bookmarks.interface[interface_key] }}"
             description:
                 _parse:
                     mode: search
                     regexp: "description (?P<value>.*)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    from: "{{ bookmarks.interface[interface_key] }}"
             mtu:
                 _parse:
                     mode: search
                     regexp: "mtu (?P<value>[0-9]+)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    from: "{{ bookmarks.interface[interface_key] }}"
         subinterfaces:
             _parse: unnecessary
             subinterface:
                 _parse:
                     mode: block
                     regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
-                    from: "{{ parse_bookmarks.interfaces }}"
+                    from: "{{ bookmarks.interfaces }}"
                 index:
                     _parse: unnecessary
                 config:
@@ -73,9 +73,9 @@ interfaces:
                         _parse:
                             mode: is_present
                             regexp: "(?P<value>no shutdown)"
-                            from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"
+                            from: "{{ bookmarks.subinterface[subinterface_key] }}"
                     description:
                         _parse:
                             mode: search
                             regexp: "description (?P<value>.*)"
-                            from: "{{ parse_bookmarks.subinterface[subinterface_key] }}"
+                            from: "{{ bookmarks.subinterface[subinterface_key] }}"

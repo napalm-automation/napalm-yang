@@ -5,18 +5,18 @@ python:
 # - 3.5
 install:
 # - pip install tox-travis
-# - pip install coveralls
+- pip install coveralls
 - pip install -r requirements-dev.txt
-# deploy:
-#   provider: pypi
-#   user: dbarroso
-#   password:
-#     secure: IIifRr9K771snku+qI7yz8T/cJC4ZO/fUYUNILhMB5eQtF2/MAEU7W1owGfcIqE9SW7fhPAXqVrnb7AcdFyjjbkZn6uoYYlh5LrQaCXgbfol5Yg+OSsRKFwhEOBcKFrtqz3W6UPunN6CX4v2gn2UCmWSyQ3XERgqKxobBVSOMb1G9PTy/Zk0ZUvGJc05bxWj3xuVQKg904VpnhQJ6q1h4d9SV+dQClP4eDRbEwe+ICKX3S2JPa/PiJfWrIsCL12yT+iZ/aiDwfSBjh+o3HMdt98cB3FkHAibEZnvpLOpUCmjX1rMyqyJEqVgDM1mQ4vyoYO5DNFv94ZufGJnJP+TIbkkSaFy9ZpeC2V+7K03TM+g1rZD3BKK50u3kL86KsHao14SZHV58l7/b3023IUr4MwrQgoLlHMhw9IFFC8bYmP/6aylae5fR/+5inGloSByzWLAKKQ0FLPPkCoeukmldyphjZ8HnGdhEu566kO9R5gxJ4edsbeimsRAO3oZ/EByQcgOytJjVKjMpn7fhiSblJO8KB4+M5d5fXUn5RZ31P3g8RFfG1Jqx2l9eOd4i8u9l3NkRd9WO8q5wyF/hvC/u4RcIMnRYl5hPWMBNY6uGGj7aq7o+XETTLVFirCwHBKre6OLdaVpW1ZciJP07Xb9qhyPLCeP3E9VM/OAz9rs5KI=
-#   on:
-#     tags: true
-#     branch: master
+deploy:
+  provider: pypi
+  user: dbarroso
+  password:
+    secure: oX6GXzVpRMhM2yq53zuW4fjqQM85A98wAtyXFauZdHckFHMyST+V8KYvcFREXYo8iiISmHUmvb+oCXG+oPaYzfAU8oPwqhilAKRl/4QN1F/Z6qQEHXc+QvYkpa32llQ08fKm1VuCUBC1j0rvqG+lIMqenZ3VSIBT3dqCES2AYZWtSOfcoSz9UYRIYX68Fggpfa9b67u2xVmUDvHbSt8dmh846AAgRpu0Frp72XbunxPI29UxeK0Kjik7rIkLrVizKb+TRWhQm2TJPIsxeFoPcjjzyCUNVjYNA2wm4vOOzQ9dU6IwYdcL4BCZMzpqcXkdg3qe33CUBhKgcUKZogEbtN336EBpqmfGQWLiSO2vl2CGxR/ietExYCKzuUQ+RRmh+danD7E31g25UVIPzLJskHECZkXnf0ut7LwAjSajMMJJFqXRE8aJyekReA3S+RXSjC6UVx+eBnmEr3OmHnXBGzGDeqxejxOYu6VorljrD1ePlrFTMLgQSPKYWtOZS3hV4VYA/ARcFNCtapIXxdWM2847VnFx84wsN66QeaOsLphm7JVXokhYX4T5r1i5xMuAoH1c2Ei7O++IsfAN6BiBcOo895XPZfqIynBJIxzABeK9vDbsAieEBOGJfOMJUcp9PlXiH+81MP/DytngIwhnhRd4CwfdBGASf00UqU+GekA=
+  on:
+    tags: true
+    branch: master
 script:
 - py.test
-# after_success:
-# - coveralls
-# - if [ $TRAVIS_TAG ]; then curl -X POST https://readthedocs.org/build/napalm; fi
+after_success:
+- coveralls
+- if [ $travis_tag ]; then curl -x post https://readthedocs.org/build/napalm; fi

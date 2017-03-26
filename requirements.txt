@@ -2,4 +2,4 @@ future
 lxml
 jinja2
 PyYAML
--e git+git://github.com/napalm-automation/pyangbind.git@napalm_custom#egg=pyangbind_napalm
+-e git://github.com/napalm-automation/pyangbind.git@napalm_custom#egg=pyangbind

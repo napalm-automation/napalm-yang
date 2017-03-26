@@ -29,7 +29,13 @@ class TextTranslator(XMLTranslator):
 
     def _init_element_container(self, attribute, model, other, mapping, translation):
         mapping["key_element"] = "command"
+        mapping["container"] = model._yang_name
         return super()._init_element_container(attribute, model, other, mapping, translation)
+
+    #  def _parse_container_container(self, attribute, model, other, mapping, translation):
+    #      mapping["key_element"] = "container"
+    #      mapping["container"] = model._yang_name
+    #      return super()._init_element_container(attribute, model, other, mapping, translation)
 
     def _default_element_container(self, mapping, translation, replacing):
         if not self.merge and not self.replace:

@@ -1,12 +1,10 @@
 ---
 metadata:
-    parser: XMLExtractor
+    parser: XMLParser
     execute:
-        - method: _get_config_xml
+        - method: _rpc
           args:
-              filter_xml: "<configuration><interfaces></interfaces></configuration>"
-              options:
-                  source: running
+              get: "<get-configuration/>"
 
 interfaces:
     _parse: unnecessary
@@ -15,7 +13,7 @@ interfaces:
             mode: xpath
             xpath: "interfaces/interface"
             key: name
-            from: "{{ parse_bookmarks.interfaces }}"
+            from: "{{ bookmarks.interfaces }}"
         name:
             _parse: unnecessary
         hold_time:
@@ -37,7 +35,10 @@ interfaces:
                     mode: map
                     xpath: name
                     regexp: "(?P<value>[a-z]+).*"
-                    from: "{{ parse_bookmarks['parent'] }}"
+                    # Next field could easily be
+                    # from: "{{ bookmarks['parent'] }}"
+                    # but this is more efficient
+                    from: "<interface><name>{{ parent_key }}</name></interface>"
                     map:
                         ge: ethernetCsmacd
                         lo: softwareLoopback
@@ -46,17 +47,17 @@ interfaces:
                 _parse:
                     mode: is_absent
                     xpath: "disable"
-                    from: "{{ parse_bookmarks['parent'] }}"
+                    from: "{{ bookmarks['parent'] }}"
             description:
                 _parse:
                     mode: xpath
                     xpath: description
-                    from: "{{ parse_bookmarks['parent'] }}"
+                    from: "{{ bookmarks['parent'] }}"
             mtu:
                 _parse:
                     mode: xpath
                     xpath: mtu
-                    from: "{{ parse_bookmarks['parent'] }}"
+                    from: "{{ bookmarks['parent'] }}"
         subinterfaces:
             _parse: not_implemented
             subinterface:
@@ -64,7 +65,7 @@ interfaces:
                     mode: xpath
                     xpath: "unit"
                     key: name
-                    from: "{{ parse_bookmarks['parent'] }}"
+                    from: "{{ bookmarks['parent'] }}"
                 index:
                     _parse: unnecessary
                 config:
@@ -79,9 +80,9 @@ interfaces:
                         _parse:
                             mode: is_absent
                             xpath: "disable"
-                            from: "{{ parse_bookmarks['parent'] }}"
+                            from: "{{ bookmarks['parent'] }}"
                     description:
                         _parse:
                             mode: xpath
                             xpath: description
-                            from: "{{ parse_bookmarks['parent'] }}"
+                            from: "{{ bookmarks['parent'] }}"
