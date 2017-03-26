@@ -1,4 +1,5 @@
 future
+netaddr
 lxml
 jinja2
 PyYAML
