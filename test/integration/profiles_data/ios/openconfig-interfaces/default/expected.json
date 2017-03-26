@@ -1,0 +1,185 @@
+{
+    "interfaces": {
+        "interface": {
+            "GigabitEthernet1": {
+                "config": {
+                    "description": "This is a description",
+                    "enabled": true,
+                    "mtu": 1500,
+                    "type": "ethernetCsmacd"
+                },
+                "name": "GigabitEthernet1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                }
+            },
+            "GigabitEthernet2": {
+                "config": {
+                    "description": "so much oc",
+                    "enabled": false,
+                    "mtu": 1500,
+                    "type": "ethernetCsmacd"
+                },
+                "name": "GigabitEthernet2",
+                "routed-vlan": {
+                    "ipv4": {
+                        "addresses": {
+                            "address": {
+                                "192.168.0.1": {
+                                    "config": {
+                                        "ip": "192.168.0.1",
+                                        "prefix-length": 24,
+                                        "secondary": false
+                                    },
+                                    "ip": "192.168.0.1"
+                                }
+                            }
+                        },
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "1": {
+                            "config": {
+                                "description": "another subiface",
+                                "enabled": true,
+                                "name": "GigabitEthernet2.1"
+                            },
+                            "index": "1",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.20.0.1": {
+                                            "config": {
+                                                "ip": "172.20.0.1",
+                                                "prefix-length": 24,
+                                                "secondary": true
+                                            },
+                                            "ip": "172.20.0.1"
+                                        },
+                                        "192.168.1.1": {
+                                            "config": {
+                                                "ip": "192.168.1.1",
+                                                "prefix-length": 24,
+                                                "secondary": false
+                                            },
+                                            "ip": "192.168.1.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            },
+                            "vlan": {
+                                "config": {
+                                    "vlan-id": 1
+                                }
+                            }
+                        },
+                        "2": {
+                            "config": {
+                                "description": "asdasdasd",
+                                "enabled": true,
+                                "name": "GigabitEthernet2.2"
+                            },
+                            "index": "2",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "192.168.2.1": {
+                                            "config": {
+                                                "ip": "192.168.2.1",
+                                                "prefix-length": 24,
+                                                "secondary": false
+                                            },
+                                            "ip": "192.168.2.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            },
+                            "vlan": {
+                                "config": {
+                                    "vlan-id": 2
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GigabitEthernet3": {
+                "config": {
+                    "enabled": false,
+                    "mtu": 1500,
+                    "type": "ethernetCsmacd"
+                },
+                "name": "GigabitEthernet3",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                }
+            },
+            "Loopback1": {
+                "config": {
+                    "description": "a loopback",
+                    "enabled": true,
+                    "mtu": 1514,
+                    "type": "softwareLoopback"
+                },
+                "name": "Loopback1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                }
+            },
+            "Port-channel1": {
+                "config": {
+                    "description": "blah",
+                    "enabled": true,
+                    "mtu": 9000,
+                    "type": "ieee8023adLag"
+                },
+                "name": "Port-channel1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "1": {
+                            "config": {
+                                "enabled": true,
+                                "name": "Port-channel1.1"
+                            },
+                            "index": "1",
+                            "ipv4": {
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
