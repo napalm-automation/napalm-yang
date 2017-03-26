@@ -1,0 +1,87 @@
+---
+metadata:
+    parser: XMLParser
+
+ipv4:
+    _parse: unnecessary
+    config:
+        _parse: unnecessary
+        enabled:
+            _parse:
+                mode: is_present
+                xpath: "family/inet"
+                from: "{{ bookmarks['parent'] }}"
+        mtu:
+            _parse: not_implemented
+    addresses:
+        _parse: unnecessary
+        address:
+            _parse:
+                mode: xpath
+                xpath: "family/inet/address"
+                key: name
+                from: "{{ bookmarks['parent'] }}"
+            ip:
+                _parse: unnecessary
+            config:
+                _parse: unnecessary
+                ip:
+                    _parse:
+                        mode: xpath
+                        xpath: "name"
+                        regexp: "(?P<value>.*)/\\d+"
+                        from: "{{ bookmarks['parent'] }}"
+                prefix_length:
+                    _parse:
+                        mode: xpath
+                        xpath: "name"
+                        regexp: ".*/(?P<value>\\d+)"
+                        from: "{{ bookmarks['parent'] }}"
+            vrrp:
+                _parse: not_implemented
+                vrrp_group:
+                    _parse: not_implemented
+                    virtual_router_id:
+                        _parse: not_implemented
+                    config:
+                        _parse: not_implemented
+                        virtual_address:
+                            _parse: not_implemented
+                        priority:
+                            _parse: not_implemented
+                        preempt:
+                            _parse: not_implemented
+                        advertisement_interval:
+                            _parse: not_implemented
+                        virtual_router_id:
+                            _parse: not_implemented
+                        preempt_delay:
+                            _parse: not_implemented
+                        accept_mode:
+                            _parse: not_implemented
+    unnumbered:
+        _parse: not_implemented
+        config:
+            _parse: not_implemented
+            enabled:
+                _parse: not_implemented
+        interface_ref:
+            _parse: not_implemented
+            config:
+                _parse: not_implemented
+                interface:
+                    _parse: not_implemented
+                subinterface:
+                    _parse: not_implemented
+    neighbors:
+        _parse: not_implemented
+        neighbor:
+            _parse: not_implemented
+            ip:
+                _parse: not_implemented
+            config:
+                _parse: not_implemented
+                ip:
+                    _parse: not_implemented
+                link_layer_address:
+                    _parse: not_implemented

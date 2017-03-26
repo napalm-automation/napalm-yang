@@ -1,0 +1,18 @@
+---
+metadata:
+    translator: XMLTranslator
+
+vlan:
+    _translation: unnecessary
+    config:
+        _translation: unnecessary
+        vlan_id:
+            _translation:
+                - mode: element
+                  element: "vlan-tagging"
+                  in: "interface.{{ interface_key }}"
+                  when: "{{ model > 0 }}"
+                  value: null
+                - mode: element
+                  element: "vlan-id"
+                  when: "{{ model > 0 }}"

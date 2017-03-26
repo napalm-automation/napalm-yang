@@ -1,0 +1,81 @@
+---
+metadata:
+    parser: TextParser
+    execute:
+        - method: cli
+          args:
+              commands: ["show running-config all"]
+interfaces:
+    _parse: unnecessary
+    interface:
+        _parse:
+            mode: block
+            regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
+            from: "{{ bookmarks.interfaces }}"
+        name:
+            _parse: unnecessary
+        hold_time:
+            _parse: not_implemented
+            config:
+                _parse: not_implemented
+                down:
+                    _parse: not_implemented
+                up:
+                    _parse: not_implemented
+        config:
+            _parse: unnecessary
+            name:
+                _parse: unnecessary
+            type:
+                _parse:
+                    mode: map
+                    regexp: "(?P<value>(\\w|-)*)\\d+"
+                    from: "{{ interface_key }}"
+                    map:
+                        Ethernet: ethernetCsmacd
+                        Management: ethernetCsmacd
+                        Loopback: softwareLoopback
+                        Port-Channel: ieee8023adLag
+                        Vlan: l3ipvlan
+            enabled:
+                _parse:
+                    mode: is_present
+                    regexp: "(?P<value>no shutdown)"
+                    from: "{{ bookmarks.interface[interface_key] }}"
+            description:
+                _parse:
+                    mode: search
+                    regexp: "description (?P<value>.*)"
+                    from: "{{ bookmarks.interface[interface_key] }}"
+            mtu:
+                _parse:
+                    mode: search
+                    regexp: "mtu (?P<value>[0-9]+)"
+                    from: "{{ bookmarks.interface[interface_key] }}"
+        subinterfaces:
+            _parse: unnecessary
+            subinterface:
+                _parse:
+                    mode: block
+                    regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
+                    from: "{{ bookmarks.interfaces }}"
+                index:
+                    _parse: unnecessary
+                config:
+                    _parse: unnecessary
+                    index:
+                        _parse: unnecessary
+                    name:
+                        _parse:
+                            mode: value
+                            value: "{{ interface_key }}.{{ subinterface_key}}"
+                    enabled:
+                        _parse:
+                            mode: is_present
+                            regexp: "(?P<value>no shutdown)"
+                            from: "{{ bookmarks.subinterface[subinterface_key] }}"
+                    description:
+                        _parse:
+                            mode: search
+                            regexp: "description (?P<value>.*)"
+                            from: "{{ bookmarks.subinterface[subinterface_key] }}"

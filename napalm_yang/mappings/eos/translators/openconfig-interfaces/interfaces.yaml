@@ -1,0 +1,69 @@
+---
+metadata:
+    translator: TextTranslator
+    root: true
+
+interfaces:
+    _translation: unnecessary
+    interface:
+        _translation:
+            mode: container
+            key_value: "interface {{ interface_key }}\n"
+            negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
+        name:
+            _translation: unnecessary
+        hold_time:
+            _translation: unnecessary
+            config:
+                _translation: unnecessary
+                down:
+                    _translation: not_implemented
+                up:
+                    _translation: not_implemented
+        config:
+            _translation: unnecessary
+            name:
+                _translation: unnecessary
+            type:
+                _translation: unnecessary
+            enabled:
+                _translation:
+                    - mode: element
+                      value: "    shutdown\n"
+                      when: "{{ not model }}"
+            description:
+                _translation:
+                    - mode: element
+                      value: "    description {{ model }}\n"
+                      negate: "    default description"
+            mtu:
+                _translation:
+                    - mode: element
+                      value: "    mtu {{ model }}\n"
+                      negate: "    default mtu\n"
+        subinterfaces:
+            _translation: unnecessary
+            subinterface:
+                _translation:
+                    mode: container
+                    key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
+                    negate: "no interface {{ interface_key}}.{{ subinterface_key }}\n"
+                    in: "interfaces"
+                index:
+                    _translation: unnecessary
+                config:
+                    _translation: unnecessary
+                    index:
+                        _translation: unnecessary
+                    name:
+                        _translation: unnecessary
+                    enabled:
+                        _translation:
+                            - mode: element
+                              value: "    shutdown\n"
+                              when: "{{ not model }}"
+                    description:
+                        _translation:
+                            - mode: element
+                              value: "    description {{ model }}\n"
+                              negate: "    default description"

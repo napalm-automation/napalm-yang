@@ -1,0 +1,72 @@
+---
+metadata:
+    translator: XMLTranslator
+    xml_root: configuration
+
+interfaces:
+    _translation:
+        mode: container
+        container: interfaces
+        replace: true
+    interface:
+        _translation:
+            mode: container
+            container: interface
+            key_element: name
+            key_value: "{{ interface_key }}"
+        name:
+            _translation: unnecessary
+        hold_time:
+            _translation: unnecessary
+            config:
+                _translation: unnecessary
+                down:
+                    _translation: not_implemented
+                up:
+                    _translation: not_implemented
+        config:
+            _translation: unnecessary
+            name:
+                _translation: unnecessary
+            type:
+                _translation: unnecessary
+            enabled:
+                _translation:
+                    - mode: element
+                      element: "disable"
+                      when: "{{ not model }}"
+                      value: null
+            description:
+                _translation:
+                    - mode: element
+                      element: description
+            mtu:
+                _translation:
+                    - mode: element
+                      element: mtu
+        subinterfaces:
+            _translation: unnecessary
+            subinterface:
+                _translation:
+                    mode: container
+                    container: unit
+                    key_element: name
+                    key_value: "{{ subinterface_key }}"
+                index:
+                    _translation: unnecessary
+                config:
+                    _translation: unnecessary
+                    index:
+                        _translation: unnecessary
+                    name:
+                        _translation: unnecessary
+                    enabled:
+                        _translation:
+                            - mode: element
+                              element: "disable"
+                              when: "{{ not model }}"
+                              value: null
+                    description:
+                            _translation:
+                                - mode: element
+                                  element: description

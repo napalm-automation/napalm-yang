@@ -1,0 +1,14 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    parser: TextParser
+
+vlan:
+    _parse: unnecessary
+    config:
+        _parse: unnecessary
+        vlan_id:
+            _parse:
+                mode: search
+                regexp: "^\\W*encapsulation dot1q vlan (?P<value>[0-9]+)"
+                from: "{{ bookmarks['parent'] }}"

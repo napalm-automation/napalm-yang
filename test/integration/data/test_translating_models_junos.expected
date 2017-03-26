@@ -1,0 +1,28 @@
+<configuration>
+  <interfaces>
+    <interface>
+      <name>et1</name>
+      <family>
+        <inet>
+          <address>
+            <name>192.168.1.1/24</name>
+          </address>
+        </inet>
+      </family>
+      <description>Uplink1</description>
+      <mtu>9000</mtu>
+    </interface>
+    <interface>
+      <name>et2</name>
+      <family>
+        <inet>
+          <address>
+            <name>192.168.2.1/24</name>
+          </address>
+        </inet>
+      </family>
+      <description>Uplink2</description>
+      <mtu>9000</mtu>
+    </interface>
+  </interfaces>
+</configuration>

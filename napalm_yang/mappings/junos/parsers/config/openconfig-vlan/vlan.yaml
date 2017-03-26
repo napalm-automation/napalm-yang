@@ -1,0 +1,13 @@
+---
+metadata:
+    parser: XMLParser
+
+vlan:
+    _parse: unnecessary
+    config:
+        _parse: unnecessary
+        vlan_id:
+            _parse:
+                mode: xpath
+                xpath: "vlan-id"
+                from: "{{ bookmarks['parent'] }}"

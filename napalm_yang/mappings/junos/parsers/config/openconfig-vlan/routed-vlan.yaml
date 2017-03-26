@@ -1,0 +1,12 @@
+---
+metadata:
+    parser: XMLParser
+
+routed-vlan:
+    _parse: unnecessary
+    config:
+        _parse: unnecessary
+        enabled:
+            _parse: unnecessary
+        vlan:
+            _parse: unnecessary

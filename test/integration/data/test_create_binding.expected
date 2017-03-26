@@ -1,0 +1,598 @@
+{
+    "openconfig-interfaces:interfaces [rw]": {
+        "interface [rw]": {
+            "config [rw]": {
+                "description [rw]": "string", 
+                "enabled [rw]": "boolean", 
+                "mtu [rw]": "uint16", 
+                "name [rw]": "string", 
+                "type [rw]": "identityref"
+            }, 
+            "hold_time [rw]": {
+                "config [rw]": {
+                    "down [rw]": "uint32", 
+                    "up [rw]": "uint32"
+                }, 
+                "state [rw]": {
+                    "down [ro]": "uint32", 
+                    "up [ro]": "uint32"
+                }
+            }, 
+            "name [rw]": "leafref", 
+            "openconfig-if-aggregate:aggregation [rw]": {
+                "config [rw]": {
+                    "lag_type [rw]": "aggregation-type", 
+                    "min_links [rw]": "uint16"
+                }, 
+                "openconfig-vlan:switched_vlan [rw]": {
+                    "config [rw]": {
+                        "access_vlan [rw]": "union", 
+                        "interface_mode [rw]": "oc-vlan-types:vlan-mode-type", 
+                        "native_vlan [rw]": "union", 
+                        "trunk_vlans [rw]": "union"
+                    }, 
+                    "state [rw]": {
+                        "access_vlan [ro]": "union", 
+                        "interface_mode [ro]": "oc-vlan-types:vlan-mode-type", 
+                        "native_vlan [ro]": "union", 
+                        "trunk_vlans [ro]": "union"
+                    }
+                }, 
+                "state [rw]": {
+                    "lag_speed [ro]": "uint32", 
+                    "lag_type [ro]": "aggregation-type", 
+                    "member [ro]": "oc-if:base-interface-ref", 
+                    "min_links [ro]": "uint16"
+                }
+            }, 
+            "openconfig-if-ethernet:ethernet [rw]": {
+                "config [rw]": {
+                    "auto_negotiate [rw]": "boolean", 
+                    "duplex_mode [rw]": "enumeration", 
+                    "enable_flow_control [rw]": "boolean", 
+                    "mac_address [rw]": "yang:mac-address", 
+                    "openconfig-if-aggregate:aggregate_id [rw]": "leafref", 
+                    "port_speed [rw]": "identityref"
+                }, 
+                "openconfig-vlan:switched_vlan [rw]": {
+                    "config [rw]": {
+                        "access_vlan [rw]": "union", 
+                        "interface_mode [rw]": "oc-vlan-types:vlan-mode-type", 
+                        "native_vlan [rw]": "union", 
+                        "trunk_vlans [rw]": "union"
+                    }, 
+                    "state [rw]": {
+                        "access_vlan [ro]": "union", 
+                        "interface_mode [ro]": "oc-vlan-types:vlan-mode-type", 
+                        "native_vlan [ro]": "union", 
+                        "trunk_vlans [ro]": "union"
+                    }
+                }, 
+                "state [rw]": {
+                    "auto_negotiate [ro]": "boolean", 
+                    "counters [ro]": {
+                        "in_8021q_frames [ro]": "yang:counter64", 
+                        "in_crc_errors [ro]": "yang:counter64", 
+                        "in_fragment_frames [ro]": "yang:counter64", 
+                        "in_jabber_frames [ro]": "yang:counter64", 
+                        "in_mac_control_frames [ro]": "yang:counter64", 
+                        "in_mac_pause_frames [ro]": "yang:counter64", 
+                        "in_oversize_frames [ro]": "yang:counter64", 
+                        "out_8021q_frames [ro]": "yang:counter64", 
+                        "out_mac_control_frames [ro]": "yang:counter64", 
+                        "out_mac_pause_frames [ro]": "yang:counter64"
+                    }, 
+                    "duplex_mode [ro]": "enumeration", 
+                    "effective_speed [ro]": "uint32", 
+                    "enable_flow_control [ro]": "boolean", 
+                    "hw_mac_address [ro]": "yang:mac-address", 
+                    "mac_address [ro]": "yang:mac-address", 
+                    "negotiated_duplex_mode [ro]": "enumeration", 
+                    "negotiated_port_speed [ro]": "identityref", 
+                    "openconfig-if-aggregate:aggregate_id [ro]": "leafref", 
+                    "port_speed [ro]": "identityref"
+                }
+            }, 
+            "openconfig-vlan:routed_vlan [rw]": {
+                "config [rw]": {
+                    "vlan [rw]": "union"
+                }, 
+                "openconfig-if-ip:ipv4 [rw]": {
+                    "addresses [rw]": {
+                        "address [rw]": {
+                            "config [rw]": {
+                                "ip [rw]": "inet:ipv4-address-no-zone", 
+                                "napalm-if-ip:secondary [rw]": "boolean", 
+                                "prefix_length [rw]": "uint8"
+                            }, 
+                            "ip [rw]": "leafref", 
+                            "state [rw]": {
+                                "ip [ro]": "inet:ipv4-address-no-zone", 
+                                "origin [ro]": "ip-address-origin", 
+                                "prefix_length [ro]": "uint8"
+                            }, 
+                            "vrrp [rw]": {
+                                "vrrp_group [rw]": {
+                                    "config [rw]": {
+                                        "accept_mode [rw]": "boolean", 
+                                        "advertisement_interval [rw]": "uint16", 
+                                        "preempt [rw]": "boolean", 
+                                        "preempt_delay [rw]": "uint16", 
+                                        "priority [rw]": "uint8", 
+                                        "virtual_address [rw]": "inet:ip-address", 
+                                        "virtual_router_id [rw]": "uint8"
+                                    }, 
+                                    "interface_tracking [rw]": {
+                                        "config [rw]": {
+                                            "priority_decrement [rw]": "uint8", 
+                                            "track_interface [rw]": "leafref"
+                                        }, 
+                                        "state [rw]": {
+                                            "priority_decrement [ro]": "uint8", 
+                                            "track_interface [ro]": "leafref"
+                                        }
+                                    }, 
+                                    "state [rw]": {
+                                        "accept_mode [ro]": "boolean", 
+                                        "advertisement_interval [ro]": "uint16", 
+                                        "current_priority [ro]": "uint8", 
+                                        "preempt [ro]": "boolean", 
+                                        "preempt_delay [ro]": "uint16", 
+                                        "priority [ro]": "uint8", 
+                                        "virtual_address [ro]": "inet:ip-address", 
+                                        "virtual_router_id [ro]": "uint8"
+                                    }, 
+                                    "virtual_router_id [rw]": "leafref"
+                                }
+                            }
+                        }
+                    }, 
+                    "config [rw]": {
+                        "enabled [rw]": "boolean", 
+                        "mtu [rw]": "uint16"
+                    }, 
+                    "neighbors [rw]": {
+                        "neighbor [rw]": {
+                            "config [rw]": {
+                                "ip [rw]": "inet:ipv4-address-no-zone", 
+                                "link_layer_address [rw]": "yang:phys-address"
+                            }, 
+                            "ip [rw]": "leafref", 
+                            "state [rw]": {
+                                "ip [ro]": "inet:ipv4-address-no-zone", 
+                                "link_layer_address [ro]": "yang:phys-address", 
+                                "origin [ro]": "neighbor-origin"
+                            }
+                        }
+                    }, 
+                    "state [rw]": {
+                        "enabled [ro]": "boolean", 
+                        "mtu [ro]": "uint16"
+                    }, 
+                    "unnumbered [rw]": {
+                        "config [rw]": {
+                            "enabled [rw]": "boolean"
+                        }, 
+                        "interface_ref [rw]": {
+                            "config [rw]": {
+                                "interface [rw]": "leafref", 
+                                "subinterface [rw]": "leafref"
+                            }, 
+                            "state [rw]": {
+                                "interface [ro]": "leafref", 
+                                "subinterface [ro]": "leafref"
+                            }
+                        }, 
+                        "state [rw]": {
+                            "enabled [ro]": "boolean"
+                        }
+                    }
+                }, 
+                "openconfig-if-ip:ipv6 [rw]": {
+                    "addresses [rw]": {
+                        "address [rw]": {
+                            "config [rw]": {
+                                "ip [rw]": "inet:ipv6-address-no-zone", 
+                                "prefix_length [rw]": "uint8"
+                            }, 
+                            "ip [rw]": "leafref", 
+                            "state [rw]": {
+                                "ip [ro]": "inet:ipv6-address-no-zone", 
+                                "origin [ro]": "ip-address-origin", 
+                                "prefix_length [ro]": "uint8", 
+                                "status [ro]": "enumeration"
+                            }, 
+                            "vrrp [rw]": {
+                                "vrrp_group [rw]": {
+                                    "config [rw]": {
+                                        "accept_mode [rw]": "boolean", 
+                                        "advertisement_interval [rw]": "uint16", 
+                                        "preempt [rw]": "boolean", 
+                                        "preempt_delay [rw]": "uint16", 
+                                        "priority [rw]": "uint8", 
+                                        "virtual_address [rw]": "inet:ip-address", 
+                                        "virtual_link_local [rw]": "inet:ip-address", 
+                                        "virtual_router_id [rw]": "uint8"
+                                    }, 
+                                    "interface_tracking [rw]": {
+                                        "config [rw]": {
+                                            "priority_decrement [rw]": "uint8", 
+                                            "track_interface [rw]": "leafref"
+                                        }, 
+                                        "state [rw]": {
+                                            "priority_decrement [ro]": "uint8", 
+                                            "track_interface [ro]": "leafref"
+                                        }
+                                    }, 
+                                    "state [rw]": {
+                                        "accept_mode [ro]": "boolean", 
+                                        "advertisement_interval [ro]": "uint16", 
+                                        "current_priority [ro]": "uint8", 
+                                        "preempt [ro]": "boolean", 
+                                        "preempt_delay [ro]": "uint16", 
+                                        "priority [ro]": "uint8", 
+                                        "virtual_address [ro]": "inet:ip-address", 
+                                        "virtual_link_local [ro]": "inet:ip-address", 
+                                        "virtual_router_id [ro]": "uint8"
+                                    }, 
+                                    "virtual_router_id [rw]": "leafref"
+                                }
+                            }
+                        }
+                    }, 
+                    "config [rw]": {
+                        "dup_addr_detect_transmits [rw]": "uint32", 
+                        "enabled [rw]": "boolean", 
+                        "mtu [rw]": "uint32"
+                    }, 
+                    "neighbors [rw]": {
+                        "neighbor [rw]": {
+                            "config [rw]": {
+                                "ip [rw]": "inet:ipv6-address-no-zone", 
+                                "link_layer_address [rw]": "yang:phys-address"
+                            }, 
+                            "ip [rw]": "leafref", 
+                            "state [rw]": {
+                                "ip [ro]": "inet:ipv6-address-no-zone", 
+                                "is_router [ro]": "empty", 
+                                "link_layer_address [ro]": "yang:phys-address", 
+                                "neighbor_state [ro]": "enumeration", 
+                                "origin [ro]": "neighbor-origin"
+                            }
+                        }
+                    }, 
+                    "state [rw]": {
+                        "dup_addr_detect_transmits [ro]": "uint32", 
+                        "enabled [ro]": "boolean", 
+                        "mtu [ro]": "uint32"
+                    }, 
+                    "unnumbered [rw]": {
+                        "config [rw]": {
+                            "enabled [rw]": "boolean"
+                        }, 
+                        "interface_ref [rw]": {
+                            "config [rw]": {
+                                "interface [rw]": "leafref", 
+                                "subinterface [rw]": "leafref"
+                            }, 
+                            "state [rw]": {
+                                "interface [ro]": "leafref", 
+                                "subinterface [ro]": "leafref"
+                            }
+                        }, 
+                        "state [rw]": {
+                            "enabled [ro]": "boolean"
+                        }
+                    }
+                }, 
+                "state [rw]": {
+                    "vlan [ro]": "union"
+                }
+            }, 
+            "state [rw]": {
+                "admin_status [ro]": "enumeration", 
+                "counters [ro]": {
+                    "in_broadcast_pkts [ro]": "yang:counter64", 
+                    "in_discards [ro]": "yang:counter64", 
+                    "in_errors [ro]": "yang:counter64", 
+                    "in_multicast_pkts [ro]": "yang:counter64", 
+                    "in_octets [ro]": "yang:counter64", 
+                    "in_unicast_pkts [ro]": "yang:counter64", 
+                    "in_unknown_protos [ro]": "yang:counter32", 
+                    "last_clear [ro]": "yang:date-and-time", 
+                    "out_broadcast_pkts [ro]": "yang:counter64", 
+                    "out_discards [ro]": "yang:counter64", 
+                    "out_errors [ro]": "yang:counter64", 
+                    "out_multicast_pkts [ro]": "yang:counter64", 
+                    "out_octets [ro]": "yang:counter64", 
+                    "out_unicast_pkts [ro]": "yang:counter64"
+                }, 
+                "description [ro]": "string", 
+                "enabled [ro]": "boolean", 
+                "ifindex [ro]": "uint32", 
+                "last_change [ro]": "yang:timeticks", 
+                "mtu [ro]": "uint16", 
+                "name [ro]": "string", 
+                "openconfig-platform-transceiver:physical_channel [ro]": "leafref", 
+                "openconfig-platform:hardware_port [ro]": "leafref", 
+                "oper_status [ro]": "enumeration", 
+                "type [ro]": "identityref"
+            }, 
+            "subinterfaces [rw]": {
+                "subinterface [rw]": {
+                    "config [rw]": {
+                        "description [rw]": "string", 
+                        "enabled [rw]": "boolean", 
+                        "index [rw]": "uint32", 
+                        "name [rw]": "string"
+                    }, 
+                    "index [rw]": "leafref", 
+                    "openconfig-if-ip:ipv4 [rw]": {
+                        "addresses [rw]": {
+                            "address [rw]": {
+                                "config [rw]": {
+                                    "ip [rw]": "inet:ipv4-address-no-zone", 
+                                    "napalm-if-ip:secondary [rw]": "boolean", 
+                                    "prefix_length [rw]": "uint8"
+                                }, 
+                                "ip [rw]": "leafref", 
+                                "state [rw]": {
+                                    "ip [ro]": "inet:ipv4-address-no-zone", 
+                                    "origin [ro]": "ip-address-origin", 
+                                    "prefix_length [ro]": "uint8"
+                                }, 
+                                "vrrp [rw]": {
+                                    "vrrp_group [rw]": {
+                                        "config [rw]": {
+                                            "accept_mode [rw]": "boolean", 
+                                            "advertisement_interval [rw]": "uint16", 
+                                            "preempt [rw]": "boolean", 
+                                            "preempt_delay [rw]": "uint16", 
+                                            "priority [rw]": "uint8", 
+                                            "virtual_address [rw]": "inet:ip-address", 
+                                            "virtual_router_id [rw]": "uint8"
+                                        }, 
+                                        "interface_tracking [rw]": {
+                                            "config [rw]": {
+                                                "priority_decrement [rw]": "uint8", 
+                                                "track_interface [rw]": "leafref"
+                                            }, 
+                                            "state [rw]": {
+                                                "priority_decrement [ro]": "uint8", 
+                                                "track_interface [ro]": "leafref"
+                                            }
+                                        }, 
+                                        "state [rw]": {
+                                            "accept_mode [ro]": "boolean", 
+                                            "advertisement_interval [ro]": "uint16", 
+                                            "current_priority [ro]": "uint8", 
+                                            "preempt [ro]": "boolean", 
+                                            "preempt_delay [ro]": "uint16", 
+                                            "priority [ro]": "uint8", 
+                                            "virtual_address [ro]": "inet:ip-address", 
+                                            "virtual_router_id [ro]": "uint8"
+                                        }, 
+                                        "virtual_router_id [rw]": "leafref"
+                                    }
+                                }
+                            }
+                        }, 
+                        "config [rw]": {
+                            "enabled [rw]": "boolean", 
+                            "mtu [rw]": "uint16"
+                        }, 
+                        "neighbors [rw]": {
+                            "neighbor [rw]": {
+                                "config [rw]": {
+                                    "ip [rw]": "inet:ipv4-address-no-zone", 
+                                    "link_layer_address [rw]": "yang:phys-address"
+                                }, 
+                                "ip [rw]": "leafref", 
+                                "state [rw]": {
+                                    "ip [ro]": "inet:ipv4-address-no-zone", 
+                                    "link_layer_address [ro]": "yang:phys-address", 
+                                    "origin [ro]": "neighbor-origin"
+                                }
+                            }
+                        }, 
+                        "state [rw]": {
+                            "enabled [ro]": "boolean", 
+                            "mtu [ro]": "uint16"
+                        }, 
+                        "unnumbered [rw]": {
+                            "config [rw]": {
+                                "enabled [rw]": "boolean"
+                            }, 
+                            "interface_ref [rw]": {
+                                "config [rw]": {
+                                    "interface [rw]": "leafref", 
+                                    "subinterface [rw]": "leafref"
+                                }, 
+                                "state [rw]": {
+                                    "interface [ro]": "leafref", 
+                                    "subinterface [ro]": "leafref"
+                                }
+                            }, 
+                            "state [rw]": {
+                                "enabled [ro]": "boolean"
+                            }
+                        }
+                    }, 
+                    "openconfig-if-ip:ipv6 [rw]": {
+                        "addresses [rw]": {
+                            "address [rw]": {
+                                "config [rw]": {
+                                    "ip [rw]": "inet:ipv6-address-no-zone", 
+                                    "prefix_length [rw]": "uint8"
+                                }, 
+                                "ip [rw]": "leafref", 
+                                "state [rw]": {
+                                    "ip [ro]": "inet:ipv6-address-no-zone", 
+                                    "origin [ro]": "ip-address-origin", 
+                                    "prefix_length [ro]": "uint8", 
+                                    "status [ro]": "enumeration"
+                                }, 
+                                "vrrp [rw]": {
+                                    "vrrp_group [rw]": {
+                                        "config [rw]": {
+                                            "accept_mode [rw]": "boolean", 
+                                            "advertisement_interval [rw]": "uint16", 
+                                            "preempt [rw]": "boolean", 
+                                            "preempt_delay [rw]": "uint16", 
+                                            "priority [rw]": "uint8", 
+                                            "virtual_address [rw]": "inet:ip-address", 
+                                            "virtual_link_local [rw]": "inet:ip-address", 
+                                            "virtual_router_id [rw]": "uint8"
+                                        }, 
+                                        "interface_tracking [rw]": {
+                                            "config [rw]": {
+                                                "priority_decrement [rw]": "uint8", 
+                                                "track_interface [rw]": "leafref"
+                                            }, 
+                                            "state [rw]": {
+                                                "priority_decrement [ro]": "uint8", 
+                                                "track_interface [ro]": "leafref"
+                                            }
+                                        }, 
+                                        "state [rw]": {
+                                            "accept_mode [ro]": "boolean", 
+                                            "advertisement_interval [ro]": "uint16", 
+                                            "current_priority [ro]": "uint8", 
+                                            "preempt [ro]": "boolean", 
+                                            "preempt_delay [ro]": "uint16", 
+                                            "priority [ro]": "uint8", 
+                                            "virtual_address [ro]": "inet:ip-address", 
+                                            "virtual_link_local [ro]": "inet:ip-address", 
+                                            "virtual_router_id [ro]": "uint8"
+                                        }, 
+                                        "virtual_router_id [rw]": "leafref"
+                                    }
+                                }
+                            }
+                        }, 
+                        "config [rw]": {
+                            "dup_addr_detect_transmits [rw]": "uint32", 
+                            "enabled [rw]": "boolean", 
+                            "mtu [rw]": "uint32"
+                        }, 
+                        "neighbors [rw]": {
+                            "neighbor [rw]": {
+                                "config [rw]": {
+                                    "ip [rw]": "inet:ipv6-address-no-zone", 
+                                    "link_layer_address [rw]": "yang:phys-address"
+                                }, 
+                                "ip [rw]": "leafref", 
+                                "state [rw]": {
+                                    "ip [ro]": "inet:ipv6-address-no-zone", 
+                                    "is_router [ro]": "empty", 
+                                    "link_layer_address [ro]": "yang:phys-address", 
+                                    "neighbor_state [ro]": "enumeration", 
+                                    "origin [ro]": "neighbor-origin"
+                                }
+                            }
+                        }, 
+                        "openconfig-if-ip-ext:autoconf [rw]": {
+                            "config [rw]": {
+                                "create_global_addresses [rw]": "boolean", 
+                                "create_temporary_addresses [rw]": "boolean", 
+                                "temporary_preferred_lifetime [rw]": "uint32", 
+                                "temporary_valid_lifetime [rw]": "uint32"
+                            }, 
+                            "state [rw]": {
+                                "create_global_addresses [ro]": "boolean", 
+                                "create_temporary_addresses [ro]": "boolean", 
+                                "temporary_preferred_lifetime [ro]": "uint32", 
+                                "temporary_valid_lifetime [ro]": "uint32"
+                            }
+                        }, 
+                        "state [rw]": {
+                            "dup_addr_detect_transmits [ro]": "uint32", 
+                            "enabled [ro]": "boolean", 
+                            "mtu [ro]": "uint32"
+                        }, 
+                        "unnumbered [rw]": {
+                            "config [rw]": {
+                                "enabled [rw]": "boolean"
+                            }, 
+                            "interface_ref [rw]": {
+                                "config [rw]": {
+                                    "interface [rw]": "leafref", 
+                                    "subinterface [rw]": "leafref"
+                                }, 
+                                "state [rw]": {
+                                    "interface [ro]": "leafref", 
+                                    "subinterface [ro]": "leafref"
+                                }
+                            }, 
+                            "state [rw]": {
+                                "enabled [ro]": "boolean"
+                            }
+                        }
+                    }, 
+                    "openconfig-vlan:vlan [rw]": {
+                        "config [rw]": {
+                            "vlan_id [rw]": "union"
+                        }, 
+                        "state [rw]": {
+                            "vlan_id [ro]": "union"
+                        }
+                    }, 
+                    "state [rw]": {
+                        "admin_status [ro]": "enumeration", 
+                        "counters [ro]": {
+                            "in_broadcast_pkts [ro]": "yang:counter64", 
+                            "in_discards [ro]": "yang:counter64", 
+                            "in_errors [ro]": "yang:counter64", 
+                            "in_multicast_pkts [ro]": "yang:counter64", 
+                            "in_octets [ro]": "yang:counter64", 
+                            "in_unicast_pkts [ro]": "yang:counter64", 
+                            "in_unknown_protos [ro]": "yang:counter32", 
+                            "last_clear [ro]": "yang:date-and-time", 
+                            "out_broadcast_pkts [ro]": "yang:counter64", 
+                            "out_discards [ro]": "yang:counter64", 
+                            "out_errors [ro]": "yang:counter64", 
+                            "out_multicast_pkts [ro]": "yang:counter64", 
+                            "out_octets [ro]": "yang:counter64", 
+                            "out_unicast_pkts [ro]": "yang:counter64"
+                        }, 
+                        "description [ro]": "string", 
+                        "enabled [ro]": "boolean", 
+                        "ifindex [ro]": "uint32", 
+                        "index [ro]": "uint32", 
+                        "last_change [ro]": "yang:timeticks", 
+                        "name [ro]": "string", 
+                        "oper_status [ro]": "enumeration"
+                    }
+                }
+            }
+        }
+    }, 
+    "openconfig-vlan:vlans [rw]": {
+        "vlan [rw]": {
+            "config [rw]": {
+                "name [rw]": "string", 
+                "status [rw]": "enumeration", 
+                "tpid [rw]": "identityref", 
+                "vlan_id [rw]": "oc-vlan-types:vlan-id"
+            }, 
+            "members [rw]": {
+                "member [rw]": {
+                    "interface_ref [ro]": {
+                        "state [ro]": {
+                            "interface [ro]": "leafref", 
+                            "subinterface [ro]": "leafref"
+                        }
+                    }
+                }
+            }, 
+            "state [rw]": {
+                "name [ro]": "string", 
+                "status [ro]": "enumeration", 
+                "tpid [ro]": "identityref", 
+                "vlan_id [ro]": "oc-vlan-types:vlan-id"
+            }, 
+            "vlan_id [rw]": "leafref"
+        }
+    }
+}
+

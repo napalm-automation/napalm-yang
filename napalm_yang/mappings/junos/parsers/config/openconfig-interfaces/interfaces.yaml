@@ -1,0 +1,88 @@
+---
+metadata:
+    parser: XMLParser
+    execute:
+        - method: _rpc
+          args:
+              get: "<get-configuration/>"
+
+interfaces:
+    _parse: unnecessary
+    interface:
+        _parse:
+            mode: xpath
+            xpath: "interfaces/interface"
+            key: name
+            from: "{{ bookmarks.interfaces }}"
+        name:
+            _parse: unnecessary
+        hold_time:
+            _parse: not_implemented
+            config:
+                _parse: not_implemented
+                down:
+                    _parse: not_implemented
+                up:
+                    _parse: not_implemented
+        config:
+            _parse: unnecessary
+            name:
+                _parse:
+                    mode: value
+                    value: "{{ interface_key }}"
+            type:
+                _parse:
+                    mode: map
+                    xpath: name
+                    regexp: "(?P<value>[a-z]+).*"
+                    # Next field could easily be
+                    # from: "{{ bookmarks['parent'] }}"
+                    # but this is more efficient
+                    from: "<interface><name>{{ parent_key }}</name></interface>"
+                    map:
+                        ge: ethernetCsmacd
+                        lo: softwareLoopback
+                        ae: ieee8023adLag
+            enabled:
+                _parse:
+                    mode: is_absent
+                    xpath: "disable"
+                    from: "{{ bookmarks['parent'] }}"
+            description:
+                _parse:
+                    mode: xpath
+                    xpath: description
+                    from: "{{ bookmarks['parent'] }}"
+            mtu:
+                _parse:
+                    mode: xpath
+                    xpath: mtu
+                    from: "{{ bookmarks['parent'] }}"
+        subinterfaces:
+            _parse: not_implemented
+            subinterface:
+                _parse:
+                    mode: xpath
+                    xpath: "unit"
+                    key: name
+                    from: "{{ bookmarks['parent'] }}"
+                index:
+                    _parse: unnecessary
+                config:
+                    _parse: not_implemented
+                    index:
+                        _parse: not_implemented
+                    name:
+                        _parse:
+                            mode: value
+                            value: "{{ subinterface_key }}"
+                    enabled:
+                        _parse:
+                            mode: is_absent
+                            xpath: "disable"
+                            from: "{{ bookmarks['parent'] }}"
+                    description:
+                        _parse:
+                            mode: xpath
+                            xpath: description
+                            from: "{{ bookmarks['parent'] }}"

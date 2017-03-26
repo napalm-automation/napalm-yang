@@ -1,0 +1,6 @@
+pylama
+pytest
+pytest-cov
+pytest-json
+pytest-pythonpath
+-r requirements.txt
