@@ -18,7 +18,11 @@ ipv4:
     addresses:
         _translation: unnecessary
         address:
-            _translation: unnecessary
+            _translation:
+                mode: container
+                key_value: "    ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
+                negate: "    default ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
+                replace: false
             ip:
                 _translation: unnecessary
             config:
@@ -26,10 +30,7 @@ ipv4:
                 ip:
                     _translation: unnecessary
                 prefix_length:
-                    _translation:
-                        - mode: element
-                          value: "    ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
-                          negate: "    default ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
+                    _translation: unnecessary
             vrrp:
                 _translation: not_implemented
                 vrrp_group:

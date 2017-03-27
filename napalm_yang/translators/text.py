@@ -4,6 +4,8 @@ from napalm_yang.translators.xml import XMLTranslator
 
 from lxml import etree
 
+import napalm_yang
+
 
 class TextTranslator(XMLTranslator):
 
@@ -30,11 +32,19 @@ class TextTranslator(XMLTranslator):
         mapping["element"] = "command"
         super()._parse_leaf_element(attribute, model, other, mapping, translation, force)
 
-    def _init_element_default_only(self, attribute, model, other, mapping, translation):
-        # There is nothing to do here, default_only action is only useful to remove lists
-        return translation
-
     def _init_element_container(self, attribute, model, other, mapping, translation):
+        if other is not None:
+            if not napalm_yang.utils.diff(model, other) and not self.replace:
+                # If objects are equal we return None as that aborts translating
+                # the rest of the object
+                return
+
+        if not model._changed() and other is not None and not self.replace:
+            print(attribute, model, other)
+            mapping["key_value"] = mapping["negate"]
+        if not model._changed() and other is not None and self.replace:
+            return translation
+
         mapping["key_element"] = "command"
         mapping["container"] = model._yang_name
         return super()._init_element_container(attribute, model, other, mapping, translation)
@@ -45,6 +55,9 @@ class TextTranslator(XMLTranslator):
     #      return super()._init_element_container(attribute, model, other, mapping, translation)
 
     def _default_element_container(self, mapping, translation, replacing):
+        if (replacing or self.replace) and not mapping.get("replace", True):
+            return
+
         if not self.merge and not self.replace:
             return
 
@@ -53,11 +66,6 @@ class TextTranslator(XMLTranslator):
 
         e = etree.SubElement(translation, "command")
         e.text = mapping["negate"]
-
-    def _default_element_default_only(self, mapping, translation, replacing):
-        if self.replace:
-            return
-        self._default_element_container(mapping, translation, replacing)
 
     def _xml_to_text(self, xml, text=""):
         for element in xml:

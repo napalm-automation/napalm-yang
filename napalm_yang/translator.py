@@ -125,8 +125,8 @@ class Translator(object):
                                               translation_point)
 
             if et is None:
-                logger.info("Skipping {} as it seems to be not implemented".format(attribute))
-                break
+                logger.info("Skipping {} as not implemented or objects are equal".format(attribute))
+                continue
 
             self.bookmarks[attribute][key] = et
             self.bookmarks["parent"] = et
