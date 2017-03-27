@@ -1,0 +1,11 @@
+interface Port-Channel1
+    default mtu
+interface Port-Channel1.1
+interface Ethernet1
+interface Ethernet2
+interface Ethernet2.1
+interface Ethernet2.2
+interface Management1
+interface Loopback0
+    description new loopback
+no interface Loopback1

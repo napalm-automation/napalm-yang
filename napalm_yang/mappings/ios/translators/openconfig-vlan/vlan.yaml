@@ -9,5 +9,5 @@ vlan:
         vlan_id:
             _translation:
                 - mode: element
-                  value: "    encapsulation dot1q vlan {{ model }}\n"
-                  negate: "    default encapsulation dot1q vlan {{ model }}\n"
+                  value: "    encapsulation dot1q {{ model }}\n"
+                  negate: "    no encapsulation dot1q\n"

@@ -35,6 +35,7 @@ class Parser(object):
             device_config = ""
 
         self.config = "{}\n{}".format(self.config, device_config)
+        self.config = self.config.replace("\r", "")  # Parsing will be easier
 
         if not self.config:
             raise Exception("I don't have any data to operate with")

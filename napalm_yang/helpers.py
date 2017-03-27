@@ -9,6 +9,8 @@ from napalm_yang.translators.xml import XMLTranslator
 import os
 import jinja2
 
+from napalm_yang.jinja_filters import ip_filters
+
 import logging
 logger = logging.getLogger("napalm-yang")
 
@@ -106,8 +108,12 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
 
 
 def template(string, **kwargs):
-    template = jinja2.Environment(
+    env = jinja2.Environment(
                             undefined=jinja2.StrictUndefined,
                             keep_trailing_newline=True,
-                            ).from_string(string)
+                            )
+    env.filters.update(ip_filters.filters())
+
+    template = env.from_string(string)
+
     return template.render(**kwargs)
