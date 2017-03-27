@@ -1,0 +1,12 @@
+---
+metadata:
+    translator: TextTranslator
+
+routed-vlan:
+    _translation: unnecessary
+    config:
+        _translation: unnecessary
+        enabled:
+            _translation: unnecessary
+        vlan:
+            _translation: unnecessary

@@ -35,7 +35,7 @@ test_populating_from_file = [
 
 
 def read_file_content(filename):
-    full_path = os.path.join(BASE_PATH, "data", filename)
+    full_path = os.path.join(BASE_PATH, "tutorial_data", filename)
     with open(full_path, "r") as f:
         return f.read()
 

@@ -17,15 +17,22 @@ class TextTranslator(XMLTranslator):
 
     def _parse_leaf_element(self, attribute, model, other, mapping, translation):
         force = False
-        if self.merge and other:
-            if model == other:
-                return
-            elif not model._changed():
-                force = True
-                mapping["value"] = mapping["negate"]
+
+        if model == other and not self.replace:
+            return
+
+        if not model._changed() and other is not None and not self.replace:
+            force = True
+            mapping["value"] = mapping["negate"]
+        if not model._changed() and other is not None and self.replace:
+            return
 
         mapping["element"] = "command"
         super()._parse_leaf_element(attribute, model, other, mapping, translation, force)
+
+    def _init_element_default_only(self, attribute, model, other, mapping, translation):
+        # There is nothing to do here, default_only action is only useful to remove lists
+        return translation
 
     def _init_element_container(self, attribute, model, other, mapping, translation):
         mapping["key_element"] = "command"
@@ -46,6 +53,11 @@ class TextTranslator(XMLTranslator):
 
         e = etree.SubElement(translation, "command")
         e.text = mapping["negate"]
+
+    def _default_element_default_only(self, mapping, translation, replacing):
+        if self.replace:
+            return
+        self._default_element_container(mapping, translation, replacing)
 
     def _xml_to_text(self, xml, text=""):
         for element in xml:

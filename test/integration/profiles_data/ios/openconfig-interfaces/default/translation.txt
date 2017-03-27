@@ -1,0 +1,26 @@
+interface Port-channel1
+    description blah
+    mtu 9000
+interface Port-channel1.1
+interface Loopback1
+    description a loopback
+interface GigabitEthernet1
+    description This is a description
+    mtu 1500
+interface GigabitEthernet2
+    ip address 192.168.0.1 255.255.255.0
+    shutdown
+    description so much oc
+    mtu 1500
+interface GigabitEthernet2.1
+    encapsulation dot1q 1
+    ip address 172.20.0.1 255.255.255.0 secondary
+    ip address 192.168.1.1 255.255.255.0
+    description another subiface
+interface GigabitEthernet2.2
+    encapsulation dot1q 2
+    ip address 192.168.2.1 255.255.255.0
+    description asdasdasd
+interface GigabitEthernet3
+    shutdown
+    mtu 1500
