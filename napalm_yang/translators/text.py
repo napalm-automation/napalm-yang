@@ -17,12 +17,15 @@ class TextTranslator(XMLTranslator):
 
     def _parse_leaf_element(self, attribute, model, other, mapping, translation):
         force = False
-        if self.merge and other:
-            if model == other:
-                return
-            elif not model._changed():
-                force = True
-                mapping["value"] = mapping["negate"]
+
+        if model == other and not self.replace:
+            return
+
+        if not model._changed() and other is not None and not self.replace:
+            force = True
+            mapping["value"] = mapping["negate"]
+        if not model._changed() and other is not None and self.replace:
+            return
 
         mapping["element"] = "command"
         super()._parse_leaf_element(attribute, model, other, mapping, translation, force)
