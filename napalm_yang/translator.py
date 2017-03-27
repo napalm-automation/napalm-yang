@@ -21,7 +21,7 @@ class Translator(object):
 
     def __init__(self, model, profile,
                  translation=None, keys=None, bookmarks=None,
-                 merge=None, replace=None):
+                 merge=None, replace=None, other=None):
         self.model = model
         self.profile = profile
         self._defining_module = model._defining_module
@@ -33,7 +33,7 @@ class Translator(object):
 
         self.merge = merge
         self.replace = replace
-        self.other = merge or replace
+        self.other = other or merge or replace
 
         self.mapping = helpers.read_yang_map(model._defining_module, model._yang_name,
                                              self.profile, "translators")
@@ -88,7 +88,7 @@ class Translator(object):
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
                 translator = Translator(v, self.profile, translation_point, self.keys,
-                                        self.bookmarks, self.merge, self.replace)
+                                        self.bookmarks, self.merge, self.replace, other_attr)
                 translator.translate()
             else:
                 self._translate(k, v, mapping[k], et, other_attr)
