@@ -7,7 +7,7 @@ ipv4:
     config:
         _parse: unnecessary
         enabled:
-            _parse:
+            _parse: # TODO look at this one, I think this is different depending on IOS version
                 mode: is_absent
                 regexp: "(?P<value>^\\W*switchport$)"
                 from: "{{ bookmarks['parent'] }}"

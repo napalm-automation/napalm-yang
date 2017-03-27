@@ -35,12 +35,14 @@ interfaces:
                 _translation:
                     - mode: element
                       value: "    description {{ model }}\n"
-                      negate: "    default description"
+                      negate: "    default description\n"
             mtu:
                 _translation:
                     - mode: element
                       value: "    mtu {{ model }}\n"
                       negate: "    default mtu\n"
+                      # IOS will complain with % Interface Loopback1 does not support user settable mtu.
+                      when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
         subinterfaces:
             _translation: unnecessary
             subinterface:

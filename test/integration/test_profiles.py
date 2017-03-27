@@ -66,3 +66,43 @@ class Tests(object):
         #  print(pretty_json(config.get(filter=True)))
 
         assert not napalm_yang.utils.diff(config, expected)
+
+    @pytest.mark.parametrize("profile, model, case", test_profile_models)
+    def test_translate(self, profile, model, case):
+        json_blob = read_json(profile, model, case, "expected.json")
+        expected_translation = read_file_content(profile, model, case, "translation.txt")
+
+        config = napalm_yang.base.Root()
+        config.add_model(model)
+        config.load_dict(json_blob)
+
+        configuration = config.translate_config(profile=[profile])
+        #  print(configuration)
+
+        assert configuration == expected_translation
+
+    @pytest.mark.parametrize("action", ["merge", "replace"])
+    @pytest.mark.parametrize("profile, model, case", test_profile_models)
+    def test_translate_merge(self, action, profile, model, case):
+        json_running = read_json(profile, model, case, "expected.json")
+        json_candidate = read_json(profile, model, case, "candidate.json")
+
+        expected_translation = read_file_content(profile, model, case, "{}.txt".format(action))
+
+        candidate = napalm_yang.base.Root()
+        candidate.add_model(model)
+        candidate.load_dict(json_candidate)
+
+        running = napalm_yang.base.Root()
+        running.add_model(model)
+        running.load_dict(json_running)
+
+        if action == "merge":
+            configuration = candidate.translate_config(profile=[profile], merge=running)
+        elif action == "replace":
+            configuration = candidate.translate_config(profile=[profile], replace=running)
+
+        #  print(pretty_json(napalm_yang.utils.diff(candidate, running)))
+        #  print(configuration)
+
+        assert configuration == expected_translation

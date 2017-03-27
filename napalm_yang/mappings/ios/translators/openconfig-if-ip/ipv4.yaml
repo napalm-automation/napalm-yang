@@ -7,7 +7,7 @@ ipv4:
     config:
         _translation: unnecessary
         enabled:
-            _translation:
+            _translation: # TODO look at this one, I think this is different depending on IOS version
                 - mode: element
                   value: "    no switchport\n"
                   negate: "    switchport\n"
@@ -18,7 +18,9 @@ ipv4:
     addresses:
         _translation: unnecessary
         address:
-            _translation: unnecessary
+            _translation:
+                mode: default_only
+                negate: "    default ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
             ip:
                 _translation: unnecessary
             config:
@@ -28,8 +30,7 @@ ipv4:
                 prefix_length:
                     _translation:
                         - mode: element
-                          value: "    ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
-                          negate: "    default ip address {{ model._parent.ip }}/{{ model }} {{ 'secondary' if model._parent.secondary else '' }}\n"
+                          value: "    ip address {{ model._parent.ip }} {{ model|cidr_to_netmask }}{{ ' secondary' if model._parent.secondary else '' }}\n"
             vrrp:
                 _translation: not_implemented
                 vrrp_group:
