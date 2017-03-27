@@ -1,6 +1,3 @@
-interface Port-channel1
-interface Port-channel1.1
-interface Loopback1
 interface GigabitEthernet1
     default description
 interface GigabitEthernet2
@@ -9,5 +6,3 @@ interface GigabitEthernet2.1
     no encapsulation dot1q
     ip address 192.168.20.1 255.255.255.0 secondary
     default ip address 172.20.0.1 255.255.255.0 secondary
-interface GigabitEthernet2.2
-interface GigabitEthernet3
