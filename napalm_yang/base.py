@@ -133,19 +133,19 @@ class Root(object):
             attr = getattr(self, k)
             pybindJSONDecoder.load_json(v, None, None, obj=attr, overwrite=overwrite)
 
-    def parse_config(self, device=None, profile=None, config=None):
+    def parse_config(self, device=None, profile=None, native=None):
         """
         Parse native configuration and load it into the corresponding models. Only models
         that have been added to the root object will be parsed.
 
-        If ``config`` is passed to the method that's what we will parse, otherwise, we will use the
+        If ``native`` is passed to the method that's what we will parse, otherwise, we will use the
         ``device`` to retrieve it.
 
         Args:
             device (NetworkDriver): Device to load the configuration from.
             profile (list): Profiles that the device supports. If no ``profile`` is passed it will
               be read from ``device``.
-            config (string): Configuration to parse.
+            native (string): Native configuration to parse.
 
         Examples:
 
@@ -164,7 +164,12 @@ class Root(object):
         """
 
         for k, v in self:
-            parser = Parser(v, device=device, profile=profile, config=config, is_config=True)
+            parser = Parser(v, device=device, profile=profile, native=native, is_config=True)
+            parser.parse()
+
+    def parse_state(self, device=None, profile=None, state=None):
+        for k, v in self:
+            parser = Parser(v, device=device, profile=profile, native=state, is_config=False)
             parser.parse()
 
     def translate_config(self, profile, merge=None, replace=None):

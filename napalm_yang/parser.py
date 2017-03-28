@@ -10,7 +10,7 @@ logger = logging.getLogger("napalm-yang")
 class Parser(object):
 
     def __init__(self, model, device=None, profile=None, is_config=None,
-                 config=None, keys=None, bookmarks=None, extra_vars=None):
+                 native=None, keys=None, bookmarks=None, extra_vars=None):
         self.model = model
         self.device = device
         self.profile = profile or device.profile
@@ -25,7 +25,7 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
-        self.config = config or ""
+        self.native = native or ""
 
         if self.mapping and device:
             device_config = self._execute_methods(device,
@@ -34,13 +34,13 @@ class Parser(object):
         else:
             device_config = ""
 
-        self.config = "{}\n{}".format(self.config, device_config)
-        self.config = self.config.replace("\r", "")  # Parsing will be easier
+        self.native = "{}\n{}".format(self.native, device_config)
+        self.native = self.native.replace("\r", "")  # Parsing will be easier
 
-        if not self.config:
+        if not self.native:
             raise Exception("I don't have any data to operate with")
 
-        self.bookmarks = {self._yang_name: self.config, "parent": self.config}
+        self.bookmarks = {self._yang_name: self.native, "parent": self.native}
         self.bookmarks = bookmarks or self.bookmarks
 
         if self.mapping:
@@ -89,7 +89,7 @@ class Parser(object):
 
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                parser = Parser(v, self.device, self.profile, self.is_config, self.config,
+                parser = Parser(v, self.device, self.profile, self.is_config, self.native,
                                 self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
             else:

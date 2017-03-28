@@ -57,7 +57,7 @@ class Tests(object):
 
         config = napalm_yang.base.Root()
         config.add_model(model)
-        config.parse_config(config=config_txt, profile=[profile])
+        config.parse_config(native=config_txt, profile=[profile])
 
         expected = napalm_yang.base.Root()
         expected.add_model(model)
