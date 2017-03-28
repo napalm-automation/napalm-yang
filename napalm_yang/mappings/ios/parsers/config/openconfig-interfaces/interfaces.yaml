@@ -11,7 +11,7 @@ interfaces:
         _parse:
             mode: block
             regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
-            from: "{{ bookmarks.interfaces }}"
+            from: "{{ bookmarks.interfaces.0 }}"
         name:
             _parse: unnecessary
         hold_time:
@@ -59,7 +59,7 @@ interfaces:
                 _parse:
                     mode: block
                     regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
-                    from: "{{ bookmarks.interfaces }}"
+                    from: "{{ bookmarks.interfaces.0 }}"
                 index:
                     _parse: unnecessary
                 config:

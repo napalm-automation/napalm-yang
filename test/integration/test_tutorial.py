@@ -116,7 +116,7 @@ class Tests(object):
         config = napalm_yang.base.Root()
         config.add_model(napalm_yang.models.openconfig_interfaces)
 
-        config.parse_config(config=read_file_content(config_path), profile=profile)
+        config.parse_config(native=[read_file_content(config_path)], profile=profile)
 
         #  print(json.dumps(config.get(filter=True), indent=4))
         assert config.get(filter=True) == read_json(expected_path)
@@ -151,7 +151,7 @@ class Tests(object):
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
-        candidate.parse_config(config=read_file_content(config_file), profile=profile)
+        candidate.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         # now let's do a few changes, let's remove lo0.0 and create lo0.1
         candidate.interfaces.interface["lo0"].subinterfaces.subinterface.delete("0")
@@ -164,7 +164,7 @@ class Tests(object):
         # We will also need a running configuration to compare against
         running = napalm_yang.base.Root()
         running.add_model(napalm_yang.models.openconfig_interfaces)
-        running.parse_config(config=read_file_content(config_file), profile=profile)
+        running.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         merge_config = candidate.translate_config(profile=profile, merge=running)
         assert merge_config == read_file_content(merge_file)
@@ -181,7 +181,7 @@ class Tests(object):
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
-        candidate.parse_config(config=read_file_content(config_file), profile=profile)
+        candidate.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         # now let's do a few changes, let's remove lo1 and create lo0
         candidate.interfaces.interface.delete("Loopback1")
@@ -194,7 +194,7 @@ class Tests(object):
         # We will also need a running configuration to compare against
         running = napalm_yang.base.Root()
         running.add_model(napalm_yang.models.openconfig_interfaces)
-        running.parse_config(config=read_file_content(config_file), profile=profile)
+        running.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         merge_config = candidate.translate_config(profile=profile, merge=running)
         assert merge_config == read_file_content(merge_file)
@@ -210,7 +210,7 @@ class Tests(object):
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
-        candidate.parse_config(config=read_file_content(config_file), profile=profile)
+        candidate.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         # now let's do a few changes, let's remove lo1 and create lo0
         candidate.interfaces.interface.delete("Loopback1")
@@ -223,6 +223,6 @@ class Tests(object):
         # We will also need a running configuration to compare against
         running = napalm_yang.base.Root()
         running.add_model(napalm_yang.models.openconfig_interfaces)
-        running.parse_config(config=read_file_content(config_file), profile=profile)
+        running.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         assert napalm_yang.utils.diff(candidate, running) == read_json(expected_file)
