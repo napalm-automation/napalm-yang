@@ -167,9 +167,9 @@ class Root(object):
             parser = Parser(v, device=device, profile=profile, native=native, is_config=True)
             parser.parse()
 
-    def parse_state(self, device=None, profile=None, state=None):
+    def parse_state(self, device=None, profile=None, native=None):
         for k, v in self:
-            parser = Parser(v, device=device, profile=profile, native=state, is_config=False)
+            parser = Parser(v, device=device, profile=profile, native=native, is_config=False)
             parser.parse()
 
     def translate_config(self, profile, merge=None, replace=None):
