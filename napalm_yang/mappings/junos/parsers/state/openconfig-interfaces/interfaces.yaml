@@ -4,85 +4,218 @@ metadata:
     execute:
         - method: _rpc
           args:
-              get: "<get-interface-information/>"
+              get: "<get-interface-information><extensive/></get-interface-information>"
 
 interfaces:
-    _parse: unnecessary
+    _parse: not_implemented
     interface:
         _parse:
             mode: xpath
-            xpath: "interfaces/interface"
+            xpath: "physical-interface"
             key: name
-            from: "{{ bookmarks.interfaces }}"
-        name:
+            from: "{{ bookmarks.interfaces.0 }}"
+        config:
             _parse: unnecessary
         hold_time:
             _parse: not_implemented
             config:
+                _parse: unnecessary
+            state:
                 _parse: not_implemented
                 down:
                     _parse: not_implemented
                 up:
                     _parse: not_implemented
-        config:
-            _parse: unnecessary
+        state:
+            _parse: not_implemented
+            admin_status:
+                _parse: 
+                    mode: map
+                    xpath: "admin-status"
+                    from: "{{ bookmarks['parent'] }}"
+                    map:
+                        up: UP
+                        down: DOWN
+            description:
+                _parse: 
+                    mode: xpath
+                    xpath: "description"
+                    from: "{{ bookmarks['parent'] }}"
+            enabled:
+                _parse: 
+                    mode: map
+                    xpath: "admin-status"
+                    from: "{{ bookmarks['parent'] }}"
+                    map:
+                        up: true
+                        down: false
+            ifindex:
+                _parse: 
+                    mode: xpath
+                    xpath: "snmp-index"
+                    from: "{{ bookmarks['parent'] }}"
+            last_change:
+                _parse: 
+                    mode: xpath
+                    xpath: "interface-flapped"
+                    attribute: "seconds"
+                    from: "{{ bookmarks['parent'] }}"
+            mtu:
+                _parse: 
+                    mode: xpath
+                    xpath: "mtu"
+                    regexp: "(?P<value>\\d+)"  # Someone thought mixing strings and ints was a good idea
+                    from: "{{ bookmarks['parent'] }}"
             name:
+                _parse: unnecessary
+            oper_status:
                 _parse:
-                    mode: value
-                    value: "{{ interface_key }}"
+                    mode: map
+                    xpath: "oper-status"
+                    from: "{{ bookmarks['parent'] }}"
+                    map:
+                        up: UP
+                        down: DOWN
             type:
                 _parse:
                     mode: map
-                    xpath: name
-                    regexp: "(?P<value>[a-z]+).*"
-                    # Next field could easily be
-                    # from: "{{ bookmarks['parent'] }}"
-                    # but this is more efficient
-                    from: "<interface><name>{{ parent_key }}</name></interface>"
+                    xpath: "if-type"
+                    from: "{{ bookmarks['parent'] }}"
                     map:
-                        ge: ethernetCsmacd
-                        lo: softwareLoopback
-                        ae: ieee8023adLag
-            enabled:
-                _parse:
-                    mode: is_absent
-                    xpath: "disable"
-                    from: "{{ bookmarks['parent'] }}"
-            description:
-                _parse:
-                    mode: xpath
-                    xpath: description
-                    from: "{{ bookmarks['parent'] }}"
-            mtu:
-                _parse:
-                    mode: xpath
-                    xpath: mtu
-                    from: "{{ bookmarks['parent'] }}"
+                        GRE: tunnel
+                        IPIP: tunnel
+                        Logical-tunnel: tunnel
+                        Multicast-GRE: tunnel
+                        Secure-Tunnel: tunnel
+                        Ethernet: ethernetCsmacd
+                        Loopback: softwareLoopback
+                        VLAN: l2vlan
+                        Adaptive-Services: null
+                        Software-Pseudo: null
+                        PIMD: null
+                        PIME: null
+                        PPPoE: null
+            counters:
+                _parse: not_implemented
+                in_broadcast_pkts:
+                    _parse: 
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/input-broadcasts"
+                        from: "{{ bookmarks['parent'] }}"
+                in_discards:
+                    _parse:
+                        mode: xpath
+                        xpath: "input-error-list/input-discards"
+                        from: "{{ bookmarks['parent'] }}"
+                in_errors:
+                    _parse:
+                        mode: xpath
+                        xpath: "input-error-list/input-errors"
+                        from: "{{ bookmarks['parent'] }}"
+                in_multicast_pkts:
+                    _parse:
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/input-multicasts"
+                        from: "{{ bookmarks['parent'] }}"
+                in_octets:
+                    _parse: not_implemented
+                in_unicast_pkts:
+                    _parse: 
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/input-unicasts"
+                        from: "{{ bookmarks['parent'] }}"
+                in_unknown_protos:
+                    _parse: not_implemented
+                last_clear:
+                    _parse: not_implemented
+                out_broadcast_pkts:
+                    _parse: 
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/output-broadcasts"
+                        from: "{{ bookmarks['parent'] }}"
+                out_discards:
+                    _parse: not_implemented
+                out_errors:
+                    _parse: 
+                        mode: xpath
+                        xpath: "output-error-list/output-errors"
+                        from: "{{ bookmarks['parent'] }}"
+                out_multicast_pkts:
+                    _parse:
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/output-multicasts"
+                        from: "{{ bookmarks['parent'] }}"
+                out_octets:
+                    _parse: not_implemented
+                out_unicast_pkts:
+                    _parse:
+                        mode: xpath
+                        xpath: "ethernet-mac-statistics/output-unicasts"
+                        from: "{{ bookmarks['parent'] }}"
         subinterfaces:
-            _parse: not_implemented
+            _parse: unnecessary
             subinterface:
-                _parse:
+                _parse: 
                     mode: xpath
-                    xpath: "unit"
-                    key: name
+                    xpath: "logical-interface"
                     from: "{{ bookmarks['parent'] }}"
                 index:
                     _parse: unnecessary
                 config:
+                    _parse: unnecessary
+                state:
                     _parse: not_implemented
                     index:
+                        _parse: not_implemented
+                    description:
+                        _parse: 
+                            mode: xpath
+                            xpath: "description"
+                            from: "{{ bookmarks['parent'] }}"
+                    enabled:
+                        _parse: not_implemented
+                    admin_status:
+                        _parse: not_implemented
+                    ifindex:
+                        _parse: 
+                            mode: xpath
+                            xpath: "snmp-index"
+                            from: "{{ bookmarks['parent'] }}"
+                    last_change:
                         _parse: not_implemented
                     name:
                         _parse:
                             mode: value
                             value: "{{ subinterface_key }}"
-                    enabled:
-                        _parse:
-                            mode: is_absent
-                            xpath: "disable"
-                            from: "{{ bookmarks['parent'] }}"
-                    description:
-                        _parse:
-                            mode: xpath
-                            xpath: description
-                            from: "{{ bookmarks['parent'] }}"
+                    oper_status:
+                        _parse: not_implemented
+                    counters:
+                        _parse: not_implemented
+                        in_broadcast_pkts:
+                            _parse: not_implemented
+                        in_discards:
+                            _parse: not_implemented
+                        in_errors:
+                            _parse: not_implemented
+                        in_multicast_pkts:
+                            _parse: not_implemented
+                        in_octets:
+                            _parse: not_implemented
+                        in_unicast_pkts:
+                            _parse: not_implemented
+                        in_unknown_protos:
+                            _parse: not_implemented
+                        last_clear:
+                            _parse: not_implemented
+                        out_broadcast_pkts:
+                            _parse: not_implemented
+                        out_discards:
+                            _parse: not_implemented
+                        out_errors:
+                            _parse: not_implemented
+                        out_multicast_pkts:
+                            _parse: not_implemented
+                        out_octets:
+                            _parse: not_implemented
+                        out_unicast_pkts:
+                            _parse: not_implemented
