@@ -56,7 +56,7 @@ class Parser(object):
                 attr = getattr(attr, p)
                 r = attr(**m["args"])
 
-                if isinstance(r, dict) and all([isinstance(x, str) for x in r.values()]):
+                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
                     # Some vendors like junos return commands enclosed by a key
                     r = "\n".join(r.values())
 
@@ -86,7 +86,8 @@ class Parser(object):
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
                 continue
-            elif not self.is_config and (v._is_config or k == "config"):
+            elif not self.is_config and (v._is_config or k == "config") \
+                    and v._yang_type not in ("container", "list"):
                 continue
 
             if v._defining_module != self._defining_module and v._defining_module is not None:

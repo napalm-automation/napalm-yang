@@ -113,19 +113,15 @@ class Tests(object):
 
     @pytest.mark.parametrize("profile, model, case", test_state_profile_models)
     def test_parse_state(self, profile, model, case):
-        config = napalm_yang.base.Root()
-        config.add_model(model)
-        #  config.parse_state(native=[config_txt], profile=[profile])
+        native = read_file_content(profile, model, case, "{}.native".format(model._yang_name))
+        expected_json = read_json(profile, model, case, "{}.expected".format(model._yang_name))
 
-        from napalm_base import get_network_driver
-        junos_configuration = {
-            'hostname': '127.0.0.1',
-            'username': 'vagrant',
-            'password': '',
-            'optional_args': {'port': 12203, 'config_lock': False}
-        }
-        junos = get_network_driver("junos")
-        d = junos(**junos_configuration)
-        d.open()
-        config.parse_state(device=d)
-        d.close()
+        state = napalm_yang.base.Root()
+        state.add_model(model)
+        state.parse_state(native=[native], profile=[profile])
+
+        expected = napalm_yang.base.Root()
+        expected.add_model(model)
+        expected.load_dict(expected_json)
+
+        assert not napalm_yang.utils.diff(state, expected)
