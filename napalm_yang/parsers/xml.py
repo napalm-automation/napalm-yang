@@ -11,7 +11,7 @@ class XMLParser(BaseParser):
         xml = etree.fromstring(mapping["from"])
 
         for element in xml.xpath(mapping["xpath"]):
-            key = element.xpath("name")[0].text
+            key = element.xpath("name")[0].text.strip()
             yield key, etree.tostring(element), {}
 
     @classmethod
@@ -24,7 +24,7 @@ class XMLParser(BaseParser):
             if regexp:
                 return re.search(mapping["regexp"], element[0].text).group("value")
             else:
-                return element[0].text
+                return element[0].text.strip()
         elif element and check_presence:
             return True
         elif check_default:
