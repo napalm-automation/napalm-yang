@@ -12,7 +12,7 @@ reqs = [str(ir.req) for ir in install_reqs]
 
 setup(
     name="napalm-yang",
-    version="0.0.4",
+    version="0.0.5",
     packages=find_packages(),
     author="David Barroso",
     author_email="dbarrosop@dravetech.com",

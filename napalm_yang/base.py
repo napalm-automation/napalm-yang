@@ -133,19 +133,19 @@ class Root(object):
             attr = getattr(self, k)
             pybindJSONDecoder.load_json(v, None, None, obj=attr, overwrite=overwrite)
 
-    def parse_config(self, device=None, profile=None, config=None):
+    def parse_config(self, device=None, profile=None, native=None):
         """
         Parse native configuration and load it into the corresponding models. Only models
         that have been added to the root object will be parsed.
 
-        If ``config`` is passed to the method that's what we will parse, otherwise, we will use the
+        If ``native`` is passed to the method that's what we will parse, otherwise, we will use the
         ``device`` to retrieve it.
 
         Args:
             device (NetworkDriver): Device to load the configuration from.
             profile (list): Profiles that the device supports. If no ``profile`` is passed it will
               be read from ``device``.
-            config (string): Configuration to parse.
+            native (list of strings): Native configuration to parse.
 
         Examples:
 
@@ -160,11 +160,44 @@ class Root(object):
             >>>
             >>> running_config = napalm_yang.base.Root()
             >>> running_config.add_model(napalm_yang.models.openconfig_interfaces)
-            >>> running_config.parse_config(config=config, profile="junos")
+            >>> running_config.parse_config(native=config, profile="junos")
         """
 
         for k, v in self:
-            parser = Parser(v, device=device, profile=profile, config=config, is_config=True)
+            parser = Parser(v, device=device, profile=profile, native=native, is_config=True)
+            parser.parse()
+
+    def parse_state(self, device=None, profile=None, native=None):
+        """
+        Parse native state and load it into the corresponding models. Only models
+        that have been added to the root object will be parsed.
+
+        If ``native`` is passed to the method that's what we will parse, otherwise, we will use the
+        ``device`` to retrieve it.
+
+        Args:
+            device (NetworkDriver): Device to load the configuration from.
+            profile (list): Profiles that the device supports. If no ``profile`` is passed it will
+              be read from ``device``.
+            native (list string): Native output to parse.
+
+        Examples:
+
+            >>> # Load from device
+            >>> state = napalm_yang.base.Root()
+            >>> state.add_model(napalm_yang.models.openconfig_interfaces)
+            >>> state.parse_config(device=d)
+
+            >>> # Load from file
+            >>> with open("junos.state", "r") as f:
+            >>>     state_data = f.read()
+            >>>
+            >>> state = napalm_yang.base.Root()
+            >>> state.add_model(napalm_yang.models.openconfig_interfaces)
+            >>> state.parse_config(native=state_data, profile="junos")
+        """
+        for k, v in self:
+            parser = Parser(v, device=device, profile=profile, native=native, is_config=False)
             parser.parse()
 
     def translate_config(self, profile, merge=None, replace=None):

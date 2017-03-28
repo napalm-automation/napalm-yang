@@ -56,7 +56,7 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
         try:
             filepath = find_yang_file(p, filename, parser_path)
             found = True
-            logger.debug("Found on profile: {}".format(p))
+            logger.debug("Found on profile: {}, {}".format(p, filepath))
         except IOError:
             pass
 

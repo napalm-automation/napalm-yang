@@ -1,0 +1,505 @@
+{
+    "interfaces": {
+        "interface": {
+            ".local.": {
+                "name": ".local.",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 0,
+                    "last-change": 0,
+                    "oper-status": "UP",
+                    "type": "softwareLoopback"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        ".local..0": {
+                            "index": ".local..0",
+                            "state": {
+                                "ifindex": 0,
+                                "name": ".local..0"
+                            }
+                        },
+                        ".local..1": {
+                            "index": ".local..1",
+                            "state": {
+                                "ifindex": 0,
+                                "name": ".local..1"
+                            }
+                        },
+                        ".local..2": {
+                            "index": ".local..2",
+                            "state": {
+                                "ifindex": 0,
+                                "name": ".local..2"
+                            }
+                        },
+                        ".local..3": {
+                            "index": ".local..3",
+                            "state": {
+                                "ifindex": 0,
+                                "name": ".local..3"
+                            }
+                        },
+                        ".local..4": {
+                            "index": ".local..4",
+                            "state": {
+                                "ifindex": 0,
+                                "name": ".local..4"
+                            }
+                        }
+                    }
+                }
+            },
+            "ae0": {
+                "name": "ae0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 531,
+                    "last-change": 250256,
+                    "mtu": 1518,
+                    "oper-status": "DOWN"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "ae0.0": {
+                            "index": "ae0.0",
+                            "state": {
+                                "description": "ASDASDASD",
+                                "ifindex": 532,
+                                "name": "ae0.0"
+                            }
+                        },
+                        "ae0.1": {
+                            "index": "ae0.1",
+                            "state": {
+                                "description": "ae0.1",
+                                "ifindex": 533,
+                                "name": "ae0.1"
+                            }
+                        },
+                        "ae0.2": {
+                            "index": "ae0.2",
+                            "state": {
+                                "description": "ae0.2",
+                                "ifindex": 534,
+                                "name": "ae0.2"
+                            }
+                        },
+                        "ae0.32767": {
+                            "index": "ae0.32767",
+                            "state": {
+                                "ifindex": 535,
+                                "name": "ae0.32767"
+                            }
+                        }
+                    }
+                }
+            },
+            "dsc": {
+                "name": "dsc",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 5,
+                    "last-change": 0,
+                    "oper-status": "UP"
+                }
+            },
+            "ge-0/0/0": {
+                "name": "ge-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-unicast-pkts": 11627,
+                        "out-broadcast-pkts": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-unicast-pkts": 10927
+                    },
+                    "description": "management interface",
+                    "enabled": true,
+                    "ifindex": 507,
+                    "last-change": 253520,
+                    "mtu": 1400,
+                    "oper-status": "UP"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "ge-0/0/0.0": {
+                            "index": "ge-0/0/0.0",
+                            "state": {
+                                "description": "ge-0/0/0.0",
+                                "ifindex": 521,
+                                "name": "ge-0/0/0.0"
+                            }
+                        }
+                    }
+                }
+            },
+            "ge-0/0/1": {
+                "name": "ge-0/0/1",
+                "state": {
+                    "admin-status": "DOWN",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 1,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-unicast-pkts": 2931,
+                        "out-broadcast-pkts": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-unicast-pkts": 0
+                    },
+                    "description": "ge-0/0/1",
+                    "enabled": false,
+                    "ifindex": 508,
+                    "last-change": 250254,
+                    "mtu": 1514,
+                    "oper-status": "DOWN"
+                }
+            },
+            "ge-0/0/2": {
+                "name": "ge-0/0/2",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 2,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-unicast-pkts": 371,
+                        "out-broadcast-pkts": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-unicast-pkts": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 509,
+                    "last-change": 253520,
+                    "mtu": 1514,
+                    "oper-status": "UP"
+                }
+            },
+            "gr-0/0/0": {
+                "name": "gr-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 516,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "gre": {
+                "name": "gre",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 8,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "ip-0/0/0": {
+                "name": "ip-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 517,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "ipip": {
+                "name": "ipip",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 9,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "irb": {
+                "name": "irb",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 502,
+                    "last-change": 0,
+                    "mtu": 1514,
+                    "oper-status": "UP",
+                    "type": "ethernetCsmacd"
+                }
+            },
+            "lo0": {
+                "name": "lo0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "description": "lo0",
+                    "enabled": true,
+                    "ifindex": 6,
+                    "last-change": 0,
+                    "oper-status": "UP",
+                    "type": "softwareLoopback"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "lo0.0": {
+                            "index": "lo0.0",
+                            "state": {
+                                "description": "lo0.0",
+                                "ifindex": 16,
+                                "name": "lo0.0"
+                            }
+                        },
+                        "lo0.16384": {
+                            "index": "lo0.16384",
+                            "state": {
+                                "ifindex": 21,
+                                "name": "lo0.16384"
+                            }
+                        },
+                        "lo0.16385": {
+                            "index": "lo0.16385",
+                            "state": {
+                                "ifindex": 22,
+                                "name": "lo0.16385"
+                            }
+                        },
+                        "lo0.32768": {
+                            "index": "lo0.32768",
+                            "state": {
+                                "ifindex": 248,
+                                "name": "lo0.32768"
+                            }
+                        }
+                    }
+                }
+            },
+            "lsi": {
+                "name": "lsi",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 4,
+                    "last-change": 0,
+                    "mtu": 1496,
+                    "oper-status": "UP"
+                }
+            },
+            "lsq-0/0/0": {
+                "name": "lsq-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 518,
+                    "last-change": 253521,
+                    "mtu": 1504,
+                    "oper-status": "UP"
+                }
+            },
+            "lt-0/0/0": {
+                "name": "lt-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 520,
+                    "last-change": 0,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "mt-0/0/0": {
+                "name": "mt-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 519,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "mtun": {
+                "name": "mtun",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 12,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "pimd": {
+                "name": "pimd",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 11,
+                    "oper-status": "UP"
+                }
+            },
+            "pime": {
+                "name": "pime",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 10,
+                    "oper-status": "UP"
+                }
+            },
+            "pp0": {
+                "name": "pp0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 501,
+                    "mtu": 1532,
+                    "oper-status": "UP"
+                }
+            },
+            "ppd0": {
+                "name": "ppd0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 504,
+                    "oper-status": "UP"
+                }
+            },
+            "ppe0": {
+                "name": "ppe0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 505,
+                    "oper-status": "UP"
+                }
+            },
+            "sp-0/0/0": {
+                "name": "sp-0/0/0",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 515,
+                    "last-change": 253521,
+                    "mtu": 9192,
+                    "oper-status": "UP"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "sp-0/0/0.0": {
+                            "index": "sp-0/0/0.0",
+                            "state": {
+                                "ifindex": 522,
+                                "name": "sp-0/0/0.0"
+                            }
+                        },
+                        "sp-0/0/0.16383": {
+                            "index": "sp-0/0/0.16383",
+                            "state": {
+                                "ifindex": 523,
+                                "name": "sp-0/0/0.16383"
+                            }
+                        }
+                    }
+                }
+            },
+            "st0": {
+                "name": "st0",
+                "state": {
+                    "admin-status": "UP",
+                    "enabled": true,
+                    "ifindex": 503,
+                    "mtu": 9192,
+                    "oper-status": "UP",
+                    "type": "tunnel"
+                }
+            },
+            "tap": {
+                "name": "tap",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 7,
+                    "last-change": 0,
+                    "oper-status": "UP"
+                }
+            },
+            "vlan": {
+                "name": "vlan",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-errors": 0
+                    },
+                    "enabled": true,
+                    "ifindex": 506,
+                    "last-change": 253529,
+                    "mtu": 1518,
+                    "oper-status": "DOWN",
+                    "type": "l2vlan"
+                }
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@ class XMLParser(BaseParser):
         xml = etree.fromstring(mapping["from"])
 
         for element in xml.xpath(mapping["xpath"]):
-            key = element.xpath("name")[0].text
+            key = element.xpath("name")[0].text.strip()
             yield key, etree.tostring(element), {}
 
     @classmethod
@@ -20,11 +20,18 @@ class XMLParser(BaseParser):
         element = xml.xpath(mapping["xpath"])
 
         if element and not check_presence:
+            if "attribute" in mapping.keys():
+                element = element[0].get(mapping["attribute"])
+            else:
+                element = element[0].text.strip()
+
             regexp = mapping.get("regexp", None)
             if regexp:
-                return re.search(mapping["regexp"], element[0].text).group("value")
+                match = re.search(mapping["regexp"], element)
+                if match:
+                    return match.group("value")
             else:
-                return element[0].text
+                return element
         elif element and check_presence:
             return True
         elif check_default:
@@ -35,9 +42,11 @@ class XMLParser(BaseParser):
     @classmethod
     def _parse_leaf_map(cls, mapping):
         value = cls._parse_leaf_xpath(mapping)
-        value = re.search(mapping["regexp"], value).group("value")
 
-        return mapping["map"][value]
+        if "regex" in mapping.keys():
+            value = re.search(mapping["regexp"], value).group("value")
+
+        return mapping["map"][value] if value else None
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping):
