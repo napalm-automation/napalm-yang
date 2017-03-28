@@ -56,7 +56,7 @@ class Parser(object):
                 attr = getattr(attr, p)
                 r = attr(**m["args"])
 
-                if isinstance(r, dict):
+                if isinstance(r, dict) and all([isinstance(x, str) for x in r.values()]):
                     # Some vendors like junos return commands enclosed by a key
                     r = "\n".join(r.values())
 
