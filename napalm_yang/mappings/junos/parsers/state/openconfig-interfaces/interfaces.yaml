@@ -4,7 +4,7 @@ metadata:
     execute:
         - method: _rpc
           args:
-              get: "<get-configuration/>"
+              get: "<get-interface-information/>"
 
 interfaces:
     _parse: unnecessary
@@ -13,7 +13,7 @@ interfaces:
             mode: xpath
             xpath: "interfaces/interface"
             key: name
-            from: "{{ bookmarks.interfaces.0 }}"
+            from: "{{ bookmarks.interfaces }}"
         name:
             _parse: unnecessary
         hold_time:

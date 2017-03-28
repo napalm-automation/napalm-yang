@@ -25,17 +25,19 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
-        self.native = native or ""
-
         if self.mapping and device:
             device_config = self._execute_methods(device,
                                                   self.mapping["metadata"].get("execute", []))
 
         else:
-            device_config = ""
+            device_config = []
 
-        self.native = "{}\n{}".format(self.native, device_config)
-        self.native = self.native.replace("\r", "")  # Parsing will be easier
+        native = native or []
+
+        self.native = []
+
+        for n in native + device_config:
+            self.native.append(n.replace("\r", ""))  # Parsing will be easier
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
@@ -60,7 +62,7 @@ class Parser(object):
 
                 result.append(r)
 
-        return "\n".join(result)
+        return result
 
     def parse(self):
         if not self.mapping:

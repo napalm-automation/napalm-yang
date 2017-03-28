@@ -32,8 +32,12 @@ def pretty_json(dictionary):
 BASE_PATH = os.path.dirname(__file__)
 
 
-test_profile_models = [
+test_config_profile_models = [
     ["ios", napalm_yang.models.openconfig_interfaces, "default"],
+]
+
+test_state_profile_models = [
+    ["junos", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 
 
@@ -50,14 +54,14 @@ def read_json(profile, model, case, filename):
 
 class Tests(object):
 
-    @pytest.mark.parametrize("profile, model, case", test_profile_models)
-    def test_parse(self, profile, model, case):
+    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
+    def test_parse_config(self, profile, model, case):
         config_txt = read_file_content(profile, model, case, "config.txt")
         expected_json = read_json(profile, model, case, "expected.json")
 
         config = napalm_yang.base.Root()
         config.add_model(model)
-        config.parse_config(native=config_txt, profile=[profile])
+        config.parse_config(native=[config_txt], profile=[profile])
 
         expected = napalm_yang.base.Root()
         expected.add_model(model)
@@ -67,7 +71,7 @@ class Tests(object):
 
         assert not napalm_yang.utils.diff(config, expected)
 
-    @pytest.mark.parametrize("profile, model, case", test_profile_models)
+    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
     def test_translate(self, profile, model, case):
         json_blob = read_json(profile, model, case, "expected.json")
         expected_translation = read_file_content(profile, model, case, "translation.txt")
@@ -82,7 +86,7 @@ class Tests(object):
         assert configuration == expected_translation
 
     @pytest.mark.parametrize("action", ["merge", "replace"])
-    @pytest.mark.parametrize("profile, model, case", test_profile_models)
+    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
     def test_translate_merge(self, action, profile, model, case):
         json_running = read_json(profile, model, case, "expected.json")
         json_candidate = read_json(profile, model, case, "candidate.json")
@@ -106,3 +110,22 @@ class Tests(object):
         #  print(configuration)
 
         assert configuration == expected_translation
+
+    @pytest.mark.parametrize("profile, model, case", test_state_profile_models)
+    def test_parse_state(self, profile, model, case):
+        config = napalm_yang.base.Root()
+        config.add_model(model)
+        #  config.parse_state(native=[config_txt], profile=[profile])
+
+        from napalm_base import get_network_driver
+        junos_configuration = {
+            'hostname': '127.0.0.1',
+            'username': 'vagrant',
+            'password': '',
+            'optional_args': {'port': 12203, 'config_lock': False}
+        }
+        junos = get_network_driver("junos")
+        d = junos(**junos_configuration)
+        d.open()
+        config.parse_state(device=d)
+        d.close()
