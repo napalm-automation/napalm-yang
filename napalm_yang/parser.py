@@ -25,28 +25,26 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
+        if self.mapping:
+            self.parser = helpers.get_parser(self.mapping.get("metadata", {}).get("parser", ''))
+
         if self.mapping and device:
-            device_config = self._execute_methods(device,
+            device_output = self._execute_methods(device,
                                                   self.mapping["metadata"].get("execute", []))
 
         else:
-            device_config = []
+            device_output = []
 
-        native = native or []
+        self.native = native or []
 
-        self.native = []
-
-        for n in native + device_config:
-            self.native.append(n.replace("\r", ""))  # Parsing will be easier
+        if hasattr(self, "parser"):
+            self.native = self.parser.init_native(self.native, device_output)
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
 
         self.bookmarks = {self._yang_name: self.native, "parent": self.native}
         self.bookmarks = bookmarks or self.bookmarks
-
-        if self.mapping:
-            self.parser = helpers.get_parser(self.mapping["metadata"]["parser"])
 
     def _execute_methods(self, device, methods):
         result = []
@@ -55,10 +53,6 @@ class Parser(object):
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
                 r = attr(**m["args"])
-
-                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
-                    # Some vendors like junos return commands enclosed by a key
-                    r = "\n".join(r.values())
 
                 result.append(r)
 
