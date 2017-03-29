@@ -1,3 +1,4 @@
+from builtins import super
 from lxml import etree
 import re
 
@@ -13,7 +14,7 @@ class XMLParser(BaseParser):
             if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
                 # Junos returns commands enclosed by a key
                 device_trans.append("\n".join(r.values()))
-        return super(XMLParser, cls).init_native(native, device_trans)
+        return super().init_native(native, device_trans)
 
     @classmethod
     def _parse_list_xpath(cls, mapping):
