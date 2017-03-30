@@ -8,15 +8,6 @@ from napalm_yang.parsers.base import BaseParser
 class XMLParser(BaseParser):
 
     @classmethod
-    def init_native(cls, native, device_output=[]):
-        device_trans = []
-        for r in device_output:
-            if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
-                # Junos returns commands enclosed by a key
-                device_trans.append("\n".join(r.values()))
-        return super().init_native(native, device_trans)
-
-    @classmethod
     def _parse_list_xpath(cls, mapping):
         xml = etree.fromstring(mapping["from"])
 

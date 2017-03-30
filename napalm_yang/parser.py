@@ -25,9 +25,6 @@ class Parser(object):
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
-        if self.mapping:
-            self.parser = helpers.get_parser(self.mapping.get("metadata", {}).get("parser", ''))
-
         if self.mapping and device:
             device_output = self._execute_methods(device,
                                                   self.mapping["metadata"].get("execute", []))
@@ -35,13 +32,19 @@ class Parser(object):
         else:
             device_output = []
 
-        self.native = native or []
+        native = native or []
 
-        if hasattr(self, "parser"):
-            self.native = self.parser.init_native(self.native, device_output)
+        self.native = []
+
+        for n in native + device_output:
+            self.native.append(n.replace("\r", ""))  # Parsing will be easier
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
+
+        if self.mapping:
+            self.parser = helpers.get_parser(self.mapping["metadata"]["parser"])
+
 
         self.bookmarks = {self._yang_name: self.native, "parent": self.native}
         self.bookmarks = bookmarks or self.bookmarks
@@ -54,6 +57,10 @@ class Parser(object):
                 attr = getattr(attr, p)
                 r = attr(**m["args"])
 
+                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
+                    # Some vendors like junos return commands enclosed by a key
+                    r = "\n".join(r.values())
+
                 result.append(r)
 
         return result
@@ -61,6 +68,7 @@ class Parser(object):
     def parse(self):
         if not self.mapping:
             return
+        self.native = self.parser.init_native(self.native)
         self._parse(self._yang_name, self.model, self.mapping[self._yang_name])
 
     def _parse(self, attribute, model, mapping):

@@ -3,12 +3,8 @@
 class BaseParser(object):
 
     @classmethod
-    def init_native(cls, native, device_output=[]):
-        ret = []
-        if all([isinstance(x, list) for x in native, device_output]):
-            for l in native + device_output:
-                ret.append(l.replace("\r", ""))  # Parsing will be easier
-        return ret
+    def init_native(cls, native)
+        return native
 
     @classmethod
     def parse_list(cls, mapping):
