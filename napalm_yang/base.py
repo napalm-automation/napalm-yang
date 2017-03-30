@@ -1,7 +1,13 @@
-from pyangbind.lib.serialise import pybindJSONDecoder
+import ast
+
 
 from napalm_yang.parser import Parser
 from napalm_yang.translator import Translator
+
+from napalm_base import validate
+
+
+from pyangbind.lib import yangtypes
 
 
 class Root(object):
@@ -55,7 +61,8 @@ class Root(object):
 
     def get(self, filter=False):
         """
-        Returns a dictionary with the values of the model.
+        Returns a dictionary with the values of the model. Note that the values
+        of the leafs are YANG classes.
 
         Args:
             filter (bool): If set to ``True``, show only values that have been set.
@@ -131,7 +138,50 @@ class Root(object):
             if k not in self._elements.keys():
                 raise AttributeError("Model {} is not loaded".format(k))
             attr = getattr(self, k)
-            pybindJSONDecoder.load_json(v, None, None, obj=attr, overwrite=overwrite)
+            _load_dict(attr, v)
+
+    def to_dict(self, filter=True):
+        """
+        Returns a dictionary with the values of the model. Note that the values
+        of the leafs are evaluated to python types.
+
+        Args:
+            filter (bool): If set to ``True``, show only values that have been set.
+
+        Returns:
+            dict: A dictionary with the values of the model.
+
+        Example:
+
+            >>> pretty_print(config.to_dict(filter=True))
+            >>> {
+            >>>     "interfaces": {
+            >>>         "interface": {
+            >>>             "et1": {
+            >>>                 "config": {
+            >>>                     "description": "My description",
+            >>>                     "mtu": 1500
+            >>>                 },
+            >>>                 "name": "et1"
+            >>>             },
+            >>>             "et2": {
+            >>>                 "config": {
+            >>>                     "description": "Another description",
+            >>>                     "mtu": 9000
+            >>>                 },
+            >>>                 "name": "et2"
+            >>>             }
+            >>>         }
+            >>>     }
+            >>> }
+
+        """
+        result = {}
+        for k, v in self:
+            r = _to_dict(v, filter)
+            if r:
+                result[k] = r
+        return result
 
     def parse_config(self, device=None, profile=None, native=None):
         """
@@ -229,3 +279,79 @@ class Root(object):
             result.append(translator.translate())
 
         return "\n".join(result)
+
+    def compliance_report(self, validation_file='validate.yml'):
+        """
+        Return a compliance report.
+        Verify that the device complies with the given validation file and writes a compliance
+        report file. See https://napalm.readthedocs.io/en/latest/validate.html.
+        """
+        return validate.compliance_report(self, validation_file=validation_file)
+
+
+def _load_dict(cls, data):
+    for k, v in data.items():
+        if cls._yang_type == "list":
+            try:
+                attr = cls[k]
+            except KeyError:
+                attr = cls.add(k)
+            _load_dict(attr, v)
+        elif isinstance(v, dict):
+            attr = getattr(cls, yangtypes.safe_name(k))
+            _load_dict(attr, v)
+        else:
+            model = getattr(cls, yangtypes.safe_name(k))
+
+            # We can't set attributes that are keys
+            if model._is_keyval:
+                continue
+
+            setter = getattr(cls, "_set_{}".format(yangtypes.safe_name(k)))
+            setter(v)
+
+            model = getattr(model._parent, yangtypes.safe_name(k))
+            model._mchanged = True
+
+
+def _to_dict(element, filter):
+    if isinstance(element, Root) or element._yang_type in ("container", None):
+        result = _to_dict_container(element, filter)
+    elif element._yang_type in ("list", ):
+        result = _to_dict_list(element, filter)
+    else:
+        result = _to_dict_leaf(element, filter)
+
+    return result
+
+
+def _to_dict_container(element, filter):
+    result = {}
+
+    for k in element.elements():
+        v = getattr(element, k)
+        r = _to_dict(v, filter)
+        if r not in [None, {}]:
+            result[k] = r
+    return result
+
+
+def _to_dict_list(element, filter):
+    result = {}
+
+    for k, v in element.items():
+        r = _to_dict(v, filter)
+        if r not in [None, {}]:
+            result[k] = r
+    return result
+
+
+def _to_dict_leaf(element, filter):
+    value = None
+    if element._changed() or not filter:
+        try:
+            value = ast.literal_eval(element.__repr__())
+        except Exception:
+            value = element.__repr__()
+
+    return value

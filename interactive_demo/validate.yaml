@@ -1,0 +1,13 @@
+---
+- to_dict:
+    _kwargs:
+        filter: true
+    interfaces:
+        interface:
+            Et1:
+                config:
+                    mtu: 9000
+            Et2:
+                config:
+                    mtu: 9000
+            _mode: strict
