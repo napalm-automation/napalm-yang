@@ -1,0 +1,22 @@
+---
+- to_dict:
+    _kwargs:
+        filter: true
+    interfaces:
+        interface:
+            GigabitEthernet1:
+                config:
+                    enabled: false
+            GigabitEthernet2:
+                config:
+                    enabled: false
+            GigabitEthernet3:
+                config:
+                    enabled: false
+            Port-channel1:
+                config:
+                    enabled: true
+            Loopback1:
+                config:
+                    enabled: true
+            _mode: strict

@@ -3,4 +3,5 @@ netaddr
 lxml
 jinja2
 PyYAML
+napalm-base
 -e git://github.com/napalm-automation/pyangbind.git@napalm_custom#egg=pyangbind
