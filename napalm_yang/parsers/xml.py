@@ -1,4 +1,3 @@
-from builtins import super
 from lxml import etree
 import re
 

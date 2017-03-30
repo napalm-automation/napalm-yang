@@ -45,7 +45,6 @@ class Parser(object):
         if self.mapping:
             self.parser = helpers.get_parser(self.mapping["metadata"]["parser"])
 
-
         self.bookmarks = {self._yang_name: self.native, "parent": self.native}
         self.bookmarks = bookmarks or self.bookmarks
 

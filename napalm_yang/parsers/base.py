@@ -3,7 +3,7 @@
 class BaseParser(object):
 
     @classmethod
-    def init_native(cls, native)
+    def init_native(cls, native):
         return native
 
     @classmethod
