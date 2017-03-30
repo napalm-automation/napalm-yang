@@ -1,5 +1,7 @@
 no interface Port-channel1
 interface Port-channel1
+    no switchport
+    no switchport
     description blah
     mtu 9000
 no interface Port-channel1.1
@@ -9,10 +11,14 @@ interface Loopback1
     description a loopback
 default interface GigabitEthernet1
 interface GigabitEthernet1
+    no switchport
     mtu 1500
 default interface GigabitEthernet2
 interface GigabitEthernet2
+    no switchport
     ip address 192.168.0.1 255.255.255.0
+    no switchport
+    no switchport
     shutdown
     description so much oc
     mtu 9000
@@ -28,5 +34,6 @@ interface GigabitEthernet2.2
     description asdasdasd
 default interface GigabitEthernet3
 interface GigabitEthernet3
+    no switchport
     shutdown
     mtu 1500
