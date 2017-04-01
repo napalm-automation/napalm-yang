@@ -1,0 +1,32 @@
+---
+- name: Playbook to check the interfaces have the state we want
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Let's gather state of interfaces
+      napalm_parse_yang:
+        dev_os: "{{ dev_os }}"
+        hostname: "{{ hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        mode: "state"
+        optional_args:
+            port: "{{ port }}"
+        models:
+            - models.openconfig_interfaces
+      register: interfaces
+    - name: Check all interfaces are up
+      napalm_validate:
+        data: "{{ interfaces.yang_model }}"
+        models:
+            - models.openconfig_interfaces
+        validation_file: "validate.yaml"
+      register: report
+    - name: Let's verify the report complies
+      assert:
+        that:
+            - "{{ report.compliance_report.complies }}"
+        msg: "{{ report.compliance_report }}"
+

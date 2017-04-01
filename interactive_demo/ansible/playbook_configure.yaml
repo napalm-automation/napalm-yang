@@ -1,0 +1,55 @@
+---
+- name: Playbook to diff running from candidate using only YANG without on box support
+  hosts: all
+  gather_facts: false
+  connection: local
+  tags: print_action
+
+  tasks:
+    - name: Let's gather config of interfaces from device
+      napalm_parse_yang:
+        dev_os: "{{ dev_os }}"
+        hostname: "{{ hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        mode: "config"
+        optional_args:
+            port: "{{ port }}"
+        models:
+            - models.openconfig_interfaces
+      register: running
+
+    - name: Let's diff our candidate and running
+      napalm_diff_yang:
+          first: "{{ yang_data }}"
+          second: "{{ running.yang_model }}"
+          models:
+            - models.openconfig_interfaces
+      register: yang_diff
+
+    - debug:
+        msg: "{{ yang_diff|to_nice_json }}"
+
+    - name: Let's translate the YANG object to native config
+      napalm_translate_yang:
+        data: "{{ yang_data }}"
+        merge: "{{ running.yang_model }}"
+        profiles: "{{ profiles }}"
+        models:
+            - models.openconfig_interfaces
+      register: config
+
+    - debug:
+        msg: "{{ config.config }}"
+
+    - name: Install Config and save diff
+      napalm_install_config:
+        dev_os: "{{ dev_os }}"
+        hostname: "{{ hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        optional_args:
+            port: "{{ port }}"
+        config: "{{ config.config }}"
+        commit_changes: "{{ commit_changes|default(false) }}"
+      register: result
