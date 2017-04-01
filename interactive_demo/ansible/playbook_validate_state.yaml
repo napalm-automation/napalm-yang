@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: false
   connection: local
+  tags: [print_action]
 
   tasks:
     - name: Let's gather state of interfaces
@@ -28,5 +29,5 @@
       assert:
         that:
             - "{{ report.compliance_report.complies }}"
-        msg: "{{ report.compliance_report }}"
+        msg: "{{ report.compliance_report|to_nice_json }}"
 
