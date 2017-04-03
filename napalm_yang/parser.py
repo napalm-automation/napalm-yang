@@ -37,7 +37,10 @@ class Parser(object):
         self.native = []
 
         for n in native + device_config:
-            self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            if isinstance(n, basestring):
+                self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            else:
+                self.native.append(n)
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
