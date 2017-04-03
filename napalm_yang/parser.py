@@ -54,13 +54,13 @@ class Parser(object):
             attr = device
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
-                r = attr(**m["args"])
+            r = attr(**m["args"])
 
-                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
-                    # Some vendors like junos return commands enclosed by a key
-                    r = "\n".join(r.values())
+            if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
+                # Some vendors like junos return commands enclosed by a key
+                r = "\n".join(r.values())
 
-                result.append(r)
+            result.append(r)
 
         return result
 
