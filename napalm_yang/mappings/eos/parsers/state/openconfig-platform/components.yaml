@@ -1,0 +1,75 @@
+---
+metadata:
+    parser: JSONParser
+    execute:
+        - method: "device.run_commands"
+          args:
+              commands: ["show inventory"]
+
+components:
+    _parse: unnecessary
+    component:
+        _parse:
+            mode: dict
+            from: "{%- set data = {} -%}{%- for k, v in bookmarks.components.0.0.items() -%}{%- if v is mapping and k is not equalto 'systemInformation' -%}{%- for kk, vv in v.items() -%}{%- do data.update({'{}_{}'.format(k,kk): vv}) -%} {%- endfor -%} {%- endif -%} {%- endfor -%} {{ data|json }}"
+        name:
+            _parse: unnecessary
+        config:
+            _parse: unnecessary
+        state:
+            _parse: unnecessary
+            name:
+                _parse: not_implemented
+            type:
+                _parse: not_implemented
+            id:
+                _parse: not_implemented
+            description:
+                _parse: not_implemented
+            mfg-name:
+                _parse: not_implemented
+            version:
+                _parse: not_implemented
+            serial-no:
+                _parse: not_implemented
+            part-no:
+                _parse: not_implemented
+            temperature:
+                _parse: unnecessary
+                instant:
+                    _parse: not_implemented
+                avg:
+                    _parse: not_implemented
+                min:
+                    _parse: not_implemented
+                max:
+                    _parse: not_implemented
+        properties:
+            _parse: unnecessary
+            property:
+                _parse: not_implemented
+                name:
+                    _parse: not_implemented
+                config:
+                    _parse: unnecessary
+                    name:
+                        _parse: not_implemented
+                    value:
+                        _parse: not_implemented
+                state:
+                    _parse: unnecessary
+                    name:
+                        _parse: not_implemented
+                    value:
+                        _parse: not_implemented
+                    configurable:
+                        _parse: not_implemented
+        subcomponents:
+            _parse: unnecessary
+            subcomponent:
+                _parse: not_implemented
+                name:
+                config:
+                    name:
+                state:
+                name:
