@@ -99,7 +99,7 @@ class Parser(object):
                                 self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
             else:
-                self._parse(k, v, mapping[k])
+                self._parse(k, v, mapping[v._yang_name])
 
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)
