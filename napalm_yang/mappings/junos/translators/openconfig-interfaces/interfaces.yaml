@@ -16,7 +16,7 @@ interfaces:
             key_value: "{{ interface_key }}"
         name:
             _translation: unnecessary
-        hold_time:
+        hold-time:
             _translation: unnecessary
             config:
                 _translation: unnecessary
