@@ -2,12 +2,14 @@ import yaml
 
 from napalm_yang.parsers.text import TextParser
 from napalm_yang.parsers.xml import XMLParser
+from napalm_yang.parsers.json import JSONParser
 
 from napalm_yang.translators.text import TextTranslator
 from napalm_yang.translators.xml import XMLTranslator
 
 import os
 import jinja2
+import json
 
 from napalm_yang.jinja_filters import ip_filters
 
@@ -19,6 +21,7 @@ def get_parser(parser):
     parsers = {
         "TextParser": TextParser,
         "XMLParser": XMLParser,
+        "JSONParser": JSONParser,
         "TextTranslator": TextTranslator,
         "XMLTranslator": XMLTranslator,
     }
@@ -110,9 +113,11 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
 def template(string, **kwargs):
     env = jinja2.Environment(
                             undefined=jinja2.StrictUndefined,
+                            extensions=['jinja2.ext.do'],
                             keep_trailing_newline=True,
                             )
     env.filters.update(ip_filters.filters())
+    env.filters.update({"json": lambda obj: json.dumps(obj)})
 
     template = env.from_string(string)
 
