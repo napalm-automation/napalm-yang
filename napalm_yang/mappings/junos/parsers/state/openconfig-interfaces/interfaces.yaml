@@ -16,7 +16,7 @@ interfaces:
             from: "{{ bookmarks.interfaces.0 }}"
         config:
             _parse: unnecessary
-        hold_time:
+        hold-time:
             _parse: not_implemented
             config:
                 _parse: unnecessary
@@ -28,7 +28,7 @@ interfaces:
                     _parse: not_implemented
         state:
             _parse: not_implemented
-            admin_status:
+            admin-status:
                 _parse: 
                     mode: map
                     xpath: "admin-status"
@@ -54,7 +54,7 @@ interfaces:
                     mode: xpath
                     xpath: "snmp-index"
                     from: "{{ bookmarks['parent'] }}"
-            last_change:
+            last-change:
                 _parse: 
                     mode: xpath
                     xpath: "interface-flapped"
@@ -68,7 +68,7 @@ interfaces:
                     from: "{{ bookmarks['parent'] }}"
             name:
                 _parse: unnecessary
-            oper_status:
+            oper-status:
                 _parse:
                     mode: map
                     xpath: "oper-status"
@@ -97,57 +97,57 @@ interfaces:
                         PPPoE: null
             counters:
                 _parse: not_implemented
-                in_broadcast_pkts:
+                in-broadcast-pkts:
                     _parse: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-broadcasts"
                         from: "{{ bookmarks['parent'] }}"
-                in_discards:
+                in-discards:
                     _parse:
                         mode: xpath
                         xpath: "input-error-list/input-discards"
                         from: "{{ bookmarks['parent'] }}"
-                in_errors:
+                in-errors:
                     _parse:
                         mode: xpath
                         xpath: "input-error-list/input-errors"
                         from: "{{ bookmarks['parent'] }}"
-                in_multicast_pkts:
+                in-multicast-pkts:
                     _parse:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-multicasts"
                         from: "{{ bookmarks['parent'] }}"
-                in_octets:
+                in-octets:
                     _parse: not_implemented
-                in_unicast_pkts:
+                in-unicast-pkts:
                     _parse: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-unicasts"
                         from: "{{ bookmarks['parent'] }}"
-                in_unknown_protos:
+                in-unknown-protos:
                     _parse: not_implemented
-                last_clear:
+                last-clear:
                     _parse: not_implemented
-                out_broadcast_pkts:
+                out-broadcast-pkts:
                     _parse: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-broadcasts"
                         from: "{{ bookmarks['parent'] }}"
-                out_discards:
+                out-discards:
                     _parse: not_implemented
-                out_errors:
+                out-errors:
                     _parse: 
                         mode: xpath
                         xpath: "output-error-list/output-errors"
                         from: "{{ bookmarks['parent'] }}"
-                out_multicast_pkts:
+                out-multicast-pkts:
                     _parse:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-multicasts"
                         from: "{{ bookmarks['parent'] }}"
-                out_octets:
+                out-octets:
                     _parse: not_implemented
-                out_unicast_pkts:
+                out-unicast-pkts:
                     _parse:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-unicasts"
@@ -174,48 +174,48 @@ interfaces:
                             from: "{{ bookmarks['parent'] }}"
                     enabled:
                         _parse: not_implemented
-                    admin_status:
+                    admin-status:
                         _parse: not_implemented
                     ifindex:
                         _parse: 
                             mode: xpath
                             xpath: "snmp-index"
                             from: "{{ bookmarks['parent'] }}"
-                    last_change:
+                    last-change:
                         _parse: not_implemented
                     name:
                         _parse:
                             mode: value
                             value: "{{ subinterface_key }}"
-                    oper_status:
+                    oper-status:
                         _parse: not_implemented
                     counters:
                         _parse: not_implemented
-                        in_broadcast_pkts:
+                        in-broadcast-pkts:
                             _parse: not_implemented
-                        in_discards:
+                        in-discards:
                             _parse: not_implemented
-                        in_errors:
+                        in-errors:
                             _parse: not_implemented
-                        in_multicast_pkts:
+                        in-multicast-pkts:
                             _parse: not_implemented
-                        in_octets:
+                        in-octets:
                             _parse: not_implemented
-                        in_unicast_pkts:
+                        in-unicast-pkts:
                             _parse: not_implemented
-                        in_unknown_protos:
+                        in-unknown-protos:
                             _parse: not_implemented
-                        last_clear:
+                        last-clear:
                             _parse: not_implemented
-                        out_broadcast_pkts:
+                        out-broadcast-pkts:
                             _parse: not_implemented
-                        out_discards:
+                        out-discards:
                             _parse: not_implemented
-                        out_errors:
+                        out-errors:
                             _parse: not_implemented
-                        out_multicast_pkts:
+                        out-multicast-pkts:
                             _parse: not_implemented
-                        out_octets:
+                        out-octets:
                             _parse: not_implemented
-                        out_unicast_pkts:
+                        out-unicast-pkts:
                             _parse: not_implemented

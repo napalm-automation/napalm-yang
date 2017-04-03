@@ -6,7 +6,7 @@ vlan:
     _parse: unnecessary
     config:
         _parse: unnecessary
-        vlan_id:
+        vlan-id:
             _parse:
                 mode: xpath
                 xpath: "vlan-id"

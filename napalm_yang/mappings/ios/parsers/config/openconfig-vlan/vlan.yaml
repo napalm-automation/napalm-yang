@@ -7,7 +7,7 @@ vlan:
     _parse: unnecessary
     config:
         _parse: unnecessary
-        vlan_id:
+        vlan-id:
             _parse:
                 mode: search
                 regexp: "^\\W*encapsulation dot1q (?P<value>[0-9]+)"

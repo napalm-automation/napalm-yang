@@ -66,7 +66,7 @@ def _diff_root(f, s):
 
         r = diff(v, w)
         if r:
-            result[k] = diff(v, w)
+            result[k] = r
 
     return result
 

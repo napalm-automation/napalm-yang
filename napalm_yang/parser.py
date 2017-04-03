@@ -37,7 +37,10 @@ class Parser(object):
         self.native = []
 
         for n in native + device_output:
-            self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            if isinstance(n, basestring):
+                self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            else:
+                self.native.append(n)
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
@@ -54,13 +57,13 @@ class Parser(object):
             attr = device
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
-                r = attr(**m["args"])
+            r = attr(**m["args"])
 
-                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
-                    # Some vendors like junos return commands enclosed by a key
-                    r = "\n".join(r.values())
+            if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
+                # Some vendors like junos return commands enclosed by a key
+                r = "\n".join(r.values())
 
-                result.append(r)
+            result.append(r)
 
         return result
 
@@ -98,7 +101,7 @@ class Parser(object):
                                 self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
             else:
-                self._parse(k, v, mapping[k])
+                self._parse(k, v, mapping[v._yang_name])
 
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)

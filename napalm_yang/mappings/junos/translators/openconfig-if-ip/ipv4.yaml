@@ -25,7 +25,7 @@ ipv4:
                 _translation: unnecessary
                 ip:
                     _translation: unnecessary
-                prefix_length:
+                prefix-length:
                     _translation:
                         - mode: element
                           element: name
@@ -33,23 +33,23 @@ ipv4:
                           when: "{{ model }}"
             vrrp:
                 _translation: not_implemented
-                vrrp_group:
+                vrrp-group:
                     _translation: not_implemented
-                    virtual_router_id:
+                    virtual-router-id:
                     config:
-                        virtual_address:
+                        virtual-address:
                             _translation: not_implemented
                         priority:
                             _translation: not_implemented
                         preempt:
                             _translation: not_implemented
-                        advertisement_interval:
+                        advertisement-interval:
                             _translation: not_implemented
-                        virtual_router_id:
+                        virtual-router-id:
                             _translation: not_implemented
-                        preempt_delay:
+                        preempt-delay:
                             _translation: not_implemented
-                        accept_mode:
+                        accept-mode:
                             _translation: not_implemented
     unnumbered:
         _translation: not_implemented
@@ -57,7 +57,7 @@ ipv4:
             _translation: not_implemented
             enabled:
                 _translation: not_implemented
-        interface_ref:
+        interface-ref:
             _translation: not_implemented
             config:
                 _translation: not_implemented
@@ -75,5 +75,5 @@ ipv4:
                 _translation: not_implemented
                 ip:
                     _translation: not_implemented
-                link_layer_address:
+                link-layer-address:
                     _translation: not_implemented

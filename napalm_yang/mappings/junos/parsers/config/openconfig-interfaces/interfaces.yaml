@@ -16,7 +16,7 @@ interfaces:
             from: "{{ bookmarks.interfaces.0 }}"
         name:
             _parse: unnecessary
-        hold_time:
+        hold-time:
             _parse: not_implemented
             config:
                 _parse: not_implemented

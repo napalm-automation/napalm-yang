@@ -31,7 +31,7 @@ ipv4:
                         xpath: "name"
                         regexp: "(?P<value>.*)/\\d+"
                         from: "{{ bookmarks['parent'] }}"
-                prefix_length:
+                prefix-length:
                     _parse:
                         mode: xpath
                         xpath: "name"
@@ -39,25 +39,25 @@ ipv4:
                         from: "{{ bookmarks['parent'] }}"
             vrrp:
                 _parse: not_implemented
-                vrrp_group:
+                vrrp-group:
                     _parse: not_implemented
-                    virtual_router_id:
+                    virtual-router-id:
                         _parse: not_implemented
                     config:
                         _parse: not_implemented
-                        virtual_address:
+                        virtual-address:
                             _parse: not_implemented
                         priority:
                             _parse: not_implemented
                         preempt:
                             _parse: not_implemented
-                        advertisement_interval:
+                        advertisement-interval:
                             _parse: not_implemented
-                        virtual_router_id:
+                        virtual-router-id:
                             _parse: not_implemented
-                        preempt_delay:
+                        preempt-delay:
                             _parse: not_implemented
-                        accept_mode:
+                        accept-mode:
                             _parse: not_implemented
     unnumbered:
         _parse: not_implemented
@@ -65,7 +65,7 @@ ipv4:
             _parse: not_implemented
             enabled:
                 _parse: not_implemented
-        interface_ref:
+        interface-ref:
             _parse: not_implemented
             config:
                 _parse: not_implemented
@@ -83,5 +83,5 @@ ipv4:
                 _parse: not_implemented
                 ip:
                     _parse: not_implemented
-                link_layer_address:
+                link-layer-address:
                     _parse: not_implemented
