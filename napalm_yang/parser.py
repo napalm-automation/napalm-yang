@@ -68,6 +68,7 @@ class Parser(object):
         if not self.mapping:
             return
         self.native = self.parser.init_native(self.native)
+        self.bookmarks.update({self._yang_name: self.native)
         self._parse(self._yang_name, self.model, self.mapping[self._yang_name])
 
     def _parse(self, attribute, model, mapping):
