@@ -11,29 +11,54 @@ components:
     component:
         _parse:
             mode: dict
-            from: "{%- set data = {} -%}{%- for k, v in bookmarks.components.0.0.items() -%}{%- if v is mapping and k is not equalto 'systemInformation' -%}{%- for kk, vv in v.items() -%}{%- do data.update({'{}_{}'.format(k,kk): vv}) -%} {%- endfor -%} {%- endif -%} {%- endfor -%} {{ data|json }}"
+            from: "{%- set data = {} -%}{%- for k, v in bookmarks.components.0.0.items() -%}{%- if v is mapping and k is not equalto 'systemInformation' -%}{%- for kk, vv in v.items() -%}{%- if k is not equalto 'xcvrSlots' or ( k == 'xcvrSlots' and vv.mfgName is not equalto 'Not Present') -%}{%- do data.update({'{}_{}'.format(k,kk): vv}) -%}{%- endif -%}{%- endfor -%}{%- endif -%}{%- endfor -%} {%- do data.update({'systemInformation': bookmarks.components.0.0.systemInformation})-%}{{ data|json }}"
         name:
-            _parse: unnecessary
+            _parse:
+                mode: value
+                value: "{{ component_key }}"
         config:
             _parse: unnecessary
         state:
             _parse: unnecessary
             name:
-                _parse: not_implemented
+                _parse:
+                    mode: value
+                    value: "{{ component_key }}"
             type:
-                _parse: not_implemented
+                _parse:
+                    mode: map
+                    value: "{%- set data = component_key.split('_').0 -%}{{ data }}"
+                    map:
+                        fpgas: CPU
+                        xcvrSlots: TRANSCEIVER
+                        storageDevices: MODULE
+                        precisionClock: MODULE
+                        cardSlots: LINECARD
+                        powerSupplySlots: POWER_SUPPLY
+                        fanTraySlots: FAN
+                        systemInformation: CHASSIS
             id:
                 _parse: not_implemented
             description:
                 _parse: not_implemented
             mfg-name:
-                _parse: not_implemented
+                _parse:
+                    mode: value
+                    value: "{{ bookmarks.parent.mfgName|default() }}"
             version:
-                _parse: not_implemented
+                _parse:
+                    mode: value
+                    value: "{{ bookmarks.parent.hardwareRev|default() }}"
+                    when: "{{ component_key == 'systemInformation' }}"
             serial-no:
-                _parse: not_implemented
+                _parse:
+                    mode: value
+                    value: "{{ bookmarks.parent.serialNum|default('N/A') }}"
+                    when: "{{ bookmarks.parent.serialNum is not equalto 'N/A' }}"
             part-no:
-                _parse: not_implemented
+                _parse:
+                    mode: value
+                    value: "{%- if component_key.startswith(('xcvr', 'cardSlots')) -%}{{ bookmarks.parent.modelName }}{%- else -%}{{ bookmarks.parent.name }}{%- endif -%}"
             temperature:
                 _parse: unnecessary
                 instant:
