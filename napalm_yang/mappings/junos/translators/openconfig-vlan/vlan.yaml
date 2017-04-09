@@ -1,13 +1,13 @@
 ---
 metadata:
-    translator: XMLTranslator
+    processor: XMLTranslator
 
 vlan:
-    _translation: unnecessary
+    _process: unnecessary
     config:
-        _translation: unnecessary
+        _process: unnecessary
         vlan-id:
-            _translation:
+            _process:
                 - mode: element
                   element: "vlan-tagging"
                   in: "interface.{{ interface_key }}"

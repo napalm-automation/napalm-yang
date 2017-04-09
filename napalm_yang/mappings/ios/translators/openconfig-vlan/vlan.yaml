@@ -1,13 +1,13 @@
 ---
 metadata:
-    translator: TextTranslator
+    processor: TextTranslator
 
 vlan:
-    _translation: unnecessary
+    _process: unnecessary
     config:
-        _translation: unnecessary
+        _process: unnecessary
         vlan-id:
-            _translation:
+            _process:
                 - mode: element
                   value: "    encapsulation dot1q {{ model }}\n"
                   negate: "    no encapsulation dot1q\n"
