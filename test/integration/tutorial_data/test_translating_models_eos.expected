@@ -2,7 +2,9 @@ interface et1
     ip address 192.168.1.1/24 
     description Uplink1
     mtu 9000
+    exit
 interface et2
     ip address 192.168.2.1/24 
     description Uplink2
     mtu 9000
+    exit

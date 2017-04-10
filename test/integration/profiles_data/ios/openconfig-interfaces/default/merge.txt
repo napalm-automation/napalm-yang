@@ -1,8 +1,11 @@
 interface GigabitEthernet1
     default description
+    exit
 interface GigabitEthernet2
     mtu 9000
+    exit
 interface GigabitEthernet2.1
     no encapsulation dot1q
     ip address 192.168.20.1 255.255.255.0 secondary
     default ip address 172.20.0.1 255.255.255.0 secondary
+    exit
