@@ -1,31 +1,31 @@
 ---
 metadata:
-    parser: JSONParser
+    processor: JSONParser
     execute:
         - method: "device.run_commands"
           args:
               commands: ["show inventory"]
 
 components:
-    _parse: unnecessary
+    _process: unnecessary
     component:
-        _parse:
+        _process:
             mode: dict
             from: "{%- set data = {} -%}{%- for k, v in bookmarks.components.0.0.items() -%}{%- if v is mapping and k is not equalto 'systemInformation' -%}{%- for kk, vv in v.items() -%}{%- if k is not equalto 'xcvrSlots' or ( k == 'xcvrSlots' and vv.mfgName is not equalto 'Not Present') -%}{%- do data.update({'{}_{}'.format(k,kk): vv}) -%}{%- endif -%}{%- endfor -%}{%- endif -%}{%- endfor -%} {%- do data.update({'systemInformation': bookmarks.components.0.0.systemInformation})-%}{{ data|json }}"
         name:
-            _parse:
+            _process:
                 mode: value
                 value: "{{ component_key }}"
         config:
-            _parse: unnecessary
+            _process: unnecessary
         state:
-            _parse: unnecessary
+            _process: unnecessary
             name:
-                _parse:
+                _process:
                     mode: value
                     value: "{{ component_key }}"
             type:
-                _parse:
+                _process:
                     mode: map
                     value: "{%- set data = component_key.split('_').0 -%}{{ data }}"
                     map:
@@ -38,61 +38,61 @@ components:
                         fanTraySlots: FAN
                         systemInformation: CHASSIS
             id:
-                _parse: not_implemented
+                _process: not_implemented
             description:
-                _parse: not_implemented
+                _process: not_implemented
             mfg-name:
-                _parse:
+                _process:
                     mode: value
                     value: "{{ bookmarks.parent.mfgName|default() }}"
             version:
-                _parse:
+                _process:
                     mode: value
                     value: "{{ bookmarks.parent.hardwareRev|default() }}"
                     when: "{{ component_key == 'systemInformation' }}"
             serial-no:
-                _parse:
+                _process:
                     mode: value
                     value: "{{ bookmarks.parent.serialNum|default('N/A') }}"
                     when: "{{ bookmarks.parent.serialNum is not equalto 'N/A' }}"
             part-no:
-                _parse:
+                _process:
                     mode: value
                     value: "{%- if component_key.startswith(('xcvr', 'cardSlots')) -%}{{ bookmarks.parent.modelName }}{%- else -%}{{ bookmarks.parent.name }}{%- endif -%}"
             temperature:
-                _parse: unnecessary
+                _process: unnecessary
                 instant:
-                    _parse: not_implemented
+                    _process: not_implemented
                 avg:
-                    _parse: not_implemented
+                    _process: not_implemented
                 min:
-                    _parse: not_implemented
+                    _process: not_implemented
                 max:
-                    _parse: not_implemented
+                    _process: not_implemented
         properties:
-            _parse: unnecessary
+            _process: unnecessary
             property:
-                _parse: not_implemented
+                _process: not_implemented
                 name:
-                    _parse: not_implemented
+                    _process: not_implemented
                 config:
-                    _parse: unnecessary
+                    _process: unnecessary
                     name:
-                        _parse: not_implemented
+                        _process: not_implemented
                     value:
-                        _parse: not_implemented
+                        _process: not_implemented
                 state:
-                    _parse: unnecessary
+                    _process: unnecessary
                     name:
-                        _parse: not_implemented
+                        _process: not_implemented
                     value:
-                        _parse: not_implemented
+                        _process: not_implemented
                     configurable:
-                        _parse: not_implemented
+                        _process: not_implemented
         subcomponents:
-            _parse: unnecessary
+            _process: unnecessary
             subcomponent:
-                _parse: not_implemented
+                _process: not_implemented
                 name:
                 config:
                     name:
