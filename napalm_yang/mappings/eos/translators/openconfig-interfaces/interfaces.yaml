@@ -1,69 +1,71 @@
 ---
 metadata:
-    translator: TextTranslator
+    processor: TextTranslator
     root: true
 
 interfaces:
-    _translation: unnecessary
+    _process: unnecessary
     interface:
-        _translation:
+        _process:
             mode: container
             key_value: "interface {{ interface_key }}\n"
             negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
+            end: "    exit\n"
         name:
-            _translation: unnecessary
+            _process: unnecessary
         hold-time:
-            _translation: unnecessary
+            _process: unnecessary
             config:
-                _translation: unnecessary
+                _process: unnecessary
                 down:
-                    _translation: not_implemented
+                    _process: not_implemented
                 up:
-                    _translation: not_implemented
+                    _process: not_implemented
         config:
-            _translation: unnecessary
+            _process: unnecessary
             name:
-                _translation: unnecessary
+                _process: unnecessary
             type:
-                _translation: unnecessary
+                _process: unnecessary
             enabled:
-                _translation:
+                _process:
                     - mode: element
                       value: "    shutdown\n"
                       when: "{{ not model }}"
             description:
-                _translation:
+                _process:
                     - mode: element
                       value: "    description {{ model }}\n"
                       negate: "    default description"
             mtu:
-                _translation:
+                _process:
                     - mode: element
                       value: "    mtu {{ model }}\n"
                       negate: "    default mtu\n"
         subinterfaces:
-            _translation: unnecessary
+            _process: unnecessary
             subinterface:
-                _translation:
+                _process:
                     mode: container
                     key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
                     negate: "no interface {{ interface_key}}.{{ subinterface_key }}\n"
                     in: "interfaces"
+                    end: "    exit\n"
                 index:
-                    _translation: unnecessary
+                    _process: unnecessary
                 config:
-                    _translation: unnecessary
+                    _process: unnecessary
                     index:
-                        _translation: unnecessary
+                        _process: unnecessary
                     name:
-                        _translation: unnecessary
+                        _process: unnecessary
                     enabled:
-                        _translation:
+                        _process:
                             - mode: element
                               value: "    shutdown\n"
                               when: "{{ not model }}"
                     description:
-                        _translation:
+                        _process:
                             - mode: element
                               value: "    description {{ model }}\n"
                               negate: "    default description"

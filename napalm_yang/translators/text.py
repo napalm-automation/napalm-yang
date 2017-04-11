@@ -40,14 +40,21 @@ class TextTranslator(XMLTranslator):
                 return
 
         if not model._changed() and other is not None and not self.replace:
-            print(attribute, model, other)
             mapping["key_value"] = mapping["negate"]
         if not model._changed() and other is not None and self.replace:
             return translation
 
         mapping["key_element"] = "command"
         mapping["container"] = model._yang_name
-        return super()._init_element_container(attribute, model, other, mapping, translation)
+
+        t = super()._init_element_container(attribute, model, other, mapping, translation)
+
+        end = mapping.get("end", "")
+        if end and t is not None:
+            e = etree.SubElement(translation, "command")
+            e.text = end
+
+        return t
 
     #  def _parse_container_container(self, attribute, model, other, mapping, translation):
     #      mapping["key_element"] = "container"

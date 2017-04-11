@@ -12,13 +12,20 @@ PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind
 clean:
 	find $(MODELS_PATH)/* -d -type d -exec rm -rf '{}' \;
 
+.PHONY: openconfig_tree
+openconfig_tree:
+	pyang -f tree \
+		--path $(YANG_OC) \
+		-f tree \
+		$(YANG_OC)/network-instance/openconfig-network-instance.yang
+
 .PHONY: models_openconfig
 models_openconfig:
 	rm -rf $(MODELS_PATH)/openconfig/
 	$(PYANGBING) \
 		--path $(YANG_OC) \
 		--split-class-dir=$(MODELS_PATH)/openconfig/ \
-		$(YANG_OC)/bgp/*.yang \
+		$(YANG_OC)/network-instance/openconfig-network-instance.yang \
 		$(YANG_OC)/interfaces/*.yang \
 		$(YANG_OC)/platform/*.yang \
 		$(YANG_OC)/vlan/*.yang \

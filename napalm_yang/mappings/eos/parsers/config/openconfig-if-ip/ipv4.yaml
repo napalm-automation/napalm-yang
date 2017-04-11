@@ -1,82 +1,82 @@
 ---
 metadata:
-    parser: TextParser
+    processor: TextParser
 
 ipv4:
-    _parse: unnecessary
+    _process: unnecessary
     config:
-        _parse: unnecessary
+        _process: unnecessary
         enabled:
-            _parse:
+            _process:
                 mode: is_absent
                 regexp: "(?P<value>^\\W*switchport$)"
                 from: "{{ bookmarks['parent'] }}"
         mtu:
-            _parse: not_implemented
+            _process: not_implemented
     addresses:
-        _parse: unnecessary
+        _process: unnecessary
         address:
-            _parse:
+            _process:
                 mode: block
                 regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
                 from: "{{ bookmarks['parent'] }}"
             ip:
-                _parse: unnecessary
+                _process: unnecessary
             config:
-                _parse: unnecessary
+                _process: unnecessary
                 ip:
-                    _parse:
+                    _process:
                         mode: value
                         value: "{{ extra_vars.ip }}"
                 prefix-length:
-                    _parse:
+                    _process:
                         mode: value
                         value: "{{ extra_vars.prefix }}"
             vrrp:
-                _parse: not_implemented
+                _process: not_implemented
                 vrrp-group:
-                    _parse: not_implemented
+                    _process: not_implemented
                     virtual-router-id:
-                        _parse: not_implemented
+                        _process: not_implemented
                     config:
-                        _parse: not_implemented
+                        _process: not_implemented
                         virtual-address:
-                            _parse: not_implemented
+                            _process: not_implemented
                         priority:
-                            _parse: not_implemented
+                            _process: not_implemented
                         preempt:
-                            _parse: not_implemented
+                            _process: not_implemented
                         advertisement-interval:
-                            _parse: not_implemented
+                            _process: not_implemented
                         virtual-router-id:
-                            _parse: not_implemented
+                            _process: not_implemented
                         preempt-delay:
-                            _parse: not_implemented
+                            _process: not_implemented
                         accept-mode:
-                            _parse: not_implemented
+                            _process: not_implemented
     unnumbered:
-        _parse: not_implemented
+        _process: not_implemented
         config:
-            _parse: not_implemented
+            _process: not_implemented
             enabled:
-                _parse: not_implemented
+                _process: not_implemented
         interface-ref:
-            _parse: not_implemented
+            _process: not_implemented
             config:
-                _parse: not_implemented
+                _process: not_implemented
                 interface:
-                    _parse: not_implemented
+                    _process: not_implemented
                 subinterface:
-                    _parse: not_implemented
+                    _process: not_implemented
     neighbors:
-        _parse: not_implemented
+        _process: not_implemented
         neighbor:
-            _parse: not_implemented
+            _process: not_implemented
             ip:
-                _parse: not_implemented
+                _process: not_implemented
             config:
-                _parse: not_implemented
+                _process: not_implemented
                 ip:
-                    _parse: not_implemented
+                    _process: not_implemented
                 link-layer-address:
-                    _parse: not_implemented
+                    _process: not_implemented

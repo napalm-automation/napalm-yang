@@ -1,5 +1,7 @@
 interface Port-Channel1
     default mtu
+    exit
 interface Loopback0
     description new loopback
+    exit
 no interface Loopback1

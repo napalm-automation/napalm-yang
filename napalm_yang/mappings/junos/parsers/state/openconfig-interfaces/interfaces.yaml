@@ -1,35 +1,35 @@
 ---
 metadata:
-    parser: XMLParser
+    processor: XMLParser
     execute:
         - method: _rpc
           args:
               get: "<get-interface-information><extensive/></get-interface-information>"
 
 interfaces:
-    _parse: not_implemented
+    _process: not_implemented
     interface:
-        _parse:
+        _process:
             mode: xpath
             xpath: "physical-interface"
             key: name
             from: "{{ bookmarks.interfaces.0 }}"
         config:
-            _parse: unnecessary
+            _process: unnecessary
         hold-time:
-            _parse: not_implemented
+            _process: not_implemented
             config:
-                _parse: unnecessary
+                _process: unnecessary
             state:
-                _parse: not_implemented
+                _process: not_implemented
                 down:
-                    _parse: not_implemented
+                    _process: not_implemented
                 up:
-                    _parse: not_implemented
+                    _process: not_implemented
         state:
-            _parse: not_implemented
+            _process: not_implemented
             admin-status:
-                _parse: 
+                _process: 
                     mode: map
                     xpath: "admin-status"
                     from: "{{ bookmarks['parent'] }}"
@@ -37,12 +37,12 @@ interfaces:
                         up: UP
                         down: DOWN
             description:
-                _parse: 
+                _process: 
                     mode: xpath
                     xpath: "description"
                     from: "{{ bookmarks['parent'] }}"
             enabled:
-                _parse: 
+                _process: 
                     mode: map
                     xpath: "admin-status"
                     from: "{{ bookmarks['parent'] }}"
@@ -50,26 +50,26 @@ interfaces:
                         up: true
                         down: false
             ifindex:
-                _parse: 
+                _process: 
                     mode: xpath
                     xpath: "snmp-index"
                     from: "{{ bookmarks['parent'] }}"
             last-change:
-                _parse: 
+                _process: 
                     mode: xpath
                     xpath: "interface-flapped"
                     attribute: "seconds"
                     from: "{{ bookmarks['parent'] }}"
             mtu:
-                _parse: 
+                _process: 
                     mode: xpath
                     xpath: "mtu"
                     regexp: "(?P<value>\\d+)"  # Someone thought mixing strings and ints was a good idea
                     from: "{{ bookmarks['parent'] }}"
             name:
-                _parse: unnecessary
+                _process: unnecessary
             oper-status:
-                _parse:
+                _process:
                     mode: map
                     xpath: "oper-status"
                     from: "{{ bookmarks['parent'] }}"
@@ -77,7 +77,7 @@ interfaces:
                         up: UP
                         down: DOWN
             type:
-                _parse:
+                _process:
                     mode: map
                     xpath: "if-type"
                     from: "{{ bookmarks['parent'] }}"
@@ -96,126 +96,126 @@ interfaces:
                         PIME: null
                         PPPoE: null
             counters:
-                _parse: not_implemented
+                _process: not_implemented
                 in-broadcast-pkts:
-                    _parse: 
+                    _process: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-broadcasts"
                         from: "{{ bookmarks['parent'] }}"
                 in-discards:
-                    _parse:
+                    _process:
                         mode: xpath
                         xpath: "input-error-list/input-discards"
                         from: "{{ bookmarks['parent'] }}"
                 in-errors:
-                    _parse:
+                    _process:
                         mode: xpath
                         xpath: "input-error-list/input-errors"
                         from: "{{ bookmarks['parent'] }}"
                 in-multicast-pkts:
-                    _parse:
+                    _process:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-multicasts"
                         from: "{{ bookmarks['parent'] }}"
                 in-octets:
-                    _parse: not_implemented
+                    _process: not_implemented
                 in-unicast-pkts:
-                    _parse: 
+                    _process: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/input-unicasts"
                         from: "{{ bookmarks['parent'] }}"
                 in-unknown-protos:
-                    _parse: not_implemented
+                    _process: not_implemented
                 last-clear:
-                    _parse: not_implemented
+                    _process: not_implemented
                 out-broadcast-pkts:
-                    _parse: 
+                    _process: 
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-broadcasts"
                         from: "{{ bookmarks['parent'] }}"
                 out-discards:
-                    _parse: not_implemented
+                    _process: not_implemented
                 out-errors:
-                    _parse: 
+                    _process: 
                         mode: xpath
                         xpath: "output-error-list/output-errors"
                         from: "{{ bookmarks['parent'] }}"
                 out-multicast-pkts:
-                    _parse:
+                    _process:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-multicasts"
                         from: "{{ bookmarks['parent'] }}"
                 out-octets:
-                    _parse: not_implemented
+                    _process: not_implemented
                 out-unicast-pkts:
-                    _parse:
+                    _process:
                         mode: xpath
                         xpath: "ethernet-mac-statistics/output-unicasts"
                         from: "{{ bookmarks['parent'] }}"
         subinterfaces:
-            _parse: unnecessary
+            _process: unnecessary
             subinterface:
-                _parse: 
+                _process: 
                     mode: xpath
                     xpath: "logical-interface"
                     from: "{{ bookmarks['parent'] }}"
                 index:
-                    _parse: unnecessary
+                    _process: unnecessary
                 config:
-                    _parse: unnecessary
+                    _process: unnecessary
                 state:
-                    _parse: not_implemented
+                    _process: not_implemented
                     index:
-                        _parse: not_implemented
+                        _process: not_implemented
                     description:
-                        _parse: 
+                        _process: 
                             mode: xpath
                             xpath: "description"
                             from: "{{ bookmarks['parent'] }}"
                     enabled:
-                        _parse: not_implemented
+                        _process: not_implemented
                     admin-status:
-                        _parse: not_implemented
+                        _process: not_implemented
                     ifindex:
-                        _parse: 
+                        _process: 
                             mode: xpath
                             xpath: "snmp-index"
                             from: "{{ bookmarks['parent'] }}"
                     last-change:
-                        _parse: not_implemented
+                        _process: not_implemented
                     name:
-                        _parse:
+                        _process:
                             mode: value
                             value: "{{ subinterface_key }}"
                     oper-status:
-                        _parse: not_implemented
+                        _process: not_implemented
                     counters:
-                        _parse: not_implemented
+                        _process: not_implemented
                         in-broadcast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-discards:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-errors:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-multicast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-octets:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-unicast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
                         in-unknown-protos:
-                            _parse: not_implemented
+                            _process: not_implemented
                         last-clear:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-broadcast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-discards:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-errors:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-multicast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-octets:
-                            _parse: not_implemented
+                            _process: not_implemented
                         out-unicast-pkts:
-                            _parse: not_implemented
+                            _process: not_implemented
