@@ -3,4 +3,4 @@
 napalm-yang
 ===========
 
-Visit [RTD](https://napalm.readthedocs.io/en/latest/yang/index.html) for the documentation.
+Visit [RTD](https://napalm.readthedocs.io/en/latest/YANG/index.html) for the documentation.

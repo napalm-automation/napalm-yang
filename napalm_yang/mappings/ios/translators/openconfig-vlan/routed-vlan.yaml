@@ -1,12 +1,12 @@
 ---
 metadata:
-    translator: TextTranslator
+    processor: TextTranslator
 
 routed-vlan:
-    _translation: unnecessary
+    _process: unnecessary
     config:
-        _translation: unnecessary
+        _process: unnecessary
         enabled:
-            _translation: unnecessary
+            _process: unnecessary
         vlan:
-            _translation: unnecessary
+            _process: unnecessary
