@@ -10,3 +10,5 @@ aggregation:
             _process: not_implemented
         min-links:
             _process: not_implemented
+    state:
+        _process: not_implemented
