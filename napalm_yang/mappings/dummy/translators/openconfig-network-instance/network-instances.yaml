@@ -30,6 +30,10 @@ network-instances:
                             _process: not_implemented
                             interface-ref:
                                 _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                         next-hops:
                             _process: not_implemented
                             next-hop:
@@ -48,6 +52,14 @@ network-instances:
                                             _process: not_implemented
                                         subinterface:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
         config:
             _process: not_implemented
             description:
@@ -98,6 +110,8 @@ network-instances:
                                     _process: not_implemented
                                 subinterface:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         remote:
                             _process: not_implemented
                             config:
@@ -106,6 +120,12 @@ network-instances:
                                     _process: not_implemented
                                 virtual-circuit-identifier:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
         encapsulation:
             _process: not_implemented
             config:
@@ -116,6 +136,8 @@ network-instances:
                     _process: not_implemented
                 label-allocation-mode:
                     _process: not_implemented
+            state:
+                _process: not_implemented
         fdb:
             _process: not_implemented
             config:
@@ -148,8 +170,14 @@ network-instances:
                                         _process: not_implemented
                                     subinterface:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         mac-address:
                             _process: not_implemented
+                        state:
+                            _process: not_implemented
+            state:
+                _process: not_implemented
         inter-instance-policies:
             _process: not_implemented
             apply-policy:
@@ -164,6 +192,8 @@ network-instances:
                         _process: not_implemented
                     import-policy:
                         _process: not_implemented
+                state:
+                    _process: not_implemented
         interfaces:
             _process: not_implemented
             interface:
@@ -179,6 +209,8 @@ network-instances:
                     subinterface:
                         _process: not_implemented
                 id:
+                    _process: not_implemented
+                state:
                     _process: not_implemented
         mpls:
             _process: not_implemented
@@ -208,6 +240,10 @@ network-instances:
                                     _process: not_implemented
                                 subinterface:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
                 reserved-label-blocks:
                     _process: not_implemented
                     reserved-label-block:
@@ -222,6 +258,10 @@ network-instances:
                                 _process: not_implemented
                         local-id:
                             _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
             lsps:
                 _process: not_implemented
                 constrained-path:
@@ -252,7 +292,11 @@ network-instances:
                                             _process: not_implemented
                                     index:
                                         _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                             name:
+                                _process: not_implemented
+                            state:
                                 _process: not_implemented
                     tunnels:
                         _process: not_implemented
@@ -284,6 +328,10 @@ network-instances:
                                                 _process: not_implemented
                                             trigger-event-count:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                     underflow:
                                         _process: not_implemented
                                         config:
@@ -294,12 +342,16 @@ network-instances:
                                                 _process: not_implemented
                                             underflow-threshold:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     set-bandwidth:
                                         _process: not_implemented
                                     specification-type:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 admin-status:
@@ -354,6 +406,8 @@ network-instances:
                                                     _process: not_implemented
                                                 include-any-group:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         candidate-secondary-paths:
                                             _process: not_implemented
                                             candidate-secondary-path:
@@ -365,6 +419,8 @@ network-instances:
                                                     secondary-path:
                                                         _process: not_implemented
                                                 secondary-path:
+                                                    _process: not_implemented
+                                                state:
                                                     _process: not_implemented
                                         config:
                                             _process: not_implemented
@@ -389,6 +445,8 @@ network-instances:
                                             use-cspf:
                                                 _process: not_implemented
                                         name:
+                                            _process: not_implemented
+                                        state:
                                             _process: not_implemented
                                 p2p-secondary-paths:
                                     _process: not_implemented
@@ -404,6 +462,8 @@ network-instances:
                                                     _process: not_implemented
                                                 include-any-group:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         config:
                                             _process: not_implemented
                                             cspf-tiebreaker:
@@ -428,6 +488,12 @@ network-instances:
                                                 _process: not_implemented
                                         name:
                                             _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                 static-lsps:
                     _process: not_implemented
                     static-lsp:
@@ -446,6 +512,8 @@ network-instances:
                                     _process: not_implemented
                                 push-label:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         ingress:
                             _process: not_implemented
                             config:
@@ -456,7 +524,11 @@ network-instances:
                                     _process: not_implemented
                                 push-label:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         name:
+                            _process: not_implemented
+                        state:
                             _process: not_implemented
                         transit:
                             _process: not_implemented
@@ -468,8 +540,12 @@ network-instances:
                                     _process: not_implemented
                                 push-label:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                 unconstrained-path:
                     _process: not_implemented
+                    path-setup-protocol:
+                        _process: not_implemented
             signaling-protocols:
                 _process: not_implemented
                 rsvp-te:
@@ -486,6 +562,8 @@ network-instances:
                                     _process: not_implemented
                                 restart-time:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         hellos:
                             _process: not_implemented
                             config:
@@ -494,6 +572,8 @@ network-instances:
                                     _process: not_implemented
                                 refresh-reduction:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         soft-preemption:
                             _process: not_implemented
                             config:
@@ -502,6 +582,10 @@ network-instances:
                                     _process: not_implemented
                                 soft-preemption-timeout:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
                     interface-attributes:
                         _process: not_implemented
                         interface:
@@ -514,8 +598,12 @@ network-instances:
                                         _process: not_implemented
                                     enable:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             bandwidth-reservations:
                                 _process: not_implemented
+                                bandwidth-reservation:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 interface-id:
@@ -528,6 +616,8 @@ network-instances:
                                         _process: not_implemented
                                     refresh-reduction:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             interface-id:
                                 _process: not_implemented
                             interface-ref:
@@ -538,6 +628,8 @@ network-instances:
                                         _process: not_implemented
                                     subinterface:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             protection:
                                 _process: not_implemented
                                 config:
@@ -546,20 +638,32 @@ network-instances:
                                         _process: not_implemented
                                     link-protection-style-requested:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                             subscription:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     subscription:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                     neighbors:
                         _process: not_implemented
+                        neighbor:
+                            _process: not_implemented
                     sessions:
                         _process: not_implemented
+                        session:
+                            _process: not_implemented
                 segment-routing:
                     _process: not_implemented
                     aggregate-sid-counters:
                         _process: not_implemented
+                        aggregate-sid-counter:
+                            _process: not_implemented
                     interfaces:
                         _process: not_implemented
                         interface:
@@ -578,7 +682,13 @@ network-instances:
                                         _process: not_implemented
                                     subinterface:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             sid-counters:
+                                _process: not_implemented
+                                sid-counter:
+                                    _process: not_implemented
+                            state:
                                 _process: not_implemented
             te-global-attributes:
                 _process: not_implemented
@@ -594,6 +704,8 @@ network-instances:
                                 _process: not_implemented
                             bit-position:
                                 _process: not_implemented
+                        state:
+                            _process: not_implemented
                 srlgs:
                     _process: not_implemented
                     srlg:
@@ -610,6 +722,8 @@ network-instances:
                                 _process: not_implemented
                         name:
                             _process: not_implemented
+                        state:
+                            _process: not_implemented
                         static-srlg-members:
                             _process: not_implemented
                             members-list:
@@ -622,6 +736,8 @@ network-instances:
                                         _process: not_implemented
                                 from-address:
                                     _process: not_implemented
+                                state:
+                                    _process: not_implemented
                 te-lsp-timers:
                     _process: not_implemented
                     config:
@@ -632,6 +748,8 @@ network-instances:
                             _process: not_implemented
                         reoptimize-timer:
                             _process: not_implemented
+                    state:
+                        _process: not_implemented
             te-interface-attributes:
                 _process: not_implemented
                 interface:
@@ -662,6 +780,8 @@ network-instances:
                                 _process: not_implemented
                             up-thresholds:
                                 _process: not_implemented
+                        state:
+                            _process: not_implemented
                     interface-id:
                         _process: not_implemented
                     interface-ref:
@@ -672,6 +792,10 @@ network-instances:
                                 _process: not_implemented
                             subinterface:
                                 _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
         name:
             _process: not_implemented
         policy-forwarding:
@@ -696,6 +820,10 @@ network-instances:
                                 _process: not_implemented
                             subinterface:
                                 _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
             path-selection-groups:
                 _process: not_implemented
                 path-selection-group:
@@ -707,6 +835,8 @@ network-instances:
                         mpls-lsp:
                             _process: not_implemented
                     group-id:
+                        _process: not_implemented
+                    state:
                         _process: not_implemented
             policies:
                 _process: not_implemented
@@ -736,6 +866,8 @@ network-instances:
                                         _process: not_implemented
                                     path-selection-group:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 sequence-id:
@@ -760,6 +892,8 @@ network-instances:
                                         _process: not_implemented
                                     source-ip-flow-label:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             l2:
                                 _process: not_implemented
                                 config:
@@ -774,7 +908,11 @@ network-instances:
                                         _process: not_implemented
                                     source-mac-mask:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             sequence-id:
+                                _process: not_implemented
+                            state:
                                 _process: not_implemented
                             transport:
                                 _process: not_implemented
@@ -786,6 +924,10 @@ network-instances:
                                         _process: not_implemented
                                     tcp-flags:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                    state:
+                        _process: not_implemented
         protocols:
             _process: not_implemented
             protocol:
@@ -812,6 +954,8 @@ network-instances:
                                         _process: not_implemented
                                         enabled:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 ipv4-labeled-unicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -826,6 +970,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 ipv4-unicast:
                                     _process: not_implemented
                                     config:
@@ -844,6 +990,10 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 ipv6-labeled-unicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -858,6 +1008,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 ipv6-unicast:
                                     _process: not_implemented
                                     config:
@@ -876,6 +1028,10 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 l2vpn-evpn:
                                     _process: not_implemented
                                     prefix-limit:
@@ -890,6 +1046,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 l2vpn-vpls:
                                     _process: not_implemented
                                     prefix-limit:
@@ -904,6 +1062,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 l3vpn-ipv4-multicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -918,6 +1078,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 l3vpn-ipv4-unicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -932,6 +1094,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 l3vpn-ipv6-multicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -946,6 +1110,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 l3vpn-ipv6-unicast:
                                     _process: not_implemented
                                     prefix-limit:
@@ -960,6 +1126,8 @@ network-instances:
                                                 _process: not_implemented
                                             shutdown-threshold-pct:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                 route-selection-options:
                                     _process: not_implemented
                                     config:
@@ -976,6 +1144,10 @@ network-instances:
                                             _process: not_implemented
                                         ignore-next-hop-igp-metric:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                                 use-multiple-paths:
                                     _process: not_implemented
                                     config:
@@ -990,12 +1162,18 @@ network-instances:
                                                 _process: not_implemented
                                             maximum-paths:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     ibgp:
                                         _process: not_implemented
                                         config:
                                             _process: not_implemented
                                             maximum-paths:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                         confederation:
                             _process: not_implemented
                             config:
@@ -1006,6 +1184,8 @@ network-instances:
                                     _process: not_implemented
                                 member-as:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         config:
                             _process: not_implemented
                             as:
@@ -1020,6 +1200,8 @@ network-instances:
                                     _process: not_implemented
                                 internal-route-distance:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         dynamic-neighbor-prefixes:
                             _process: not_implemented
                             dynamic-neighbor-prefix:
@@ -1031,6 +1213,8 @@ network-instances:
                                     prefix:
                                         _process: not_implemented
                                 prefix:
+                                    _process: not_implemented
+                                state:
                                     _process: not_implemented
                         graceful-restart:
                             _process: not_implemented
@@ -1044,6 +1228,8 @@ network-instances:
                                     _process: not_implemented
                                 stale-routes-time:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         route-selection-options:
                             _process: not_implemented
                             config:
@@ -1060,6 +1246,10 @@ network-instances:
                                     _process: not_implemented
                                 ignore-next-hop-igp-metric:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
                         use-multiple-paths:
                             _process: not_implemented
                             config:
@@ -1074,12 +1264,18 @@ network-instances:
                                         _process: not_implemented
                                     maximum-paths:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             ibgp:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     maximum-paths:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                     neighbors:
                         _process: not_implemented
                         neighbor:
@@ -1094,6 +1290,8 @@ network-instances:
                                         _process: not_implemented
                                     send-max:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             afi-safis:
                                 _process: not_implemented
                                 afi-safi:
@@ -1112,6 +1310,8 @@ network-instances:
                                                 _process: not_implemented
                                             import-policy:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     config:
                                         _process: not_implemented
                                         afi-safi-name:
@@ -1124,6 +1324,8 @@ network-instances:
                                             _process: not_implemented
                                             enabled:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     ipv4-labeled-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1138,6 +1340,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     ipv4-unicast:
                                         _process: not_implemented
                                         config:
@@ -1156,6 +1360,10 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     ipv6-labeled-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1170,6 +1378,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     ipv6-unicast:
                                         _process: not_implemented
                                         config:
@@ -1188,6 +1398,10 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     l2vpn-evpn:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1202,6 +1416,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l2vpn-vpls:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1216,6 +1432,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv4-multicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1230,6 +1448,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv4-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1244,6 +1464,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv6-multicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1258,6 +1480,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv6-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1272,6 +1496,10 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                     use-multiple-paths:
                                         _process: not_implemented
                                         config:
@@ -1284,6 +1512,10 @@ network-instances:
                                                 _process: not_implemented
                                                 allow-multiple-as:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                             apply-policy:
                                 _process: not_implemented
                                 config:
@@ -1296,6 +1528,8 @@ network-instances:
                                         _process: not_implemented
                                     import-policy:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             as-path-options:
                                 _process: not_implemented
                                 config:
@@ -1304,6 +1538,8 @@ network-instances:
                                         _process: not_implemented
                                     replace-peer-as:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 auth-password:
@@ -1336,12 +1572,16 @@ network-instances:
                                         _process: not_implemented
                                     multihop-ttl:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             error-handling:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     treat-as-withdraw:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             graceful-restart:
                                 _process: not_implemented
                                 config:
@@ -1354,12 +1594,16 @@ network-instances:
                                         _process: not_implemented
                                     stale-routes-time:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             logging-options:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     log-neighbor-state-changes:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             neighbor-address:
                                 _process: not_implemented
                             route-reflector:
@@ -1370,6 +1614,10 @@ network-instances:
                                         _process: not_implemented
                                     route-reflector-cluster-id:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                             timers:
                                 _process: not_implemented
                                 config:
@@ -1382,6 +1630,8 @@ network-instances:
                                         _process: not_implemented
                                     minimum-advertisement-interval:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             transport:
                                 _process: not_implemented
                                 config:
@@ -1394,6 +1644,8 @@ network-instances:
                                         _process: not_implemented
                                     tcp-mss:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             use-multiple-paths:
                                 _process: not_implemented
                                 config:
@@ -1406,6 +1658,10 @@ network-instances:
                                         _process: not_implemented
                                         allow-multiple-as:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                     peer-groups:
                         _process: not_implemented
                         peer-group:
@@ -1420,6 +1676,8 @@ network-instances:
                                         _process: not_implemented
                                     send-max:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             afi-safis:
                                 _process: not_implemented
                                 afi-safi:
@@ -1438,6 +1696,8 @@ network-instances:
                                                 _process: not_implemented
                                             import-policy:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     config:
                                         _process: not_implemented
                                         afi-safi-name:
@@ -1450,6 +1710,8 @@ network-instances:
                                             _process: not_implemented
                                             enabled:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     ipv4-labeled-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1464,6 +1726,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     ipv4-unicast:
                                         _process: not_implemented
                                         config:
@@ -1482,6 +1746,10 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     ipv6-labeled-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1496,6 +1764,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     ipv6-unicast:
                                         _process: not_implemented
                                         config:
@@ -1514,6 +1784,10 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     l2vpn-evpn:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1528,6 +1802,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l2vpn-vpls:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1542,6 +1818,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv4-multicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1556,6 +1834,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv4-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1570,6 +1850,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv6-multicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1584,6 +1866,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     l3vpn-ipv6-unicast:
                                         _process: not_implemented
                                         prefix-limit:
@@ -1598,6 +1882,8 @@ network-instances:
                                                     _process: not_implemented
                                                 shutdown-threshold-pct:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     route-selection-options:
                                         _process: not_implemented
                                         config:
@@ -1614,6 +1900,10 @@ network-instances:
                                                 _process: not_implemented
                                             ignore-next-hop-igp-metric:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                     use-multiple-paths:
                                         _process: not_implemented
                                         config:
@@ -1628,12 +1918,18 @@ network-instances:
                                                     _process: not_implemented
                                                 maximum-paths:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         ibgp:
                                             _process: not_implemented
                                             config:
                                                 _process: not_implemented
                                                 maximum-paths:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                             apply-policy:
                                 _process: not_implemented
                                 config:
@@ -1646,6 +1942,8 @@ network-instances:
                                         _process: not_implemented
                                     import-policy:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             as-path-options:
                                 _process: not_implemented
                                 config:
@@ -1654,6 +1952,8 @@ network-instances:
                                         _process: not_implemented
                                     replace-peer-as:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 auth-password:
@@ -1682,12 +1982,16 @@ network-instances:
                                         _process: not_implemented
                                     multihop-ttl:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             error-handling:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     treat-as-withdraw:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             graceful-restart:
                                 _process: not_implemented
                                 config:
@@ -1700,12 +2004,16 @@ network-instances:
                                         _process: not_implemented
                                     stale-routes-time:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             logging-options:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     log-neighbor-state-changes:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             peer-group-name:
                                 _process: not_implemented
                             route-reflector:
@@ -1716,6 +2024,10 @@ network-instances:
                                         _process: not_implemented
                                     route-reflector-cluster-id:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                             timers:
                                 _process: not_implemented
                                 config:
@@ -1728,6 +2040,8 @@ network-instances:
                                         _process: not_implemented
                                     minimum-advertisement-interval:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             transport:
                                 _process: not_implemented
                                 config:
@@ -1740,6 +2054,8 @@ network-instances:
                                         _process: not_implemented
                                     tcp-mss:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             use-multiple-paths:
                                 _process: not_implemented
                                 config:
@@ -1754,12 +2070,18 @@ network-instances:
                                             _process: not_implemented
                                         maximum-paths:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 ibgp:
                                     _process: not_implemented
                                     config:
                                         _process: not_implemented
                                         maximum-paths:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                 config:
                     _process: not_implemented
                     default-metric:
@@ -1800,7 +2122,11 @@ network-instances:
                                             _process: not_implemented
                                         safi-name:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 safi-name:
+                                    _process: not_implemented
+                                state:
                                     _process: not_implemented
                         config:
                             _process: not_implemented
@@ -1830,6 +2156,8 @@ network-instances:
                                     _process: not_implemented
                                 helper-only:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         igp-shortcuts:
                             _process: not_implemented
                             afi:
@@ -1842,6 +2170,8 @@ network-instances:
                                         _process: not_implemented
                                     nh-type:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         inter-level-propagation-policies:
                             _process: not_implemented
                             level1-to-level2:
@@ -1852,6 +2182,8 @@ network-instances:
                                         _process: not_implemented
                                     import-policy:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             level2-to-level1:
                                 _process: not_implemented
                                 config:
@@ -1860,6 +2192,8 @@ network-instances:
                                         _process: not_implemented
                                     import-policy:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         lsp-bit:
                             _process: not_implemented
                             attached-bit:
@@ -1870,6 +2204,8 @@ network-instances:
                                         _process: not_implemented
                                     suppress-bit:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             overload-bit:
                                 _process: not_implemented
                                 config:
@@ -1892,6 +2228,10 @@ network-instances:
                                                 _process: not_implemented
                                         reset-trigger:
                                             _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         mpls:
                             _process: not_implemented
                             igp-ldp-sync:
@@ -1902,18 +2242,24 @@ network-instances:
                                         _process: not_implemented
                                     post-session-up-delay:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         nsr:
                             _process: not_implemented
                             config:
                                 _process: not_implemented
                                 enabled:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         reference-bandwidth:
                             _process: not_implemented
                             config:
                                 _process: not_implemented
                                 reference-bandwidth:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         segment-routing:
                             _process: not_implemented
                             config:
@@ -1924,6 +2270,10 @@ network-instances:
                                     _process: not_implemented
                                 srlb:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
                         timers:
                             _process: not_implemented
                             config:
@@ -1942,6 +2292,8 @@ network-instances:
                                         _process: not_implemented
                                     lsp-second-wait-interval:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             spf:
                                 _process: not_implemented
                                 config:
@@ -1952,12 +2304,18 @@ network-instances:
                                         _process: not_implemented
                                     spf-second-interval:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                         transport:
                             _process: not_implemented
                             config:
                                 _process: not_implemented
                                 lsp-mtu-size:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                     interfaces:
                         _process: not_implemented
                         interface:
@@ -1978,6 +2336,8 @@ network-instances:
                                             _process: not_implemented
                                     safi-name:
                                         _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                             authentication:
                                 _process: not_implemented
                                 config:
@@ -1990,14 +2350,22 @@ network-instances:
                                         _process: not_implemented
                                         auth-password:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             bfd:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     bfd-tlv:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             circuit-counters:
                                 _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 circuit-type:
@@ -2020,10 +2388,14 @@ network-instances:
                                         _process: not_implemented
                                     subinterface:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             levels:
                                 _process: not_implemented
                                 level:
                                     _process: not_implemented
+                                    adjacencies:
+                                        _process: not_implemented
                                     afi-safi:
                                         _process: not_implemented
                                         af:
@@ -2062,6 +2434,8 @@ network-instances:
                                                             _process: not_implemented
                                                         sid-id:
                                                             _process: not_implemented
+                                                        state:
+                                                            _process: not_implemented
                                                 prefix-sids:
                                                     _process: not_implemented
                                                     prefix-sid:
@@ -2076,6 +2450,10 @@ network-instances:
                                                                 _process: not_implemented
                                                         prefix:
                                                             _process: not_implemented
+                                                        state:
+                                                            _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                     config:
                                         _process: not_implemented
                                         enabled:
@@ -2098,24 +2476,44 @@ network-instances:
                                                 _process: not_implemented
                                                 auth-password:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     level-number:
                                         _process: not_implemented
                                     packet-counters:
                                         _process: not_implemented
                                         cnsp:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         esh:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         iih:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         ish:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         lsp:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         psnp:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                         unknown:
                                             _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                     timers:
                                         _process: not_implemented
                                         config:
@@ -2124,6 +2522,10 @@ network-instances:
                                                 _process: not_implemented
                                             hello-multiplier:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                            state:
+                                _process: not_implemented
                             timers:
                                 _process: not_implemented
                                 config:
@@ -2132,6 +2534,8 @@ network-instances:
                                         _process: not_implemented
                                     lsp-pacing-interval:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                     levels:
                         _process: not_implemented
                         level:
@@ -2152,6 +2556,10 @@ network-instances:
                                         _process: not_implemented
                                         auth-password:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             config:
                                 _process: not_implemented
                                 authentication-check:
@@ -2164,6 +2572,8 @@ network-instances:
                                     _process: not_implemented
                             level-number:
                                 _process: not_implemented
+                            link-state-database:
+                                _process: not_implemented
                             route-preference:
                                 _process: not_implemented
                                 config:
@@ -2172,8 +2582,14 @@ network-instances:
                                         _process: not_implemented
                                     internal-route-preference:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                             system-level-counters:
                                 _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             traffic-engineering:
                                 _process: not_implemented
                                 config:
@@ -2184,6 +2600,8 @@ network-instances:
                                         _process: not_implemented
                                     ipv6-router-id:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                 local-aggregates:
                     _process: not_implemented
                     aggregate:
@@ -2197,6 +2615,8 @@ network-instances:
                             set-tag:
                                 _process: not_implemented
                         prefix:
+                            _process: not_implemented
+                        state:
                             _process: not_implemented
                 name:
                     _process: not_implemented
@@ -2244,12 +2664,16 @@ network-instances:
                                                 _process: not_implemented
                                             subinterface:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     lsa-filter:
                                         _process: not_implemented
                                         config:
                                             _process: not_implemented
                                             all:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     mpls:
                                         _process: not_implemented
                                         config:
@@ -2264,6 +2688,10 @@ network-instances:
                                                     _process: not_implemented
                                                 post-session-up-delay:
                                                     _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     neighbors:
                                         _process: not_implemented
                                         neighbor:
@@ -2276,6 +2704,10 @@ network-instances:
                                                     _process: not_implemented
                                             router-id:
                                                 _process: not_implemented
+                                            state:
+                                                _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                     timers:
                                         _process: not_implemented
                                         config:
@@ -2286,12 +2718,20 @@ network-instances:
                                                 _process: not_implemented
                                             retransmission-interval:
                                                 _process: not_implemented
+                                        state:
+                                            _process: not_implemented
+                            lsdb:
+                                _process: not_implemented
                             mpls:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
                                     traffic-engineering-enabled:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
                             virtual-links:
                                 _process: not_implemented
                                 virtual-link:
@@ -2301,6 +2741,8 @@ network-instances:
                                         remote-router-id:
                                             _process: not_implemented
                                     remote-router-id:
+                                        _process: not_implemented
+                                    state:
                                         _process: not_implemented
                     global:
                         _process: not_implemented
@@ -2324,6 +2766,8 @@ network-instances:
                                     _process: not_implemented
                                 helper-only:
                                     _process: not_implemented
+                            state:
+                                _process: not_implemented
                         inter-area-propagation-policies:
                             _process: not_implemented
                             inter-area-propagation-policy:
@@ -2342,6 +2786,8 @@ network-instances:
                                     _process: not_implemented
                                 src-area:
                                     _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         mpls:
                             _process: not_implemented
                             config:
@@ -2356,6 +2802,12 @@ network-instances:
                                         _process: not_implemented
                                     post-session-up-delay:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
                         timers:
                             _process: not_implemented
                             lsa-generation:
@@ -2366,6 +2818,8 @@ network-instances:
                                         _process: not_implemented
                                     maximum-delay:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             max-metric:
                                 _process: not_implemented
                                 config:
@@ -2378,6 +2832,8 @@ network-instances:
                                         _process: not_implemented
                                     trigger:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
                             spf:
                                 _process: not_implemented
                                 config:
@@ -2386,6 +2842,10 @@ network-instances:
                                         _process: not_implemented
                                     maximum-delay:
                                         _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                state:
+                    _process: not_implemented
                 static-routes:
                     _process: not_implemented
                     static:
@@ -2420,7 +2880,13 @@ network-instances:
                                             _process: not_implemented
                                         subinterface:
                                             _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
                         prefix:
+                            _process: not_implemented
+                        state:
                             _process: not_implemented
         segment-routing:
             _process: not_implemented
@@ -2440,6 +2906,8 @@ network-instances:
                             _process: not_implemented
                     local-id:
                         _process: not_implemented
+                    state:
+                        _process: not_implemented
             srlbs:
                 _process: not_implemented
                 srlb:
@@ -2456,6 +2924,10 @@ network-instances:
                             _process: not_implemented
                     local-id:
                         _process: not_implemented
+                    state:
+                        _process: not_implemented
+        state:
+            _process: not_implemented
         table-connections:
             _process: not_implemented
             table-connection:
@@ -2478,6 +2950,8 @@ network-instances:
                     _process: not_implemented
                 src-protocol:
                     _process: not_implemented
+                state:
+                    _process: not_implemented
         tables:
             _process: not_implemented
             table:
@@ -2491,6 +2965,8 @@ network-instances:
                     protocol:
                         _process: not_implemented
                 protocol:
+                    _process: not_implemented
+                state:
                     _process: not_implemented
         vlans:
             _process: not_implemented
@@ -2507,6 +2983,10 @@ network-instances:
                     vlan-id:
                         _process: not_implemented
                 members:
+                    _process: not_implemented
+                    member:
+                        _process: not_implemented
+                state:
                     _process: not_implemented
                 vlan-id:
                     _process: not_implemented

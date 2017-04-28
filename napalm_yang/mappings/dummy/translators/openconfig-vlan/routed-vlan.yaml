@@ -8,3 +8,5 @@ routed-vlan:
         _process: not_implemented
         vlan:
             _process: not_implemented
+    state:
+        _process: not_implemented

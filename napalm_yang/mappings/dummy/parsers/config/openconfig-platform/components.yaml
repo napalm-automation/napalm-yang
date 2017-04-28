@@ -24,6 +24,10 @@ components:
                         _process: not_implemented
                 name:
                     _process: not_implemented
+                state:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
         subcomponents:
             _process: not_implemented
             subcomponent:
@@ -33,4 +37,6 @@ components:
                     name:
                         _process: not_implemented
                 name:
+                    _process: not_implemented
+                state:
                     _process: not_implemented
