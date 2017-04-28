@@ -47,7 +47,11 @@ models_openconfig:
 submodule:
 	git submodule update --init --recursive
 
+.PHONY: templates
+templates:
+	rm -rf napalm_yang/mappings/dummy/
+	python generate_templates.py
+
 .PHONY: tests
 tests:
-	python test.py
 	py.test

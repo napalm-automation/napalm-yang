@@ -1,0 +1,12 @@
+---
+metadata:
+    processor: unset
+
+aggregation:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        lag-type:
+            _process: not_implemented
+        min-links:
+            _process: not_implemented

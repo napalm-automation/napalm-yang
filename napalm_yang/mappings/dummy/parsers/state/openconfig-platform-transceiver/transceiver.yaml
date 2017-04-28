@@ -1,0 +1,86 @@
+---
+metadata:
+    processor: unset
+
+transceiver:
+    _process: not_implemented
+    physical-channels:
+        _process: not_implemented
+        channel:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                description:
+                    _process: not_implemented
+                index:
+                    _process: not_implemented
+                input-power:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                laser-bias-current:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                output-frequency:
+                    _process: not_implemented
+                output-power:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                target-output-power:
+                    _process: not_implemented
+                tx-laser:
+                    _process: not_implemented
+    state:
+        _process: not_implemented
+        connector-type:
+            _process: not_implemented
+        date-code:
+            _process: not_implemented
+        enabled:
+            _process: not_implemented
+        ethernet-pmd:
+            _process: not_implemented
+        ethernet-pmd-preconf:
+            _process: not_implemented
+        fault-condition:
+            _process: not_implemented
+        form-factor:
+            _process: not_implemented
+        form-factor-preconf:
+            _process: not_implemented
+        internal-temp:
+            _process: not_implemented
+        otn-compliance-code:
+            _process: not_implemented
+        present:
+            _process: not_implemented
+        serial-no:
+            _process: not_implemented
+        sonet-sdh-compliance-code:
+            _process: not_implemented
+        vendor:
+            _process: not_implemented
+        vendor-part:
+            _process: not_implemented
+        vendor-rev:
+            _process: not_implemented

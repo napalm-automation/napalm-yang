@@ -1,0 +1,56 @@
+---
+metadata:
+    processor: unset
+
+components:
+    _process: not_implemented
+    component:
+        _process: not_implemented
+        properties:
+            _process: not_implemented
+            property:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    configurable:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    value:
+                        _process: not_implemented
+        state:
+            _process: not_implemented
+            description:
+                _process: not_implemented
+            id:
+                _process: not_implemented
+            mfg-name:
+                _process: not_implemented
+            name:
+                _process: not_implemented
+            part-no:
+                _process: not_implemented
+            serial-no:
+                _process: not_implemented
+            temperature:
+                _process: not_implemented
+                avg:
+                    _process: not_implemented
+                instant:
+                    _process: not_implemented
+                max:
+                    _process: not_implemented
+                min:
+                    _process: not_implemented
+            type:
+                _process: not_implemented
+            version:
+                _process: not_implemented
+        subcomponents:
+            _process: not_implemented
+            subcomponent:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
