@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+physical-channel:
+    _process: not_implemented
