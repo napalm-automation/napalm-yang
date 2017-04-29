@@ -18,14 +18,20 @@ class TextParser(BaseParser):
                 yield match["key"], match["block"] or "Aasd123asv", match["extra_vars"]
             else:
                 composite_key = mapping.get("composite_key", None)
+                forced_key = mapping.get("key", None)
 
                 extra_vars = match.groupdict()
                 block = extra_vars.pop("block")
 
                 if composite_key:
                     key = " ".join([match.group(k) for k in composite_key])
+                elif forced_key:
+                    key = forced_key
                 else:
                     key = extra_vars.pop("key")
+
+                extra_vars["_allow_duplicates"] = mapping.get("duplicates", False)
+
                 yield key, block, extra_vars
 
     @classmethod
