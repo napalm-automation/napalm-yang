@@ -8,9 +8,12 @@ class BaseParser(object):
 
     @classmethod
     def parse_list(cls, mapping):
-        method_name = "_parse_list_{}".format(mapping["mode"])
-        for key, block, extra_vars in getattr(cls, method_name)(mapping):
-            yield key, block, extra_vars
+        mapping_rules = mapping if isinstance(mapping, list) else [mapping]
+
+        for m in mapping_rules:
+            method_name = "_parse_list_{}".format(m["mode"])
+            for key, block, extra_vars in getattr(cls, method_name)(m):
+                yield key, block, extra_vars
 
     @classmethod
     def parse_leaf(cls, mapping):
