@@ -15,6 +15,17 @@ import logging
 logger = logging.getLogger("napalm-yang")
 
 
+def yaml_include(loader, node):
+    # Get the path out of the yaml file
+    file_name = os.path.join(os.path.dirname(loader.name), node.value)
+
+    with file(file_name) as inputfile:
+        return yaml.load(inputfile)
+
+
+yaml.add_constructor("!include", yaml_include)
+
+
 def get_parser(parser):
     parsers = {
         "TextParser": TextParser,
@@ -64,7 +75,7 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
         return
 
     with open(filepath, "r") as f:
-        return yaml.load(f.read())
+        return yaml.load(f)
 
 
 def _resolve_rule(rule, **kwargs):
