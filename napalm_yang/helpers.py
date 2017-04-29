@@ -81,7 +81,8 @@ def _resolve_rule(rule, **kwargs):
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                  parse_bookmarks=None):
     if isinstance(rule, list):
-        raise Exception("Wrong rule for attr: {}. List can be used only on leafs".format(attribute))
+        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks)
+                for r in rule]
     elif isinstance(rule, str):
         if rule in ["unnecessary", "not_implemented"]:
             return {"mode": "skip", "reason": rule}
