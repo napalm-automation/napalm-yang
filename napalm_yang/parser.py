@@ -117,7 +117,15 @@ class Parser(object):
 
         for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"]):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
-            obj = model.add(key)
+
+            try:
+                obj = model.add(key)
+            except KeyError as e:
+                if "is already defined as a list entry" in e.message and \
+                   extra_vars.get("_allow_duplicates"):
+                    obj = model[key]
+                else:
+                    raise
 
             key_name = "{}_key".format(attribute)
             self.keys[key_name] = key
