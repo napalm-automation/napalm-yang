@@ -17,9 +17,15 @@ class TextParser(BaseParser):
             if isinstance(match, dict):
                 yield match["key"], match["block"] or "Aasd123asv", match["extra_vars"]
             else:
+                composite_key = mapping.get("composite_key", None)
+
                 extra_vars = match.groupdict()
-                key = extra_vars.pop("key")
                 block = extra_vars.pop("block")
+
+                if composite_key:
+                    key = " ".join([match.group(k) for k in composite_key])
+                else:
+                    key = extra_vars.pop("key")
                 yield key, block, extra_vars
 
     @classmethod
