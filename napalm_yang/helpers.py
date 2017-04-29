@@ -67,6 +67,17 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
         return yaml.load(f.read())
 
 
+def _resolve_rule(rule, **kwargs):
+    if isinstance(rule, dict):
+        return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
+    elif isinstance(rule, list):
+        return [_resolve_rule(e, **kwargs) for e in rule]
+    elif isinstance(rule, str):
+        return template(rule, **kwargs)
+    else:
+        return rule
+
+
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                  parse_bookmarks=None):
     if isinstance(rule, list):
@@ -85,13 +96,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["extra_vars"] = extra_vars
 
     for k, v in rule.items():
-        if isinstance(v, dict):
-            resolve_rule(v, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, list):
-            for e in k:
-                resolve_rule(e, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, str):
-            rule[k] = template(v, **kwargs)
+        rule[k] = _resolve_rule(v, **kwargs)
 
     if "when" in rule.keys():
         w = rule["when"]
