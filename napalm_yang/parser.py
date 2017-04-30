@@ -85,6 +85,16 @@ class Parser(object):
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                                    self.extra_vars, None, self.bookmarks)
+        if model._yang_type is not None:
+            # None means it's an element of a list
+            block, extra_vars = self.parser.parse_container(mapping["_process"])
+
+            if block is None:
+                return
+            elif block != "" or extra_vars:
+                self.bookmarks[attribute] = block
+                self.extra_vars[attribute] = extra_vars
+
         for k, v in model:
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
