@@ -29,6 +29,8 @@ class BaseParser(object):
     def _parse_leaf_skip(cls, mapping):
         return
 
+    _parse_leaf_gate = _parse_leaf_skip
+
     @classmethod
     def _parse_container_skip(cls, mapping):
         return "", {}
@@ -36,6 +38,8 @@ class BaseParser(object):
     @classmethod
     def _parse_list_skip(cls, mapping):
         return {}
+
+    _parse_list_gate = _parse_list_skip
 
     @classmethod
     def _parse_leaf_value(cls, mapping):

@@ -95,8 +95,10 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
         return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks)
                 for r in rule]
     elif isinstance(rule, str):
-        if rule in ["unnecessary", "not_implemented"]:
+        if rule in ["unnecessary"]:
             return {"mode": "skip", "reason": rule}
+        elif rule in ["not_implemented"]:
+            return {"mode": "gate", "reason": rule}
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
