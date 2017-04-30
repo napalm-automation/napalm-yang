@@ -1,0 +1,3 @@
+[dev]
+junos dev_os=junos hostname=127.0.0.1 username=vagrant password="" port=12203
+eos dev_os=eos hostname=127.0.0.1 username=vagrant password=vagrant port=12443

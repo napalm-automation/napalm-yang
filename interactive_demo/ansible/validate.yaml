@@ -1,0 +1,18 @@
+---
+- to_dict:
+    _kwargs:
+        filter: true
+    interfaces:
+        interface:
+            ge-0/0/0:
+                state:
+                    mtu: 1514
+                    oper_status: UP
+            ge-0/0/1:
+                state:
+                    mtu: 1514
+                    oper_status: UP
+            ge-0/0/2:
+                state:
+                    mtu: 1514
+                    oper_status: UP

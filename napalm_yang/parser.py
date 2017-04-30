@@ -37,7 +37,10 @@ class Parser(object):
         self.native = []
 
         for n in native + device_config:
-            self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            if isinstance(n, basestring):
+                self.native.append(n.replace("\r", ""))  # Parsing will be easier
+            else:
+                self.native.append(n)
 
         if not self.native:
             raise Exception("I don't have any data to operate with")
@@ -46,7 +49,7 @@ class Parser(object):
         self.bookmarks = bookmarks or self.bookmarks
 
         if self.mapping:
-            self.parser = helpers.get_parser(self.mapping["metadata"]["parser"])
+            self.parser = helpers.get_parser(self.mapping["metadata"]["processor"])
 
     def _execute_methods(self, device, methods):
         result = []
@@ -54,13 +57,13 @@ class Parser(object):
             attr = device
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
-                r = attr(**m["args"])
+            r = attr(**m["args"])
 
-                if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
-                    # Some vendors like junos return commands enclosed by a key
-                    r = "\n".join(r.values())
+            if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
+                # Some vendors like junos return commands enclosed by a key
+                r = "\n".join(r.values())
 
-                result.append(r)
+            result.append(r)
 
         return result
 
@@ -80,8 +83,8 @@ class Parser(object):
             self._parse_leaf(attribute, model, mapping)
 
     def _parse_container(self, attribute, model, mapping):
-        mapping["_parse"] = helpers.resolve_rule(mapping["_parse"], attribute, self.keys,
-                                                 self.extra_vars, None, self.bookmarks)
+        mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
+                                                   self.extra_vars, None, self.bookmarks)
         for k, v in model:
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
@@ -96,12 +99,13 @@ class Parser(object):
                                 self.keys, self.bookmarks, self.extra_vars)
                 parser.parse()
             else:
-                self._parse(k, v, mapping[k])
+                self._parse(k, v, mapping[v._yang_name])
 
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)
-        mapping_copy["_parse"] = helpers.resolve_rule(mapping_copy["_parse"], attribute, self.keys,
-                                                      self.extra_vars, None, self.bookmarks)
+        mapping_copy["_process"] = helpers.resolve_rule(mapping_copy["_process"], attribute,
+                                                        self.keys, self.extra_vars, None,
+                                                        self.bookmarks)
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -111,7 +115,7 @@ class Parser(object):
         # for each individual element of the list
         self.bookmarks[attribute] = {}
 
-        for key, block, extra_vars in self.parser.parse_list(mapping_copy["_parse"]):
+        for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"]):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
             obj = model.add(key)
 
@@ -135,14 +139,14 @@ class Parser(object):
         self.extra_vars = old_parent_extra_vars
 
     def _parse_leaf(self, attribute, model, mapping):
-        mapping["_parse"] = helpers.resolve_rule(mapping["_parse"], attribute, self.keys,
-                                                 self.extra_vars, None, self.bookmarks)
+        mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
+                                                   self.extra_vars, None, self.bookmarks)
 
         # We can't set attributes that are keys
         if model._is_keyval:
             return
 
-        value = self.parser.parse_leaf(mapping["_parse"])
+        value = self.parser.parse_leaf(mapping["_process"])
 
         if value is not None and (value != model.default() or isinstance(value, bool)):
             setter = getattr(model._parent, "_set_{}".format(attribute))

@@ -1,72 +1,72 @@
 ---
 metadata:
-    translator: XMLTranslator
+    processor: XMLTranslator
     xml_root: configuration
 
 interfaces:
-    _translation:
+    _process:
         mode: container
         container: interfaces
         replace: true
     interface:
-        _translation:
+        _process:
             mode: container
             container: interface
             key_element: name
             key_value: "{{ interface_key }}"
         name:
-            _translation: unnecessary
-        hold_time:
-            _translation: unnecessary
+            _process: unnecessary
+        hold-time:
+            _process: unnecessary
             config:
-                _translation: unnecessary
+                _process: unnecessary
                 down:
-                    _translation: not_implemented
+                    _process: not_implemented
                 up:
-                    _translation: not_implemented
+                    _process: not_implemented
         config:
-            _translation: unnecessary
+            _process: unnecessary
             name:
-                _translation: unnecessary
+                _process: unnecessary
             type:
-                _translation: unnecessary
+                _process: unnecessary
             enabled:
-                _translation:
+                _process:
                     - mode: element
                       element: "disable"
                       when: "{{ not model }}"
                       value: null
             description:
-                _translation:
+                _process:
                     - mode: element
                       element: description
             mtu:
-                _translation:
+                _process:
                     - mode: element
                       element: mtu
         subinterfaces:
-            _translation: unnecessary
+            _process: unnecessary
             subinterface:
-                _translation:
+                _process:
                     mode: container
                     container: unit
                     key_element: name
                     key_value: "{{ subinterface_key }}"
                 index:
-                    _translation: unnecessary
+                    _process: unnecessary
                 config:
-                    _translation: unnecessary
+                    _process: unnecessary
                     index:
-                        _translation: unnecessary
+                        _process: unnecessary
                     name:
-                        _translation: unnecessary
+                        _process: unnecessary
                     enabled:
-                        _translation:
+                        _process:
                             - mode: element
                               element: "disable"
                               when: "{{ not model }}"
                               value: null
                     description:
-                            _translation:
+                            _process:
                                 - mode: element
                                   element: description

@@ -1,33 +1,33 @@
 ---
 metadata:
-    parser: TextParser
+    processor: TextParser
     execute:
         - method: cli
           args:
               commands: ["show running-config all"]
 interfaces:
-    _parse: unnecessary
+    _process: unnecessary
     interface:
-        _parse:
+        _process:
             mode: block
             regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
             from: "{{ bookmarks.interfaces.0 }}"
         name:
-            _parse: unnecessary
-        hold_time:
-            _parse: not_implemented
+            _process: unnecessary
+        hold-time:
+            _process: not_implemented
             config:
-                _parse: not_implemented
+                _process: not_implemented
                 down:
-                    _parse: not_implemented
+                    _process: not_implemented
                 up:
-                    _parse: not_implemented
+                    _process: not_implemented
         config:
-            _parse: unnecessary
+            _process: unnecessary
             name:
-                _parse: unnecessary
+                _process: unnecessary
             type:
-                _parse:
+                _process:
                     mode: map
                     regexp: "(?P<value>(\\w|-)*)\\d+"
                     from: "{{ interface_key }}"
@@ -38,44 +38,44 @@ interfaces:
                         Port-Channel: ieee8023adLag
                         Vlan: l3ipvlan
             enabled:
-                _parse:
+                _process:
                     mode: is_present
                     regexp: "(?P<value>no shutdown)"
                     from: "{{ bookmarks.interface[interface_key] }}"
             description:
-                _parse:
+                _process:
                     mode: search
                     regexp: "description (?P<value>.*)"
                     from: "{{ bookmarks.interface[interface_key] }}"
             mtu:
-                _parse:
+                _process:
                     mode: search
                     regexp: "mtu (?P<value>[0-9]+)"
                     from: "{{ bookmarks.interface[interface_key] }}"
         subinterfaces:
-            _parse: unnecessary
+            _process: unnecessary
             subinterface:
-                _parse:
+                _process:
                     mode: block
                     regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
                     from: "{{ bookmarks.interfaces.0 }}"
                 index:
-                    _parse: unnecessary
+                    _process: unnecessary
                 config:
-                    _parse: unnecessary
+                    _process: unnecessary
                     index:
-                        _parse: unnecessary
+                        _process: unnecessary
                     name:
-                        _parse:
+                        _process:
                             mode: value
                             value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
-                        _parse:
+                        _process:
                             mode: is_present
                             regexp: "(?P<value>no shutdown)"
                             from: "{{ bookmarks.subinterface[subinterface_key] }}"
                     description:
-                        _parse:
+                        _process:
                             mode: search
                             regexp: "description (?P<value>.*)"
                             from: "{{ bookmarks.subinterface[subinterface_key] }}"

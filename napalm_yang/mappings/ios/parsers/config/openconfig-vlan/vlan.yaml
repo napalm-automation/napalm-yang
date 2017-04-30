@@ -1,14 +1,14 @@
 ---
 metadata:
     prefix: "oc-vlan"
-    parser: TextParser
+    processor: TextParser
 
 vlan:
-    _parse: unnecessary
+    _process: unnecessary
     config:
-        _parse: unnecessary
-        vlan_id:
-            _parse:
+        _process: unnecessary
+        vlan-id:
+            _process:
                 mode: search
                 regexp: "^\\W*encapsulation dot1q (?P<value>[0-9]+)"
                 from: "{{ bookmarks['parent'] }}"

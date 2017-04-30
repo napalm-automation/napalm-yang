@@ -1,13 +1,13 @@
 ---
 metadata:
-    parser: XMLParser
+    processor: XMLParser
 
 vlan:
-    _parse: unnecessary
+    _process: unnecessary
     config:
-        _parse: unnecessary
-        vlan_id:
-            _parse:
+        _process: unnecessary
+        vlan-id:
+            _process:
                 mode: xpath
                 xpath: "vlan-id"
                 from: "{{ bookmarks['parent'] }}"

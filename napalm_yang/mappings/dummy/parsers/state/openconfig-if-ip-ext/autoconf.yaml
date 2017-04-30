@@ -1,0 +1,16 @@
+---
+metadata:
+    processor: unset
+
+autoconf:
+    _process: not_implemented
+    state:
+        _process: not_implemented
+        create-global-addresses:
+            _process: not_implemented
+        create-temporary-addresses:
+            _process: not_implemented
+        temporary-preferred-lifetime:
+            _process: not_implemented
+        temporary-valid-lifetime:
+            _process: not_implemented

@@ -39,7 +39,7 @@ class Translator(object):
                                              self.profile, "translators")
 
         if self.mapping:
-            translator = helpers.get_parser(self.mapping["metadata"]["translator"])
+            translator = helpers.get_parser(self.mapping["metadata"]["processor"])
             self.translator = translator(merge=bool(merge), replace=bool(replace))
 
             if translation is None:
@@ -67,7 +67,7 @@ class Translator(object):
         if model._yang_type:
             self.bookmarks["parent"] = translation
 
-            rule = helpers.resolve_rule(mapping["_translation"], attribute, self.keys,
+            rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                         None, model, self.bookmarks)
 
             translation_point = _find_translation_point(rule, self.bookmarks, translation)
@@ -91,7 +91,7 @@ class Translator(object):
                                         self.bookmarks, self.merge, self.replace, other_attr)
                 translator.translate()
             else:
-                self._translate(k, v, mapping[k], et, other_attr)
+                self._translate(v._yang_name, v, mapping[v._yang_name], et, other_attr)
 
     def _translate_list(self, attribute, model, mapping, translation, other):
         # Saving state to restore them later
@@ -115,7 +115,7 @@ class Translator(object):
             self.keys[key_name] = key
             self.keys["parent_key"] = key
 
-            translation_rule = helpers.resolve_rule(mapping["_translation"], attribute,
+            translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
                                                     self.keys, None, element, self.bookmarks)
             translation_point = _find_translation_point(translation_rule, self.bookmarks,
                                                         translation)
@@ -146,7 +146,7 @@ class Translator(object):
                     self.keys[key_name] = key
                     self.keys["parent_key"] = key
 
-                    translation_rule = helpers.resolve_rule(mapping["_translation"], attribute,
+                    translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
                                                             self.keys, None, element,
                                                             self.bookmarks)
                     translation_point = _find_translation_point(translation_rule, self.bookmarks,
@@ -155,8 +155,8 @@ class Translator(object):
                     self.translator.default_element(translation_rule, translation_point)
 
     def _translate_leaf(self, attribute, model, mapping, translation, other):
-        rules = [mapping["_translation"]] if isinstance(mapping["_translation"], str) \
-                else mapping["_translation"]
+        rules = [mapping["_process"]] if isinstance(mapping["_process"], str) \
+                else mapping["_process"]
         for rule in rules:
             rule = helpers.resolve_rule(rule, attribute, self.keys, None, model, self.bookmarks)
             translation_point = _find_translation_point(rule, self.bookmarks,

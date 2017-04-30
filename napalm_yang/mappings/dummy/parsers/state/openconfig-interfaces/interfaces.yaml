@@ -1,0 +1,118 @@
+---
+metadata:
+    processor: unset
+
+interfaces:
+    _process: not_implemented
+    interface:
+        _process: not_implemented
+        hold-time:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+            admin-status:
+                _process: not_implemented
+            counters:
+                _process: not_implemented
+                in-broadcast-pkts:
+                    _process: not_implemented
+                in-discards:
+                    _process: not_implemented
+                in-errors:
+                    _process: not_implemented
+                in-multicast-pkts:
+                    _process: not_implemented
+                in-octets:
+                    _process: not_implemented
+                in-unicast-pkts:
+                    _process: not_implemented
+                in-unknown-protos:
+                    _process: not_implemented
+                last-clear:
+                    _process: not_implemented
+                out-broadcast-pkts:
+                    _process: not_implemented
+                out-discards:
+                    _process: not_implemented
+                out-errors:
+                    _process: not_implemented
+                out-multicast-pkts:
+                    _process: not_implemented
+                out-octets:
+                    _process: not_implemented
+                out-unicast-pkts:
+                    _process: not_implemented
+            description:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            ifindex:
+                _process: not_implemented
+            last-change:
+                _process: not_implemented
+            mtu:
+                _process: not_implemented
+            name:
+                _process: not_implemented
+            oper-status:
+                _process: not_implemented
+            type:
+                _process: not_implemented
+        subinterfaces:
+            _process: not_implemented
+            subinterface:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    admin-status:
+                        _process: not_implemented
+                    counters:
+                        _process: not_implemented
+                        in-broadcast-pkts:
+                            _process: not_implemented
+                        in-discards:
+                            _process: not_implemented
+                        in-errors:
+                            _process: not_implemented
+                        in-multicast-pkts:
+                            _process: not_implemented
+                        in-octets:
+                            _process: not_implemented
+                        in-unicast-pkts:
+                            _process: not_implemented
+                        in-unknown-protos:
+                            _process: not_implemented
+                        last-clear:
+                            _process: not_implemented
+                        out-broadcast-pkts:
+                            _process: not_implemented
+                        out-discards:
+                            _process: not_implemented
+                        out-errors:
+                            _process: not_implemented
+                        out-multicast-pkts:
+                            _process: not_implemented
+                        out-octets:
+                            _process: not_implemented
+                        out-unicast-pkts:
+                            _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    ifindex:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    last-change:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    oper-status:
+                        _process: not_implemented

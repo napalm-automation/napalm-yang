@@ -1,0 +1,10 @@
+---
+metadata:
+    processor: unset
+
+routed-vlan:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        vlan:
+            _process: not_implemented
