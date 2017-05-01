@@ -4,9 +4,9 @@ metadata:
 
 ipv4:
     _process:
-        mode: container
-        container: family.inet
-        when: "{{ model.config.enabled or model.addresses.address|length }}"
+        - mode: container
+          container: family.inet
+          when: "{{ model.config.enabled or model.addresses.address|length }}"
     config:
         _process: unnecessary
         enabled:
@@ -17,8 +17,8 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                mode: container
-                container: address
+                - mode: container
+                  container: address
             ip:
                 _process: unnecessary
             config:

@@ -7,13 +7,13 @@ metadata:
               get: "<get-interface-information><extensive/></get-interface-information>"
 
 interfaces:
-    _process: not_implemented
+    _process: unnecessary
     interface:
         _process:
-            mode: xpath
-            xpath: "physical-interface"
-            key: name
-            from: "{{ bookmarks.interfaces.0 }}"
+            - mode: xpath
+              xpath: "physical-interface"
+              key: name
+              from: "{{ bookmarks.interfaces.0 }}"
         config:
             _process: unnecessary
         hold-time:
@@ -27,166 +27,166 @@ interfaces:
                 up:
                     _process: not_implemented
         state:
-            _process: not_implemented
+            _process: unnecessary
             admin-status:
                 _process: 
-                    mode: map
-                    xpath: "admin-status"
-                    from: "{{ bookmarks['parent'] }}"
-                    map:
-                        up: UP
-                        down: DOWN
+                    - mode: map
+                      xpath: "admin-status"
+                      from: "{{ bookmarks['parent'] }}"
+                      map:
+                          up: UP
+                          down: DOWN
             description:
                 _process: 
-                    mode: xpath
-                    xpath: "description"
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: xpath
+                      xpath: "description"
+                      from: "{{ bookmarks['parent'] }}"
             enabled:
                 _process: 
-                    mode: map
-                    xpath: "admin-status"
-                    from: "{{ bookmarks['parent'] }}"
-                    map:
-                        up: true
-                        down: false
+                    - mode: map
+                      xpath: "admin-status"
+                      from: "{{ bookmarks['parent'] }}"
+                      map:
+                          up: true
+                          down: false
             ifindex:
                 _process: 
-                    mode: xpath
-                    xpath: "snmp-index"
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: xpath
+                      xpath: "snmp-index"
+                      from: "{{ bookmarks['parent'] }}"
             last-change:
                 _process: 
-                    mode: xpath
-                    xpath: "interface-flapped"
-                    attribute: "seconds"
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: xpath
+                      xpath: "interface-flapped"
+                      attribute: "seconds"
+                      from: "{{ bookmarks['parent'] }}"
             mtu:
                 _process: 
-                    mode: xpath
-                    xpath: "mtu"
-                    regexp: "(?P<value>\\d+)"  # Someone thought mixing strings and ints was a good idea
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: xpath
+                      xpath: "mtu"
+                      regexp: "(?P<value>\\d+)"  # Someone thought mixing strings and ints was a good idea
+                      from: "{{ bookmarks['parent'] }}"
             name:
                 _process: unnecessary
             oper-status:
                 _process:
-                    mode: map
-                    xpath: "oper-status"
-                    from: "{{ bookmarks['parent'] }}"
-                    map:
-                        up: UP
-                        down: DOWN
+                    - mode: map
+                      xpath: "oper-status"
+                      from: "{{ bookmarks['parent'] }}"
+                      map:
+                          up: UP
+                          down: DOWN
             type:
                 _process:
-                    mode: map
-                    xpath: "if-type"
-                    from: "{{ bookmarks['parent'] }}"
-                    map:
-                        GRE: tunnel
-                        IPIP: tunnel
-                        Logical-tunnel: tunnel
-                        Multicast-GRE: tunnel
-                        Secure-Tunnel: tunnel
-                        Ethernet: ethernetCsmacd
-                        Loopback: softwareLoopback
-                        VLAN: l2vlan
-                        Adaptive-Services: null
-                        Software-Pseudo: null
-                        PIMD: null
-                        PIME: null
-                        PPPoE: null
+                    - mode: map
+                      xpath: "if-type"
+                      from: "{{ bookmarks['parent'] }}"
+                      map:
+                          GRE: tunnel
+                          IPIP: tunnel
+                          Logical-tunnel: tunnel
+                          Multicast-GRE: tunnel
+                          Secure-Tunnel: tunnel
+                          Ethernet: ethernetCsmacd
+                          Loopback: softwareLoopback
+                          VLAN: l2vlan
+                          Adaptive-Services: null
+                          Software-Pseudo: null
+                          PIMD: null
+                          PIME: null
+                          PPPoE: null
             counters:
-                _process: not_implemented
+                _process: unnecessary
                 in-broadcast-pkts:
                     _process: 
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/input-broadcasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/input-broadcasts"
+                          from: "{{ bookmarks['parent'] }}"
                 in-discards:
                     _process:
-                        mode: xpath
-                        xpath: "input-error-list/input-discards"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "input-error-list/input-discards"
+                          from: "{{ bookmarks['parent'] }}"
                 in-errors:
                     _process:
-                        mode: xpath
-                        xpath: "input-error-list/input-errors"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "input-error-list/input-errors"
+                          from: "{{ bookmarks['parent'] }}"
                 in-multicast-pkts:
                     _process:
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/input-multicasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/input-multicasts"
+                          from: "{{ bookmarks['parent'] }}"
                 in-octets:
                     _process: not_implemented
                 in-unicast-pkts:
                     _process: 
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/input-unicasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/input-unicasts"
+                          from: "{{ bookmarks['parent'] }}"
                 in-unknown-protos:
                     _process: not_implemented
                 last-clear:
                     _process: not_implemented
                 out-broadcast-pkts:
                     _process: 
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/output-broadcasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/output-broadcasts"
+                          from: "{{ bookmarks['parent'] }}"
                 out-discards:
                     _process: not_implemented
                 out-errors:
                     _process: 
-                        mode: xpath
-                        xpath: "output-error-list/output-errors"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "output-error-list/output-errors"
+                          from: "{{ bookmarks['parent'] }}"
                 out-multicast-pkts:
                     _process:
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/output-multicasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/output-multicasts"
+                          from: "{{ bookmarks['parent'] }}"
                 out-octets:
                     _process: not_implemented
                 out-unicast-pkts:
                     _process:
-                        mode: xpath
-                        xpath: "ethernet-mac-statistics/output-unicasts"
-                        from: "{{ bookmarks['parent'] }}"
+                        - mode: xpath
+                          xpath: "ethernet-mac-statistics/output-unicasts"
+                          from: "{{ bookmarks['parent'] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process: 
-                    mode: xpath
-                    xpath: "logical-interface"
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: xpath
+                      xpath: "logical-interface"
+                      from: "{{ bookmarks['parent'] }}"
                 index:
                     _process: unnecessary
                 config:
                     _process: unnecessary
                 state:
-                    _process: not_implemented
+                    _process: unnecessary
                     index:
                         _process: not_implemented
                     description:
                         _process: 
-                            mode: xpath
-                            xpath: "description"
-                            from: "{{ bookmarks['parent'] }}"
+                            - mode: xpath
+                              xpath: "description"
+                              from: "{{ bookmarks['parent'] }}"
                     enabled:
                         _process: not_implemented
                     admin-status:
                         _process: not_implemented
                     ifindex:
                         _process: 
-                            mode: xpath
-                            xpath: "snmp-index"
-                            from: "{{ bookmarks['parent'] }}"
+                            - mode: xpath
+                              xpath: "snmp-index"
+                              from: "{{ bookmarks['parent'] }}"
                     last-change:
                         _process: not_implemented
                     name:
                         _process:
-                            mode: value
-                            value: "{{ subinterface_key }}"
+                            - mode: value
+                              value: "{{ subinterface_key }}"
                     oper-status:
                         _process: not_implemented
                     counters:
