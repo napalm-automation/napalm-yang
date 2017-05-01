@@ -34,7 +34,7 @@ class XMLTranslator(BaseTranslator):
 
         return t
 
-    _parse_container_container = _init_element_container
+    _translate_container_container = _init_element_container
 
     def _default_element_container(self, mapping, translation, replacing):
         if not self.merge:
@@ -57,7 +57,7 @@ class XMLTranslator(BaseTranslator):
 
         return t
 
-    def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
+    def _translate_leaf_element(self, attribute, model, other, mapping, translation, force=False):
         delete = False
         if not model._changed() and other and self.merge:
             delete = True

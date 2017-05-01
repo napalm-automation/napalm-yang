@@ -5,15 +5,17 @@ import logging
 logger = logging.getLogger("napalm-yang")
 
 
-def _find_translation_point(rule, bookmarks, translation):
-    if "in" in rule.keys():
-        t = bookmarks
-        for p in rule["in"].split("."):
-            try:
-                t = t[p]
-            except TypeError:
-                t = t[int(p)]
-            translation = t
+def _find_translation_point(rules, bookmarks, translation):
+    for r in rules:
+        if "in" in r.keys():
+            t = bookmarks
+            for p in r["in"].split("."):
+                try:
+                    t = t[p]
+                except TypeError:
+                    t = t[int(p)]
+                translation = t
+            break
     return translation
 
 
@@ -71,11 +73,14 @@ class Translator(object):
                                         None, model, self.bookmarks)
 
             translation_point = _find_translation_point(rule, self.bookmarks, translation)
-            et = self.translator.parse_container(attribute, model, other, rule, translation_point)
+            et = self.translator.translate_container(attribute, model, other, rule,
+                                                     translation_point)
+
+            if et is None:
+                return
 
             self.bookmarks[attribute] = et
         else:
-            translation_point = _find_translation_point(mapping, self.bookmarks, translation)
             et = translation
 
         for k, v in model:
@@ -87,7 +92,7 @@ class Translator(object):
 
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                translator = Translator(v, self.profile, translation_point, self.keys,
+                translator = Translator(v, self.profile, et, self.keys,
                                         self.bookmarks, self.merge, self.replace, other_attr)
                 translator.translate()
             else:
@@ -117,6 +122,7 @@ class Translator(object):
 
             translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
                                                     self.keys, None, element, self.bookmarks)
+
             translation_point = _find_translation_point(translation_rule, self.bookmarks,
                                                         translation)
 
@@ -155,10 +161,9 @@ class Translator(object):
                     self.translator.default_element(translation_rule, translation_point)
 
     def _translate_leaf(self, attribute, model, mapping, translation, other):
-        rules = [mapping["_process"]] if isinstance(mapping["_process"], str) \
-                else mapping["_process"]
-        for rule in rules:
-            rule = helpers.resolve_rule(rule, attribute, self.keys, None, model, self.bookmarks)
-            translation_point = _find_translation_point(rule, self.bookmarks,
-                                                        translation)
-            self.translator.parse_leaf(attribute, model, other, rule, translation_point)
+        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, None, model,
+                                    self.bookmarks)
+        translation_point = _find_translation_point(rule, self.bookmarks,
+                                                    translation)
+
+        self.translator.translate_leaf(attribute, model, other, rule, translation_point)

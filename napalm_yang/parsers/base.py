@@ -8,22 +8,27 @@ class BaseParser(object):
 
     @classmethod
     def parse_list(cls, mapping):
-        mapping_rules = mapping if isinstance(mapping, list) else [mapping]
-
-        for m in mapping_rules:
+        for m in mapping:
             method_name = "_parse_list_{}".format(m["mode"])
             for key, block, extra_vars in getattr(cls, method_name)(m):
                 yield key, block, extra_vars
 
     @classmethod
     def parse_leaf(cls, mapping):
-        method_name = "_parse_leaf_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(mapping)
+        for m in mapping:
+            method_name = "_parse_leaf_{}".format(m["mode"])
+            result = getattr(cls, method_name)(m)
+            if result is not None:
+                return result
 
     @classmethod
     def parse_container(cls, mapping):
-        method_name = "_parse_container_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(mapping)
+        for m in mapping:
+            method_name = "_parse_container_{}".format(m["mode"])
+            result, extra_vars = getattr(cls, method_name)(m)
+            if result or extra_vars:
+                break
+        return result, extra_vars
 
     @classmethod
     def _parse_leaf_skip(cls, mapping):
