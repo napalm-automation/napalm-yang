@@ -19,10 +19,10 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                mode: container
-                key_value: "    ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
-                negate: "    default ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
-                replace: false
+                - mode: container
+                  key_value: "    ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
+                  negate: "    default ip address {{ model.config.ip }}/{{ model.config.prefix_length }} {{ 'secondary' if model.config.secondary else '' }}\n"
+                  replace: false
             ip:
                 _process: unnecessary
             config:
