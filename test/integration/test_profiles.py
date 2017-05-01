@@ -33,7 +33,7 @@ BASE_PATH = os.path.dirname(__file__)
 
 
 test_config_profile_models = [
-    #  ["ios", napalm_yang.models.openconfig_interfaces, "default"],
+    ["ios", napalm_yang.models.openconfig_interfaces, "default"],
     ["eos", napalm_yang.models.openconfig_network_instance, "default"],
 ]
 
@@ -70,7 +70,7 @@ class Tests(object):
 
         print(pretty_json(config.get(filter=True)))
 
-        #  assert not napalm_yang.utils.diff(config, expected)
+        assert not napalm_yang.utils.diff(config, expected)
 
     @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
     def test_translate(self, profile, model, case):

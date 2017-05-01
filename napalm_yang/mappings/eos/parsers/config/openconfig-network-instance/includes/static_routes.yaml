@@ -1,7 +1,7 @@
 ---
 _process:
-    mode: gate
-    when: "{{ protocol_key != 'static static' }}"
+    - mode: gate
+      when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
         - mode: block
@@ -18,8 +18,8 @@ static:
         _process: not_implemented
         prefix:
             _process:
-                mode: value
-                value: "{{ static_key }}"
+                - mode: value
+                  value: "{{ static_key }}"
         set-tag:
             _process: not_implemented
     next-hops:
@@ -35,12 +35,12 @@ static:
                     _process: not_implemented
                 metric:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.metric }}"
+                        - mode: value
+                          value: "{{ extra_vars.metric }}"
                 next-hop:
                     _process:
-                        mode: value
-                        value: "{{ next_hop_key }}"
+                        - mode: value
+                          value: "{{ next_hop_key }}"
                 recurse:
                     _process: not_implemented
             index:
