@@ -10,25 +10,25 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-            mode: block
-            regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
-            from: "{{ bookmarks['network-instances'][0] }}"
-            mandatory:
-                - key: "global"
-                  block: ""
-                  extra_vars: {}
+            - mode: block
+              regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+              from: "{{ bookmarks['network-instances'][0] }}"
+              mandatory:
+                  - key: "global"
+                    block: ""
+                    extra_vars: {}
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
             description:
                 _process:
-                    mode: search
-                    regexp: "description (?P<value>.*)"
-                    from: "{{ bookmarks.parent }}"
+                    - mode: search
+                      regexp: "description (?P<value>.*)"
+                      from: "{{ bookmarks.parent }}"
             enabled:
                 _process:
-                    mode: value
-                    value: true
+                    - mode: value
+                      value: true
             enabled-address-families:
                 _process: not_implemented
             mtu:
@@ -37,15 +37,15 @@ network-instances:
                 _process: unnecessary
             route-distinguisher:
                 _process:
-                    mode: search
-                    regexp: "rd (?P<value>.*)"
-                    from: "{{ bookmarks.parent }}"
+                    - mode: search
+                      regexp: "rd (?P<value>.*)"
+                      from: "{{ bookmarks.parent }}"
             router-id:
                 _process: not_implemented
             type:
                 _process:
-                    mode: value
-                    value: L3VRF
+                    - mode: value
+                      value: L3VRF
         connection-points:
             _process: not_implemented
             connection-point:
