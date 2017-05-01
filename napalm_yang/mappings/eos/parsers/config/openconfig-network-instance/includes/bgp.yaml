@@ -358,7 +358,7 @@ neighbors:
             mode: block
             regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
             from: "{{ bookmarks['protocol'][protocol_key] }}"
-            duplicates: true
+            flat: true
         add-paths:
             _process: not_implemented
             config:

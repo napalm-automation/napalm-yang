@@ -132,7 +132,7 @@ class Parser(object):
                 obj = model.add(key)
             except KeyError as e:
                 if "is already defined as a list entry" in e.message and \
-                   extra_vars.get("_allow_duplicates"):
+                   extra_vars.get("_get_duplicates"):
                     obj = model[key]
                 else:
                     raise

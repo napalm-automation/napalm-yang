@@ -8,12 +8,12 @@ static:
           regexp: "(?P<block>ip route (?P<key>\\d+.*\\/\\d+).*)"
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key == 'global' }}"
-          duplicates: true
+          flat: true
         - mode: block
           regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+.*\\/\\d+).*)"
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key != 'global' }}"
-          duplicates: true
+          flat: true
     config:
         _process: not_implemented
         prefix:
