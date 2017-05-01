@@ -17,7 +17,7 @@ class TextTranslator(XMLTranslator):
     def post_processing(self, translator):
         return self._xml_to_text(translator.translation)
 
-    def _parse_leaf_element(self, attribute, model, other, mapping, translation):
+    def _translate_leaf_element(self, attribute, model, other, mapping, translation):
         force = False
 
         if model == other and not self.replace:
@@ -30,14 +30,14 @@ class TextTranslator(XMLTranslator):
             return
 
         mapping["element"] = "command"
-        super()._parse_leaf_element(attribute, model, other, mapping, translation, force)
+        super()._translate_leaf_element(attribute, model, other, mapping, translation, force)
 
     def _init_element_container(self, attribute, model, other, mapping, translation):
         if other is not None:
             if not napalm_yang.utils.diff(model, other) and not self.replace:
                 # If objects are equal we return None as that aborts translating
                 # the rest of the object
-                return
+                return False
 
         if not model._changed() and other is not None and not self.replace:
             mapping["key_value"] = mapping["negate"]
@@ -56,7 +56,7 @@ class TextTranslator(XMLTranslator):
 
         return t
 
-    #  def _parse_container_container(self, attribute, model, other, mapping, translation):
+    #  def _translate_container_container(self, attribute, model, other, mapping, translation):
     #      mapping["key_element"] = "container"
     #      mapping["container"] = model._yang_name
     #      return super()._init_element_container(attribute, model, other, mapping, translation)
