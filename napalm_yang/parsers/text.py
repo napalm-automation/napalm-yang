@@ -30,7 +30,7 @@ class TextParser(BaseParser):
                 else:
                     key = extra_vars.pop("key")
 
-                extra_vars["_allow_duplicates"] = mapping.get("duplicates", False)
+                extra_vars["_get_duplicates"] = mapping.get("flat", False)
 
                 yield key, block, extra_vars
 
