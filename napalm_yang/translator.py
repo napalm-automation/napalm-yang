@@ -81,7 +81,7 @@ class Translator(object):
                                         self.bookmarks, self.merge, self.replace, other_attr)
                 translator.translate()
             else:
-                self._translate(v._yang_name, v, mapping[v._yang_name], et, other_attr)
+                self._translate(k, v, mapping[v._yang_name], et, other_attr)
 
     def _translate_list(self, attribute, model, mapping, translation, other):
         # Saving state to restore them later
