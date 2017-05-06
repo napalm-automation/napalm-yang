@@ -10,18 +10,6 @@
                 "name": "devel",
                 "protocols": {
                     "protocol": {
-                        "bgp bgp": {
-                            "bgp": {
-                                "global": {
-                                    "config": {
-                                        "as": 65001,
-                                        "router-id": "3.3.3.3"
-                                    }
-                                }
-                            },
-                            "identifier": "bgp",
-                            "name": "bgp"
-                        },
                         "static static": {
                             "identifier": "static",
                             "name": "static",
@@ -104,7 +92,7 @@
                                             "next-hop": {
                                                 "192.168.0.2": {
                                                     "config": {
-                                                        "metric": 10,
+                                                        "metric": 1,
                                                         "next-hop": "192.168.0.2"
                                                     },
                                                     "index": "192.168.0.2"
@@ -140,14 +128,14 @@
                     }
                 }
             },
-            "prod": {
+            "frontend": {
                 "config": {
                     "description": "Production VRF",
                     "enabled": true,
                     "route-distinguisher": "1:1",
                     "type": "L3VRF"
                 },
-                "name": "prod",
+                "name": "frontend",
                 "protocols": {
                     "protocol": {
                         "bgp bgp": {
@@ -217,3 +205,4 @@
         }
     }
 }
+
