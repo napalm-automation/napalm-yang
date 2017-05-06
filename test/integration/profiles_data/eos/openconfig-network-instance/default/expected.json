@@ -28,6 +28,9 @@
                             "static-routes": {
                                 "static": {
                                     "10.0.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.0.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "192.168.2.2": {
@@ -42,6 +45,9 @@
                                         "prefix": "10.0.0.0/24"
                                     },
                                     "10.0.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.1.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "192.168.2.2": {
@@ -64,7 +70,7 @@
             "global": {
                 "config": {
                     "enabled": true,
-                    "type": "L3VRF"
+                    "type": "DEFAULT_INSTANCE"
                 },
                 "name": "global",
                 "protocols": {
@@ -100,6 +106,9 @@
                             "static-routes": {
                                 "static": {
                                     "10.0.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.0.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "192.168.0.2": {
@@ -121,6 +130,9 @@
                                         "prefix": "10.0.0.0/24"
                                     },
                                     "10.0.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.1.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "192.168.0.2": {
@@ -181,6 +193,9 @@
                             "static-routes": {
                                 "static": {
                                     "10.0.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.0.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "172.20.0.2": {
@@ -195,6 +210,9 @@
                                         "prefix": "10.0.0.0/24"
                                     },
                                     "10.0.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.1.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
                                                 "172.20.0.2": {
