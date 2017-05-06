@@ -158,6 +158,7 @@ interfaces:
                 _process: 
                     - mode: xpath
                       xpath: "logical-interface"
+                      key: name
                       from: "{{ bookmarks['parent'] }}"
                 index:
                     _process: unnecessary
