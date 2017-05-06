@@ -51,6 +51,11 @@ class Translator(object):
         else:
             self._translate_leaf(attribute, model, mapping, translation, other)
 
+    def _translate_leaf(self, attribute, model, mapping, translation, other):
+        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, None, model,
+                                    self.bookmarks)
+        self.translator.translate_leaf(attribute, model, other, rule, translation, self.bookmarks)
+
     def _translate_container(self, attribute, model, mapping, translation, other):
         if model._yang_type:
             self.bookmarks["parent"] = translation
@@ -128,20 +133,40 @@ class Translator(object):
 
         if other:
             # Let's default elements not present in the model
-            for key in other:
-                element = other[key]
-                if key not in model.keys():
-                    key_name = "{}_key".format(attribute)
-                    self.keys[key_name] = key
-                    self.keys["parent_key"] = key
+            self._default_element_list(attribute, other, mapping, translation, model)
 
-                    translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
-                                                            self.keys, None, element,
-                                                            self.bookmarks)
+    def _default_element_list(self, attribute, running, mapping, translation, candidate):
+        for key in running:
+            logger.info("Defaulting {}: {}".format(attribute, key))
+            element = running[key]
 
-                    self.translator.default_element(translation_rule, translation, self.bookmarks)
+            candidate = candidate or {}
 
-    def _translate_leaf(self, attribute, model, mapping, translation, other):
-        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, None, model,
-                                    self.bookmarks)
-        self.translator.translate_leaf(attribute, model, other, rule, translation, self.bookmarks)
+            if key not in candidate.keys():
+                key_name = "{}_key".format(attribute)
+                self.keys[key_name] = key
+                self.keys["parent_key"] = key
+
+                translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
+                                                        self.keys, None, element,
+                                                        self.bookmarks)
+
+                self.translator.default_element(translation_rule, translation, self.bookmarks,
+                                                recursive=candidate is {})
+
+                if any([t.get("continue_negating", False) for t in translation_rule]):
+                    self._default_child(attribute, element, mapping, translation)
+
+    def _default_child(self, attribute, running, mapping, translation):
+        logger.debug("Defaulting child attribute: {}".format(running._yang_path()))
+
+        if running._is_container in ("container", ):
+            for k, v in running:
+                if not v._is_config or k == "state":
+                    continue
+                elif v._defining_module != self._defining_module and v._defining_module is not None:
+                    continue
+                else:
+                    self._default_child(k, v, mapping[v._yang_name], translation)
+        elif running._yang_type in ("list", ):
+            self._default_element_list(attribute, running, mapping, translation, None)
