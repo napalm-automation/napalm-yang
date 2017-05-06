@@ -1,0 +1,250 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "devel": {
+                "config": {
+                    "enabled": true,
+                    "type": "L2L3"
+                },
+                "name": "devel",
+                "protocols": {
+                    "protocol": {
+                        "static static": {
+                            "identifier": "static",
+                            "name": "static",
+                            "static-routes": {
+                                "static": {
+                                    "10.0.2.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.2.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.100": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.100"
+                                                    },
+                                                    "index": "192.168.100.100"
+                                                },
+                                                "192.168.100.101": {
+                                                    "config": {
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
+                                                    },
+                                                    "index": "192.168.100.101"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.0.2.0/24"
+                                    },
+                                    "10.100.2.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.2.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.200": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.200"
+                                                    },
+                                                    "index": "192.168.100.200"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.100.2.0/24"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "global": {
+                "config": {
+                    "enabled": true,
+                    "type": "DEFAULT_INSTANCE"
+                },
+                "name": "global",
+                "protocols": {
+                    "protocol": {
+                        "bgp bgp": {
+                            "bgp": {
+                                "global": {
+                                    "config": {
+                                        "as": 65000,
+                                        "router-id": "1.1.1.1"
+                                    }
+                                },
+                                "neighbors": {
+                                    "neighbor": {
+                                        "172.20.0.1": {
+                                            "config": {
+                                                "neighbor-address": "172.20.0.1",
+                                                "peer-as": 65200,
+                                                "peer-group": "my_other_peers"
+                                            },
+                                            "neighbor-address": "172.20.0.1"
+                                        },
+                                        "192.168.100.2": {
+                                            "config": {
+                                                "description": "adsasd",
+                                                "neighbor-address": "192.168.100.2",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.2"
+                                        },
+                                        "192.168.100.3": {
+                                            "config": {
+                                                "neighbor-address": "192.168.100.3",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.3"
+                                        }
+                                    }
+                                }
+                            },
+                            "identifier": "bgp",
+                            "name": "bgp"
+                        },
+                        "static static": {
+                            "identifier": "static",
+                            "name": "static",
+                            "static-routes": {
+                                "static": {
+                                    "10.0.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.0.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.100": {
+                                                    "config": {
+                                                        "metric": 100,
+                                                        "next-hop": "192.168.100.100"
+                                                    },
+                                                    "index": "192.168.100.100"
+                                                },
+                                                "192.168.100.101": {
+                                                    "config": {
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
+                                                    },
+                                                    "index": "192.168.100.101"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.0.0.0/24"
+                                    },
+                                    "10.100.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.0.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.200": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.200"
+                                                    },
+                                                    "index": "192.168.100.200"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.100.0.0/24"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "prod": {
+                "config": {
+                    "description": "production vrf",
+                    "enabled": true,
+                    "type": "L2L3"
+                },
+                "name": "prod",
+                "protocols": {
+                    "protocol": {
+                        "bgp bgp": {
+                            "bgp": {
+                                "neighbors": {
+                                    "neighbor": {
+                                        "192.168.100.2": {
+                                            "config": {
+                                                "description": "adsasd",
+                                                "neighbor-address": "192.168.100.2",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.2"
+                                        },
+                                        "192.168.100.3": {
+                                            "config": {
+                                                "neighbor-address": "192.168.100.3",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.3"
+                                        }
+                                    }
+                                }
+                            },
+                            "identifier": "bgp",
+                            "name": "bgp"
+                        },
+                        "static static": {
+                            "identifier": "static",
+                            "name": "static",
+                            "static-routes": {
+                                "static": {
+                                    "10.0.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.1.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.100": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.100"
+                                                    },
+                                                    "index": "192.168.100.100"
+                                                },
+                                                "192.168.100.101": {
+                                                    "config": {
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
+                                                    },
+                                                    "index": "192.168.100.101"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.0.1.0/24"
+                                    },
+                                    "10.100.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.1.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.200": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.200"
+                                                    },
+                                                    "index": "192.168.100.200"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.100.1.0/24"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
