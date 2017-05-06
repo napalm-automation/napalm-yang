@@ -68,7 +68,7 @@ class Tests(object):
         expected.add_model(model)
         expected.load_dict(expected_json)
 
-        print(pretty_json(config.get(filter=True)))
+        #  print(pretty_json(config.get(filter=True)))
 
         assert not napalm_yang.utils.diff(config, expected)
 
