@@ -15,7 +15,7 @@ static:
           when: "{{ network_instance_key != 'global' }}"
           flat: true
     config:
-        _process: not_implemented
+        _process: unnecessary
         prefix:
             _process:
                 - mode: value
