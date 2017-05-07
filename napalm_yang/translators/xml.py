@@ -77,3 +77,7 @@ class XMLTranslator(BaseTranslator):
 
         if value is not None:
             e.text = "{}".format(value)
+
+    def _translate_leaf_map(self, attribute, model, other, mapping, translation):
+        mapping["value"] = mapping["map"][model]
+        self._translate_leaf_element(attribute, model, other, mapping, translation)
