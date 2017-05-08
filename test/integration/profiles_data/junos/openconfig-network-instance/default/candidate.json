@@ -4,8 +4,7 @@
             "devel": {
                 "config": {
                     "enabled": true,
-                    "route-distinguisher": "1:2",
-                    "type": "L3VRF"
+                    "type": "L2L3"
                 },
                 "name": "devel",
                 "protocols": {
@@ -15,33 +14,44 @@
                             "name": "static",
                             "static-routes": {
                                 "static": {
-                                    "10.0.0.0/24": {
+                                    "10.0.2.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.2.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
-                                                "192.168.2.2": {
+                                                "192.168.100.200": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "192.168.2.2"
+                                                        "next-hop": "192.168.100.200"
                                                     },
-                                                    "index": "192.168.2.2"
+                                                    "index": "192.168.100.200"
+                                                },
+                                                "192.168.100.101": {
+                                                    "config": {
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
+                                                    },
+                                                    "index": "192.168.100.101"
                                                 }
                                             }
                                         },
-                                        "prefix": "10.0.0.0/24"
+                                        "prefix": "10.0.2.0/24"
                                     },
-                                    "10.0.1.0/24": {
+                                    "10.100.2.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.2.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
-                                                "192.168.2.2": {
+                                                "192.168.100.200": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "192.168.2.2"
+                                                        "next-hop": "192.168.100.200"
                                                     },
-                                                    "index": "192.168.2.2"
+                                                    "index": "192.168.100.200"
                                                 }
                                             }
                                         },
-                                        "prefix": "10.0.1.0/24"
+                                        "prefix": "10.100.2.0/24"
                                     }
                                 }
                             }
@@ -52,7 +62,7 @@
             "global": {
                 "config": {
                     "enabled": true,
-                    "type": "L3VRF"
+                    "type": "DEFAULT_INSTANCE"
                 },
                 "name": "global",
                 "protocols": {
@@ -61,20 +71,36 @@
                             "bgp": {
                                 "global": {
                                     "config": {
-                                        "as": 65001,
+                                        "as": 65000,
                                         "router-id": "1.1.1.1"
                                     }
                                 },
                                 "neighbors": {
                                     "neighbor": {
-                                        "192.168.0.200": {
+                                        "172.20.0.1": {
                                             "config": {
-                                                "description": "asdasd qweq asdasd",
-                                                "enabled": true,
-                                                "neighbor-address": "192.168.0.200",
-                                                "peer-as": 65100
+                                                "neighbor-address": "172.20.0.1",
+                                                "peer-as": 65200,
+                                                "peer-group": "my_other_peers"
                                             },
-                                            "neighbor-address": "192.168.0.200"
+                                            "neighbor-address": "172.20.0.1"
+                                        },
+                                        "192.168.100.2": {
+                                            "config": {
+                                                "description": "adsasd",
+                                                "neighbor-address": "192.168.100.2",
+                                                "peer-as": 65101,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.2"
+                                        },
+                                        "192.168.100.30": {
+                                            "config": {
+                                                "neighbor-address": "192.168.100.30",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.30"
                                         }
                                     }
                                 }
@@ -88,39 +114,44 @@
                             "static-routes": {
                                 "static": {
                                     "10.0.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.0.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
-                                                "192.168.0.2": {
+                                                "192.168.100.100": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "192.168.0.2"
+                                                        "metric": 100,
+                                                        "next-hop": "192.168.100.100"
                                                     },
-                                                    "index": "192.168.0.2"
+                                                    "index": "192.168.100.100"
                                                 },
-                                                "192.168.0.3": {
+                                                "192.168.100.101": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "192.168.0.3"
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
                                                     },
-                                                    "index": "192.168.0.3"
+                                                    "index": "192.168.100.101"
                                                 }
                                             }
                                         },
                                         "prefix": "10.0.0.0/24"
                                     },
-                                    "10.0.1.0/24": {
+                                    "10.100.0.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.0.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
-                                                "192.168.0.2": {
+                                                "192.168.100.200": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "192.168.0.2"
+                                                        "next-hop": "192.168.100.200"
                                                     },
-                                                    "index": "192.168.0.2"
+                                                    "index": "192.168.100.200"
                                                 }
                                             }
                                         },
-                                        "prefix": "10.0.1.0/24"
+                                        "prefix": "10.100.0.0/24"
                                     }
                                 }
                             }
@@ -130,32 +161,33 @@
             },
             "frontend": {
                 "config": {
-                    "description": "Production VRF",
+                    "description": "production vrf",
                     "enabled": true,
-                    "route-distinguisher": "1:1",
-                    "type": "L3VRF"
+                    "type": "L2L3"
                 },
                 "name": "frontend",
                 "protocols": {
                     "protocol": {
                         "bgp bgp": {
                             "bgp": {
-                                "global": {
-                                    "config": {
-                                        "as": 65001,
-                                        "router-id": "2.2.2.2"
-                                    }
-                                },
                                 "neighbors": {
                                     "neighbor": {
-                                        "172.20.0.200": {
+                                        "192.168.100.2": {
                                             "config": {
-                                                "enabled": true,
-                                                "local-as": 100,
-                                                "neighbor-address": "172.20.0.200",
-                                                "peer-as": 65100
+                                                "description": "adsasd",
+                                                "neighbor-address": "192.168.100.2",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
                                             },
-                                            "neighbor-address": "172.20.0.200"
+                                            "neighbor-address": "192.168.100.2"
+                                        },
+                                        "192.168.100.3": {
+                                            "config": {
+                                                "neighbor-address": "192.168.100.3",
+                                                "peer-as": 65100,
+                                                "peer-group": "my_peers"
+                                            },
+                                            "neighbor-address": "192.168.100.3"
                                         }
                                     }
                                 }
@@ -168,33 +200,44 @@
                             "name": "static",
                             "static-routes": {
                                 "static": {
-                                    "10.0.0.0/24": {
-                                        "next-hops": {
-                                            "next-hop": {
-                                                "172.20.0.2": {
-                                                    "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "172.20.0.2"
-                                                    },
-                                                    "index": "172.20.0.2"
-                                                }
-                                            }
-                                        },
-                                        "prefix": "10.0.0.0/24"
-                                    },
                                     "10.0.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.0.1.0/24"
+                                        },
                                         "next-hops": {
                                             "next-hop": {
-                                                "172.20.0.2": {
+                                                "192.168.100.100": {
                                                     "config": {
-                                                        "metric": 1,
-                                                        "next-hop": "172.20.0.2"
+                                                        "next-hop": "192.168.100.100"
                                                     },
-                                                    "index": "172.20.0.2"
+                                                    "index": "192.168.100.100"
+                                                },
+                                                "192.168.100.101": {
+                                                    "config": {
+                                                        "metric": 200,
+                                                        "next-hop": "192.168.100.101"
+                                                    },
+                                                    "index": "192.168.100.101"
                                                 }
                                             }
                                         },
                                         "prefix": "10.0.1.0/24"
+                                    },
+                                    "10.100.1.0/24": {
+                                        "config": {
+                                            "prefix": "10.100.1.0/24"
+                                        },
+                                        "next-hops": {
+                                            "next-hop": {
+                                                "192.168.100.200": {
+                                                    "config": {
+                                                        "next-hop": "192.168.100.200"
+                                                    },
+                                                    "index": "192.168.100.200"
+                                                }
+                                            }
+                                        },
+                                        "prefix": "10.100.1.0/24"
                                     }
                                 }
                             }
@@ -205,4 +248,3 @@
         }
     }
 }
-
