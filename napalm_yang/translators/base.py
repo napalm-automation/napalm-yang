@@ -17,23 +17,23 @@ class BaseTranslator(object):
         self.replace = replace
 
     def init_element(self, attribute, model, other, mapping, translation, bookmarks):
+        et = translation
         for m in mapping:
             if m["mode"] == "skip":
                 continue
             elif m["mode"] == "gate":
                 return
 
-            t = _find_translation_point(m, bookmarks, translation)
+            t = _find_translation_point(m, bookmarks, et)
             method_name = "_init_element_{}".format(m["mode"])
             et = getattr(self, method_name)(attribute, model, other, m, t)
             if et is False:
                 # if it's False we want to return None to signal we want to abort
                 return None
-            elif et is not None:
-                return et
-        return translation
+        return et
 
     def default_element(self, mapping, translation, bookmarks, replacing=False, recursive=False):
+        t = translation
         for m in mapping:
             if m["mode"] == "skip":
                 continue
@@ -42,9 +42,9 @@ class BaseTranslator(object):
 
             if recursive and not m.get("negate_recursively", False):
                 continue
-            t = _find_translation_point(m, bookmarks, translation)
+            t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(m["mode"])
-            getattr(self, method_name)(m, t, replacing)
+            t = getattr(self, method_name)(m, t, replacing)
 
     def translate_leaf(self, attribute, model, other, mapping, translation, bookmarks):
         for m in mapping:
@@ -58,18 +58,17 @@ class BaseTranslator(object):
             getattr(self, method_name)(attribute, model, other, m, t)
 
     def translate_container(self, attribute, model, other, mapping, translation, bookmarks):
+        et = translation
         for m in mapping:
             if m["mode"] == "skip":
                 continue
             elif m["mode"] == "gate":
                 return
 
-            t = _find_translation_point(m, bookmarks, translation)
+            t = _find_translation_point(m, bookmarks, et)
             method_name = "_translate_container_{}".format(m["mode"])
             et = getattr(self, method_name)(attribute, model, other, m, t)
             if et is False:
                 # if it's False we want to return None to signal we want to abort
                 return None
-            elif et is not None:
-                return et
-        return translation
+        return et
