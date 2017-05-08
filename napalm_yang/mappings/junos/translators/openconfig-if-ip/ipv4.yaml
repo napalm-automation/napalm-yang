@@ -5,7 +5,7 @@ metadata:
 ipv4:
     _process:
         - mode: container
-          container: family.inet
+          container: "family/inet"
           when: "{{ model.config.enabled or model.addresses.address|length }}"
     config:
         _process: unnecessary

@@ -1,0 +1,38 @@
+---
+_process: not_implemented
+srgbs:
+    _process: not_implemented
+    srgb:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            dataplane-type:
+                _process: not_implemented
+            ipv6-prefixes:
+                _process: not_implemented
+            local-id:
+                _process: not_implemented
+            mpls-label-blocks:
+                _process: not_implemented
+        local-id:
+            _process: not_implemented
+        state:
+            _process: not_implemented
+srlbs:
+    _process: not_implemented
+    srlb:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            dataplane-type:
+                _process: not_implemented
+            ipv6-prefix:
+                _process: not_implemented
+            local-id:
+                _process: not_implemented
+            mpls-label-block:
+                _process: not_implemented
+        local-id:
+            _process: not_implemented
+        state:
+            _process: not_implemented
