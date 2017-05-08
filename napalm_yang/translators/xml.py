@@ -17,8 +17,14 @@ class XMLTranslator(BaseTranslator):
     def _init_element_container(self, attribute, model, other, mapping, translation):
         t = translation
 
-        for element in mapping["container"].split("."):
-            t = etree.SubElement(t, element)
+        for element in mapping["container"].split("/"):
+            try:
+                if mapping.get("reuse", False):
+                    t = t.xpath(element)[0]
+                else:
+                    t = etree.SubElement(t, element)
+            except IndexError:
+                t = etree.SubElement(t, element)
 
         key_element = mapping.get("key_element", None)
         if key_element:
@@ -53,7 +59,8 @@ class XMLTranslator(BaseTranslator):
             key = etree.SubElement(t, key_element)
             key.text = "{}".format(mapping["key_value"])
 
-        t.set("delete", "delete")
+        if mapping.get("delete_on_merge", True):
+            t.set("delete", "delete")
 
         return t
 
@@ -70,7 +77,9 @@ class XMLTranslator(BaseTranslator):
         except Exception:
             value = None if not model._changed() else model
 
-        e = etree.SubElement(translation, mapping["element"])
+        e = translation
+        for element in mapping["element"].split("/"):
+            e = etree.SubElement(e, element)
 
         if delete:
             e.set("delete", "delete")
