@@ -1,0 +1,125 @@
+---
+metadata:
+    processor: JSONParser
+
+transceiver:
+    _process: unnecessary
+    config:
+        _process: not_implemented
+        enabled:
+            _process: not_implemented
+        ethernet-pmd-preconf:
+            _process: not_implemented
+        form-factor-preconf:
+            _process: not_implemented
+    physical-channels:
+        _process: unnecessary
+        channel:
+            _process:
+                mode: dict
+                from: "{{ bookmarks.parent.get('transceiver', {}).get('physical-channels', {}).get('channel', {})|json }}"
+            config:
+                _process: not_implemented
+                description:
+                    _process: not_implemented
+                index:
+                    _process: not_implemented
+                target-output-power:
+                    _process: not_implemented
+                tx-laser:
+                    _process: not_implemented
+            index:
+                _process: not_implemented
+            state:
+                _process: unnecessary
+                description:
+                    _process: not_implemented
+                index:
+                    _process:
+                        mode: value
+                        value: "{{ parent_key }}"
+                input-power:
+                    _process: unnecessary
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process:
+                            mode: value
+                            value: "{{ bookmarks.parent.state.get('input-power', {}).get('instant', None) }}"
+                            when: "{{ bookmarks.parent.state.get('input-power', {}).get('instant', 'None') is not equalto 'None' }}"
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                laser-bias-current:
+                    _process: unnecessary
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process:
+                            mode: value
+                            value: "{{ bookmarks.parent.state.get('laser-bias-current', {}).get('instant', None) }}"
+                            when: "{{ bookmarks.parent.state.get('laser-bias-current', {}).get('instant', 'None') is not equalto 'None' }}"
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                output-frequency:
+                    _process: not_implemented
+                output-power:
+                    _process: unnecessary
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process:
+                            mode: value
+                            value: "{{ bookmarks.parent.state.get('output-power', {}).get('instant', None) }}"
+                            when: "{{ bookmarks.parent.state.get('output-power', {}).get('instant', 'None') is not equalto 'None' }}"
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                target-output-power:
+                    _process: not_implemented
+                tx-laser:
+                    _process: not_implemented
+    state:
+        _process: unnecessary
+        connector-type:
+            _process: not_implemented
+        date-code:
+            _process: not_implemented
+        enabled:
+            _process:
+                mode: value
+                value: "{{ bookmarks.parent.get('transceiver', {}).get('state', {}).get('enabled', None) }}"
+                when: "{{ bookmarks.parent.get('transceiver', {}).get('state', {}).get('enabled', 'None') is not equalto 'None' }}"
+        ethernet-pmd:
+            _process:
+                mode: value
+                value: "{{ bookmarks.parent.get('transceiver', {}).get('state', {}).get('ethernet-pmd', None) }}"
+                when: "{{ bookmarks.parent.get('transceiver', {}).get('state', {}).get('ethernet-pmd', 'None') is not equalto 'None' }}"
+        ethernet-pmd-preconf:
+            _process: not_implemented
+        fault-condition:
+            _process: not_implemented
+        form-factor:
+            _process: not_implemented
+        form-factor-preconf:
+            _process: not_implemented
+        internal-temp:
+            _process: not_implemented
+        otn-compliance-code:
+            _process: not_implemented
+        present:
+            _process: not_implemented
+        serial-no:
+            _process: not_implemented
+        sonet-sdh-compliance-code:
+            _process: not_implemented
+        vendor:
+            _process: not_implemented
+        vendor-part:
+            _process: not_implemented
+        vendor-rev:
+            _process: not_implemented
