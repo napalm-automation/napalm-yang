@@ -28,7 +28,7 @@ Example 1:
         _process: unnecessary
         interface:
             _process:
-                mode: container
+              . mode: container
                 key_value: "interface {{ interface_key }}\n"
                 negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
                 end: "    exit\n"
@@ -39,7 +39,7 @@ Example 2:
 
     address:
         _process:
-            mode: container
+          . mode: container
             key_value: "    ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
             negate: "    default ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
             replace: false

@@ -22,7 +22,7 @@ If you are using a napalm driver and have access to your device, you will have a
   is useful as there might be small variances between different systems
   but not enough to justify reimplementing everything.
 
-You can find the profiles `here <https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings>`_ but what is exactly is a profile? A profile is a bunch of YAML files that follows the structure of a YANG model and describes two things:
+You can find the profiles `here <https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings>`_ but what exactly is a profile? A profile is a bunch of YAML files that follows the structure of a YANG model and describes two things:
 
 #. How to parse native configuration/state and map it into a model.
 #. How to translate a model and map it into native configuration.
@@ -31,19 +31,19 @@ For example, for a given interface, the snippet below specifies how to map confi
 
             enabled:
                 _process:
-                    mode: is_present
-                    regexp: "(?P<value>no shutdown)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    - mode: is_present
+                      regexp: "(?P<value>no shutdown)"
+                      from: "{{ parse_bookmarks.interface[interface_key] }}"
             description:
                 _process:
-                    mode: search
-                    regexp: "description (?P<value>.*)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    - mode: search
+                      regexp: "description (?P<value>.*)"
+                      from: "{{ parse_bookmarks.interface[interface_key] }}"
             mtu:
                 _process:
-                    mode: search
-                    regexp: "mtu (?P<value>[0-9]+)"
-                    from: "{{ parse_bookmarks.interface[interface_key] }}"
+                    - mode: search
+                      regexp: "mtu (?P<value>[0-9]+)"
+                      from: "{{ parse_bookmarks.interface[interface_key] }}"
 
 And the following snippet how to map the same attributes from the ``openconfig_interface`` to native configuration::
 

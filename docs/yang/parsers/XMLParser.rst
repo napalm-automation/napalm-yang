@@ -35,7 +35,7 @@ Example:
 
     interface:
         _process:
-            mode: xpath
+          - mode: xpath
             xpath: "interfaces/interface"
             key: name
             from: "{{ bookmarks.interfaces }}"
@@ -73,7 +73,7 @@ Example:
 
     description:
         _process:
-            mode: xpath
+          - mode: xpath
             xpath: description
             from: "{{ bookmarks['parent'] }}"
 
@@ -92,7 +92,7 @@ Example:
 
     name:
         _process:
-            mode: value
+          - mode: value
             value: "{{ interface_key }}"
 
 Leaf - map
@@ -114,7 +114,7 @@ Example:
 
     type:
         _process:
-            mode: map
+          - mode: map
             xpath: name
             regexp: "(?P<value>[a-z]+).*"
             from: "{{ bookmarks['parent'] }}"
@@ -137,7 +137,7 @@ Example:
 
     enabled:
         _process:
-            mode: is_absent
+          - mode: is_absent
             xpath: "disable"
             from: "{{ bookmarks['parent'] }}"
 
@@ -148,4 +148,3 @@ Leaf - is_present
 -----------------
 
 Works exactly like ``xpath`` but if the evaluation is ``None``, it will return ``False``.
-

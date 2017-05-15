@@ -29,3 +29,4 @@ Documentation
    yang/translators/TextTranslator
    yang/api
    yang/jinja_filters
+   yang/faq

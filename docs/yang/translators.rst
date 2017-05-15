@@ -3,6 +3,51 @@ Translators
 
 Translators are responsible for transforming a model into native configuration.
 
+Special actions
+===============
+
+Most actions depend on the parser you are using, however, some are common to all of them:
+
+unnecessary
+-----------
+
+This makes the parser skip the field and continue processing the tree.
+
+not_implemented
+---------------
+
+This makes the parser stop processing the tree underneath this value. For example::
+
+    field_1:
+        process: unnecessary
+    field_2:
+        process: not_implemented
+        subfield_1:
+            process: ...
+        subfield_2:
+            process: ...
+    field_3:
+        ...
+
+The ``not_implemented`` action will stop the parser from processing ``subfield_1`` and ``subfield_2``
+and move directly onto ``field_3``.
+
+gate
+----
+
+Works like ``not_implemented`` but accepts a condition. For example::
+
+    protocols:
+        protocol:
+            bgp:
+                _process:
+                  - mode: gate
+                    when: "{{ protocol_key != 'bgp bgp' }}"
+                global:
+                    ...
+
+The snippet above will only process the ``bgp`` subtree if the condition is **not** met.
+
 Special fields
 ==============
 
@@ -77,6 +122,44 @@ in
             in: "interfaces"                            # <--- add element to root of configuration
 
 .. note:: This field follows the same logic as the :ref:`yang_special_field_bookmarks` special field.
+
+continue_negating
+-----------------
+
+* **mandatory**: no
+* **description**: This option, when added to a container, will make the framework to also negate children.
+* **example**: We can use as an example the "network-instances" model. In the model, BGP is inside the ``network-instance`` container, however, in EOS and other platforms that BGP configuration is decoupled from the VRF, so in order to tell the framework to delete also the direct children you will have to use this option. For example::
+
+    network-instance:
+        _process:
+            - mode: container
+              key_value: "vrf definition {{ network_instance_key }}\n"
+              negate: "no vrf definition {{ network_instance_key }}\n"
+              continue_negating: true
+              end: "    exit\n"
+              when: "{{ network_instance_key != 'global' }}"
+        ...
+        protocols:
+            _process: unnecessary
+            protocol:
+                _process:
+                  - mode: container
+                    key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n  vrf {{ network_instance_key}}\n"
+                    negate: "router bgp {{ model.bgp.global_.config.as_ }}\n  no vrf {{ network_instance_key}}\n"
+                    end: "    exit\n"
+                    when: "{{ protocol_key == 'bgp bgp' and network_instance_key != 'global' }}"
+                    replace: false
+                    in: "network-instances"
+
+The example above will generate::
+
+    no vrf definition blah
+    router bgp ASN
+       no vrf blah
+
+Without ``continue_negating`` it would just generate::
+
+    no vrf definition blah
 
 Special variables
 =================
