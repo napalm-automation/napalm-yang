@@ -32,7 +32,7 @@ class BaseTranslator(object):
                 return None
         return et
 
-    def default_element(self, mapping, translation, bookmarks, replacing=False, recursive=False):
+    def default_element(self, mapping, translation, bookmarks, replacing=False):
         t = translation
         for m in mapping:
             if m["mode"] == "skip":
@@ -40,8 +40,6 @@ class BaseTranslator(object):
             elif m["mode"] == "gate":
                 return
 
-            if recursive and not m.get("negate_recursively", False):
-                continue
             t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(m["mode"])
             t = getattr(self, method_name)(m, t, replacing)
