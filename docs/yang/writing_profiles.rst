@@ -68,7 +68,7 @@ RPC call for a junos device.
             _process: unnecessary
             vlan_id:
                 _process:
-                    mode: xpath
+                  - mode: xpath
                     xpath: "vlan-id"
                     from: "{{ parse_bookmarks['parent'] }}"
 
