@@ -151,8 +151,7 @@ class Translator(object):
                                                         self.keys, None, element,
                                                         self.bookmarks)
 
-                self.translator.default_element(translation_rule, translation, self.bookmarks,
-                                                recursive=candidate is {})
+                self.translator.default_element(translation_rule, translation, self.bookmarks)
 
                 if any([t.get("continue_negating", False) for t in translation_rule]):
                     self._default_child(attribute, element, mapping, translation)
