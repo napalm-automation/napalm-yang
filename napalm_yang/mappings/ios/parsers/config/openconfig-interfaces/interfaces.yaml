@@ -32,6 +32,7 @@ interfaces:
                     regexp: "(?P<value>(\\w|-)*)\\d+"
                     from: "{{ interface_key }}"
                     map:
+                        FastEthernet: ethernetCsmacd
                         GigabitEthernet: ethernetCsmacd
                         Management: ethernetCsmacd
                         Loopback: softwareLoopback
