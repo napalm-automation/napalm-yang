@@ -1,0 +1,584 @@
+---
+_process: not_implemented
+global:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        null-label:
+            _process: not_implemented
+    interface-attributes:
+        _process: not_implemented
+        interface:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                interface-id:
+                    _process: not_implemented
+                mpls-enabled:
+                    _process: not_implemented
+            interface-id:
+                _process: not_implemented
+            interface-ref:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    reserved-label-blocks:
+        _process: not_implemented
+        reserved-label-block:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                local-id:
+                    _process: not_implemented
+                lower-bound:
+                    _process: not_implemented
+                upper-bound:
+                    _process: not_implemented
+            local-id:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+    state:
+        _process: not_implemented
+lsps:
+    _process: not_implemented
+    constrained-path:
+        _process: not_implemented
+        named-explicit-paths:
+            _process: not_implemented
+            named-explicit-path:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    sid-protection-required:
+                        _process: not_implemented
+                    sid-selection-mode:
+                        _process: not_implemented
+                explicit-route-objects:
+                    _process: not_implemented
+                    explicit-route-object:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            address:
+                                _process: not_implemented
+                            hop-type:
+                                _process: not_implemented
+                            index:
+                                _process: not_implemented
+                        index:
+                            _process: not_implemented
+                        state:
+                            _process: not_implemented
+                name:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        tunnels:
+            _process: not_implemented
+            tunnel:
+                _process: not_implemented
+                bandwidth:
+                    _process: not_implemented
+                    auto-bandwidth:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            adjust-interval:
+                                _process: not_implemented
+                            adjust-threshold:
+                                _process: not_implemented
+                            enabled:
+                                _process: not_implemented
+                            max-bw:
+                                _process: not_implemented
+                            min-bw:
+                                _process: not_implemented
+                        overflow:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                enabled:
+                                    _process: not_implemented
+                                overflow-threshold:
+                                    _process: not_implemented
+                                trigger-event-count:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                        underflow:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                enabled:
+                                    _process: not_implemented
+                                trigger-event-count:
+                                    _process: not_implemented
+                                underflow-threshold:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        set-bandwidth:
+                            _process: not_implemented
+                        specification-type:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                config:
+                    _process: not_implemented
+                    admin-status:
+                        _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    hold-priority:
+                        _process: not_implemented
+                    metric:
+                        _process: not_implemented
+                    metric-type:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    preference:
+                        _process: not_implemented
+                    protection-style-requested:
+                        _process: not_implemented
+                    reoptimize-timer:
+                        _process: not_implemented
+                    setup-priority:
+                        _process: not_implemented
+                    shortcut-eligible:
+                        _process: not_implemented
+                    signaling-protocol:
+                        _process: not_implemented
+                    soft-preemption:
+                        _process: not_implemented
+                    source:
+                        _process: not_implemented
+                    type:
+                        _process: not_implemented
+                name:
+                    _process: not_implemented
+                p2p-tunnel-attributes:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        destination:
+                            _process: not_implemented
+                    p2p-primary-path:
+                        _process: not_implemented
+                        p2p-primary-path:
+                            _process: not_implemented
+                            admin-groups:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    exclude-group:
+                                        _process: not_implemented
+                                    include-all-group:
+                                        _process: not_implemented
+                                    include-any-group:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            candidate-secondary-paths:
+                                _process: not_implemented
+                                candidate-secondary-path:
+                                    _process: not_implemented
+                                    config:
+                                        _process: not_implemented
+                                        priority:
+                                            _process: not_implemented
+                                        secondary-path:
+                                            _process: not_implemented
+                                    secondary-path:
+                                        _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                cspf-tiebreaker:
+                                    _process: not_implemented
+                                explicit-path-name:
+                                    _process: not_implemented
+                                hold-priority:
+                                    _process: not_implemented
+                                name:
+                                    _process: not_implemented
+                                path-computation-method:
+                                    _process: not_implemented
+                                path-computation-server:
+                                    _process: not_implemented
+                                preference:
+                                    _process: not_implemented
+                                retry-timer:
+                                    _process: not_implemented
+                                setup-priority:
+                                    _process: not_implemented
+                                use-cspf:
+                                    _process: not_implemented
+                            name:
+                                _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    p2p-secondary-paths:
+                        _process: not_implemented
+                        p2p-secondary-path:
+                            _process: not_implemented
+                            admin-groups:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    exclude-group:
+                                        _process: not_implemented
+                                    include-all-group:
+                                        _process: not_implemented
+                                    include-any-group:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                cspf-tiebreaker:
+                                    _process: not_implemented
+                                explicit-path-name:
+                                    _process: not_implemented
+                                hold-priority:
+                                    _process: not_implemented
+                                name:
+                                    _process: not_implemented
+                                path-computation-method:
+                                    _process: not_implemented
+                                path-computation-server:
+                                    _process: not_implemented
+                                preference:
+                                    _process: not_implemented
+                                retry-timer:
+                                    _process: not_implemented
+                                setup-priority:
+                                    _process: not_implemented
+                                use-cspf:
+                                    _process: not_implemented
+                            name:
+                                _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    state:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+    static-lsps:
+        _process: not_implemented
+        static-lsp:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                name:
+                    _process: not_implemented
+            egress:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    incoming-label:
+                        _process: not_implemented
+                    next-hop:
+                        _process: not_implemented
+                    push-label:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            ingress:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    incoming-label:
+                        _process: not_implemented
+                    next-hop:
+                        _process: not_implemented
+                    push-label:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            name:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+            transit:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    incoming-label:
+                        _process: not_implemented
+                    next-hop:
+                        _process: not_implemented
+                    push-label:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+    unconstrained-path:
+        _process: not_implemented
+        path-setup-protocol:
+            _process: not_implemented
+signaling-protocols:
+    _process: not_implemented
+    rsvp-te:
+        _process: not_implemented
+        global:
+            _process: not_implemented
+            graceful-restart:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    enable:
+                        _process: not_implemented
+                    recovery-time:
+                        _process: not_implemented
+                    restart-time:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            hellos:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    hello-interval:
+                        _process: not_implemented
+                    refresh-reduction:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            soft-preemption:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    enable:
+                        _process: not_implemented
+                    soft-preemption-timeout:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        interface-attributes:
+            _process: not_implemented
+            interface:
+                _process: not_implemented
+                authentication:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        authentication-key:
+                            _process: not_implemented
+                        enable:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                bandwidth-reservations:
+                    _process: not_implemented
+                    bandwidth-reservation:
+                        _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface-id:
+                        _process: not_implemented
+                hellos:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        hello-interval:
+                            _process: not_implemented
+                        refresh-reduction:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                interface-id:
+                    _process: not_implemented
+                interface-ref:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        interface:
+                            _process: not_implemented
+                        subinterface:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                protection:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        bypass-optimize-interval:
+                            _process: not_implemented
+                        link-protection-style-requested:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+                subscription:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        subscription:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+        neighbors:
+            _process: not_implemented
+            neighbor:
+                _process: not_implemented
+        sessions:
+            _process: not_implemented
+            session:
+                _process: not_implemented
+    segment-routing:
+        _process: not_implemented
+        aggregate-sid-counters:
+            _process: not_implemented
+            aggregate-sid-counter:
+                _process: not_implemented
+        interfaces:
+            _process: not_implemented
+            interface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface-id:
+                        _process: not_implemented
+                interface-id:
+                    _process: not_implemented
+                interface-ref:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        interface:
+                            _process: not_implemented
+                        subinterface:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                sid-counters:
+                    _process: not_implemented
+                    sid-counter:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+te-global-attributes:
+    _process: not_implemented
+    mpls-admin-groups:
+        _process: not_implemented
+        admin-group:
+            _process: not_implemented
+            admin-group-name:
+                _process: not_implemented
+            config:
+                _process: not_implemented
+                admin-group-name:
+                    _process: not_implemented
+                bit-position:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    srlgs:
+        _process: not_implemented
+        srlg:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                cost:
+                    _process: not_implemented
+                flooding-type:
+                    _process: not_implemented
+                name:
+                    _process: not_implemented
+                value:
+                    _process: not_implemented
+            name:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+            static-srlg-members:
+                _process: not_implemented
+                members-list:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        from-address:
+                            _process: not_implemented
+                        to-address:
+                            _process: not_implemented
+                    from-address:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+    te-lsp-timers:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            cleanup-delay:
+                _process: not_implemented
+            install-delay:
+                _process: not_implemented
+            reoptimize-timer:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+te-interface-attributes:
+    _process: not_implemented
+    interface:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            admin-group:
+                _process: not_implemented
+            interface-id:
+                _process: not_implemented
+            srlg-membership:
+                _process: not_implemented
+            te-metric:
+                _process: not_implemented
+        igp-flooding-bandwidth:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                delta-percentage:
+                    _process: not_implemented
+                down-thresholds:
+                    _process: not_implemented
+                threshold-specification:
+                    _process: not_implemented
+                threshold-type:
+                    _process: not_implemented
+                up-down-thresholds:
+                    _process: not_implemented
+                up-thresholds:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        interface-id:
+            _process: not_implemented
+        interface-ref:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                interface:
+                    _process: not_implemented
+                subinterface:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
