@@ -96,6 +96,7 @@ interfaces:
                           PIMD: null
                           PIME: null
                           PPPoE: null
+                          Unspecified: null
             counters:
                 _process: unnecessary
                 in-broadcast-pkts:
