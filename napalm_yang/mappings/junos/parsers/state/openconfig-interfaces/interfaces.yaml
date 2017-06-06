@@ -88,6 +88,7 @@ interfaces:
                           Multicast-GRE: tunnel
                           Secure-Tunnel: tunnel
                           Ethernet: ethernetCsmacd
+                          Mgmt-VLAN: ethernetCsmacd
                           Loopback: softwareLoopback
                           VLAN: l2vlan
                           Adaptive-Services: null
@@ -95,6 +96,7 @@ interfaces:
                           PIMD: null
                           PIME: null
                           PPPoE: null
+                          Unspecified: null
             counters:
                 _process: unnecessary
                 in-broadcast-pkts:

@@ -41,6 +41,11 @@ interfaces:
                       from: "<interface><name>{{ parent_key }}</name></interface>"
                       map:
                           ge: ethernetCsmacd
+                          xe: ethernetCsmacd
+                          et: ethernetCsmacd
+                          irb: ethernetCsmacd
+                          me: ethernetCsmacd
+                          vlan: ethernetCsmacd
                           lo: softwareLoopback
                           ae: ieee8023adLag
             enabled:
