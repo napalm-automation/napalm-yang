@@ -9,7 +9,7 @@ ipv4:
         enabled:
             _process: # TODO look at this one, I think this is different depending on IOS version
                 mode: is_absent
-                regexp: "(?P<value>^\\W*switchport$)"
+                regexp: "(?P<value>^\\s*switchport mode.*$)"
                 from: "{{ bookmarks['parent'] }}"
         mtu:
             _process: not_implemented
