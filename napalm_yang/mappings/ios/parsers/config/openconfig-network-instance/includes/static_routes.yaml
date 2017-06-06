@@ -31,7 +31,7 @@ static:
         prefix:
             _process:
                 - mode: value
-                  value: "{{ static_key }}"
+                  value: "{{ extra_vars.netaddr }}/{{ extra_vars.netmask|netmask_to_cidr }}"
         set-tag:
             _process: not_implemented
     next-hops:
