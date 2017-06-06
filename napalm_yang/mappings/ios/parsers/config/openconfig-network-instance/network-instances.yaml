@@ -7,28 +7,49 @@ metadata:
               commands: ["show running-config all"]
 
 network-instances:
-    _process: not_implemented
+    _process: unnecessary
     network-instance:
-        _process: not_implemented
+        _process:
+          - mode: block
+            regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+            from: "{{ bookmarks['network-instances'][0] }}"
+            mandatory:
+              - key: "global"
+                block: ""
+                extra_vars: {}
         afts: !include includes/afts.yaml
         config:
-            _process: not_implemented
+            _process: unnecessary
             description:
-                _process: not_implemented
+                _process:
+                  - mode: search
+                    regexp: "description (?P<value>.*)"
+                    from: "{{ bookmarks.parent }}"
             enabled:
-                _process: not_implemented
+                _process:
+                  - mode: value
+                    value: true
             enabled-address-families:
                 _process: not_implemented
             mtu:
                 _process: not_implemented
             name:
-                _process: not_implemented
+                _process: unnecessary
             route-distinguisher:
-                _process: not_implemented
+                _process:
+                  - mode: search
+                    regexp: "rd (?P<value>.*)"
+                    from: "{{ bookmarks.parent }}"
             router-id:
                 _process: not_implemented
             type:
-                _process: not_implemented
+                _process:
+                  - mode: value
+                    value: DEFAULT_INSTANCE
+                    when: "{{ network_instance_key == 'global' }}"
+                  - mode: value
+                    value: L3VRF
+                    when: "{{ network_instance_key != 'global' }}"
         connection-points:
             _process: not_implemented
             connection-point:
