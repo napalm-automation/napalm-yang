@@ -318,9 +318,13 @@ network-instances:
                     state:
                         _process: not_implemented
         protocols:
-            _process: not_implemented
+            _process: unnecessary
             protocol:
-                _process: not_implemented
+                _process:
+                    - mode: block
+                      regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
+                      from: "{{ bookmarks['network-instances'][0] }}"
+                      key: "static static"
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented
