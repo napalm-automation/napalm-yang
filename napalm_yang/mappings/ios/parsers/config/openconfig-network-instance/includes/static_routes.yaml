@@ -16,6 +16,16 @@ static:
           when: "{{ network_instance_key != 'global' }}"
           flat: true
           post_process_filter: "addrmask_to_cidr"
+        - mode: block
+          regexp: "(?P<block>ipv6 route (?P<key>[0-9a-f:]+\\/\\d+).*)"
+          from: "{{ bookmarks['network-instances'][0] }}"
+          when: "{{ network_instance_key == 'global' }}"
+          flat: true
+        - mode: block
+          regexp: "(?P<block>ipv6 route vrf {{ network_instance_key }} (?P<key>[0-9a-f:]+\\/\\d+).*)"
+          from: "{{ bookmarks['network-instances'][0] }}"
+          when: "{{ network_instance_key != 'global' }}"
+          flat: true
     config:
         _process: unnecessary
         prefix:
@@ -30,6 +40,9 @@ static:
             _process:
                 - mode: block
                   regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
+                  from: "{{ bookmarks['static'][static_key] }}"
+                - mode: block
+                  regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>[0-9a-f:]+).*)"
                   from: "{{ bookmarks['static'][static_key] }}"
             config:
                 _process: unnecessary
