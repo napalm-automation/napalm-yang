@@ -5,21 +5,23 @@ _process:
 static:
     _process:
         - mode: block
-          regexp: "(?P<block>ip route (?P<key>(?P<netaddr>\\d+\\S+) (?P<netmask>\\d+\\S+)).*)"
+          regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key == 'global' }}"
           flat: true
+          post_process_filter: "addrmask_to_cidr"
         - mode: block
-          regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>(?P<netaddr>\\d+\\S+) (?P<netmask>\\d+\\S+)).*)"
+          regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+\\S+ \\d+\\S+).*)"
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key != 'global' }}"
           flat: true
+          post_process_filter: "addrmask_to_cidr"
     config:
         _process: unnecessary
         prefix:
             _process:
                 - mode: value
-                  value: "{{ extra_vars.netaddr }}/{{ extra_vars.netmask|netmask_to_cidr }}"
+                  value: "{{ static_key }}"
         set-tag:
             _process: not_implemented
     next-hops:
@@ -27,7 +29,7 @@ static:
         next-hop:
             _process:
                 - mode: block
-                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
+                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*.* (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
                   from: "{{ bookmarks['static'][static_key] }}"
             config:
                 _process: unnecessary
