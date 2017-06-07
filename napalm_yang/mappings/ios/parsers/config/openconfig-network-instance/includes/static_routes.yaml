@@ -26,12 +26,13 @@ static:
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key != 'global' }}"
           flat: true
+          post_process_filter: "addrmask_to_cidr"
     config:
         _process: unnecessary
         prefix:
             _process:
                 - mode: value
-                  value: "{{ extra_vars.netaddr }}/{{ extra_vars.netmask|netmask_to_cidr }}"
+                  value: "{{ static_key }}"
         set-tag:
             _process: not_implemented
     next-hops:
