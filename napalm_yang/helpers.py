@@ -9,7 +9,7 @@ from napalm_yang.translators.xml import XMLTranslator
 import os
 import jinja2
 
-from napalm_yang.jinja_filters import ip_filters
+from napalm_yang import jinja_filters
 
 import logging
 logger = logging.getLogger("napalm-yang")
@@ -131,7 +131,7 @@ def template(string, **kwargs):
                             undefined=jinja2.StrictUndefined,
                             keep_trailing_newline=True,
                             )
-    env.filters.update(ip_filters.filters())
+    env.filters.update(jinja_filters.load_filters())
 
     template = env.from_string(string)
 
