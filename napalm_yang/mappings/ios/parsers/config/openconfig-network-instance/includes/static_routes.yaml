@@ -26,7 +26,6 @@ static:
           from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key != 'global' }}"
           flat: true
-          post_process_filter: "addrmask_to_cidr"
     config:
         _process: unnecessary
         prefix:
