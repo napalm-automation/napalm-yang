@@ -339,7 +339,7 @@ def _to_dict_container(element, filter):
 def _to_dict_list(element, filter):
     result = {}
 
-    for k, v in element.items():
+    for k, v in element.iteritems():
         r = _to_dict(v, filter)
         if r not in [None, {}]:
             result[k] = r
