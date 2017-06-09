@@ -1,5 +1,4 @@
 from napalm_yang.parsers.base import BaseParser
-from napalm_yang import jinja_filters
 
 import itertools
 
@@ -33,7 +32,11 @@ class TextParser(BaseParser):
                     key = extra_vars.pop("key")
 
                 if post_process_filter:
-                    key = jinja_filters.load_filters().get(post_process_filter)(key)
+                    from napalm_yang.helpers import template
+                    kwargs = dict()
+                    kwargs['key'] = key
+                    kwargs["extra_vars"] = extra_vars
+                    key = template(post_process_filter, **kwargs)
 
                 extra_vars["_get_duplicates"] = mapping.get("flat", False)
 

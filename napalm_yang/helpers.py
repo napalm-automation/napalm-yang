@@ -110,7 +110,11 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["extra_vars"] = extra_vars
 
     for k, v in rule.items():
-        rule[k] = _resolve_rule(v, **kwargs)
+        if k.startswith('post_process_'):
+            # don't process post processing rules now, they'll be processed on a second pass
+            rule[k] = v
+        else:
+            rule[k] = _resolve_rule(v, **kwargs)
 
     if "when" in rule.keys():
         w = rule["when"]
