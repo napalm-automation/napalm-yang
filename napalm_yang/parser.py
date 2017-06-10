@@ -26,17 +26,17 @@ class Parser(object):
         self.extra_vars = extra_vars or {}
 
         if self.mapping and device:
-            device_config = self._execute_methods(device,
+            device_output = self._execute_methods(device,
                                                   self.mapping["metadata"].get("execute", []))
 
         else:
-            device_config = []
+            device_output = []
 
         native = native or []
 
         self.native = []
 
-        for n in native + device_config:
+        for n in native + device_output:
             if isinstance(n, basestring):
                 self.native.append(n.replace("\r", ""))  # Parsing will be easier
             else:
@@ -45,11 +45,11 @@ class Parser(object):
         if not self.native:
             raise Exception("I don't have any data to operate with")
 
-        self.bookmarks = {self._yang_name: self.native, "parent": self.native}
-        self.bookmarks = bookmarks or self.bookmarks
-
         if self.mapping:
             self.parser = helpers.get_parser(self.mapping["metadata"]["processor"])
+
+        self.bookmarks = {self._yang_name: self.native, "parent": self.native}
+        self.bookmarks = bookmarks or self.bookmarks
 
     def _execute_methods(self, device, methods):
         result = []
@@ -70,6 +70,8 @@ class Parser(object):
     def parse(self):
         if not self.mapping:
             return
+        self.native = self.parser.init_native(self.native)
+        self.bookmarks.update({self._yang_name: self.native})
         self._parse(self._yang_name, self.model, self.mapping[self._yang_name])
 
     def _parse(self, attribute, model, mapping):

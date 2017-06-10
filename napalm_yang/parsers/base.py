@@ -3,8 +3,8 @@
 class BaseParser(object):
 
     @classmethod
-    def init_config(cls, config):
-        return config
+    def init_native(cls, native):
+        return native
 
     @classmethod
     def parse_list(cls, mapping):
