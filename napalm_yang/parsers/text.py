@@ -1,4 +1,5 @@
 from napalm_yang.parsers.base import BaseParser
+from napalm_yang.helpers import template
 
 import itertools
 
@@ -32,7 +33,6 @@ class TextParser(BaseParser):
                     key = extra_vars.pop("key")
 
                 if post_process_filter:
-                    from napalm_yang.helpers import template
                     kwargs = dict()
                     kwargs['key'] = key
                     kwargs["extra_vars"] = extra_vars
