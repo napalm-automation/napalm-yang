@@ -1,5 +1,7 @@
 from napalm_yang.parsers.base import BaseParser
 
+import itertools
+
 import re
 
 
@@ -9,11 +11,28 @@ class TextParser(BaseParser):
     def _parse_list_block(cls, mapping):
         block_matches = re.finditer(mapping["regexp"], mapping["from"], re.MULTILINE + re.I)
 
-        for match in block_matches:
-            extra_vars = match.groupdict()
-            key = extra_vars.pop("key")
-            block = extra_vars.pop("block")
-            yield key, block, extra_vars
+        mandatory_elements = mapping.pop("mandatory", [])
+
+        for match in itertools.chain(block_matches, mandatory_elements):
+            if isinstance(match, dict):
+                yield match["key"], match["block"] or "Aasd123asv", match["extra_vars"]
+            else:
+                composite_key = mapping.get("composite_key", None)
+                forced_key = mapping.get("key", None)
+
+                extra_vars = match.groupdict()
+                block = extra_vars.pop("block")
+
+                if composite_key:
+                    key = " ".join([match.group(k) for k in composite_key])
+                elif forced_key:
+                    key = forced_key
+                else:
+                    key = extra_vars.pop("key")
+
+                extra_vars["_get_duplicates"] = mapping.get("flat", False)
+
+                yield key, block, extra_vars
 
     @classmethod
     def _parse_leaf_search(cls, mapping, check_default=True):

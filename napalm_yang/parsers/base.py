@@ -8,26 +8,52 @@ class BaseParser(object):
 
     @classmethod
     def parse_list(cls, mapping):
-        method_name = "_parse_list_{}".format(mapping["mode"])
-        for key, block, extra_vars in getattr(cls, method_name)(mapping):
-            yield key, block, extra_vars
+        for m in mapping:
+            method_name = "_parse_list_{}".format(m["mode"])
+            for key, block, extra_vars in getattr(cls, method_name)(m):
+                yield key, block, extra_vars
 
     @classmethod
     def parse_leaf(cls, mapping):
-        method_name = "_parse_leaf_{}".format(mapping["mode"])
-        return getattr(cls, method_name)(mapping)
+        for m in mapping:
+            method_name = "_parse_leaf_{}".format(m["mode"])
+            result = getattr(cls, method_name)(m)
+            if result is not None:
+                return result
+
+    @classmethod
+    def parse_container(cls, mapping):
+        for m in mapping:
+            method_name = "_parse_container_{}".format(m["mode"])
+            result, extra_vars = getattr(cls, method_name)(m)
+            if result or extra_vars:
+                break
+        return result, extra_vars
 
     @classmethod
     def _parse_leaf_skip(cls, mapping):
         return
 
+    _parse_leaf_gate = _parse_leaf_skip
+
+    @classmethod
+    def _parse_container_skip(cls, mapping):
+        return "", {}
+
     @classmethod
     def _parse_list_skip(cls, mapping):
         return {}
 
+    _parse_list_gate = _parse_list_skip
+
     @classmethod
     def _parse_leaf_value(cls, mapping):
         return mapping["value"]
+
+    @classmethod
+    def _parse_container_gate(cls, mapping):
+        """This basically stops parsing the tree by returning None"""
+        return None, {}
 
     """
     @classmethod

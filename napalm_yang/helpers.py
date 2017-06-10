@@ -15,6 +15,17 @@ import logging
 logger = logging.getLogger("napalm-yang")
 
 
+def yaml_include(loader, node):
+    # Get the path out of the yaml file
+    file_name = os.path.join(os.path.dirname(loader.name), node.value)
+
+    with file(file_name) as inputfile:
+        return yaml.load(inputfile)
+
+
+yaml.add_constructor("!include", yaml_include)
+
+
 def get_parser(parser):
     parsers = {
         "TextParser": TextParser,
@@ -64,16 +75,30 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
         return
 
     with open(filepath, "r") as f:
-        return yaml.load(f.read())
+        return yaml.load(f)
+
+
+def _resolve_rule(rule, **kwargs):
+    if isinstance(rule, dict):
+        return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
+    elif isinstance(rule, list):
+        return [_resolve_rule(e, **kwargs) for e in rule]
+    elif isinstance(rule, str):
+        return template(rule, **kwargs)
+    else:
+        return rule
 
 
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                  parse_bookmarks=None):
     if isinstance(rule, list):
-        raise Exception("Wrong rule for attr: {}. List can be used only on leafs".format(attribute))
+        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks)
+                for r in rule]
     elif isinstance(rule, str):
-        if rule in ["unnecessary", "not_implemented"]:
-            return {"mode": "skip", "reason": rule}
+        if rule in ["unnecessary"]:
+            return [{"mode": "skip", "reason": rule}]
+        elif rule in ["not_implemented"]:
+            return [{"mode": "gate", "reason": rule}]
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
@@ -85,13 +110,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["extra_vars"] = extra_vars
 
     for k, v in rule.items():
-        if isinstance(v, dict):
-            resolve_rule(v, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, list):
-            for e in k:
-                resolve_rule(e, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, str):
-            rule[k] = template(v, **kwargs)
+        rule[k] = _resolve_rule(v, **kwargs)
 
     if "when" in rule.keys():
         w = rule["when"]

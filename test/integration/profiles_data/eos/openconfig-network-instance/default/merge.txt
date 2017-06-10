@@ -1,0 +1,23 @@
+ip route 10.0.0.0/24 192.168.0.2
+ip route 10.0.0.0/24 192.168.0.2 1
+vrf definition frontend
+    rd 1:1
+    description Production VRF
+    exit
+router bgp 65001
+  vrf frontend
+    neighbor 172.20.0.200 remote-as 65100
+    neighbor 172.20.0.200 local-as 100 no-prepend replace-as
+    router-id 2.2.2.2
+    exit
+ip route vrf frontend 10.0.0.0/24 172.20.0.2
+ip route vrf frontend 10.0.0.0/24 172.20.0.2 1
+ip route vrf frontend 10.0.1.0/24 172.20.0.2
+ip route vrf frontend 10.0.1.0/24 172.20.0.2 1
+vrf definition devel
+    exit
+router bgp 65001
+  no vrf devel
+no vrf definition prod
+router bgp 65001
+  no vrf prod

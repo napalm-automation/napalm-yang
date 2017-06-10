@@ -9,9 +9,9 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            mode: block
-            regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
-            from: "{{ bookmarks.interfaces.0 }}"
+            - mode: block
+              regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
+              from: "{{ bookmarks.interfaces.0 }}"
         name:
             _process: unnecessary
         hold-time:
@@ -28,39 +28,39 @@ interfaces:
                 _process: unnecessary
             type:
                 _process:
-                    mode: map
-                    regexp: "(?P<value>(\\w|-)*)\\d+"
-                    from: "{{ interface_key }}"
-                    map:
-                        FastEthernet: ethernetCsmacd
-                        GigabitEthernet: ethernetCsmacd
-                        Management: ethernetCsmacd
-                        Loopback: softwareLoopback
-                        Port-Channel: ieee8023adLag
-                        Port-channel: ieee8023adLag
-                        Vlan: l3ipvlan
+                    - mode: map
+                      regexp: "(?P<value>(\\w|-)*)\\d+"
+                      from: "{{ interface_key }}"
+                      map:
+                          FastEthernet: ethernetCsmacd
+                          GigabitEthernet: ethernetCsmacd
+                          Management: ethernetCsmacd
+                          Loopback: softwareLoopback
+                          Port-Channel: ieee8023adLag
+                          Port-channel: ieee8023adLag
+                          Vlan: l3ipvlan
             enabled:
                 _process:
-                    mode: is_present
-                    regexp: "(?P<value>no shutdown)"
-                    from: "{{ bookmarks.interface[interface_key] }}"
+                    - mode: is_present
+                      regexp: "(?P<value>no shutdown)"
+                      from: "{{ bookmarks.interface[interface_key] }}"
             description:
                 _process:
-                    mode: search
-                    regexp: "description (?P<value>.*)"
-                    from: "{{ bookmarks.interface[interface_key] }}"
+                    - mode: search
+                      regexp: "description (?P<value>.*)"
+                      from: "{{ bookmarks.interface[interface_key] }}"
             mtu:
                 _process:
-                    mode: search
-                    regexp: "mtu (?P<value>[0-9]+)"
-                    from: "{{ bookmarks.interface[interface_key] }}"
+                    - mode: search
+                      regexp: "mtu (?P<value>[0-9]+)"
+                      from: "{{ bookmarks.interface[interface_key] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    mode: block
-                    regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
-                    from: "{{ bookmarks.interfaces.0 }}"
+                    - mode: block
+                      regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
+                      from: "{{ bookmarks.interfaces.0 }}"
                 index:
                     _process: unnecessary
                 config:
@@ -69,15 +69,15 @@ interfaces:
                         _process: unnecessary
                     name:
                         _process:
-                            mode: value
-                            value: "{{ interface_key }}.{{ subinterface_key}}"
+                            - mode: value
+                              value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _process:
-                            mode: is_present
-                            regexp: "(?P<value>no shutdown)"
-                            from: "{{ bookmarks.subinterface[subinterface_key] }}"
+                            - mode: is_present
+                              regexp: "(?P<value>no shutdown)"
+                              from: "{{ bookmarks.subinterface[subinterface_key] }}"
                     description:
                         _process:
-                            mode: search
-                            regexp: "description (?P<value>.*)"
-                            from: "{{ bookmarks.subinterface[subinterface_key] }}"
+                            - mode: search
+                              regexp: "description (?P<value>.*)"
+                              from: "{{ bookmarks.subinterface[subinterface_key] }}"

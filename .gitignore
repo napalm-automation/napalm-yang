@@ -65,3 +65,5 @@ test/unit/test_devices.py
 tags
 
 report.json
+
+prof/

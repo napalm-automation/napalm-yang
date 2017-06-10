@@ -498,6 +498,8 @@ network-instances:
                                     _process: not_implemented
                 unconstrained-path:
                     _process: not_implemented
+                    path-setup-protocol:
+                        _process: not_implemented
             signaling-protocols:
                 _process: not_implemented
                 rsvp-te:

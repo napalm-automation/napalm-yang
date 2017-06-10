@@ -5,15 +5,15 @@ metadata:
 
 interfaces:
     _process:
-        mode: container
-        container: interfaces
-        replace: true
+        - mode: container
+          container: interfaces
+          replace: true
     interface:
         _process:
-            mode: container
-            container: interface
-            key_element: name
-            key_value: "{{ interface_key }}"
+            - mode: container
+              container: interface
+              key_element: name
+              key_value: "{{ interface_key }}"
         name:
             _process: unnecessary
         hold-time:
@@ -48,10 +48,10 @@ interfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    mode: container
-                    container: unit
-                    key_element: name
-                    key_value: "{{ subinterface_key }}"
+                    - mode: container
+                      container: unit
+                      key_element: name
+                      key_value: "{{ subinterface_key }}"
                 index:
                     _process: unnecessary
                 config:

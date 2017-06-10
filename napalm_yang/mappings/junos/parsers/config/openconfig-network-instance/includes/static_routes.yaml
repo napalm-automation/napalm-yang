@@ -1,0 +1,60 @@
+---
+_process:
+    - mode: gate
+      when: "{{ protocol_key != 'static static' }}"
+static:
+    _process:
+      - mode: container
+        xpath: "route"
+        key_attribute: name
+        from: "{{ bookmarks.parent }}"
+    config:
+        _process: unnecessary
+        prefix:
+            _process:
+                - mode: value
+                  value: "{{ static_key }}"
+        set-tag:
+            _process: not_implemented
+    next-hops:
+        _process: unnecessary
+        next-hop:
+            _process:
+              - mode: container
+                xpath: "qualified-next-hop"
+                key_attribute: name
+                from: "{{ bookmarks.parent }}"
+            config:
+                _process: unnecessary
+                index:
+                    _process: not_implemented
+                metric:
+                    _process:
+                      - mode: xpath
+                        xpath: "metric"
+                        from: "{{ bookmarks.parent }}"
+                next-hop:
+                    _process:
+                        - mode: value
+                          value: "{{ next_hop_key }}"
+                recurse:
+                    _process: not_implemented
+            index:
+                _process: not_implemented
+            interface-ref:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    prefix:
+        _process: not_implemented
+    state:
+        _process: not_implemented
+

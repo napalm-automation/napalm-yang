@@ -8,30 +8,30 @@ ipv4:
         _process: unnecessary
         enabled:
             _process:
-                mode: is_absent
-                regexp: "(?P<value>^\\W*switchport$)"
-                from: "{{ bookmarks['parent'] }}"
+                - mode: is_absent
+                  regexp: "(?P<value>^\\W*switchport$)"
+                  from: "{{ bookmarks['parent'] }}"
         mtu:
             _process: not_implemented
     addresses:
         _process: unnecessary
         address:
             _process:
-                mode: block
-                regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
-                from: "{{ bookmarks['parent'] }}"
+                - mode: block
+                  regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
+                  from: "{{ bookmarks['parent'] }}"
             ip:
                 _process: unnecessary
             config:
                 _process: unnecessary
                 ip:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.ip }}"
+                        - mode: value
+                          value: "{{ extra_vars.ip }}"
                 prefix-length:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.prefix }}"
+                        - mode: value
+                          value: "{{ extra_vars.prefix }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

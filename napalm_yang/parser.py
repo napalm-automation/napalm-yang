@@ -85,6 +85,16 @@ class Parser(object):
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                                    self.extra_vars, None, self.bookmarks)
+        if model._yang_type is not None:
+            # None means it's an element of a list
+            block, extra_vars = self.parser.parse_container(mapping["_process"])
+
+            if block is None:
+                return
+            elif block != "" or extra_vars:
+                self.bookmarks[attribute] = block
+                self.extra_vars[attribute] = extra_vars
+
         for k, v in model:
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
@@ -117,7 +127,15 @@ class Parser(object):
 
         for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"]):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
-            obj = model.add(key)
+
+            try:
+                obj = model.add(key)
+            except KeyError as e:
+                if "is already defined as a list entry" in e.message and \
+                   extra_vars.get("_get_duplicates"):
+                    obj = model[key]
+                else:
+                    raise
 
             key_name = "{}_key".format(attribute)
             self.keys[key_name] = key

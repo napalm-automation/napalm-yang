@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from napalm_base import get_network_driver
+
 import napalm_yang
 
 import pytest
@@ -12,6 +14,16 @@ import sys
 
 import logging
 logger = logging.getLogger("napalm-yang")
+
+
+device_configuration = {
+    "junos": {
+        'hostname': '127.0.0.1',
+        'username': 'vagrant',
+        'password': '',
+        'optional_args': {'port': 12203, 'config_lock': False}
+    }
+}
 
 
 def config_logging():
@@ -34,6 +46,8 @@ BASE_PATH = os.path.dirname(__file__)
 
 test_config_profile_models = [
     ["ios", napalm_yang.models.openconfig_interfaces, "default"],
+    ["eos", napalm_yang.models.openconfig_network_instance, "default"],
+    ["junos", napalm_yang.models.openconfig_network_instance, "default"],
 ]
 
 test_state_profile_models = [
@@ -81,7 +95,11 @@ class Tests(object):
         config.load_dict(json_blob)
 
         configuration = config.translate_config(profile=[profile])
-        #  print(configuration)
+
+        #  driver = get_network_driver(profile)
+        #  with driver(**device_configuration[profile]) as d:
+        #     d.load_merge_candidate(config=configuration)
+        #     print(d.compare_config())
 
         assert configuration == expected_translation
 
@@ -108,6 +126,12 @@ class Tests(object):
 
         #  print(pretty_json(napalm_yang.utils.diff(candidate, running)))
         #  print(configuration)
+
+        #  driver = get_network_driver(profile)
+        #  with driver(**device_configuration[profile]) as d:
+            #  d.load_merge_candidate(config=configuration)
+            #  print(d.compare_config())
+            #  d.discard_config()
 
         assert configuration == expected_translation
 

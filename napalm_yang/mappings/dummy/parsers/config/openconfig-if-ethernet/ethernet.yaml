@@ -16,3 +16,5 @@ ethernet:
             _process: not_implemented
         port-speed:
             _process: not_implemented
+    state:
+        _process: not_implemented
