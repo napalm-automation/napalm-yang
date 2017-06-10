@@ -1,3 +1,4 @@
+from napalm_yang.helpers import template
 
 
 class BaseParser(object):
@@ -54,6 +55,14 @@ class BaseParser(object):
     def _parse_container_gate(cls, mapping):
         """This basically stops parsing the tree by returning None"""
         return None, {}
+
+    @classmethod
+    def _parse_post_process_filter(cls, post_process_filter, key, extra_vars={}):
+        kwargs = dict()
+        kwargs['key'] = key
+        kwargs["extra_vars"] = extra_vars
+        key = template(post_process_filter, **kwargs)
+        return key
 
     """
     @classmethod

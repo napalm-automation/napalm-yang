@@ -1,5 +1,4 @@
 from napalm_yang.parsers.base import BaseParser
-from napalm_yang.helpers import template
 
 import itertools
 
@@ -33,10 +32,7 @@ class TextParser(BaseParser):
                     key = extra_vars.pop("key")
 
                 if post_process_filter:
-                    kwargs = dict()
-                    kwargs['key'] = key
-                    kwargs["extra_vars"] = extra_vars
-                    key = template(post_process_filter, **kwargs)
+                    key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
 
                 extra_vars["_get_duplicates"] = mapping.get("flat", False)
 
