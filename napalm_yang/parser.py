@@ -2,6 +2,7 @@ import os
 import copy
 
 from napalm_yang import helpers
+from napalm_yang.parsers import get_parser
 
 import logging
 logger = logging.getLogger("napalm-yang")
@@ -49,7 +50,7 @@ class Parser(object):
         self.bookmarks = bookmarks or self.bookmarks
 
         if self.mapping:
-            self.parser = helpers.get_parser(self.mapping["metadata"]["processor"])
+            self.parser = get_parser(self.mapping["metadata"]["processor"])
 
     def _execute_methods(self, device, methods):
         result = []
