@@ -27,6 +27,7 @@ Arguments:
 
 * **xpath** (mandatory): elements to traverse
 * **key** (mandatory): which element is the key of the list
+* **post_process_filter** (optional): modify the key with this Jinja2 expression
 
 Example:
 

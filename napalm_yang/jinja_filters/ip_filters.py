@@ -5,6 +5,7 @@ def filters():
     return {
         "netmask_to_cidr": netmask_to_cidr,
         "cidr_to_netmask": cidr_to_netmask,
+        "addrmask_to_cidr": addrmask_to_cidr,
     }
 
 
@@ -26,3 +27,15 @@ def cidr_to_netmask(value):
         >>> "{{ '24'|cidr_to_netmask }}" -> "255.255.255.0"
     """
     return netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask
+
+
+def addrmask_to_cidr(value):
+    """
+    Converts an address and network mask to it's CIDR representation.
+
+    Examples:
+        >>> "{{ '192.168.0.0 255.255.255.0'|addrmask_to_cidr }}" -> "192.168.0.0/24"
+    """
+    value = value.replace(' ', '/')
+    return str(netaddr.IPNetwork(value))
+

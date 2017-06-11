@@ -1,15 +1,8 @@
 import yaml
-
-from napalm_yang.parsers.text import TextParser
-from napalm_yang.parsers.xml import XMLParser
-
-from napalm_yang.translators.text import TextTranslator
-from napalm_yang.translators.xml import XMLTranslator
-
 import os
 import jinja2
 
-from napalm_yang.jinja_filters import ip_filters
+from napalm_yang import jinja_filters
 
 import logging
 logger = logging.getLogger("napalm-yang")
@@ -24,16 +17,6 @@ def yaml_include(loader, node):
 
 
 yaml.add_constructor("!include", yaml_include)
-
-
-def get_parser(parser):
-    parsers = {
-        "TextParser": TextParser,
-        "XMLParser": XMLParser,
-        "TextTranslator": TextTranslator,
-        "XMLTranslator": XMLTranslator,
-    }
-    return parsers[parser]
 
 
 def find_yang_file(profile, filename, path):
@@ -110,7 +93,11 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["extra_vars"] = extra_vars
 
     for k, v in rule.items():
-        rule[k] = _resolve_rule(v, **kwargs)
+        if k.startswith('post_process_'):
+            # don't process post processing rules now, they'll be processed on a second pass
+            rule[k] = v
+        else:
+            rule[k] = _resolve_rule(v, **kwargs)
 
     if "when" in rule.keys():
         w = rule["when"]
@@ -131,7 +118,7 @@ def template(string, **kwargs):
                             undefined=jinja2.StrictUndefined,
                             keep_trailing_newline=True,
                             )
-    env.filters.update(ip_filters.filters())
+    env.filters.update(jinja_filters.load_filters())
 
     template = env.from_string(string)
 

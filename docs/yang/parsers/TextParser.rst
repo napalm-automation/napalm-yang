@@ -36,6 +36,8 @@ Arguments:
  * **flat** (optional) if set to ``true`` (default is ``false``) the parser will understand the configuration for the
    element consists of flat commands instead of nested (for example BGP neighbors or static routes)
  * **key** (optional) set key manually
+ * **post_process_filter** (optional) - Modify the key with this Jinja expression. ``key`` and ``extra_vars``
+   variables are available.
 
 Example 1
 
@@ -144,6 +146,19 @@ Example 7
                   regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
                   from: "{{ bookmarks['network-instances'][0] }}"
                   key: "static static"
+
+Example 8
+
+  Sometimes you need to transform the key value. For example, static routes require the prefix in CIDR format,
+  but Cisco IOS outputs routes in ``<network> <mask>`` format. In that case you can use ``post_process_filter`` to
+  apply additional filters::
+
+    static:
+        _process:
+            - mode: block
+               regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
+               from: "{{ bookmarks['network-instances'][0] }}"
+               post_process_filter: "{{ key|addrmask_to_cidr }}"
 
 
 Leaf - search

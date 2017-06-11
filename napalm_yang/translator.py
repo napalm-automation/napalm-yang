@@ -1,4 +1,5 @@
 from napalm_yang import helpers
+from napalm_yang.parsers import get_parser
 
 
 import logging
@@ -27,7 +28,7 @@ class Translator(object):
                                              self.profile, "translators")
 
         if self.mapping:
-            translator = helpers.get_parser(self.mapping["metadata"]["processor"])
+            translator = get_parser(self.mapping["metadata"]["processor"])
             self.translator = translator(merge=bool(merge), replace=bool(replace))
 
             if translation is None:

@@ -19,6 +19,7 @@ class TextParser(BaseParser):
             else:
                 composite_key = mapping.get("composite_key", None)
                 forced_key = mapping.get("key", None)
+                post_process_filter = mapping.get("post_process_filter", None)
 
                 extra_vars = match.groupdict()
                 block = extra_vars.pop("block")
@@ -29,6 +30,9 @@ class TextParser(BaseParser):
                     key = forced_key
                 else:
                     key = extra_vars.pop("key")
+
+                if post_process_filter:
+                    key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
 
                 extra_vars["_get_duplicates"] = mapping.get("flat", False)
 

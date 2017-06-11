@@ -14,12 +14,15 @@ class XMLParser(BaseParser):
         xml = etree.fromstring(mapping["from"])
 
         mandatory_elements = mapping.pop("mandatory", [])
+        post_process_filter = mapping.pop("post_process_filter", None)
 
         for element in itertools.chain(xml.xpath(mapping["xpath"]), mandatory_elements):
             if isinstance(element, dict):
                 yield element["key"], element["block"], element["extra_vars"]
             else:
                 key = element.xpath(mapping["key"])[0].text.strip()
+                if post_process_filter:
+                    key = cls._parse_post_process_filter(post_process_filter, key)
                 yield key, etree.tostring(element), {}
 
     @classmethod
