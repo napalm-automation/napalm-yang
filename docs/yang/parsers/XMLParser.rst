@@ -3,148 +3,120 @@ XMLParser
 
 This extractor will read an XML an extract data from it.
 
-To illustrate the examples below we will use the following configuration::
+List Elements
+-------------
 
-    <configuration>
-        <interfaces>
-            <interface>
-                <name>ge-0/0/0</name>
-                <description>adasdasd</description>
-            </interface>
-            <interface>
-                <name>lo0</name>
-                <disable/>
-            </interface>
-        </interfaces>
-    </configuration>
 
-List - xpath
-------------
+=========== ======================================= ==============================================
+Name        Arguments                               Description
+=========== ======================================= ==============================================
+xpath       * **xpath** [#f101]_ (mandatory)        Advances in the XML document up to the point
+            * **key** [#f102]_ (mandatory)          where the relevant list of elements is found.
+=========== ======================================= ==============================================
 
-Advances in the XML document up to the point where the relevant list of elements is found.
+.. rubric:: Arguments
 
-Arguments:
+.. [#f101] **xpath** - Elements to traverse
+.. [#f102] **key** - When extracting a list of elements, which subelement is the key element.
 
-* **xpath** (mandatory): elements to traverse
-* **key** (mandatory): which element is the key of the list
+Examples
+________
 
-Example:
+Example: xpath
+""""""""""""""
 
-  Starting from the root, the following action will move us to ``interface`` so we can
-  parse each interface individually::
+When processing interfaces, go to ``interfaces/interface`` to find all the interface element and use the subelement ``name`` as key.
+
+.. code:: yaml
 
     interface:
         _process:
-          - mode: xpath
-            xpath: "interfaces/interface"
-            key: name
-            from: "{{ bookmarks.interfaces }}"
-
-  This means after this action we will have a list of interface blocks like this::
+            - mode: xpath
+              xpath: "interfaces/interface"
+              key: name
+              from: "{{ bookmarks.interfaces.0 }}"
 
 
-    - <interface>
-        <name>ge-0/0/0</name>
-        <description>adasdasd</description>
-      </interface>
-    - <interface>
-        <name>lo0</name>
-        <disable/>
-      </interface>
 
-  And we will be able to keep processing them individually.
+Leaf Elements
+-------------
 
-Leaf - xpath
-------------
+=========== ======================================= =============================================================
+Name        Arguments                               Description
+=========== ======================================= =============================================================
+xpath       * **xpath** [#f201]_ (mandatory)        Extracts a value from an element
+            * **regexp** [#f202]_ (optional)
+            * **default** [#f203]_ (optional)
+            * **attribute** [#f204]_ (optional)
+value       * **value** [#f205]_ (mandatory)        Apply a user-defined value to the object.
+map         * **xpath** [#f201]_ (mandatory)        Extract value and do a lookup to choose value
+            * **regexp** [#f202]_ (optional)
+            * **map** [#f206]_ (optional)
+is_absent   Same as ``xpath``                       Works exactly like ``xpath`` but if the evaluation **is**
+                                                    ``None``, it will return ``True``
+is_present  Same as ``xpath``                       Works exactly like ``xpath`` but if the evaluation **is not**
+                                                    ``None``, it will return ``True``
+=========== ======================================= =============================================================
 
-Extracts a value from an element.
+.. rubric:: Arguments
 
-Arguments:
+.. [#f201] **xpath** - element to extract 
+.. [#f202] **regexp** - Apply regexp to the value of the element. Must capture value group.
+.. [#f203] **default** - Set this value if no element is found.
+.. [#f204] **attribute** - Instead of the text of the element extracted, extract this attribute of the element.
+.. [#f205] **value** - Value to apply
+.. [#f206] **map** - Dictionary where we will do the lookup action.
 
-* **xpath** (mandatory): element to extract
-* **regexp** (optional): Apply regexp to the value of the element. Must capture ``value`` group.
-  See "leaf - map" example for more details.
-* **default** (optional): Set this value if no element is found.
-* **attribute** (optional): Instead of the ``text`` of the element extracted, extract this attribute of the element.
+Examples
+________
 
-Example:
+Example: xpath
+""""""""""""""
 
-  For each interface, read the element ``description`` and map it into the object::
+Extract content of the element ``description`` and assign it to the leaf.
 
-    description:
-        _process:
-          - mode: xpath
-            xpath: description
-            from: "{{ bookmarks['parent'] }}"
+.. code:: yaml
 
-Leaf - value
-------------
+            description:
+                _process:
+                    - mode: xpath
+                      xpath: description
+                      from: "{{ bookmarks['parent'] }}"
 
-Apply a user-defined value to the object.
+Example: is_absent
+""""""""""""""""""
 
-Arguments:
+If the element ``<disable/>`` exists it means the interface is down so we are going to check it's absent in which chase ``enabled`` will be ``True``.
 
-* **value** (mandatory): What value to apply
+.. code:: yaml
 
-Example:
+            enabled:
+                _process:
+                    - mode: is_absent
+                      xpath: "disable"
+                      from: "{{ bookmarks['parent'] }}"
 
-  In the following example we can assign a value we already have to the ``interface.name`` attribute::
 
-    name:
-        _process:
-          - mode: value
-            value: "{{ interface_key }}"
+Example: map
+""""""""""""
 
-Leaf - map
-----------
+Use map in combination with regexp to extract the interface type. For example, if the interface name is ``ge-0/0/0`` the regexp will extract ``ge`` and assign the type ``ethernetCsmacd``.
 
-Extract value and do a lookup to choose value.
+.. code:: yaml
 
-Arguments:
+            type:
+                _process:
+                    - mode: map
+                      xpath: name
+                      regexp: "(?P<value>[a-z]+).*"
+                      from: "{{ bookmarks['parent'] }}"
+                      map:
+                          ge: ethernetCsmacd
+                          xe: ethernetCsmacd
+                          et: ethernetCsmacd
+                          irb: ethernetCsmacd
+                          me: ethernetCsmacd
+                          vlan: ethernetCsmacd
+                          lo: softwareLoopback
+                          ae: ieee8023adLag
 
-* **xpath** (mandatory): Same as ``xpath`` action.
-* **regexp** (optional): Same as ``xpath`` action.
-* **map** (mandatory): Dictionary where we will do the lookup action.
-
-Example:
-
-  We can read an element, extract some information and then apply the lookup function, for example, we can
-  read the interface name, extract some of the first few characters and figure out the type of interface
-  like this::
-
-    type:
-        _process:
-          - mode: map
-            xpath: name
-            regexp: "(?P<value>[a-z]+).*"
-            from: "{{ bookmarks['parent'] }}"
-            map:
-                ge: ethernetCsmacd
-                lo: softwareLoopback
-                ae: ieee8023adLag
-
-  The regular expression will give `ge` and `lo` which we can map into `ethernetCsmacd` and
-  `ieee8023adLag` respectively.
-
-Leaf - is_absent
-----------------
-
-Works exactly like ``xpath`` but if the evaluation is ``None``, it will return ``True``.
-
-Example:
-
-  We could check if an interface is enabled with this::
-
-    enabled:
-        _process:
-          - mode: is_absent
-            xpath: "disable"
-            from: "{{ bookmarks['parent'] }}"
-
-  As `disable` is missing in the interface `ge-0/0/0` we know it's enabled while `lo0` will be not
-  as it was present.
-
-Leaf - is_present
------------------
-
-Works exactly like ``xpath`` but if the evaluation is ``None``, it will return ``False``.
