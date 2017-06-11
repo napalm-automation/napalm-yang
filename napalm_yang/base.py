@@ -1,6 +1,7 @@
 import ast
 
 
+from napalm_yang.supported_models import SUPPORTED_MODELS
 from napalm_yang.parser import Parser
 from napalm_yang.translator import Translator
 
@@ -33,7 +34,7 @@ class Root(object):
         return self._elements
     "base",
 
-    def add_model(self, model):
+    def add_model(self, model, force=False):
         """
         Add a model.
 
@@ -41,6 +42,7 @@ class Root(object):
 
         Args:
             model (PybindBase): Model to add.
+            force (bool): If not set, verify the model is in SUPPORTED_MODELS
 
         Examples:
 
@@ -54,6 +56,9 @@ class Root(object):
             model = model()
         except Exception:
             pass
+
+        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS]:
+            raise ValueError("Only models in SUPPORTED_MODELS can be added without `force=True`")
 
         for k, v in model:
             self._elements[k] = v
@@ -213,7 +218,7 @@ class Root(object):
             >>> running_config.parse_config(native=config, profile="junos")
         """
         if attrs is None:
-            attrs = [a for _, a in self]
+            attrs = self.elements().values()
 
         for v in attrs:
             parser = Parser(v, device=device, profile=profile, native=native, is_config=True)
@@ -249,7 +254,7 @@ class Root(object):
             >>> state.parse_config(native=state_data, profile="junos")
         """
         if attrs is None:
-            attrs = [a for _, a in self]
+            attrs = self.elements().values()
 
         for v in attrs:
             parser = Parser(v, device=device, profile=profile, native=native, is_config=False)
