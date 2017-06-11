@@ -1,7 +1,7 @@
 from napalm_yang import base
 
 
-def model_to_dict(model):
+def model_to_dict(model, mode=""):
     """
     Given a model, return a representation of the model in a dict.
 
@@ -10,6 +10,7 @@ def model_to_dict(model):
     Args:
 
         model (PybindBase): Model to transform.
+        mode (string): Whether to print config, state or all elements ("" for all)
 
     Returns:
 
@@ -41,6 +42,16 @@ def model_to_dict(model):
         >>>                     "up [rw]": "uint32"
             (trimmed for clarity)
     """
+    def is_mode(obj, mode):
+        if mode == "":
+            return True
+        elif mode == "config":
+            return obj._yang_name == "config" or obj._is_config
+        elif mode == "state":
+            return obj._yang_name == "state" or not obj._is_config
+        else:
+            raise ValueError("mode can only be config, state or ''. Passed: {}".format(mode))
+
     def get_key(key, model, parent_defining_module):
         key = "{} {}".format(key, "[rw]" if model._is_config else "[ro]")
 
@@ -48,14 +59,16 @@ def model_to_dict(model):
             key = "{}:{}".format(model._defining_module, key)
         return key
 
-    if model._yang_type in ("container", ):
-        return {get_key(k, v, model._defining_module): model_to_dict(v)
-                for k, v in model}
-    elif model._yang_type in ("list", ):
-        return {get_key(k, v, model._defining_module): model_to_dict(v)
-                for k, v in model._contained_class()}
+    if model._yang_type in ("container", "list", ):
+        cls = model if model._yang_type in ("container", ) else model._contained_class()
+        result = {}
+        for k, v in cls:
+            r = model_to_dict(v, mode)
+            if r:
+                result[get_key(k, v, model._defining_module)] = r
+        return result
     else:
-        return model._yang_type
+        return model._yang_type if is_mode(model, mode) else None
 
 
 def _diff_root(f, s):
