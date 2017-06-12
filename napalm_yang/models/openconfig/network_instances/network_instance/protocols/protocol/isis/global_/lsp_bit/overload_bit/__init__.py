@@ -1,11 +1,23 @@
 
 from operator import attrgetter
-from pyangbind.lib.yangtypes import RestrictedPrecisionDecimalType, RestrictedClassType, TypedListType
-from pyangbind.lib.yangtypes import YANGBool, YANGListType, YANGDynClass, ReferenceType
+from pyangbind.lib.yangtypes import RestrictedPrecisionDecimalType
+from pyangbind.lib.yangtypes import RestrictedClassType
+from pyangbind.lib.yangtypes import TypedListType
+from pyangbind.lib.yangtypes import YANGBool
+from pyangbind.lib.yangtypes import YANGListType
+from pyangbind.lib.yangtypes import YANGDynClass
+from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
 from decimal import Decimal
 from bitarray import bitarray
 import __builtin__
+import six
+
+# PY3 support of some PY2 keywords (needs improved)
+if six.PY3:
+ long = int
+ unicode = str
+
 import config
 import state
 import reset_triggers
