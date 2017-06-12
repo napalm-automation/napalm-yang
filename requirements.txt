@@ -4,4 +4,4 @@ lxml
 jinja2
 PyYAML
 napalm-base
--e git://github.com/napalm-automation/pyangbind.git@napalm_custom#egg=pyangbind
+-e git://github.com/ktbyers/pyangbind.git@napalm_custom_py3_poc#egg=pyangbind
