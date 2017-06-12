@@ -105,6 +105,7 @@ class XMLParser(BaseParser):
                 composite_key = mapping.get("composite_key", None)
                 forced_key = mapping.get("key", None)
                 key_attribute = mapping.get("key_attribute", None)
+                post_process_filter = mapping.pop("post_process_filter", None)
 
                 if composite_key:
                     key = " ".join([extra_vars[k] for k in composite_key])
@@ -114,6 +115,9 @@ class XMLParser(BaseParser):
                     key = element.xpath(key_attribute)[0].text.strip()
                 else:
                     key = element.tag
+
+                if post_process_filter:
+                    key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
 
                 yield key, etree.tostring(element), extra_vars
 
