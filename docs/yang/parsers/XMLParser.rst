@@ -19,24 +19,6 @@ xpath       * **xpath** [#f101]_ (mandatory)        Advances in the XML document
 .. [#f101] **xpath** - Elements to traverse
 .. [#f102] **key** - When extracting a list of elements, which subelement is the key element.
 
-Examples
-________
-
-Example: xpath
-""""""""""""""
-
-When processing interfaces, go to ``interfaces/interface`` to find all the interface element and use the subelement ``name`` as key.
-
-.. code:: yaml
-
-    interface:
-        _process:
-            - mode: xpath
-              xpath: "interfaces/interface"
-              key: name
-              from: "{{ bookmarks.interfaces.0 }}"
-
-
 
 Leaf Elements
 -------------
@@ -67,13 +49,58 @@ is_present  Same as ``xpath``                       Works exactly like ``xpath``
 .. [#f205] **value** - Value to apply
 .. [#f206] **map** - Dictionary where we will do the lookup action.
 
-Examples
-________
+How-Tos
+-------
 
-Example: xpath
-""""""""""""""
+Navigate the object and extract a list of elements
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Extract content of the element ``description`` and assign it to the leaf.
+Let's imagine we have the following data:
+
+.. code:: xml
+
+    <configuration>
+        <interfaces>
+            <interface>
+                <name>ge-0/0/0</name>
+                ...
+            </interface>
+            <interface>
+                <name>ge-0/0/1</name>
+                ...
+            </interface>
+            <interface>
+                <name>ge-0/0/2</name>
+                ...
+            </interface>
+        </interfaces>
+    </configuration>
+
+In order to process the configuration and extract each interface individually, assigning the ``name`` subelement as the key for the ``YANG List`` we would do something like this:
+
+.. code:: yaml
+
+    interface:
+        _process:
+            - mode: xpath
+              xpath: "interfaces/interface"
+              key: name
+              from: "{{ bookmarks.interfaces.0 }}"
+
+Extract a simple element
+""""""""""""""""""""""""
+
+Now that we are extracting each element of the list individually we may have something like:
+
+.. code:: xml
+
+            <interface>
+                <name>ge-0/0/0</name>
+                <description>This is my description</description>
+                ...
+            </interface>
+
+So in order to extract the description and assign it we would only have to do something like this:
 
 .. code:: yaml
 
@@ -83,10 +110,27 @@ Extract content of the element ``description`` and assign it to the leaf.
                       xpath: description
                       from: "{{ bookmarks['parent'] }}"
 
-Example: is_absent
-""""""""""""""""""
+Checking if an element is absent
+""""""""""""""""""""""""""""""""
 
-If the element ``<disable/>`` exists it means the interface is down so we are going to check it's absent in which chase ``enabled`` will be ``True``.
+A disabled interface will have the element ``disabled`` present while an enabled interface it will not have any mention of it. For example:
+
+
+.. code:: xml
+
+            <interface>
+                <name>ge-0/0/0</name>
+                <description>I am not enabled</description>
+                <disabled/>
+                ...
+            </interface>
+            <interface>
+                <name>ge-0/0/0</name>
+                <description>I am enabled</description>
+                ...
+            </interface>
+
+So in order to know if the interface is enabled you have to verify if the element is absent. You can do that like this:
 
 .. code:: yaml
 
@@ -96,11 +140,12 @@ If the element ``<disable/>`` exists it means the interface is down so we are go
                       xpath: "disable"
                       from: "{{ bookmarks['parent'] }}"
 
+There is also a mode called ``is_present`` that behaves in the exact opposite way.
 
-Example: map
-""""""""""""
+Extracting information and assigning a known value
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Use map in combination with regexp to extract the interface type. For example, if the interface name is ``ge-0/0/0`` the regexp will extract ``ge`` and assign the type ``ethernetCsmacd``.
+Sometimes the information is somehow encoded in the configuration. For example, in Junos an interface which name starts with ``ge`` is of type ``ethernetCsmacd`` while an interface which name starts with ``lo`` is of type ``softwareLoopback``. You can extract information from the configuration and assign a known value like this:
 
 .. code:: yaml
 
@@ -119,4 +164,3 @@ Use map in combination with regexp to extract the interface type. For example, i
                           vlan: ethernetCsmacd
                           lo: softwareLoopback
                           ae: ieee8023adLag
-
