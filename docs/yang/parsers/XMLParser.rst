@@ -113,7 +113,7 @@ So in order to extract the description and assign it we would only have to do so
 Checking if an element is absent
 """"""""""""""""""""""""""""""""
 
-A disabled interface will have the element ``disabled`` present while an enabled interface it will not have any mention of it. For example:
+A disabled interface will have the element ``disabled`` present while an enabled interface will not have any mention of it. For example:
 
 
 .. code:: xml
