@@ -39,15 +39,17 @@ static:
         next-hop:
             _process:
                 - mode: block
-                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
+                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>\\d+.\\d+.\\d+.\\d+)?).*)"
                   from: "{{ bookmarks['static'][static_key] }}"
+                  post_process_filter: "{{ key|trim }}"
                 - mode: block
-                  regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>[0-9a-f:]+).*)"
+                  regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>[0-9a-f:]+:[0-9a-f:]+)?).*)"
                   from: "{{ bookmarks['static'][static_key] }}"
+                  post_process_filter: "{{ key|trim }}"
             config:
                 _process: unnecessary
                 index:
-                    _process: not_implemented
+                    _process: unnecessary
                 metric:
                     _process:
                         - mode: search
@@ -56,25 +58,37 @@ static:
                 next-hop:
                     _process:
                         - mode: value
-                          value: "{{ next_hop_key }}"
+                          value: "DROP"
+                          when: "{{ extra_vars.interface_ref == 'Null0' }}"
+                        - mode: value
+                          value: "{{ extra_vars.next_hop }}"
+                          when: "{{ extra_vars.next_hop is not none }}"
                 recurse:
                     _process: not_implemented
             index:
-                _process: not_implemented
+                _process: unnecessary
             interface-ref:
-                _process: not_implemented
+                _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process:
+                        - mode: gate
+                          when: "{{ extra_vars.interface_ref is none }}"
                     interface:
-                        _process: not_implemented
+                        _process:
+                            - mode: search
+                              regexp: "^(?P<value>[^\\.]+).*"
+                              from: "{{ extra_vars.interface_ref }}"
                     subinterface:
-                        _process: not_implemented
+                        _process:
+                            - mode: search
+                              regexp: ".+\\.(?P<value>.+)"
+                              from: "{{ extra_vars.interface_ref }}"
                 state:
                     _process: not_implemented
             state:
                 _process: not_implemented
     prefix:
-        _process: not_implemented
+        _process: unnecessary
     state:
         _process: not_implemented
 
