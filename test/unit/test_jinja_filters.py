@@ -20,6 +20,43 @@ from napalm_yang.jinja_filters import ip_filters, load_filters
 
 
 class TestJinjaFilters(unittest.TestCase):
+    def test_netmask_to_cidr(self):
+        """
+        Tests Jinja2 filter ```netmask_to_cidr```:
+
+            * check if load_filters returns the correct function
+            * check if raises AddrFormatError on invalid mask
+            * check if prefix length is returned as expected
+        """
+
+        self.assertTrue(HAS_NETADDR)
+
+        self.assertEqual(load_filters()['netmask_to_cidr'], ip_filters.netmask_to_cidr)
+
+        self.assertRaises(AddrFormatError, ip_filters.netmask_to_cidr, 'bad')
+
+        self.assertEqual(ip_filters.netmask_to_cidr('255.255.255.0'), 24)
+        self.assertEqual(ip_filters.netmask_to_cidr('255.255.255.255'), 32)
+
+    def test_cidr_to_netmask(self):
+        """
+        Tests Jinja2 filter ```cidr_to_netmask```:
+
+            * check if load_filters returns the correct function
+            * check if raises AddrFormatError on invalid prefix length
+            * check if network mask is returned as expected
+        """
+
+        self.assertTrue(HAS_NETADDR)
+
+        self.assertEqual(load_filters()['cidr_to_netmask'], ip_filters.cidr_to_netmask)
+
+        self.assertRaises(AddrFormatError, ip_filters.cidr_to_netmask, 'bad')
+
+        self.assertEqual(str(ip_filters.cidr_to_netmask(24)), '255.255.255.0')
+        self.assertEqual(str(ip_filters.cidr_to_netmask('24')), '255.255.255.0')
+        self.assertEqual(str(ip_filters.cidr_to_netmask(32)), '255.255.255.255')
+
     def test_normalize_prefix(self):
         """
         Tests Jinja2 filter ```normalize_prefix```:
