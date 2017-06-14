@@ -134,6 +134,8 @@ class Root(object):
             >>> print(200, config.vlans.vlan[200].config.name)
             ... (200, u'dev')
         """
+        if overwrite:
+            self._elements = {}
         for k, v in data.items():
             if k not in self._elements.keys():
                 raise AttributeError("Model {} is not loaded".format(k))
