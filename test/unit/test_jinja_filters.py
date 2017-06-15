@@ -53,9 +53,9 @@ class TestJinjaFilters(unittest.TestCase):
 
         self.assertRaises(AddrFormatError, ip_filters.cidr_to_netmask, 'bad')
 
-        self.assertEqual(str(ip_filters.cidr_to_netmask(24)), '255.255.255.0')
-        self.assertEqual(str(ip_filters.cidr_to_netmask('24')), '255.255.255.0')
-        self.assertEqual(str(ip_filters.cidr_to_netmask(32)), '255.255.255.255')
+        self.assertEqual(ip_filters.cidr_to_netmask(24), '255.255.255.0')
+        self.assertEqual(ip_filters.cidr_to_netmask('24'), '255.255.255.0')
+        self.assertEqual(ip_filters.cidr_to_netmask(32), '255.255.255.255')
 
     def test_normalize_prefix(self):
         """

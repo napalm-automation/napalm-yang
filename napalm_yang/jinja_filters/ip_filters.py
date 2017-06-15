@@ -28,7 +28,7 @@ def cidr_to_netmask(value):
     Examples:
         >>> "{{ '24'|cidr_to_netmask }}" -> "255.255.255.0"
     """
-    return netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask
+    return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
 
 
 def normalize_prefix(value):
