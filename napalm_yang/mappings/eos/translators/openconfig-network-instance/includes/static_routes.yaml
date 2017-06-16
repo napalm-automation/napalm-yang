@@ -3,7 +3,19 @@ _process:
     - mode: gate
       when: "{{ protocol_key != 'static static' }}"
 static:
-    _process: unnecessary
+    _process:
+      - mode: container
+        prefix: "ip route {{ static_key }}"
+        negate: "no ip route {{ static_key }}\n"
+        negate_prefix: "no ip route {{ static_key }}"
+        when: "{{ network_instance_key == 'global' }}"
+        in: "network-instances"
+      - mode: container
+        prefix: "ip route vrf {{ network_instance_key }} {{ static_key }}"
+        negate: "no ip route vrf {{ network_instance_key }} {{ static_key }}\n"
+        negate_prefix: "no ip route vrf {{ network_instance_key }} {{ static_key }}"
+        when: "{{ network_instance_key != 'global' }}"
+        in: "network-instances"
     config:
         _process: unnecessary
         prefix:
@@ -15,15 +27,9 @@ static:
         next-hop:
             _process:
               - mode: container
-                key_value: "ip route {{ static_key }} {{ next_hop_key }}\n"
-                negate: "no ip route {{ static_key }} {{ next_hop_key }}\n"
-                when: "{{ network_instance_key == 'global' }}"
-                in: "network-instances"
-              - mode: container
-                key_value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }}\n"
-                negate: "no ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }}\n"
-                when: "{{ network_instance_key != 'global' }}"
-                in: "network-instances"
+                key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
+                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}"
+                end: "\n"
             config:
                 _process: unnecessary
                 index:
@@ -31,13 +37,8 @@ static:
                 metric:
                     _process:
                       - mode: element
-                        value: "ip route {{ static_key }} {{ next_hop_key }} {{ model }}\n"
-                        negate: "ip route {{ static_key }} {{ next_hop_key }} 1\n"
-                        when: "{{ network_instance_key == 'global' }}"
-                      - mode: element
-                        value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }} {{ model }}\n"
-                        negate: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }} 1\n"
-                        when: "{{ network_instance_key != 'global' }}"
+                        value: " {{ model }}"
+                        negate: " 1"
                 next-hop:
                     _process: unnecessary
                 recurse:
