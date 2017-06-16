@@ -10,7 +10,7 @@ class Translator(object):
 
     def __init__(self, model, profile,
                  translation=None, keys=None, bookmarks=None,
-                 merge=None, replace=None, other=None):
+                 merge=None, replace=None, other=None, extra_vars=None):
         self.model = model
         self.profile = profile
         self._defining_module = model._defining_module
@@ -19,6 +19,7 @@ class Translator(object):
         self.translation = translation
         self.keys = keys or {"parent_key": None}
         self.bookmarks = bookmarks or {self._yang_name: translation, "parent": translation}
+        self.extra_vars = extra_vars or {}
 
         self.merge = merge
         self.replace = replace
@@ -62,15 +63,16 @@ class Translator(object):
             self.bookmarks["parent"] = translation
 
             rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                        None, model, self.bookmarks)
+                                        self.extra_vars, model, self.bookmarks)
 
-            et = self.translator.translate_container(attribute, model, other, rule,
+            et, extra_vars = self.translator.translate_container(attribute, model, other, rule,
                                                      translation, self.bookmarks)
 
             if et is None:
                 return
 
             self.bookmarks[attribute] = et
+            self.extra_vars.update(extra_vars)
         else:
             et = translation
 
@@ -84,7 +86,7 @@ class Translator(object):
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
                 translator = Translator(v, self.profile, et, self.keys,
-                                        self.bookmarks, self.merge, self.replace, other_attr)
+                                        self.bookmarks, self.merge, self.replace, other_attr, self.extra_vars)
                 translator.translate()
             else:
                 self._translate(k, v, mapping[v._yang_name], et, other_attr)
@@ -112,11 +114,11 @@ class Translator(object):
             self.keys["parent_key"] = key
 
             translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
-                                                    self.keys, None, element, self.bookmarks)
+                                                    self.keys, self.extra_vars, element, self.bookmarks)
 
             self.translator.default_element(translation_rule, translation, self.bookmarks,
                                             replacing=True)
-            et = self.translator.init_element(attribute, element, other_element, translation_rule,
+            et, extra_vars = self.translator.init_element(attribute, element, other_element, translation_rule,
                                               translation, self.bookmarks)
 
             if et is None:
@@ -125,6 +127,7 @@ class Translator(object):
 
             self.bookmarks[attribute][key] = et
             self.bookmarks["parent"] = et
+            self.extra_vars.update(extra_vars)
 
             self._translate(attribute, element, mapping, et, other_element)
 
@@ -149,7 +152,7 @@ class Translator(object):
                 self.keys["parent_key"] = key
 
                 translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
-                                                        self.keys, None, element,
+                                                        self.keys, self.extra_vars, element,
                                                         self.bookmarks)
 
                 self.translator.default_element(translation_rule, translation, self.bookmarks)
