@@ -1,0 +1,188 @@
+---
+metadata:
+    processor: JSONParser
+    execute:
+        - method: "device.run_commands"
+          args:
+              commands: ["show interfaces", "show snmp mib ifmib ifindex"]
+
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - mode: dict
+              from: "{{ bookmarks.interfaces.0.interfaces|json }}"
+        config:
+            _process: unnecessary
+        hold-time:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+        state:
+            _process: unnecessary
+            admin-status:
+                _process:
+                    - mode: map
+                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      map:
+                          "disabled": DOWN
+                          "errdisabled": DOWN
+                          "connected": UP
+                          "notconnect": UP
+            counters:
+                _process: unnecessary
+                in-broadcast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.inBroadcastPkts }}"
+                in-discards:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.inDiscards }}"
+                in-errors:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.totalInErrors }}"
+                in-multicast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.inMulticastPkts }}"
+                    _process: not_implemented
+                in-octets:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.inOctets }}"
+                    _process: not_implemented
+                in-unicast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.inUcastPkts }}"
+                    _process: not_implemented
+                in-unknown-protos:
+                    _process: not_implemented
+                last-clear:
+                    _process: not_implemented
+                out-broadcast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.outBroadcastPkts }}"
+                    _process: not_implemented
+                out-discards:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.outDiscards }}"
+                    _process: not_implemented
+                out-errors:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.totalOutErrors }}"
+                    _process: not_implemented
+                out-multicast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.outMulticastPkts }}"
+                    _process: not_implemented
+                out-octets:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.outOctets }}"
+                    _process: not_implemented
+                out-unicast-pkts:
+                    _process:
+                        - mode: value
+                          value:  "{{ bookmarks.parent.interfaceCounters.outUcastPkts }}"
+            description:
+                _process:
+                    - mode: value
+                      value: "{{ bookmarks.parent.description }}"
+            enabled:
+                _process:
+                    - mode: map
+                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      map:
+                          "disabled": false
+                          "errdisabled": true
+                          "connected": true
+                          "notconnect": true
+            ifindex:
+                _process: not_implemented
+            last-change:
+                _process: not_implemented
+            mtu:
+                _process:
+                    - mode: value
+                      value: "{{ bookmarks.parent.mtu }}"
+            name:
+                _process: not_implemented
+            oper-status:
+                _process:
+                    - mode: map
+                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      map:
+                          "disabled": DOWN
+                          "errdisabled": DOWN
+                          "connected": UP
+                          "notconnect": DOWN
+            type:
+                _process:
+                    - mode: map
+                      value: "{{ bookmarks.parent.get('hardware', 'Unspecified') }}"
+                      map:
+                          "ethernet": ethernetCsmacd
+                          "Unspecified": null
+        subinterfaces:
+            _process: not_implemented
+            subinterface:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    admin-status:
+                        _process: not_implemented
+                    counters:
+                        _process: not_implemented
+                        in-broadcast-pkts:
+                            _process: not_implemented
+                        in-discards:
+                            _process: not_implemented
+                        in-errors:
+                            _process: not_implemented
+                        in-multicast-pkts:
+                            _process: not_implemented
+                        in-octets:
+                            _process: not_implemented
+                        in-unicast-pkts:
+                            _process: not_implemented
+                        in-unknown-protos:
+                            _process: not_implemented
+                        last-clear:
+                            _process: not_implemented
+                        out-broadcast-pkts:
+                            _process: not_implemented
+                        out-discards:
+                            _process: not_implemented
+                        out-errors:
+                            _process: not_implemented
+                        out-multicast-pkts:
+                            _process: not_implemented
+                        out-octets:
+                            _process: not_implemented
+                        out-unicast-pkts:
+                            _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    ifindex:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    last-change:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    oper-status:
+                        _process: not_implemented

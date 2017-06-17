@@ -52,7 +52,7 @@ test_config_profile_models = [
 
 test_state_profile_models = [
     ["junos", napalm_yang.models.openconfig_interfaces, "default"],
-    ["eos", napalm_yang.models.openconfig_platform, "default"],
+    ["eos", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 
 

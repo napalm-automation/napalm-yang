@@ -1,0 +1,40 @@
+{
+    "interfaces": {
+        "interface": {
+            "Ethernet1": {
+                "name": "Ethernet1",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 2630,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-unicast-pkts": 104
+                    },
+                    "description": "",
+                    "enabled": true,
+                    "mtu": 1500,
+                    "oper-status": "UP",
+                    "type": "ethernetCsmacd"
+                }
+            },
+            "Management1": {
+                "name": "Management1",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 19,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "out-unicast-pkts": 758
+                    },
+                    "description": "",
+                    "enabled": true,
+                    "mtu": 1500,
+                    "oper-status": "UP",
+                    "type": "ethernetCsmacd"
+                }
+            }
+        }
+    }
+}
