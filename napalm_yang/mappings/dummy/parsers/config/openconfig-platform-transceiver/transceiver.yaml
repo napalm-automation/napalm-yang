@@ -1,0 +1,34 @@
+---
+metadata:
+    processor: unset
+
+transceiver:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        enabled:
+            _process: not_implemented
+        ethernet-pmd-preconf:
+            _process: not_implemented
+        form-factor-preconf:
+            _process: not_implemented
+    physical-channels:
+        _process: not_implemented
+        channel:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                description:
+                    _process: not_implemented
+                index:
+                    _process: not_implemented
+                target-output-power:
+                    _process: not_implemented
+                tx-laser:
+                    _process: not_implemented
+            index:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+    state:
+        _process: not_implemented

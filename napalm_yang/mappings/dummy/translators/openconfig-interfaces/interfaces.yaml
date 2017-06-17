@@ -1,0 +1,52 @@
+---
+metadata:
+    processor: unset
+
+interfaces:
+    _process: not_implemented
+    interface:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            description:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            mtu:
+                _process: not_implemented
+            name:
+                _process: not_implemented
+            type:
+                _process: not_implemented
+        hold-time:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        name:
+            _process: not_implemented
+        state:
+            _process: not_implemented
+        subinterfaces:
+            _process: not_implemented
+            subinterface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                index:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented

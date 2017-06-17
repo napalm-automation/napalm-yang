@@ -1,0 +1,26 @@
+---
+metadata:
+    processor: unset
+
+vlans:
+    _process: not_implemented
+    vlan:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            name:
+                _process: not_implemented
+            status:
+                _process: not_implemented
+            tpid:
+                _process: not_implemented
+            vlan-id:
+                _process: not_implemented
+        members:
+            _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        vlan-id:
+            _process: not_implemented

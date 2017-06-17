@@ -1,0 +1,98 @@
+---
+metadata:
+    processor: unset
+
+ipv6:
+    _process: not_implemented
+    addresses:
+        _process: not_implemented
+        address:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                ip:
+                    _process: not_implemented
+                prefix-length:
+                    _process: not_implemented
+            ip:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+            vrrp:
+                _process: not_implemented
+                vrrp-group:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        accept-mode:
+                            _process: not_implemented
+                        advertisement-interval:
+                            _process: not_implemented
+                        preempt:
+                            _process: not_implemented
+                        preempt-delay:
+                            _process: not_implemented
+                        priority:
+                            _process: not_implemented
+                        virtual-address:
+                            _process: not_implemented
+                        virtual-link-local:
+                            _process: not_implemented
+                        virtual-router-id:
+                            _process: not_implemented
+                    interface-tracking:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            priority-decrement:
+                                _process: not_implemented
+                            track-interface:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                    virtual-router-id:
+                        _process: not_implemented
+    config:
+        _process: not_implemented
+        dup-addr-detect-transmits:
+            _process: not_implemented
+        enabled:
+            _process: not_implemented
+        mtu:
+            _process: not_implemented
+    neighbors:
+        _process: not_implemented
+        neighbor:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                ip:
+                    _process: not_implemented
+                link-layer-address:
+                    _process: not_implemented
+            ip:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+    state:
+        _process: not_implemented
+    unnumbered:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+        interface-ref:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                interface:
+                    _process: not_implemented
+                subinterface:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented

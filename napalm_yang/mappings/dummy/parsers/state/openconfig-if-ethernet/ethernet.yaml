@@ -1,0 +1,48 @@
+---
+metadata:
+    processor: unset
+
+ethernet:
+    _process: not_implemented
+    state:
+        _process: not_implemented
+        auto-negotiate:
+            _process: not_implemented
+        counters:
+            _process: not_implemented
+            in-8021q-frames:
+                _process: not_implemented
+            in-crc-errors:
+                _process: not_implemented
+            in-fragment-frames:
+                _process: not_implemented
+            in-jabber-frames:
+                _process: not_implemented
+            in-mac-control-frames:
+                _process: not_implemented
+            in-mac-pause-frames:
+                _process: not_implemented
+            in-oversize-frames:
+                _process: not_implemented
+            out-8021q-frames:
+                _process: not_implemented
+            out-mac-control-frames:
+                _process: not_implemented
+            out-mac-pause-frames:
+                _process: not_implemented
+        duplex-mode:
+            _process: not_implemented
+        effective-speed:
+            _process: not_implemented
+        enable-flow-control:
+            _process: not_implemented
+        hw-mac-address:
+            _process: not_implemented
+        mac-address:
+            _process: not_implemented
+        negotiated-duplex-mode:
+            _process: not_implemented
+        negotiated-port-speed:
+            _process: not_implemented
+        port-speed:
+            _process: not_implemented

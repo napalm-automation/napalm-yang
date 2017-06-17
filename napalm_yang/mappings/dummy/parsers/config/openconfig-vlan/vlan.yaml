@@ -1,0 +1,12 @@
+---
+metadata:
+    processor: unset
+
+vlan:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        vlan-id:
+            _process: not_implemented
+    state:
+        _process: not_implemented

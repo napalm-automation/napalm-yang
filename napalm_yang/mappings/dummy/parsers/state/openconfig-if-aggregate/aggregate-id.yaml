@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+aggregate-id:
+    _process: not_implemented

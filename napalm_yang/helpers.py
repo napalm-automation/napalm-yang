@@ -1,31 +1,22 @@
 import yaml
-
-from napalm_yang.parsers.text import TextParser
-from napalm_yang.parsers.xml import XMLParser
-from napalm_yang.parsers.json import JSONParser
-
-from napalm_yang.translators.text import TextTranslator
-from napalm_yang.translators.xml import XMLTranslator
-
 import os
 import jinja2
-import json
 
-from napalm_yang.jinja_filters import ip_filters
+from napalm_yang import jinja_filters
 
 import logging
 logger = logging.getLogger("napalm-yang")
 
 
-def get_parser(parser):
-    parsers = {
-        "TextParser": TextParser,
-        "XMLParser": XMLParser,
-        "JSONParser": JSONParser,
-        "TextTranslator": TextTranslator,
-        "XMLTranslator": XMLTranslator,
-    }
-    return parsers[parser]
+def yaml_include(loader, node):
+    # Get the path out of the yaml file
+    file_name = os.path.join(os.path.dirname(loader.name), node.value)
+
+    with file(file_name) as inputfile:
+        return yaml.load(inputfile)
+
+
+yaml.add_constructor("!include", yaml_include)
 
 
 def find_yang_file(profile, filename, path):
@@ -67,16 +58,30 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
         return
 
     with open(filepath, "r") as f:
-        return yaml.load(f.read())
+        return yaml.load(f)
+
+
+def _resolve_rule(rule, **kwargs):
+    if isinstance(rule, dict):
+        return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
+    elif isinstance(rule, list):
+        return [_resolve_rule(e, **kwargs) for e in rule]
+    elif isinstance(rule, str):
+        return template(rule, **kwargs)
+    else:
+        return rule
 
 
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                  parse_bookmarks=None):
     if isinstance(rule, list):
-        raise Exception("Wrong rule for attr: {}. List can be used only on leafs".format(attribute))
+        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks)
+                for r in rule]
     elif isinstance(rule, str):
-        if rule in ["unnecessary", "not_implemented"]:
-            return {"mode": "skip", "reason": rule}
+        if rule in ["unnecessary"]:
+            return [{"mode": "skip", "reason": rule}]
+        elif rule in ["not_implemented"]:
+            return [{"mode": "gate", "reason": rule}]
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
@@ -88,13 +93,11 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["extra_vars"] = extra_vars
 
     for k, v in rule.items():
-        if isinstance(v, dict):
-            resolve_rule(v, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, list):
-            for e in k:
-                resolve_rule(e, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-        elif isinstance(v, str):
-            rule[k] = template(v, **kwargs)
+        if k.startswith('post_process_'):
+            # don't process post processing rules now, they'll be processed on a second pass
+            rule[k] = v
+        else:
+            rule[k] = _resolve_rule(v, **kwargs)
 
     if "when" in rule.keys():
         w = rule["when"]
@@ -116,8 +119,7 @@ def template(string, **kwargs):
                             extensions=['jinja2.ext.do'],
                             keep_trailing_newline=True,
                             )
-    env.filters.update(ip_filters.filters())
-    env.filters.update({"json": lambda obj: json.dumps(obj)})
+    env.filters.update(jinja_filters.load_filters())
 
     template = env.from_string(string)
 

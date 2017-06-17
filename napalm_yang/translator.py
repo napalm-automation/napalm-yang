@@ -1,20 +1,9 @@
 from napalm_yang import helpers
+from napalm_yang.parsers import get_parser
 
 
 import logging
 logger = logging.getLogger("napalm-yang")
-
-
-def _find_translation_point(rule, bookmarks, translation):
-    if "in" in rule.keys():
-        t = bookmarks
-        for p in rule["in"].split("."):
-            try:
-                t = t[p]
-            except TypeError:
-                t = t[int(p)]
-            translation = t
-    return translation
 
 
 class Translator(object):
@@ -39,7 +28,7 @@ class Translator(object):
                                              self.profile, "translators")
 
         if self.mapping:
-            translator = helpers.get_parser(self.mapping["metadata"]["processor"])
+            translator = get_parser(self.mapping["metadata"]["processor"])
             self.translator = translator(merge=bool(merge), replace=bool(replace))
 
             if translation is None:
@@ -63,6 +52,11 @@ class Translator(object):
         else:
             self._translate_leaf(attribute, model, mapping, translation, other)
 
+    def _translate_leaf(self, attribute, model, mapping, translation, other):
+        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, None, model,
+                                    self.bookmarks)
+        self.translator.translate_leaf(attribute, model, other, rule, translation, self.bookmarks)
+
     def _translate_container(self, attribute, model, mapping, translation, other):
         if model._yang_type:
             self.bookmarks["parent"] = translation
@@ -70,12 +64,14 @@ class Translator(object):
             rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                         None, model, self.bookmarks)
 
-            translation_point = _find_translation_point(rule, self.bookmarks, translation)
-            et = self.translator.parse_container(attribute, model, other, rule, translation_point)
+            et = self.translator.translate_container(attribute, model, other, rule,
+                                                     translation, self.bookmarks)
+
+            if et is None:
+                return
 
             self.bookmarks[attribute] = et
         else:
-            translation_point = _find_translation_point(mapping, self.bookmarks, translation)
             et = translation
 
         for k, v in model:
@@ -87,11 +83,11 @@ class Translator(object):
 
             if v._defining_module != self._defining_module and v._defining_module is not None:
                 logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                translator = Translator(v, self.profile, translation_point, self.keys,
+                translator = Translator(v, self.profile, et, self.keys,
                                         self.bookmarks, self.merge, self.replace, other_attr)
                 translator.translate()
             else:
-                self._translate(v._yang_name, v, mapping[v._yang_name], et, other_attr)
+                self._translate(k, v, mapping[v._yang_name], et, other_attr)
 
     def _translate_list(self, attribute, model, mapping, translation, other):
         # Saving state to restore them later
@@ -117,12 +113,11 @@ class Translator(object):
 
             translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
                                                     self.keys, None, element, self.bookmarks)
-            translation_point = _find_translation_point(translation_rule, self.bookmarks,
-                                                        translation)
 
-            self.translator.default_element(translation_rule, translation_point, replacing=True)
+            self.translator.default_element(translation_rule, translation, self.bookmarks,
+                                            replacing=True)
             et = self.translator.init_element(attribute, element, other_element, translation_rule,
-                                              translation_point)
+                                              translation, self.bookmarks)
 
             if et is None:
                 logger.info("Skipping {} as not implemented or objects are equal".format(attribute))
@@ -139,26 +134,39 @@ class Translator(object):
 
         if other:
             # Let's default elements not present in the model
-            for key in other:
-                element = other[key]
-                if key not in model.keys():
-                    key_name = "{}_key".format(attribute)
-                    self.keys[key_name] = key
-                    self.keys["parent_key"] = key
+            self._default_element_list(attribute, other, mapping, translation, model)
 
-                    translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
-                                                            self.keys, None, element,
-                                                            self.bookmarks)
-                    translation_point = _find_translation_point(translation_rule, self.bookmarks,
-                                                                translation)
+    def _default_element_list(self, attribute, running, mapping, translation, candidate):
+        for key in running:
+            logger.info("Defaulting {}: {}".format(attribute, key))
+            element = running[key]
 
-                    self.translator.default_element(translation_rule, translation_point)
+            candidate = candidate or {}
 
-    def _translate_leaf(self, attribute, model, mapping, translation, other):
-        rules = [mapping["_process"]] if isinstance(mapping["_process"], str) \
-                else mapping["_process"]
-        for rule in rules:
-            rule = helpers.resolve_rule(rule, attribute, self.keys, None, model, self.bookmarks)
-            translation_point = _find_translation_point(rule, self.bookmarks,
-                                                        translation)
-            self.translator.parse_leaf(attribute, model, other, rule, translation_point)
+            if key not in candidate.keys():
+                key_name = "{}_key".format(attribute)
+                self.keys[key_name] = key
+                self.keys["parent_key"] = key
+
+                translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
+                                                        self.keys, None, element,
+                                                        self.bookmarks)
+
+                self.translator.default_element(translation_rule, translation, self.bookmarks)
+
+                if any([t.get("continue_negating", False) for t in translation_rule]):
+                    self._default_child(attribute, element, mapping, translation)
+
+    def _default_child(self, attribute, running, mapping, translation):
+        logger.debug("Defaulting child attribute: {}".format(running._yang_path()))
+
+        if running._is_container in ("container", ):
+            for k, v in running:
+                if not v._is_config or k == "state":
+                    continue
+                elif v._defining_module != self._defining_module and v._defining_module is not None:
+                    continue
+                else:
+                    self._default_child(k, v, mapping[v._yang_name], translation)
+        elif running._yang_type in ("list", ):
+            self._default_element_list(attribute, running, mapping, translation, None)

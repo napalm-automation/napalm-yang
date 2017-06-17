@@ -1,0 +1,20 @@
+---
+metadata:
+    processor: unset
+
+ethernet:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        auto-negotiate:
+            _process: not_implemented
+        duplex-mode:
+            _process: not_implemented
+        enable-flow-control:
+            _process: not_implemented
+        mac-address:
+            _process: not_implemented
+        port-speed:
+            _process: not_implemented
+    state:
+        _process: not_implemented

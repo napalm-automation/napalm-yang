@@ -1,0 +1,42 @@
+---
+metadata:
+    processor: unset
+
+components:
+    _process: not_implemented
+    component:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            name:
+                _process: not_implemented
+        name:
+            _process: not_implemented
+        properties:
+            _process: not_implemented
+            property:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    value:
+                        _process: not_implemented
+                name:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+        subcomponents:
+            _process: not_implemented
+            subcomponent:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
+                name:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
