@@ -48,11 +48,7 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_leaf_map(cls, mapping):
-        value = cls._parse_leaf_value(mapping)
-        if value:
-            return mapping['map'][value]
-        else:
-            return None
+        return mapping['map'][mapping['value']]
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping):
