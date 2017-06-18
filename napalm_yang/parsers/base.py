@@ -10,14 +10,14 @@ class BaseParser(object):
     @classmethod
     def parse_list(cls, mapping):
         for m in mapping:
-            method_name = "_parse_list_{}".format(m["mode"])
+            method_name = "_parse_list_{}".format(m.get("mode", "default"))
             for key, block, extra_vars in getattr(cls, method_name)(m):
                 yield key, block, extra_vars
 
     @classmethod
     def parse_leaf(cls, mapping):
         for m in mapping:
-            method_name = "_parse_leaf_{}".format(m["mode"])
+            method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
             result = getattr(cls, method_name)(m)
             if result is not None:
                 return result
@@ -25,7 +25,7 @@ class BaseParser(object):
     @classmethod
     def parse_container(cls, mapping):
         for m in mapping:
-            method_name = "_parse_container_{}".format(m["mode"])
+            method_name = "_parse_container_{}".format(m.get("mode", "default"))
             result, extra_vars = getattr(cls, method_name)(m)
             if result or extra_vars:
                 break

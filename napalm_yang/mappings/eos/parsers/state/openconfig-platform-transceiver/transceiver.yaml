@@ -16,8 +16,7 @@ transceiver:
         _process: unnecessary
         channel:
             _process:
-                - mode: dict
-                  from: "{{ bookmarks.parent.get('transceiver', {}).get('physical-channels', {}).get('channel', {})|json }}"
+                - from: "{{ bookmarks.parent.get('transceiver', {}).get('physical-channels', {}).get('channel', {})|json }}"
             config:
                 _process: not_implemented
                 description:

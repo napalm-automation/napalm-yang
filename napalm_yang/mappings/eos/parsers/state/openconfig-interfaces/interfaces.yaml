@@ -10,8 +10,7 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: dict
-              from: "{{ bookmarks.interfaces.0.interfaces|json }}"
+            - from: "{{ bookmarks.interfaces.0.interfaces|json }}"
         config:
             _process: unnecessary
         hold-time:

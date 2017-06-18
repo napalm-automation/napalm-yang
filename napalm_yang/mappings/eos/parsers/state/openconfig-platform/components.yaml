@@ -8,8 +8,7 @@ components:
     _process: unnecessary
     component:
         _process:
-            - mode: dict
-              from: "{{ bookmarks.components.0.components.component|json }}"
+            - from: "{{ bookmarks.components.0.components.component|json }}"
         config:
             _process: not_implemented
             name:
@@ -20,8 +19,7 @@ components:
             _process: unnecessary
             property:
                 _process:
-                    - mode: dict
-                      from: "{{ bookmarks.parent.get('properties', {}).get('property', {})|json }}"
+                    - from: "{{ bookmarks.parent.get('properties', {}).get('property', {})|json }}"
                 config:
                     _process: not_implemented
                     name:
@@ -100,8 +98,7 @@ components:
             _process: unnecessary
             subcomponent:
                 _process:
-                    - mode: dict
-                      from:  "{{ bookmarks.parent.get('subcomponents', {}).get('subcomponent', {})|json }}"
+                    - from:  "{{ bookmarks.parent.get('subcomponents', {}).get('subcomponent', {})|json }}"
                 config:
                     _process: not_implemented
                     name:

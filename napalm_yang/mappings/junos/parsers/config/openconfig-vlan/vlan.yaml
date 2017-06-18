@@ -8,6 +8,5 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - mode: xpath
-                  xpath: "vlan-id"
+                - xpath: "vlan-id"
                   from: "{{ bookmarks['parent'] }}"

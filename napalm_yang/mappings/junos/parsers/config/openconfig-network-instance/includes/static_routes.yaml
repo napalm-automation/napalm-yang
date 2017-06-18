@@ -30,8 +30,7 @@ static:
                     _process: not_implemented
                 metric:
                     _process:
-                      - mode: xpath
-                        xpath: "metric"
+                      - xpath: "metric"
                         from: "{{ bookmarks.parent }}"
                 next-hop:
                     _process:

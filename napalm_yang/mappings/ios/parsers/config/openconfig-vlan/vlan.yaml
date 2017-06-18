@@ -9,6 +9,5 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - mode: search
-                  regexp: "^\\W*encapsulation dot1q (?P<value>[0-9]+)"
+                - regexp: "^\\W*encapsulation dot1q (?P<value>[0-9]+)"
                   from: "{{ bookmarks['parent'] }}"

@@ -10,8 +10,7 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-          - mode: block
-            regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+          - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
             from: "{{ bookmarks['network-instances'][0] }}"
             mandatory:
               - key: "global"
@@ -22,8 +21,7 @@ network-instances:
             _process: unnecessary
             description:
                 _process:
-                  - mode: search
-                    regexp: "description (?P<value>.*)"
+                  - regexp: "description (?P<value>.*)"
                     from: "{{ bookmarks.parent }}"
             enabled:
                 _process:
@@ -37,8 +35,7 @@ network-instances:
                 _process: unnecessary
             route-distinguisher:
                 _process:
-                  - mode: search
-                    regexp: "rd (?P<value>.*)"
+                  - regexp: "rd (?P<value>.*)"
                     from: "{{ bookmarks.parent }}"
             router-id:
                 _process: not_implemented
@@ -321,18 +318,15 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                    - mode: block
-                      regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!|   vrf \\w+)$"
+                    - regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!|   vrf \\w+)$"
                       from: "{{ bookmarks['network-instances'][0] }}"
                       composite_key: [protocol_name, protocol_name]
                       when: "{{ network_instance_key == 'global' }}"
-                    - mode: block
-                      regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^   (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!|   vrf.*)$"
+                    - regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^   (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!|   vrf.*)$"
                       from: "{{ bookmarks['network-instances'][0] }}"
                       composite_key: [protocol_name, protocol_name]
                       when: "{{ network_instance_key != 'global' }}"
-                    - mode: block
-                      regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
+                    - regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
                       from: "{{ bookmarks['network-instances'][0] }}"
                       key: "static static"
                 bgp: !include includes/bgp.yaml

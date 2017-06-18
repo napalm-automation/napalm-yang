@@ -17,8 +17,7 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                - mode: xpath
-                  xpath: "family/inet/address"
+                - xpath: "family/inet/address"
                   key: name
                   from: "{{ bookmarks['parent'] }}"
             ip:
@@ -27,14 +26,12 @@ ipv4:
                 _process: unnecessary
                 ip:
                     _process:
-                        - mode: xpath
-                          xpath: "name"
+                        - xpath: "name"
                           regexp: "(?P<value>.*)/\\d+"
                           from: "{{ bookmarks['parent'] }}"
                 prefix-length:
                     _process:
-                        - mode: xpath
-                          xpath: "name"
+                        - xpath: "name"
                           regexp: ".*/(?P<value>\\d+)"
                           from: "{{ bookmarks['parent'] }}"
             vrrp:

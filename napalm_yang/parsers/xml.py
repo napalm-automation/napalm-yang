@@ -10,7 +10,7 @@ from napalm_yang.parsers.base import BaseParser
 class XMLParser(BaseParser):
 
     @classmethod
-    def _parse_list_xpath(cls, mapping):
+    def _parse_list_default(cls, mapping):
         xml = etree.fromstring(mapping["from"])
 
         mandatory_elements = mapping.pop("mandatory", [])
@@ -132,7 +132,7 @@ class XMLParser(BaseParser):
         return cls._parse_list_container_helper(mapping, [root], root)
 
     @classmethod
-    def _parse_leaf_xpath(cls, mapping, check_default=True, check_presence=False):
+    def _parse_leaf_default(cls, mapping, check_default=True, check_presence=False):
         xml = etree.fromstring(mapping["from"])
         element = xml.xpath(mapping["xpath"])
 
@@ -158,7 +158,7 @@ class XMLParser(BaseParser):
 
     @classmethod
     def _parse_leaf_map(cls, mapping):
-        value = cls._parse_leaf_xpath(mapping)
+        value = cls._parse_leaf_default(mapping)
 
         if "regex" in mapping.keys():
             value = re.search(mapping["regexp"], value).group("value")
@@ -167,8 +167,8 @@ class XMLParser(BaseParser):
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping):
-        return cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
+        return cls._parse_leaf_default(mapping, check_default=False, check_presence=True)
 
     @classmethod
     def _parse_leaf_is_absent(cls, mapping):
-        return not cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
+        return not cls._parse_leaf_default(mapping, check_default=False, check_presence=True)

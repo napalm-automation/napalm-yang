@@ -23,8 +23,7 @@ network-instances:
             _process: unnecessary
             description:
                 _process:
-                    - mode: xpath
-                      xpath: description
+                    - xpath: description
                       from: "{{ bookmarks.parent }}"
             enabled:
                 _process:

@@ -8,7 +8,7 @@ import re
 class TextParser(BaseParser):
 
     @classmethod
-    def _parse_list_block(cls, mapping):
+    def _parse_list_default(cls, mapping):
         block_matches = re.finditer(mapping["regexp"], mapping["from"], re.MULTILINE + re.I)
 
         mandatory_elements = mapping.pop("mandatory", [])
@@ -39,7 +39,7 @@ class TextParser(BaseParser):
                 yield key, block, extra_vars
 
     @classmethod
-    def _parse_leaf_search(cls, mapping, check_default=True):
+    def _parse_leaf_default(cls, mapping, check_default=True):
         match = re.search(mapping["regexp"], mapping["from"], re.MULTILINE + re.I)
 
         if match:
@@ -51,15 +51,15 @@ class TextParser(BaseParser):
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping):
-        value = cls._parse_leaf_search(mapping, check_default=False)
+        value = cls._parse_leaf_default(mapping, check_default=False)
         return bool(value)
 
     @classmethod
     def _parse_leaf_is_absent(cls, mapping):
-        value = cls._parse_leaf_search(mapping, check_default=False)
+        value = cls._parse_leaf_default(mapping, check_default=False)
         return not bool(value)
 
     @classmethod
     def _parse_leaf_map(cls, mapping):
-        value = cls._parse_leaf_search(mapping)
+        value = cls._parse_leaf_default(mapping)
         return mapping["map"][value]

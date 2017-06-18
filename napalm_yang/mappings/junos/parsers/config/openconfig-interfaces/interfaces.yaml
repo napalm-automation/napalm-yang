@@ -10,8 +10,7 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: xpath
-              xpath: "interfaces/interface"
+            - xpath: "interfaces/interface"
               key: name
               from: "{{ bookmarks.interfaces.0 }}"
         name:
@@ -55,20 +54,17 @@ interfaces:
                       from: "{{ bookmarks['parent'] }}"
             description:
                 _process:
-                    - mode: xpath
-                      xpath: description
+                    - xpath: description
                       from: "{{ bookmarks['parent'] }}"
             mtu:
                 _process:
-                    - mode: xpath
-                      xpath: mtu
+                    - xpath: mtu
                       from: "{{ bookmarks['parent'] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - mode: xpath
-                      xpath: "unit"
+                    - xpath: "unit"
                       key: name
                       from: "{{ bookmarks['parent'] }}"
                 index:
@@ -88,6 +84,5 @@ interfaces:
                               from: "{{ bookmarks['parent'] }}"
                     description:
                         _process:
-                            - mode: xpath
-                              xpath: description
+                            - xpath: description
                               from: "{{ bookmarks['parent'] }}"

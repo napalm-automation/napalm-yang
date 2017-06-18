@@ -9,8 +9,7 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: block
-              regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
+            - regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
               from: "{{ bookmarks.interfaces.0 }}"
         name:
             _process: unnecessary
@@ -46,20 +45,17 @@ interfaces:
                       from: "{{ bookmarks.interface[interface_key] }}"
             description:
                 _process:
-                    - mode: search
-                      regexp: "description (?P<value>.*)"
+                    - regexp: "description (?P<value>.*)"
                       from: "{{ bookmarks.interface[interface_key] }}"
             mtu:
                 _process:
-                    - mode: search
-                      regexp: "mtu (?P<value>[0-9]+)"
+                    - regexp: "mtu (?P<value>[0-9]+)"
                       from: "{{ bookmarks.interface[interface_key] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - mode: block
-                      regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
+                    - regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
                       from: "{{ bookmarks.interfaces.0 }}"
                 index:
                     _process: unnecessary
@@ -78,6 +74,5 @@ interfaces:
                               from: "{{ bookmarks.subinterface[subinterface_key] }}"
                     description:
                         _process:
-                            - mode: search
-                              regexp: "description (?P<value>.*)"
+                            - regexp: "description (?P<value>.*)"
                               from: "{{ bookmarks.subinterface[subinterface_key] }}"

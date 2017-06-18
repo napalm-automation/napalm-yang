@@ -21,14 +21,14 @@ class JSONParser(BaseParser):
         return super().init_native(resp)
 
     @classmethod
-    def _parse_list_dict(cls, mapping, key=None):
+    def _parse_list_default(cls, mapping, key=None):
         d = json.loads(mapping['from'])
         if isinstance(d, dict):
             for k, v in d.items():
                 yield k, v, {}
 
     @classmethod
-    def _parse_leaf_dict(cls, mapping, check_default=True, check_presence=False):
+    def _parse_leaf_default(cls, mapping, check_default=True, check_presence=False):
         d = mapping['from']
         if d and not check_presence:
             regexp = mapping.get('regexp', None)

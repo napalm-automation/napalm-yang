@@ -10,8 +10,7 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: xpath
-              xpath: "physical-interface"
+            - xpath: "physical-interface"
               key: name
               from: "{{ bookmarks.interfaces.0 }}"
         config:
@@ -38,8 +37,7 @@ interfaces:
                           down: DOWN
             description:
                 _process: 
-                    - mode: xpath
-                      xpath: "description"
+                    - xpath: "description"
                       from: "{{ bookmarks['parent'] }}"
             enabled:
                 _process: 
@@ -51,19 +49,16 @@ interfaces:
                           down: false
             ifindex:
                 _process: 
-                    - mode: xpath
-                      xpath: "snmp-index"
+                    - xpath: "snmp-index"
                       from: "{{ bookmarks['parent'] }}"
             last-change:
                 _process: 
-                    - mode: xpath
-                      xpath: "interface-flapped"
+                    - xpath: "interface-flapped"
                       attribute: "seconds"
                       from: "{{ bookmarks['parent'] }}"
             mtu:
                 _process: 
-                    - mode: xpath
-                      xpath: "mtu"
+                    - xpath: "mtu"
                       regexp: "(?P<value>\\d+)"  # Someone thought mixing strings and ints was a good idea
                       from: "{{ bookmarks['parent'] }}"
             name:
@@ -101,30 +96,25 @@ interfaces:
                 _process: unnecessary
                 in-broadcast-pkts:
                     _process: 
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/input-broadcasts"
+                        - xpath: "ethernet-mac-statistics/input-broadcasts"
                           from: "{{ bookmarks['parent'] }}"
                 in-discards:
                     _process:
-                        - mode: xpath
-                          xpath: "input-error-list/input-discards"
+                        - xpath: "input-error-list/input-discards"
                           from: "{{ bookmarks['parent'] }}"
                 in-errors:
                     _process:
-                        - mode: xpath
-                          xpath: "input-error-list/input-errors"
+                        - xpath: "input-error-list/input-errors"
                           from: "{{ bookmarks['parent'] }}"
                 in-multicast-pkts:
                     _process:
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/input-multicasts"
+                        - xpath: "ethernet-mac-statistics/input-multicasts"
                           from: "{{ bookmarks['parent'] }}"
                 in-octets:
                     _process: not_implemented
                 in-unicast-pkts:
                     _process: 
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/input-unicasts"
+                        - xpath: "ethernet-mac-statistics/input-unicasts"
                           from: "{{ bookmarks['parent'] }}"
                 in-unknown-protos:
                     _process: not_implemented
@@ -132,34 +122,29 @@ interfaces:
                     _process: not_implemented
                 out-broadcast-pkts:
                     _process: 
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/output-broadcasts"
+                        - xpath: "ethernet-mac-statistics/output-broadcasts"
                           from: "{{ bookmarks['parent'] }}"
                 out-discards:
                     _process: not_implemented
                 out-errors:
                     _process: 
-                        - mode: xpath
-                          xpath: "output-error-list/output-errors"
+                        - xpath: "output-error-list/output-errors"
                           from: "{{ bookmarks['parent'] }}"
                 out-multicast-pkts:
                     _process:
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/output-multicasts"
+                        - xpath: "ethernet-mac-statistics/output-multicasts"
                           from: "{{ bookmarks['parent'] }}"
                 out-octets:
                     _process: not_implemented
                 out-unicast-pkts:
                     _process:
-                        - mode: xpath
-                          xpath: "ethernet-mac-statistics/output-unicasts"
+                        - xpath: "ethernet-mac-statistics/output-unicasts"
                           from: "{{ bookmarks['parent'] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process: 
-                    - mode: xpath
-                      xpath: "logical-interface"
+                    - xpath: "logical-interface"
                       key: name
                       from: "{{ bookmarks['parent'] }}"
                 index:
@@ -172,8 +157,7 @@ interfaces:
                         _process: not_implemented
                     description:
                         _process: 
-                            - mode: xpath
-                              xpath: "description"
+                            - xpath: "description"
                               from: "{{ bookmarks['parent'] }}"
                     enabled:
                         _process: not_implemented
@@ -181,8 +165,7 @@ interfaces:
                         _process: not_implemented
                     ifindex:
                         _process: 
-                            - mode: xpath
-                              xpath: "snmp-index"
+                            - xpath: "snmp-index"
                               from: "{{ bookmarks['parent'] }}"
                     last-change:
                         _process: not_implemented
