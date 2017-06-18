@@ -116,6 +116,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
 def template(string, **kwargs):
     env = jinja2.Environment(
                             undefined=jinja2.StrictUndefined,
+                            extensions=['jinja2.ext.do'],
                             keep_trailing_newline=True,
                             )
     env.filters.update(jinja_filters.load_filters())

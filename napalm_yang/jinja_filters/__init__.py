@@ -1,7 +1,9 @@
 import ip_filters
+import json_filters
 
 JINJA_FILTERS = [
     ip_filters,
+    json_filters,
 ]
 
 
