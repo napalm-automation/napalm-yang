@@ -14,10 +14,10 @@ network-instances:
               xpath: "routing-instances/instance"
               key_attribute: name
               from: network-instances.0
-              mandatory:
-                  - key: "global"
-                    block: network-instances.0
-                    extra_vars: {}
+            - mode: manual
+              key: "global"
+              block: network-instances.0
+              extra_vars: {}
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary

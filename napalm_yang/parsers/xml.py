@@ -21,17 +21,13 @@ class XMLParser(BaseParser):
 
     @classmethod
     def _parse_list_default(cls, mapping, data):
-        mandatory_elements = mapping.pop("mandatory", [])
         post_process_filter = mapping.pop("post_process_filter", None)
 
-        for element in itertools.chain(data.xpath(mapping["xpath"]), mandatory_elements):
-            if isinstance(element, dict):
-                yield element["key"], element["block"], element["extra_vars"]
-            else:
-                key = element.xpath(mapping["key"])[0].text.strip()
-                if post_process_filter:
-                    key = cls._parse_post_process_filter(post_process_filter, key)
-                yield key, element, {}
+        for element in data.xpath(mapping["xpath"]):
+            key = element.xpath(mapping["key"])[0].text.strip()
+            if post_process_filter:
+                key = cls._parse_post_process_filter(post_process_filter, key)
+            yield key, element, {}
 
     @classmethod
     def _parse_list_nested(cls, mapping, data):

@@ -33,17 +33,22 @@ class BaseParser(object):
             # so we can restore it
             parent = bookmarks["parent"]
 
-            mandatory_elements = m.get("mandatory", [])
-            for me in mandatory_elements:
-                me["block"] = cls.resolve_path(bookmarks, me["block"])
-
             data = cls.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_list_{}".format(m.get("mode", "default"))
+
+            if method_name == "_parse_list_manual":
+                m["block"] = cls.resolve_path(bookmarks, m["block"],
+                                              default=m["block"])
+
             for key, block, extra_vars in getattr(cls, method_name)(m, data):
                 yield key, block, extra_vars
 
             # we restore the parent
             bookmarks["parent"] = parent
+
+    @classmethod
+    def _parse_list_manual(cls, mapping, data):
+        yield mapping["key"], mapping["block"], mapping["extra_vars"]
 
     @classmethod
     def parse_leaf(cls, mapping, bookmarks):

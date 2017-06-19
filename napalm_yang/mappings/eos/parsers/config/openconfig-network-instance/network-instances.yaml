@@ -12,10 +12,10 @@ network-instances:
         _process:
           - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
             from: network-instances.0
-            mandatory:
-              - key: "global"
-                block: null
-                extra_vars: {}
+          - mode: manual
+            key: "global"
+            block: ""
+            extra_vars: {}
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
