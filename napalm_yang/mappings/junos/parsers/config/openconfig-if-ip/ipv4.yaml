@@ -10,7 +10,6 @@ ipv4:
             _process:
                 - mode: is_present
                   xpath: "family/inet"
-                  from: "{{ bookmarks['parent'] }}"
         mtu:
             _process: not_implemented
     addresses:
@@ -19,7 +18,6 @@ ipv4:
             _process:
                 - xpath: "family/inet/address"
                   key: name
-                  from: "{{ bookmarks['parent'] }}"
             ip:
                 _process: unnecessary
             config:
@@ -28,12 +26,10 @@ ipv4:
                     _process:
                         - xpath: "name"
                           regexp: "(?P<value>.*)/\\d+"
-                          from: "{{ bookmarks['parent'] }}"
                 prefix-length:
                     _process:
                         - xpath: "name"
                           regexp: ".*/(?P<value>\\d+)"
-                          from: "{{ bookmarks['parent'] }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

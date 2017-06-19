@@ -8,11 +8,9 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - mode: element
-                  element: "vlan-tagging"
+                - element: "vlan-tagging"
                   in: "interface.{{ interface_key }}"
                   when: "{{ model > 0 }}"
                   value: null
-                - mode: element
-                  element: "vlan-id"
+                - element: "vlan-id"
                   when: "{{ model > 0 }}"

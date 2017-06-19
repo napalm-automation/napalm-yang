@@ -7,14 +7,12 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-          - mode: container
-            container: "routing-instances"
+          - container: "routing-instances"
             replace: true
             delete_on_merge: false
             reuse: true
             when: "{{ network_instance_key != 'global' }}"
-          - mode: container
-            container: instance
+          - container: instance
             key_element: name
             key_value: "{{ network_instance_key }}"
             when: "{{ network_instance_key != 'global' }}"
@@ -23,8 +21,7 @@ network-instances:
             _process: unnecessary
             description:
                 _process:
-                  - mode: element
-                    element: description
+                  - element: description
             enabled:
                 _process: unnecessary
             enabled-address-families:
@@ -269,12 +266,10 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                  - mode: container
-                    container: "protocols/{{ model.identifier }}"
+                  - container: "protocols/{{ model.identifier }}"
                     replace: true
                     when: "{{ protocol_key != 'static static' }}"
-                  - mode: container
-                    container: "routing-options/static"
+                  - container: "routing-options/static"
                     when: "{{ protocol_key == 'static static' }}"
                 bgp: !include includes/bgp.yaml
                 config:

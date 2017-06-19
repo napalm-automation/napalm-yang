@@ -7,8 +7,7 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: container
-              key_value: "interface {{ interface_key }}\n"
+            - key_value: "interface {{ interface_key }}\n"
               negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
               end: "    exit\n"
         name:
@@ -29,18 +28,15 @@ interfaces:
                 _process: unnecessary
             enabled:
                 _process:
-                    - mode: element
-                      value: "    shutdown\n"
+                    - value: "    shutdown\n"
                       when: "{{ not model }}"
             description:
                 _process:
-                    - mode: element
-                      value: "    description {{ model }}\n"
+                    - value: "    description {{ model }}\n"
                       negate: "    default description\n"
             mtu:
                 _process:
-                    - mode: element
-                      value: "    mtu {{ model }}\n"
+                    - value: "    mtu {{ model }}\n"
                       negate: "    default mtu\n"
                       # IOS will complain with % Interface Loopback1 does not support user settable mtu.
                       when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
@@ -48,8 +44,7 @@ interfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - mode: container
-                      key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
+                    - key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
                       negate: "no interface {{ interface_key}}.{{ subinterface_key }}\n"
                       in: "interfaces"
                       end: "    exit\n"
@@ -63,11 +58,9 @@ interfaces:
                         _process: unnecessary
                     enabled:
                         _process:
-                            - mode: element
-                              value: "    shutdown\n"
+                            - value: "    shutdown\n"
                               when: "{{ not model }}"
                     description:
                         _process:
-                            - mode: element
-                              value: "    description {{ model }}\n"
+                            - value: "    description {{ model }}\n"
                               negate: "    default description"

@@ -12,7 +12,7 @@ interfaces:
         _process:
             - xpath: "interfaces/interface"
               key: name
-              from: "{{ bookmarks.interfaces.0 }}"
+              from: interfaces.0
         name:
             _process: unnecessary
         hold-time:
@@ -34,10 +34,6 @@ interfaces:
                     - mode: map
                       xpath: name
                       regexp: "(?P<value>[a-z]+).*"
-                      # Next field could easily be
-                      # from: "{{ bookmarks['parent'] }}"
-                      # but this is more efficient
-                      from: "<interface><name>{{ parent_key }}</name></interface>"
                       map:
                           ge: ethernetCsmacd
                           xe: ethernetCsmacd
@@ -51,22 +47,18 @@ interfaces:
                 _process:
                     - mode: is_absent
                       xpath: "disable"
-                      from: "{{ bookmarks['parent'] }}"
             description:
                 _process:
                     - xpath: description
-                      from: "{{ bookmarks['parent'] }}"
             mtu:
                 _process:
                     - xpath: mtu
-                      from: "{{ bookmarks['parent'] }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
                     - xpath: "unit"
                       key: name
-                      from: "{{ bookmarks['parent'] }}"
                 index:
                     _process: unnecessary
                 config:
@@ -81,8 +73,6 @@ interfaces:
                         _process:
                             - mode: is_absent
                               xpath: "disable"
-                              from: "{{ bookmarks['parent'] }}"
                     description:
                         _process:
                             - xpath: description
-                              from: "{{ bookmarks['parent'] }}"

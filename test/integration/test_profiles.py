@@ -45,14 +45,14 @@ BASE_PATH = os.path.dirname(__file__)
 
 
 test_config_profile_models = [
-    ["ios", napalm_yang.models.openconfig_interfaces, "default"],
-    ["eos", napalm_yang.models.openconfig_network_instance, "default"],
+    #  ["ios", napalm_yang.models.openconfig_interfaces, "default"],
+    #  ["eos", napalm_yang.models.openconfig_network_instance, "default"],
     ["junos", napalm_yang.models.openconfig_network_instance, "default"],
 ]
 
 test_state_profile_models = [
     ["junos", napalm_yang.models.openconfig_interfaces, "default"],
-    ["eos", napalm_yang.models.openconfig_interfaces, "default"],
+    #  ["eos", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 
 

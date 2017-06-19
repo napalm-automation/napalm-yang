@@ -14,7 +14,7 @@ class XMLTranslator(BaseTranslator):
         else:
             return translation
 
-    def _init_element_container(self, attribute, model, other, mapping, translation):
+    def _init_element_default(self, attribute, model, other, mapping, translation):
         t = translation
 
         for element in mapping["container"].split("/"):
@@ -40,9 +40,9 @@ class XMLTranslator(BaseTranslator):
 
         return t
 
-    _translate_container_container = _init_element_container
+    _translate_container_default = _init_element_default
 
-    def _default_element_container(self, mapping, translation, replacing):
+    def _default_element_default(self, mapping, translation, replacing):
         if not self.merge:
             return
 
@@ -64,7 +64,7 @@ class XMLTranslator(BaseTranslator):
 
         return t
 
-    def _translate_leaf_element(self, attribute, model, other, mapping, translation, force=False):
+    def _translate_leaf_default(self, attribute, model, other, mapping, translation, force=False):
         delete = False
         if not model._changed() and other and self.merge:
             delete = True
@@ -89,4 +89,4 @@ class XMLTranslator(BaseTranslator):
 
     def _translate_leaf_map(self, attribute, model, other, mapping, translation):
         mapping["value"] = mapping["map"][model]
-        self._translate_leaf_element(attribute, model, other, mapping, translation)
+        self._translate_leaf_default(attribute, model, other, mapping, translation)

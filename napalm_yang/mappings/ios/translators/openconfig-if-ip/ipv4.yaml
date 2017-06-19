@@ -8,8 +8,7 @@ ipv4:
         _process: unnecessary
         enabled:
             _process: # TODO look at this one, I think this is different depending on IOS version
-                - mode: element
-                  value: "    no switchport\n"
+                - value: "    no switchport\n"
                   negate: "    switchport\n"
                   in: "interface.{{ interface_key }}"
                   when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
@@ -19,8 +18,7 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                - mode: container
-                  key_value: "    ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
+                - key_value: "    ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
                   negate: "    default ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
                   replace: false
             ip:

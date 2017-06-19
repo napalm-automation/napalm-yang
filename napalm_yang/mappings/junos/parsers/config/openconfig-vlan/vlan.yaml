@@ -9,4 +9,3 @@ vlan:
         vlan-id:
             _process:
                 - xpath: "vlan-id"
-                  from: "{{ bookmarks['parent'] }}"
