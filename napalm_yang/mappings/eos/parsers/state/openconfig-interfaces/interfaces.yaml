@@ -12,6 +12,7 @@ interfaces:
         _process:
             - path: interfaces
               from: interfaces.0
+              regexp: "(?P<value>\\w+(\\w|-|\\/)*\\d+)$"
         config:
             _process: unnecessary
         hold-time:
@@ -37,6 +38,10 @@ interfaces:
             counters:
                 _process:
                     - path: interfaceCounters
+                      default: {}
+                      when: "{{ not interface_key.startswith('Loopback') }}"
+                    - mode: gate
+                      when: "{{ interface_key.startswith('Loopback') }}"
                 in-broadcast-pkts:
                     _process:
                         - path:  inBroadcastPkts
@@ -49,15 +54,12 @@ interfaces:
                 in-multicast-pkts:
                     _process:
                         - path:  inMulticastPkts
-                    _process: not_implemented
                 in-octets:
                     _process:
                         - path:  inOctets
-                    _process: not_implemented
                 in-unicast-pkts:
                     _process:
                         - path:  inUcastPkts
-                    _process: not_implemented
                 in-unknown-protos:
                     _process: not_implemented
                 last-clear:
@@ -65,23 +67,18 @@ interfaces:
                 out-broadcast-pkts:
                     _process:
                         - path:  outBroadcastPkts
-                    _process: not_implemented
                 out-discards:
                     _process:
                         - path:  outDiscards
-                    _process: not_implemented
                 out-errors:
                     _process:
                         - path:  totalOutErrors
-                    _process: not_implemented
                 out-multicast-pkts:
                     _process:
                         - path:  outMulticastPkts
-                    _process: not_implemented
                 out-octets:
                     _process:
                         - path:  outOctets
-                    _process: not_implemented
                 out-unicast-pkts:
                     _process:
                         - path:  outUcastPkts
@@ -106,7 +103,8 @@ interfaces:
                 _process:
                     - path: mtu
             name:
-                _process: not_implemented
+                _process:
+                    - path: name
             oper-status:
                 _process:
                     - mode: map
@@ -121,52 +119,47 @@ interfaces:
                 _process:
                     - mode: map
                       path: hardware
-                      default: Unspecified
                       map:
-                          "ethernet": ethernetCsmacd
-                          "Unspecified": null
+                          ethernet: ethernetCsmacd
+                          management: ethernetCsmacd
+                          loopback: softwareLoopback
+                          portchannel: ieee8023adLag
+                          vlan: l3ipvlan
         subinterfaces:
-            _process: not_implemented
+            _process: unnecessary
             subinterface:
-                _process: not_implemented
+                _process:
+                    - path: interfaces
+                      from: interfaces.0
+                      regexp: "{{interface_key}}\\.(?P<value>\\d+)"
+                config:
+                    _process: unnecessary
                 state:
-                    _process: not_implemented
+                    _process: unnecessary
                     admin-status:
-                        _process: not_implemented
+                        _process:
+                            - mode: map
+                              path: interfaceStatus
+                              map:
+                                  "disabled": DOWN
+                                  "errdisabled": DOWN
+                                  "connected": UP
+                                  "notconnect": DOWN
                     counters:
-                        _process: not_implemented
-                        in-broadcast-pkts:
-                            _process: not_implemented
-                        in-discards:
-                            _process: not_implemented
-                        in-errors:
-                            _process: not_implemented
-                        in-multicast-pkts:
-                            _process: not_implemented
-                        in-octets:
-                            _process: not_implemented
-                        in-unicast-pkts:
-                            _process: not_implemented
-                        in-unknown-protos:
-                            _process: not_implemented
-                        last-clear:
-                            _process: not_implemented
-                        out-broadcast-pkts:
-                            _process: not_implemented
-                        out-discards:
-                            _process: not_implemented
-                        out-errors:
-                            _process: not_implemented
-                        out-multicast-pkts:
-                            _process: not_implemented
-                        out-octets:
-                            _process: not_implemented
-                        out-unicast-pkts:
-                            _process: not_implemented
+                        _process: not_supported
                     description:
-                        _process: not_implemented
+                        _process:
+                            - path: description
                     enabled:
-                        _process: not_implemented
+                        _process:
+                            - mode: map
+                              path: interfaceStatus
+                              default: disabled
+                              map:
+                                  "disabled": false
+                                  "errdisabled": true
+                                  "connected": true
+                                  "notconnect": true
                     ifindex:
                         _process: not_implemented
                     index:
@@ -174,6 +167,15 @@ interfaces:
                     last-change:
                         _process: not_implemented
                     name:
-                        _process: not_implemented
+                        _process:
+                            - path: name
                     oper-status:
-                        _process: not_implemented
+                        _process:
+                            - mode: map
+                              path: lineProtocolStatus
+                              map:
+                                  "disabled": DOWN
+                                  "errdisabled": DOWN
+                                  "connected": UP
+                                  "notconnect": DOWN
+                                  "lowerlayerdown": LOWER_LAYER_DOWN

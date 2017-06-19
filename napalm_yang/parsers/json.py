@@ -21,14 +21,24 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_list_default(cls, mapping, data, key=None):
-        d = cls.resolve_path(data, mapping.get("path", ""))
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+
+        regexp = mapping.get('regexp', None)
+        if regexp:
+            regexp = re.compile(regexp)
         if isinstance(d, dict):
             for k, v in d.items():
+                if regexp:
+                    match = regexp.match(k)
+                    if match:
+                        k = match.group('value')
+                    else:
+                        continue
                 yield k, v, {}
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
-        d = cls.resolve_path(data, mapping["path"])
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
         if d and not check_presence:
             regexp = mapping.get('regexp', None)
             if regexp:
@@ -47,13 +57,13 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_container_default(cls, mapping, data):
-        d = cls.resolve_path(data, mapping["path"])
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
         return d, {}
 
     @classmethod
     def _parse_leaf_map(cls, mapping, data):
         v = cls._parse_leaf_default(mapping, data)
-        return mapping['map'][v]
+        return mapping['map'][v.lower()]
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping, data):

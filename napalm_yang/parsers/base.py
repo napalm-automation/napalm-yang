@@ -4,16 +4,22 @@ from napalm_yang.helpers import template
 class BaseParser(object):
 
     @staticmethod
-    def resolve_path(my_dict, path):
+    def resolve_path(my_dict, path, default=None):
         if path is None:
             return
 
         b = my_dict
-        for p in path.split("."):
+        path_split = path.split(".")
+        for i, p in enumerate(path_split):
             try:
-                b = b[p]
-            except TypeError:
-                b = b[int(p)]
+                try:
+                    b = b[p]
+                except TypeError:
+                    b = b[int(p)]
+            except KeyError:
+                if i == len(path_split) - 1 and default is not None:
+                    return default
+                raise
         return b
 
     @classmethod

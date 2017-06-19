@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from napalm_base import get_network_driver
+#  from napalm_base import get_network_driver
 
 import napalm_yang
 
@@ -144,6 +144,8 @@ class Tests(object):
         state = napalm_yang.base.Root()
         state.add_model(model)
         state.parse_state(native=[native], profile=[profile])
+
+        #  print(pretty_json(state.get(filter=True)))
 
         expected = napalm_yang.base.Root()
         expected.add_model(model)
