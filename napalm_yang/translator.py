@@ -54,7 +54,7 @@ class Translator(object):
             self._translate_leaf(attribute, model, mapping, translation, other)
 
     def _translate_leaf(self, attribute, model, mapping, translation, other):
-        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, None, model,
+        rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, self.extra_vars, model,
                                     self.bookmarks)
         self.translator.translate_leaf(attribute, model, other, rule, translation, self.bookmarks)
 
