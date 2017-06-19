@@ -5,6 +5,8 @@ class BaseParser(object):
 
     @staticmethod
     def resolve_bookmark(bookmarks, path):
+        if path is None:
+            return
         b = bookmarks
         for p in path.split("."):
             try:

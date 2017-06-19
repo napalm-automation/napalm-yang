@@ -10,4 +10,3 @@ vlan:
         vlan-id:
             _process:
                 - regexp: "^\\W*encapsulation dot1q (?P<value>[0-9]+)"
-                  from: "{{ bookmarks['parent'] }}"

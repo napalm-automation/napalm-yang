@@ -5,11 +5,9 @@ _process:
 static:
     _process:
         - regexp: "(?P<block>ip route (?P<key>\\d+.*\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key == 'global' }}"
           flat: true
         - regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+.*\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
           when: "{{ network_instance_key != 'global' }}"
           flat: true
     config:
@@ -25,7 +23,6 @@ static:
         next-hop:
             _process:
                 - regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>\\d+.\\d+.\\d+.\\d+) (?P<metric>\\d+) tag (?P<tag>\\d+))"
-                  from: "{{ bookmarks['static'][static_key] }}"
             config:
                 _process: unnecessary
                 index:
