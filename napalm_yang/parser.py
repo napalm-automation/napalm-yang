@@ -95,6 +95,7 @@ class Parser(object):
             if block is None:
                 return
             elif block != "" or extra_vars:
+                self.bookmarks["parent"] = block
                 self.bookmarks[attribute] = block
                 self.extra_vars[attribute] = extra_vars
 

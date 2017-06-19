@@ -10,7 +10,8 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - from: "{{ bookmarks.interfaces.0.interfaces|json }}"
+            - path: interfaces
+              from: interfaces.0
         config:
             _process: unnecessary
         hold-time:
@@ -26,40 +27,36 @@ interfaces:
             admin-status:
                 _process:
                     - mode: map
-                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      path: interfaceStatus
+                      defaul: disabled
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
                           "connected": UP
                           "notconnect": UP
             counters:
-                _process: unnecessary
+                _process:
+                    - path: interfaceCounters
                 in-broadcast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.inBroadcastPkts }}"
+                        - path:  inBroadcastPkts
                 in-discards:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.inDiscards }}"
+                        - path:  inDiscards
                 in-errors:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.totalInErrors }}"
+                        - path:  totalInErrors
                 in-multicast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.inMulticastPkts }}"
+                        - path:  inMulticastPkts
                     _process: not_implemented
                 in-octets:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.inOctets }}"
+                        - path:  inOctets
                     _process: not_implemented
                 in-unicast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.inUcastPkts }}"
+                        - path:  inUcastPkts
                     _process: not_implemented
                 in-unknown-protos:
                     _process: not_implemented
@@ -67,41 +64,35 @@ interfaces:
                     _process: not_implemented
                 out-broadcast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.outBroadcastPkts }}"
+                        - path:  outBroadcastPkts
                     _process: not_implemented
                 out-discards:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.outDiscards }}"
+                        - path:  outDiscards
                     _process: not_implemented
                 out-errors:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.totalOutErrors }}"
+                        - path:  totalOutErrors
                     _process: not_implemented
                 out-multicast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.outMulticastPkts }}"
+                        - path:  outMulticastPkts
                     _process: not_implemented
                 out-octets:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.outOctets }}"
+                        - path:  outOctets
                     _process: not_implemented
                 out-unicast-pkts:
                     _process:
-                        - mode: value
-                          value:  "{{ bookmarks.parent.interfaceCounters.outUcastPkts }}"
+                        - path:  outUcastPkts
             description:
                 _process:
-                    - mode: value
-                      value: "{{ bookmarks.parent.description }}"
+                    - path: description
             enabled:
                 _process:
                     - mode: map
-                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      path: interfaceStatus
+                      default: disabled
                       map:
                           "disabled": false
                           "errdisabled": true
@@ -113,14 +104,14 @@ interfaces:
                 _process: not_implemented
             mtu:
                 _process:
-                    - mode: value
-                      value: "{{ bookmarks.parent.mtu }}"
+                    - path: mtu
             name:
                 _process: not_implemented
             oper-status:
                 _process:
                     - mode: map
-                      value: "{{ bookmarks.parent.get('interfaceStatus', 'disabled') }}"
+                      path: interfaceStatus
+                      default: disabled
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
@@ -129,7 +120,8 @@ interfaces:
             type:
                 _process:
                     - mode: map
-                      value: "{{ bookmarks.parent.get('hardware', 'Unspecified') }}"
+                      path: hardware
+                      default: Unspecified
                       map:
                           "ethernet": ethernetCsmacd
                           "Unspecified": null

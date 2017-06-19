@@ -4,17 +4,17 @@ from napalm_yang.helpers import template
 class BaseParser(object):
 
     @staticmethod
-    def resolve_bookmark(bookmarks, path):
+    def resolve_path(my_dict, path):
         if path is None:
             return
-        b = bookmarks
+
+        b = my_dict
         for p in path.split("."):
             try:
                 b = b[p]
             except TypeError:
                 b = b[int(p)]
-            bookmark = b
-        return bookmark
+        return b
 
     @classmethod
     def init_native(cls, native):
@@ -29,9 +29,9 @@ class BaseParser(object):
 
             mandatory_elements = m.get("mandatory", [])
             for me in mandatory_elements:
-                me["block"] = cls.resolve_bookmark(bookmarks, me["block"])
+                me["block"] = cls.resolve_path(bookmarks, me["block"])
 
-            data = cls.resolve_bookmark(bookmarks, m.get("from", "parent"))
+            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_list_{}".format(m.get("mode", "default"))
             for key, block, extra_vars in getattr(cls, method_name)(m, data):
                 yield key, block, extra_vars
@@ -42,7 +42,7 @@ class BaseParser(object):
     @classmethod
     def parse_leaf(cls, mapping, bookmarks):
         for m in mapping:
-            data = cls.resolve_bookmark(bookmarks, m.get("from", "parent"))
+            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
             result = getattr(cls, method_name)(m, data)
             if result is not None:
@@ -54,7 +54,7 @@ class BaseParser(object):
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
-            data = cls.resolve_bookmark(bookmarks, m.get("from", "parent"))
+            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_container_{}".format(m.get("mode", "default"))
             result, extra_vars = getattr(cls, method_name)(m, data)
             if result or extra_vars:
