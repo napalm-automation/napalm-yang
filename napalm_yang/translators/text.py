@@ -51,7 +51,7 @@ class TextTranslator(XMLTranslator):
 
         for i in ('prefix', 'negate_prefix'):
             if i in mapping:
-                extra_vars[i] = mapping.pop(i)
+                extra_vars[i] = mapping.get(i)
 
         t = super()._init_element_container(attribute, model, other, mapping, translation)
 
@@ -68,6 +68,8 @@ class TextTranslator(XMLTranslator):
     #      return super()._init_element_container(attribute, model, other, mapping, translation)
 
     def _default_element_container(self, mapping, translation, replacing):
+        extra_vars = {}
+
         if (replacing or self.replace) and not mapping.get("replace", True):
             return
 
@@ -79,6 +81,12 @@ class TextTranslator(XMLTranslator):
 
         e = etree.SubElement(translation, "command")
         e.text = mapping["negate"]
+
+        for i in ('prefix', 'negate_prefix'):
+            if i in mapping:
+                extra_vars[i] = mapping.get(i)
+
+        return None, extra_vars
 
     def _xml_to_text(self, xml, text=""):
         for element in xml:

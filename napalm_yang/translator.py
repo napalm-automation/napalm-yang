@@ -143,6 +143,8 @@ class Translator(object):
             self._default_element_list(attribute, other, mapping, translation, model)
 
     def _default_element_list(self, attribute, running, mapping, translation, candidate):
+        # we'll restore old values when we leave this branch
+        old_extra_vars = copy(self.extra_vars)
         for key in running:
             logger.info("Defaulting {}: {}".format(attribute, key))
             element = running[key]
@@ -158,10 +160,14 @@ class Translator(object):
                                                         self.keys, self.extra_vars, element,
                                                         self.bookmarks)
 
-                self.translator.default_element(translation_rule, translation, self.bookmarks)
+                _, extra_vars = self.translator.default_element(translation_rule, translation, self.bookmarks)
+                self.extra_vars.update(extra_vars)
 
                 if any([t.get("continue_negating", False) for t in translation_rule]):
                     self._default_child(attribute, element, mapping, translation)
+
+        # Restore state
+        self.extra_vars = old_extra_vars
 
     def _default_child(self, attribute, running, mapping, translation):
         logger.debug("Defaulting child attribute: {}".format(running._yang_path()))

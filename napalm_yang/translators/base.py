@@ -38,6 +38,7 @@ class BaseTranslator(object):
 
     def default_element(self, mapping, translation, bookmarks, replacing=False):
         t = translation
+        extra_vars = {}
         for m in mapping:
             if m["mode"] == "skip":
                 continue
@@ -47,6 +48,10 @@ class BaseTranslator(object):
             t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(m["mode"])
             t = getattr(self, method_name)(m, t, replacing)
+            if isinstance(t, tuple):
+                extra_vars = t[1]
+                t = t[0]
+        return t, extra_vars
 
     def translate_leaf(self, attribute, model, other, mapping, translation, bookmarks):
         for m in mapping:
