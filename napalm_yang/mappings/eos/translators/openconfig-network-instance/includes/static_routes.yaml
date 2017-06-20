@@ -28,7 +28,7 @@ static:
             _process:
               - mode: container
                 key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
-                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}"
+                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
                 end: "\n"
             config:
                 _process: unnecessary
