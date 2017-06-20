@@ -3,7 +3,7 @@ metadata:
     processor: XMLParser
     execute:
         - method: _rpc
-          args:
+          kwargs:
               get: "<get-interface-information><extensive/></get-interface-information>"
 
 interfaces:

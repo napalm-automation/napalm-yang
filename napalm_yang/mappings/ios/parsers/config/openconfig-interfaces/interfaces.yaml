@@ -3,7 +3,7 @@ metadata:
     processor: TextParser
     execute:
         - method: cli
-          args:
+          kwargs:
               commands: ["show running-config all"]
 interfaces:
     _process: unnecessary

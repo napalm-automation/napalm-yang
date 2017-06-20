@@ -183,13 +183,15 @@ the device. For example::
         parser: XMLParser
         execute:
             - method: _rpc
-              args:
+              args: []
+              kwargs:
                   get: "<get-configuration/>"
 
 * **execute** is a list of calls to do to from the device to extract the data.
 
   * **method** is the method from the device to call.
-  * **args** are arguments that will be passed to the method.
+  * **args** are the numbered/ordered arguments for the method
+  * **kwargs** are the keyword arguments for the method
 
 In addition, some methods like ``parse_config`` and ``parse_state`` may have mechanisms to pass the
 information needed to the parser instead of relying on a live device to obtain it. For parsers, you

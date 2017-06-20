@@ -3,7 +3,7 @@ metadata:
     processor: JSONParser
     execute:
         - method: "device.run_commands"
-          args:
+          kwargs:
               commands: ["show interfaces", "show snmp mib ifmib ifindex"]
 
 interfaces:

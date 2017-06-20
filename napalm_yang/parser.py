@@ -56,9 +56,15 @@ class Parser(object):
         result = []
         for m in methods:
             attr = device
+            args = []
+            kwargs = {}
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
-            r = attr(**m["args"])
+            if isinstance(m.get("args", None), list):
+                args = m["args"]
+            if isinstance(m.get("kwargs", None), dict):
+                kwargs = m["kwargs"]
+            r = attr(*args, **kwargs)
 
             if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
                 # Some vendors like junos return commands enclosed by a key
