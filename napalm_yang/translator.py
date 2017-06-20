@@ -1,6 +1,7 @@
 from napalm_yang import helpers
 from napalm_yang.parsers import get_parser
 
+from copy import copy
 
 import logging
 logger = logging.getLogger("napalm-yang")
@@ -95,6 +96,7 @@ class Translator(object):
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
+        old_extra_vars = copy(self.extra_vars)
 
         # We will use this to store blocks of configuration
         # for each individual element of the list
@@ -134,6 +136,7 @@ class Translator(object):
         # Restore state
         self.keys["parent_key"] = old_parent_key
         self.bookmarks["parent"] = old_parent_bookmark
+        self.extra_vars = old_extra_vars
 
         if other:
             # Let's default elements not present in the model
