@@ -1,4 +1,5 @@
 import os
+
 import copy
 
 from napalm_yang import helpers
@@ -88,6 +89,12 @@ class Parser(object):
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                                    self.extra_vars, None, self.bookmarks)
+
+        # Saving state
+        old_parent_key = self.keys["parent_key"]
+        old_parent_bookmark = self.bookmarks["parent"]
+        old_parent_extra_vars = self.extra_vars
+
         if model._yang_type is not None:
             # None means it's an element of a list
             block, extra_vars = self.parser.parse_container(mapping["_process"], self.bookmarks)
@@ -114,6 +121,11 @@ class Parser(object):
                 parser.parse()
             else:
                 self._parse(k, v, mapping[v._yang_name])
+
+        # Restoring state
+        self.keys["parent_key"] = old_parent_key
+        self.bookmarks["parent"] = old_parent_bookmark
+        self.extra_vars = old_parent_extra_vars
 
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)

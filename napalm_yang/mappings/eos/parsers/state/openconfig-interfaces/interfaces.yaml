@@ -29,7 +29,6 @@ interfaces:
                 _process:
                     - mode: map
                       path: interfaceStatus
-                      defaul: disabled
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
@@ -89,7 +88,6 @@ interfaces:
                 _process:
                     - mode: map
                       path: interfaceStatus
-                      default: disabled
                       map:
                           "disabled": false
                           "errdisabled": true
@@ -109,7 +107,6 @@ interfaces:
                 _process:
                     - mode: map
                       path: interfaceStatus
-                      default: disabled
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
@@ -154,7 +151,6 @@ interfaces:
                         _process:
                             - mode: map
                               path: interfaceStatus
-                              default: disabled
                               map:
                                   "disabled": false
                                   "errdisabled": true
