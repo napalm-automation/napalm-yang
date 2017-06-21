@@ -75,7 +75,10 @@ class BaseTranslator(object):
 
             t = _find_translation_point(m, bookmarks, et)
             method_name = "_translate_container_{}".format(m["mode"])
-            et, extra_vars = getattr(self, method_name)(attribute, model, other, m, t)
+            et = getattr(self, method_name)(attribute, model, other, m, t)
+            if isinstance(et, tuple):
+                extra_vars = et[1]
+                et = et[0]
             if et is False:
                 # if it's False we want to return None to signal we want to abort
                 return None, {}
