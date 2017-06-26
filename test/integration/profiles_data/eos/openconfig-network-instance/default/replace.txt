@@ -5,11 +5,10 @@ router bgp 65001
     neighbor 192.168.0.200 description asdasd qweq asdasd
     router-id 1.1.1.1
     exit
-no ip route 10.0.0.0/24 192.168.0.2
+no ip route 10.0.0.0/24
 ip route 10.0.0.0/24 192.168.0.2 1
-no ip route 10.0.0.0/24 192.168.0.3
 ip route 10.0.0.0/24 192.168.0.3 1
-no ip route 10.0.1.0/24 192.168.0.2
+no ip route 10.0.1.0/24
 ip route 10.0.1.0/24 192.168.0.2 1
 no vrf definition frontend
 vrf definition frontend
@@ -23,16 +22,16 @@ router bgp 65001
     neighbor 172.20.0.200 local-as 100 no-prepend replace-as
     router-id 2.2.2.2
     exit
-no ip route vrf frontend 10.0.0.0/24 172.20.0.2
+no ip route vrf frontend 10.0.0.0/24
 ip route vrf frontend 10.0.0.0/24 172.20.0.2 1
-no ip route vrf frontend 10.0.1.0/24 172.20.0.2
+no ip route vrf frontend 10.0.1.0/24
 ip route vrf frontend 10.0.1.0/24 172.20.0.2 1
 no vrf definition devel
 vrf definition devel
     rd 1:2
     exit
-no ip route vrf devel 10.0.0.0/24 192.168.2.2
+no ip route vrf devel 10.0.0.0/24
 ip route vrf devel 10.0.0.0/24 192.168.2.2 1
-no ip route vrf devel 10.0.1.0/24 192.168.2.2
+no ip route vrf devel 10.0.1.0/24
 ip route vrf devel 10.0.1.0/24 192.168.2.2 1
 no vrf definition prod
