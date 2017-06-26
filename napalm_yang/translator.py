@@ -56,7 +56,7 @@ class Translator(object):
 
     def _translate_leaf(self, attribute, model, mapping, translation, other):
         rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys, self.extra_vars, model,
-                                    self.bookmarks)
+                                    self.bookmarks, bool(self.replace), bool(self.merge))
         self.translator.translate_leaf(attribute, model, other, rule, translation, self.bookmarks)
 
     def _translate_container(self, attribute, model, mapping, translation, other):
@@ -64,7 +64,7 @@ class Translator(object):
             self.bookmarks["parent"] = translation
 
             rule = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                        self.extra_vars, model, self.bookmarks)
+                                        self.extra_vars, model, self.bookmarks, bool(self.replace), bool(self.merge))
 
             et, extra_vars = self.translator.translate_container(attribute, model, other, rule,
                                                      translation, self.bookmarks)
@@ -115,10 +115,12 @@ class Translator(object):
             self.keys[key_name] = key
             self.keys["parent_key"] = key
 
+            translation_rule_negate = helpers.resolve_rule(mapping["_process"], attribute,
+                                                    self.keys, self.extra_vars, element, self.bookmarks, bool(self.replace), bool(self.merge), True)
             translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
-                                                    self.keys, self.extra_vars, element, self.bookmarks)
+                                                    self.keys, self.extra_vars, element, self.bookmarks, bool(self.replace), bool(self.merge), False)
 
-            self.translator.default_element(translation_rule, translation, self.bookmarks,
+            self.translator.default_element(translation_rule_negate, translation, self.bookmarks,
                                             replacing=True)
             et, extra_vars = self.translator.init_element(attribute, element, other_element, translation_rule,
                                               translation, self.bookmarks)
@@ -158,7 +160,7 @@ class Translator(object):
 
                 translation_rule = helpers.resolve_rule(mapping["_process"], attribute,
                                                         self.keys, self.extra_vars, element,
-                                                        self.bookmarks)
+                                                        self.bookmarks, bool(self.replace), bool(self.merge), True)
 
                 _, extra_vars = self.translator.default_element(translation_rule, translation, self.bookmarks)
                 self.extra_vars.update(extra_vars)

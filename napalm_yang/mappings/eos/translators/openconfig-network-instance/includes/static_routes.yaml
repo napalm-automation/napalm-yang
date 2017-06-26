@@ -26,6 +26,8 @@ static:
         _process: unnecessary
         next-hop:
             _process:
+              - mode: gate
+                when: "{{ replacing and negating }}"
               - mode: container
                 key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
                 negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
