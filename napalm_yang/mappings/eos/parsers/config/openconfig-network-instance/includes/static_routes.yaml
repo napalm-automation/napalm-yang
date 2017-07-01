@@ -4,14 +4,10 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-        - mode: block
-          regexp: "(?P<block>ip route (?P<key>\\d+.*\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+        - regexp: "(?P<block>ip route (?P<key>\\d+.*\\/\\d+).*)"
           when: "{{ network_instance_key == 'global' }}"
           flat: true
-        - mode: block
-          regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+.*\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+        - regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+.*\\/\\d+).*)"
           when: "{{ network_instance_key != 'global' }}"
           flat: true
     config:
@@ -26,9 +22,7 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-                - mode: block
-                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>\\d+.\\d+.\\d+.\\d+) (?P<metric>\\d+) tag (?P<tag>\\d+))"
-                  from: "{{ bookmarks['static'][static_key] }}"
+                - regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>\\d+.\\d+.\\d+.\\d+) (?P<metric>\\d+) tag (?P<tag>\\d+))"
             config:
                 _process: unnecessary
                 index:

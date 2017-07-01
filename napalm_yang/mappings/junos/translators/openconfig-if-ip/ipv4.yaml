@@ -4,8 +4,7 @@ metadata:
 
 ipv4:
     _process:
-        - mode: container
-          container: "family/inet"
+        - container: "family/inet"
           when: "{{ model.config.enabled or model.addresses.address|length }}"
     config:
         _process: unnecessary
@@ -17,8 +16,7 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                - mode: container
-                  container: address
+                - container: address
             ip:
                 _process: unnecessary
             config:
@@ -27,8 +25,7 @@ ipv4:
                     _process: unnecessary
                 prefix-length:
                     _process:
-                        - mode: element
-                          element: name
+                        - element: name
                           value: "{{ model._parent.ip }}/{{ model }}"
                           when: "{{ model }}"
             vrrp:

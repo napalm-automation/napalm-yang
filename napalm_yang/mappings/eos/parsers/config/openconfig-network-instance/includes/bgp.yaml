@@ -258,15 +258,11 @@ global:
         _process: unnecessary
         as:
             _process:
-                - mode: search
-                  regexp: "local-as (?P<value>.*)"
-                  from: "{{ bookmarks['protocol'][protocol_key] }}"
+                - regexp: "local-as (?P<value>.*)"
                   default: "{{ extra_vars.process_id|default(1) }}"
         router-id:
             _process:
-                - mode: search
-                  regexp: "router-id (?P<value>.*)"
-                  from: "{{ bookmarks['protocol'][protocol_key] }}"
+                - regexp: "router-id (?P<value>.*)"
     default-route-distance:
         _process: not_implemented
         config:
@@ -355,9 +351,7 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-            - mode: block
-              regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
-              from: "{{ bookmarks['protocol'][protocol_key] }}"
+            - regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
               flat: true
         add-paths:
             _process: not_implemented
@@ -625,29 +619,21 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                    - mode: search
-                      regexp: "neighbor {{ neighbor_key }} description (?P<value>.*)"
-                      from: "{{ bookmarks['neighbor'][neighbor_key] }}"
+                    - regexp: "neighbor {{ neighbor_key }} description (?P<value>.*)"
             enabled:
                 _process:
                     - mode: is_absent
                       regexp: "neighbor {{ neighbor_key }} (?P<value>shutdown)"
-                      from: "{{ bookmarks['neighbor'][neighbor_key] }}"
             local-as:
                 _process:
-                    - mode: search
-                      regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"
-                      from: "{{ bookmarks['neighbor'][neighbor_key] }}"
+                    - regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"
             neighbor-address:
                 _process:
                     - mode: value
                       value: "{{ neighbor_key }}"
-                      from: "{{ bookmarks['neighbor'][neighbor_key] }}"
             peer-as:
                 _process:
-                    - mode: search
-                      regexp: "neighbor {{ neighbor_key }} remote-as (?P<value>.*)"
-                      from: "{{ bookmarks['neighbor'][neighbor_key] }}"
+                    - regexp: "neighbor {{ neighbor_key }} remote-as (?P<value>.*)"
             peer-group:
                 _process: not_implemented
             peer-type:

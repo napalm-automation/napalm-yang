@@ -6,16 +6,67 @@
                 "state": {
                     "admin-status": "UP",
                     "counters": {
-                        "in-broadcast-pkts": 2630,
-                        "in-discards": 0,
-                        "in-errors": 0,
-                        "out-unicast-pkts": 104
+                        "out-multicast-pkts": 875697,
+                        "out-octets": 114560338
                     },
-                    "description": "",
+                    "description": "This is a description",
                     "enabled": true,
-                    "mtu": 1500,
+                    "mtu": 9214,
+                    "name": "Ethernet1",
                     "oper-status": "UP",
                     "type": "ethernetCsmacd"
+                }
+            },
+            "Ethernet2": {
+                "name": "Ethernet2",
+                "state": {
+                    "admin-status": "DOWN",
+                    "counters": {
+                        "out-multicast-pkts": 56,
+                        "out-octets": 7268
+                    },
+                    "description": "so much oc",
+                    "enabled": false,
+                    "mtu": 1500,
+                    "name": "Ethernet2",
+                    "oper-status": "DOWN",
+                    "type": "ethernetCsmacd"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "1": {
+                            "index": "1",
+                            "state": {
+                                "admin-status": "DOWN",
+                                "description": "another subiface",
+                                "enabled": true,
+                                "name": "Ethernet2.1",
+                                "oper-status": "LOWER_LAYER_DOWN"
+                            }
+                        },
+                        "2": {
+                            "index": "2",
+                            "state": {
+                                "admin-status": "DOWN",
+                                "description": "asdasdasd",
+                                "enabled": true,
+                                "name": "Ethernet2.2",
+                                "oper-status": "LOWER_LAYER_DOWN"
+                            }
+                        }
+                    }
+                }
+            },
+            "Loopback1": {
+                "name": "Loopback1",
+                "state": {
+                    "admin-status": "UP",
+                    "description": "a loopback",
+                    "enabled": true,
+                    "mtu": 65535,
+                    "name": "Loopback1",
+                    "oper-status": "UP",
+                    "type": "softwareLoopback"
                 }
             },
             "Management1": {
@@ -23,16 +74,41 @@
                 "state": {
                     "admin-status": "UP",
                     "counters": {
-                        "in-broadcast-pkts": 19,
-                        "in-discards": 0,
-                        "in-errors": 0,
-                        "out-unicast-pkts": 758
+                        "in-broadcast-pkts": 4,
+                        "in-octets": 4116864,
+                        "out-octets": 13968476,
+                        "out-unicast-pkts": 58110
                     },
-                    "description": "",
                     "enabled": true,
                     "mtu": 1500,
+                    "name": "Management1",
                     "oper-status": "UP",
                     "type": "ethernetCsmacd"
+                }
+            },
+            "Port-Channel1": {
+                "name": "Port-Channel1",
+                "state": {
+                    "admin-status": "UP",
+                    "description": "blah",
+                    "enabled": true,
+                    "mtu": 9000,
+                    "name": "Port-Channel1",
+                    "oper-status": "DOWN",
+                    "type": "ieee8023adLag"
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "1": {
+                            "index": "1",
+                            "state": {
+                                "admin-status": "DOWN",
+                                "enabled": true,
+                                "name": "Port-Channel1.1",
+                                "oper-status": "LOWER_LAYER_DOWN"
+                            }
+                        }
+                    }
                 }
             }
         }

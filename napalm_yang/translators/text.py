@@ -17,7 +17,7 @@ class TextTranslator(XMLTranslator):
     def post_processing(self, translator):
         return self._xml_to_text(translator.translation)
 
-    def _translate_leaf_element(self, attribute, model, other, mapping, translation):
+    def _translate_leaf_default(self, attribute, model, other, mapping, translation):
         force = False
 
         if model == other and not self.replace:
@@ -30,9 +30,9 @@ class TextTranslator(XMLTranslator):
             return
 
         mapping["element"] = "command"
-        super()._translate_leaf_element(attribute, model, other, mapping, translation, force)
+        super()._translate_leaf_default(attribute, model, other, mapping, translation, force)
 
-    def _init_element_container(self, attribute, model, other, mapping, translation):
+    def _init_element_default(self, attribute, model, other, mapping, translation):
         if other is not None:
             if not napalm_yang.utils.diff(model, other) and not self.replace:
                 # If objects are equal we return None as that aborts translating
@@ -47,7 +47,7 @@ class TextTranslator(XMLTranslator):
         mapping["key_element"] = "command"
         mapping["container"] = model._yang_name
 
-        t = super()._init_element_container(attribute, model, other, mapping, translation)
+        t = super()._init_element_default(attribute, model, other, mapping, translation)
 
         end = mapping.get("end", "")
         if end and t is not None:
@@ -56,12 +56,7 @@ class TextTranslator(XMLTranslator):
 
         return t
 
-    #  def _translate_container_container(self, attribute, model, other, mapping, translation):
-    #      mapping["key_element"] = "container"
-    #      mapping["container"] = model._yang_name
-    #      return super()._init_element_container(attribute, model, other, mapping, translation)
-
-    def _default_element_container(self, mapping, translation, replacing):
+    def _default_element_default(self, mapping, translation, replacing):
         if (replacing or self.replace) and not mapping.get("replace", True):
             return
 

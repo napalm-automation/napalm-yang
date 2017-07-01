@@ -10,16 +10,13 @@ ipv4:
             _process:
                 - mode: is_absent
                   regexp: "(?P<value>^\\W*switchport$)"
-                  from: "{{ bookmarks['parent'] }}"
         mtu:
             _process: not_implemented
     addresses:
         _process: unnecessary
         address:
             _process:
-                - mode: block
-                  regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
-                  from: "{{ bookmarks['parent'] }}"
+                - regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
             ip:
                 _process: unnecessary
             config:

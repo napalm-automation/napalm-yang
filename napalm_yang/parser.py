@@ -1,4 +1,5 @@
 import os
+
 import copy
 
 from napalm_yang import helpers
@@ -88,13 +89,20 @@ class Parser(object):
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
                                                    self.extra_vars, None, self.bookmarks)
+
+        # Saving state
+        old_parent_key = self.keys["parent_key"]
+        old_parent_bookmark = self.bookmarks["parent"]
+        old_parent_extra_vars = self.extra_vars
+
         if model._yang_type is not None:
             # None means it's an element of a list
-            block, extra_vars = self.parser.parse_container(mapping["_process"])
+            block, extra_vars = self.parser.parse_container(mapping["_process"], self.bookmarks)
 
             if block is None:
                 return
             elif block != "" or extra_vars:
+                self.bookmarks["parent"] = block
                 self.bookmarks[attribute] = block
                 self.extra_vars[attribute] = extra_vars
 
@@ -114,6 +122,11 @@ class Parser(object):
             else:
                 self._parse(k, v, mapping[v._yang_name])
 
+        # Restoring state
+        self.keys["parent_key"] = old_parent_key
+        self.bookmarks["parent"] = old_parent_bookmark
+        self.extra_vars = old_parent_extra_vars
+
     def _parse_list(self, attribute, model, mapping):
         mapping_copy = copy.deepcopy(mapping)
         mapping_copy["_process"] = helpers.resolve_rule(mapping_copy["_process"], attribute,
@@ -128,7 +141,8 @@ class Parser(object):
         # for each individual element of the list
         self.bookmarks[attribute] = {}
 
-        for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"]):
+        for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"],
+                                                             self.bookmarks):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
 
             try:
@@ -167,7 +181,7 @@ class Parser(object):
         if model._is_keyval:
             return
 
-        value = self.parser.parse_leaf(mapping["_process"])
+        value = self.parser.parse_leaf(mapping["_process"], self.bookmarks)
 
         if value is not None and (value != model.default() or isinstance(value, bool)):
             setter = getattr(model._parent, "_set_{}".format(attribute))

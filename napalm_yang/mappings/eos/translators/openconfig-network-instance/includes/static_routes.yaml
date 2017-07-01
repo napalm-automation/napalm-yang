@@ -14,13 +14,11 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-              - mode: container
-                key_value: "ip route {{ static_key }} {{ next_hop_key }}\n"
+              - key_value: "ip route {{ static_key }} {{ next_hop_key }}\n"
                 negate: "no ip route {{ static_key }} {{ next_hop_key }}\n"
                 when: "{{ network_instance_key == 'global' }}"
                 in: "network-instances"
-              - mode: container
-                key_value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }}\n"
+              - key_value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }}\n"
                 negate: "no ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }}\n"
                 when: "{{ network_instance_key != 'global' }}"
                 in: "network-instances"
@@ -30,12 +28,10 @@ static:
                     _process: not_implemented
                 metric:
                     _process:
-                      - mode: element
-                        value: "ip route {{ static_key }} {{ next_hop_key }} {{ model }}\n"
+                      - value: "ip route {{ static_key }} {{ next_hop_key }} {{ model }}\n"
                         negate: "ip route {{ static_key }} {{ next_hop_key }} 1\n"
                         when: "{{ network_instance_key == 'global' }}"
-                      - mode: element
-                        value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }} {{ model }}\n"
+                      - value: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }} {{ model }}\n"
                         negate: "ip route vrf {{ network_instance_key }} {{ static_key }} {{ next_hop_key }} 1\n"
                         when: "{{ network_instance_key != 'global' }}"
                 next-hop:

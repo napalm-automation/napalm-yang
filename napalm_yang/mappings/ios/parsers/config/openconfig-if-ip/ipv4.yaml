@@ -10,16 +10,13 @@ ipv4:
             _process: # TODO look at this one, I think this is different depending on IOS version
                 - mode: is_absent
                   regexp: "(?P<value>^\\s*switchport mode.*$)"
-                  from: "{{ bookmarks['parent'] }}"
         mtu:
             _process: not_implemented
     addresses:
         _process: unnecessary
         address:
             _process:
-                - mode: block
-                  regexp: "(?P<block>ip address (?P<key>(?P<ip>.*)) (?P<prefix>([0-255]|\\.)*)(?P<secondary> secondary)*)$"
-                  from: "{{ bookmarks['parent'] }}"
+                - regexp: "(?P<block>ip address (?P<key>(?P<ip>.*)) (?P<prefix>([0-255]|\\.)*)(?P<secondary> secondary)*)$"
             ip:
                 _process: unnecessary
             config:

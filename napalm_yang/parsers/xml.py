@@ -10,32 +10,35 @@ from napalm_yang.parsers.base import BaseParser
 class XMLParser(BaseParser):
 
     @classmethod
-    def _parse_list_xpath(cls, mapping):
-        xml = etree.fromstring(mapping["from"])
-
-        mandatory_elements = mapping.pop("mandatory", [])
-        post_process_filter = mapping.pop("post_process_filter", None)
-
-        for element in itertools.chain(xml.xpath(mapping["xpath"]), mandatory_elements):
-            if isinstance(element, dict):
-                yield element["key"], element["block"], element["extra_vars"]
+    def init_native(cls, native):
+        r = []
+        for n in native:
+            if hasattr(n, "xpath"):
+                r.append(n)
             else:
-                key = element.xpath(mapping["key"])[0].text.strip()
-                if post_process_filter:
-                    key = cls._parse_post_process_filter(post_process_filter, key)
-                yield key, etree.tostring(element), {}
+                r.append(etree.fromstring(n))
+        return r
 
     @classmethod
-    def _parse_list_nested(cls, mapping):
-        xml = etree.fromstring(mapping["from"])
+    def _parse_list_default(cls, mapping, data):
+        post_process_filter = mapping.pop("post_process_filter", None)
+
+        for element in data.xpath(mapping["xpath"]):
+            key = element.xpath(mapping["key"])[0].text.strip()
+            if post_process_filter:
+                key = cls._parse_post_process_filter(post_process_filter, key)
+            yield key, element, {}
+
+    @classmethod
+    def _parse_list_nested(cls, mapping, data):
         path = mapping["xpath"].split("/")
         iterators = []
         list_vars = []
-        cls._parse_list_nested_recursive(xml, path, iterators, list_vars)
-        return cls._parse_list_container_helper(mapping, iterators, xml, list_vars)
+        cls._parse_list_nested_recursive(data, path, iterators, list_vars)
+        return cls._parse_list_container_helper(mapping, iterators, data, list_vars)
 
     @classmethod
-    def _parse_list_nested_recursive(cls, xml, path, iterators, list_vars, cur_vars=None):
+    def _parse_list_nested_recursive(cls, data, path, iterators, list_vars, cur_vars=None):
         """
         This helps parsing shit like:
 
@@ -69,18 +72,18 @@ class XMLParser(BaseParser):
             p = path[0]
             path = path[1:]
         else:
-            for _ in xml:
+            for _ in data:
                 list_vars.append(cur_vars)
-            iterators.append(xml)
-            return xml
+            iterators.append(data)
+            return data
 
         if p.startswith("?"):
-            for x in xml:
+            for x in data:
                 key, var_path = p.split(".")
                 cur_vars.update({key.lstrip("?"): x.xpath(var_path)[0].text})
                 cls._parse_list_nested_recursive(x, path, iterators, list_vars, cur_vars)
         else:
-            x = xml.xpath(p)
+            x = data.xpath(p)
             cls._parse_list_nested_recursive(x, path, iterators, list_vars, cur_vars)
 
     @classmethod
@@ -119,22 +122,20 @@ class XMLParser(BaseParser):
                 if post_process_filter:
                     key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
 
-                yield key, etree.tostring(element), extra_vars
+                yield key, element, extra_vars
 
     @classmethod
-    def _parse_list_container(cls, mapping):
-        xml = etree.fromstring(mapping["from"])
-        xml = xml.xpath(mapping["xpath"])
+    def _parse_list_container(cls, mapping, data):
+        data = data.xpath(mapping["xpath"])
 
         nested = mapping.get("nested", False)
-        root = xml[0] if nested and len(xml) else xml
+        root = data[0] if nested and len(data) else data
 
         return cls._parse_list_container_helper(mapping, [root], root)
 
     @classmethod
-    def _parse_leaf_xpath(cls, mapping, check_default=True, check_presence=False):
-        xml = etree.fromstring(mapping["from"])
-        element = xml.xpath(mapping["xpath"])
+    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+        element = data.xpath(mapping["xpath"])
 
         if element and not check_presence:
             if "attribute" in mapping.keys():
@@ -157,8 +158,8 @@ class XMLParser(BaseParser):
             return None
 
     @classmethod
-    def _parse_leaf_map(cls, mapping):
-        value = cls._parse_leaf_xpath(mapping)
+    def _parse_leaf_map(cls, mapping, data):
+        value = cls._parse_leaf_default(mapping, data)
 
         if "regex" in mapping.keys():
             value = re.search(mapping["regexp"], value).group("value")
@@ -166,9 +167,9 @@ class XMLParser(BaseParser):
         return mapping["map"][value] if value else None
 
     @classmethod
-    def _parse_leaf_is_present(cls, mapping):
-        return cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
+    def _parse_leaf_is_present(cls, mapping, data):
+        return cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
 
     @classmethod
-    def _parse_leaf_is_absent(cls, mapping):
-        return not cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
+    def _parse_leaf_is_absent(cls, mapping, data):
+        return not cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)

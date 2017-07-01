@@ -13,19 +13,17 @@ network-instances:
             - mode: container
               xpath: "routing-instances/instance"
               key_attribute: name
-              from: "{{ bookmarks['network-instances'].0 }}"
-              mandatory:
-                  - key: "global"
-                    block: "{{ bookmarks['network-instances'].0 }}"
-                    extra_vars: {}
+              from: network-instances.0
+            - mode: manual
+              key: "global"
+              block: network-instances.0
+              extra_vars: {}
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
             description:
                 _process:
-                    - mode: xpath
-                      xpath: description
-                      from: "{{ bookmarks.parent }}"
+                    - xpath: description
             enabled:
                 _process:
                     - mode: value
@@ -47,7 +45,6 @@ network-instances:
                     when: "{{ network_instance_key == 'global' }}"
                   - mode: map
                     xpath: instance-type
-                    from: "{{ bookmarks.parent }}"
                     map:
                         vrf: L3VRF
                         virtual-router: L2L3
@@ -325,12 +322,10 @@ network-instances:
                 _process:
                   - mode: container
                     xpath: "protocols"
-                    from: "{{ bookmarks.parent }}"
                     nested: true
                     composite_key: [protocols_name, protocols_name]
                   - mode: container
                     xpath: "routing-options/static"
-                    from: "{{ bookmarks.parent }}"
                     key: "static static"
                 bgp: !include includes/bgp.yaml
                 config:

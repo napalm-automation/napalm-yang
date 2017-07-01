@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from builtins import super
 
 import re
 import json
@@ -13,23 +12,33 @@ class JSONParser(BaseParser):
     def init_native(cls, native):
         resp = []
         for k in native:
-            if isinstance(k, str):
-                resp.append(json.loads(k))
-            else:
+            if isinstance(k, dict):
                 resp.append(k)
+            else:
+                resp.append(json.loads(k))
 
-        return super().init_native(resp)
+        return resp
 
     @classmethod
-    def _parse_list_dict(cls, mapping, key=None):
-        d = json.loads(mapping['from'])
+    def _parse_list_default(cls, mapping, data, key=None):
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+
+        regexp = mapping.get('regexp', None)
+        if regexp:
+            regexp = re.compile(regexp)
         if isinstance(d, dict):
             for k, v in d.items():
+                if regexp:
+                    match = regexp.match(k)
+                    if match:
+                        k = match.group('value')
+                    else:
+                        continue
                 yield k, v, {}
 
     @classmethod
-    def _parse_leaf_dict(cls, mapping, check_default=True, check_presence=False):
-        d = mapping['from']
+    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
         if d and not check_presence:
             regexp = mapping.get('regexp', None)
             if regexp:
@@ -47,13 +56,19 @@ class JSONParser(BaseParser):
         return
 
     @classmethod
-    def _parse_leaf_map(cls, mapping):
-        return mapping['map'][mapping['value']]
+    def _parse_container_default(cls, mapping, data):
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+        return d, {}
 
     @classmethod
-    def _parse_leaf_is_present(cls, mapping):
-        return cls._parse_leaf_path(mapping, check_default=False, check_presence=True)
+    def _parse_leaf_map(cls, mapping, data):
+        v = cls._parse_leaf_default(mapping, data)
+        return mapping['map'][v.lower()]
 
     @classmethod
-    def _parse_leaf_is_absent(cls, mapping):
-        return not cls._parse_leaf_path(mapping, check_default=False, check_presence=True)
+    def _parse_leaf_is_present(cls, mapping, data):
+        return cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
+
+    @classmethod
+    def _parse_leaf_is_absent(cls, mapping, data):
+        return not cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)

@@ -7,7 +7,6 @@ static:
       - mode: container
         xpath: "route"
         key_attribute: name
-        from: "{{ bookmarks.parent }}"
     config:
         _process: unnecessary
         prefix:
@@ -23,16 +22,13 @@ static:
               - mode: container
                 xpath: "qualified-next-hop"
                 key_attribute: name
-                from: "{{ bookmarks.parent }}"
             config:
                 _process: unnecessary
                 index:
                     _process: not_implemented
                 metric:
                     _process:
-                      - mode: xpath
-                        xpath: "metric"
-                        from: "{{ bookmarks.parent }}"
+                      - xpath: "metric"
                 next-hop:
                     _process:
                         - mode: value

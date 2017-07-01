@@ -258,14 +258,12 @@ global:
         _process: unnecessary
         as:
             _process:
-              - mode: xpath
-                xpath: "routing-options/autonomous-system/as-number"
-                from: "{{ bookmarks['network_instance'][network_instance_key] }}"
+              - xpath: "routing-options/autonomous-system/as-number"
+                from: "network_instance.{{ network_instance_key }}"
         router-id:
             _process:
-              - mode: xpath
-                xpath: "routing-options/router-id"
-                from: "{{ bookmarks['network_instance'][network_instance_key] }}"
+              - xpath: "routing-options/router-id"
+                from: "network_instance.{{ network_instance_key }}"
     default-route-distance:
         _process: not_implemented
         config:
@@ -357,7 +355,6 @@ neighbors:
           - mode: nested
             xpath: "group/?peer_group.name/neighbor"
             key_attribute: name
-            from: "{{ bookmarks.parent }}"
         add-paths:
             _process: not_implemented
             config:
@@ -624,25 +621,19 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                  - mode: xpath
-                    xpath: "description"
-                    from: "{{ bookmarks.parent }}"
+                  - xpath: "description"
             enabled:
                 _process: not_implemented
             local-as:
                 _process:
-                  - mode: xpath
-                    xpath: "local-as.as-number"
-                    from: "{{ bookmarks.parent }}"
+                  - xpath: "local-as.as-number"
             neighbor-address:
                 _process:
-                    - mode: value
-                      value: "{{ neighbor_key }}"
+                  - mode: value
+                    value: "{{ neighbor_key }}"
             peer-as:
                 _process:
-                  - mode: xpath
-                    xpath: "peer-as"
-                    from: "{{ bookmarks.parent }}"
+                  - xpath: "peer-as"
             peer-group:
                 _process:
                   - mode: value

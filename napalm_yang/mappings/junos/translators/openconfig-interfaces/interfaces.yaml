@@ -5,13 +5,11 @@ metadata:
 
 interfaces:
     _process:
-        - mode: container
-          container: interfaces
+        - container: interfaces
           replace: true
     interface:
         _process:
-            - mode: container
-              container: interface
+            - container: interface
               key_element: name
               key_value: "{{ interface_key }}"
         name:
@@ -32,24 +30,20 @@ interfaces:
                 _process: unnecessary
             enabled:
                 _process:
-                    - mode: element
-                      element: "disable"
+                    - element: "disable"
                       when: "{{ not model }}"
                       value: null
             description:
                 _process:
-                    - mode: element
-                      element: description
+                    - element: description
             mtu:
                 _process:
-                    - mode: element
-                      element: mtu
+                    - element: mtu
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - mode: container
-                      container: unit
+                    - container: unit
                       key_element: name
                       key_value: "{{ subinterface_key }}"
                 index:
@@ -62,11 +56,9 @@ interfaces:
                         _process: unnecessary
                     enabled:
                         _process:
-                            - mode: element
-                              element: "disable"
+                            - element: "disable"
                               when: "{{ not model }}"
                               value: null
                     description:
                             _process:
-                                - mode: element
-                                  element: description
+                                - element: description

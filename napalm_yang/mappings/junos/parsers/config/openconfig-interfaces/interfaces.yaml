@@ -10,10 +10,9 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - mode: xpath
-              xpath: "interfaces/interface"
+            - xpath: "interfaces/interface"
               key: name
-              from: "{{ bookmarks.interfaces.0 }}"
+              from: interfaces.0
         name:
             _process: unnecessary
         hold-time:
@@ -35,10 +34,6 @@ interfaces:
                     - mode: map
                       xpath: name
                       regexp: "(?P<value>[a-z]+).*"
-                      # Next field could easily be
-                      # from: "{{ bookmarks['parent'] }}"
-                      # but this is more efficient
-                      from: "<interface><name>{{ parent_key }}</name></interface>"
                       map:
                           ge: ethernetCsmacd
                           xe: ethernetCsmacd
@@ -52,25 +47,18 @@ interfaces:
                 _process:
                     - mode: is_absent
                       xpath: "disable"
-                      from: "{{ bookmarks['parent'] }}"
             description:
                 _process:
-                    - mode: xpath
-                      xpath: description
-                      from: "{{ bookmarks['parent'] }}"
+                    - xpath: description
             mtu:
                 _process:
-                    - mode: xpath
-                      xpath: mtu
-                      from: "{{ bookmarks['parent'] }}"
+                    - xpath: mtu
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - mode: xpath
-                      xpath: "unit"
+                    - xpath: "unit"
                       key: name
-                      from: "{{ bookmarks['parent'] }}"
                 index:
                     _process: unnecessary
                 config:
@@ -85,9 +73,6 @@ interfaces:
                         _process:
                             - mode: is_absent
                               xpath: "disable"
-                              from: "{{ bookmarks['parent'] }}"
                     description:
                         _process:
-                            - mode: xpath
-                              xpath: description
-                              from: "{{ bookmarks['parent'] }}"
+                            - xpath: description

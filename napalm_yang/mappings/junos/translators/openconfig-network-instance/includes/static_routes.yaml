@@ -4,8 +4,7 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-      - mode: container
-        container: "route"
+      - container: "route"
         key_element: name
         key_value: "{{ static_key }}"
     config:
@@ -18,8 +17,7 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-              - mode: container
-                container: "qualified-next-hop"
+              - container: "qualified-next-hop"
                 key_element: name
                 key_value: "{{ next_hop_key }}"
             config:
@@ -28,8 +26,7 @@ static:
                     _process: not_implemented
                 metric:
                     _process:
-                      - mode: element
-                        element: metric
+                      - element: metric
                 next-hop:
                     _process: unnecessary
                 recurse:
