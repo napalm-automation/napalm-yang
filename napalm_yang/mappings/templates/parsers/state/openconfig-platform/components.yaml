@@ -3,7 +3,8 @@ metadata:
     parser:
     execute:
         - method:
-          args:
+          args: []
+          kwargs:
               commands: [ ]
 
 components:

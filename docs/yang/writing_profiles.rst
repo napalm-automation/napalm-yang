@@ -49,12 +49,13 @@ If we check the content of the file ``vlan.yaml`` we can clearly see two parts:
         processor: XMLParser
         execute:
             - method: _rpc
-              args:
+              args: []
+              kwargs:
                   get: "<get-configuration/>"
 
 In this case we are using the ``XMLParser`` parser and in order to get the data we need from the
-device we have to call the method ``_rpc`` with the ``args`` parameters. This is, by the way, an
-RPC call for a junos device.
+device we have to call the method ``_rpc`` with the ``args`` and ``kwargs`` parameters. This is, 
+by the way, an RPC call for a junos device.
 
 * **vlan** - This is the part that follows the model specification. In this case is ``vlan`` but in
   others it might be ``interfaces``, ``addressess`` or something else, this will be model dependent
