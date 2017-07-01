@@ -63,7 +63,7 @@ class Parser(object):
             if not isinstance(args, list):
                 raise TypeError("args must be type list, not type {}".format(type(args)))
             kwargs = m.get("kwargs", {})
-            if not isinstance(args, dict):
+            if not isinstance(kwargs, dict):
                 raise TypeError("kwargs must be type dict, not type {}".format(type(kwargs)))
             r = attr(*args, **kwargs)
 
