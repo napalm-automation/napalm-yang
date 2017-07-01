@@ -4,7 +4,7 @@ metadata:
     execute:
         - method: "device.run_commands"
           kwargs:
-              commands: ["show interfaces", "show snmp mib ifmib ifindex"]
+              commands: ["show interfaces"]
 
 interfaces:
     _process: unnecessary

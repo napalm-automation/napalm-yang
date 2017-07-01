@@ -45,15 +45,12 @@ def pretty_json(dictionary):
 BASE_PATH = os.path.dirname(__file__)
 
 
-test_config_profile_models = [
-    ["ios", napalm_yang.models.openconfig_interfaces, "default"],
-    ["eos", napalm_yang.models.openconfig_network_instance, "default"],
-    ["junos", napalm_yang.models.openconfig_network_instance, "default"],
-]
-
-test_state_profile_models = [
-    ["junos", napalm_yang.models.openconfig_interfaces, "default"],
-    ["eos", napalm_yang.models.openconfig_interfaces, "default"],
+test_parse_models = [
+    ["ios", "config", napalm_yang.models.openconfig_interfaces, "default"],
+    ["eos", "config", napalm_yang.models.openconfig_network_instance, "default"],
+    ["eos", "state", napalm_yang.models.openconfig_interfaces, "default"],
+    ["junos", "config", napalm_yang.models.openconfig_network_instance, "default"],
+    ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 
 
@@ -68,31 +65,44 @@ def read_json(base, profile, model, case, filename):
     return json.loads(read_file_content(base, profile, model, case, filename))
 
 
+def load_json_model(base, profile, model, case, filename):
+    expected_json = read_json(base, profile, model, case, "expected.json")
+    expected = napalm_yang.base.Root()
+    expected.add_model(model)
+    expected.load_dict(expected_json)
+    return expected
+
+
 class Tests(object):
 
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_parse_config(self, profile, model, case):
-        expected_json = read_json("test_parse_config", profile, model, case, "expected.json")
-        expected = napalm_yang.base.Root()
-        expected.add_model(model)
-        expected.load_dict(expected_json)
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_parse(self, profile, mode, model, case):
+        expected = load_json_model("test_profiles", profile, model, case, "expected.json")
 
         optional_args = {
-            "path": os.path.join(BASE_PATH, "test_parse_config",
+            "path": os.path.join(BASE_PATH, "test_profiles",
                                  profile, model._yang_name, case, "mocked"),
             "profile": profile if isinstance(profile, list) else [profile],
         }
         with MockDriver("hostname", "username", "password", optional_args=optional_args) as d:
-            config = napalm_yang.base.Root()
-            config.add_model(model)
-            config.parse_config(device=d)
+            yang = napalm_yang.base.Root()
+            yang.add_model(model)
 
-        assert not napalm_yang.utils.diff(config, expected)
+            if mode == "config":
+                yang.parse_config(device=d)
+            else:
+                yang.parse_state(device=d)
 
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_translate(self, profile, model, case):
-        json_blob = read_json(profile, model, case, "expected.json")
-        expected_translation = read_file_content(profile, model, case, "translation.txt")
+        assert not napalm_yang.utils.diff(yang, expected)
+
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_translate(self, profile, mode, model, case):
+        if mode == "state":
+            return
+
+        json_blob = read_json("test_profiles", profile, model, case, "expected.json")
+        expected_translation = read_file_content("test_profiles", profile, model, case,
+                                                 "translation.txt")
 
         config = napalm_yang.base.Root()
         config.add_model(model)
@@ -108,12 +118,16 @@ class Tests(object):
         assert configuration == expected_translation
 
     @pytest.mark.parametrize("action", ["merge", "replace"])
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_translate_merge(self, action, profile, model, case):
-        json_running = read_json(profile, model, case, "expected.json")
-        json_candidate = read_json(profile, model, case, "candidate.json")
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_translate_merge(self, mode, action, profile, model, case):
+        if mode == "state":
+            return
 
-        expected_translation = read_file_content(profile, model, case, "{}.txt".format(action))
+        json_running = read_json("test_profiles", profile, model, case, "expected.json")
+        json_candidate = read_json("test_profiles", profile, model, case, "candidate.json")
+
+        expected_translation = read_file_content("test_profiles", profile, model, case,
+                                                 "{}.txt".format(action))
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(model)
@@ -138,20 +152,3 @@ class Tests(object):
             #  d.discard_config()
 
         assert configuration == expected_translation
-
-    @pytest.mark.parametrize("profile, model, case", test_state_profile_models)
-    def test_parse_state(self, profile, model, case):
-        native = read_file_content(profile, model, case, "{}.native".format(model._yang_name))
-        expected_json = read_json(profile, model, case, "{}.expected".format(model._yang_name))
-
-        state = napalm_yang.base.Root()
-        state.add_model(model)
-        state.parse_state(native=[native], profile=[profile])
-
-        #  print(pretty_json(state.get(filter=True)))
-
-        expected = napalm_yang.base.Root()
-        expected.add_model(model)
-        expected.load_dict(expected_json)
-
-        assert not napalm_yang.utils.diff(state, expected)
