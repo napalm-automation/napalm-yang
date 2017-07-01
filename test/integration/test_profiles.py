@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 #  from napalm_base import get_network_driver
 
 import napalm_yang
+from napalm_base.mock import MockDriver
 
 import pytest
 
@@ -56,33 +57,35 @@ test_state_profile_models = [
 ]
 
 
-def read_file_content(profile, model, case, filename):
-    full_path = os.path.join(BASE_PATH, "profiles_data",
+def read_file_content(base, profile, model, case, filename):
+    full_path = os.path.join(BASE_PATH, base,
                              profile, model._yang_name, case, filename)
     with open(full_path, "r") as f:
         return f.read()
 
 
-def read_json(profile, model, case, filename):
-    return json.loads(read_file_content(profile, model, case, filename))
+def read_json(base, profile, model, case, filename):
+    return json.loads(read_file_content(base, profile, model, case, filename))
 
 
 class Tests(object):
 
     @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
     def test_parse_config(self, profile, model, case):
-        config_txt = read_file_content(profile, model, case, "config.txt")
-        expected_json = read_json(profile, model, case, "expected.json")
-
-        config = napalm_yang.base.Root()
-        config.add_model(model)
-        config.parse_config(native=[config_txt], profile=[profile])
-
+        expected_json = read_json("test_parse_config", profile, model, case, "expected.json")
         expected = napalm_yang.base.Root()
         expected.add_model(model)
         expected.load_dict(expected_json)
 
-        #  print(pretty_json(config.get(filter=True)))
+        optional_args = {
+            "path": os.path.join(BASE_PATH, "test_parse_config",
+                                 profile, model._yang_name, case, "mocked"),
+            "profile": profile if isinstance(profile, list) else [profile],
+        }
+        with MockDriver("hostname", "username", "password", optional_args=optional_args) as d:
+            config = napalm_yang.base.Root()
+            config.add_model(model)
+            config.parse_config(device=d)
 
         assert not napalm_yang.utils.diff(config, expected)
 
