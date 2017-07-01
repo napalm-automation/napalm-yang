@@ -57,14 +57,14 @@ class Parser(object):
         result = []
         for m in methods:
             attr = device
-            args = []
-            kwargs = {}
             for p in m["method"].split("."):
                 attr = getattr(attr, p)
-            if isinstance(m.get("args", None), list):
-                args = m["args"]
-            if isinstance(m.get("kwargs", None), dict):
-                kwargs = m["kwargs"]
+            args = m.get("args", [])
+            if not isinstance(args, list):
+                raise TypeError("args must be type list, not type {}".format(type(args)))
+            kwargs = m.get("kwargs", {})
+            if not isinstance(args, dict):
+                raise TypeError("kwargs must be type dict, not type {}".format(type(kwargs)))
             r = attr(*args, **kwargs)
 
             if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
