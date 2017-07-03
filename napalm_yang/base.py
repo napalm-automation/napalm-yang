@@ -1,6 +1,7 @@
 import ast
 
 
+from napalm_yang.supported_models import SUPPORTED_MODELS
 from napalm_yang.parser import Parser
 from napalm_yang.translator import Translator
 
@@ -33,7 +34,7 @@ class Root(object):
         return self._elements
     "base",
 
-    def add_model(self, model):
+    def add_model(self, model, force=False):
         """
         Add a model.
 
@@ -41,6 +42,7 @@ class Root(object):
 
         Args:
             model (PybindBase): Model to add.
+            force (bool): If not set, verify the model is in SUPPORTED_MODELS
 
         Examples:
 
@@ -54,6 +56,9 @@ class Root(object):
             model = model()
         except Exception:
             pass
+
+        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS]:
+            raise ValueError("Only models in SUPPORTED_MODELS can be added without `force=True`")
 
         for k, v in model:
             self._elements[k] = v
@@ -183,7 +188,7 @@ class Root(object):
                 result[k] = r
         return result
 
-    def parse_config(self, device=None, profile=None, native=None):
+    def parse_config(self, device=None, profile=None, native=None, attrs=None):
         """
         Parse native configuration and load it into the corresponding models. Only models
         that have been added to the root object will be parsed.
@@ -212,12 +217,14 @@ class Root(object):
             >>> running_config.add_model(napalm_yang.models.openconfig_interfaces)
             >>> running_config.parse_config(native=config, profile="junos")
         """
+        if attrs is None:
+            attrs = self.elements().values()
 
-        for k, v in self:
+        for v in attrs:
             parser = Parser(v, device=device, profile=profile, native=native, is_config=True)
             parser.parse()
 
-    def parse_state(self, device=None, profile=None, native=None):
+    def parse_state(self, device=None, profile=None, native=None, attrs=None):
         """
         Parse native state and load it into the corresponding models. Only models
         that have been added to the root object will be parsed.
@@ -246,7 +253,10 @@ class Root(object):
             >>> state.add_model(napalm_yang.models.openconfig_interfaces)
             >>> state.parse_config(native=state_data, profile="junos")
         """
-        for k, v in self:
+        if attrs is None:
+            attrs = self.elements().values()
+
+        for v in attrs:
             parser = Parser(v, device=device, profile=profile, native=native, is_config=False)
             parser.parse()
 
