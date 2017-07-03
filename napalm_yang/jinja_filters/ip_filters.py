@@ -66,7 +66,8 @@ def normalize_address(value):
 def prefix_to_addrmask(value, sep=' '):
     """
     Converts a CIDR formatted prefix into an address netmask representation.
-    Argument sep specifies the separator between the address and netmask parts. By default it's a single space.
+    Argument sep specifies the separator between the address and netmask parts.
+    By default it's a single space.
 
     Examples:
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask }}" -> "192.168.0.1 255.255.255.0"

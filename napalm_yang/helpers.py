@@ -73,10 +73,10 @@ def _resolve_rule(rule, **kwargs):
 
 
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
-                 parse_bookmarks=None):
+                 parse_bookmarks=None, replacing=False, merging=False, negating=False):
     if isinstance(rule, list):
-        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks)
-                for r in rule]
+        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks,
+                             replacing, merging, negating) for r in rule]
     elif isinstance(rule, str):
         if rule in ["unnecessary"]:
             return [{"mode": "skip", "reason": rule}]
@@ -91,6 +91,9 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["bookmarks"] = parse_bookmarks
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars
+    kwargs["replacing"] = replacing
+    kwargs["merging"] = merging
+    kwargs["negating"] = negating
 
     for k, v in rule.items():
         if k.startswith('post_process_'):
