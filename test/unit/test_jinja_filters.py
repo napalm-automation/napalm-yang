@@ -73,9 +73,12 @@ class TestJinjaFilters(unittest.TestCase):
         self.assertRaises(AddrFormatError, ip_filters.normalize_prefix, 'bad')
 
         self.assertEqual(ip_filters.normalize_prefix('192.168.0.1'), '192.168.0.1/32')
-        self.assertEqual(ip_filters.normalize_prefix('192.168.0.55 255.255.255.0'), '192.168.0.55/24')
-        self.assertEqual(ip_filters.normalize_prefix('192.168.0.55/255.255.255.0'), '192.168.0.55/24')
-        self.assertEqual(ip_filters.normalize_prefix('2001:0DB8:0:0000:1:0:0:1/64'), '2001:db8::1:0:0:1/64')
+        self.assertEqual(ip_filters.normalize_prefix('192.168.0.55 255.255.255.0'),
+                         '192.168.0.55/24')
+        self.assertEqual(ip_filters.normalize_prefix('192.168.0.55/255.255.255.0'),
+                         '192.168.0.55/24')
+        self.assertEqual(ip_filters.normalize_prefix('2001:0DB8:0:0000:1:0:0:1/64'),
+                         '2001:db8::1:0:0:1/64')
 
     def test_normalize_address(self):
         """
@@ -94,7 +97,8 @@ class TestJinjaFilters(unittest.TestCase):
 
         self.assertEqual(ip_filters.normalize_address('192.168.0.1'), '192.168.0.1')
         self.assertEqual(ip_filters.normalize_address('192.168.1'), '192.168.0.1')
-        self.assertEqual(ip_filters.normalize_address('2001:0DB8:0:0000:1:0:0:1'), '2001:db8::1:0:0:1')
+        self.assertEqual(ip_filters.normalize_address('2001:0DB8:0:0000:1:0:0:1'),
+                         '2001:db8::1:0:0:1')
 
     def test_prefix_to_addrmask(self):
         """
@@ -111,5 +115,7 @@ class TestJinjaFilters(unittest.TestCase):
 
         self.assertRaises(AddrFormatError, ip_filters.prefix_to_addrmask, 'bad')
 
-        self.assertEqual(ip_filters.prefix_to_addrmask('192.168.0.1/24'), '192.168.0.1 255.255.255.0')
-        self.assertEqual(ip_filters.prefix_to_addrmask('192.168.0.0/32', '/'), '192.168.0.0/255.255.255.255')
+        self.assertEqual(ip_filters.prefix_to_addrmask('192.168.0.1/24'),
+                         '192.168.0.1 255.255.255.0')
+        self.assertEqual(ip_filters.prefix_to_addrmask('192.168.0.0/32', '/'),
+                         '192.168.0.0/255.255.255.255')
