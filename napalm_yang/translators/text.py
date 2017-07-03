@@ -65,13 +65,13 @@ class TextTranslator(XMLTranslator):
         extra_vars = {}
 
         if (replacing or self.replace) and not mapping.get("replace", True):
-            return
+            return None, {}
 
         if not self.merge and not self.replace:
-            return
+            return None, {}
 
         if self.merge and replacing:
-            return
+            return None, {}
 
         e = etree.SubElement(translation, "command")
         e.text = mapping["negate"]

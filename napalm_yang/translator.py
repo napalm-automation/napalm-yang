@@ -151,7 +151,7 @@ class Translator(object):
 
     def _default_element_list(self, attribute, running, mapping, translation, candidate):
         # we'll restore old values when we leave this branch
-        old_extra_vars = copy(self.extra_vars)
+        old_extra_vars = copy.deepcopy(self.extra_vars)
         for key in running:
             logger.info("Defaulting {}: {}".format(attribute, key))
             element = running[key]
@@ -168,8 +168,8 @@ class Translator(object):
                                                         self.bookmarks, bool(self.replace),
                                                         bool(self.merge), True)
 
-                _, extra_vars = self.translator.default_element(translation_rule, translation,
-                                                                self.bookmarks)
+                extra_vars = self.translator.default_element(translation_rule, translation,
+                                                             self.bookmarks)
                 self.extra_vars.update(extra_vars)
 
                 if any([t.get("continue_negating", False) for t in translation_rule]):

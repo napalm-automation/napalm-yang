@@ -44,10 +44,10 @@ class XMLTranslator(BaseTranslator):
 
     def _default_element_default(self, mapping, translation, replacing):
         if not self.merge:
-            return
+            return None, {}
 
         if self.merge and replacing:
-            return
+            return None, {}
 
         t = translation
 
@@ -62,7 +62,7 @@ class XMLTranslator(BaseTranslator):
         if mapping.get("delete_on_merge", True):
             t.set("delete", "delete")
 
-        return t
+        return t, {}
 
     def _translate_leaf_default(self, attribute, model, other, mapping, translation, force=False):
         delete = False
