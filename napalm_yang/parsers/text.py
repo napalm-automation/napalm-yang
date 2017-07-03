@@ -1,7 +1,5 @@
 from napalm_yang.parsers.base import BaseParser
 
-import itertools
-
 import re
 
 
