@@ -3,7 +3,18 @@ from __future__ import absolute_import
 import re
 import json
 
+from collections import OrderedDict
+
 from napalm_yang.parsers.base import BaseParser
+
+
+def get_element_with_cdata(dictionary, element):
+    e = dictionary[element]
+    if isinstance(e, OrderedDict):
+        # this is for xmltodict
+        return e["#text"]
+    else:
+        return e
 
 
 class JSONParser(BaseParser):
@@ -21,24 +32,41 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_list_default(cls, mapping, data, key=None):
+        def _iterator(d, mapping):
+            # key_element is necessary when we have lists of dicts
+            key_element = mapping.get("key")
+
+            if key_element and d:
+                if key_element in d:
+                    # xmltodict returns a dict when there is only one element
+                    d = [d]
+
+                key_element = mapping["key"]
+                for v in d:
+                    k = get_element_with_cdata(v, key_element)
+                    yield k, v
+            elif d:
+                for k, v in d.items():
+                    yield k, v
+
         d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
 
         regexp = mapping.get('regexp', None)
         if regexp:
             regexp = re.compile(regexp)
-        if isinstance(d, dict):
-            for k, v in d.items():
-                if regexp:
-                    match = regexp.match(k)
-                    if match:
-                        k = match.group('value')
-                    else:
-                        continue
-                yield k, v, {}
+
+        for k, v in _iterator(d, mapping):
+            if regexp:
+                match = regexp.match(k)
+                if match:
+                    k = match.group('value')
+                else:
+                    continue
+            yield k, v, {}
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
-        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+        d = cls.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
         if d and not check_presence:
             regexp = mapping.get('regexp', None)
             if regexp:
@@ -63,7 +91,10 @@ class JSONParser(BaseParser):
     @classmethod
     def _parse_leaf_map(cls, mapping, data):
         v = cls._parse_leaf_default(mapping, data)
-        return mapping['map'][v.lower()]
+        if v:
+            return mapping['map'][v.lower()]
+        else:
+            return
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping, data):

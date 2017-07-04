@@ -1,18 +1,19 @@
 ---
 metadata:
-    processor: XMLParser
+    processor: XMLParser2
     execute:
         - method: _rpc
           kwargs:
               get: "<get-configuration/>"
 
 interfaces:
-    _process: unnecessary
+    _process:
+        - path: "configuration.interfaces"
+          from: interfaces.0
     interface:
         _process:
-            - xpath: "interfaces/interface"
+            - path: "interface"
               key: name
-              from: interfaces.0
         name:
             _process: unnecessary
         hold-time:
@@ -32,7 +33,7 @@ interfaces:
             type:
                 _process:
                     - mode: map
-                      xpath: name
+                      path: name
                       regexp: "(?P<value>[a-z]+).*"
                       map:
                           ge: ethernetCsmacd
@@ -46,18 +47,18 @@ interfaces:
             enabled:
                 _process:
                     - mode: is_absent
-                      xpath: "disable"
+                      path: "disable"
             description:
                 _process:
-                    - xpath: description
+                    - path: description
             mtu:
                 _process:
-                    - xpath: mtu
+                    - path: mtu
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - xpath: "unit"
+                    - path: "unit"
                       key: name
                 index:
                     _process: unnecessary
@@ -72,7 +73,7 @@ interfaces:
                     enabled:
                         _process:
                             - mode: is_absent
-                              xpath: "disable"
+                              path: "disable"
                     description:
                         _process:
-                            - xpath: description
+                            - path: description

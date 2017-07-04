@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: XMLParser
+    processor: XMLParser2
 
 vlan:
     _process: unnecessary
@@ -8,4 +8,4 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - xpath: "vlan-id"
+                - path: "vlan-id"

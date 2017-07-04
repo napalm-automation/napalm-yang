@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: XMLParser
+    processor: XMLParser2
 
 routed-vlan:
     _process: unnecessary

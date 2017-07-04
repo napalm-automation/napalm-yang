@@ -4,7 +4,7 @@ from napalm_yang.helpers import template
 class BaseParser(object):
 
     @staticmethod
-    def resolve_path(my_dict, path, default=None):
+    def resolve_path(my_dict, path, default=None, check_presence=False):
         if path is None:
             return
 
@@ -16,10 +16,11 @@ class BaseParser(object):
                     b = b[p]
                 except TypeError:
                     b = b[int(p)]
-            except KeyError:
-                if i == len(path_split) - 1 and default is not None:
-                    return default
-                raise
+            except (KeyError, ValueError):
+                return default
+        else:
+            if check_presence:
+                return i == len(path_split) - 1
         return b
 
     @classmethod
