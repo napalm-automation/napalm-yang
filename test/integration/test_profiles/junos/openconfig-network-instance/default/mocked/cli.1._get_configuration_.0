@@ -219,16 +219,6 @@
                 <routing-options>
                     <static>
                         <route>
-                            <name>10.0.2.0/24</name>
-                            <qualified-next-hop>
-                                <name>192.168.100.100</name>
-                            </qualified-next-hop>
-                            <qualified-next-hop>
-                                <name>192.168.100.101</name>
-                                <metric>200</metric>
-                            </qualified-next-hop>
-                        </route>
-                        <route>
                             <name>10.100.2.0/24</name>
                             <qualified-next-hop>
                                 <name>192.168.100.200</name>
