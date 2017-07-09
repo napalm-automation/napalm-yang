@@ -9,7 +9,7 @@ metadata:
 interfaces:
     _process:
         - path: "interface-information"
-          from: interfaces.0
+          from: root_interfaces.0
     interface:
         _process:
             - path: "physical-interface"

@@ -11,7 +11,7 @@ interfaces:
     interface:
         _process:
             - path: interfaces
-              from: interfaces.0
+              from: root_interfaces.0
               regexp: "(?P<value>\\w+(\\w|-|\\/)*\\d+)$"
         config:
             _process: unnecessary
@@ -127,7 +127,7 @@ interfaces:
             subinterface:
                 _process:
                     - path: interfaces
-                      from: interfaces.0
+                      from: root_interfaces.0
                       regexp: "{{interface_key}}\\.(?P<value>\\d+)"
                 config:
                     _process: unnecessary
