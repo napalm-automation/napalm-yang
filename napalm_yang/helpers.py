@@ -1,5 +1,6 @@
 import yaml
 import os
+import sys
 import jinja2
 
 from napalm_yang import jinja_filters
@@ -17,6 +18,15 @@ def yaml_include(loader, node):
 
 
 yaml.add_constructor("!include", yaml_include)
+
+
+def config_logging(level=logging.DEBUG, stream=sys.stdout):
+    logger.setLevel(level)
+    ch = logging.StreamHandler(stream)
+    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
 
 
 def find_yang_file(profile, filename, path):

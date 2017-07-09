@@ -10,11 +10,9 @@ import pytest
 import json
 
 import os
-import sys
 
 
-import logging
-logger = logging.getLogger("napalm-yang")
+#  napalm_yang.helpers.config_logging()
 
 
 device_configuration = {
@@ -25,17 +23,6 @@ device_configuration = {
         'optional_args': {'port': 12203, 'config_lock': False}
     }
 }
-
-
-def config_logging():
-    logger.setLevel(logging.DEBUG)
-    ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-
-
-#  config_logging()
 
 
 def pretty_json(dictionary):
@@ -93,6 +80,8 @@ class Tests(object):
             else:
                 yang.parse_state(device=d)
 
+        #  print(pretty_json(yang.get(filter=True)))
+        #  print(pretty_json(expected.get(filter=True)))
         assert not napalm_yang.utils.diff(yang, expected)
 
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
