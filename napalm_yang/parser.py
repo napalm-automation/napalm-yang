@@ -191,7 +191,11 @@ class Parser(object):
 
         if value is not None and (value != model.default() or isinstance(value, bool)):
             setter = getattr(model._parent, "_set_{}".format(attribute))
-            setter(value)
+            try:
+                setter(value)
+            except ValueError:
+                logger.error("Wrong value for {}: {}".format(attribute, value))
+                raise
 
             # parent.model is now a new class
             model = getattr(model._parent, attribute)
