@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import copy
 import re
 import json
 
@@ -32,16 +33,13 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_list_default(cls, mapping, data, key=None):
-        def _iterator(d, mapping):
+        def _iterator(d, key_element):
             # key_element is necessary when we have lists of dicts
-            key_element = mapping.get("key")
-
             if key_element and d:
                 if key_element in d:
                     # xmltodict returns a dict when there is only one element
                     d = [d]
 
-                key_element = mapping["key"]
                 for v in d:
                     k = get_element_with_cdata(v, key_element)
                     yield k, v
@@ -49,20 +47,45 @@ class JSONParser(BaseParser):
                 for k, v in d.items():
                     yield k, v
 
+        def _process_key_value(key, value, regexp, mapping):
+            key_value = mapping.get('key_value')
+            composite_key = mapping.get('composite_key')
+            if key_value:
+                key = key_value
+            elif regexp:
+                match = regexp.match(key)
+                if match:
+                    key = match.group('value')
+                else:
+                    return
+
+            if composite_key:
+                key = " ".join([key for _ in range(0, composite_key)])
+            return key
+
         d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
 
-        regexp = mapping.get('regexp', None)
+        regexp = mapping.get('regexp')
         if regexp:
             regexp = re.compile(regexp)
 
-        for k, v in _iterator(d, mapping):
-            if regexp:
-                match = regexp.match(k)
-                if match:
-                    k = match.group('value')
-                else:
-                    continue
-            yield k, v, {}
+        for k, v in _iterator(d, mapping.get("key")):
+            expand_list = mapping.get("expand_list")
+            if expand_list:
+                dd = cls.resolve_path(v, expand_list)
+                copied_data = copy.deepcopy(v)
+                copied_data.pop(expand_list)
+                for kk, vv in _iterator(dd, mapping.get("expanded_key")):
+                    vv = {expand_list: vv}
+                    vv.update(copied_data)
+                    key = _process_key_value(kk, vv, regexp, mapping)
+                    if key:
+                        yield key, vv, {}
+            else:
+                key = _process_key_value(k, v, regexp, mapping)
+                if key:
+                    yield key, v, {}
+
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
