@@ -10,12 +10,11 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-          - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
-            from: network-instances.0
           - mode: manual
             key: "global"
-            block: ""
+            block: "not_a_block"
             extra_vars: {}
+          - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
             from: root_network-instances.0
         afts: !include includes/afts.yaml
         config:
@@ -318,17 +317,14 @@ network-instances:
             protocol:
                 _process:
                     - regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!|   vrf \\w+)$"
-                      from: network-instances.0
                       from: root_network-instances.0
                       composite_key: [protocol_name, protocol_name]
                       when: "{{ network_instance_key == 'global' }}"
                     - regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^   (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!|   vrf.*)$"
-                      from: network-instances.0
                       from: root_network-instances.0
                       composite_key: [protocol_name, protocol_name]
                       when: "{{ network_instance_key != 'global' }}"
                     - regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
-                      from: network-instances.0
                       from: root_network-instances.0
                       key: "static static"
                 bgp: !include includes/bgp.yaml

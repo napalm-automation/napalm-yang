@@ -4,9 +4,8 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-      - mode: container
-        xpath: "route"
-        key_attribute: name
+      - path: ""
+        key: name
     config:
         _process: unnecessary
         prefix:
@@ -19,16 +18,15 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-              - mode: container
-                xpath: "qualified-next-hop"
-                key_attribute: name
+              - path: "qualified-next-hop"
+                key: name
             config:
                 _process: unnecessary
                 index:
                     _process: not_implemented
                 metric:
                     _process:
-                      - xpath: "metric"
+                      - path: "metric"
                 next-hop:
                     _process:
                         - mode: value

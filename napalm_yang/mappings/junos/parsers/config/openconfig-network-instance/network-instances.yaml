@@ -7,23 +7,22 @@ metadata:
               get: "<get-configuration/>"
 
 network-instances:
-    _process: unnecessary
+    _process:
+        - path: "configuration.routing-instances"
+          from: root_network-instances.0
     network-instance:
         _process:
-            - mode: container
-              xpath: "routing-instances/instance"
-              key_attribute: name
-              from: network-instances.0
-            - mode: manual
-              key: "global"
-              block: network-instances.0
-              extra_vars: {}
+            - path: ""
+              key_value: "global"
+              from: root_network-instances.0
+            - path: "instance"
+              key: name
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
             description:
                 _process:
-                    - xpath: description
+                    - path: description
             enabled:
                 _process:
                     - mode: value
@@ -44,7 +43,7 @@ network-instances:
                     value: DEFAULT_INSTANCE
                     when: "{{ network_instance_key == 'global' }}"
                   - mode: map
-                    xpath: instance-type
+                    path: instance-type
                     map:
                         vrf: L3VRF
                         virtual-router: L2L3
@@ -320,13 +319,10 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                  - mode: container
-                    xpath: "protocols"
-                    nested: true
-                    composite_key: [protocols_name, protocols_name]
-                  - mode: container
-                    xpath: "routing-options/static"
-                    key: "static static"
+                  - path: "protocols"
+                    composite_key: 2
+                  - path: "routing-options.static"
+                    key_value: "static static"
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented

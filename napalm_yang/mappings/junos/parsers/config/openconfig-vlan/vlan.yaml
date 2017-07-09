@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: XMLParser2
+    processor: XMLParser
 
 vlan:
     _process: unnecessary

@@ -258,11 +258,11 @@ global:
         _process: unnecessary
         as:
             _process:
-              - xpath: "routing-options/autonomous-system/as-number"
+              - path: "routing-options.autonomous-system.as-number"
                 from: "network_instance.{{ network_instance_key }}"
         router-id:
             _process:
-              - xpath: "routing-options/router-id"
+              - path: "routing-options.router-id"
                 from: "network_instance.{{ network_instance_key }}"
     default-route-distance:
         _process: not_implemented
@@ -352,9 +352,10 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-          - mode: nested
-            xpath: "group/?peer_group.name/neighbor"
-            key_attribute: name
+          - path: "group"
+            key: name
+            expand_list: "neighbor"
+            expanded_key: name
         add-paths:
             _process: not_implemented
             config:
@@ -621,23 +622,22 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                  - xpath: "description"
+                  - path: "neighbor.description"
             enabled:
                 _process: not_implemented
             local-as:
                 _process:
-                  - xpath: "local-as.as-number"
+                  - path: "neighbor.local-as.as-number"
             neighbor-address:
                 _process:
                   - mode: value
                     value: "{{ neighbor_key }}"
             peer-as:
                 _process:
-                  - xpath: "peer-as"
+                  - path: "neighbor.peer-as"
             peer-group:
                 _process:
-                  - mode: value
-                    value: "{{ extra_vars.peer_group }}"
+                  - path: "name"
             peer-type:
                 _process: not_implemented
             remove-private-as:
