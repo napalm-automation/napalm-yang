@@ -260,8 +260,7 @@ global:
             _process: unnecessary
         router-id:
             _process:
-                - mode: element
-                  value: " bgp router-id {{ model }}\n"
+                - value: " bgp router-id {{ model }}\n"
                   negate: " default bgp router-id\n"
     default-route-distance:
         _process: not_implemented
@@ -351,8 +350,7 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-          - mode: container
-            key_value: " neighbor {{ neighbor_key }} remote-as {{ model.config.peer_as }}\n"
+          - key_value: " neighbor {{ neighbor_key }} remote-as {{ model.config.peer_as }}\n"
             negate: " no neighbor {{ neighbor_key }}\n"
         add-paths:
             _process: not_implemented
@@ -620,19 +618,16 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                    - mode: element
-                      value: " neighbor {{ neighbor_key }} description {{ model }}\n"
+                    - value: " neighbor {{ neighbor_key }} description {{ model }}\n"
                       negate: " default neighbor {{ neighbor_key }} description\n"
             enabled:
                 _process:
-                    - mode: element
-                      value: " neighbor {{ neighbor_key }} shutdown\n"
+                    - value: " neighbor {{ neighbor_key }} shutdown\n"
                       negate: " default neighbor {{ neighbor_key }}\n"
                       when: "{{ not model }}"
             local-as:
                 _process:
-                    - mode: element
-                      value: " neighbor {{ neighbor_key }} local-as {{ model }}\n"
+                    - value: " neighbor {{ neighbor_key }} local-as {{ model }}\n"
                       negate: " default neighbor {{ neighbor_key }} local-as\n"
             neighbor-address:
                 _process: unnecessary

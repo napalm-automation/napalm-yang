@@ -3,7 +3,27 @@ _process:
     - mode: gate
       when: "{{ protocol_key != 'static static' }}"
 static:
-    _process: unnecessary
+    _process:
+      - prefix: "ip route {{ static_key|prefix_to_addrmask }}"
+        negate: "no ip route {{ static_key|prefix_to_addrmask }}\n"
+        negate_prefix: "no ip route {{ static_key|prefix_to_addrmask }}"
+        when: "{{ '.' in static_key and network_instance_key == 'global' }}"
+        in: "network-instances"
+      - prefix: "ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}"
+        negate: "no ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}\n"
+        negate_prefix: "no ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}"
+        when: "{{ '.' in static_key and network_instance_key != 'global' }}"
+        in: "network-instances"
+      - prefix: "ipv6 route {{ static_key }}"
+        negate: "no ipv6 route {{ static_key }}\n"
+        negate_prefix: "no ipv6 route {{ static_key }}"
+        when: "{{ ':' in static_key and network_instance_key == 'global' }}"
+        in: "network-instances"
+      - prefix: "ipv6 route vrf {{ network_instance_key }} {{ static_key }}"
+        negate: "no ipv6 route vrf {{ network_instance_key }} {{ static_key }}\n"
+        negate_prefix: "no ipv6 route vrf {{ network_instance_key }} {{ static_key }}"
+        when: "{{ ':' in static_key and network_instance_key != 'global' }}"
+        in: "network-instances"
     config:
         _process: unnecessary
         prefix:
@@ -14,29 +34,10 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-              - mode: container
-                key_value: "ip route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key|prefix_to_addrmask }} Null0"
-                negate: "no ip route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key|prefix_to_addrmask }} Null0\n"
-                when: "{{ '.' in static_key and model.config.next_hop == 'DROP' }}"
-                in: "network-instances"
-                end: "\n"
-              - mode: container
-                key_value: "ipv6 route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key }} Null0"
-                negate: "no ipv6 route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key }} Null0\n"
-                when: "{{ ':' in static_key and model.config.next_hop == 'DROP' }}"
-                in: "network-instances"
-                end: "\n"
-              - mode: container
-                key_value: "ip route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key|prefix_to_addrmask }} {{ model.interface_ref.config.interface }}{{ '.' if model.interface_ref.config.subinterface else ''}}{{ model.interface_ref.config.subinterface }} {{ model.config.next_hop }}"
-                negate: "no ip route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key|prefix_to_addrmask }} {{ model.interface_ref.config.interface }}{{ '.' if model.interface_ref.config.subinterface else ''}}{{ model.interface_ref.config.subinterface }} {{ model.config.next_hop }}\n"
-                when: "{{ '.' in static_key and model.config.next_hop != 'DROP' }}"
-                in: "network-instances"
-                end: "\n"
-              - mode: container
-                key_value: "ipv6 route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key }} {{ model.interface_ref.config.interface }}{{ '.' if model.interface_ref.config.subinterface else ''}}{{ model.interface_ref.config.subinterface }} {{ model.config.next_hop }}"
-                negate: "no ipv6 route{{ ' vrf '+network_instance_key if network_instance_key != 'global' else '' }} {{ static_key }} {{ model.interface_ref.config.interface }}{{ '.' if model.interface_ref.config.subinterface else ''}}{{ model.interface_ref.config.subinterface }} {{ model.config.next_hop }}\n"
-                when: "{{ ':' in static_key and model.config.next_hop != 'DROP' }}"
-                in: "network-instances"
+              - mode: gate
+                when: "{{ replacing and negating }}"
+              - key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
+                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
                 end: "\n"
             config:
                 _process: unnecessary
@@ -44,8 +45,7 @@ static:
                     _process: not_implemented
                 metric:
                     _process:
-                      - mode: element
-                        value: " {{ model|default('', true) }}"
+                      - value: " {{ model }}"
                         negate: " 1"
                 next-hop:
                     _process: unnecessary

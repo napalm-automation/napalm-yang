@@ -4,26 +4,22 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-        - mode: block
-          regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+        - regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
+          from: network-instances.0
           when: "{{ network_instance_key == 'global' }}"
           flat: true
-          post_process_filter: "addrmask_to_cidr"
-        - mode: block
-          regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+\\S+ \\d+\\S+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+          post_process_filter: "{{ key|normalize_prefix }}"
+        - regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+\\S+ \\d+\\S+).*)"
+          from: network-instances.0
           when: "{{ network_instance_key != 'global' }}"
           flat: true
-          post_process_filter: "addrmask_to_cidr"
-        - mode: block
-          regexp: "(?P<block>ipv6 route (?P<key>[0-9a-f:]+\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+          post_process_filter: "{{ key|normalize_prefix }}"
+        - regexp: "(?P<block>ipv6 route (?P<key>[0-9a-f:]+\\/\\d+).*)"
+          from: network-instances.0
           when: "{{ network_instance_key == 'global' }}"
           flat: true
-        - mode: block
-          regexp: "(?P<block>ipv6 route vrf {{ network_instance_key }} (?P<key>[0-9a-f:]+\\/\\d+).*)"
-          from: "{{ bookmarks['network-instances'][0] }}"
+        - regexp: "(?P<block>ipv6 route vrf {{ network_instance_key }} (?P<key>[0-9a-f:]+\\/\\d+).*)"
+          from: network-instances.0
           when: "{{ network_instance_key != 'global' }}"
           flat: true
     config:
@@ -38,13 +34,9 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-                - mode: block
-                  regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>\\d+.\\d+.\\d+.\\d+)?).*)"
-                  from: "{{ bookmarks['static'][static_key] }}"
+                - regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>\\d+.\\d+.\\d+.\\d+)?).*)"
                   post_process_filter: "{{ key|trim }}"
-                - mode: block
-                  regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>[0-9a-f:]+:[0-9a-f:]+)?).*)"
-                  from: "{{ bookmarks['static'][static_key] }}"
+                - regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>[0-9a-f:]+:[0-9a-f:]+)?).*)"
                   post_process_filter: "{{ key|trim }}"
             config:
                 _process: unnecessary
@@ -52,9 +44,7 @@ static:
                     _process: unnecessary
                 metric:
                     _process:
-                        - mode: search
-                          regexp: "{{ next_hop_key }} (?P<value>\\d+)"
-                          from: "{{ bookmarks.parent }}"
+                        - regexp: "{{ next_hop_key }} (?P<value>\\d+)"
                 next-hop:
                     _process:
                         - mode: value
@@ -75,14 +65,13 @@ static:
                           when: "{{ extra_vars.interface_ref is none }}"
                     interface:
                         _process:
-                            - mode: search
-                              regexp: "^(?P<value>[^\\.]+).*"
-                              from: "{{ extra_vars.interface_ref }}"
+                            - mode: value
+                              value: "{{ extra_vars.interface_ref.split('.', 1)[0] }}"
                     subinterface:
                         _process:
-                            - mode: search
-                              regexp: ".+\\.(?P<value>.+)"
-                              from: "{{ extra_vars.interface_ref }}"
+                            - mode: value
+                              value: "{{ extra_vars.interface_ref.split('.', 1)[-1] }}"
+                              when: "{{ '.' in extra_vars.interface_ref }}"
                 state:
                     _process: not_implemented
             state:

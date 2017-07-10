@@ -7,8 +7,7 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-            - mode: container
-              key_value: "vrf definition {{ network_instance_key }}\n"
+            - key_value: "vrf definition {{ network_instance_key }}\n"
               negate: "no vrf definition {{ network_instance_key }}\n"
               continue_negating: true
               end: " exit\n"
@@ -18,8 +17,7 @@ network-instances:
             _process: unnecessary
             description:
                 _process:
-                    - mode: element
-                      value: " description {{ model }}\n"
+                    - value: " description {{ model }}\n"
                       negate: " default description\n"
             enabled:
                 _process: unnecessary
@@ -31,8 +29,7 @@ network-instances:
                 _process: unnecessary
             route-distinguisher:
                 _process:
-                    - mode: element
-                      value: " rd {{ model }}\n"
+                    - value: " rd {{ model }}\n"
                       negate: " default rd\n"
             router-id:
                 _process: not_implemented
@@ -262,14 +259,12 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                  - mode: container
-                    key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n"
+                  - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n"
                     negate: "no router bgp {{ model.bgp.global_.config.as_ }}\n"
                     end: " exit\n"
                     when: "{{ protocol_key == 'bgp bgp' and network_instance_key == 'global' }}"
                     in: "network-instances"
-                  - mode: container
-                    key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n scope vrf {{ network_instance_key}}\n"
+                  - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n scope vrf {{ network_instance_key}}\n"
                     negate: "router bgp {{ model.bgp.global_.config.as_ }}\n no scope vrf {{ network_instance_key}}\n"
                     end: " exit\n"
                     when: "{{ protocol_key == 'bgp bgp' and network_instance_key != 'global' }}"
