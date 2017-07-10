@@ -1,11 +1,11 @@
 ip route 1.1.1.1 255.255.255.255 Null0
-ip route 2.2.2.2 255.255.255.255  10.1.1.1
-ip route 3.3.3.0 255.255.255.0  10.3.3.3 44
-ip route 3.3.3.0 255.255.255.0  10.2.2.2 22
+ip route 2.2.2.2 255.255.255.255 10.1.1.1
+ip route 3.3.3.0 255.255.255.0 10.3.3.3 44
+ip route 3.3.3.0 255.255.255.0 10.2.2.2 22
 ip route 3.3.3.0 255.255.255.0 Vlan798 10.4.4.4 66
-ip route 3.3.3.0 255.255.255.0 Vlan797 
-ipv6 route 3::/64  2::1
-ipv6 route 2::/64  1::1 44
+ip route 3.3.3.0 255.255.255.0 Vlan797
+ipv6 route 3::/64 2::1
+ipv6 route 2::/64 1::1 44
 vrf definition mgmtVrf
  description abc
  exit
