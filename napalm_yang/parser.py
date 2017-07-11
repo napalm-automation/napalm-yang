@@ -50,8 +50,7 @@ class Parser(object):
         if self.mapping:
             self.parser = get_parser(self.mapping["metadata"]["processor"])
 
-        self.bookmarks = {self._yang_name: self.native, "parent": self.native}
-        self.bookmarks = bookmarks or self.bookmarks
+        self.bookmarks = bookmarks or {}
 
     def _execute_methods(self, device, methods):
         result = []
@@ -79,7 +78,9 @@ class Parser(object):
         if not self.mapping:
             return
         self.native = self.parser.init_native(self.native)
-        self.bookmarks.update({self._yang_name: self.native})
+        self.bookmarks["root_{}".format(self._yang_name)] = self.native
+        if "parent" not in self.bookmarks:
+            self.bookmarks["parent".format(self._yang_name)] = self.native
         self._parse(self._yang_name, self.model, self.mapping[self._yang_name])
 
     def _parse(self, attribute, model, mapping):
@@ -191,7 +192,11 @@ class Parser(object):
 
         if value is not None and (value != model.default() or isinstance(value, bool)):
             setter = getattr(model._parent, "_set_{}".format(attribute))
-            setter(value)
+            try:
+                setter(value)
+            except ValueError:
+                logger.error("Wrong value for {}: {}".format(attribute, value))
+                raise
 
             # parent.model is now a new class
             model = getattr(model._parent, attribute)

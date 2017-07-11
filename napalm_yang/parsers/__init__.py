@@ -1,4 +1,4 @@
-from napalm_yang.parsers.json import JSONParser
+from napalm_yang.parsers.jsonp import JSONParser
 from napalm_yang.parsers.text import TextParser
 from napalm_yang.parsers.xml import XMLParser
 

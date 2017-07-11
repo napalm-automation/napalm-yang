@@ -4,22 +4,25 @@ from napalm_yang.helpers import template
 class BaseParser(object):
 
     @staticmethod
-    def resolve_path(my_dict, path, default=None):
+    def resolve_path(my_dict, path, default=None, check_presence=False):
         if path is None:
             return
 
         b = my_dict
-        path_split = path.split(".")
+        path_split = path.split(".") if len(path) else []
         for i, p in enumerate(path_split):
             try:
-                try:
+                if isinstance(b, dict):
                     b = b[p]
-                except TypeError:
+                elif isinstance(b, list):
                     b = b[int(p)]
-            except KeyError:
-                if i == len(path_split) - 1 and default is not None:
-                    return default
-                raise
+                else:
+                    raise Exception(b)
+            except (KeyError, TypeError, IndexError, ValueError):
+                return default
+        else:
+            if check_presence:
+                return i == len(path_split) - 1
         return b
 
     @classmethod

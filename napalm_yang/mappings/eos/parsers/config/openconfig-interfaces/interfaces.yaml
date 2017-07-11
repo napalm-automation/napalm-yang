@@ -10,7 +10,7 @@ interfaces:
     interface:
         _process:
             - regexp: "(?P<block>interface (?P<key>((\\w|-)*\\d+(\\/\\d+)*))\n(?:.|\n)*?^!$)"
-              from: interfaces.0
+              from: root_interfaces.0
         name:
             _process: unnecessary
         hold-time:
@@ -50,7 +50,7 @@ interfaces:
             subinterface:
                 _process:
                     - regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+(\\/\\d+)*)\\n(?:.|\\n)*?^!$)"
-                      from: interfaces.0
+                      from: root_interfaces.0
                 index:
                     _process: unnecessary
                 config:

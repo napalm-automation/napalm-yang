@@ -83,11 +83,12 @@
           <route>
             <name>10.0.1.0/24</name>
             <qualified-next-hop>
-              <name>192.168.100.100</name>
+              <name>192.168.100.102</name>
+              <metric>200</metric>
             </qualified-next-hop>
             <qualified-next-hop>
               <name>192.168.100.101</name>
-              <metric>200</metric>
+              <metric>100</metric>
             </qualified-next-hop>
           </route>
           <route>

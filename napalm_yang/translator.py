@@ -19,7 +19,6 @@ class Translator(object):
 
         self.translation = translation
         self.keys = keys or {"parent_key": None}
-        self.bookmarks = bookmarks or {self._yang_name: translation, "parent": translation}
         self.extra_vars = extra_vars or {}
 
         self.merge = merge
@@ -36,6 +35,9 @@ class Translator(object):
             if translation is None:
                 self.translation = self.translator.init_translation(self.mapping["metadata"],
                                                                     self.translation)
+
+        self.bookmarks = bookmarks or {"root_{}".format(self._yang_name): translation,
+                                       "parent": translation}
 
     def translate(self):
         if not self.mapping:
