@@ -5,21 +5,21 @@ _process:
 static:
     _process:
         - regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
-          from: network-instances.0
+          from: root_network-instances.0
           when: "{{ network_instance_key == 'global' }}"
           flat: true
           post_process_filter: "{{ key|normalize_prefix }}"
         - regexp: "(?P<block>ip route vrf {{ network_instance_key }} (?P<key>\\d+\\S+ \\d+\\S+).*)"
-          from: network-instances.0
+          from: root_network-instances.0
           when: "{{ network_instance_key != 'global' }}"
           flat: true
           post_process_filter: "{{ key|normalize_prefix }}"
         - regexp: "(?P<block>ipv6 route (?P<key>[0-9a-f:]+\\/\\d+).*)"
-          from: network-instances.0
+          from: root_network-instances.0
           when: "{{ network_instance_key == 'global' }}"
           flat: true
         - regexp: "(?P<block>ipv6 route vrf {{ network_instance_key }} (?P<key>[0-9a-f:]+\\/\\d+).*)"
-          from: network-instances.0
+          from: root_network-instances.0
           when: "{{ network_instance_key != 'global' }}"
           flat: true
     config:
