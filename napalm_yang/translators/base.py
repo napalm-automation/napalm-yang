@@ -45,7 +45,7 @@ class BaseTranslator(object):
             if mode == "skip":
                 continue
             elif mode == "gate":
-                return
+                return {}
 
             t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(mode)
