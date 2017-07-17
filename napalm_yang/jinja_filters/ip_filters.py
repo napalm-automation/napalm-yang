@@ -18,7 +18,10 @@ def netmask_to_cidr(value):
     Examples:
         >>> "{{ '255.255.255.0'|netmask_to_cidr }}" -> "24"
     """
-    return netaddr.IPAddress(value).netmask_bits()
+    if not value:
+        return ''
+    else:
+        return netaddr.IPAddress(value).netmask_bits()
 
 
 def cidr_to_netmask(value):
@@ -28,7 +31,10 @@ def cidr_to_netmask(value):
     Examples:
         >>> "{{ '24'|cidr_to_netmask }}" -> "255.255.255.0"
     """
-    return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
+    if not value:
+        return ''
+    else:
+        return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
 
 
 def normalize_prefix(value):
@@ -43,8 +49,11 @@ def normalize_prefix(value):
         >>> "{{ '192.168/255.255.255.0'|normalize_prefix }}" -> "192.168.0.0/24"
         >>> "{{ '2001:DB8:0:0:1:0:0:1/64'|normalize_prefix }}" -> "2001:db8::1:0:0:1/64"
     """
-    value = value.replace(' ', '/')
-    return str(netaddr.IPNetwork(value))
+    if not value:
+        return ''
+    else:
+        value = value.replace(' ', '/')
+        return str(netaddr.IPNetwork(value))
 
 
 def normalize_address(value):
@@ -60,7 +69,10 @@ def normalize_address(value):
         >>> "{{ '2001:DB8:0:0:1:0:0:1'|normalize_address }}" -> "2001:db8::1:0:0:1"
 
     """
-    return str(netaddr.IPAddress(value))
+    if not value:
+        return ''
+    else:
+        return str(netaddr.IPAddress(value))
 
 
 def prefix_to_addrmask(value, sep=' '):
@@ -73,5 +85,8 @@ def prefix_to_addrmask(value, sep=' '):
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask }}" -> "192.168.0.1 255.255.255.0"
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask('/') }}" -> "192.168.0.1/255.255.255.0"
     """
-    prefix = netaddr.IPNetwork(value)
-    return '{}{}{}'.format(prefix.ip, sep, prefix.netmask)
+    if not value:
+        return ''
+    else:
+        prefix = netaddr.IPNetwork(value)
+        return '{}{}{}'.format(prefix.ip, sep, prefix.netmask)
