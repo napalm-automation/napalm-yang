@@ -36,10 +36,10 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-                - regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>\\d+.\\d+.\\d+.\\d+)?).*)"
-                  post_process_filter: "{{ key|trim }}"
-                - regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>(?:(?P<interface_ref>[a-z]\\S*) ?)?(?P<next_hop>[0-9a-f:]+:[0-9a-f:]+)?).*)"
-                  post_process_filter: "{{ key|trim }}"
+                - regexp: "(?P<block>ip route (vrf {{ network_instance_key }} )*\\d+\\S+ \\d+\\S+ (?P<key>(?:(?P<interface_ref>[a-z][\\w\\-/]+(?::\\d+)*(?:\\.\\d+)*) ?)?(?P<next_hop>\\d+.\\d+.\\d+.\\d+)?).*)"
+                  post_process_filter: "{{ extra_vars.interface_ref|default('', true) }}{% if extra_vars.interface_ref and extra_vars.next_hop %} {% endif %}{{ extra_vars.next_hop|normalize_address }}"
+                - regexp: "(?P<block>ipv6 route (vrf {{ network_instance_key }} )*{{ static_key }} (?P<key>(?:(?P<interface_ref>[a-z][\\w\\-/]+(?::\\d+)*(?:\\.\\d+)*) ?)?(?P<next_hop>[0-9a-f:]+:[0-9a-f:]+)?).*)"
+                  post_process_filter: "{{ extra_vars.interface_ref|default('', true) }}{% if extra_vars.interface_ref and extra_vars.next_hop %} {% endif %}{{ extra_vars.next_hop|normalize_address }}"
             config:
                 _process: unnecessary
                 index:
