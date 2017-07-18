@@ -14,7 +14,7 @@ def filters():
 def check_empty(filter_function):
     """
     Checks if a value passed to a Jinja filter evaluates to false and returns an empty string.
-    Otherwise calls the original Junja filter.
+    Otherwise calls the original Jinja filter.
     """
     def wrapper(value, *args, **kwargs):
         if not value:
