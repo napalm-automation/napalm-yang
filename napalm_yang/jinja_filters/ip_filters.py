@@ -1,5 +1,7 @@
 import netaddr
 
+from napalm_yang.jinja_filters.helpers import check_empty
+
 
 def filters():
     return {
@@ -11,6 +13,7 @@ def filters():
     }
 
 
+@check_empty
 def netmask_to_cidr(value):
     """
     Converts a network mask to it's CIDR value.
@@ -21,6 +24,7 @@ def netmask_to_cidr(value):
     return netaddr.IPAddress(value).netmask_bits()
 
 
+@check_empty
 def cidr_to_netmask(value):
     """
     Converts a CIDR prefix-length to a network mask.
@@ -31,6 +35,7 @@ def cidr_to_netmask(value):
     return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
 
 
+@check_empty
 def normalize_prefix(value):
     """
     Converts an IPv4 or IPv6 prefix writen in various formats to its CIDR representation.
@@ -47,6 +52,7 @@ def normalize_prefix(value):
     return str(netaddr.IPNetwork(value))
 
 
+@check_empty
 def normalize_address(value):
     """
     Converts an IPv4 or IPv6 address writen in various formats to a standard textual representation.
@@ -63,6 +69,7 @@ def normalize_address(value):
     return str(netaddr.IPAddress(value))
 
 
+@check_empty
 def prefix_to_addrmask(value, sep=' '):
     """
     Converts a CIDR formatted prefix into an address netmask representation.
