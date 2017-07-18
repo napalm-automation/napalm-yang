@@ -1,5 +1,7 @@
 import netaddr
 
+from napalm_yang.jinja_filters.helpers import check_empty
+
 
 def filters():
     return {
@@ -9,20 +11,6 @@ def filters():
         "normalize_address": normalize_address,
         "prefix_to_addrmask": prefix_to_addrmask,
     }
-
-
-def check_empty(filter_function):
-    """
-    Checks if a value passed to a Jinja filter evaluates to false and returns an empty string.
-    Otherwise calls the original Jinja filter.
-    """
-    def wrapper(value, *args, **kwargs):
-        if not value:
-            return ''
-        else:
-            return filter_function(value, *args, **kwargs)
-
-    return wrapper
 
 
 @check_empty
