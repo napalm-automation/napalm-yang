@@ -11,6 +11,21 @@ def filters():
     }
 
 
+def check_empty(filter_function):
+    """
+    Checks if a value passed to a Jinja filter evaluates to false and returns an empty string.
+    Otherwise calls the original Junja filter.
+    """
+    def wrapper(value, *args, **kwargs):
+        if not value:
+            return ''
+        else:
+            return filter_function(value, *args, **kwargs)
+
+    return wrapper
+
+
+@check_empty
 def netmask_to_cidr(value):
     """
     Converts a network mask to it's CIDR value.
@@ -18,12 +33,10 @@ def netmask_to_cidr(value):
     Examples:
         >>> "{{ '255.255.255.0'|netmask_to_cidr }}" -> "24"
     """
-    if not value:
-        return ''
-    else:
-        return netaddr.IPAddress(value).netmask_bits()
+    return netaddr.IPAddress(value).netmask_bits()
 
 
+@check_empty
 def cidr_to_netmask(value):
     """
     Converts a CIDR prefix-length to a network mask.
@@ -31,12 +44,10 @@ def cidr_to_netmask(value):
     Examples:
         >>> "{{ '24'|cidr_to_netmask }}" -> "255.255.255.0"
     """
-    if not value:
-        return ''
-    else:
-        return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
+    return str(netaddr.IPNetwork("1.1.1.1/{}".format(value)).netmask)
 
 
+@check_empty
 def normalize_prefix(value):
     """
     Converts an IPv4 or IPv6 prefix writen in various formats to its CIDR representation.
@@ -49,13 +60,11 @@ def normalize_prefix(value):
         >>> "{{ '192.168/255.255.255.0'|normalize_prefix }}" -> "192.168.0.0/24"
         >>> "{{ '2001:DB8:0:0:1:0:0:1/64'|normalize_prefix }}" -> "2001:db8::1:0:0:1/64"
     """
-    if not value:
-        return ''
-    else:
-        value = value.replace(' ', '/')
-        return str(netaddr.IPNetwork(value))
+    value = value.replace(' ', '/')
+    return str(netaddr.IPNetwork(value))
 
 
+@check_empty
 def normalize_address(value):
     """
     Converts an IPv4 or IPv6 address writen in various formats to a standard textual representation.
@@ -69,12 +78,10 @@ def normalize_address(value):
         >>> "{{ '2001:DB8:0:0:1:0:0:1'|normalize_address }}" -> "2001:db8::1:0:0:1"
 
     """
-    if not value:
-        return ''
-    else:
-        return str(netaddr.IPAddress(value))
+    return str(netaddr.IPAddress(value))
 
 
+@check_empty
 def prefix_to_addrmask(value, sep=' '):
     """
     Converts a CIDR formatted prefix into an address netmask representation.
@@ -85,8 +92,5 @@ def prefix_to_addrmask(value, sep=' '):
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask }}" -> "192.168.0.1 255.255.255.0"
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask('/') }}" -> "192.168.0.1/255.255.255.0"
     """
-    if not value:
-        return ''
-    else:
-        prefix = netaddr.IPNetwork(value)
-        return '{}{}{}'.format(prefix.ip, sep, prefix.netmask)
+    prefix = netaddr.IPNetwork(value)
+    return '{}{}{}'.format(prefix.ip, sep, prefix.netmask)
