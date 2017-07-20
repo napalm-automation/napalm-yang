@@ -316,7 +316,15 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                    - regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
+                    - regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!| vrf \\w+)$"
+                      from: root_network-instances.0
+                      composite_key: [protocol_name, protocol_name]
+                      when: "{{ network_instance_key == 'global' }}"
+                    - regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^ (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!| vrf.*)$"
+                      from: root_network-instances.0
+                      composite_key: [protocol_name, protocol_name]
+                      when: "{{ network_instance_key != 'global' }}"
+                    - regexp: "(?P<block>^ip route .*\n(?:.|\n)*?^!$)"
                       from: root_network-instances.0
                       key: "static static"
                 bgp: !include includes/bgp.yaml
@@ -331,7 +339,7 @@ network-instances:
                     name:
                         _process: not_implemented
                 identifier:
-                    _process: not_implemented
+                    _process: unnecessary
                 isis: !include includes/isis.yaml
                 local-aggregates:
                     _process: not_implemented
@@ -350,7 +358,7 @@ network-instances:
                         state:
                             _process: not_implemented
                 name:
-                    _process: not_implemented
+                    _process: unnecessary
                 ospfv2: !include includes/ospfv2.yaml
                 state:
                     _process: not_implemented

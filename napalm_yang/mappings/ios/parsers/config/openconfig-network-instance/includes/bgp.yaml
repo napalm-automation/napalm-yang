@@ -258,11 +258,11 @@ global:
         _process: unnecessary
         as:
             _process:
-                - regexp: "local-as (?P<value>.*)"
-                  default: "{{ extra_vars.process_id|default(1) }}"
+                - mode: value
+                  value: "{{ extra_vars.process_id|default(1) }}"
         router-id:
             _process:
-                - regexp: "router-id (?P<value>.*)"
+                - regexp: "bgp router-id (?P<value>.*)"
     default-route-distance:
         _process: not_implemented
         config:
@@ -351,7 +351,7 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-            - regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
+            - regexp: "(?P<block>neighbor (?P<key>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-f:]+:[0-9a-f:]+)).*)"
               flat: true
         add-paths:
             _process: not_implemented
