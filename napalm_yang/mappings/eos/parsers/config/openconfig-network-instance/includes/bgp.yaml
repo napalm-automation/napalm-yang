@@ -623,7 +623,8 @@ neighbors:
             enabled:
                 _process:
                     - mode: is_absent
-                      regexp: "neighbor {{ neighbor_key }} (?P<value>shutdown)"
+                      regexp: "^\\s*neighbor {{ neighbor_key }} (?P<value>shutdown)"
+                      from: "protocol.{{protocol_key}}"
             local-as:
                 _process:
                     - regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"
