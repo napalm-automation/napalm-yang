@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: TextParser
+    processor: TextTree
     execute:
         - method: cli
           kwargs:
@@ -9,7 +9,8 @@ interfaces:
     _process: unnecessary
     interface:
         _process:
-            - regexp: "(?P<block>interface (?P<key>((\\w|-)*\\d+(\\/\\d+)*))\n(?:.|\n)*?^!$)"
+            - path: interface
+              regexp: "^(?P<value>(\\w|-)*\\d+(\\/\\d+)*)$"
               from: root_interfaces.0
         name:
             _process: unnecessary
@@ -28,28 +29,30 @@ interfaces:
             type:
                 _process:
                     - mode: map
-                      regexp: "interface (?P<value>(\\w|-)*)\\d+"
+                      value: "{{ interface_key }}"
+                      regexp: "(?P<value>(\\w|-)*)\\d+"
                       map:
-                          Ethernet: ethernetCsmacd
-                          Management: ethernetCsmacd
-                          Loopback: softwareLoopback
-                          Port-Channel: ieee8023adLag
-                          Vlan: l3ipvlan
+                          ethernet: ethernetCsmacd
+                          management: ethernetCsmacd
+                          loopback: softwareLoopback
+                          port-channel: ieee8023adLag
+                          vlan: l3ipvlan
             enabled:
                 _process:
-                    - mode: is_present
-                      regexp: "(?P<value>no shutdown)"
+                    - mode: is_absent
+                      path: "shutdown"
             description:
                 _process:
-                    - regexp: "description (?P<value>.*)"
+                    - path: description
             mtu:
                 _process:
-                    - regexp: "mtu (?P<value>[0-9]+)"
+                    - path: mtu
         subinterfaces:
             _process: unnecessary
             subinterface:
                 _process:
-                    - regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+(\\/\\d+)*)\\n(?:.|\\n)*?^!$)"
+                    - path: interface
+                      regexp: "{{interface_key}}\\.(?P<value>\\d+)"
                       from: root_interfaces.0
                 index:
                     _process: unnecessary
@@ -63,8 +66,8 @@ interfaces:
                               value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _process:
-                            - mode: is_present
-                              regexp: "(?P<value>no shutdown)"
+                            - mode: is_absent
+                              path: "shutdown"
                     description:
                         _process:
-                            - regexp: "description (?P<value>.*)"
+                            - path: description
