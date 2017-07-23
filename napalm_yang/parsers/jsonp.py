@@ -121,8 +121,10 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping, data):
-        return cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
+        return cls._parse_leaf_default(mapping, data,
+                                       check_default=False, check_presence=True) is True
 
     @classmethod
     def _parse_leaf_is_absent(cls, mapping, data):
         return not cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
+        return not cls._parse_leaf_is_present(mapping, data)
