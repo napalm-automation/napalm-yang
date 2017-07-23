@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: TextParser
+    processor: TextTree
     execute:
         - method: cli
           kwargs:
@@ -12,16 +12,16 @@ network-instances:
         _process:
           - mode: manual
             key: "global"
-            block: "not_a_block"
+            block: {}
             extra_vars: {}
-          - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+          - path: vrf.definition
             from: root_network-instances.0
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
             description:
                 _process:
-                  - regexp: "description (?P<value>.*)"
+                  - path: "description"
             enabled:
                 _process:
                   - mode: value
@@ -34,7 +34,7 @@ network-instances:
                 _process: unnecessary
             route-distinguisher:
                 _process:
-                  - regexp: "rd (?P<value>.*)"
+                  - path: "rd"
             router-id:
                 _process: not_implemented
             type:
@@ -316,17 +316,22 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                    - regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!|   vrf \\w+)$"
+                    - path: "router.?protocol.?process_id"
                       from: root_network-instances.0
-                      composite_key: [protocol_name, protocol_name]
+                      regexp: "(?P<value>bgp)"
+                      key: protocol
+                      composite_key: 2
                       when: "{{ network_instance_key == 'global' }}"
-                    - regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^   (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!|   vrf.*)$"
+                    - path: "router.?protocol.?process_id.vrf.{{ network_instance_key }}"
                       from: root_network-instances.0
-                      composite_key: [protocol_name, protocol_name]
+                      regexp: "(?P<value>bgp)"
+                      key: protocol
+                      composite_key: 2
                       when: "{{ network_instance_key != 'global' }}"
-                    - regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
-                      from: root_network-instances.0
+                    - mode: manual
+                      block: "root_network-instances.0.ip.route"
                       key: "static static"
+                      extra_vars: {}
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented
