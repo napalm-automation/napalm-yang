@@ -3,19 +3,52 @@ from napalm_yang.helpers import template
 
 class BaseParser(object):
 
-    @staticmethod
-    def resolve_path(my_dict, path, default=None, check_presence=False):
+    @classmethod
+    def resolve_path(cls, my_dict, path, default=None, check_presence=False):
         if path is None:
             return
 
         b = my_dict
         path_split = path.split(".") if len(path) else []
+        result = None
+
         for i, p in enumerate(path_split):
+            if p[0] == "?":
+                result = [] if result is None else result
+
+                if isinstance(b, dict) and ":" not in p:
+                    iterator = b.items()
+                else:
+                    if isinstance(b, dict):
+                        b = [b]
+                    p, var_name = p.split(":")
+                    try:
+                        iterator = {e[var_name]: e for e in b}.items()
+                    except Exception:
+                        iterator = {e[var_name]["#text"]: e for e in b}.items()
+
+                for k, v in iterator:
+                    if k.startswith("#"):
+                        continue
+                    r = cls.resolve_path(v, ".".join(path_split[i+1:]), default, check_presence)
+                    if isinstance(r, list):
+                        for rr in r:
+                            rr[p[1:]] = k
+                            for kk, vv in v.items():
+                                if kk != path_split[i+1]:
+                                    rr[kk] = vv
+                            result.append(rr)
+                    else:
+                        r[p[1:]] = k
+                        result.append(r)
+                break
             try:
                 if isinstance(b, dict):
                     b = b[p]
                 elif isinstance(b, list):
                     b = b[int(p)]
+                elif p == "#text":
+                    continue
                 else:
                     raise Exception(b)
             except (KeyError, TypeError, IndexError, ValueError):
@@ -23,7 +56,11 @@ class BaseParser(object):
         else:
             if check_presence:
                 return i == len(path_split) - 1
-        return b
+
+        if not result:
+            result = b
+
+        return result
 
     @classmethod
     def init_native(cls, native):
