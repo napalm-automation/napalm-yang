@@ -50,18 +50,20 @@ class JSONParser(BaseParser):
         def _process_key_value(key, value, regexp, mapping):
             key_value = mapping.get('key_value')
             composite_key = mapping.get('composite_key')
+            extra_vars = {}
             if key_value:
                 key = key_value
             elif regexp:
                 match = regexp.match(key)
                 if match:
                     key = match.group('value')
+                    extra_vars = match.groupdict()
                 else:
-                    return
+                    return None, {}
 
             if composite_key:
                 key = " ".join([key for _ in range(0, composite_key)])
-            return key
+            return key, extra_vars
 
         d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
 
@@ -70,6 +72,8 @@ class JSONParser(BaseParser):
             regexp = re.compile(regexp)
 
         for k, v in _iterator(d, mapping.get("key")):
+            if k.startswith("#"):
+                continue
             expand_list = mapping.get("expand_list")
             if expand_list:
                 dd = cls.resolve_path(v, expand_list)
@@ -78,14 +82,13 @@ class JSONParser(BaseParser):
                 for kk, vv in _iterator(dd, mapping.get("expanded_key")):
                     vv = {expand_list: vv}
                     vv.update(copied_data)
-                    key = _process_key_value(kk, vv, regexp, mapping)
+                    key, extra_vars = _process_key_value(kk, vv, regexp, mapping)
                     if key:
-                        yield key, vv, {}
+                        yield key, vv, extra_vars
             else:
-                key = _process_key_value(k, v, regexp, mapping)
+                key, extra_vars = _process_key_value(k, v, regexp, mapping)
                 if key:
-                    yield key, v, {}
-
+                    yield key, v, extra_vars
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
@@ -132,5 +135,4 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_leaf_is_absent(cls, mapping, data):
-        return not cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
         return not cls._parse_leaf_is_present(mapping, data)
