@@ -16,7 +16,7 @@ test_case_text_parser = [x.split('/')[-1]
 class Tests(object):
 
     @pytest.mark.parametrize("case", test_case_text_parser)
-    def test_supported_models(self, case):
+    def test_text_tree_parser(self, case):
         path = os.path.join(BASE_PATH, "text_tree", case, "config.txt")
         expected = os.path.join(BASE_PATH, "text_tree", case, "expected.json")
 
@@ -25,6 +25,9 @@ class Tests(object):
 
         parsed = napalm_yang.parsers.text_tree.TextTree.init_native(original)
         result = json.dumps(parsed, indent=4)
+
+        #  with open(expected, 'w') as f:
+        #      f.write(result)
 
         with open(expected, 'r') as f:
             expected = f.read()
