@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import copy
 import re
 import json
 
@@ -74,21 +73,9 @@ class JSONParser(BaseParser):
         for k, v in _iterator(d, mapping.get("key")):
             if k.startswith("#"):
                 continue
-            expand_list = mapping.get("expand_list")
-            if expand_list:
-                dd = cls.resolve_path(v, expand_list)
-                copied_data = copy.deepcopy(v)
-                copied_data.pop(expand_list)
-                for kk, vv in _iterator(dd, mapping.get("expanded_key")):
-                    vv = {expand_list: vv}
-                    vv.update(copied_data)
-                    key, extra_vars = _process_key_value(kk, vv, regexp, mapping)
-                    if key:
-                        yield key, vv, extra_vars
-            else:
-                key, extra_vars = _process_key_value(k, v, regexp, mapping)
-                if key:
-                    yield key, v, extra_vars
+            key, extra_vars = _process_key_value(k, v, regexp, mapping)
+            if key:
+                yield key, v, extra_vars
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
