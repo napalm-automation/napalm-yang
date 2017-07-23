@@ -89,7 +89,13 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
-        d = cls.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
+        if "value" in mapping:
+            d = mapping["value"]
+        elif "path" in mapping:
+            d = cls.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
+        else:
+            d = None
+
         if d and not check_presence:
             regexp = mapping.get('regexp', None)
             if regexp:
