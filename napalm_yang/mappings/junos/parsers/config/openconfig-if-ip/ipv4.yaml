@@ -10,6 +10,7 @@ ipv4:
             _process:
                 - mode: is_present
                   path: "family.inet"
+                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
         mtu:
             _process: not_implemented
     addresses:
@@ -19,18 +20,19 @@ ipv4:
             _process:
                 - path: "address"
                   key: name
+                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
             ip:
                 _process: unnecessary
             config:
                 _process: unnecessary
                 ip:
                     _process:
-                        - path: "name"
-                          regexp: "(?P<value>.*)/\\d+"
+                        - mode: value
+                          value: "{{ extra_vars.ip }}"
                 prefix-length:
                     _process:
-                        - path: "name"
-                          regexp: ".*/(?P<value>\\d+)"
+                        - mode: value
+                          value: "{{ extra_vars.prefix }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:
