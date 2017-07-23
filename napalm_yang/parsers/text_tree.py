@@ -1,4 +1,5 @@
 #  from builtins import super
+from builtins import super
 from collections import OrderedDict
 
 from napalm_yang.parsers.jsonp import JSONParser
@@ -17,6 +18,10 @@ def _attach_data_to_path(obj, path, data):
                 obj[p] = OrderedDict()
             obj = obj[p]
     obj[p] = data
+    # We add a standalong flag to be able to distinguish this situation:
+    # switchport
+    # switchport mode access
+    obj[p]["#standalone"] = True
 
 
 def parse_indented_config(config, current_indent=0, previous_indent=0, nested=False):
@@ -82,12 +87,11 @@ class TextTree(JSONParser):
                 resp.append(parse_indented_config(n.splitlines()))
         return resp
 
-    #  @classmethod
-    #  def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
-    #      attribute = mapping.get("attribute", None)
-    #      if attribute:
-    #          attribute = "@{}".format(attribute)
-    #          mapping["path"] = "{}.{}".format(mapping["path"], attribute)
-    #      elif not check_presence:
-    #          mapping["path"] = "{}.{}".format(mapping["path"], "#text")
-    #      return super()._parse_leaf_default(mapping, data, check_default, check_presence)
+    @classmethod
+    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+        extra_path = "#standalone" if check_presence else "#text"
+        if "path" in mapping:
+            mapping["path"] = "{}.{}".format(mapping["path"], extra_path)
+        else:
+            mapping["path"] = extra_path
+        return super()._parse_leaf_default(mapping, data, check_default, check_presence)
