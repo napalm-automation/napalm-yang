@@ -4,23 +4,33 @@ from collections import OrderedDict
 from napalm_yang.parsers.jsonp import JSONParser
 
 
-def _attach_data_to_path(obj, path, data):
+def _attach_data_to_path(obj, path, data, list_=False):
+    if "#list" not in obj:
+        obj["#list"] = []
+
     path = path.split(" ")
+    o = obj
+    first = True
 
     while True:
-        obj["#text"] = " ".join(path)
+        o["#text"] = " ".join(path)
         p = path.pop(0)
         if not path:
             break
         else:
-            if p not in obj:
-                obj[p] = OrderedDict()
-            obj = obj[p]
-    obj[p] = data
+            if p not in o:
+                o[p] = OrderedDict()
+            o = o[p]
+
+            if first and list_:
+                obj["#list"].append({p: o})
+                first = False
+    o[p] = data
+
     # We add a standalong flag to be able to distinguish this situation:
     # switchport
     # switchport mode access
-    obj[p]["#standalone"] = True
+    o[p]["#standalone"] = True
 
 
 def parse_indented_config(config, current_indent=0, previous_indent=0, nested=False):
@@ -59,14 +69,14 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
 
         if leading_spaces > current_indent:
             current = parse_indented_config(config, leading_spaces, current_indent, True)
-            _attach_data_to_path(parsed, last, current)
+            _attach_data_to_path(parsed, last, current, nested)
         elif leading_spaces < current_indent:
             config.insert(0, line)
             break
         else:
             if not nested:
                 current = parse_indented_config(config, leading_spaces, current_indent, True)
-                _attach_data_to_path(parsed, last, current)
+                _attach_data_to_path(parsed, last, current, nested)
             else:
                 config.insert(0, line)
                 break
