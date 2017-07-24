@@ -7,6 +7,18 @@
                     "enabled": true,
                     "type": "ethernetCsmacd"
                 },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 1,
+                            "interface-mode": "ACCESS",
+                            "native-vlan": 1,
+                            "trunk-vlans": [
+                                "1..4094"
+                            ]
+                        }
+                    }
+                },
                 "name": "Ethernet1",
                 "routed-vlan": {
                     "ipv4": {
