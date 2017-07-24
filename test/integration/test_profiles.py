@@ -33,7 +33,7 @@ BASE_PATH = os.path.dirname(__file__)
 
 
 test_parse_models = [
-    ["ios", "config", napalm_yang.models.openconfig_network_instance, "static_routes"],
+    ["ios", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["ios", "config", napalm_yang.models.openconfig_interfaces, "default"],
     ["eos", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["eos", "config", napalm_yang.models.openconfig_interfaces, "default"],
