@@ -1,7 +1,7 @@
 ---
 metadata:
     prefix: "oc-vlan"
-    processor: TextParser
+    processor: TextTree
 
 routed-vlan:
     _process: unnecessary

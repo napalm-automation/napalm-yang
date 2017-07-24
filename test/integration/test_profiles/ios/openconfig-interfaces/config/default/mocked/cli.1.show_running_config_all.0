@@ -2896,7 +2896,7 @@ interface GigabitEthernet2.1
  description another subiface
  platform ring rx 512
  platform ring tx 256
- encapsulation dot1Q 1 native
+ encapsulation dot1Q 1
  ip address 172.20.0.1 255.255.255.0 secondary
  ip address 192.168.1.1 255.255.255.0
  ip redirects
