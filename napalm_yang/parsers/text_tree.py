@@ -25,7 +25,10 @@ def _attach_data_to_path(obj, path, data, list_=False):
             if first and list_:
                 obj["#list"].append({p: o})
                 first = False
-    o[p] = data
+    if p in o:
+        o[p].update(data)
+    else:
+        o[p] = data
 
     # We add a standalong flag to be able to distinguish this situation:
     # switchport
@@ -94,6 +97,12 @@ class TextTree(JSONParser):
                 resp.append(n)
             else:
                 resp.append(parse_indented_config(n.splitlines()))
+
+        #  with open("/tmp/napalm-tree-parser", "w+") as f:
+        #      import json
+        #      f.write(json.dumps(resp[0]["interface"]["Ethernet1"], indent=4))
+        #  raise Exception
+
         return resp
 
     @classmethod
