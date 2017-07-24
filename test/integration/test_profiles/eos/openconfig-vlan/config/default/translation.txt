@@ -1,0 +1,10 @@
+vlan 1
+    name default
+    exit
+vlan 30
+    name devel
+    exit
+vlan 20
+    state suspend
+    name prod
+    exit

@@ -36,6 +36,8 @@ test_parse_models = [
     ["ios", "config", napalm_yang.models.openconfig_interfaces, "default"],
     ["eos", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["eos", "config", napalm_yang.models.openconfig_interfaces, "default"],
+    ["eos", "config", napalm_yang.models.openconfig_interfaces, "l2_ports"],
+    ["eos", "config", napalm_yang.models.openconfig_vlan, "default"],
     ["eos", "state", napalm_yang.models.openconfig_interfaces, "default"],
     ["junos", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
