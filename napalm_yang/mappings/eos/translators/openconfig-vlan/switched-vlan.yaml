@@ -1,0 +1,30 @@
+---
+metadata:
+    processor: TextTranslator
+
+switched-vlan:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+        access-vlan:
+            _process:
+              - value: "    switchport access vlan {{ model }}\n"
+                negate: "    default switchport access vlan\n"
+        interface-mode:
+            _process:
+              - value: "    switchport mode access\n"
+                negate: "    default switchport mode\n"
+                when: "{{ model == 'ACCESS' }}"
+              - value: "    switchport mode trunk\n"
+                negate: "    default switchport mode\n"
+                when: "{{ model != 'ACCESS' }}"
+        native-vlan:
+            _process:
+              - value: "    switchport native vlan {{ model }}\n"
+                negate: "    default switchport native vlan\n"
+        trunk-vlans:
+            _process:
+              - value: "    switchport trunk vlan {{ model|oc_to_vlan_range }}\n"
+                negate: "    default switchport trunk vlan\n"
+    state:
+        _process: not_implemented

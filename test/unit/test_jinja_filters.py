@@ -16,7 +16,7 @@ try:
 except ImportError:
     HAS_NETADDR = False
 
-from napalm_yang.jinja_filters import ip_filters, load_filters
+from napalm_yang.jinja_filters import ip_filters, load_filters, vlan_filters
 
 
 class TestJinjaFilters(unittest.TestCase):
@@ -129,3 +129,15 @@ class TestJinjaFilters(unittest.TestCase):
                          '192.168.0.1 255.255.255.0')
         self.assertEqual(ip_filters.prefix_to_addrmask('192.168.0.0/32', '/'),
                          '192.168.0.0/255.255.255.255')
+
+    def test_vlan_range_to_openconfig(self):
+        self.assertEqual(vlan_filters.vlan_range_to_oc("1, 2, 4-10"),
+                         ['1', ' 2', ' 4..10'])
+        self.assertEqual(vlan_filters.vlan_range_to_oc("1, 2, 4-10, 100-200"),
+                         ['1', ' 2', ' 4..10', ' 100..200'])
+
+    def test_openconfig_to_vlan_range(self):
+        self.assertEqual(vlan_filters.oc_to_vlan_range([1,  2, '4..10']),
+                         "1,2,4-10")
+        self.assertEqual(vlan_filters.oc_to_vlan_range([1,  '2', '4..10', '100..200']),
+                         "1,2,4-10,100-200")

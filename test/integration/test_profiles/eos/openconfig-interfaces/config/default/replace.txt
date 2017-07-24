@@ -30,6 +30,10 @@ interface Management1
     exit
 default interface Ethernet1
 interface Ethernet1
+    switchport native vlan 1
+    switchport access vlan 1
+    switchport trunk vlan 1-4094
+    switchport mode access
     description Changed description
     exit
 no interface Loopback0

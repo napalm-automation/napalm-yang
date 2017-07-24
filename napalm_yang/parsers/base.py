@@ -1,3 +1,5 @@
+import ast
+
 from napalm_yang.helpers import template
 
 
@@ -80,7 +82,10 @@ class BaseParser(object):
                 m["block"] = cls.resolve_path(bookmarks, m["block"],
                                               default=m["block"])
 
+            post_process_filter = m.pop("post_process_filter", None)
             for key, block, extra_vars in getattr(cls, method_name)(m, data):
+                if post_process_filter:
+                    key = cls._parse_post_process_filter(post_process_filter, extra_vars, key=key)
                 yield key, block, extra_vars
 
             # we restore the parent
@@ -96,7 +101,15 @@ class BaseParser(object):
             data = cls.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
             result = getattr(cls, method_name)(m, data)
+
             if result is not None:
+                post_process_filter = m.pop("post_process_filter", None)
+                if post_process_filter:
+                    result = cls._parse_post_process_filter(post_process_filter, value=result)
+                    try:
+                        result = ast.literal_eval(result)
+                    except ValueError:
+                        pass
                 return result
 
     @classmethod
@@ -141,9 +154,6 @@ class BaseParser(object):
         return None, {}
 
     @classmethod
-    def _parse_post_process_filter(cls, post_process_filter, key, extra_vars={}):
-        kwargs = dict()
-        kwargs['key'] = key
+    def _parse_post_process_filter(cls, post_process_filter, extra_vars={}, **kwargs):
         kwargs["extra_vars"] = extra_vars
-        key = template(post_process_filter, **kwargs)
-        return key
+        return template(post_process_filter, **kwargs)
