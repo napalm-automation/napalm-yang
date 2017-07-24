@@ -135,3 +135,9 @@ class TestJinjaFilters(unittest.TestCase):
                          ['1', ' 2', ' 4..10'])
         self.assertEqual(vlan_filters.vlan_range_to_oc("1, 2, 4-10, 100-200"),
                          ['1', ' 2', ' 4..10', ' 100..200'])
+
+    def test_openconfig_to_vlan_range(self):
+        self.assertEqual(vlan_filters.oc_to_vlan_range([1,  2, '4..10']),
+                         "1,2,4-10")
+        self.assertEqual(vlan_filters.oc_to_vlan_range([1,  '2', '4..10', '100..200']),
+                         "1,2,4-10,100-200")
