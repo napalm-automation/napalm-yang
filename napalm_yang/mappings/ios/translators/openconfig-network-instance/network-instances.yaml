@@ -261,7 +261,7 @@ network-instances:
                 _process:
                   - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n"
                     negate: "no router bgp {{ model.bgp.global_.config.as_ }}\n"
-                    end: " exit\n"
+                    end: "!\n"
                     when: "{{ protocol_key == 'bgp bgp' and network_instance_key == 'global' }}"
                     in: "network-instances"
                   - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n scope vrf {{ network_instance_key}}\n"

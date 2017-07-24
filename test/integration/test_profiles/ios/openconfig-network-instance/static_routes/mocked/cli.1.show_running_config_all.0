@@ -94,8 +94,10 @@ router bgp 65010
  bgp log-neighbor-changes
  neighbor 10.5.5.5 remote-as 65010
  neighbor 2001:DB8::2 remote-as 65011
- neighbor 2001:DB8::2 shutdown
+ neighbor 2001:DB8::2 description aaa
  neighbor 192.168.5.5 remote-as 65010
+ neighbor 192.168.5.5 description abc123
+ neighbor 192.168.5.5 shutdown
  !
  address-family ipv4
   neighbor 10.5.5.5 activate

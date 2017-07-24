@@ -352,6 +352,7 @@ neighbors:
     neighbor:
         _process:
             - regexp: "(?P<block>neighbor (?P<key>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-f:]+:[0-9a-f:]+)).*)"
+              post_process_filter: "{{ key|normalize_address }}"
               flat: true
         add-paths:
             _process: not_implemented
@@ -624,6 +625,7 @@ neighbors:
                 _process:
                     - mode: is_absent
                       regexp: "neighbor {{ neighbor_key }} (?P<value>shutdown)"
+                      from: "protocol.{{protocol_key}}"
             local-as:
                 _process:
                     - regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"

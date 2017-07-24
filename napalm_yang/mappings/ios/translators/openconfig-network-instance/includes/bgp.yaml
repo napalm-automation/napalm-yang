@@ -350,8 +350,8 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-          - key_value: " neighbor {{ neighbor_key }} remote-as {{ model.config.peer_as }}\n"
-            negate: " no neighbor {{ neighbor_key }}\n"
+          - negate: " no neighbor {{ neighbor_key }}\n"
+            when: "{{ not replacing }}"
         add-paths:
             _process: not_implemented
             config:
@@ -625,6 +625,8 @@ neighbors:
                     - value: " neighbor {{ neighbor_key }} shutdown\n"
                       negate: " default neighbor {{ neighbor_key }}\n"
                       when: "{{ not model }}"
+                    - value: " no neighbor {{ neighbor_key }} shutdown\n"
+                      when: "{{ model and merging }}"
             local-as:
                 _process:
                     - value: " neighbor {{ neighbor_key }} local-as {{ model }}\n"
@@ -632,7 +634,9 @@ neighbors:
             neighbor-address:
                 _process: unnecessary
             peer-as:
-                _process: unnecessary
+                _process:
+                    - value: " neighbor {{ neighbor_key }} remote-as {{ model }}\n"
+                      negate: "default neighbor {{ neighbor_key }} remote-as\n"
             peer-group:
                 _process: not_implemented
             peer-type:

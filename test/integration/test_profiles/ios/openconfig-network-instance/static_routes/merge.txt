@@ -1,3 +1,10 @@
+router bgp 65010
+ neighbor 2001:db8::2 description bbb
+ neighbor 2001:db8::2 shutdown
+ neighbor 2001:db8::2 remote-as 65019
+ no neighbor 192.168.5.5 shutdown
+ no neighbor 10.5.5.5
+!
 ip route 9.9.9.9 255.255.255.255 Null0
 ip route 2.2.2.2 255.255.255.255 10.1.1.9
 no ip route 2.2.2.2 255.255.255.255 10.1.1.1

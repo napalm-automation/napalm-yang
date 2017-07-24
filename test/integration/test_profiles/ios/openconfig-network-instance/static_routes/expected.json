@@ -9,6 +9,48 @@
                 "name": "global",
                 "protocols": {
                     "protocol": {
+                        "bgp bgp": {
+                            "bgp": {
+                                "global": {
+                                    "config": {
+                                        "as": 65010,
+                                        "router-id": "2.2.2.2"
+                                    }
+                                },
+                                "neighbors": {
+                                    "neighbor": {
+                                        "10.5.5.5": {
+                                            "config": {
+                                                "enabled": true,
+                                                "neighbor-address": "10.5.5.5",
+                                                "peer-as": 65010
+                                            },
+                                            "neighbor-address": "10.5.5.5"
+                                        },
+                                        "192.168.5.5": {
+                                            "config": {
+                                                "description": "abc123",
+                                                "enabled": false,
+                                                "neighbor-address": "192.168.5.5",
+                                                "peer-as": 65010
+                                            },
+                                            "neighbor-address": "192.168.5.5"
+                                        },
+                                        "2001:db8::2": {
+                                            "config": {
+                                                "description": "aaa",
+                                                "enabled": true,
+                                                "neighbor-address": "2001:db8::2",
+                                                "peer-as": 65011
+                                            },
+                                            "neighbor-address": "2001:db8::2"
+                                        }
+                                    }
+                                }
+                            },
+                            "identifier": "bgp",
+                            "name": "bgp"
+                        },
                         "static static": {
                             "identifier": "static",
                             "name": "static",
