@@ -28,7 +28,6 @@ def config_logging(level=logging.DEBUG, stream=sys.stdout):
     logger.addHandler(ch)
 
 
-
 def find_yang_file(profile, filename, path):
     """
     Find the necessary file for the given test case.
@@ -106,7 +105,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["negating"] = negating
 
     for k, v in rule.items():
-        if k.startswith('post_process_'):
+        if k.startswith('post_process_') or k == "jinja_key":
             # don't process post processing rules now, they'll be processed on a second pass
             rule[k] = v
         else:

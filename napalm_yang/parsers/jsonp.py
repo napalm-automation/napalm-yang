@@ -34,7 +34,15 @@ class JSONParser(BaseParser):
     def _parse_list_default(cls, mapping, data, key=None):
         def _iterator(d, key_element):
             # key_element is necessary when we have lists of dicts
-            if key_element and d:
+            if "jinja_key" in mapping and d:
+                for v in d:
+                    try:
+                        k = cls._parse_post_process_filter(mapping["jinja_key"], **v)
+                    except Exception as e:
+                        k = "{}".format(e)
+                    print(666, k)
+                    yield k, v
+            elif key_element and d:
                 if key_element in d:
                     # xmltodict returns a dict when there is only one element
                     d = [d]
