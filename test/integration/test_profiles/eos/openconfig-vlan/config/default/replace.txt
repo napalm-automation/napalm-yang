@@ -1,5 +1,6 @@
 no vlan 1
 vlan 1
+    state active
     name default
     exit
 no vlan 31
