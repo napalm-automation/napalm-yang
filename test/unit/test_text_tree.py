@@ -23,7 +23,7 @@ class Tests(object):
         with open(path, 'r') as f:
             original = [f.read()]
 
-        parsed = napalm_yang.parsers.text_tree.TextTree.init_native(original)
+        parsed = napalm_yang.parsers.text_tree.TextTree({}, {}).init_native(original)
         result = json.dumps(parsed, indent=4)
 
         #  with open(expected, 'w') as f:

@@ -19,8 +19,7 @@ def get_element_with_cdata(dictionary, element):
 
 class JSONParser(BaseParser):
 
-    @classmethod
-    def init_native(cls, native):
+    def init_native(self, native):
         resp = []
         for k in native:
             if isinstance(k, dict):
@@ -30,12 +29,11 @@ class JSONParser(BaseParser):
 
         return resp
 
-    @classmethod
-    def _parse_list_default(cls, mapping, data, key=None):
+    def _parse_list_default(self, mapping, data, key=None):
         def _eval_key(key_mapping, **kwargs):
             if "{{" in key_mapping:
                 try:
-                    return cls._parse_post_process_filter(key_mapping, **kwargs)
+                    return self._parse_post_process_filter(key_mapping, **kwargs)
                 except Exception as e:
                     return "{}".format(e)
             else:
@@ -70,7 +68,7 @@ class JSONParser(BaseParser):
                     return None, {}
             return key, extra_vars
 
-        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+        d = self.resolve_path(data, mapping["path"], mapping.get("default"))
 
         regexp = mapping.get('regexp')
         if regexp:
@@ -83,14 +81,16 @@ class JSONParser(BaseParser):
             if key:
                 yield key, v, extra_vars
 
-    @classmethod
-    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
         if "value" in mapping:
             d = mapping["value"]
         elif "path" in mapping:
             d = cls.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
+    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
         else:
             d = None
+
+        if "value" in mapping:
+            d = self._parse_post_process_filter(mapping["value"], value=d)
 
         if d and not check_presence:
             regexp = mapping.get('regexp', None)
@@ -108,24 +108,20 @@ class JSONParser(BaseParser):
             return
         return
 
-    @classmethod
-    def _parse_container_default(cls, mapping, data):
-        d = cls.resolve_path(data, mapping["path"], mapping.get("default"))
+    def _parse_container_default(self, mapping, data):
+        d = self.resolve_path(data, mapping["path"], mapping.get("default"))
         return d, {}
 
-    @classmethod
-    def _parse_leaf_map(cls, mapping, data):
-        v = cls._parse_leaf_default(mapping, data)
+    def _parse_leaf_map(self, mapping, data):
+        v = self._parse_leaf_default(mapping, data)
         if v:
             return mapping['map'][v.lower()]
         else:
             return
 
-    @classmethod
-    def _parse_leaf_is_present(cls, mapping, data):
-        return cls._parse_leaf_default(mapping, data,
-                                       check_default=False, check_presence=True) is True
+    def _parse_leaf_is_present(self, mapping, data):
+        return self._parse_leaf_default(mapping, data,
+                                        check_default=False, check_presence=True) is True
 
-    @classmethod
-    def _parse_leaf_is_absent(cls, mapping, data):
-        return not cls._parse_leaf_is_present(mapping, data)
+    def _parse_leaf_is_absent(self, mapping, data):
+        return not self._parse_leaf_is_present(mapping, data)

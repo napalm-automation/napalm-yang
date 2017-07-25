@@ -89,8 +89,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
 
 class TextTree(JSONParser):
 
-    @classmethod
-    def init_native(cls, native):
+    def init_native(self, native):
         resp = []
         for n in native:
             if isinstance(n, dict):
@@ -105,8 +104,7 @@ class TextTree(JSONParser):
 
         return resp
 
-    @classmethod
-    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
         extra_path = "#standalone" if check_presence else "#text"
         if "path" in mapping:
             mapping["path"] = "{}.{}".format(mapping["path"], extra_path)

@@ -48,7 +48,8 @@ class Parser(object):
             raise Exception("I don't have any data to operate with")
 
         if self.mapping:
-            self.parser = get_parser(self.mapping["metadata"]["processor"])
+            self.parser = get_parser(self.mapping["metadata"]["processor"])(self.keys,
+                                                                            self.extra_vars)
 
         self.bookmarks = bookmarks or {}
 
@@ -171,7 +172,7 @@ class Parser(object):
             # example, ipv4.config.enabled is present in both interfaces and subinterfaces
             self.keys["parent_key"] = key
             self.bookmarks["parent"] = block
-            self.extra_vars = extra_vars
+            self.extra_vars["parent"] = extra_vars
 
             element_mapping = copy.deepcopy(mapping)
             self._parse(key, obj, element_mapping)
@@ -192,7 +193,7 @@ class Parser(object):
 
         value = self.parser.parse_leaf(mapping["_process"], self.bookmarks)
 
-        if value is not None and (value != model.default() or isinstance(value, bool)):
+        if value is not None:
             setter = getattr(model._parent, "_set_{}".format(attribute))
             try:
                 setter(value)

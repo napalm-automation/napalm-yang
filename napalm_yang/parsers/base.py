@@ -5,8 +5,11 @@ from napalm_yang.helpers import template
 
 class BaseParser(object):
 
-    @classmethod
-    def resolve_path(cls, my_dict, path, default=None, check_presence=False):
+    def __init__(self, keys, extra_vars):
+        self.keys = keys
+        self.extra_vars = extra_vars
+
+    def resolve_path(self, my_dict, path, default=None, check_presence=False):
         if path is None:
             return
 
@@ -32,7 +35,7 @@ class BaseParser(object):
                 for k, v in iterator:
                     if k.startswith("#"):
                         continue
-                    r = cls.resolve_path(v, ".".join(path_split[i+1:]), default, check_presence)
+                    r = self.resolve_path(v, ".".join(path_split[i+1:]), default, check_presence)
                     if isinstance(r, list):
                         for rr in r:
                             rr[p[1:]] = k
@@ -64,43 +67,36 @@ class BaseParser(object):
 
         return result
 
-    @classmethod
-    def init_native(cls, native):
+    def init_native(self, native):
         return native
 
-    @classmethod
-    def parse_list(cls, mapping, bookmarks):
+    def parse_list(self, mapping, bookmarks):
         for m in mapping:
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
 
-            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
+            data = self.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_list_{}".format(m.get("mode", "default"))
 
             if method_name == "_parse_list_manual":
-                m["block"] = cls.resolve_path(bookmarks, m["block"],
-                                              default=m["block"])
+                m["block"] = self.resolve_path(bookmarks, m["block"],
+                                               default=m["block"])
 
-            post_process_filter = m.pop("post_process_filter", None)
-            for key, block, extra_vars in getattr(cls, method_name)(m, data):
-                if post_process_filter:
-                    key = cls._parse_post_process_filter(post_process_filter, extra_vars, key=key)
+            for key, block, extra_vars in getattr(self, method_name)(m, data):
                 yield key, block, extra_vars
 
             # we restore the parent
             bookmarks["parent"] = parent
 
-    @classmethod
-    def _parse_list_manual(cls, mapping, data):
+    def _parse_list_manual(self, mapping, data):
         yield mapping["key"], mapping["block"], mapping["extra_vars"]
 
-    @classmethod
-    def parse_leaf(cls, mapping, bookmarks):
+    def parse_leaf(self, mapping, bookmarks):
         for m in mapping:
-            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
+            data = self.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
-            result = getattr(cls, method_name)(m, data)
+            result = getattr(self, method_name)(m, data)
 
             if result is not None:
                 post_process_filter = m.pop("post_process_filter", None)
@@ -112,15 +108,14 @@ class BaseParser(object):
                         pass
                 return result
 
-    @classmethod
-    def parse_container(cls, mapping, bookmarks):
+    def parse_container(self, mapping, bookmarks):
         for m in mapping:
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
-            data = cls.resolve_path(bookmarks, m.get("from", "parent"))
+            data = self.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_container_{}".format(m.get("mode", "default"))
-            result, extra_vars = getattr(cls, method_name)(m, data)
+            result, extra_vars = getattr(self, method_name)(m, data)
             if result or extra_vars:
                 break
 
@@ -128,18 +123,15 @@ class BaseParser(object):
             bookmarks["parent"] = parent
         return result, extra_vars
 
-    @classmethod
-    def _parse_leaf_skip(cls, mapping, bookmarks):
+    def _parse_leaf_skip(self, mapping, bookmarks):
         return
 
     _parse_leaf_gate = _parse_leaf_skip
 
-    @classmethod
-    def _parse_container_skip(cls, mapping, bookmarks):
+    def _parse_container_skip(self, mapping, bookmarks):
         return "", {}
 
-    @classmethod
-    def _parse_list_skip(cls, mapping, bookmarks):
+    def _parse_list_skip(self, mapping, bookmarks):
         return {}
 
     _parse_list_gate = _parse_list_skip
@@ -148,8 +140,7 @@ class BaseParser(object):
     def _parse_leaf_value(cls, mapping, bookmarks):
         return mapping["value"]
 
-    @classmethod
-    def _parse_container_gate(cls, mapping, bookmarks):
+    def _parse_container_gate(self, mapping, bookmarks):
         """This basically stops parsing the tree by returning None"""
         return None, {}
 

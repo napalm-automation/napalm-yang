@@ -10,7 +10,7 @@ class Tests(object):
             }
         }
         path = "simple.path"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         assert result == 123
 
     def test_resolve_path_list(self):
@@ -20,7 +20,7 @@ class Tests(object):
             ]
         }
         path = "simple.0.path"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         assert result == 123
 
     def test_extract_value_simple(self):
@@ -43,7 +43,7 @@ class Tests(object):
             }
         }
         path = "group.?name"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
             {'data': {'whatever': 1},
              'name': 'group_1',
@@ -73,7 +73,7 @@ class Tests(object):
             }
         }
         path = "group.?name.subgroup.?subname"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
             {'name': 'group_1', 'path': 2, 'subname': 'subgroup_1', "data": {"whatever": 1}},
             {'name': 'group_1', 'path': 3, 'subname': 'subgroup_2', "data": {"whatever": 1}},
@@ -92,7 +92,7 @@ class Tests(object):
                        "subgroup": [{"name": "subgroup_3", "path": 5},
                                     {"name": "subgroup_4", "path": 6}]}]}
         path = "group.?group:name.subgroup.?subgroup:name"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
             {'data': {'whatever': 1}, 'group': 'group_1', 'name': 'group_1',
              'path': 2, 'subgroup': 'subgroup_1'},
@@ -120,7 +120,7 @@ class Tests(object):
                               "name": {"#text": "172.20.0.1"},
                               "peer-as": {"#text": "65200"}}}]}
         path = "group.?peer_group:name.neighbor.?neighbor:name"
-        result = napalm_yang.parsers.base.BaseParser.resolve_path(data, path)
+        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
             {'name': {'#text': 'my_other_peers'},
              'neighbor': '172.20.0.1',
