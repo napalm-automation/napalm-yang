@@ -81,11 +81,9 @@ class JSONParser(BaseParser):
             if key:
                 yield key, v, extra_vars
 
-        if "value" in mapping:
-            d = mapping["value"]
-        elif "path" in mapping:
-            d = cls.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
     def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
+        if "path" in mapping:
+            d = self.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
         else:
             d = None
 
