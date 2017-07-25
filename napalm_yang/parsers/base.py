@@ -99,13 +99,10 @@ class BaseParser(object):
             result = getattr(self, method_name)(m, data)
 
             if result is not None:
-                post_process_filter = m.pop("post_process_filter", None)
-                if post_process_filter:
-                    result = cls._parse_post_process_filter(post_process_filter, value=result)
-                    try:
-                        result = ast.literal_eval(result)
-                    except ValueError:
-                        pass
+                try:
+                    result = ast.literal_eval(result)
+                except (ValueError, SyntaxError):
+                    pass
                 return result
 
     def parse_container(self, mapping, bookmarks):
@@ -136,15 +133,10 @@ class BaseParser(object):
 
     _parse_list_gate = _parse_list_skip
 
-    @classmethod
-    def _parse_leaf_value(cls, mapping, bookmarks):
-        return mapping["value"]
-
     def _parse_container_gate(self, mapping, bookmarks):
         """This basically stops parsing the tree by returning None"""
         return None, {}
 
-    @classmethod
-    def _parse_post_process_filter(cls, post_process_filter, extra_vars={}, **kwargs):
-        kwargs["extra_vars"] = extra_vars
-        return template(post_process_filter, **kwargs)
+    def _parse_post_process_filter(self, post_process_filter, **kwargs):
+        kwargs.update(self.keys)
+        return template(post_process_filter, extra_vars=self.extra_vars, **kwargs)
