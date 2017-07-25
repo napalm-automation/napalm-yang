@@ -29,7 +29,7 @@ ipv4:
                 prefix-length:
                     _process:
                         - path: mask
-                          post_process_filter: "{{ value|netmask_to_cidr }}"
+                          value: "{{ value|netmask_to_cidr }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

@@ -62,8 +62,7 @@ interfaces:
                         _process: unnecessary
                     name:
                         _process:
-                            - mode: value
-                              value: "{{ interface_key }}.{{ subinterface_key}}"
+                            - value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _process:
                             - mode: is_absent

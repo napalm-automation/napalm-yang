@@ -24,12 +24,10 @@ ipv4:
                 _process: unnecessary
                 ip:
                     _process:
-                        - mode: value
-                          value: "{{ extra_vars.ip }}"
+                        - value: "{{ extra_vars.address.ip }}"
                 prefix-length:
                     _process:
-                        - mode: value
-                          value: "{{ extra_vars.prefix }}"
+                        - value: "{{ extra_vars.address.prefix }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

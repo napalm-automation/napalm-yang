@@ -23,6 +23,6 @@ switched-vlan:
         trunk-vlans:
             _process:
                 - path: switchport.trunk.allowed.vlan
-                  post_process_filter: "{{ value|vlan_range_to_oc }}"
+                  value: "{{ value|vlan_range_to_oc }}"
     state:
         _process: not_implemented

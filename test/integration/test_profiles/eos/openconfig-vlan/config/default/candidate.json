@@ -3,7 +3,8 @@
         "vlan": {
             "1": {
                 "config": {
-                    "name": "default"
+                    "name": "default",
+                    "status": "ACTIVE"
                 },
                 "vlan-id": "1"
             },

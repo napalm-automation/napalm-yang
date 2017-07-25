@@ -24,8 +24,7 @@ network-instances:
                   - path: "description"
             enabled:
                 _process:
-                  - mode: value
-                    value: true
+                  - value: "true"
             enabled-address-families:
                 _process: not_implemented
             mtu:
@@ -39,11 +38,9 @@ network-instances:
                 _process: not_implemented
             type:
                 _process:
-                  - mode: value
-                    value: DEFAULT_INSTANCE
+                  - value: DEFAULT_INSTANCE
                     when: "{{ network_instance_key == 'global' }}"
-                  - mode: value
-                    value: L3VRF
+                  - value: L3VRF
                     when: "{{ network_instance_key != 'global' }}"
         connection-points:
             _process: not_implemented

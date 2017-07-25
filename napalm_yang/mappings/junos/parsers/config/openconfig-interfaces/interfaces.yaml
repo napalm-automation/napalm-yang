@@ -28,8 +28,7 @@ interfaces:
             _process: unnecessary
             name:
                 _process:
-                    - mode: value
-                      value: "{{ interface_key }}"
+                    - value: "{{ interface_key }}"
             type:
                 _process:
                     - mode: map
@@ -68,8 +67,7 @@ interfaces:
                         _process: not_implemented
                     name:
                         _process:
-                            - mode: value
-                              value: "{{ subinterface_key }}"
+                            - value: "{{ subinterface_key }}"
                     enabled:
                         _process:
                             - mode: is_absent
