@@ -19,9 +19,11 @@ class XMLParser(JSONParser):
 
     def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
         attribute = mapping.get("attribute", None)
-        if attribute:
+        path = mapping.get("path", None)
+        if attribute and path:
             attribute = "@{}".format(attribute)
             mapping["path"] = "{}.{}".format(mapping["path"], attribute)
-        elif not check_presence:
+        elif not check_presence and path:
+            attribute = "#text"
             mapping["path"] = "{}.{}".format(mapping["path"], "#text")
         return super()._parse_leaf_default(mapping, data, check_default, check_presence)
