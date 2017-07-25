@@ -95,7 +95,8 @@ class Parser(object):
 
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks)
+                                                   self.extra_vars, None, self.bookmarks,
+                                                   process_all=False)
 
         # Saving state
         old_parent_key = self.keys["parent_key"]
@@ -138,7 +139,7 @@ class Parser(object):
         mapping_copy = copy.deepcopy(mapping)
         mapping_copy["_process"] = helpers.resolve_rule(mapping_copy["_process"], attribute,
                                                         self.keys, self.extra_vars, None,
-                                                        self.bookmarks)
+                                                        self.bookmarks, process_all=False)
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -182,7 +183,8 @@ class Parser(object):
 
     def _parse_leaf(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks)
+                                                   self.extra_vars, None, self.bookmarks,
+                                                   process_all=False)
 
         # We can't set attributes that are keys
         if model._is_keyval:
