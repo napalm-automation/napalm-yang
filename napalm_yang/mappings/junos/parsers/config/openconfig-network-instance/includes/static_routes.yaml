@@ -4,7 +4,7 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-      - path: ""
+      - path: "route"
         key: name
     config:
         _process: unnecessary

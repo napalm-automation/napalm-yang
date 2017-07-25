@@ -17,8 +17,8 @@ ipv4:
         address:
             _process:
                 - path: "ip.address.?prefix.?mask"
-                  regexp: "^(?P<value>\\d+.*)"
-                  jinja_key: "{{ prefix }}/{{ mask }}"
+                  regexp: "^(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+)"
+                  key: prefix
             ip:
                 _process: unnecessary
             config:

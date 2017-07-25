@@ -318,15 +318,13 @@ network-instances:
                 _process:
                     - path: "router.?protocol.?process_id"
                       from: root_network-instances.0
-                      regexp: "(?P<value>bgp)"
-                      key: protocol
-                      composite_key: 2
+                      regexp: "(?P<value>bgp bgp)"
+                      key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key == 'global' }}"
                     - path: "router.?protocol.?process_id.vrf.{{ network_instance_key }}"
                       from: root_network-instances.0
-                      regexp: "(?P<value>bgp)"
-                      key: protocol
-                      composite_key: 2
+                      regexp: "(?P<value>bgp bgp)"
+                      key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key != 'global' }}"
                     - mode: manual
                       block: "root_network-instances.0.ip.route"

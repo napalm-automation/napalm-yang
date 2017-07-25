@@ -12,8 +12,8 @@ network-instances:
           from: root_network-instances.0
     network-instance:
         _process:
-            - path: ""
-              key_value: "global"
+            - path: "configuration"
+              key: "{{ 'global' }}"
               from: root_network-instances.0
             - path: "instance"
               key: name
@@ -319,10 +319,10 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                  - path: "protocols"
-                    composite_key: 2
+                  - path: "protocols.?protocol"
+                    key: "{{ protocol }} {{ protocol }}"
                   - path: "routing-options.static"
-                    key_value: "static static"
+                    key: "{{ 'static static' }}"
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented

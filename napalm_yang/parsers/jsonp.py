@@ -32,44 +32,42 @@ class JSONParser(BaseParser):
 
     @classmethod
     def _parse_list_default(cls, mapping, data, key=None):
-        def _iterator(d, key_element):
-            # key_element is necessary when we have lists of dicts
-            if "jinja_key" in mapping and d:
-                for v in d:
-                    try:
-                        k = cls._parse_post_process_filter(mapping["jinja_key"], **v)
-                    except Exception as e:
-                        k = "{}".format(e)
-                    print(666, k)
-                    yield k, v
-            elif key_element and d:
-                if key_element in d:
+        def _eval_key(key_mapping, **kwargs):
+            if "{{" in key_mapping:
+                try:
+                    return cls._parse_post_process_filter(key_mapping, **kwargs)
+                except Exception as e:
+                    return "{}".format(e)
+            else:
+                return get_element_with_cdata(kwargs, key_mapping)
+
+        def _iterator(d, key_mapping):
+            if key_mapping and d:
+                if isinstance(d, dict):
                     # xmltodict returns a dict when there is only one element
                     d = [d]
-
                 for v in d:
-                    k = get_element_with_cdata(v, key_element)
+                    if not isinstance(v, dict):
+                        # Nothing to resolve
+                        k = _eval_key(key_mapping)
+                    else:
+                        k = _eval_key(key_mapping, **v)
                     yield k, v
             elif d:
+                # If there is no key_mapping we can only assume it's a dict
+                # so the key is implicit
                 for k, v in d.items():
                     yield k, v
 
         def _process_key_value(key, value, regexp, mapping):
-            key_value = mapping.get('key_value')
-            composite_key = mapping.get('composite_key')
             extra_vars = {}
-            if key_value:
-                key = key_value
-            elif regexp:
+            if regexp:
                 match = regexp.match(key)
                 if match:
                     key = match.group('value')
                     extra_vars = match.groupdict()
                 else:
                     return None, {}
-
-            if composite_key:
-                key = " ".join([key for _ in range(0, composite_key)])
             return key, extra_vars
 
         d = cls.resolve_path(data, mapping["path"], mapping.get("default"))

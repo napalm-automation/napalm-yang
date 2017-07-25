@@ -105,7 +105,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["negating"] = negating
 
     for k, v in rule.items():
-        if k.startswith('post_process_') or k == "jinja_key":
+        if k.startswith('post_process_') or k == "key":
             # don't process post processing rules now, they'll be processed on a second pass
             rule[k] = v
         else:
