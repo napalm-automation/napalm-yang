@@ -97,9 +97,6 @@ class BaseParser(object):
             # we restore the parent
             bookmarks["parent"] = parent
 
-    def _parse_list_manual(self, mapping, data):
-        yield mapping["key"], mapping["block"], mapping["extra_vars"]
-
     def parse_leaf(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys,
                                        self.extra_vars, None, process_all=False)
