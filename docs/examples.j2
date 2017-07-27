@@ -1,0 +1,67 @@
+Examples
+========
+
+{% for e in examples %}
+{{ e.example.documentation.title }}
+{{ "-" * e.example.documentation.title|length }}
+
+{{ e.example.documentation.summary }}
+
+Original data
+_____________
+
+.. code::
+
+{{ e.mocked|indent }}
+
+{{ e.example.documentation.data|default("") }}
+
+Parser rule
+___________
+
+.. code-block:: yaml
+
+{{ e.example.rule|to_yaml|indent }}
+
+{{ e.example.documentation.rule|default("") }}
+
+Result
+______
+
+{{ e.example.documentation.result|default("") }}
+
+{% for case in e.example.data %}
+
+Example {{loop.index}}
+^^^^^^^^^^
+
+.. code-block:: yaml
+
+{{ case|to_yaml|indent }}
+
+.. raw:: html
+
+    <div><table border="1" class="docutils">
+        <tr>
+            <th class="head">{{ e.example.processor.attribute }}_key</th>
+            <th class="head">block</th>
+            <th class="head">extra_vars</th>
+        </tr>
+        <tbody>
+    {% for r in e.example.expected[loop.index0] %}
+        <tr>
+            <td style="vertical-align: top;">{{ r.key }}</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+{{ r.block|to_yaml|indent }}</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+{{ r.extra_vars|to_yaml|indent }}</pre></div></div></td>
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table></div>
+
+{% endfor %}
+{% endfor %}
