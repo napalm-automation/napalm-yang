@@ -18,7 +18,10 @@ class BaseParser(object):
         path_split = path.split(".") if len(path) else []
         result = None
 
-        for i, p in enumerate(path_split):
+        while True:
+            if not path_split:
+                break
+            p = path_split.pop(0)
             if p[0] == "?":
                 result = [] if result is None else result
 
@@ -36,12 +39,14 @@ class BaseParser(object):
                 for k, v in iterator:
                     if k.startswith("#"):
                         continue
-                    r = self.resolve_path(v, ".".join(path_split[i+1:]), default, check_presence)
+                    r = self.resolve_path(v, ".".join(path_split), default, check_presence)
+                    if not r:
+                        break
                     if isinstance(r, list):
                         for rr in r:
                             rr[p[1:]] = k
                             for kk, vv in v.items():
-                                if kk != path_split[i+1]:
+                                if kk != path_split[0] and path_split[0][0] != "?":
                                     rr[kk] = vv
                             result.append(rr)
                     else:
@@ -59,9 +64,8 @@ class BaseParser(object):
                     raise Exception(b)
             except (KeyError, TypeError, IndexError, ValueError):
                 return default
-        else:
-            if check_presence:
-                return i == len(path_split) - 1
+        if check_presence:
+            return not path_split
 
         if not result:
             result = b
