@@ -1,6 +1,7 @@
 import ast
+import copy
 
-from napalm_yang.helpers import template
+from napalm_yang import helpers
 
 
 class BaseParser(object):
@@ -71,6 +72,9 @@ class BaseParser(object):
         return native
 
     def parse_list(self, mapping, bookmarks):
+        mapping = copy.deepcopy(mapping)
+        mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars,
+                                       None, process_all=False)
         for m in mapping:
             # parent will change as the tree is processed so we save it
             # so we can restore it
@@ -93,6 +97,8 @@ class BaseParser(object):
         yield mapping["key"], mapping["block"], mapping["extra_vars"]
 
     def parse_leaf(self, mapping, bookmarks):
+        mapping = helpers.resolve_rule(mapping, attribute, self.keys,
+                                       self.extra_vars, None, process_all=False)
         for m in mapping:
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
@@ -106,6 +112,8 @@ class BaseParser(object):
                 return result
 
     def parse_container(self, mapping, bookmarks):
+        mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
+                                       process_all=False)
         for m in mapping:
             # parent will change as the tree is processed so we save it
             # so we can restore it
@@ -139,4 +147,4 @@ class BaseParser(object):
 
     def _parse_post_process_filter(self, post_process_filter, **kwargs):
         kwargs.update(self.keys)
-        return template(post_process_filter, extra_vars=self.extra_vars, **kwargs)
+        return helpers.template(post_process_filter, extra_vars=self.extra_vars, **kwargs)
