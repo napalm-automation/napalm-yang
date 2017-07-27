@@ -139,8 +139,8 @@ class Tests(object):
 
         #  driver = get_network_driver(profile)
         #  with driver(**device_configuration[profile]) as d:
-            #  d.load_merge_candidate(config=configuration)
-            #  print(d.compare_config())
-            #  d.discard_config()
+        #      d.load_merge_candidate(config=configuration)
+        #      print(d.compare_config())
+        #      d.discard_config()
 
         assert configuration == expected_translation
