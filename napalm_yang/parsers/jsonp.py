@@ -68,7 +68,7 @@ class JSONParser(BaseParser):
                     return None, {}
             return key, extra_vars
 
-        d = self.resolve_path(data, mapping["path"], mapping.get("default"))
+        d = self.resolve_path(data, mapping.get("path", ""), mapping.get("default"))
 
         regexp = mapping.get('regexp')
         if regexp:

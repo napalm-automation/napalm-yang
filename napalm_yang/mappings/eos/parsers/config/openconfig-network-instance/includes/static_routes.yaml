@@ -4,8 +4,7 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-        - path: ""
-          regexp: "(?P<value>^\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+)"
+        - regexp: "(?P<value>^\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+)"
           when: "{{ network_instance_key == 'global' }}"
         - path: "vrf.{{ network_instance_key }}"
           when: "{{ network_instance_key != 'global' }}"
