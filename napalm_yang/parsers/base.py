@@ -71,7 +71,7 @@ class BaseParser(object):
     def init_native(self, native):
         return native
 
-    def parse_list(self, mapping, bookmarks):
+    def parse_list(self, attribute, mapping, bookmarks):
         mapping = copy.deepcopy(mapping)
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars,
                                        None, process_all=False)
@@ -96,7 +96,7 @@ class BaseParser(object):
     def _parse_list_manual(self, mapping, data):
         yield mapping["key"], mapping["block"], mapping["extra_vars"]
 
-    def parse_leaf(self, mapping, bookmarks):
+    def parse_leaf(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys,
                                        self.extra_vars, None, process_all=False)
         for m in mapping:
@@ -111,7 +111,7 @@ class BaseParser(object):
                     pass
                 return result
 
-    def parse_container(self, mapping, bookmarks):
+    def parse_container(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
         for m in mapping:

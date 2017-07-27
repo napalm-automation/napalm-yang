@@ -102,7 +102,8 @@ class Parser(object):
 
         if model._yang_type is not None:
             # None means it's an element of a list
-            block, extra_vars = self.parser.parse_container(mapping["_process"], self.bookmarks)
+            block, extra_vars = self.parser.parse_container(attribute,
+                                                            mapping["_process"], self.bookmarks)
 
             if block is None:
                 return
@@ -179,7 +180,7 @@ class Parser(object):
         if model._is_keyval:
             return
 
-        value = self.parser.parse_leaf(mapping["_process"], self.bookmarks)
+        value = self.parser.parse_leaf(attribute, mapping["_process"], self.bookmarks)
 
         if value is not None:
             setter = getattr(model._parent, "_set_{}".format(attribute))
