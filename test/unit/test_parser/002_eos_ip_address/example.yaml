@@ -1,0 +1,52 @@
+---
+documentation:
+    title: Parsing IP addresses in EOS (extracting extra information from a key)
+    summary: |
+        IP addresses in EOS contain two pieces of information; the address and it's
+        prefix-length. You can use ``regexp`` to select the relevant part
+        for the key and any additional information you may need.
+    rule: |
+        The regular expression is doing two things; use the ``<value>`` to capture
+        which part should be used for the key and then capture as well all the useful
+        information so we have it available for later use in the ``extra_vars`` field.
+    result: |
+        Note that ``extra_vars`` is populated with the information we captured with ``regexp.``.
+
+processor:
+    name: TextTree
+    attribute: address
+    root_name: interfaces
+    node_type: list
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - path: "ip.address"
+      regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
+expected:
+    - - key: 192.168.1.1
+        block:
+          '#standalone': true
+        extra_vars:
+            ip: 192.168.1.1
+            prefix: '24'
+            value: 192.168.1.1
+      - key: 192.168.2.1
+        block:
+          '#text': secondary
+          secondary:
+              '#standalone': true
+        extra_vars:
+          ip: 192.168.2.1
+          prefix: '24'
+          value: 192.168.2.1
+      - key: 172.20.0.1
+        block:
+          '#text': secondary
+          secondary:
+              '#standalone': true
+        extra_vars:
+          ip: 172.20.0.1
+          prefix: '24'
+          value: 172.20.0.1

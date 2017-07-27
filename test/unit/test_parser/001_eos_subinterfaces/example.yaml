@@ -1,0 +1,56 @@
+---
+documentation:
+    title: Parsing subinterfaces in industry standard CLIs (variables)
+    summary: |
+        When we were parsing interfaces we skipped the subinterfaces. In order to pass
+        subinterfaces we can leverage on the ``interface_key`` to build a dynamic regular
+        expression.
+    rule: |
+        Because we are parsing a `subinterface` which is a child
+        of an `interface`, all the keys and extra_vars that we previously collected in the current
+        interface will be available.
+        We will use ``{{ interface_key }}`` in our regular expression to match only
+        our current parent interface.
+    result: |
+        Note that thanks to the variable used in the regular expression we are only capturing
+        the relevant subinterface for the current interface. In the second case it turns out
+        there are no subinterfaces.
+
+processor:
+    name: TextTree
+    attribute: subinterface
+    root_name: interfaces
+    node_type: list
+    mode: config
+rule:
+    - path: interface
+      regexp: "{{interface_key}}\\.(?P<value>\\d+)"
+data:
+    - keys:
+        interface_key: Ethernet2
+      extra_vars: {}
+    - keys:
+        interface_key: Loopback1
+      extra_vars: {}
+expected:
+    - - key: '1'
+        block:
+            '#standalone': true
+            '#text': no shutdown
+            'no':
+              '#text': shutdown
+              shutdown:
+                '#standalone': true
+        extra_vars:
+          value: '1'
+      - key: '2'
+        block:
+            '#standalone': true
+            '#text': no shutdown
+            'no':
+              '#text': shutdown
+              shutdown:
+                '#standalone': true
+        extra_vars:
+          value: '2'
+    - []
