@@ -1,0 +1,74 @@
+---
+documentation:
+    title: Parse BGP neighbors in Junos (nested lists)
+    summary: |
+        XML often consists of lists of lists of lists which sometimes makes it challenging
+        to nest things in a sane manner. Hopefully, the ``path`` can solve this issue as well.
+    rule: |
+        Note that this time the path contains a couple of ``?identifier:field``. That pattern
+        is used to flatten lists and what it does is assign the contents of that sublist to the
+        parent object and also assign the value of ``field`` to a new ``key`` called ``identifier``.
+        For example, the XML above will be converted to the following structure::
+
+            - name:
+                '#text': my_peers
+              peer-as:
+                '#text': 65100
+              neighbor: 192.168.100.3
+              peer_group: my_peers
+            - name:
+                '#text': my_peers
+              description:
+                '#text': adsasd
+              peer-as:
+                '#text': 65100
+              neighbor: 192.168.100.2
+              peer_group: my_peers
+            - name:
+                '#text': my_other_peers
+              peer-as:
+                '#text': 65200
+              neighbor: 172.20.0.1
+              peer_group: my_other_peers
+processor:
+    name: XMLParser
+    attribute: neighbor
+    root_name: network_instances
+    node_type: list
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - path: "group.?peer_group:name.neighbor.?neighbor:name"
+      key: "neighbor"
+expected:
+    - - key: 192.168.100.3
+        block:
+          name:
+              '#text': my_peers
+          neighbor: 192.168.100.3
+          peer-as:
+              '#text': '65100'
+          peer_group: my_peers
+        extra_vars: {}
+      - key: 192.168.100.2
+        block:
+          description:
+              '#text': adsasd
+          name:
+              '#text': my_peers
+          neighbor: 192.168.100.2
+          peer-as:
+              '#text': '65100'
+          peer_group: my_peers
+        extra_vars: {}
+      - key: 172.20.0.1
+        block:
+          name:
+              '#text': my_other_peers
+          neighbor: 172.20.0.1
+          peer-as:
+              '#text': '65200'
+          peer_group: my_other_peers
+        extra_vars: {}
