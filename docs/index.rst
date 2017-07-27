@@ -22,6 +22,7 @@ Documentation
    yang/basics
    yang/writing_profiles
    yang/parsers
+   yang/parsers/examples
    yang/parsers/XMLParser
    yang/parsers/TextParser
    yang/translators
