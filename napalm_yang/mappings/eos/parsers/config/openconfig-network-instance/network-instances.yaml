@@ -10,10 +10,8 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-          - mode: manual
-            key: "global"
-            block: {}
-            extra_vars: {}
+          - key: "{{ 'global' }}"
+            from: root_network-instances.0
           - path: vrf.definition
             from: root_network-instances.0
         afts: !include includes/afts.yaml
@@ -314,19 +312,17 @@ network-instances:
             protocol:
                 _process:
                     - path: "router.?protocol.?process_id"
-                      from: root_network-instances.0
                       regexp: "(?P<value>bgp bgp)"
                       key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key == 'global' }}"
                     - path: "router.?protocol.?process_id.vrf.{{ network_instance_key }}"
-                      from: root_network-instances.0
                       regexp: "(?P<value>bgp bgp)"
+                      from: root_network-instances.0
                       key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key != 'global' }}"
-                    - mode: manual
-                      block: "root_network-instances.0.ip.route"
-                      key: "static static"
-                      extra_vars: {}
+                    - path: "ip.route"
+                      key: "{{ 'static static' }}"
+                      from: root_network-instances.0
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented
