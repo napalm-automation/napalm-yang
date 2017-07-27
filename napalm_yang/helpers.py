@@ -75,7 +75,7 @@ def _resolve_rule(rule, **kwargs):
         return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
     elif isinstance(rule, list):
         return [_resolve_rule(e, **kwargs) for e in rule]
-    elif isinstance(rule, str):
+    elif isinstance(rule, str) and "{{" in rule:
         return template(rule, **kwargs)
     else:
         return rule
