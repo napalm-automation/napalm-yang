@@ -61,7 +61,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
             break
         line = config.pop(0)
 
-        if line.startswith("!"):
+        if line.lstrip().startswith("!"):
             continue
 
         last = line.lstrip()
