@@ -85,13 +85,8 @@ class BaseParser(object):
             parent = bookmarks["parent"]
 
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
-            method_name = "_parse_list_{}".format(m.get("mode", "default"))
 
-            if method_name == "_parse_list_manual":
-                m["block"] = self.resolve_path(bookmarks, m["block"],
-                                               default=m["block"])
-
-            for key, block, extra_vars in getattr(self, method_name)(m, data):
+            for key, block, extra_vars in self._parse_list_default(attribute, m, data):
                 yield key, block, extra_vars
 
             # we restore the parent
@@ -102,8 +97,7 @@ class BaseParser(object):
                                        self.extra_vars, None, process_all=False)
         for m in mapping:
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
-            method_name = "_parse_leaf_{}".format(m.get("mode", "default"))
-            result = getattr(self, method_name)(m, data)
+            result = self._parse_leaf_default(attribute, m, data)
 
             if result is not None:
                 try:
@@ -120,31 +114,13 @@ class BaseParser(object):
             # so we can restore it
             parent = bookmarks["parent"]
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
-            method_name = "_parse_container_{}".format(m.get("mode", "default"))
-            result, extra_vars = getattr(self, method_name)(m, data)
+            result, extra_vars = self._parse_container_default(attribute, m, data)
             if result or extra_vars:
                 break
 
             # we restore the parent
             bookmarks["parent"] = parent
         return result, extra_vars
-
-    def _parse_leaf_skip(self, mapping, bookmarks):
-        return
-
-    _parse_leaf_gate = _parse_leaf_skip
-
-    def _parse_container_skip(self, mapping, bookmarks):
-        return "", {}
-
-    def _parse_list_skip(self, mapping, bookmarks):
-        return {}
-
-    _parse_list_gate = _parse_list_skip
-
-    def _parse_container_gate(self, mapping, bookmarks):
-        """This basically stops parsing the tree by returning None"""
-        return None, {}
 
     def _parse_post_process_filter(self, post_process_filter, **kwargs):
         kwargs.update(self.keys)

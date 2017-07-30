@@ -29,7 +29,7 @@ class JSONParser(BaseParser):
 
         return resp
 
-    def _parse_list_default(self, mapping, data, key=None):
+    def _parse_list_default(self, attribute, mapping, data, key=None):
         def _eval_key(key_mapping, **kwargs):
             if "{{" in key_mapping:
                 try:
@@ -68,6 +68,9 @@ class JSONParser(BaseParser):
                     return None, {}
             return key, extra_vars
 
+        if any([x in mapping for x in ["skip", "gate"]]):
+            return
+
         d = self.resolve_path(data, mapping.get("path", ""), mapping.get("default"))
 
         regexp = mapping.get('regexp')
@@ -81,7 +84,13 @@ class JSONParser(BaseParser):
             if key:
                 yield key, v, extra_vars
 
-    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
+    def _parse_leaf_default(self, attribute, mapping, data):
+        if any([x in mapping for x in ["skip", "gate"]]):
+            return
+
+        present = mapping.get("present", None)
+        check_presence = present is not None
+
         if "path" in mapping:
             d = self.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
         else:
@@ -90,36 +99,26 @@ class JSONParser(BaseParser):
         if "value" in mapping:
             d = self._parse_post_process_filter(mapping["value"], value=d)
 
-        if d and not check_presence:
+        if d:
             regexp = mapping.get('regexp', None)
             if regexp:
                 match = re.search(mapping['regexp'], d)
-                if match:
-                    return match.group('value')
-            else:
-                return d
-        else:
-            if d and check_presence:
-                return True
-            if check_default:
-                return mapping.get('default', None)
-            return
-        return
+                d = match.group('value') if match else None
 
-    def _parse_container_default(self, mapping, data):
+        if d and "map" in mapping:
+            d = mapping['map'][d.lower()]
+
+        if check_presence:
+            d = bool(d and present or not d and not present)
+
+        d = mapping.get('default', None) if d is None else d
+        return d
+
+    def _parse_container_default(self, attribute, mapping, data):
+        if "skip" in mapping:
+            return "", {}
+        elif "gate" in mapping:
+            return None, {}
+
         d = self.resolve_path(data, mapping["path"], mapping.get("default"))
         return d, {}
-
-    def _parse_leaf_map(self, mapping, data):
-        v = self._parse_leaf_default(mapping, data)
-        if v:
-            return mapping['map'][v.lower()]
-        else:
-            return
-
-    def _parse_leaf_is_present(self, mapping, data):
-        return self._parse_leaf_default(mapping, data,
-                                        check_default=False, check_presence=True) is True
-
-    def _parse_leaf_is_absent(self, mapping, data):
-        return not self._parse_leaf_is_present(mapping, data)
