@@ -88,9 +88,9 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
                              replacing, merging, negating, process_all) for r in rule]
     elif isinstance(rule, str):
         if rule in ["unnecessary"]:
-            return [{"mode": "skip", "reason": rule}]
+            return [{"skip": True, "reason": rule}]
         elif rule in ["not_implemented", "not_supported"]:
-            return [{"mode": "gate", "reason": rule}]
+            return [{"gate": True, "reason": rule}]
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
@@ -119,7 +119,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
         except Exception:
             w = True if w in ["true", "True"] else False
         if not w:
-            return {"mode": "skip", "reason": "criteria failed"}
+            return {"skip": True, "reason": "criteria failed"}
         rule["when"] = bool(w)
 
     return rule
