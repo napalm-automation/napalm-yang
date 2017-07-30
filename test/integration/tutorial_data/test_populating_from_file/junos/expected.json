@@ -20,6 +20,13 @@
                         }
                     }
                 },
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
                 "config": {
                     "type": "ethernetCsmacd",
                     "mtu": 1400,
@@ -30,6 +37,13 @@
             },
             "ge-0/0/1": {
                 "name": "ge-0/0/1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
                 "config": {
                     "type": "ethernetCsmacd",
                     "enabled": false,
@@ -54,15 +68,15 @@
                                 },
                                 "addresses": {
                                     "address": {
-                                        "192.168.100.1/24": {
-                                            "ip": "192.168.100.1/24",
+                                        "192.168.100.1": {
+                                            "ip": "192.168.100.1",
                                             "config": {
                                                 "ip": "192.168.100.1",
                                                 "prefix-length": 24
                                             }
                                         },
-                                        "172.20.100.1/24": {
-                                            "ip": "172.20.100.1/24",
+                                        "172.20.100.1": {
+                                            "ip": "172.20.100.1",
                                             "config": {
                                                 "ip": "172.20.100.1",
                                                 "prefix-length": 24
@@ -90,8 +104,8 @@
                                 },
                                 "addresses": {
                                     "address": {
-                                        "192.168.101.1/24": {
-                                            "ip": "192.168.101.1/24",
+                                        "192.168.101.1": {
+                                            "ip": "192.168.101.1",
                                             "config": {
                                                 "ip": "192.168.101.1",
                                                 "prefix-length": 24
@@ -119,8 +133,8 @@
                                 },
                                 "addresses": {
                                     "address": {
-                                        "192.168.102.1/24": {
-                                            "ip": "192.168.102.1/24",
+                                        "192.168.102.1": {
+                                            "ip": "192.168.102.1",
                                             "config": {
                                                 "ip": "192.168.102.1",
                                                 "prefix-length": 24
@@ -137,6 +151,13 @@
                         }
                     }
                 },
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
                 "config": {
                     "type": "ieee8023adLag",
                     "enabled": true,
@@ -149,11 +170,23 @@
                     "subinterface": {
                         "0": {
                             "index": "0",
+                            "ipv4": {
+                                "config": {
+                                    "enabled": false
+                                }
+                            },
                             "config": {
                                 "enabled": true,
                                 "name": "0",
                                 "description": "lo0.0"
                             }
+                        }
+                    }
+                },
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
                         }
                     }
                 },

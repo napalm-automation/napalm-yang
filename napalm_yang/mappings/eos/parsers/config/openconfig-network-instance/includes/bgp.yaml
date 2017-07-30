@@ -258,11 +258,11 @@ global:
         _process: unnecessary
         as:
             _process:
-                - regexp: "local-as (?P<value>.*)"
-                  default: "{{ extra_vars.process_id|default(1) }}"
+                - path: local-as
+                - path: process_id
         router-id:
             _process:
-                - regexp: "router-id (?P<value>.*)"
+                - path: router-id
     default-route-distance:
         _process: not_implemented
         config:
@@ -351,8 +351,7 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-            - regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
-              flat: true
+            - path: neighbor
         add-paths:
             _process: not_implemented
             config:
@@ -619,21 +618,21 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} description (?P<value>.*)"
+                    - path: description
             enabled:
                 _process:
                     - mode: is_absent
-                      regexp: "neighbor {{ neighbor_key }} (?P<value>shutdown)"
+                      path: shutdown
             local-as:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"
+                    - path: "local-as"
+                      regexp: "(?P<value>\\d+)"
             neighbor-address:
                 _process:
-                    - mode: value
-                      value: "{{ neighbor_key }}"
+                    - value: "{{ neighbor_key }}"
             peer-as:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} remote-as (?P<value>.*)"
+                    - path: remote-as
             peer-group:
                 _process: not_implemented
             peer-type:

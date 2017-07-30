@@ -352,10 +352,8 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-          - path: "group"
-            key: name
-            expand_list: "neighbor"
-            expanded_key: name
+            - path: "group.?peer_group:name.neighbor.?neighbor:name"
+              key: "neighbor"
         add-paths:
             _process: not_implemented
             config:
@@ -622,22 +620,21 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                  - path: "neighbor.description"
+                  - path: "description"
             enabled:
                 _process: not_implemented
             local-as:
                 _process:
-                  - path: "neighbor.local-as.as-number"
+                  - path: "local-as.as-number"
             neighbor-address:
                 _process:
-                  - mode: value
-                    value: "{{ neighbor_key }}"
+                  - value: "{{ neighbor_key }}"
             peer-as:
                 _process:
-                  - path: "neighbor.peer-as"
+                  - path: "peer-as"
             peer-group:
                 _process:
-                  - path: "name"
+                  - path: "peer_group"
             peer-type:
                 _process: not_implemented
             remove-private-as:

@@ -5,8 +5,7 @@ import re
 
 class TextParser(BaseParser):
 
-    @classmethod
-    def _parse_list_default(cls, mapping, data):
+    def _parse_list_default(self, mapping, data):
         block_matches = re.finditer(mapping["regexp"], data, re.MULTILINE + re.I)
 
         for match in block_matches:
@@ -25,14 +24,13 @@ class TextParser(BaseParser):
                 key = extra_vars.pop("key")
 
             if post_process_filter:
-                key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
+                key = self._parse_post_process_filter(post_process_filter, key, extra_vars)
 
             extra_vars["_get_duplicates"] = mapping.get("flat", False)
 
             yield key, block, extra_vars
 
-    @classmethod
-    def _parse_leaf_default(cls, mapping, data, check_default=True):
+    def _parse_leaf_default(self, mapping, data, check_default=True):
         match = re.search(mapping["regexp"], data, re.MULTILINE + re.I)
 
         if match:
@@ -42,17 +40,14 @@ class TextParser(BaseParser):
         else:
             return None
 
-    @classmethod
-    def _parse_leaf_is_present(cls, mapping, data):
-        value = cls._parse_leaf_default(mapping, data, check_default=False)
+    def _parse_leaf_is_present(self, mapping, data):
+        value = self._parse_leaf_default(mapping, data, check_default=False)
         return bool(value)
 
-    @classmethod
-    def _parse_leaf_is_absent(cls, mapping, data):
-        value = cls._parse_leaf_default(mapping, data, check_default=False)
+    def _parse_leaf_is_absent(self, mapping, data):
+        value = self._parse_leaf_default(mapping, data, check_default=False)
         return not bool(value)
 
-    @classmethod
-    def _parse_leaf_map(cls, mapping, data):
-        value = cls._parse_leaf_default(mapping, data)
+    def _parse_leaf_map(self, mapping, data):
+        value = self._parse_leaf_default(mapping, data)
         return mapping["map"][value]

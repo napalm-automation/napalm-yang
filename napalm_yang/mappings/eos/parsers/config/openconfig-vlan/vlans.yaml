@@ -1,0 +1,40 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    processor: TextTree
+    execute:
+        - method: cli
+          kwargs:
+              commands: ["show running-config all"]
+
+vlans:
+    _process: unnecessary
+    vlan:
+        _process:
+            - path: vlan
+              regexp: "(?P<value>\\d+)"
+              from: root_vlans.0
+        config:
+            _process: unnecessary
+            name:
+                _process:
+                    - path: name
+            status:
+                _process:
+                    - mode: map
+                      path: state
+                      map:
+                        active: ACTIVE
+                        suspend: SUSPENDED
+            tpid:
+                _process: not_implemented
+            vlan-id:
+                _process: unnecessary
+        members:
+            _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        vlan-id:
+            _process: not_implemented

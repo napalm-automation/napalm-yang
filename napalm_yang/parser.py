@@ -48,7 +48,8 @@ class Parser(object):
             raise Exception("I don't have any data to operate with")
 
         if self.mapping:
-            self.parser = get_parser(self.mapping["metadata"]["processor"])
+            self.parser = get_parser(self.mapping["metadata"]["processor"])(self.keys,
+                                                                            self.extra_vars)
 
         self.bookmarks = bookmarks or {}
 
@@ -95,7 +96,8 @@ class Parser(object):
 
     def _parse_container(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks)
+                                                   self.extra_vars, None, self.bookmarks,
+                                                   process_all=False)
 
         # Saving state
         old_parent_key = self.keys["parent_key"]
@@ -138,7 +140,7 @@ class Parser(object):
         mapping_copy = copy.deepcopy(mapping)
         mapping_copy["_process"] = helpers.resolve_rule(mapping_copy["_process"], attribute,
                                                         self.keys, self.extra_vars, None,
-                                                        self.bookmarks)
+                                                        self.bookmarks, process_all=False)
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -170,7 +172,7 @@ class Parser(object):
             # example, ipv4.config.enabled is present in both interfaces and subinterfaces
             self.keys["parent_key"] = key
             self.bookmarks["parent"] = block
-            self.extra_vars = extra_vars
+            self.extra_vars["parent"] = extra_vars
 
             element_mapping = copy.deepcopy(mapping)
             self._parse(key, obj, element_mapping)
@@ -182,7 +184,8 @@ class Parser(object):
 
     def _parse_leaf(self, attribute, model, mapping):
         mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks)
+                                                   self.extra_vars, None, self.bookmarks,
+                                                   process_all=False)
 
         # We can't set attributes that are keys
         if model._is_keyval:
@@ -190,7 +193,7 @@ class Parser(object):
 
         value = self.parser.parse_leaf(mapping["_process"], self.bookmarks)
 
-        if value is not None and (value != model.default() or isinstance(value, bool)):
+        if value is not None:
             setter = getattr(model._parent, "_set_{}".format(attribute))
             try:
                 setter(value)

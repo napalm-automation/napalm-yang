@@ -7,8 +7,7 @@ import xmltodict
 
 class XMLParser(JSONParser):
 
-    @classmethod
-    def init_native(cls, native):
+    def init_native(self, native):
         resp = []
         for n in native:
             if isinstance(n, dict):
@@ -18,12 +17,13 @@ class XMLParser(JSONParser):
 
         return resp
 
-    @classmethod
-    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
         attribute = mapping.get("attribute", None)
-        if attribute:
+        path = mapping.get("path", None)
+        if attribute and path:
             attribute = "@{}".format(attribute)
             mapping["path"] = "{}.{}".format(mapping["path"], attribute)
-        elif not check_presence:
+        elif not check_presence and path:
+            attribute = "#text"
             mapping["path"] = "{}.{}".format(mapping["path"], "#text")
         return super()._parse_leaf_default(mapping, data, check_default, check_presence)

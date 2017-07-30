@@ -1,7 +1,7 @@
 ---
 metadata:
     prefix: "oc-vlan"
-    processor: TextParser
+    processor: TextTree
 
 vlan:
     _process: unnecessary
@@ -9,4 +9,4 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - regexp: "^\\W*encapsulation dot1q vlan (?P<value>[0-9]+)"
+                - path: "encapsulation.dot1q.vlan"

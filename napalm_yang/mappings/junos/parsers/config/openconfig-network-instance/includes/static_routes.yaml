@@ -4,14 +4,13 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
-      - path: ""
+      - path: "route"
         key: name
     config:
         _process: unnecessary
         prefix:
             _process:
-                - mode: value
-                  value: "{{ static_key }}"
+                - value: "{{ static_key }}"
         set-tag:
             _process: not_implemented
     next-hops:
@@ -29,8 +28,7 @@ static:
                       - path: "metric"
                 next-hop:
                     _process:
-                        - mode: value
-                          value: "{{ next_hop_key }}"
+                        - value: "{{ next_hop_key }}"
                 recurse:
                     _process: not_implemented
             index:

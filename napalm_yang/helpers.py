@@ -28,7 +28,6 @@ def config_logging(level=logging.DEBUG, stream=sys.stdout):
     logger.addHandler(ch)
 
 
-
 def find_yang_file(profile, filename, path):
     """
     Find the necessary file for the given test case.
@@ -83,10 +82,11 @@ def _resolve_rule(rule, **kwargs):
 
 
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
-                 parse_bookmarks=None, replacing=False, merging=False, negating=False):
+                 parse_bookmarks=None, replacing=False, merging=False, negating=False,
+                 process_all=True):
     if isinstance(rule, list):
         return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks,
-                             replacing, merging, negating) for r in rule]
+                             replacing, merging, negating, process_all) for r in rule]
     elif isinstance(rule, str):
         if rule in ["unnecessary"]:
             return [{"mode": "skip", "reason": rule}]
@@ -106,8 +106,9 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["negating"] = negating
 
     for k, v in rule.items():
-        if k.startswith('post_process_'):
-            # don't process post processing rules now, they'll be processed on a second pass
+        if k in ["key", "value"] and not process_all:
+            # don't process keys or values as we will do it at "processing time"
+            # instead of ahead of time
             rule[k] = v
         else:
             rule[k] = _resolve_rule(v, **kwargs)
