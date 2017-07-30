@@ -258,11 +258,10 @@ global:
         _process: unnecessary
         as:
             _process:
-                - mode: value
-                  value: "{{ extra_vars.process_id|default(1) }}"
+                - path: "process_id"
         router-id:
             _process:
-                - regexp: "bgp router-id (?P<value>.*)"
+                - path: "bgp.router-id"
     default-route-distance:
         _process: not_implemented
         config:
@@ -351,9 +350,8 @@ neighbors:
     _process: unnecessary
     neighbor:
         _process:
-            - regexp: "(?P<block>neighbor (?P<key>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-f:]+:[0-9a-f:]+)).*)"
-              post_process_filter: "{{ key|normalize_address }}"
-              flat: true
+            - path: neighbor.?neighbor_address
+              key: "{{ neighbor_address|normalize_address }}"
         add-paths:
             _process: not_implemented
             config:
@@ -620,22 +618,21 @@ neighbors:
                 _process: not_implemented
             description:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} description (?P<value>.*)"
+                    - path: description
             enabled:
                 _process:
                     - mode: is_absent
-                      regexp: "neighbor {{ neighbor_key }} (?P<value>shutdown)"
-                      from: "protocol.{{protocol_key}}"
+                      path: shutdown
             local-as:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} local-as (?P<value>\\d+)"
+                    - path: local-as
+                      regexp: "(?P<value>\\d+)"
             neighbor-address:
                 _process:
-                    - mode: value
-                      value: "{{ neighbor_key }}"
+                    - value: "{{ neighbor_key }}"
             peer-as:
                 _process:
-                    - regexp: "neighbor {{ neighbor_key }} remote-as (?P<value>.*)"
+                    - path: remote-as
             peer-group:
                 _process: not_implemented
             peer-type:

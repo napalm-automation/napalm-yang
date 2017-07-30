@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: TextParser
+    processor: TextTree
     execute:
         - method: cli
           kwargs:
@@ -10,22 +10,19 @@ network-instances:
     _process: unnecessary
     network-instance:
         _process:
-          - mode: manual
-            key: "global"
-            block: "not_a_block"
-            extra_vars: {}
-          - regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+          - key: "{{ 'global' }}"
+            from: root_network-instances.0
+          - path: "vrf.definition"
             from: root_network-instances.0
         afts: !include includes/afts.yaml
         config:
             _process: unnecessary
             description:
                 _process:
-                  - regexp: "description (?P<value>.*)"
+                  - path: "description"
             enabled:
                 _process:
-                  - mode: value
-                    value: true
+                  - value: "true"
             enabled-address-families:
                 _process: not_implemented
             mtu:
@@ -34,16 +31,14 @@ network-instances:
                 _process: unnecessary
             route-distinguisher:
                 _process:
-                  - regexp: "rd (?P<value>.*)"
+                  - path: "rd"
             router-id:
                 _process: not_implemented
             type:
                 _process:
-                  - mode: value
-                    value: DEFAULT_INSTANCE
+                  - value: DEFAULT_INSTANCE
                     when: "{{ network_instance_key == 'global' }}"
-                  - mode: value
-                    value: L3VRF
+                  - value: L3VRF
                     when: "{{ network_instance_key != 'global' }}"
         connection-points:
             _process: not_implemented
@@ -316,17 +311,18 @@ network-instances:
             _process: unnecessary
             protocol:
                 _process:
-                    - regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!| vrf \\w+)$"
-                      from: root_network-instances.0
-                      composite_key: [protocol_name, protocol_name]
+                    - path: "router.?protocol.?process_id"
+                      regexp: "(?P<value>bgp bgp)"
+                      key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key == 'global' }}"
-                    - regexp: "router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?^ (?P<block>vrf {{ network_instance_key }}\n(?:.|\n)*?)^(!| vrf.*)$"
+                    - path: "router.?protocol.?process_id.scope.vrf.{{ network_instance_key }}"
+                      regexp: "(?P<value>bgp bgp)"
                       from: root_network-instances.0
-                      composite_key: [protocol_name, protocol_name]
+                      key: "{{ protocol }} {{ protocol }}"
                       when: "{{ network_instance_key != 'global' }}"
-                    - regexp: "(?P<block>^ip route .*\n(?:.|\n)*?^!$)"
+                    - path: "ip.route"
+                      key: "{{ 'static static' }}"
                       from: root_network-instances.0
-                      key: "static static"
                 bgp: !include includes/bgp.yaml
                 config:
                     _process: not_implemented
