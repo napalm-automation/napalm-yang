@@ -12,6 +12,10 @@ EXAMPLES_PATH = "{}/../test/unit/test_parser/".format(BASE_PATH)
 EXAMPLES = sorted([x for x in glob('{}/*'.format(EXAMPLES_PATH))])
 
 
+def indent_text(text, indent=4):
+    return "\n".join(["{}{}".format(" " * indent, l) for l in text.splitlines()])
+
+
 def get_examples():
     examples = []
     for e in EXAMPLES:
@@ -25,11 +29,12 @@ def get_examples():
     return examples
 
 
-def indent_text(text, indent=4):
-    return "\n".join(["{}{}".format(" " * indent, l) for l in text.splitlines()])
+def get_directives():
+    with open("{}/_dynamic/parser_directives.yaml".format(BASE_PATH), "r") as f:
+        return yaml.load(f.read())
 
 
-def render_examples(examples):
+def render(template_file, **kwargs):
     env = Environment(loader=FileSystemLoader(BASE_PATH),
                       trim_blocks=True,
                       undefined=StrictUndefined)
@@ -39,16 +44,20 @@ def render_examples(examples):
     }
     env.filters.update(jinja_filters)
 
-    template = env.get_template('examples.j2')
-    return template.render(examples=examples)
+    template = env.get_template(template_file)
+    return template.render(**kwargs)
 
 
-def save_text(text):
-    with open("{}/yang/parsers/examples.rst".format(BASE_PATH), "w+") as f:
+def save_text(text, filename):
+    with open("{}/{}".format(BASE_PATH, filename), "w+") as f:
         f.write(text)
 
 
 if __name__ == "__main__":
     examples = get_examples()
-    text = render_examples(examples)
-    save_text(text)
+    text = render('_dynamic/examples_list.j2', examples=examples)
+    save_text(text, "yang/parsers/examples_list.rst")
+
+    directives = get_directives()
+    text = render('_dynamic/parsers.j2', directives=directives)
+    save_text(text, "yang/parsers/dynamic_directives.rst")

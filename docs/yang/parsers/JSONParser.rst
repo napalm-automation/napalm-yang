@@ -1,5 +1,5 @@
-XMLParser
-=========
+JSONParser
+==========
 
 This extractor will read an XML an extract data from it.
 

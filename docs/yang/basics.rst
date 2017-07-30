@@ -1,7 +1,7 @@
 YANG Basics
 -----------
 
-It's not really necessary to understand how YANG works to write a profile but you need some basic
+It's not really necessary to fully understand how YANG works to write a profile but you need some basic
 understanding.
 
 Basic Types

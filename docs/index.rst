@@ -18,13 +18,10 @@ Documentation
 .. toctree::
    :maxdepth: 1
 
-   yang/profiles
    yang/basics
+   yang/profiles
    yang/writing_profiles
-   yang/parsers
-   yang/parsers/examples
-   yang/parsers/XMLParser
-   yang/parsers/TextParser
+   yang/parsers/index
    yang/translators
    yang/translators/XMLTranslator
    yang/translators/TextTranslator

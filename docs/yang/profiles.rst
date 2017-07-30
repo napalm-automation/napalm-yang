@@ -27,43 +27,6 @@ You can find the profiles `here <https://github.com/napalm-automation/napalm-yan
 #. How to parse native configuration/state and map it into a model.
 #. How to translate a model and map it into native configuration.
 
-For example, for a given interface, the snippet below specifies how to map configuration into the ``openconfig_interface`` model on EOS::
-
-            enabled:
-                _process:
-                    - mode: is_present
-                      regexp: "(?P<value>no shutdown)"
-                      from: "{{ parse_bookmarks.interface[interface_key] }}"
-            description:
-                _process:
-                    - mode: search
-                      regexp: "description (?P<value>.*)"
-                      from: "{{ parse_bookmarks.interface[interface_key] }}"
-            mtu:
-                _process:
-                    - mode: search
-                      regexp: "mtu (?P<value>[0-9]+)"
-                      from: "{{ parse_bookmarks.interface[interface_key] }}"
-
-And the following snippet how to map the same attributes from the ``openconfig_interface`` to native configuration::
-
-            enabled:
-                _process:
-                    - mode: element
-                      value: "    shutdown\n"
-                      when: "{{ not model }}"
-            description:
-                _process:
-                    - mode: element
-                      value: "    description {{ model }}\n"
-                      negate: "    default description"
-            mtu:
-                _process:
-                    - mode: element
-                      value: "    mtu {{ model }}\n"
-                      negate: "    default mtu\n"
-
-.. note::
-    Profiles can also deal with structured data like XML or JSON.
+For example, `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml>`_ you can see how to map native configuration from an EOS device into the ``openconfig-interface`` model and `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/translators/openconfig-interfaces/interfaces.yaml>`_ how to map the model to native configuration.
 
 As you can see it's not extremely difficult to understand what they are doing, in the next section we will learn how to write our own profiles.

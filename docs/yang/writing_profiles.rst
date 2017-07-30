@@ -73,10 +73,13 @@ by the way, an RPC call for a junos device.
                     xpath: "vlan-id"
                     from: "{{ parse_bookmarks['parent'] }}"
 
-As we are dealing with a parser we have to specify the ``_process`` attribute at each step (translators
-require the attribute ``_process``). There are two special types of actions; ``unnecessary`` and
-``not_implemented``. Both do exactly the same, skip any action and move onto the next attribute. The
-only difference is purely aesthetically and for documentation purposes.
+We have to specify the ``_process`` attribute at each step, which can either be ``unnecessary``, `` not_implemented`` or a list of rules:
 
-Something else worth noting is that each attribute inside ``_process/_process`` is evaluated as a
+* ``not_implemented`` means that we haven't added support to that field. In addition it will stop parsing that
+  branch of the tree.
+* ``unnecessary`` means that we don't need that field. This is common in containers as you usually don't
+  need to process them at all.
+* ``list`` of rules. See :ref:`parsers` and :ref:`translators`.
+
+Something else worth noting is that each rule inside ``_process`` is evaluated as a
 ``jinja2`` template so you can do variable substitutions, evaluations, etc...
