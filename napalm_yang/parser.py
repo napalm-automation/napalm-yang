@@ -95,10 +95,6 @@ class Parser(object):
             self._parse_leaf(attribute, model, mapping)
 
     def _parse_container(self, attribute, model, mapping):
-        mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks,
-                                                   process_all=False)
-
         # Saving state
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -106,7 +102,8 @@ class Parser(object):
 
         if model._yang_type is not None:
             # None means it's an element of a list
-            block, extra_vars = self.parser.parse_container(mapping["_process"], self.bookmarks)
+            block, extra_vars = self.parser.parse_container(attribute,
+                                                            mapping["_process"], self.bookmarks)
 
             if block is None:
                 return
@@ -137,10 +134,6 @@ class Parser(object):
         self.extra_vars = old_parent_extra_vars
 
     def _parse_list(self, attribute, model, mapping):
-        mapping_copy = copy.deepcopy(mapping)
-        mapping_copy["_process"] = helpers.resolve_rule(mapping_copy["_process"], attribute,
-                                                        self.keys, self.extra_vars, None,
-                                                        self.bookmarks, process_all=False)
         # Saving state to restore them later
         old_parent_key = self.keys["parent_key"]
         old_parent_bookmark = self.bookmarks["parent"]
@@ -150,7 +143,7 @@ class Parser(object):
         # for each individual element of the list
         self.bookmarks[attribute] = {}
 
-        for key, block, extra_vars in self.parser.parse_list(mapping_copy["_process"],
+        for key, block, extra_vars in self.parser.parse_list(attribute, mapping["_process"],
                                                              self.bookmarks):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
 
@@ -183,15 +176,11 @@ class Parser(object):
         self.extra_vars = old_parent_extra_vars
 
     def _parse_leaf(self, attribute, model, mapping):
-        mapping["_process"] = helpers.resolve_rule(mapping["_process"], attribute, self.keys,
-                                                   self.extra_vars, None, self.bookmarks,
-                                                   process_all=False)
-
         # We can't set attributes that are keys
         if model._is_keyval:
             return
 
-        value = self.parser.parse_leaf(mapping["_process"], self.bookmarks)
+        value = self.parser.parse_leaf(attribute, mapping["_process"], self.bookmarks)
 
         if value is not None:
             setter = getattr(model._parent, "_set_{}".format(attribute))

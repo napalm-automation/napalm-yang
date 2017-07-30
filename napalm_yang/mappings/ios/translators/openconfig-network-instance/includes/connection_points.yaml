@@ -1,0 +1,48 @@
+---
+_process: not_implemented
+connection-point:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        connection-point-id:
+            _process: not_implemented
+    connection-point-id:
+        _process: not_implemented
+    endpoints:
+        _process: not_implemented
+        endpoint:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                endpoint-id:
+                    _process: not_implemented
+                precedence:
+                    _process: not_implemented
+                type:
+                    _process: not_implemented
+            endpoint-id:
+                _process: not_implemented
+            local:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            remote:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    remote-system:
+                        _process: not_implemented
+                    virtual-circuit-identifier:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    state:
+        _process: not_implemented

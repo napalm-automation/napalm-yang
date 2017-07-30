@@ -1,0 +1,80 @@
+---
+_process:
+    - mode: gate
+      when: "{{ protocol_key != 'static static' }}"
+static:
+    _process:
+        - path: "?prefix.?mask"
+          regexp: "^(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+)$"
+          key: "{{ prefix }}/{{ mask|netmask_to_cidr }}"
+          when: "{{ network_instance_key == 'global' }}"
+        - path: "vrf.{{ network_instance_key }}.?prefix.?mask"
+          regexp: "(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+)"
+          key: "{{ prefix }}/{{ mask|netmask_to_cidr }}"
+          when: "{{ network_instance_key != 'global' }}"
+        - path: "ipv6.route.?prefix"
+          regexp: "^(?P<value>[0-9a-fA-F:]+\\/\\d+)$"
+          key: "{{ prefix|normalize_prefix }}"
+          when: "{{ network_instance_key == 'global' }}"
+          from: root_network-instances.0
+        - path: "ipv6.route.vrf.{{ network_instance_key }}.?prefix"
+          regexp: "^(?P<value>[0-9a-fA-F:]+\\/\\d+)$"
+          key: "{{ prefix|normalize_prefix }}"
+          when: "{{ network_instance_key != 'global' }}"
+          from: root_network-instances.0
+    config:
+        _process: unnecessary
+        prefix:
+            _process:
+                - value: "{{ static_key }}"
+        set-tag:
+            _process: not_implemented
+    next-hops:
+        _process: unnecessary
+        next-hop:
+            _process:
+                - path: "?interface_ref.?next_hop_addr"
+                  regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?)(?:\\s(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))?)$"
+                  key: "{{ interface_ref }}{% if next_hop_addr is defined and next_hop_addr|is_address %} {{ next_hop_addr|normalize_address }}{% endif %}"
+                - path: "?next_hop_addr"
+                  regexp: "^(?P<value>(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))$"
+                  key: "{{ next_hop_addr|normalize_address }}"
+            config:
+                _process: unnecessary
+                index:
+                    _process: unnecessary
+                metric:
+                    _process:
+                        - regexp: "^(?P<value>\\d+)\\s*"
+                next-hop:
+                    _process:
+                        - value: "{{ extra_vars.parent.next_hop_addr|normalize_address }}"
+                          regexp: "^(?P<value>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+))$"
+                          when: "{{ extra_vars.parent.next_hop_addr is defined }}"
+                        - value: "DROP"
+                          when: "{{ extra_vars.parent.interface_ref is defined and extra_vars.parent.interface_ref == 'Null0' }}"
+                recurse:
+                    _process: not_implemented
+            index:
+                _process: unnecessary
+            interface-ref:
+                _process: unnecessary
+                config:
+                    _process: unnecessary
+                    interface:
+                        _process:
+                            - path: "interface_ref"
+                              regexp: "^(?P<value>[a-zA-Z][\\w\\-/]+(?::\\d+)?)"
+                    subinterface:
+                        _process:
+                            - path: "interface_ref"
+                              regexp: "^[A-Z]\\S+\\.(?P<value>\\d+)$"
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    prefix:
+        _process: unnecessary
+    state:
+        _process: not_implemented
+

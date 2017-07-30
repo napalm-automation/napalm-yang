@@ -1,0 +1,84 @@
+---
+documentation:
+    title: Parsing IP addresses in IOS (flattening dictionaries)
+    summary: |
+        Sometimes the information is unnecessarily nested. This is the case for the ip
+        address configuration in IOS. Let's see how that data might look like after
+        processing it with the TextParser::
+
+            ip:
+                address:
+                    192.168.2.1:
+                        255.255.255.0:
+                            secondary:
+                                "#standalone": true
+                    192.168.1.1": {
+                        255.255.255.0:
+                            "#standalone": true
+                    172.20.0.1:
+                        255.255.255.0:
+                        secondary":
+                            "#standalone": true
+
+        Luckily, we can solve this issue with the ``path`` resolver.
+
+    rule: |
+        We specify a ``regexp`` here to make sure we don't parse lines like ``ip address dhcp``.
+
+        When path contains ``?identifier`` what it actually does is flatten that key and assign
+        the value of that key to a new key named ``identifier``. For example, with the nested
+        structure and the path we have right now we would get the following::
+
+            - prefix: 192.168.1.1
+              mask: 255.255.255.0
+              '#standalone': true
+            - prefix: 192.168.2.1
+              mask: 255.255.255.0
+              secondary:
+                '#standalone': true
+            - prefix: 172.20.0.1
+              mask: 255.255.255.0
+              prefix: 172.20.0.1
+              secondary:
+                '#standalone': true
+    result: ""
+
+processor:
+    name: TextTree
+    attribute: address
+    root_name: interfaces
+    node_type: list
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - path: "ip.address.?prefix.?mask"
+      regexp: "^(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+)"
+      key: prefix
+expected:
+    - - key: 192.168.1.1
+        block:
+          '#standalone': true
+          mask: 255.255.255.0
+          prefix: 192.168.1.1
+        extra_vars:
+          value: 192.168.1.1
+      - key: 192.168.2.1
+        block:
+          '#text': secondary
+          mask: 255.255.255.0
+          prefix: 192.168.2.1
+          secondary:
+            '#standalone': true
+        extra_vars:
+          value: 192.168.2.1
+      - key: 172.20.0.1
+        block:
+          '#text': secondary
+          mask: 255.255.255.0
+          prefix: 172.20.0.1
+          secondary:
+            '#standalone': true
+        extra_vars:
+          value: 172.20.0.1

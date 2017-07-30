@@ -1,0 +1,21 @@
+<some_configuration_block>
+    <group>
+        <name>my_peers</name>
+        <neighbor>
+            <name>192.168.100.2</name>
+            <description>adsasd</description>
+            <peer-as>65100</peer-as>
+        </neighbor>
+        <neighbor>
+            <name>192.168.100.3</name>
+            <peer-as>65100</peer-as>
+        </neighbor>
+    </group>
+    <group>
+        <name>my_other_peers</name>
+        <neighbor>
+            <name>172.20.0.1</name>
+            <peer-as>65200</peer-as>
+        </neighbor>
+    </group>
+</some_configuration_block>

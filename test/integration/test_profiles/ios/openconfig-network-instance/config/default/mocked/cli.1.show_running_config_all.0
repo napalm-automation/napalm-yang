@@ -1,0 +1,130 @@
+version 15.2
+no service pad
+service tcp-keepalives-in
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service compress-config
+service counters max age 10
+service unsupported-transceiver
+!
+vrf definition mgmtVrf
+ description abc
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+ip multicast-routing
+ip domain-name cpe.arnes.si
+!
+ipv6 unicast-routing
+!
+interface Loopback0
+ description Loopback0
+ ip address 10.200.0.1 255.255.255.255
+ ip ospf 1 area 0
+ ipv6 address 2001:DB8:A::45/128
+ ipv6 ospf 1 area 0
+!
+interface FastEthernet1
+ description FastEthernet1
+ vrf forwarding mgmtVrf
+ no ip address
+ speed auto
+ duplex auto
+!
+interface Vlan797
+ description -- lbravos-tsp --
+ ip address 10.172.80.26 255.255.255.254
+ ip ospf message-digest-key 1 md5 7 123456789
+ ip ospf network point-to-point
+ ip ospf dead-interval 3
+ ip ospf hello-interval 1
+ ip ospf retransmit-interval 1
+ ip ospf 1 area 797
+ ip ospf cost 1000
+ ipv6 address 2001:DB8:100A:50::B/127
+ ipv6 enable
+ ipv6 nd ra suppress
+ ipv6 ospf 6 area 797
+ ipv6 ospf network point-to-point
+ ipv6 ospf hello-interval 1
+ ipv6 ospf dead-interval 3
+ ipv6 ospf retransmit-interval 1
+ ipv6 ospf cost 1000
+!
+interface Vlan798
+ description -- rmeereen --
+ ip address 10.172.80.30 255.255.255.254
+ ip ospf message-digest-key 1 md5 7 123456789
+ ip ospf network point-to-point
+ ip ospf dead-interval 3
+ ip ospf hello-interval 1
+ ip ospf retransmit-interval 1
+ ip ospf 1 area 0
+ ip ospf cost 1000
+ ipv6 address 2001:DB8:100A:51::B/127
+ ipv6 enable
+ ipv6 nd ra suppress
+ ipv6 ospf 6 area 0
+ ipv6 ospf network point-to-point
+ ipv6 ospf hello-interval 1
+ ipv6 ospf dead-interval 3
+ ipv6 ospf retransmit-interval 1
+ ipv6 ospf cost 1000
+!
+router ospf 1
+ router-id 10.200.0.1
+ no auto-cost
+ area 0 authentication message-digest
+ area 797 authentication message-digest
+ area 797 nssa no-redistribution no-summary
+ area 798 authentication message-digest
+ area 798 nssa no-redistribution no-summary
+ redistribute static subnets
+ passive-interface default
+ no passive-interface Vlan797
+ no passive-interface Vlan798
+!
+router bgp 65010
+ bgp router-id 2.2.2.2
+ bgp log-neighbor-changes
+ neighbor 10.5.5.5 remote-as 65010
+ neighbor 2001:DB8::2 remote-as 65011
+ neighbor 2001:DB8::2 description aaa
+ neighbor 192.168.5.5 remote-as 65010
+ neighbor 192.168.5.5 description abc123
+ neighbor 192.168.5.5 shutdown
+ !
+ address-family ipv4
+  neighbor 10.5.5.5 activate
+  no neighbor 2001:DB8::2 activate
+  neighbor 192.168.5.5 activate
+ exit-address-family
+!
+ip route 1.1.1.1 255.255.255.255 Null0 tag 555
+ip route 2.2.2.2 255.255.255.255 10.1.1.1
+ip route 3.3.3.0 255.255.255.0 Vlan797
+ip route 3.3.3.0 255.255.255.0 10.2.2.2 22 tag 5555
+ip route 3.3.3.0 255.255.255.0 10.3.3.3 44
+ip route 3.3.3.0 255.255.255.0 Vlan798 10.4.4.4 66
+ip route vrf mgmtVrf 5.5.5.5 255.255.255.255 FastEthernet1 192.168.5.5
+!
+ipv6 route 2::/64 1::1 44
+ipv6 route 3::/64 2::1
+!
+ipv6 router ospf 1
+!
+ipv6 router ospf 6
+ no auto-cost
+ area 797 nssa no-redistribution no-summary
+ area 798 nssa no-redistribution no-summary
+ passive-interface default
+ no passive-interface Vlan797
+ no passive-interface Vlan798
+ redistribute static
+!
+

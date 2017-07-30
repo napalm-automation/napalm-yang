@@ -1,0 +1,21 @@
+router bgp 65010
+ neighbor 2001:db8::2 description aaa
+ neighbor 2001:db8::2 remote-as 65011
+ neighbor 10.5.5.5 remote-as 65010
+ neighbor 192.168.5.5 description abc123
+ neighbor 192.168.5.5 shutdown
+ neighbor 192.168.5.5 remote-as 65010
+ bgp router-id 2.2.2.2
+!
+ip route 1.1.1.1 255.255.255.255 Null0
+ip route 2.2.2.2 255.255.255.255 10.1.1.1
+ip route 3.3.3.0 255.255.255.0 10.3.3.3 44
+ip route 3.3.3.0 255.255.255.0 10.2.2.2 22
+ip route 3.3.3.0 255.255.255.0 Vlan798 10.4.4.4 66
+ip route 3.3.3.0 255.255.255.0 Vlan797
+ipv6 route 3::/64 2::1
+ipv6 route 2::/64 1::1 44
+vrf definition mgmtVrf
+ description abc
+ exit
+ip route vrf mgmtVrf 5.5.5.5 255.255.255.255 FastEthernet1 192.168.5.5

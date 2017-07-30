@@ -1,0 +1,72 @@
+---
+_process:
+    - mode: gate
+      when: "{{ protocol_key != 'static static' }}"
+static:
+    _process:
+      - prefix: "ip route {{ static_key|prefix_to_addrmask }}"
+        negate: "no ip route {{ static_key|prefix_to_addrmask }}\n"
+        negate_prefix: "no ip route {{ static_key|prefix_to_addrmask }}"
+        when: "{{ '.' in static_key and network_instance_key == 'global' }}"
+        in: "network-instances"
+      - prefix: "ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}"
+        negate: "no ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}\n"
+        negate_prefix: "no ip route vrf {{ network_instance_key }} {{ static_key|prefix_to_addrmask }}"
+        when: "{{ '.' in static_key and network_instance_key != 'global' }}"
+        in: "network-instances"
+      - prefix: "ipv6 route {{ static_key }}"
+        negate: "no ipv6 route {{ static_key }}\n"
+        negate_prefix: "no ipv6 route {{ static_key }}"
+        when: "{{ ':' in static_key and network_instance_key == 'global' }}"
+        in: "network-instances"
+      - prefix: "ipv6 route vrf {{ network_instance_key }} {{ static_key }}"
+        negate: "no ipv6 route vrf {{ network_instance_key }} {{ static_key }}\n"
+        negate_prefix: "no ipv6 route vrf {{ network_instance_key }} {{ static_key }}"
+        when: "{{ ':' in static_key and network_instance_key != 'global' }}"
+        in: "network-instances"
+    config:
+        _process: unnecessary
+        prefix:
+            _process: unnecessary
+        set-tag:
+            _process: not_implemented
+    next-hops:
+        _process: unnecessary
+        next-hop:
+            _process:
+              - mode: gate
+                when: "{{ replacing and negating }}"
+              - key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
+                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
+                end: "\n"
+            config:
+                _process: unnecessary
+                index:
+                    _process: not_implemented
+                metric:
+                    _process:
+                      - value: " {{ model }}"
+                        negate: " 1"
+                next-hop:
+                    _process: unnecessary
+                recurse:
+                    _process: not_implemented
+            index:
+                _process: not_implemented
+            interface-ref:
+                _process: unnecessary
+                config:
+                    _process: unnecessary
+                    interface:
+                        _process: unnecessary
+                    subinterface:
+                        _process: unnecessary
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    prefix:
+        _process: not_implemented
+    state:
+        _process: not_implemented
+

@@ -1,0 +1,190 @@
+{
+    "network_instances": {
+        "network_instance": {
+            "global": {
+                "config": {
+                    "type": "DEFAULT_INSTANCE",
+                    "enabled": true
+                },
+                "name": "global",
+                "protocols": {
+                    "protocol": {
+                        "bgp bgp": {
+                            "bgp": {
+                                "global": {
+                                    "config": {
+                                        "as": 65010,
+                                        "router-id": "2.2.2.2"
+                                    }
+                                },
+                                "neighbors": {
+                                    "neighbor": {
+                                        "192.168.5.5": {
+                                            "config": {
+                                                "description": "abc123",
+                                                "enabled": true,
+                                                "neighbor-address": "192.168.5.5",
+                                                "peer-as": 65010
+                                            },
+                                            "neighbor-address": "192.168.5.5"
+                                        },
+                                        "2001:db8::2": {
+                                            "config": {
+                                                "description": "bbb",
+                                                "enabled": false,
+                                                "neighbor-address": "2001:db8::2",
+                                                "peer-as": 65019
+                                            },
+                                            "neighbor-address": "2001:db8::2"
+                                        }
+                                    }
+                                }
+                            },
+                            "identifier": "bgp",
+                            "name": "bgp"
+                        },
+                        "static static": {
+                            "identifier": "static",
+                            "name": "static",
+                            "static_routes": {
+                                "static": {
+                                    "9.9.9.9/32": {
+                                        "prefix": "9.9.9.9/32",
+                                        "next_hops": {
+                                            "next_hop": {
+                                                "Null0": {
+                                                    "index": "Null0",
+                                                    "config": {
+                                                        "next_hop": "DROP"
+                                                    },
+                                                    "interface_ref": {
+                                                        "config": {
+                                                            "interface": "Null0"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "prefix": "9.9.9.9/32"
+                                        }
+                                    },
+                                    "2.2.2.2/32": {
+                                        "prefix": "2.2.2.2/32",
+                                        "next_hops": {
+                                            "next_hop": {
+                                                "10.1.1.9": {
+                                                    "index": "10.1.1.9",
+                                                    "config": {
+                                                        "next_hop": "10.1.1.9"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "prefix": "2.2.2.2/32"
+                                        }
+                                    },
+                                    "3.3.3.0/24": {
+                                        "prefix": "3.3.3.0/24",
+                                        "next_hops": {
+                                            "next_hop": {
+                                                "10.3.3.3": {
+                                                    "index": "10.3.3.3",
+                                                    "config": {
+                                                        "next_hop": "10.3.3.3"
+                                                    }
+                                                },
+                                                "Vlan797": {
+                                                    "index": "Vlan797",
+                                                    "interface_ref": {
+                                                        "config": {
+                                                            "interface": "Vlan797"
+                                                        }
+                                                    }
+                                                },
+                                                "10.2.2.2": {
+                                                    "index": "10.2.2.2",
+                                                    "config": {
+                                                        "metric": 22,
+                                                        "next_hop": "10.2.2.2"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "prefix": "3.3.3.0/24"
+                                        }
+                                    },
+                                    "2::/64": {
+                                        "prefix": "2::/64",
+                                        "next_hops": {
+                                            "next_hop": {
+                                                "Vlan797 1::1": {
+                                                    "index": "Vlan797 1::1",
+                                                    "config": {
+                                                        "metric": 44,
+                                                        "next_hop": "1::1"
+                                                    },
+                                                    "interface_ref": {
+                                                        "config": {
+                                                            "interface": "Vlan797"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "prefix": "2::/64"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mgmtVrf": {
+                "config": {
+                    "type": "L3VRF",
+                    "enabled": true,
+                    "description": "abc"
+                },
+                "name": "mgmtVrf",
+                "protocols": {
+                    "protocol": {
+                        "static static": {
+                            "identifier": "static",
+                            "name": "static",
+                            "static_routes": {
+                                "static": {
+                                    "5.5.5.5/32": {
+                                        "prefix": "5.5.5.5/32",
+                                        "next_hops": {
+                                            "next_hop": {
+                                                "FastEthernet1 192.168.5.5": {
+                                                    "index": "FastEthernet1 192.168.5.5",
+                                                    "config": {
+                                                        "next_hop": "192.168.5.5"
+                                                    },
+                                                    "interface_ref": {
+                                                        "config": {
+                                                            "interface": "FastEthernet1"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "prefix": "5.5.5.5/32"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

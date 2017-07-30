@@ -33,6 +33,7 @@ BASE_PATH = os.path.dirname(__file__)
 
 
 test_parse_models = [
+    ["ios", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["ios", "config", napalm_yang.models.openconfig_interfaces, "default"],
     ["eos", "config", napalm_yang.models.openconfig_network_instance, "default"],
     ["eos", "config", napalm_yang.models.openconfig_interfaces, "default"],
@@ -139,8 +140,8 @@ class Tests(object):
 
         #  driver = get_network_driver(profile)
         #  with driver(**device_configuration[profile]) as d:
-            #  d.load_merge_candidate(config=configuration)
-            #  print(d.compare_config())
-            #  d.discard_config()
+        #      d.load_merge_candidate(config=configuration)
+        #      print(d.compare_config())
+        #      d.discard_config()
 
         assert configuration == expected_translation

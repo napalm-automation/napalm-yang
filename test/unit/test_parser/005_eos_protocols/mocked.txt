@@ -1,0 +1,17 @@
+ip route 10.0.0.0/24 192.168.0.2 10 tag 0
+ip route vrf devel 10.0.0.0/24 192.168.2.2 1 tag 0
+!
+router bgp 65001
+   router-id 1.1.1.1
+   address-family ipv4
+      default neighbor 192.168.0.200 activate
+   !
+   address-family ipv6
+      default neighbor 192.168.0.200 activate
+   vrf devel
+      router-id 3.3.3.3
+!
+router pim sparse-mode
+   vrf devel
+      ip pim log-neighbor-changes
+!
