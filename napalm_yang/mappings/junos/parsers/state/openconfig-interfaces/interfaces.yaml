@@ -30,8 +30,7 @@ interfaces:
             _process: unnecessary
             admin-status:
                 _process: 
-                    - mode: map
-                      path: "admin-status"
+                    - path: "admin-status"
                       map:
                           up: UP
                           down: DOWN
@@ -40,8 +39,7 @@ interfaces:
                     - path: "description"
             enabled:
                 _process: 
-                    - mode: map
-                      path: "admin-status"
+                    - path: "admin-status"
                       map:
                           up: true
                           down: false
@@ -60,16 +58,13 @@ interfaces:
                 _process: unnecessary
             oper-status:
                 _process:
-                    - mode: map
-                      path: "oper-status"
+                    - path: "oper-status"
                       map:
                           up: UP
                           down: DOWN
             type:
                 _process:
-                    - mode: map
-                      default: unspecified
-                      path: "if-type"
+                    - path: "if-type"
                       map:
                           gre: tunnel
                           ipip: tunnel
@@ -85,7 +80,6 @@ interfaces:
                           pimd: null
                           pime: null
                           pppoe: null
-                          unspecified: null
             counters:
                 _process: unnecessary
                 in-broadcast-pkts:

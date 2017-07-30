@@ -5,5 +5,5 @@ metadata:
 
 secondary:
     _process:
-        - mode: is_present
-          path: "secondary"
+        - path: "secondary"
+          present: yes

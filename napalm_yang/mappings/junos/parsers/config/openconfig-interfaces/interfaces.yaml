@@ -31,8 +31,7 @@ interfaces:
                     - value: "{{ interface_key }}"
             type:
                 _process:
-                    - mode: map
-                      path: name
+                    - path: name
                       regexp: "(?P<value>[a-z]+).*"
                       map:
                           ge: ethernetCsmacd
@@ -45,8 +44,8 @@ interfaces:
                           ae: ieee8023adLag
             enabled:
                 _process:
-                    - mode: is_absent
-                      path: "disable"
+                    - path: "disable"
+                      present: no
             description:
                 _process:
                     - path: description
@@ -70,8 +69,8 @@ interfaces:
                             - value: "{{ subinterface_key }}"
                     enabled:
                         _process:
-                            - mode: is_absent
-                              path: "disable"
+                            - path: "disable"
+                              present: no
                     description:
                         _process:
                             - path: description

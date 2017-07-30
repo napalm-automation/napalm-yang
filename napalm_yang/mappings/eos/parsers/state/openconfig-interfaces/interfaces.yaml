@@ -27,8 +27,7 @@ interfaces:
             _process: unnecessary
             admin-status:
                 _process:
-                    - mode: map
-                      path: interfaceStatus
+                    - path: interfaceStatus
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
@@ -39,7 +38,7 @@ interfaces:
                     - path: interfaceCounters
                       default: {}
                       when: "{{ not interface_key.startswith('Loopback') }}"
-                    - mode: gate
+                    - gate: true
                       when: "{{ interface_key.startswith('Loopback') }}"
                 in-broadcast-pkts:
                     _process:
@@ -86,8 +85,7 @@ interfaces:
                     - path: description
             enabled:
                 _process:
-                    - mode: map
-                      path: interfaceStatus
+                    - path: interfaceStatus
                       map:
                           "disabled": false
                           "errdisabled": true
@@ -105,8 +103,7 @@ interfaces:
                     - path: name
             oper-status:
                 _process:
-                    - mode: map
-                      path: interfaceStatus
+                    - path: interfaceStatus
                       map:
                           "disabled": DOWN
                           "errdisabled": DOWN
@@ -114,8 +111,7 @@ interfaces:
                           "notconnect": DOWN
             type:
                 _process:
-                    - mode: map
-                      path: hardware
+                    - path: hardware
                       map:
                           ethernet: ethernetCsmacd
                           management: ethernetCsmacd
@@ -135,8 +131,7 @@ interfaces:
                     _process: unnecessary
                     admin-status:
                         _process:
-                            - mode: map
-                              path: interfaceStatus
+                            - path: interfaceStatus
                               map:
                                   "disabled": DOWN
                                   "errdisabled": DOWN
@@ -149,8 +144,7 @@ interfaces:
                             - path: description
                     enabled:
                         _process:
-                            - mode: map
-                              path: interfaceStatus
+                            - path: interfaceStatus
                               map:
                                   "disabled": false
                                   "errdisabled": true
@@ -167,8 +161,7 @@ interfaces:
                             - path: name
                     oper-status:
                         _process:
-                            - mode: map
-                              path: lineProtocolStatus
+                            - path: lineProtocolStatus
                               map:
                                   "disabled": DOWN
                                   "errdisabled": DOWN

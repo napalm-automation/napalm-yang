@@ -12,8 +12,7 @@ switched-vlan:
                 - path: switchport.access.vlan
         interface-mode:
             _process:
-                - mode: map
-                  path: switchport.mode
+                - path: switchport.mode
                   map:
                     access: ACCESS
                     trunk: TRUNK
