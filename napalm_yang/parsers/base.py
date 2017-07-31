@@ -39,6 +39,9 @@ class BaseParser(object):
                 for k, v in iterator:
                     if k.startswith("#"):
                         continue
+                    if not isinstance(v, dict):
+                        result.append((k, v))
+                        continue
                     r = self.resolve_path(v, ".".join(path_split), default, check_presence)
                     if not r:
                         break
