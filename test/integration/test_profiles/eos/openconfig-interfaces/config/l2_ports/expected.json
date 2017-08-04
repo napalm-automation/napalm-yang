@@ -1,0 +1,86 @@
+{
+    "interfaces": {
+        "interface": {
+            "Ethernet1": {
+                "config": {
+                    "enabled": true,
+                    "type": "ethernetCsmacd"
+                },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 1,
+                            "interface-mode": "TRUNK",
+                            "native-vlan": 30,
+                            "trunk-vlans": [
+                                "20..22",
+                                40
+                            ]
+                        }
+                    }
+                },
+                "name": "Ethernet1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            },
+            "Ethernet2": {
+                "config": {
+                    "enabled": true,
+                    "type": "ethernetCsmacd"
+                },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 30,
+                            "interface-mode": "ACCESS",
+                            "native-vlan": 1,
+                            "trunk-vlans": [
+                                "1..4094"
+                            ]
+                        }
+                    }
+                },
+                "name": "Ethernet2",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            },
+            "Management1": {
+                "config": {
+                    "enabled": true,
+                    "mtu": 1500,
+                    "type": "ethernetCsmacd"
+                },
+                "name": "Management1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "addresses": {
+                            "address": {
+                                "10.0.2.15": {
+                                    "config": {
+                                        "ip": "10.0.2.15",
+                                        "prefix-length": 24,
+                                        "secondary": false
+                                    },
+                                    "ip": "10.0.2.15"
+                                }
+                            }
+                        },
+                        "config": {
+                            "enabled": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

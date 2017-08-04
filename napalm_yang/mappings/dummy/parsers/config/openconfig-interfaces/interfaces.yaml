@@ -26,7 +26,11 @@ interfaces:
                     _process: not_implemented
                 up:
                     _process: not_implemented
+            state:
+                _process: not_implemented
         name:
+            _process: not_implemented
+        state:
             _process: not_implemented
         subinterfaces:
             _process: not_implemented
@@ -43,4 +47,6 @@ interfaces:
                     name:
                         _process: not_implemented
                 index:
+                    _process: not_implemented
+                state:
                     _process: not_implemented

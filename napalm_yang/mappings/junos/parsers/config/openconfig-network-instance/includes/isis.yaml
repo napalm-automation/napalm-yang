@@ -1,0 +1,508 @@
+---
+_process: not_implemented
+global:
+    _process: not_implemented
+    afi-safi:
+        _process: not_implemented
+        af:
+            _process: not_implemented
+            afi-name:
+                _process: not_implemented
+            config:
+                _process: not_implemented
+                afi-name:
+                    _process: not_implemented
+                enabled:
+                    _process: not_implemented
+                metric:
+                    _process: not_implemented
+                safi-name:
+                    _process: not_implemented
+            multi-topology:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    afi-name:
+                        _process: not_implemented
+                    safi-name:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            safi-name:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+    config:
+        _process: not_implemented
+        authentication-check:
+            _process: not_implemented
+        fast-flooding:
+            _process: not_implemented
+        iid-tlv:
+            _process: not_implemented
+        instance:
+            _process: not_implemented
+        level-capability:
+            _process: not_implemented
+        max-ecmp-paths:
+            _process: not_implemented
+        maximum-area-addresses:
+            _process: not_implemented
+        net:
+            _process: not_implemented
+        poi-tlv:
+            _process: not_implemented
+    graceful-restart:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+            helper-only:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    igp-shortcuts:
+        _process: not_implemented
+        afi:
+            _process: not_implemented
+            afi-name:
+                _process: not_implemented
+            config:
+                _process: not_implemented
+                afi-name:
+                    _process: not_implemented
+                nh-type:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    inter-level-propagation-policies:
+        _process: not_implemented
+        level1-to-level2:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                default-import-policy:
+                    _process: not_implemented
+                import-policy:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        level2-to-level1:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                default-import-policy:
+                    _process: not_implemented
+                import-policy:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    lsp-bit:
+        _process: not_implemented
+        attached-bit:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                ignore-bit:
+                    _process: not_implemented
+                suppress-bit:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        overload-bit:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                advertise-high-metric:
+                    _process: not_implemented
+                set-bit:
+                    _process: not_implemented
+                set-bit-on-boot:
+                    _process: not_implemented
+            reset-triggers:
+                _process: not_implemented
+                reset-trigger:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        delay:
+                            _process: not_implemented
+                        reset-trigger:
+                            _process: not_implemented
+                    reset-trigger:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            state:
+                _process: not_implemented
+    mpls:
+        _process: not_implemented
+        igp-ldp-sync:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                enabled:
+                    _process: not_implemented
+                post-session-up-delay:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    nsr:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    reference-bandwidth:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            reference-bandwidth:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    segment-routing:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+            srgb:
+                _process: not_implemented
+            srlb:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    state:
+        _process: not_implemented
+    timers:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            lsp-lifetime-interval:
+                _process: not_implemented
+            lsp-refresh-interval:
+                _process: not_implemented
+        lsp-generation:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                lsp-first-wait-interval:
+                    _process: not_implemented
+                lsp-max-wait-interval:
+                    _process: not_implemented
+                lsp-second-wait-interval:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        spf:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                spf-first-interval:
+                    _process: not_implemented
+                spf-hold-interval:
+                    _process: not_implemented
+                spf-second-interval:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    transport:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            lsp-mtu-size:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+interfaces:
+    _process: not_implemented
+    interface:
+        _process: not_implemented
+        afi-safi:
+            _process: not_implemented
+            af:
+                _process: not_implemented
+                afi-name:
+                    _process: not_implemented
+                config:
+                    _process: not_implemented
+                    afi-name:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    safi-name:
+                        _process: not_implemented
+                safi-name:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        authentication:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                hello-authentication:
+                    _process: not_implemented
+            key:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    auth-password:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        bfd:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                bfd-tlv:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        circuit-counters:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+        config:
+            _process: not_implemented
+            circuit-type:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            hello-padding:
+                _process: not_implemented
+            interface-id:
+                _process: not_implemented
+            passive:
+                _process: not_implemented
+        interface-id:
+            _process: not_implemented
+        interface-ref:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                interface:
+                    _process: not_implemented
+                subinterface:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        levels:
+            _process: not_implemented
+            level:
+                _process: not_implemented
+                adjacencies:
+                    _process: not_implemented
+                afi-safi:
+                    _process: not_implemented
+                    af:
+                        _process: not_implemented
+                        afi-name:
+                            _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            afi-name:
+                                _process: not_implemented
+                            enabled:
+                                _process: not_implemented
+                            metric:
+                                _process: not_implemented
+                            safi-name:
+                                _process: not_implemented
+                        safi-name:
+                            _process: not_implemented
+                        segment-routing:
+                            _process: not_implemented
+                            adjacency-sids:
+                                _process: not_implemented
+                                adjacency-sid:
+                                    _process: not_implemented
+                                    config:
+                                        _process: not_implemented
+                                        group:
+                                            _process: not_implemented
+                                        neighbor:
+                                            _process: not_implemented
+                                        protection-eligible:
+                                            _process: not_implemented
+                                        sid-id:
+                                            _process: not_implemented
+                                    neighbor:
+                                        _process: not_implemented
+                                    sid-id:
+                                        _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                            prefix-sids:
+                                _process: not_implemented
+                                prefix-sid:
+                                    _process: not_implemented
+                                    config:
+                                        _process: not_implemented
+                                        label-options:
+                                            _process: not_implemented
+                                        prefix:
+                                            _process: not_implemented
+                                        sid-id:
+                                            _process: not_implemented
+                                    prefix:
+                                        _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                config:
+                    _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    level-number:
+                        _process: not_implemented
+                    passive:
+                        _process: not_implemented
+                    priority:
+                        _process: not_implemented
+                hello-authentication:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        hello-authentication:
+                            _process: not_implemented
+                    key:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            auth-password:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                level-number:
+                    _process: not_implemented
+                packet-counters:
+                    _process: not_implemented
+                    cnsp:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    esh:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    iih:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    ish:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    lsp:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    psnp:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    unknown:
+                        _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
+                timers:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        hello-interval:
+                            _process: not_implemented
+                        hello-multiplier:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+        state:
+            _process: not_implemented
+        timers:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                csnp-interval:
+                    _process: not_implemented
+                lsp-pacing-interval:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+levels:
+    _process: not_implemented
+    level:
+        _process: not_implemented
+        authentication:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                csnp-authentication:
+                    _process: not_implemented
+                lsp-authentication:
+                    _process: not_implemented
+                psnp-authentication:
+                    _process: not_implemented
+            key:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    auth-password:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        config:
+            _process: not_implemented
+            authentication-check:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            level-number:
+                _process: not_implemented
+            metric-style:
+                _process: not_implemented
+        level-number:
+            _process: not_implemented
+        link-state-database:
+            _process: not_implemented
+        route-preference:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                external-route-preference:
+                    _process: not_implemented
+                internal-route-preference:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        system-level-counters:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+        traffic-engineering:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                enabled:
+                    _process: not_implemented
+                ipv4-router-id:
+                    _process: not_implemented
+                ipv6-router-id:
+                    _process: not_implemented
+            state:
+                _process: not_implemented

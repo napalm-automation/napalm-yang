@@ -28,3 +28,7 @@ transceiver:
                     _process: not_implemented
             index:
                 _process: not_implemented
+            state:
+                _process: not_implemented
+    state:
+        _process: not_implemented

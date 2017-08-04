@@ -1,0 +1,177 @@
+---
+metadata:
+    processor: JSONParser
+    execute:
+        - method: "device.run_commands"
+          kwargs:
+              commands: ["show interfaces"]
+
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - path: interfaces
+              from: root_interfaces.0
+              regexp: "(?P<value>\\w+(\\w|-|\\/)*\\d+)$"
+        config:
+            _process: unnecessary
+        hold-time:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+        state:
+            _process: unnecessary
+            admin-status:
+                _process:
+                    - mode: map
+                      path: interfaceStatus
+                      map:
+                          "disabled": DOWN
+                          "errdisabled": DOWN
+                          "connected": UP
+                          "notconnect": UP
+            counters:
+                _process:
+                    - path: interfaceCounters
+                      default: {}
+                      when: "{{ not interface_key.startswith('Loopback') }}"
+                    - mode: gate
+                      when: "{{ interface_key.startswith('Loopback') }}"
+                in-broadcast-pkts:
+                    _process:
+                        - path:  inBroadcastPkts
+                in-discards:
+                    _process:
+                        - path:  inDiscards
+                in-errors:
+                    _process:
+                        - path:  totalInErrors
+                in-multicast-pkts:
+                    _process:
+                        - path:  inMulticastPkts
+                in-octets:
+                    _process:
+                        - path:  inOctets
+                in-unicast-pkts:
+                    _process:
+                        - path:  inUcastPkts
+                in-unknown-protos:
+                    _process: not_implemented
+                last-clear:
+                    _process: not_implemented
+                out-broadcast-pkts:
+                    _process:
+                        - path:  outBroadcastPkts
+                out-discards:
+                    _process:
+                        - path:  outDiscards
+                out-errors:
+                    _process:
+                        - path:  totalOutErrors
+                out-multicast-pkts:
+                    _process:
+                        - path:  outMulticastPkts
+                out-octets:
+                    _process:
+                        - path:  outOctets
+                out-unicast-pkts:
+                    _process:
+                        - path:  outUcastPkts
+            description:
+                _process:
+                    - path: description
+            enabled:
+                _process:
+                    - mode: map
+                      path: interfaceStatus
+                      map:
+                          "disabled": false
+                          "errdisabled": true
+                          "connected": true
+                          "notconnect": true
+            ifindex:
+                _process: not_implemented
+            last-change:
+                _process: not_implemented
+            mtu:
+                _process:
+                    - path: mtu
+            name:
+                _process:
+                    - path: name
+            oper-status:
+                _process:
+                    - mode: map
+                      path: interfaceStatus
+                      map:
+                          "disabled": DOWN
+                          "errdisabled": DOWN
+                          "connected": UP
+                          "notconnect": DOWN
+            type:
+                _process:
+                    - mode: map
+                      path: hardware
+                      map:
+                          ethernet: ethernetCsmacd
+                          management: ethernetCsmacd
+                          loopback: softwareLoopback
+                          portchannel: ieee8023adLag
+                          vlan: l3ipvlan
+        subinterfaces:
+            _process: unnecessary
+            subinterface:
+                _process:
+                    - path: interfaces
+                      from: root_interfaces.0
+                      regexp: "{{interface_key}}\\.(?P<value>\\d+)"
+                config:
+                    _process: unnecessary
+                state:
+                    _process: unnecessary
+                    admin-status:
+                        _process:
+                            - mode: map
+                              path: interfaceStatus
+                              map:
+                                  "disabled": DOWN
+                                  "errdisabled": DOWN
+                                  "connected": UP
+                                  "notconnect": DOWN
+                    counters:
+                        _process: not_supported
+                    description:
+                        _process:
+                            - path: description
+                    enabled:
+                        _process:
+                            - mode: map
+                              path: interfaceStatus
+                              map:
+                                  "disabled": false
+                                  "errdisabled": true
+                                  "connected": true
+                                  "notconnect": true
+                    ifindex:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    last-change:
+                        _process: not_implemented
+                    name:
+                        _process:
+                            - path: name
+                    oper-status:
+                        _process:
+                            - mode: map
+                              path: lineProtocolStatus
+                              map:
+                                  "disabled": DOWN
+                                  "errdisabled": DOWN
+                                  "connected": UP
+                                  "notconnect": DOWN
+                                  "lowerlayerdown": LOWER_LAYER_DOWN

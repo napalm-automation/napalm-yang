@@ -14,11 +14,17 @@ class XMLTranslator(BaseTranslator):
         else:
             return translation
 
-    def _init_element_container(self, attribute, model, other, mapping, translation):
+    def _init_element_default(self, attribute, model, other, mapping, translation):
         t = translation
 
-        for element in mapping["container"].split("."):
-            t = etree.SubElement(t, element)
+        for element in mapping["container"].split("/"):
+            try:
+                if mapping.get("reuse", False):
+                    t = t.xpath(element)[0]
+                else:
+                    t = etree.SubElement(t, element)
+            except IndexError:
+                t = etree.SubElement(t, element)
 
         key_element = mapping.get("key_element", None)
         if key_element:
@@ -34,14 +40,14 @@ class XMLTranslator(BaseTranslator):
 
         return t
 
-    _parse_container_container = _init_element_container
+    _translate_container_default = _init_element_default
 
-    def _default_element_container(self, mapping, translation, replacing):
+    def _default_element_default(self, mapping, translation, replacing):
         if not self.merge:
-            return
+            return None, {}
 
         if self.merge and replacing:
-            return
+            return None, {}
 
         t = translation
 
@@ -53,11 +59,12 @@ class XMLTranslator(BaseTranslator):
             key = etree.SubElement(t, key_element)
             key.text = "{}".format(mapping["key_value"])
 
-        t.set("delete", "delete")
+        if mapping.get("delete_on_merge", True):
+            t.set("delete", "delete")
 
-        return t
+        return t, {}
 
-    def _parse_leaf_element(self, attribute, model, other, mapping, translation, force=False):
+    def _translate_leaf_default(self, attribute, model, other, mapping, translation, force=False):
         delete = False
         if not model._changed() and other and self.merge:
             delete = True
@@ -70,10 +77,16 @@ class XMLTranslator(BaseTranslator):
         except Exception:
             value = None if not model._changed() else model
 
-        e = etree.SubElement(translation, mapping["element"])
+        e = translation
+        for element in mapping["element"].split("/"):
+            e = etree.SubElement(e, element)
 
         if delete:
             e.set("delete", "delete")
 
         if value is not None:
             e.text = "{}".format(value)
+
+    def _translate_leaf_map(self, attribute, model, other, mapping, translation):
+        mapping["value"] = mapping["map"][model]
+        self._translate_leaf_default(attribute, model, other, mapping, translation)

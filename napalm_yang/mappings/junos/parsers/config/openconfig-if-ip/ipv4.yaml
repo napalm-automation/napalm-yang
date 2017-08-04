@@ -8,35 +8,29 @@ ipv4:
         _process: unnecessary
         enabled:
             _process:
-                mode: is_present
-                xpath: "family/inet"
-                from: "{{ bookmarks['parent'] }}"
+                - mode: is_present
+                  path: "family.inet"
+                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
         mtu:
             _process: not_implemented
     addresses:
-        _process: unnecessary
+        _process:
+            - path: "family.inet"
         address:
             _process:
-                mode: xpath
-                xpath: "family/inet/address"
-                key: name
-                from: "{{ bookmarks['parent'] }}"
+                - path: "address"
+                  key: name
+                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
             ip:
                 _process: unnecessary
             config:
                 _process: unnecessary
                 ip:
                     _process:
-                        mode: xpath
-                        xpath: "name"
-                        regexp: "(?P<value>.*)/\\d+"
-                        from: "{{ bookmarks['parent'] }}"
+                        - value: "{{ extra_vars.address.ip }}"
                 prefix-length:
                     _process:
-                        mode: xpath
-                        xpath: "name"
-                        regexp: ".*/(?P<value>\\d+)"
-                        from: "{{ bookmarks['parent'] }}"
+                         - value: "{{ extra_vars.address.prefix }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

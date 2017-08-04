@@ -1,0 +1,28 @@
+---
+metadata:
+    prefix: "oc-ethernet"
+    processor: TextTree
+
+switched-vlan:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+        access-vlan:
+            _process:
+                - path: switchport.access.vlan
+        interface-mode:
+            _process:
+                - mode: map
+                  path: switchport.mode
+                  map:
+                    access: ACCESS
+                    trunk: TRUNK
+        native-vlan:
+            _process:
+                - path: switchport.trunk.native.vlan
+        trunk-vlans:
+            _process:
+                - path: switchport.trunk.allowed.vlan
+                  value: "{{ value|vlan_range_to_oc }}"
+    state:
+        _process: not_implemented

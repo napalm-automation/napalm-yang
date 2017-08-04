@@ -1,37 +1,35 @@
 ---
 metadata:
-    processor: TextParser
+    processor: TextTree
 
 ipv4:
     _process: unnecessary
     config:
         _process: unnecessary
         enabled:
-            _process: # TODO look at this one, I think this is different depending on IOS version
-                mode: is_absent
-                regexp: "(?P<value>^\\W*switchport$)"
-                from: "{{ bookmarks['parent'] }}"
+            _process:
+                - mode: is_absent
+                  path: "switchport"
         mtu:
             _process: not_implemented
     addresses:
         _process: unnecessary
         address:
             _process:
-                mode: block
-                regexp: "(?P<block>ip address (?P<key>(?P<ip>.*)) (?P<prefix>([0-255]|\\.)*)(?P<secondary> secondary)*)$"
-                from: "{{ bookmarks['parent'] }}"
+                - path: "ip.address.?prefix.?mask"
+                  regexp: "^(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+)"
+                  key: prefix
             ip:
                 _process: unnecessary
             config:
                 _process: unnecessary
                 ip:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.ip }}"
+                        - path: prefix
                 prefix-length:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.prefix|netmask_to_cidr }}"
+                        - path: mask
+                          value: "{{ value|netmask_to_cidr }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

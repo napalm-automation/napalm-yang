@@ -1,6 +1,6 @@
 ---
 metadata:
-    processor: TextParser
+    processor: TextTree
 
 ipv4:
     _process: unnecessary
@@ -8,30 +8,26 @@ ipv4:
         _process: unnecessary
         enabled:
             _process:
-                mode: is_absent
-                regexp: "(?P<value>^\\W*switchport$)"
-                from: "{{ bookmarks['parent'] }}"
+                - mode: is_absent
+                  path: "switchport"
         mtu:
             _process: not_implemented
     addresses:
         _process: unnecessary
         address:
             _process:
-                mode: block
-                regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
-                from: "{{ bookmarks['parent'] }}"
+                - path: "ip.address"
+                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
             ip:
                 _process: unnecessary
             config:
                 _process: unnecessary
                 ip:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.ip }}"
+                        - value: "{{ extra_vars.address.ip }}"
                 prefix-length:
                     _process:
-                        mode: value
-                        value: "{{ extra_vars.prefix }}"
+                        - value: "{{ extra_vars.address.prefix }}"
             vrrp:
                 _process: not_implemented
                 vrrp-group:

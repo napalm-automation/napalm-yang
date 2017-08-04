@@ -8,6 +8,5 @@ vlan:
         _process: unnecessary
         vlan-id:
             _process:
-                - mode: element
-                  value: "    encapsulation dot1q vlan {{ model }}\n"
+                - value: "    encapsulation dot1q vlan {{ model }}\n"
                   negate: "    default encapsulation dot1q vlan {{ model }}\n"

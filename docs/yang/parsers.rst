@@ -3,6 +3,52 @@ Parsers
 
 Parsers are responsible for mapping native configuration/show_commands to a YANG model.
 
+Special actions
+===============
+
+Most actions depend on the parser you are using, however, some are common to all of them:
+
+unnecessary
+-----------
+
+This makes the parser skip the field and continue processing the tree.
+
+not_implemented
+---------------
+
+This makes the parser stop processing the tree underneath this value. For example::
+
+    field_1:
+        process: unnecessary
+    field_2:
+        process: not_implemented
+        subfield_1:
+            process: ...
+        subfield_2:
+            process: ...
+    field_3:
+        ...
+
+The ``not_implemented`` action will stop the parser from processing ``subfield_1`` and ``subfield_2``
+and move directly onto ``field_3``.
+
+gate
+----
+
+Works like ``not_implemented`` but accepts a condition. For example::
+
+    protocols:
+        protocol:
+            bgp:
+                _process:
+                  - mode: gate
+                    when: "{{ protocol_key != 'bgp bgp' }}"
+                global:
+                    ...
+
+The snippet above will only process the ``bgp`` subtree if the condition is **not** met.
+
+
 Special fields
 ==============
 
@@ -17,7 +63,7 @@ mode
 * **Example**: Parse the description field with a simple regular expression::
 
     _process:
-        mode: search
+      - mode: search
         regexp: "description (?P<value>.*)"
         from: "{{ bookmarks.interface[interface_key] }}"
 
@@ -52,7 +98,7 @@ from
 
     address:
         _process:
-            mode: xpath
+          - mode: xpath
             xpath: "family/inet/address"
             key: name
             from: "{{ bookmarks['parent'] }}"
@@ -112,14 +158,14 @@ Some actions let's you provide additional information for later use. Those will 
 
     address:
         _process:
-            mode: block
+          - mode: block
             regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
             from: "{{ bookmarks['parent'] }}"
         config:
             _process: unnecessary
             ip:
                 _process:
-                    mode: value
+                  - mode: value
                     value: "{{ extra_vars.ip }}"
 
 The first regexp captures a bunch of vars that later can be used by just reading them from
@@ -137,13 +183,15 @@ the device. For example::
         parser: XMLParser
         execute:
             - method: _rpc
-              args:
+              args: []
+              kwargs:
                   get: "<get-configuration/>"
 
 * **execute** is a list of calls to do to from the device to extract the data.
 
   * **method** is the method from the device to call.
-  * **args** are arguments that will be passed to the method.
+  * **args** are the numbered/ordered arguments for the method
+  * **kwargs** are the keyword arguments for the method
 
 In addition, some methods like ``parse_config`` and ``parse_state`` may have mechanisms to pass the
 information needed to the parser instead of relying on a live device to obtain it. For parsers, you

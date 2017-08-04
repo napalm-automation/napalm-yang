@@ -3,17 +3,17 @@ metadata:
     processor: XMLParser
     execute:
         - method: _rpc
-          args:
+          kwargs:
               get: "<get-configuration/>"
 
 interfaces:
-    _process: unnecessary
+    _process:
+        - path: "configuration.interfaces"
+          from: root_interfaces.0
     interface:
         _process:
-            mode: xpath
-            xpath: "interfaces/interface"
-            key: name
-            from: "{{ bookmarks.interfaces.0 }}"
+            - path: "interface"
+              key: name
         name:
             _process: unnecessary
         hold-time:
@@ -28,61 +28,50 @@ interfaces:
             _process: unnecessary
             name:
                 _process:
-                    mode: value
-                    value: "{{ interface_key }}"
+                    - value: "{{ interface_key }}"
             type:
                 _process:
-                    mode: map
-                    xpath: name
-                    regexp: "(?P<value>[a-z]+).*"
-                    # Next field could easily be
-                    # from: "{{ bookmarks['parent'] }}"
-                    # but this is more efficient
-                    from: "<interface><name>{{ parent_key }}</name></interface>"
-                    map:
-                        ge: ethernetCsmacd
-                        lo: softwareLoopback
-                        ae: ieee8023adLag
+                    - mode: map
+                      path: name
+                      regexp: "(?P<value>[a-z]+).*"
+                      map:
+                          ge: ethernetCsmacd
+                          xe: ethernetCsmacd
+                          et: ethernetCsmacd
+                          irb: ethernetCsmacd
+                          me: ethernetCsmacd
+                          vlan: ethernetCsmacd
+                          lo: softwareLoopback
+                          ae: ieee8023adLag
             enabled:
                 _process:
-                    mode: is_absent
-                    xpath: "disable"
-                    from: "{{ bookmarks['parent'] }}"
+                    - mode: is_absent
+                      path: "disable"
             description:
                 _process:
-                    mode: xpath
-                    xpath: description
-                    from: "{{ bookmarks['parent'] }}"
+                    - path: description
             mtu:
                 _process:
-                    mode: xpath
-                    xpath: mtu
-                    from: "{{ bookmarks['parent'] }}"
+                    - path: mtu
         subinterfaces:
-            _process: not_implemented
+            _process: unnecessary
             subinterface:
                 _process:
-                    mode: xpath
-                    xpath: "unit"
-                    key: name
-                    from: "{{ bookmarks['parent'] }}"
+                    - path: "unit"
+                      key: name
                 index:
                     _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     index:
                         _process: not_implemented
                     name:
                         _process:
-                            mode: value
-                            value: "{{ subinterface_key }}"
+                            - value: "{{ subinterface_key }}"
                     enabled:
                         _process:
-                            mode: is_absent
-                            xpath: "disable"
-                            from: "{{ bookmarks['parent'] }}"
+                            - mode: is_absent
+                              path: "disable"
                     description:
                         _process:
-                            mode: xpath
-                            xpath: description
-                            from: "{{ bookmarks['parent'] }}"
+                            - path: description

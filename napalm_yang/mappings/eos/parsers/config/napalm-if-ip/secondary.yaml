@@ -1,9 +1,9 @@
 ---
 metadata:
     prefix: "napalm-ip"
-    processor: TextParser
+    processor: TextTree
 
 secondary:
     _process:
-        mode: value
-        value: "{{ extra_vars.secondary != None }}"
+        - mode: is_present
+          path: "secondary"

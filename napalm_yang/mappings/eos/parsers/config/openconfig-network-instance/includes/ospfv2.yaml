@@ -1,0 +1,224 @@
+---
+_process: not_implemented
+areas:
+    _process: not_implemented
+    area:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            identifier:
+                _process: not_implemented
+        identifier:
+            _process: not_implemented
+        interfaces:
+            _process: not_implemented
+            interface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    authentication-type:
+                        _process: not_implemented
+                    hide-network:
+                        _process: not_implemented
+                    id:
+                        _process: not_implemented
+                    metric:
+                        _process: not_implemented
+                    multi-area-adjacency-primary:
+                        _process: not_implemented
+                    network-type:
+                        _process: not_implemented
+                    passive:
+                        _process: not_implemented
+                    priority:
+                        _process: not_implemented
+                id:
+                    _process: not_implemented
+                interface-ref:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        interface:
+                            _process: not_implemented
+                        subinterface:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                lsa-filter:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        all:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                mpls:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        traffic-engineering-metric:
+                            _process: not_implemented
+                    igp-ldp-sync:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            enabled:
+                                _process: not_implemented
+                            post-session-up-delay:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+                neighbors:
+                    _process: not_implemented
+                    neighbor:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            metric:
+                                _process: not_implemented
+                            router-id:
+                                _process: not_implemented
+                        router-id:
+                            _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
+                timers:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        dead-interval:
+                            _process: not_implemented
+                        hello-interval:
+                            _process: not_implemented
+                        retransmission-interval:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+        lsdb:
+            _process: not_implemented
+        mpls:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                traffic-engineering-enabled:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        virtual-links:
+            _process: not_implemented
+            virtual-link:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    remote-router-id:
+                        _process: not_implemented
+                remote-router-id:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+global:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        hide-transit-only-networks:
+            _process: not_implemented
+        igp-shortcuts:
+            _process: not_implemented
+        log-adjacency-changes:
+            _process: not_implemented
+        router-id:
+            _process: not_implemented
+        summary-route-cost-mode:
+            _process: not_implemented
+    graceful-restart:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+            helper-only:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    inter-area-propagation-policies:
+        _process: not_implemented
+        inter-area-propagation-policy:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                default-import-policy:
+                    _process: not_implemented
+                dst-area:
+                    _process: not_implemented
+                import-policy:
+                    _process: not_implemented
+                src-area:
+                    _process: not_implemented
+            dst-area:
+                _process: not_implemented
+            src-area:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+    mpls:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            traffic-engineering-extensions:
+                _process: not_implemented
+        igp-ldp-sync:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                enabled:
+                    _process: not_implemented
+                post-session-up-delay:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    state:
+        _process: not_implemented
+    timers:
+        _process: not_implemented
+        lsa-generation:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                initial-delay:
+                    _process: not_implemented
+                maximum-delay:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        max-metric:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                include:
+                    _process: not_implemented
+                set:
+                    _process: not_implemented
+                timeout:
+                    _process: not_implemented
+                trigger:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        spf:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                initial-delay:
+                    _process: not_implemented
+                maximum-delay:
+                    _process: not_implemented
+            state:
+                _process: not_implemented

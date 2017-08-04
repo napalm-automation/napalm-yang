@@ -1,57 +1,29 @@
-from lxml import etree
-import re
+from builtins import super
 
-from napalm_yang.parsers.base import BaseParser
+from napalm_yang.parsers.jsonp import JSONParser
+
+import xmltodict
 
 
-class XMLParser(BaseParser):
+class XMLParser(JSONParser):
 
-    @classmethod
-    def _parse_list_xpath(cls, mapping):
-        xml = etree.fromstring(mapping["from"])
-
-        for element in xml.xpath(mapping["xpath"]):
-            key = element.xpath("name")[0].text.strip()
-            yield key, etree.tostring(element), {}
-
-    @classmethod
-    def _parse_leaf_xpath(cls, mapping, check_default=True, check_presence=False):
-        xml = etree.fromstring(mapping["from"])
-        element = xml.xpath(mapping["xpath"])
-
-        if element and not check_presence:
-            if "attribute" in mapping.keys():
-                element = element[0].get(mapping["attribute"])
+    def init_native(self, native):
+        resp = []
+        for n in native:
+            if isinstance(n, dict):
+                resp.append(n)
             else:
-                element = element[0].text.strip()
+                resp.append(xmltodict.parse(n, force_cdata=True))
 
-            regexp = mapping.get("regexp", None)
-            if regexp:
-                match = re.search(mapping["regexp"], element)
-                if match:
-                    return match.group("value")
-            else:
-                return element
-        elif element and check_presence:
-            return True
-        elif check_default:
-            return mapping.get("default", None)
-        else:
-            return None
+        return resp
 
-    @classmethod
-    def _parse_leaf_map(cls, mapping):
-        value = cls._parse_leaf_xpath(mapping)
-
-        if "regex" in mapping.keys():
-            value = re.search(mapping["regexp"], value).group("value")
-
-        return mapping["map"][value] if value else None
-
-    @classmethod
-    def _parse_leaf_is_present(cls, mapping):
-        return cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
-
-    @classmethod
-    def _parse_leaf_is_absent(cls, mapping):
-        return not cls._parse_leaf_xpath(mapping, check_default=False, check_presence=True)
+    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
+        attribute = mapping.get("attribute", None)
+        path = mapping.get("path", None)
+        if attribute and path:
+            attribute = "@{}".format(attribute)
+            mapping["path"] = "{}.{}".format(mapping["path"], attribute)
+        elif not check_presence and path:
+            attribute = "#text"
+            mapping["path"] = "{}.{}".format(mapping["path"], "#text")
+        return super()._parse_leaf_default(mapping, data, check_default, check_presence)

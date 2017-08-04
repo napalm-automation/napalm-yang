@@ -18,5 +18,9 @@ vlans:
                 _process: not_implemented
         members:
             _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
         vlan-id:
             _process: not_implemented

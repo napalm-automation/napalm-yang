@@ -1,0 +1,373 @@
+---
+metadata:
+    processor: TextTranslator
+    root: true
+
+network-instances:
+    _process: unnecessary
+    network-instance:
+        _process:
+            - key_value: "vrf definition {{ network_instance_key }}\n"
+              negate: "no vrf definition {{ network_instance_key }}\n"
+              continue_negating: true
+              end: "    exit\n"
+              when: "{{ network_instance_key != 'global' }}"
+        afts: !include includes/afts.yaml
+        config:
+            _process: unnecessary
+            description:
+                _process:
+                    - value: "    description {{ model }}\n"
+                      negate: "    default description\n"
+            enabled:
+                _process: unnecessary
+            enabled-address-families:
+                _process: not_implemented
+            mtu:
+                _process: not_implemented
+            name:
+                _process: unnecessary
+            route-distinguisher:
+                _process:
+                    - value: "    rd {{ model }}\n"
+                      negate: "    default rd\n"
+            router-id:
+                _process: not_implemented
+            type:
+                _process: unnecessary
+        connection-points: !include includes/connection_points.yaml
+        encapsulation:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                control-word:
+                    _process: not_implemented
+                encapsulation-type:
+                    _process: not_implemented
+                label-allocation-mode:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        fdb:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                mac-aging-time:
+                    _process: not_implemented
+                mac-learning:
+                    _process: not_implemented
+                maximum-entries:
+                    _process: not_implemented
+            mac-table:
+                _process: not_implemented
+                entries:
+                    _process: not_implemented
+                    entry:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            mac-address:
+                                _process: not_implemented
+                            vlan:
+                                _process: not_implemented
+                        interface:
+                            _process: not_implemented
+                            interface-ref:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    interface:
+                                        _process: not_implemented
+                                    subinterface:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                        mac-address:
+                            _process: not_implemented
+                        state:
+                            _process: not_implemented
+            state:
+                _process: not_implemented
+        inter-instance-policies:
+            _process: not_implemented
+            apply-policy:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    default-export-policy:
+                        _process: not_implemented
+                    default-import-policy:
+                        _process: not_implemented
+                    export-policy:
+                        _process: not_implemented
+                    import-policy:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+        interfaces:
+            _process: not_implemented
+            interface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    associated-address-families:
+                        _process: not_implemented
+                    id:
+                        _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+                id:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        mpls: !include includes/mpls.yaml
+        name:
+            _process: unnecessary
+        policy-forwarding:
+            _process: not_implemented
+            interfaces:
+                _process: not_implemented
+                interface:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        apply-forwarding-policy:
+                            _process: not_implemented
+                        interface-id:
+                            _process: not_implemented
+                    interface-id:
+                        _process: not_implemented
+                    interface-ref:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            interface:
+                                _process: not_implemented
+                            subinterface:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                    state:
+                        _process: not_implemented
+            path-selection-groups:
+                _process: not_implemented
+                path-selection-group:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        group-id:
+                            _process: not_implemented
+                        mpls-lsp:
+                            _process: not_implemented
+                    group-id:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            policies:
+                _process: not_implemented
+                policy:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        policy-id:
+                            _process: not_implemented
+                    policy-id:
+                        _process: not_implemented
+                    rules:
+                        _process: not_implemented
+                        rule:
+                            _process: not_implemented
+                            action:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    decapsulate-gre:
+                                        _process: not_implemented
+                                    discard:
+                                        _process: not_implemented
+                                    network-instance:
+                                        _process: not_implemented
+                                    next-hop:
+                                        _process: not_implemented
+                                    path-selection-group:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                sequence-id:
+                                    _process: not_implemented
+                            ip:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    destination-ip-address:
+                                        _process: not_implemented
+                                    destination-ip-flow-label:
+                                        _process: not_implemented
+                                    dscp:
+                                        _process: not_implemented
+                                    hop-limit:
+                                        _process: not_implemented
+                                    ip-version:
+                                        _process: not_implemented
+                                    protocol:
+                                        _process: not_implemented
+                                    source-ip-address:
+                                        _process: not_implemented
+                                    source-ip-flow-label:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            l2:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    destination-mac:
+                                        _process: not_implemented
+                                    destination-mac-mask:
+                                        _process: not_implemented
+                                    ethertype:
+                                        _process: not_implemented
+                                    source-mac:
+                                        _process: not_implemented
+                                    source-mac-mask:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            sequence-id:
+                                _process: not_implemented
+                            state:
+                                _process: not_implemented
+                            transport:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    destination-port:
+                                        _process: not_implemented
+                                    source-port:
+                                        _process: not_implemented
+                                    tcp-flags:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                    state:
+                        _process: not_implemented
+        protocols:
+            _process: unnecessary
+            protocol:
+                _process:
+                  - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n"
+                    negate: "no router bgp {{ model.bgp.global_.config.as_ }}\n"
+                    end: "    exit\n"
+                    when: "{{ protocol_key == 'bgp bgp' and network_instance_key == 'global' }}"
+                    in: "network-instances"
+                  - key_value: "router bgp {{ model.bgp.global_.config.as_ }}\n  vrf {{ network_instance_key}}\n"
+                    negate: "router bgp {{ model.bgp.global_.config.as_ }}\n  no vrf {{ network_instance_key}}\n"
+                    end: "    exit\n"
+                    when: "{{ protocol_key == 'bgp bgp' and network_instance_key != 'global' }}"
+                    replace: false
+                    in: "network-instances"
+                bgp: !include includes/bgp.yaml
+                config:
+                    _process: not_implemented
+                    default-metric:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    identifier:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                identifier:
+                    _process: unnecessary
+                isis: !include includes/isis.yaml
+                local-aggregates:
+                    _process: not_implemented
+                    aggregate:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            discard:
+                                _process: not_implemented
+                            prefix:
+                                _process: not_implemented
+                            set-tag:
+                                _process: not_implemented
+                        prefix:
+                            _process: not_implemented
+                        state:
+                            _process: not_implemented
+                name:
+                    _process: unnecessary 
+                ospfv2: !include includes/ospfv2.yaml
+                state:
+                    _process: not_implemented
+                static-routes: !include includes/static_routes.yaml
+        segment-routing: !include includes/segment_routing.yaml
+        state:
+            _process: not_implemented
+        table-connections:
+            _process: not_implemented
+            table-connection:
+                _process: not_implemented
+                address-family:
+                    _process: not_implemented
+                config:
+                    _process: not_implemented
+                    address-family:
+                        _process: not_implemented
+                    default-import-policy:
+                        _process: not_implemented
+                    dst-protocol:
+                        _process: not_implemented
+                    import-policy:
+                        _process: not_implemented
+                    src-protocol:
+                        _process: not_implemented
+                dst-protocol:
+                    _process: not_implemented
+                src-protocol:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        tables:
+            _process: not_implemented
+            table:
+                _process: not_implemented
+                address-family:
+                    _process: not_implemented
+                config:
+                    _process: not_implemented
+                    address-family:
+                        _process: not_implemented
+                    protocol:
+                        _process: not_implemented
+                protocol:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        vlans:
+            _process: not_implemented
+            vlan:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    status:
+                        _process: not_implemented
+                    tpid:
+                        _process: not_implemented
+                    vlan-id:
+                        _process: not_implemented
+                members:
+                    _process: not_implemented
+                    member:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+                vlan-id:
+                    _process: not_implemented

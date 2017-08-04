@@ -34,7 +34,7 @@ Example:
   Create the ``interfaces`` container::
 
     _process:
-        mode: container
+      . mode: container
         container: interfaces
         replace: true
 
@@ -57,7 +57,7 @@ Example:
 
     interface:
         _process:
-            mode: container
+          . mode: container
             container: interface
             key_element: name
             key_value: "{{ interface_key }}"

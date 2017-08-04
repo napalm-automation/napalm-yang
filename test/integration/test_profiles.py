@@ -1,28 +1,28 @@
 from __future__ import unicode_literals
 
+#  from napalm_base import get_network_driver
+
 import napalm_yang
+from napalm_base.mock import MockDriver
 
 import pytest
 
 import json
 
 import os
-import sys
 
 
-import logging
-logger = logging.getLogger("napalm-yang")
+#  napalm_yang.helpers.config_logging()
 
 
-def config_logging():
-    logger.setLevel(logging.DEBUG)
-    ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-
-
-#  config_logging()
+device_configuration = {
+    "junos": {
+        'hostname': '127.0.0.1',
+        'username': 'vagrant',
+        'password': '',
+        'optional_args': {'port': 12203, 'config_lock': False}
+    }
+}
 
 
 def pretty_json(dictionary):
@@ -32,66 +32,94 @@ def pretty_json(dictionary):
 BASE_PATH = os.path.dirname(__file__)
 
 
-test_config_profile_models = [
-    ["ios", napalm_yang.models.openconfig_interfaces, "default"],
+test_parse_models = [
+    ["ios", "config", napalm_yang.models.openconfig_interfaces, "default"],
+    ["eos", "config", napalm_yang.models.openconfig_network_instance, "default"],
+    ["eos", "config", napalm_yang.models.openconfig_interfaces, "default"],
+    ["eos", "config", napalm_yang.models.openconfig_interfaces, "l2_ports"],
+    ["eos", "config", napalm_yang.models.openconfig_vlan, "default"],
+    ["eos", "state", napalm_yang.models.openconfig_interfaces, "default"],
+    ["junos", "config", napalm_yang.models.openconfig_network_instance, "default"],
+    ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 
-test_state_profile_models = [
-    ["junos", napalm_yang.models.openconfig_interfaces, "default"],
-]
 
-
-def read_file_content(profile, model, case, filename):
-    full_path = os.path.join(BASE_PATH, "profiles_data",
-                             profile, model._yang_name, case, filename)
+def read_file_content(base, profile, model, mode, case, filename):
+    full_path = os.path.join(BASE_PATH, base,
+                             profile, model._yang_name, mode, case, filename)
     with open(full_path, "r") as f:
         return f.read()
 
 
-def read_json(profile, model, case, filename):
-    return json.loads(read_file_content(profile, model, case, filename))
+def read_json(base, profile, model, mode, case, filename):
+    return json.loads(read_file_content(base, profile, model, mode, case, filename))
+
+
+def load_json_model(base, profile, model, mode, case, filename):
+    expected_json = read_json(base, profile, model, mode, case, "expected.json")
+    expected = napalm_yang.base.Root()
+    expected.add_model(model)
+    expected.load_dict(expected_json)
+    return expected
 
 
 class Tests(object):
 
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_parse_config(self, profile, model, case):
-        config_txt = read_file_content(profile, model, case, "config.txt")
-        expected_json = read_json(profile, model, case, "expected.json")
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_parse(self, profile, mode, model, case):
+        expected = load_json_model("test_profiles", profile, model, mode, case, "expected.json")
 
-        config = napalm_yang.base.Root()
-        config.add_model(model)
-        config.parse_config(native=[config_txt], profile=[profile])
+        optional_args = {
+            "path": os.path.join(BASE_PATH, "test_profiles",
+                                 profile, model._yang_name, mode, case, "mocked"),
+            "profile": profile if isinstance(profile, list) else [profile],
+        }
+        with MockDriver("hostname", "username", "password", optional_args=optional_args) as d:
+            yang = napalm_yang.base.Root()
+            yang.add_model(model)
 
-        expected = napalm_yang.base.Root()
-        expected.add_model(model)
-        expected.load_dict(expected_json)
+            if mode == "config":
+                yang.parse_config(device=d)
+            else:
+                yang.parse_state(device=d)
 
-        #  print(pretty_json(config.get(filter=True)))
+        #  print(pretty_json(yang.get(filter=True)))
+        #  print(pretty_json(expected.get(filter=True)))
+        assert not napalm_yang.utils.diff(yang, expected)
 
-        assert not napalm_yang.utils.diff(config, expected)
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_translate(self, profile, mode, model, case):
+        if mode == "state":
+            return
 
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_translate(self, profile, model, case):
-        json_blob = read_json(profile, model, case, "expected.json")
-        expected_translation = read_file_content(profile, model, case, "translation.txt")
+        json_blob = read_json("test_profiles", profile, model, mode, case, "expected.json")
+        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
+                                                 "translation.txt")
 
         config = napalm_yang.base.Root()
         config.add_model(model)
         config.load_dict(json_blob)
 
         configuration = config.translate_config(profile=[profile])
-        #  print(configuration)
+
+        #  driver = get_network_driver(profile)
+        #  with driver(**device_configuration[profile]) as d:
+        #     d.load_merge_candidate(config=configuration)
+        #     print(d.compare_config())
 
         assert configuration == expected_translation
 
     @pytest.mark.parametrize("action", ["merge", "replace"])
-    @pytest.mark.parametrize("profile, model, case", test_config_profile_models)
-    def test_translate_merge(self, action, profile, model, case):
-        json_running = read_json(profile, model, case, "expected.json")
-        json_candidate = read_json(profile, model, case, "candidate.json")
+    @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
+    def test_translate_merge(self, mode, action, profile, model, case):
+        if mode == "state":
+            return
 
-        expected_translation = read_file_content(profile, model, case, "{}.txt".format(action))
+        json_running = read_json("test_profiles", profile, model, mode, case, "expected.json")
+        json_candidate = read_json("test_profiles", profile, model, mode, case, "candidate.json")
+
+        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
+                                                 "{}.txt".format(action))
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(model)
@@ -109,19 +137,10 @@ class Tests(object):
         #  print(pretty_json(napalm_yang.utils.diff(candidate, running)))
         #  print(configuration)
 
+        #  driver = get_network_driver(profile)
+        #  with driver(**device_configuration[profile]) as d:
+            #  d.load_merge_candidate(config=configuration)
+            #  print(d.compare_config())
+            #  d.discard_config()
+
         assert configuration == expected_translation
-
-    @pytest.mark.parametrize("profile, model, case", test_state_profile_models)
-    def test_parse_state(self, profile, model, case):
-        native = read_file_content(profile, model, case, "{}.native".format(model._yang_name))
-        expected_json = read_json(profile, model, case, "{}.expected".format(model._yang_name))
-
-        state = napalm_yang.base.Root()
-        state.add_model(model)
-        state.parse_state(native=[native], profile=[profile])
-
-        expected = napalm_yang.base.Root()
-        expected.add_model(model)
-        expected.load_dict(expected_json)
-
-        assert not napalm_yang.utils.diff(state, expected)

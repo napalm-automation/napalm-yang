@@ -33,22 +33,20 @@ def process(model, r_config, r_state):
             r_state[model._yang_name] = {"_process": "not_implemented"}
         return
 
-    for k, v in ctr:
-        if model._yang_name == "config":
-            rr_config = r_config[model._yang_name]
-            rr_config["_process"] = "not_implemented"
-            rr_state = r_state
-        elif v._is_config:
-            rr_config = r_config[model._yang_name]
-            rr_config["_process"] = "not_implemented"
-            rr_state = r_state[model._yang_name]
-            rr_state["_process"] = "not_implemented"
-        else:
-            rr_config = r_config
-            rr_state = r_state[model._yang_name]
-            rr_state["_process"] = "not_implemented"
+    if model._yang_name == "config":
+        r_config = r_config[ctr._yang_name]
+        r_config["_process"] = "not_implemented"
+    elif model._is_config:
+        r_config = r_config[ctr._yang_name]
+        r_config["_process"] = "not_implemented"
+        r_state = r_state[ctr._yang_name]
+        r_state["_process"] = "not_implemented"
+    else:
+        r_state = r_state[ctr._yang_name]
+        r_state["_process"] = "not_implemented"
 
-        process_module(v, model._defining_module, rr_config, rr_state)
+    for k, v in ctr:
+        process_module(v, model._defining_module, r_config, r_state)
 
 
 def process_module(model, module, r_config=None, r_state=None):

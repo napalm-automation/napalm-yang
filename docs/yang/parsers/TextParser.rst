@@ -30,14 +30,21 @@ Arguments:
  * **regexp** (mandatory) - Regular expression to apply. Note that it must capture two things at least;
    ``block``, which will be the entire block of configuration relevant for the interface and
    ``key``, which will be the key of the element.
-
+ * **mandatory** (optional) will force the creation of one or more elements by specifying them manually
+   in a dict the ``key``, ``block`` (can be empty string) and any potential ``extra_vars`` you may want to specify.
+ * **composite_key** (optional) is a list of attributes captured in the regexp to be used as the key for the element.
+ * **flat** (optional) if set to ``true`` (default is ``false``) the parser will understand the configuration for the
+   element consists of flat commands instead of nested (for example BGP neighbors or static routes)
+ * **key** (optional) set key manually
+ * **post_process_filter** (optional) - Modify the key with this Jinja expression. ``key`` and ``extra_vars``
+   variables are available.
 
 Example 1
 
   Capture the interfaces::
 
     _process:
-        mode: block
+      - mode: block
         regexp: "(?P<block>interface (?P<key>(\\w|-)*\\d+)\n(?:.|\n)*?^!$)"
         from: "{{ bookmarks.interfaces }}"
 
@@ -66,21 +73,93 @@ Example 2
 
     subinterface:
         _process:
-            mode: block
+          - mode: block
             regexp: "(?P<block>interface {{interface_key}}\\.(?P<key>\\d+)\\n(?:.|\\n)*?^!$)"
             from: "{{ bookmarks.interfaces }}"
 
 
-Example 3.
+Example 3
 
   Sometimes we can get easily more information in one go than just the ``key`` and the ``block``. For
   those cases we can capture more groups and they will be stored in the ``extra_vars`` dictionary::
 
         address:
             _process:
-                mode: block
+              - mode: block
                 regexp: "(?P<block>ip address (?P<key>(?P<ip>.*))\\/(?P<prefix>\\d+))(?P<secondary> secondary)*"
                 from: "{{ bookmarks['parent'] }}"
+
+Example 4
+
+  In some cases native configuration might be "flat" but nested in a YANG model. This is the case of the `global`
+  or `default` VRF, in those cases, it is hard you may want to ensure that `global` VRF is always created::
+
+        _process:
+          - mode: block
+            regexp: "(?P<block>vrf definition (?P<key>(.*))\n(?:.|\n)*?^!$)"
+            from: "{{ bookmarks['network-instances'][0] }}"
+            mandatory:
+                - key: "global"
+                  block: ""
+                  extra_vars: {}
+
+Example 5
+
+  Some list elements have composite keys, if that's the case, use the composite key to tell the parser how to map
+  captured elements to the composite key::
+
+        protocols:
+            _process: unnecessary
+            protocol:
+                _process:
+                    - mode: block
+                      regexp: "(?P<block>router (?P<protocol_name>(bgp))\\s*(?P<process_id>\\d+)*\n(?:.|\n)*?)^(!|   vrf \\w+)$"
+                      from: "{{ bookmarks['network-instances'][0] }}"
+                      composite_key: [protocol_name, protocol_name]
+                      when: "{{ network_instance_key == 'global' }}"
+
+Example 6
+
+  Some list elements (like static routes or BGP neighbors) are configured as a flat list of commands instead of
+  nested. By default, if you would try to parse each command individually the parser would try to create
+  a new element with each line and fail as multiple lines belong to the same element but they are treated independently.
+  By setting ``flat: true`` this behavior is changed and subsequent commands will update an already created object::
+
+    bgp:
+        neighbors:
+            neighbor:
+                _process:
+                    - mode: block
+                      regexp: "(?P<block>neighbor (?P<key>\\d+.\\d+.\\d+.\\d+).*)"
+                      from: "{{ bookmarks['protocol'][protocol_key] }}"
+                      flat: true
+
+Example 7
+
+  In some rare cases you might not be able to extract the key directly from the configuration. For example,
+  the ``static`` protocol consists of ``ip route`` commands. In that case you can set the key yourself::
+
+    protocols:
+        protocol:
+            _process:
+                - mode: block
+                  regexp: "(?P<block>ip route .*\n(?:.|\n)*?^!$)"
+                  from: "{{ bookmarks['network-instances'][0] }}"
+                  key: "static static"
+
+Example 8
+
+  Sometimes you need to transform the key value. For example, static routes require the prefix in CIDR format,
+  but Cisco IOS outputs routes in ``<network> <mask>`` format. In that case you can use ``post_process_filter`` to
+  apply additional filters::
+
+    static:
+        _process:
+            - mode: block
+               regexp: "(?P<block>ip route (?P<key>\\d+\\S+ \\d+\\S+).*)"
+               from: "{{ bookmarks['network-instances'][0] }}"
+               post_process_filter: "{{ key|addrmask_to_cidr }}"
+
 
 Leaf - search
 -------------
@@ -99,7 +178,7 @@ Example.
 
     description:
         _process:
-            mode: search
+          - mode: search
             regexp: "description (?P<value>.*)"
             from: "{{ bookmarks.interface[interface_key] }}"
 
@@ -118,7 +197,7 @@ Example.
 
     secondary:
         _process:
-            mode: value
+          - mode: value
             value: "{{ extra_vars.secondary != None }}"
 
 Leaf - is_absent
@@ -136,7 +215,7 @@ Example.
             _process: unnecessary
             enabled:
                 _process:
-                    mode: is_absent
+                  - mode: is_absent
                     regexp: "(?P<value>^\\W*switchport$)"
                     from: "{{ bookmarks['parent'] }}"
 
@@ -151,7 +230,7 @@ Example.
 
     enabled:
         _process:
-            mode: is_present
+          - mode: is_present
             regexp: "(?P<value>no shutdown)"
             from: "{{ bookmarks.interface[interface_key] }}"
 
@@ -172,7 +251,7 @@ Example.
   Check type of interface by extracting the name and doing a lookup::
 
     _process:
-        mode: map
+      - mode: map
         regexp: "(?P<value>(\\w|-)*)\\d+"
         from: "{{ interface_key }}"
         map:
@@ -181,4 +260,3 @@ Example.
             Loopback: softwareLoopback
             Port-Channel: ieee8023adLag
             Vlan: l3ipvlan
-

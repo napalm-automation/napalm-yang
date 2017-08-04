@@ -1,0 +1,15 @@
+interface Ethernet2
+    ip address 192.168.1.1/24 secondary
+    exit
+interface Ethernet2.1
+    ip address 172.20.1.1/24 secondary
+    default ip address 172.20.0.1/24 secondary
+    exit
+interface Ethernet1
+    description Changed description
+    exit
+interface Loopback0
+    description a loopback
+    mtu 1500
+    exit
+no interface Loopback1

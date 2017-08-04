@@ -1,0 +1,15 @@
+no vlan 1
+vlan 1
+    state active
+    name default
+    exit
+no vlan 31
+vlan 31
+    state suspend
+    name devel
+    exit
+no vlan 20
+vlan 20
+    name prod
+    exit
+no vlan 30

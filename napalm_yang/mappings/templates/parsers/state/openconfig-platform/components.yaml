@@ -1,0 +1,72 @@
+---
+metadata:
+    parser:
+    execute:
+        - method:
+          args: []
+          kwargs:
+              commands: [ ]
+
+components:
+    _parse: unnecessary
+    component:
+        _parse: not_implemented
+        name:
+            _parse: not_implemented
+        config:
+            _parse: unnecessary
+        state:
+            _parse: not_implemented
+            name:
+                _parse: not_implemented
+            type:
+                _parse: not_implemented
+            id:
+                _parse: not_implemented
+            description:
+                _parse: not_implemented
+            mfg-name:
+                _parse: not_implemented
+            version:
+                _parse: not_implemented
+            serial-no:
+                _parse: not_implemented
+            part-no:
+                _parse: not_implemented
+            temperature:
+                _parse: not_implemented
+                instant:
+                    _parse: not_implemented
+                avg:
+                    _parse: not_implemented
+                min:
+                    _parse: not_implemented
+                max:
+                    _parse: not_implemented
+        properties:
+            _parse: not_implemented
+            property:
+                _parse: not_implemented
+                name:
+                    _parse: not_implemented
+                config:
+                    _parse: unnecessary
+                state:
+                    _parse: not_implemented
+                    name:
+                        _parse: not_implemented
+                    value:
+                        _parse: not_implemented
+                    configurable:
+                        _parse: not_implemented
+        subcomponents:
+            _parse: not_implemented
+            subcomponent:
+                _parse: not_implemented
+                name:
+                    _parse: not_implemented
+                config:
+                    _parse: unnecessary
+                state:
+                    _parse: not_implemented
+                    name: not_implemented

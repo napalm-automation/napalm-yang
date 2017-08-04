@@ -1,0 +1,62 @@
+---
+_process:
+    - mode: gate
+      when: "{{ protocol_key != 'static static' }}"
+static:
+    _process:
+      - prefix: "ip route {{ static_key }}"
+        negate: "no ip route {{ static_key }}\n"
+        negate_prefix: "no ip route {{ static_key }}"
+        when: "{{ network_instance_key == 'global' }}"
+        in: "network-instances"
+      - prefix: "ip route vrf {{ network_instance_key }} {{ static_key }}"
+        negate: "no ip route vrf {{ network_instance_key }} {{ static_key }}\n"
+        negate_prefix: "no ip route vrf {{ network_instance_key }} {{ static_key }}"
+        when: "{{ network_instance_key != 'global' }}"
+        in: "network-instances"
+    config:
+        _process: unnecessary
+        prefix:
+            _process: unnecessary
+        set-tag:
+            _process: not_implemented
+    next-hops:
+        _process: unnecessary
+        next-hop:
+            _process:
+              - mode: gate
+                when: "{{ replacing and negating }}"
+              - key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
+                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
+                end: "\n"
+            config:
+                _process: unnecessary
+                index:
+                    _process: not_implemented
+                metric:
+                    _process:
+                      - value: " {{ model }}"
+                        negate: " 1"
+                next-hop:
+                    _process: unnecessary
+                recurse:
+                    _process: not_implemented
+            index:
+                _process: not_implemented
+            interface-ref:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+    prefix:
+        _process: not_implemented
+    state:
+        _process: not_implemented
+
