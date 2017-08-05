@@ -56,8 +56,8 @@ def save_text(text, filename):
 if __name__ == "__main__":
     examples = get_examples()
     text = render('_dynamic/examples_list.j2', examples=examples)
-    save_text(text, "yang/parsers/examples_list.rst")
+    save_text(text, "developers/parsers/examples_list.rst")
 
     directives = get_directives()
     text = render('_dynamic/parsers.j2', directives=directives)
-    save_text(text, "yang/parsers/dynamic_directives.rst")
+    save_text(text, "developers/parsers/dynamic_directives.rst")
