@@ -11,6 +11,7 @@ Documentation
 
 
    root/quickstart
+   root/yang_basics
    root/supported_models/index
    root/api
    developers/index

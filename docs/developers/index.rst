@@ -4,7 +4,6 @@ Developers Guide
 .. toctree::
    :maxdepth: 1
 
-   yang_basics.rst
    profiles
    profiles/index
    writing_profiles

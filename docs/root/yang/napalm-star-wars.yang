@@ -1,0 +1,49 @@
+module napalm-star-wars {
+
+    yang-version "1";
+    namespace "https://napalm-yang.readthedocs.io/napalm-star-wars";
+
+    prefix "napalm-star-wars";
+
+
+    identity AFFILIATION {
+      description "To which group someone belongs to";
+    }
+
+    identity EMPIRE {
+      base AFFILIATION;
+      description "Affiliated to the empire";
+    }
+
+    identity REBEL_ALLIANCE {
+      base AFFILIATION;
+      description "Affiliated to the rebel alliance";
+    }
+
+    typedef age {
+      type uint16 {
+        range 1..2000;
+      }
+    }
+
+    grouping personal-data {
+        leaf name {
+            type string;
+        }
+        leaf age {
+            type age;
+        }
+        leaf affiliation {
+            type identityref {
+                base napalm-star-wars:AFFILIATION;
+            }
+        }
+    }
+
+    container universe {
+        list individual {
+            key "name";
+            uses personal-data;
+        }
+    }
+}
