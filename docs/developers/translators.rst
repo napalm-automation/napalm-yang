@@ -61,7 +61,7 @@ mode
 
 * **mandatory**: yes
 * **description**: which parsing/translation action to use for this particular field
-* **example**: Translate description attribute of an interface to native configuration::
+* **example**: translate description attribute of an interface to native configuration::
 
     description:
         _process:
@@ -129,8 +129,8 @@ continue_negating
 -----------------
 
 * **mandatory**: no
-* **description**: This option, when added to a container, will make the framework to also negate children.
-* **example**: We can use as an example the "network-instances" model. In the model, BGP is inside the ``network-instance`` container, however, in EOS and other platforms that BGP configuration is decoupled from the VRF, so in order to tell the framework to delete also the direct children you will have to use this option. For example::
+* **description**: this option, when added to a container, will make the framework to also negate children.
+* **example**: we can use as an example the "network-instances" model. In the model, BGP is inside the ``network-instance`` container, however, in EOS and other platforms that BGP configuration is decoupled from the VRF, so in order to tell the framework to delete also the direct children you will have to use this option. For example::
 
     network-instance:
         _process:

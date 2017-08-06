@@ -1,7 +1,7 @@
 XMLTranslator
 =============
 
-XMLTranslator is responsible of translating a model into XML configuration.
+XMLTranslator is responsible for translating a model into XML configuration.
 
 Metadata
 --------
@@ -24,10 +24,10 @@ Creates a container.
 
 Arguments:
 
- * **container** (mandatory) - Which container to create
- * **replace** (optional) - Whether this element has to be replaced in case of merge/replace or
-   it's not necessary (remember XML is hierarchical which means you can unset things directly in
-   the root).
+ * **container** (mandatory) - Container name.
+ * **replace** (optional) - True/Flase, depending Whether this element has to be replaced in case
+   of merge/replace or it's not necessary 
+   (remember XML is hierarchical, which means you can unset things directly in the root).
 
 Example:
 
@@ -46,7 +46,7 @@ For each element of the list, create a container.
 Arguments:
 
 
- * **container** (mandatory) - Which container to create
+ * **container** (mandatory) - Name of container to create.
  * **key_element** (mandatory) - Lists require a key element, this is the name of the element.
  * **key_value** (mandatory) - Key element value.
 

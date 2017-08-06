@@ -1,14 +1,15 @@
 YANG Basics
 -----------
 
-It's not really necessary to fully understand how YANG works to write a profile but you need some basic
-understanding.
+This guide is indended for developers. It's not necessary to fully understand how YANG works
+ to write a profile, but you need some basic understanding. YANG has basic stuctural elements
+ that are explained below.
 
 Basic Types
 ___________
 
-* **container** - A container is just a placeholder, sort of like a map or dictionary. A container
-  doesn't store any information per se, instead, it contains attributes of any type. For example,
+* **container** - A container is just a placeholder, like a map or dictionary. A container
+  doesn't store any information per se, instead, it contains attributes. For example,
   the following ``config`` object would be a valid container with three attributes of various types::
 
     container config:
@@ -16,8 +17,8 @@ ___________
         leaf mtu: uint16
         leaf enabled: boolean
 
-* **leaf** - A leaf is an attribute that stores information. Leafs are of a type and values have to
-  be valid for the given type. For example::
+* **leaf** - A leaf is an attribute that stores information. Leafs are defined by a name and a type.
+ When you use a leaf, the data must be valid for that defined type. For example::
 
     leaf descrpition: string # Any string is valid
     leaf mtu: uint16         # -1 is not valid but 1500 is
