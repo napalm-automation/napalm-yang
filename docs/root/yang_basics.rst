@@ -243,7 +243,7 @@ Turns out our model only accounts for rebels and members of the empire. It's alr
 Star Wars Extended Universe
 ---------------------------
 
-So our framework has been a success, so much that people has started adding mods to it. One of those mods adds support for individuals working as mercenaries and it also adds an extra piece of information into the persona data of each individual to indicate if the individual is in active duty or retired.
+So our framework has been a success, so much that people has started adding mods to it. One of those mods adds support for individuals working as mercenaries and it also adds an extra piece of information into the personal data of each individual to indicate if the individual is in active duty or retired.
 
 YANG is quite powerful when it comes to extending existing models; you don't really need to fork the project, change the schema or do anything crazy. You just import the old model and add new stuff. So let's see how the extension to our existing model would look like::
 
@@ -359,3 +359,5 @@ And use it::
             }
         }
     }
+
+.. _RFC6020: https://tools.ietf.org/html/rfc6020
