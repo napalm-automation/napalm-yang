@@ -1,10 +1,9 @@
 YANG Basics
 ###########
 
-It's not really necessary to fully understand how YANG works to work with ``napalm-yang`` but some knowing
-the language used by YANG can be beneficial to better understand the documentation and what's going on.
+It's not really necessary to fully understand how YANG works to work with ``napalm-yang`` but understanding the language used by YANG can be beneficial to better understand the documentation and the benefits of it.
 
-If you want know more or get some clarifications I recommend you reading `RFC6020`_.
+If you want know more or get some clarifications I recommend you to read `RFC6020`_.
 
 Terminology
 ===========
