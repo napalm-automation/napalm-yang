@@ -39,9 +39,10 @@ class BaseParser(object):
                     if isinstance(r, list):
                         for rr in r:
                             rr[p[1:]] = k
-                            for kk, vv in v.items():
-                                if kk != path_split[i+1]:
-                                    rr[kk] = vv
+                            if isinstance(v, dict):
+                                for kk, vv in v.items():
+                                    if kk != path_split[i+1]:
+                                        rr[kk] = vv
                             result.append(rr)
                     else:
                         r[p[1:]] = k

@@ -12,7 +12,8 @@ interfaces:
     interface:
         _process:
             - from: root_interfaces.0
-              path: interface
+              path: Cisco-IOS-XE-native:interface.?type
+              key: "{{ type }}{{ name }}"
               regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
         config:
             _process: unnecessary

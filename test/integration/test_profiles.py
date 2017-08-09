@@ -84,7 +84,7 @@ class Tests(object):
             else:
                 yang.parse_state(device=d)
 
-        #  print(pretty_json(yang.get(filter=True)))
+        print(pretty_json(yang.get(filter=True)))
         #  print(pretty_json(expected.get(filter=True)))
         assert not napalm_yang.utils.diff(yang, expected)
 
