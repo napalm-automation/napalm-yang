@@ -1,0 +1,69 @@
+---
+metadata:
+    processor: JSONParser
+    execute:
+        - method: _rpc
+          kwargs:
+            get: config/native/interface?deep
+
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - from: root_interfaces.0
+              path: Cisco-IOS-XE-native:interface.?type
+              key: "{{ type }}{{ name }}"
+              regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
+        config:
+            _process: unnecessary
+            description:
+                _process:
+                    - from: parent
+                      path: description
+            enabled:
+                _process:
+                    - from: parent
+                      present: no
+                      path: shutdown
+            mtu:
+                _process: unnecessary
+            name:
+                _process: unnecessary
+            type:
+                _process: unnecessary
+        hold-time:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        name:
+            _process:
+                - from: interface
+                  path: '?name'
+                  key: "{{ name }}"
+                  regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
+        state:
+            _process: not_implemented
+        subinterfaces:
+            _process: not_implemented
+            subinterface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                index:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
