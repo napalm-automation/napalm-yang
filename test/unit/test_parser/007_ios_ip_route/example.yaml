@@ -98,7 +98,7 @@ data:
           value: 2.2.2.0/24
       bookmarks:
         parent:
-          '#text': FastEthernet0/2
+          '#text': FastEthernet0/2 100
           FastEthernet0/2:
             '#standalone': true
           mask: 255.255.255.0
@@ -122,38 +122,46 @@ data:
           mask: 255.255.255.0
           prefix: 3.3.3.0
 rule:
-    - path: "?interface_ref.?next_hop_addr"
-      regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?)\\s(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))$"
-      key: "{{ interface_ref }} {{ next_hop_addr|normalize_address }}"
-    - path: "?interface_ref"
-      regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?))$"
-      key: "{{ interface_ref }}"
-    - path: "?next_hop_addr"
-      regexp: "^(?P<value>(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))$"
-      key: "{{ next_hop_addr|normalize_address }}"
+    - path: ""
+      regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?)?\\s*(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)?))( (?P<metric>\\d+))?$"
+      key: "#text"
 
 expected:
     - - key: FastEthernet0/1 10.1.1.1
         block:
-          '#standalone': true
-          interface_ref: FastEthernet0/1
-          next_hop_addr: 10.1.1.1
+            '#text': FastEthernet0/1 10.1.1.1
+            FastEthernet0/1:
+              '#text': 10.1.1.1
+              10.1.1.1:
+                '#standalone': true
+            mask: 255.255.255.0
+            prefix: 1.1.1.0
         extra_vars:
-          interface_ref: FastEthernet0/1
-          next_hop_addr: 10.1.1.1
-          value: FastEthernet0/1 10.1.1.1
+            interface_ref: FastEthernet0/1
+            next_hop_addr: 10.1.1.1
+            value: FastEthernet0/1 10.1.1.1
+            metric: null
     - - key: FastEthernet0/2
         block:
-          '#standalone': true
-          interface_ref: FastEthernet0/2
+            '#text': FastEthernet0/2 100
+            FastEthernet0/2:
+              '#standalone': true
+            mask: 255.255.255.0
+            prefix: 2.2.2.0
         extra_vars:
-          interface_ref: FastEthernet0/2
-          value: FastEthernet0/2
+            interface_ref: FastEthernet0/2
+            next_hop_addr: ''
+            value: FastEthernet0/2
+            metric: '100'
     - - key: 10.1.1.3
         block:
-          '#standalone': true
-          interface_ref: 10.1.1.3
-          next_hop_addr: 10.1.1.3
+            '#text': 10.1.1.3
+            10.1.1.3:
+              '#standalone': true
+            mask: 255.255.255.0
+            prefix: 3.3.3.0
         extra_vars:
-          next_hop_addr: 10.1.1.3
-          value: 10.1.1.3
+            interface_ref: null
+            next_hop_addr: 10.1.1.3
+            value: 10.1.1.3
+            metric: null
