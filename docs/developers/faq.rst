@@ -1,7 +1,7 @@
 FAQ
 ===
 
-Some YAML files are insanely largely. Can I break them down into multiple files?
+Some YAML files are insanely large. Can I break them down into multiple files?
 ________________________________________________________________________________
 
     Yes, you can with the ``!include relative/path/to/file.yaml`` directive. For example::

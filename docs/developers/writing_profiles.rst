@@ -1,9 +1,9 @@
 Writing Profiles
 ================
 
-As it's been already mentioned, a profile is a bunch of YAML files that describe how to map native
+As it's been already mentioned, a profile consists of a bunch of YAML files that describe how to map native
 configuration and how to translate an object into native configuration. In order to read native
-configuration we will use **parsers**, to translate a YANG model into native configuration we will
+configuration we will use **parsers**. To translate a YANG model into native configuration we will
 use **translators**.
 
 Both parsers and translators follow three basic rules:
@@ -41,9 +41,9 @@ For example::
 
 If we check the content of the file ``vlan.yaml`` we can clearly see two parts:
 
-* **metadata** - This part specifies what parser or translator we want to use as there are several
-  depending on the type of data we are parsing from or translating to and some options that the
-  parser/translator might need. For example::
+* **metadata** - This part specifies what parser or translator we want to use. There are several
+  options available depending on the type of data we are parsing from or translating to.
+  Additionally, we need to provide some options that the parser/translator might need. For example::
 
     metadata:
         processor: XMLParser
@@ -53,7 +53,7 @@ If we check the content of the file ``vlan.yaml`` we can clearly see two parts:
               kwargs:
                   get: "<get-configuration/>"
 
-In this case we are using the ``XMLParser`` parser and in order to get the data we need from the
+In this case we are using the ``XMLParser`` parser. In order to get the data we need from the
 device we have to call the method ``_rpc`` with the ``args`` and ``kwargs`` parameters. This is, 
 by the way, an RPC call for a junos device.
 
