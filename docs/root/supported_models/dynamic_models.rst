@@ -1,9 +1,11 @@
+Below you can find all the YANG models supported and which profiles implements which ones. Note that all the iplementations are not necessarily complete, in the next section you can find links to each individual profile so you can instpect them yourself
+
 .. raw:: html
 
 
     <div><table border="1" class="docutils">
         <tr>
-            <th></th>
+            <th>Model</th>
                         <th class="head">eos</th>
                         <th class="head">junos</th>
                         <th class="head">ios</th>
@@ -67,6 +69,8 @@
 
 Profiles
 ========
+
+Profiles are responsible from mapping native data/configuration to a YANG model and viceversa. Below you can find links to all the profiles so you can inspect what each one does.
 
 .. raw:: html
 

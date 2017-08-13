@@ -1,6 +1,8 @@
 Developers Guide
 ================
 
+WIP. Information here is a bit chaotic, sorry about that.
+
 .. toctree::
    :maxdepth: 1
 
