@@ -24,7 +24,7 @@ When TexTree parses industry standard CLIs it will generate a dictionary similar
               '#standalone': true
             # other data relevant to the interface
 
-This means that to parse the interfaces, we only have to advance to the ``interface``
+This means that to parse the interfaces we only have to advance to the ``interface``
 key and map the keys to the YANG model key and get the block for further processing.
 
 
@@ -72,17 +72,17 @@ ___________
 * ``regexp`` is useful to filter out data that we don't want to process. For example,
   in the example above we are basically filtering subinterfaces as they will be
   processed later. Note that the regular expression has to capture a ``value``.
-* ``path`` is simply telling the parser that the relevant data is inside the
+* ``path`` is simply telling the parser that the data is looking for is inside the
   ``interface`` key.
-* ``from`` specifies where to get the data from. This is the first
-  element processed by the profile, so there is no information that can be inferred yet.
+* ``from`` is just telling the parser where to get the data from. This is the first
+  element processed by the profile so there is no information that can be inferred yet.
 
 
 Result
 ______
 
 Note that ``extra_vars`` will be populated with anything you capture with the regular
-expression. This might be handier when parsing more complex keys like IP addresses
+expression. This might be handier when parsing more complex keys like ip addresses
 which might include the prefix length.
 
 Note as well that we didn't get any subinterface thanks to ``regexp``.
@@ -183,8 +183,8 @@ Example 1
 Parsing subinterfaces in industry standard CLIs (variables)
 -----------------------------------------------------------
 
-We skipped the subinterfaces when we parsed the interfaces. In order to parse
-subinterfaces, we can leverage on the ``interface_key`` to build a dynamic regular
+When we were parsing interfaces we skipped the subinterfaces. In order to pass
+subinterfaces we can leverage on the ``interface_key`` to build a dynamic regular
 expression.
 
 
@@ -228,17 +228,18 @@ ___________
     - path: interface
       regexp: '{{interface_key}}\.(?P<value>\d+)'
 
-Because a `subinterface` is a child of an `interface`, all the keys and extra_vars
-that we have already collected will be available.
-``{{ interface_key }}`` will be used in our regular expression to match only
+Because we are parsing a `subinterface` which is a child
+of an `interface`, all the keys and extra_vars that we previously collected in the current
+interface will be available.
+We will use ``{{ interface_key }}`` in our regular expression to match only
 our current parent interface.
 
 
 Result
 ______
 
-Thanks to the variable used in the regular expression we only capture
-the relevant subinterfaces for the current interface. In the second case it turns out
+Note that thanks to the variable used in the regular expression we are only capturing
+the relevant subinterface for the current interface. In the second case it turns out
 there are no subinterfaces.
 
 
@@ -319,7 +320,7 @@ Example 2
 Parsing IP addresses in EOS (extracting extra information from a key)
 ---------------------------------------------------------------------
 
-IP addresses in EOS contain two pieces of information; the address and its
+IP addresses in EOS contain two pieces of information; the address and it's
 prefix-length. You can use ``regexp`` to select the relevant part
 for the key and any additional information you may need.
 
@@ -344,7 +345,8 @@ ___________
       regexp: (?P<value>(?P<ip>.*))\/(?P<prefix>\d+)
 
 The regular expression is doing two things; use the ``<value>`` to capture
-extract the key and then capture all the useful information. This way have it available for later use in the ``extra_vars`` field.
+which part should be used for the key and then capture as well all the useful
+information so we have it available for later use in the ``extra_vars`` field.
 
 
 Result
@@ -460,7 +462,7 @@ ___________
 
 We specify a ``regexp`` here to make sure we don't parse lines like ``ip address dhcp``.
 
-When path contains ``?identifier`` it actually flattens the key and assigns
+When path contains ``?identifier`` what it actually does is flatten that key and assign
 the value of that key to a new key named ``identifier``. For example, with the nested
 structure and the path we have right now we would get the following::
 
@@ -544,7 +546,7 @@ Example 1
             </tbody>
     </table></div>
 
-Parse BGP neighbors in junos (nested lists)
+Parse BGP neighbors in Junos (nested lists)
 -------------------------------------------
 
 XML often consists of lists of lists of lists which sometimes makes it challenging
@@ -588,9 +590,9 @@ ___________
     - key: neighbor
       path: group.?peer_group:name.neighbor.?neighbor:name
 
-Note that this time the path contains a couple of ``?identifier:field``. This pattern
-is used to flatten lists and assigns the contents of that sublist to the
-parent object. It also assigns the value of ``field`` to a new ``key`` called ``identifier``.
+Note that this time the path contains a couple of ``?identifier:field``. That pattern
+is used to flatten lists and what it does is assign the contents of that sublist to the
+parent object and also assign the value of ``field`` to a new ``key`` called ``identifier``.
 For example, the XML above will be converted to the following structure::
 
     - name:
@@ -743,19 +745,19 @@ concatenated. You can combine this technique with ``when`` to specify how to par
 data under different circumstances (see rules ``#1`` and ``#2``) or just to add more ways of
 parsing data (see rule ``#3``)
 
-We are also dynamically building the ``key`` to follow the format the YANG model requires,
-which in this case is as simple (and weird) as just specifying
+Note also that we are also dynamically building the ``key`` to follow the format that
+the YANG model requires, which in this case is as simple (and weird) as just specifying
 a name for our protocol (which in our case will be the same as the protocool).
 
-It is also worth noting that we are using a regular expression to match only on ``BGP``. We
-do that to avoid processing protocols that are not (yet) supported in this profile.
+It also worth noting that we are using a regular expression to match only on ``BGP``. We
+are doing that to avoid processing protocols that we are not (yet) supporting in this
+profile.
 
 
 Result
 ______
 
-The results below might look intimidating but it's basically the relevant configuration
-for BGP and for the static routes for the current ``network_instance``.
+The results below might look intimidating but it's basically the relevant configuration for BGP and for the static routes for the current ``network_instance``.
 
 
 Example 1
@@ -954,6 +956,224 @@ Example 2
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
     {}</pre></div></div></td>
+            </td>
+        </tr>
+            </tbody>
+    </table></div>
+
+Parsing json interfaces IOS-XE (jsonrpc)
+----------------------------------------
+
+IOS-XE groups interfaces by type.
+
+
+Original data
+_____________
+
+.. code::
+
+    {
+      "Cisco-IOS-XE-native:interface": {
+        "GigabitEthernet": [
+          {
+            "name": "1",
+            "ip": {
+              "address": {
+                "dhcp": {
+                }
+              }
+            },
+            "mop": {
+              "enabled": false
+            },
+            "Cisco-IOS-XE-ethernet:negotiation": {
+              "auto": true
+            }
+          },
+          {
+            "name": "2",
+            "description": "GbE 2",
+            "ip": {
+              "no-address": {
+                "address": false
+              }
+            },
+            "mop": {
+              "enabled": false
+            },
+            "Cisco-IOS-XE-ethernet:negotiation": {
+              "auto": true
+            }
+          },
+          {
+            "name": "2.10",
+            "description": "GbE 2.10",
+            "encapsulation": {
+              "dot1Q": {
+                "vlan-id": 10
+              }
+            },
+            "vrf": {
+              "forwarding": "internal"
+            },
+            "ip": {
+              "address": {
+                "primary": {
+                  "address": "172.16.10.1",
+                  "mask": "255.255.255.0"
+                }
+              }
+            }
+          }
+          ],
+        "Loopback": [
+          {
+            "name": 0,
+            "description": "Loopback Zero",
+            "ip": {
+              "address": {
+                "primary": {
+                  "address": "100.64.0.1",
+                  "mask": "255.255.255.255"
+                }
+              }
+            },
+            "ipv6": {
+              "address": {
+                "prefix-list": [
+                  {
+                    "prefix": "2001:DB8::1/64"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": 1,
+            "description": "Loopback One",
+            "vrf": {
+              "forwarding": "mgmt"
+            },
+            "ip": {
+              "no-address": {
+                "address": false
+              }
+            }
+          }
+        ]
+      }
+    }
+
+
+
+Parser rule
+___________
+
+.. code-block:: yaml
+
+    - from: root_interfaces.0
+      key: '{{ type }}{{ name }}'
+      path: Cisco-IOS-XE-native:interface.?type
+      regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
+
+
+
+Result
+______
+
+
+
+
+Example 1
+^^^^^^^^^^
+
+.. code-block:: yaml
+
+    extra_vars: {}
+    keys: {}
+
+.. raw:: html
+
+    <div><table border="1" class="docutils">
+        <tr>
+            <th class="head">interface_key</th>
+            <th class="head">block</th>
+            <th class="head">extra_vars</th>
+        </tr>
+        <tbody>
+            <tr>
+            <td style="vertical-align: top;">GigabitEthernet1</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    Cisco-IOS-XE-ethernet:negotiation:
+      auto: true
+    ip:
+      address:
+        dhcp: {}
+    mop:
+      enabled: false
+    name: '1'
+    type: GigabitEthernet</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    value: GigabitEthernet1</pre></div></div></td>
+            </td>
+        </tr>
+            <tr>
+            <td style="vertical-align: top;">GigabitEthernet2</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    Cisco-IOS-XE-ethernet:negotiation:
+      auto: true
+    description: GbE 2
+    ip:
+      no-address:
+        address: false
+    mop:
+      enabled: false
+    name: '2'
+    type: GigabitEthernet</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    value: GigabitEthernet2</pre></div></div></td>
+            </td>
+        </tr>
+            <tr>
+            <td style="vertical-align: top;">Loopback0</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    description: Loopback Zero
+    ip:
+      address:
+        primary:
+          address: 100.64.0.1
+          mask: 255.255.255.255
+    ipv6:
+      address:
+        prefix-list:
+        - prefix: 2001:DB8::1/64
+    name: 0
+    type: Loopback</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    value: Loopback0</pre></div></div></td>
+            </td>
+        </tr>
+            <tr>
+            <td style="vertical-align: top;">Loopback1</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    description: Loopback One
+    ip:
+      no-address:
+        address: false
+    name: 1
+    type: Loopback
+    vrf:
+      forwarding: mgmt</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    value: Loopback1</pre></div></div></td>
             </td>
         </tr>
             </tbody>
