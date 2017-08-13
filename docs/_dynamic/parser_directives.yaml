@@ -1,0 +1,61 @@
+---
+- name: when
+  available_on: list, container, leaf
+  description: |
+    If this field is <code class="docutils literal">True</code> the rule will be executed. Otherwise it won't.
+
+- name: from
+  available_on: list, container, leaf
+  description: |
+    Under normal circumstances
+
+- name: path
+  available_on: list, container, leaf
+  description: |
+      Which attributes to advanced. See <a href="examples_list.html">examples_lists</a> for details.
+
+- name: default
+  available_on: list, container, leaf
+  description: |
+    If ``path`` fails to resolve assign this value to the resolved object
+
+- name: key
+  available_on: list
+  description: |
+    Post processing/formatting of the key value
+
+- name: regexp
+  available_on: list, leaf
+  description: |
+    On <b>lists</b> regexp will be applied over the key. Use it to filter results and capture extra data.</br>
+    On <b>leaves</b>, regexp will assign as value the capture group <code class="docutils literal">value</code>
+
+- name: value
+  available_on: leaf
+  description: |
+    Post processing/formatting of the value
+
+- name: map
+  available_on: leaf
+  description: |
+    When a map (dictionary) is provided, the value will be *resolved* using it assigning the
+    new corresponding value.
+
+- name: present
+  available_on: leaf
+  description: |
+    If <code class="docutils literal">present: yes</code> value will be <code class="docutils literal">True</code> if <code class="docutils literal">path</code> resolves properly. If <code class="docutils literal">present: no</code> value
+    will be <code class="docutils literal">True</code> if <code class="docutils literal">path</code> can't find the attribute. In the rest of the cases the value
+    will be <code class="docutils literal">False</code>
+
+- name: gate
+  available_on: leaf, container, leaf
+  description: |
+    If <code class="docutils literal">gate</code> is present with any value we will stop traversing the tree. This is mostly useful in containers
+    as you can stop processing a branch under conditions where you know you will not find a match.
+
+- name: attribute
+  available_on: leaf
+  description: |
+    This attribute is specific to the XMLParser. XML documents can add information in the form of attributes.
+    You can complement a <code class="docutils literal">path</code> with this field to extract the attribute from the element found in <code class="docutils literal">path</code>.

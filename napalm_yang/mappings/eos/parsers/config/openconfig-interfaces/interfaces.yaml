@@ -28,8 +28,7 @@ interfaces:
                 _process: unnecessary
             type:
                 _process:
-                    - mode: map
-                      value: "{{ interface_key }}"
+                    - value: "{{ interface_key }}"
                       regexp: "(?P<value>(\\w|-)*)\\d+"
                       map:
                           ethernet: ethernetCsmacd
@@ -39,8 +38,8 @@ interfaces:
                           vlan: l3ipvlan
             enabled:
                 _process:
-                    - mode: is_absent
-                      path: "shutdown"
+                    - path: "shutdown"
+                      present: no
             description:
                 _process:
                     - path: description
@@ -65,8 +64,8 @@ interfaces:
                             - value: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _process:
-                            - mode: is_absent
-                              path: "shutdown"
+                            - path: "shutdown"
+                              present: no
                     description:
                         _process:
                             - path: description

@@ -1,0 +1,91 @@
+{
+  "Cisco-IOS-XE-native:interface": {
+    "GigabitEthernet": [
+      {
+        "name": "1",
+        "ip": {
+          "address": {
+            "dhcp": {
+            }
+          }
+        },
+        "mop": {
+          "enabled": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      },
+      {
+        "name": "2",
+        "description": "GbE 2",
+        "ip": {
+          "no-address": {
+            "address": false
+          }
+        },
+        "mop": {
+          "enabled": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      },
+      {
+        "name": "2.10",
+        "description": "GbE 2.10",
+        "encapsulation": {
+          "dot1Q": {
+            "vlan-id": 10
+          }
+        },
+        "vrf": {
+          "forwarding": "internal"
+        },
+        "ip": {
+          "address": {
+            "primary": {
+              "address": "172.16.10.1",
+              "mask": "255.255.255.0"
+            }
+          }
+        }
+      }
+      ],
+    "Loopback": [
+      {
+        "name": 0,
+        "description": "Loopback Zero",
+        "ip": {
+          "address": {
+            "primary": {
+              "address": "100.64.0.1",
+              "mask": "255.255.255.255"
+            }
+          }
+        },
+        "ipv6": {
+          "address": {
+            "prefix-list": [
+              {
+                "prefix": "2001:DB8::1/64"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": 1,
+        "description": "Loopback One",
+        "vrf": {
+          "forwarding": "mgmt"
+        },
+        "ip": {
+          "no-address": {
+            "address": false
+          }
+        }
+      }
+    ]
+  }
+}

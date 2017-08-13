@@ -21,8 +21,7 @@ vlans:
                     - path: name
             status:
                 _process:
-                    - mode: map
-                      path: state
+                    - path: state
                       map:
                         active: ACTIVE
                         suspend: SUSPENDED

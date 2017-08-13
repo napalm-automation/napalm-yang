@@ -1,0 +1,24 @@
+.. raw:: html
+
+    <div><table border="1" class="docutils" width="100px">
+        <col style="width:10%">
+        <col style="width:20%">
+        <col style="width:10%">
+        <col style="width:60%">
+        <thead>
+            <tr>
+                <th class="head">name</th>
+                <th class="head">Available on</th>
+                <th class="head">description</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for d in directives %}
+        <tr>
+            <th style="vertical-align: top;">{{ d.name|indent }}</th>
+            <td style="vertical-align: top;">{{ d.available_on|indent }}</td>
+            <td style="vertical-align: top;">{{ d.description|indent }}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table></div>

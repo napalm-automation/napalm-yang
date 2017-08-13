@@ -1,0 +1,3 @@
+ip address 192.168.1.1/24
+ip address 192.168.2.1/24 secondary
+ip address 172.20.0.1/24 secondary

@@ -40,8 +40,7 @@ network-instances:
                 _process:
                   - value: DEFAULT_INSTANCE
                     when: "{{ network_instance_key == 'global' }}"
-                  - mode: map
-                    path: instance-type
+                  - path: instance-type
                     map:
                         vrf: L3VRF
                         virtual-router: L2L3

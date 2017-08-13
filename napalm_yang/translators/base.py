@@ -20,12 +20,12 @@ class BaseTranslator(object):
         et = translation
         extra_vars = {}
         for m in mapping:
-            mode = m.get("mode", "default")
-            if mode == "skip":
+            if "skip" in m:
                 continue
-            elif mode == "gate":
+            elif "gate" in m:
                 return None, {}
 
+            mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)
             method_name = "_init_element_{}".format(mode)
             et = getattr(self, method_name)(attribute, model, other, m, t)
@@ -41,12 +41,12 @@ class BaseTranslator(object):
         t = translation
         extra_vars = {}
         for m in mapping:
-            mode = m.get("mode", "default")
-            if mode == "skip":
+            if "skip" in m:
                 continue
-            elif mode == "gate":
+            elif "gate" in m:
                 return {}
 
+            mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(mode)
             t, ev = getattr(self, method_name)(m, t, replacing)
@@ -55,12 +55,12 @@ class BaseTranslator(object):
 
     def translate_leaf(self, attribute, model, other, mapping, translation, bookmarks):
         for m in mapping:
-            mode = m.get("mode", "default")
-            if mode == "skip":
+            if "skip" in m:
                 continue
-            elif mode == "gate":
+            elif "gate" in m:
                 return
 
+            mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, translation)
             method_name = "_translate_leaf_{}".format(mode)
             getattr(self, method_name)(attribute, model, other, m, t)
@@ -69,12 +69,12 @@ class BaseTranslator(object):
         et = translation
         extra_vars = {}
         for m in mapping:
-            mode = m.get("mode", "default")
-            if mode == "skip":
+            if "skip" in m:
                 continue
-            elif mode == "gate":
+            elif "gate" in m:
                 return None, {}
 
+            mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)
             method_name = "_translate_container_{}".format(mode)
             et = getattr(self, method_name)(attribute, model, other, m, t)

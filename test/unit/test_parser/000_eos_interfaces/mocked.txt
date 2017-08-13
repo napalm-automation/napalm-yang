@@ -1,0 +1,24 @@
+interface Port-Channel1
+   shutdown
+!
+interface Port-Channel1.1
+   shutdown
+!
+interface Ethernet1
+   shutdown
+!
+interface Ethernet2
+   no shutdown
+!
+interface Ethernet2.1
+   no shutdown
+!
+interface Ethernet2.2
+   no shutdown
+!
+interface Loopback1
+   no shutdown
+!
+interface Management1
+   no shutdown
+!

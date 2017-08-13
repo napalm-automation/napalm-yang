@@ -8,7 +8,7 @@ def filters():
     }
 
 
-@check_empty
+@check_empty(default=None)
 def vlan_range_to_oc(value):
     """
     Converts an industry standard vlan range into a list that can be
@@ -19,7 +19,7 @@ def vlan_range_to_oc(value):
     return [s.replace("-", "..") for s in value.split(",")]
 
 
-@check_empty
+@check_empty()
 def oc_to_vlan_range(value):
     """
     Converts an industry standard vlan range into a list that can be

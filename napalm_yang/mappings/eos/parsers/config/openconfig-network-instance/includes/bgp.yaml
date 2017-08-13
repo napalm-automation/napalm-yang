@@ -1,7 +1,7 @@
 ---
 _process:
-  - mode: gate
-    when: "{{ protocol_key != 'bgp bgp' }}"
+    - gate: true
+      when: "{{ protocol_key != 'bgp bgp' }}"
 global:
     _process: unnecessary
     afi-safis:
@@ -621,8 +621,8 @@ neighbors:
                     - path: description
             enabled:
                 _process:
-                    - mode: is_absent
-                      path: shutdown
+                    - path: shutdown
+                      present: no
             local-as:
                 _process:
                     - path: "local-as"

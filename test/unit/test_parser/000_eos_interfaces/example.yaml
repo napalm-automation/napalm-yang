@@ -1,0 +1,94 @@
+---
+documentation:
+    title: Parsing interfaces in industry standard CLIs (simple case)
+    summary: |
+        When TexTree parses industry standard CLIs it will generate a dictionary similar to::
+
+            interface:
+                Fa1:
+                    '#standalone': true
+                    '#text': no shutdown
+                    'no':
+                      '#text': shutdown
+                      shutdown:
+                        '#standalone': true
+                    # other data relevant to the interface
+                Fa2:
+                    '#standalone': true
+                    '#text': shutdown
+                    shutdown:
+                      '#standalone': true
+                    # other data relevant to the interface
+
+        This means that to parse the interfaces we only have to advance to the ``interface``
+        key and map the keys to the YANG model key and get the block for further processing.
+    rule: |
+        * ``regexp`` is useful to filter out data that we don't want to process. For example,
+          in the example above we are basically filtering subinterfaces as they will be
+          processed later. Note that the regular expression has to capture a ``value``.
+        * ``path`` is simply telling the parser that the data is looking for is inside the
+          ``interface`` key.
+        * ``from`` is just telling the parser where to get the data from. This is the first
+          element processed by the profile so there is no information that can be inferred yet.
+    result: |
+        Note that ``extra_vars`` will be populated with anything you capture with the regular
+        expression. This might be handier when parsing more complex keys like ip addresses
+        which might include the prefix length.
+
+        Note as well that we didn't get any subinterface thanks to ``regexp``.
+
+processor:
+    name: TextTree
+    attribute: interface
+    root_name: interfaces
+    node_type: list
+    mode: config
+rule:
+    - path: interface
+      regexp: "^(?P<value>(\\w|-)*\\d+(\\/\\d+)*)$"
+      from: root_interfaces.0
+data:
+    - keys: {}
+      extra_vars: {}
+expected:
+    - - key: Port-Channel1
+        block:
+          '#standalone': true
+          '#text': shutdown
+          shutdown: {'#standalone': true}
+        extra_vars:
+          value: Port-Channel1
+      - key: Ethernet1
+        block:
+          '#standalone': true
+          '#text': shutdown
+          shutdown: {'#standalone': true}
+        extra_vars:
+          value: Ethernet1
+      - key: Ethernet2
+        block:
+          '#standalone': true
+          '#text': no shutdown
+          'no':
+            '#text': shutdown
+            shutdown: {'#standalone': true}
+        extra_vars:
+          value: Ethernet2
+      - key: Loopback1
+        block:
+          '#standalone': true
+          '#text': no shutdown
+          'no':
+            '#text': shutdown
+            shutdown: {'#standalone': true}
+        extra_vars:
+          value: Loopback1
+      - key: Management1
+        block:
+          '#standalone': true
+          '#text': no shutdown
+          'no':
+            '#text': shutdown
+            shutdown: {'#standalone': true}
+        extra_vars:
+          value: Management1

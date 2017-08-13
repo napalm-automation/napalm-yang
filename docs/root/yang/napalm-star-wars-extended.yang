@@ -1,0 +1,31 @@
+module napalm-star-wars-extended {
+
+    yang-version "1";
+    namespace "https://napalm-yang.readthedocs.io/napalm-star-wars-extended";
+
+    prefix "napalm-star-wars-extended";
+
+    import napalm-star-wars { prefix napalm-star-wars; }
+
+    identity MERCENARY {
+        base napalm-star-wars:AFFILIATION;
+        description "Friend for money";
+    }
+
+    grouping extended-personal-data {
+        leaf status {
+            type enumeration {
+                enum ACTIVE {
+                    description "In active duty";
+                }
+                enum RETIRED {
+                    description "Enjoying retirement, probably in a house by a lake";
+                }
+            }
+        }
+    }
+
+    augment "/napalm-star-wars:universe/napalm-star-wars:individual" {
+        uses extended-personal-data;
+    }
+}
