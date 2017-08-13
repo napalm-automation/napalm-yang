@@ -1,0 +1,78 @@
+---
+documentation:
+    title: Parsing json interfaces IOS-XE (jsonrpc)
+    summary: |
+        IOS-XE groups interfaces by type.
+    rule: ""
+    result: ""
+processor:
+    name: JSONParser
+    attribute: interface
+    root_name: interfaces
+    node_type: list
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - from: root_interfaces.0
+      path: Cisco-IOS-XE-native:interface.?type
+      key: "{{ type }}{{ name }}"
+      regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
+
+expected:
+    - - key: GigabitEthernet1
+        block:
+            Cisco-IOS-XE-ethernet:negotiation:
+              auto: true
+            ip:
+              address:
+                dhcp: {}
+            mop:
+              enabled: false
+            name: '1'
+            type: GigabitEthernet
+        extra_vars:
+            value: GigabitEthernet1
+      - key: GigabitEthernet2
+        block:
+            Cisco-IOS-XE-ethernet:negotiation:
+              auto: true
+            description: GbE 2
+            ip:
+              no-address:
+                address: false
+            mop:
+              enabled: false
+            name: '2'
+            type: GigabitEthernet
+        extra_vars:
+            value: GigabitEthernet2
+      - key: Loopback0
+        block:
+            description: Loopback Zero
+            ip:
+              address:
+                primary:
+                  address: 100.64.0.1
+                  mask: 255.255.255.255
+            ipv6:
+              address:
+                prefix-list:
+                - prefix: 2001:DB8::1/64
+            name: 0
+            type: Loopback
+        extra_vars:
+            value: Loopback0
+      - key: Loopback1
+        block:
+            description: Loopback One
+            ip:
+              no-address:
+                address: false
+            name: 1
+            type: Loopback
+            vrf:
+              forwarding: mgmt
+        extra_vars:
+            value: Loopback1

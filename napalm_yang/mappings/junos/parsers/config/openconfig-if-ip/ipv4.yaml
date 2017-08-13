@@ -8,9 +8,8 @@ ipv4:
         _process: unnecessary
         enabled:
             _process:
-                - mode: is_present
-                  path: "family.inet"
-                  regexp: "(?P<value>(?P<ip>.*))\\/(?P<prefix>\\d+)"
+                - path: "family.inet"
+                  present: yes
         mtu:
             _process: not_implemented
     addresses:

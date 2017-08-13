@@ -1,6 +1,6 @@
 ---
 _process:
-    - mode: gate
+    - gate: true
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
@@ -24,11 +24,11 @@ static:
         _process: unnecessary
         next-hop:
             _process:
-              - mode: gate
-                when: "{{ replacing and negating }}"
-              - key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
-                negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
-                end: "\n"
+                - gate: true
+                  when: "{{ replacing and negating }}"
+                - key_value: "{{ extra_vars.prefix }} {{ next_hop_key }}"
+                  negate: "{{ extra_vars.negate_prefix }} {{ next_hop_key }}\n"
+                  end: "\n"
             config:
                 _process: unnecessary
                 index:

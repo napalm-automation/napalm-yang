@@ -8,8 +8,8 @@ ipv4:
         _process: unnecessary
         enabled:
             _process:
-                - mode: is_absent
-                  path: "switchport"
+                - path: "switchport"
+                  present: no
         mtu:
             _process: not_implemented
     addresses:

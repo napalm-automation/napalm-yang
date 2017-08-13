@@ -61,7 +61,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
             break
         line = config.pop(0)
 
-        if line.startswith("!"):
+        if line.lstrip().startswith("!"):
             continue
 
         last = line.lstrip()
@@ -104,10 +104,10 @@ class TextTree(JSONParser):
 
         return resp
 
-    def _parse_leaf_default(self, mapping, data, check_default=True, check_presence=False):
-        extra_path = "#standalone" if check_presence else "#text"
+    def _parse_leaf_default(self, attribute, mapping, data):
+        extra_path = "#standalone" if "present" in mapping else "#text"
         if "path" in mapping:
             mapping["path"] = "{}.{}".format(mapping["path"], extra_path)
         else:
             mapping["path"] = extra_path
-        return super()._parse_leaf_default(mapping, data, check_default, check_presence)
+        return super()._parse_leaf_default(attribute, mapping, data)

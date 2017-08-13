@@ -1,138 +1,66 @@
+import os
+from glob import glob
+
 import napalm_yang
+
+import pytest
+import yaml
+
+
+BASE_PATH = os.path.dirname(__file__)
+
+test_parser = [x.split('/')[-1]
+               for x in glob('{}/test_parser/*'.format(BASE_PATH))]
+
+
+def to_dict(d):
+    if isinstance(d, dict):
+        d = dict(d)
+        for k, v in d.items():
+            d[k] = to_dict(v)
+    elif isinstance(d, list):
+        r = []
+        for i in d:
+            r.append(to_dict(i))
+        d = r
+    return d
 
 
 class Tests(object):
 
-    def test_resolve_path_dict(self):
-        data = {
-            "simple": {
-                "path": 123
-            }
-        }
-        path = "simple.path"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        assert result == 123
+    @pytest.mark.parametrize("case", test_parser)
+    def test_parser(self, case):
+        with open("{}/test_parser/{}/mocked.txt".format(BASE_PATH, case), 'r') as f:
+            mocked = f.read()
+        with open("{}/test_parser/{}/example.yaml".format(BASE_PATH, case), 'r') as f:
+            example = yaml.load(f.read())
 
-    def test_resolve_path_list(self):
-        data = {
-            "simple": [
-                {"path": 123}
-            ]
-        }
-        path = "simple.0.path"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        assert result == 123
+        parser = napalm_yang.parsers.get_parser(example["processor"]["name"])({}, {})
+        mocked = parser.init_native([mocked])
+        parent = mocked[0].get("some_configuration_block", mocked[0])
+        bookmarks = {"root_{}".format(example["processor"]["root_name"]): mocked,
+                     "parent": parent}
 
-    def test_extract_value_simple(self):
-        data = {
-            "group": {
-                "group_1": {
-                    "data": {"whatever": 1},
-                    "subgroup": {
-                        "subgroup_1": {"path": 2},
-                        "subgroup_2": {"path": 3},
-                    },
-                },
-                "group_2": {
-                    "data": {"whatever": 4},
-                    "subgroup": {
-                        "subgroup_3": {"path": 5},
-                        "subgroup_4": {"path": 6},
-                    },
-                }
-            }
-        }
-        path = "group.?name"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        expected = [
-            {'data': {'whatever': 1},
-             'name': 'group_1',
-             'subgroup': {'subgroup_1': {'path': 2}, 'subgroup_2': {'path': 3}}},
-            {'data': {'whatever': 4},
-             'name': 'group_2',
-             'subgroup': {'subgroup_3': {'path': 5}, 'subgroup_4': {'path': 6}}}]
-        assert result == expected or result == list(reversed(expected))
+        #  import json
+        #  print(json.dumps(to_dict(parent), indent=4))
 
-    def test_extract_value_nested(self):
-        data = {
-            "group": {
-                "group_1": {
-                    "data": {"whatever": 1},
-                    "subgroup": {
-                        "subgroup_1": {"path": 2},
-                        "subgroup_2": {"path": 3},
-                    },
-                },
-                "group_2": {
-                    "data": {"whatever": 4},
-                    "subgroup": {
-                        "subgroup_3": {"path": 5},
-                        "subgroup_4": {"path": 6},
-                    },
-                }
-            }
-        }
-        path = "group.?name.subgroup.?subname"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        expected = [
-            {'name': 'group_1', 'path': 2, 'subname': 'subgroup_1', "data": {"whatever": 1}},
-            {'name': 'group_1', 'path': 3, 'subname': 'subgroup_2', "data": {"whatever": 1}},
-            {'name': 'group_2', 'path': 5, 'subname': 'subgroup_3', "data": {"whatever": 4}},
-            {'name': 'group_2', 'path': 6, 'subname': 'subgroup_4', "data": {"whatever": 4}}]
-        assert sorted(result, key=lambda k: k['subname']) == expected
-
-    def test_extract_value_nested_list(self):
-        data = {
-            "group": [{"name": "group_1",
-                       "data": {"whatever": 1},
-                       "subgroup": [{"name": "subgroup_1", "path": 2},
-                                    {"name": "subgroup_2", "path": 3}]},
-                      {"name": "group_2",
-                       "data": {"whatever": 4},
-                       "subgroup": [{"name": "subgroup_3", "path": 5},
-                                    {"name": "subgroup_4", "path": 6}]}]}
-        path = "group.?group:name.subgroup.?subgroup:name"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        expected = [
-            {'data': {'whatever': 1}, 'group': 'group_1', 'name': 'group_1',
-             'path': 2, 'subgroup': 'subgroup_1'},
-            {'data': {'whatever': 1}, 'group': 'group_1', 'name': 'group_1',
-             'path': 3, 'subgroup': 'subgroup_2'},
-            {'data': {'whatever': 4}, 'group': 'group_2', 'name': 'group_2',
-             'path': 5, 'subgroup': 'subgroup_3'},
-            {'data': {'whatever': 4}, 'group': 'group_2', 'name': 'group_2',
-             'path': 6, 'subgroup': 'subgroup_4'}]
-        assert sorted(result, key=lambda k: k['subgroup']) == expected
-
-    def test_junos_neighbor(self):
-        data = {"group": [{"name": {"#text": "my_peers"},
-                           "neighbor": [
-                                {
-                                    "name": {"#text": "192.168.100.2"},
-                                    "description": {"#text": "adsasd"},
-                                    "peer-as": {"#text": "65100"}
-                                },
-                                {
-                                    "name": {"#text": "192.168.100.3"},
-                                    "peer-as": {"#text": "65100"}}]},
-                          {"name": {"#text": "my_other_peers"},
-                           "neighbor": {
-                              "name": {"#text": "172.20.0.1"},
-                              "peer-as": {"#text": "65200"}}}]}
-        path = "group.?peer_group:name.neighbor.?neighbor:name"
-        result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
-        expected = [
-            {'name': {'#text': 'my_other_peers'},
-             'neighbor': '172.20.0.1',
-             'peer-as': {'#text': '65200'},
-             'peer_group': 'my_other_peers'},
-            {'description': {'#text': 'adsasd'},
-             'name': {'#text': 'my_peers'},
-             'neighbor': '192.168.100.2',
-             'peer-as': {'#text': '65100'},
-             'peer_group': 'my_peers'},
-            {'name': {'#text': 'my_peers'},
-             'neighbor': '192.168.100.3',
-             'peer-as': {'#text': '65100'},
-             'peer_group': 'my_peers'}]
-        assert sorted(result, key=lambda k: k['neighbor']) == expected
+        processed = False
+        attribute = example["processor"]["attribute"]
+        if example["processor"]["node_type"] == "list":
+            for case, d in enumerate(example["data"]):
+                processed = True
+                parser.keys = d["keys"]
+                parser.extra_vars = d["extra_vars"]
+                i = 0
+                for k, b, e in parser.parse_list(attribute, example["rule"], bookmarks):
+                    assert k == example["expected"][case][i]["key"]
+                    b.pop("#list", None)
+                    assert b == example["expected"][case][i]["block"], \
+                        "\n{}".format(yaml.safe_dump(to_dict(b), default_flow_style=False))
+                    assert e == example["expected"][case][i]["extra_vars"], \
+                        "\n{}".format(yaml.safe_dump(to_dict(e), default_flow_style=False))
+                    i += 1
+                assert i == len(example["expected"][case])
+        else:
+            raise Exception(example["node_type"])
+        assert processed

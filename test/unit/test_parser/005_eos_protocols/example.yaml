@@ -1,0 +1,189 @@
+---
+documentation:
+    title: Parsing protocols (down the rabbit hole)
+    summary: |
+        Some parsing might require more complex rules. In this example we can see how to combine
+        multiple rules ran under different circumstances.
+    rule: |
+        When multiple rules are specified all of them will be executed and the results will be
+        concatenated. You can combine this technique with ``when`` to specify how to parse the
+        data under different circumstances (see rules ``#1`` and ``#2``) or just to add more ways of
+        parsing data (see rule ``#3``)
+
+        Note also that we are also dynamically building the ``key`` to follow the format that
+        the YANG model requires, which in this case is as simple (and weird) as just specifying
+        a name for our protocol (which in our case will be the same as the protocool).
+
+        It also worth noting that we are using a regular expression to match only on ``BGP``. We
+        are doing that to avoid processing protocols that we are not (yet) supporting in this
+        profile.
+    result:
+        The results below might look intimidating but it's basically the relevant configuration for
+        BGP and for the static routes for the current ``network_instance``.
+processor:
+    name: TextTree
+    attribute: protocol
+    root_name: network-instances
+    node_type: list
+    mode: config
+data:
+    - keys:
+        network_instance_key: global
+      extra_vars: {}
+    - keys:
+        network_instance_key: devel
+      extra_vars: {}
+rule:
+    - path: "router.?protocol.?process_id"
+      regexp: "(?P<value>bgp bgp)"
+      key: "{{ protocol }} {{ protocol }}"
+      when: "{{ network_instance_key == 'global' }}"
+    - path: "router.?protocol.?process_id.vrf.{{ network_instance_key }}"
+      regexp: "(?P<value>bgp bgp)"
+      from: root_network-instances.0
+      key: "{{ protocol }} {{ protocol }}"
+      when: "{{ network_instance_key != 'global' }}"
+    - path: "ip.route"
+      key: "{{ 'static static' }}"
+      from: root_network-instances.0
+
+expected:
+    - - key: bgp bgp
+        block:
+            process_id: '65001'
+            protocol: bgp
+            router-id:
+              '#text': 1.1.1.1
+              1.1.1.1:
+                '#standalone': true
+            '#standalone': true
+            '#text': vrf devel
+            address-family:
+              '#text': ipv6
+              ipv4:
+                '#list':
+                - default:
+                    '#text': neighbor 192.168.0.200 activate
+                    neighbor:
+                      '#text': 192.168.0.200 activate
+                      192.168.0.200:
+                        '#text': activate
+                        activate:
+                          '#standalone': true
+                '#standalone': true
+                '#text': default neighbor 192.168.0.200 activate
+                default:
+                  '#text': neighbor 192.168.0.200 activate
+                  neighbor:
+                    '#text': 192.168.0.200 activate
+                    192.168.0.200:
+                      '#text': activate
+                      activate:
+                        '#standalone': true
+              ipv6:
+                '#list':
+                - default:
+                    '#text': neighbor 192.168.0.200 activate
+                    neighbor:
+                      '#text': 192.168.0.200 activate
+                      192.168.0.200:
+                        '#text': activate
+                        activate:
+                          '#standalone': true
+                '#standalone': true
+                '#text': default neighbor 192.168.0.200 activate
+                default:
+                  '#text': neighbor 192.168.0.200 activate
+                  neighbor:
+                    '#text': 192.168.0.200 activate
+                    192.168.0.200:
+                      '#text': activate
+                      activate:
+                        '#standalone': true
+            vrf:
+              '#text': devel
+              devel:
+                '#list':
+                - router-id:
+                    '#text': 3.3.3.3
+                    3.3.3.3:
+                      '#standalone': true
+                '#standalone': true
+                '#text': router-id 3.3.3.3
+                router-id:
+                  '#text': 3.3.3.3
+                  3.3.3.3:
+                    '#standalone': true
+        extra_vars:
+            value: bgp bgp
+
+      - key: static static
+        block:
+            '#text': vrf devel 10.0.0.0/24 192.168.2.2 1 tag 0
+            10.0.0.0/24:
+              '#text': 192.168.0.2 10 tag 0
+              192.168.0.2:
+                '#text': 10 tag 0
+                '10':
+                  '#text': tag 0
+                  tag:
+                    '#text': '0'
+                    '0':
+                      '#standalone': true
+            vrf:
+              '#text': devel 10.0.0.0/24 192.168.2.2 1 tag 0
+              devel:
+                '#text': 10.0.0.0/24 192.168.2.2 1 tag 0
+                10.0.0.0/24:
+                  '#text': 192.168.2.2 1 tag 0
+                  192.168.2.2:
+                    '#text': 1 tag 0
+                    '1':
+                      '#text': tag 0
+                      tag:
+                        '#text': '0'
+                        '0':
+                          '#standalone': true
+        extra_vars: {}
+
+    - - key: bgp bgp
+        block:
+            '#standalone': true
+            '#text': router-id 3.3.3.3
+            process_id: '65001'
+            protocol: bgp
+            router-id:
+              '#text': 3.3.3.3
+              3.3.3.3:
+                '#standalone': true
+        extra_vars:
+            value: bgp bgp
+
+      - key: static static
+        block:
+            '#text': vrf devel 10.0.0.0/24 192.168.2.2 1 tag 0
+            10.0.0.0/24:
+              '#text': 192.168.0.2 10 tag 0
+              192.168.0.2:
+                '#text': 10 tag 0
+                '10':
+                  '#text': tag 0
+                  tag:
+                    '#text': '0'
+                    '0':
+                      '#standalone': true
+            vrf:
+              '#text': devel 10.0.0.0/24 192.168.2.2 1 tag 0
+              devel:
+                '#text': 10.0.0.0/24 192.168.2.2 1 tag 0
+                10.0.0.0/24:
+                  '#text': 192.168.2.2 1 tag 0
+                  192.168.2.2:
+                    '#text': 1 tag 0
+                    '1':
+                      '#text': tag 0
+                      tag:
+                        '#text': '0'
+                        '0':
+                          '#standalone': true
+        extra_vars: {}

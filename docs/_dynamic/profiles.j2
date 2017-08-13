@@ -1,0 +1,57 @@
+Below you can find all the YANG models supported and which profiles implements which ones. Note that all the iplementations are not necessarily complete, in the next section you can find links to each individual profile so you can instpect them yourself
+
+.. raw:: html
+
+
+    <div><table border="1" class="docutils">
+        <tr>
+            <th>Model</th>
+            {% for p in profiles.keys() if p not in ["dummy"] %}
+            <th class="head">{{ p }}</th>
+            {% endfor %}
+        </tr>
+        <tbody>
+        {% for module in root %}
+        {% for model in module[1] %}
+
+        <tr>
+            <td><a href="http://ops.openconfig.net/branches/master/docs/{{ module[0] }}.html">{{ module[0] }}</a></td>
+            {% for p, i in profiles.items() if p not in ["dummy"] %}
+            <td>config: {{ "&#x2705" if  module[0] in i.config else "&#x274C" }}</br>
+                state: &nbsp;&nbsp;{{ "&#x2705" if  module[0] in i.state else "&#x274C" }}</td>
+            {% endfor %}
+        </tr>
+
+
+
+{% endfor %}
+{% endfor %}
+        </tr>
+        </tbody>
+    </table></div>
+
+Profiles
+========
+
+Profiles are responsible from mapping native data/configuration to a YANG model and viceversa. Below you can find links to all the profiles so you can inspect what each one does.
+
+.. raw:: html
+
+    <div><table border="1" class="docutils">
+        <tr>
+            {% for p in profiles.keys() if p not in ["dummy"] %}
+            <th class="head">{{ p }}</th>
+            {% endfor %}
+        </tr>
+        <tbody>
+        <tr>
+            {% for p in profiles.keys() if p not in ["dummy"] %}
+            <td>
+                <a href="https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings/{{ p }}/parsers/config">parser:config</a></br>
+                <a href="https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings/{{ p }}/parsers/state">parser:state</a></br>
+                <a href="https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings/{{ p }}/translators">translator</a>
+            </td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table></div>

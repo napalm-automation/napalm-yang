@@ -75,30 +75,28 @@ def _resolve_rule(rule, **kwargs):
         return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
     elif isinstance(rule, list):
         return [_resolve_rule(e, **kwargs) for e in rule]
-    elif isinstance(rule, str):
+    elif isinstance(rule, str) and "{{" in rule:
         return template(rule, **kwargs)
     else:
         return rule
 
 
 def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
-                 parse_bookmarks=None, replacing=False, merging=False, negating=False,
-                 process_all=True):
+                 replacing=False, merging=False, negating=False, process_all=True):
     if isinstance(rule, list):
-        return [resolve_rule(r, attribute, keys, extra_vars, translation_model, parse_bookmarks,
+        return [resolve_rule(r, attribute, keys, extra_vars, translation_model,
                              replacing, merging, negating, process_all) for r in rule]
     elif isinstance(rule, str):
         if rule in ["unnecessary"]:
-            return [{"mode": "skip", "reason": rule}]
+            return [{"skip": True, "reason": rule}]
         elif rule in ["not_implemented", "not_supported"]:
-            return [{"mode": "gate", "reason": rule}]
+            return [{"gate": True, "reason": rule}]
         else:
             raise Exception("Not sure what to do with rule {} on attribute {}".format(rule,
                                                                                       attribute))
     kwargs = dict(keys)
     rule = dict(rule)
     kwargs["model"] = translation_model
-    kwargs["bookmarks"] = parse_bookmarks
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars
     kwargs["replacing"] = replacing
@@ -121,7 +119,7 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
         except Exception:
             w = True if w in ["true", "True"] else False
         if not w:
-            return {"mode": "skip", "reason": "criteria failed"}
+            return {"skip": True, "reason": "criteria failed"}
         rule["when"] = bool(w)
 
     return rule

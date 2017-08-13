@@ -1,0 +1,4 @@
+{
+    "diff": "@@ -19,15 +19,12 @@\n !\n interface Port-Channel1\n    description blah\n-   mtu 9000\n    no switchport\n !\n interface Port-Channel1.1\n !\n interface Ethernet1\n    description This is a description\n-   dcbx mode ieee\n-   channel-group 1 mode active\n !\n interface Ethernet2\n    description so much oc\n@@ -46,8 +43,8 @@\n    encapsulation dot1q vlan 2\n    ip address 192.168.2.1/24\n !\n-interface Loopback1\n-   description a loopback\n+interface Loopback0\n+   description new loopback\n !\n interface Management1\n    ip address 10.0.2.15/24"
+}
+
