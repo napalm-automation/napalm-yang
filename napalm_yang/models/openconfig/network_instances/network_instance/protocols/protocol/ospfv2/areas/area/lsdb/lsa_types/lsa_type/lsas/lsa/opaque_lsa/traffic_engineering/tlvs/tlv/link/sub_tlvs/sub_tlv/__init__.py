@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -248,7 +249,7 @@ groups
   administrative_groups = __builtin__.property(_get_administrative_groups)
 
 
-  _pyangbind_elements = {'state': state, 'unknown_subtlv': unknown_subtlv, 'unreserved_bandwidths': unreserved_bandwidths, 'administrative_groups': administrative_groups, }
+  _pyangbind_elements = OrderedDict([('state', state), ('unknown_subtlv', unknown_subtlv), ('unreserved_bandwidths', unreserved_bandwidths), ('administrative_groups', administrative_groups), ])
 
 
 from . import state
@@ -479,6 +480,6 @@ groups
   administrative_groups = __builtin__.property(_get_administrative_groups)
 
 
-  _pyangbind_elements = {'state': state, 'unknown_subtlv': unknown_subtlv, 'unreserved_bandwidths': unreserved_bandwidths, 'administrative_groups': administrative_groups, }
+  _pyangbind_elements = OrderedDict([('state', state), ('unknown_subtlv', unknown_subtlv), ('unreserved_bandwidths', unreserved_bandwidths), ('administrative_groups', administrative_groups), ])
 
 

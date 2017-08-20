@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -281,7 +282,7 @@ triggered
   adjust_threshold = __builtin__.property(_get_adjust_threshold, _set_adjust_threshold)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'min_bw': min_bw, 'max_bw': max_bw, 'adjust_interval': adjust_interval, 'adjust_threshold': adjust_threshold, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('min_bw', min_bw), ('max_bw', max_bw), ('adjust_interval', adjust_interval), ('adjust_threshold', adjust_threshold), ])
 
 
 class config(PybindBase):
@@ -545,6 +546,6 @@ triggered
   adjust_threshold = __builtin__.property(_get_adjust_threshold, _set_adjust_threshold)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'min_bw': min_bw, 'max_bw': max_bw, 'adjust_interval': adjust_interval, 'adjust_threshold': adjust_threshold, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('min_bw', min_bw), ('max_bw', max_bw), ('adjust_interval', adjust_interval), ('adjust_threshold', adjust_threshold), ])
 
 

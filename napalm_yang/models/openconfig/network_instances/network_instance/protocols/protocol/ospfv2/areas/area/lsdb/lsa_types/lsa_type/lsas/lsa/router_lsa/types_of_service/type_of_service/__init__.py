@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -155,7 +156,7 @@ specified in the LSA
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'tos': tos, 'state': state, }
+  _pyangbind_elements = OrderedDict([('tos', tos), ('state', state), ])
 
 
 from . import state
@@ -293,6 +294,6 @@ specified in the LSA
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'tos': tos, 'state': state, }
+  _pyangbind_elements = OrderedDict([('tos', tos), ('state', state), ])
 
 

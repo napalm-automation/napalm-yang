@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -229,7 +230,7 @@ statically configured
   flooding_type = __builtin__.property(_get_flooding_type, _set_flooding_type)
 
 
-  _pyangbind_elements = {'name': name, 'value': value, 'cost': cost, 'flooding_type': flooding_type, }
+  _pyangbind_elements = OrderedDict([('name', name), ('value', value), ('cost', cost), ('flooding_type', flooding_type), ])
 
 
 class config(PybindBase):
@@ -441,6 +442,6 @@ statically configured
   flooding_type = __builtin__.property(_get_flooding_type, _set_flooding_type)
 
 
-  _pyangbind_elements = {'name': name, 'value': value, 'cost': cost, 'flooding_type': flooding_type, }
+  _pyangbind_elements = OrderedDict([('name', name), ('value', value), ('cost', cost), ('flooding_type', flooding_type), ])
 
 

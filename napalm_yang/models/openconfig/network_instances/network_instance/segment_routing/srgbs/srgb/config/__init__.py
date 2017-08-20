@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -237,7 +238,7 @@ the IPv6 dataplane.
   ipv6_prefixes = __builtin__.property(_get_ipv6_prefixes, _set_ipv6_prefixes)
 
 
-  _pyangbind_elements = {'local_id': local_id, 'dataplane_type': dataplane_type, 'mpls_label_blocks': mpls_label_blocks, 'ipv6_prefixes': ipv6_prefixes, }
+  _pyangbind_elements = OrderedDict([('local_id', local_id), ('dataplane_type', dataplane_type), ('mpls_label_blocks', mpls_label_blocks), ('ipv6_prefixes', ipv6_prefixes), ])
 
 
 class config(PybindBase):
@@ -457,6 +458,6 @@ the IPv6 dataplane.
   ipv6_prefixes = __builtin__.property(_get_ipv6_prefixes, _set_ipv6_prefixes)
 
 
-  _pyangbind_elements = {'local_id': local_id, 'dataplane_type': dataplane_type, 'mpls_label_blocks': mpls_label_blocks, 'ipv6_prefixes': ipv6_prefixes, }
+  _pyangbind_elements = OrderedDict([('local_id', local_id), ('dataplane_type', dataplane_type), ('mpls_label_blocks', mpls_label_blocks), ('ipv6_prefixes', ipv6_prefixes), ])
 
 

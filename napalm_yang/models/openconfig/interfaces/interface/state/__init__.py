@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -742,6 +743,6 @@ physical channels (lanes) corresponding to the interface.
   physical_channel = __builtin__.property(_get_physical_channel)
 
 
-  _pyangbind_elements = {'type': type, 'mtu': mtu, 'name': name, 'description': description, 'enabled': enabled, 'ifindex': ifindex, 'admin_status': admin_status, 'oper_status': oper_status, 'last_change': last_change, 'counters': counters, 'hardware_port': hardware_port, 'physical_channel': physical_channel, }
+  _pyangbind_elements = OrderedDict([('type', type), ('mtu', mtu), ('name', name), ('description', description), ('enabled', enabled), ('ifindex', ifindex), ('admin_status', admin_status), ('oper_status', oper_status), ('last_change', last_change), ('counters', counters), ('hardware_port', hardware_port), ('physical_channel', physical_channel), ])
 
 

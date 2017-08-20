@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -231,7 +232,7 @@ dynamically learned.
   entry_type = __builtin__.property(_get_entry_type)
 
 
-  _pyangbind_elements = {'mac_address': mac_address, 'vlan': vlan, 'age': age, 'entry_type': entry_type, }
+  _pyangbind_elements = OrderedDict([('mac_address', mac_address), ('vlan', vlan), ('age', age), ('entry_type', entry_type), ])
 
 
 class state(PybindBase):
@@ -445,6 +446,6 @@ dynamically learned.
   entry_type = __builtin__.property(_get_entry_type)
 
 
-  _pyangbind_elements = {'mac_address': mac_address, 'vlan': vlan, 'age': age, 'entry_type': entry_type, }
+  _pyangbind_elements = OrderedDict([('mac_address', mac_address), ('vlan', vlan), ('age', age), ('entry_type', entry_type), ])
 
 

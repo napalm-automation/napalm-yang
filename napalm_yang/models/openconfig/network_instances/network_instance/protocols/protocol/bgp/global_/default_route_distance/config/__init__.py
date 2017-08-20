@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -152,7 +153,7 @@ BGP (iBGP).
   internal_route_distance = __builtin__.property(_get_internal_route_distance, _set_internal_route_distance)
 
 
-  _pyangbind_elements = {'external_route_distance': external_route_distance, 'internal_route_distance': internal_route_distance, }
+  _pyangbind_elements = OrderedDict([('external_route_distance', external_route_distance), ('internal_route_distance', internal_route_distance), ])
 
 
 class config(PybindBase):
@@ -287,6 +288,6 @@ BGP (iBGP).
   internal_route_distance = __builtin__.property(_get_internal_route_distance, _set_internal_route_distance)
 
 
-  _pyangbind_elements = {'external_route_distance': external_route_distance, 'internal_route_distance': internal_route_distance, }
+  _pyangbind_elements = OrderedDict([('external_route_distance', external_route_distance), ('internal_route_distance', internal_route_distance), ])
 
 

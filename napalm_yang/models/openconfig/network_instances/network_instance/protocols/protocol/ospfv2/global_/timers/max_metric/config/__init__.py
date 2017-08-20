@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -258,7 +259,7 @@ advertisements after the expiration of this timer.
   trigger = __builtin__.property(_get_trigger, _set_trigger)
 
 
-  _pyangbind_elements = {'set_': set_, 'timeout': timeout, 'include': include, 'trigger': trigger, }
+  _pyangbind_elements = OrderedDict([('set_', set_), ('timeout', timeout), ('include', include), ('trigger', trigger), ])
 
 
 class config(PybindBase):
@@ -499,6 +500,6 @@ advertisements after the expiration of this timer.
   trigger = __builtin__.property(_get_trigger, _set_trigger)
 
 
-  _pyangbind_elements = {'set_': set_, 'timeout': timeout, 'include': include, 'trigger': trigger, }
+  _pyangbind_elements = OrderedDict([('set_', set_), ('timeout', timeout), ('include', include), ('trigger', trigger), ])
 
 

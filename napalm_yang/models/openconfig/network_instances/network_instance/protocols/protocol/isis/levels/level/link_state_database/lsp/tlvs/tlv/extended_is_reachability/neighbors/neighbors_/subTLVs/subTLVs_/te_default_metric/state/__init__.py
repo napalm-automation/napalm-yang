@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -159,7 +160,7 @@ MAX_PATH_METRIC.
   te_default_metric = __builtin__.property(_get_te_default_metric)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'te_default_metric': te_default_metric, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('te_default_metric', te_default_metric), ])
 
 
 class state(PybindBase):
@@ -301,6 +302,6 @@ MAX_PATH_METRIC.
   te_default_metric = __builtin__.property(_get_te_default_metric)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'te_default_metric': te_default_metric, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('te_default_metric', te_default_metric), ])
 
 

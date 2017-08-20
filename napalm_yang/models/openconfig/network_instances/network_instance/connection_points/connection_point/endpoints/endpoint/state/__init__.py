@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -234,7 +235,7 @@ parameter is set to true
   active = __builtin__.property(_get_active)
 
 
-  _pyangbind_elements = {'endpoint_id': endpoint_id, 'precedence': precedence, 'type': type, 'active': active, }
+  _pyangbind_elements = OrderedDict([('endpoint_id', endpoint_id), ('precedence', precedence), ('type', type), ('active', active), ])
 
 
 class state(PybindBase):
@@ -451,6 +452,6 @@ parameter is set to true
   active = __builtin__.property(_get_active)
 
 
-  _pyangbind_elements = {'endpoint_id': endpoint_id, 'precedence': precedence, 'type': type, 'active': active, }
+  _pyangbind_elements = OrderedDict([('endpoint_id', endpoint_id), ('precedence', precedence), ('type', type), ('active', active), ])
 
 

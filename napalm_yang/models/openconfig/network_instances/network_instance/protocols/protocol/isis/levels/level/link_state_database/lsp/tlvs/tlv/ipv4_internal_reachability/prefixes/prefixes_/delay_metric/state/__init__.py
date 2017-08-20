@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ indicate a longer transit delay.
   flags = __builtin__.property(_get_flags)
 
 
-  _pyangbind_elements = {'metric': metric, 'flags': flags, }
+  _pyangbind_elements = OrderedDict([('metric', metric), ('flags', flags), ])
 
 
 class state(PybindBase):
@@ -289,6 +290,6 @@ indicate a longer transit delay.
   flags = __builtin__.property(_get_flags)
 
 
-  _pyangbind_elements = {'metric': metric, 'flags': flags, }
+  _pyangbind_elements = OrderedDict([('metric', metric), ('flags', flags), ])
 
 

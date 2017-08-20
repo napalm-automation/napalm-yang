@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ the next-hop for the routed packet.
   mpls_lsp = __builtin__.property(_get_mpls_lsp, _set_mpls_lsp)
 
 
-  _pyangbind_elements = {'group_id': group_id, 'mpls_lsp': mpls_lsp, }
+  _pyangbind_elements = OrderedDict([('group_id', group_id), ('mpls_lsp', mpls_lsp), ])
 
 
 class config(PybindBase):
@@ -295,6 +296,6 @@ the next-hop for the routed packet.
   mpls_lsp = __builtin__.property(_get_mpls_lsp, _set_mpls_lsp)
 
 
-  _pyangbind_elements = {'group_id': group_id, 'mpls_lsp': mpls_lsp, }
+  _pyangbind_elements = OrderedDict([('group_id', group_id), ('mpls_lsp', mpls_lsp), ])
 
 

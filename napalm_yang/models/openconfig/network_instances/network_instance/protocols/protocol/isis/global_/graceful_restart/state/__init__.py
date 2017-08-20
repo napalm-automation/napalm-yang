@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -155,7 +156,7 @@ retaining forwarding information during a remote speaker's restart.
   helper_only = __builtin__.property(_get_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('helper_only', helper_only), ])
 
 
 class state(PybindBase):
@@ -293,6 +294,6 @@ retaining forwarding information during a remote speaker's restart.
   helper_only = __builtin__.property(_get_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('helper_only', helper_only), ])
 
 

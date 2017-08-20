@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -363,7 +364,7 @@ local system such that it cannot decode their value.
   unknown_tlv = __builtin__.property(_get_unknown_tlv)
 
 
-  _pyangbind_elements = {'state': state, 'traffic_engineering': traffic_engineering, 'grace_lsa': grace_lsa, 'router_information': router_information, 'extended_prefix': extended_prefix, 'extended_link': extended_link, 'unknown_tlv': unknown_tlv, }
+  _pyangbind_elements = OrderedDict([('state', state), ('traffic_engineering', traffic_engineering), ('grace_lsa', grace_lsa), ('router_information', router_information), ('extended_prefix', extended_prefix), ('extended_link', extended_link), ('unknown_tlv', unknown_tlv), ])
 
 
 from . import state
@@ -709,6 +710,6 @@ local system such that it cannot decode their value.
   unknown_tlv = __builtin__.property(_get_unknown_tlv)
 
 
-  _pyangbind_elements = {'state': state, 'traffic_engineering': traffic_engineering, 'grace_lsa': grace_lsa, 'router_information': router_information, 'extended_prefix': extended_prefix, 'extended_link': extended_link, 'unknown_tlv': unknown_tlv, }
+  _pyangbind_elements = OrderedDict([('state', state), ('traffic_engineering', traffic_engineering), ('grace_lsa', grace_lsa), ('router_information', router_information), ('extended_prefix', extended_prefix), ('extended_link', extended_link), ('unknown_tlv', unknown_tlv), ])
 
 

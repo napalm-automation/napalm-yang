@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ occur multiple times.
   ipv6_interface_address = __builtin__.property(_get_ipv6_interface_address)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'ipv6_interface_address': ipv6_interface_address, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('ipv6_interface_address', ipv6_interface_address), ])
 
 
 class state(PybindBase):
@@ -289,6 +290,6 @@ occur multiple times.
   ipv6_interface_address = __builtin__.property(_get_ipv6_interface_address)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'ipv6_interface_address': ipv6_interface_address, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('ipv6_interface_address', ipv6_interface_address), ])
 
 

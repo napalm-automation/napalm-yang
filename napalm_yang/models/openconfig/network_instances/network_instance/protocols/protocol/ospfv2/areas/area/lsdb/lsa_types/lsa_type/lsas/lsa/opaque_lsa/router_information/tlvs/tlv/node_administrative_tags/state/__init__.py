@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -113,7 +114,7 @@ the network operator. The meaning of these tags is opaque to OSPF
   administrative_tags = __builtin__.property(_get_administrative_tags)
 
 
-  _pyangbind_elements = {'administrative_tags': administrative_tags, }
+  _pyangbind_elements = OrderedDict([('administrative_tags', administrative_tags), ])
 
 
 class state(PybindBase):
@@ -209,6 +210,6 @@ the network operator. The meaning of these tags is opaque to OSPF
   administrative_tags = __builtin__.property(_get_administrative_tags)
 
 
-  _pyangbind_elements = {'administrative_tags': administrative_tags, }
+  _pyangbind_elements = OrderedDict([('administrative_tags', administrative_tags), ])
 
 

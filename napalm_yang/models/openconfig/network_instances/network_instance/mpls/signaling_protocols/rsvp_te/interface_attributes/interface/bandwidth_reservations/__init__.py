@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ the interface.
   bandwidth_reservation = __builtin__.property(_get_bandwidth_reservation, _set_bandwidth_reservation)
 
 
-  _pyangbind_elements = {'bandwidth_reservation': bandwidth_reservation, }
+  _pyangbind_elements = OrderedDict([('bandwidth_reservation', bandwidth_reservation), ])
 
 
 from . import bandwidth_reservation
@@ -205,6 +206,6 @@ the interface.
   bandwidth_reservation = __builtin__.property(_get_bandwidth_reservation, _set_bandwidth_reservation)
 
 
-  _pyangbind_elements = {'bandwidth_reservation': bandwidth_reservation, }
+  _pyangbind_elements = OrderedDict([('bandwidth_reservation', bandwidth_reservation), ])
 
 

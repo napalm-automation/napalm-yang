@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -465,7 +466,7 @@ routing domain.
   pdu_length = __builtin__.property(_get_pdu_length)
 
 
-  _pyangbind_elements = {'lsp_id': lsp_id, 'maximum_area_addresses': maximum_area_addresses, 'version': version, 'version2': version2, 'id_length': id_length, 'pdu_type': pdu_type, 'remaining_lifetime': remaining_lifetime, 'sequence_number': sequence_number, 'checksum': checksum, 'pdu_length': pdu_length, }
+  _pyangbind_elements = OrderedDict([('lsp_id', lsp_id), ('maximum_area_addresses', maximum_area_addresses), ('version', version), ('version2', version2), ('id_length', id_length), ('pdu_type', pdu_type), ('remaining_lifetime', remaining_lifetime), ('sequence_number', sequence_number), ('checksum', checksum), ('pdu_length', pdu_length), ])
 
 
 class state(PybindBase):
@@ -913,6 +914,6 @@ routing domain.
   pdu_length = __builtin__.property(_get_pdu_length)
 
 
-  _pyangbind_elements = {'lsp_id': lsp_id, 'maximum_area_addresses': maximum_area_addresses, 'version': version, 'version2': version2, 'id_length': id_length, 'pdu_type': pdu_type, 'remaining_lifetime': remaining_lifetime, 'sequence_number': sequence_number, 'checksum': checksum, 'pdu_length': pdu_length, }
+  _pyangbind_elements = OrderedDict([('lsp_id', lsp_id), ('maximum_area_addresses', maximum_area_addresses), ('version', version), ('version2', version2), ('id_length', id_length), ('pdu_type', pdu_type), ('remaining_lifetime', remaining_lifetime), ('sequence_number', sequence_number), ('checksum', checksum), ('pdu_length', pdu_length), ])
 
 

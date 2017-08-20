@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ LSA's sub-TLV
   sub_tlv = __builtin__.property(_get_sub_tlv)
 
 
-  _pyangbind_elements = {'sub_tlv': sub_tlv, }
+  _pyangbind_elements = OrderedDict([('sub_tlv', sub_tlv), ])
 
 
 from . import sub_tlv
@@ -205,6 +206,6 @@ LSA's sub-TLV
   sub_tlv = __builtin__.property(_get_sub_tlv)
 
 
-  _pyangbind_elements = {'sub_tlv': sub_tlv, }
+  _pyangbind_elements = OrderedDict([('sub_tlv', sub_tlv), ])
 
 

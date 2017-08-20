@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ the local system reverts to hard pre-emption.
   soft_preemption_timeout = __builtin__.property(_get_soft_preemption_timeout, _set_soft_preemption_timeout)
 
 
-  _pyangbind_elements = {'enable': enable, 'soft_preemption_timeout': soft_preemption_timeout, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('soft_preemption_timeout', soft_preemption_timeout), ])
 
 
 class config(PybindBase):
@@ -291,6 +292,6 @@ the local system reverts to hard pre-emption.
   soft_preemption_timeout = __builtin__.property(_get_soft_preemption_timeout, _set_soft_preemption_timeout)
 
 
-  _pyangbind_elements = {'enable': enable, 'soft_preemption_timeout': soft_preemption_timeout, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('soft_preemption_timeout', soft_preemption_timeout), ])
 
 

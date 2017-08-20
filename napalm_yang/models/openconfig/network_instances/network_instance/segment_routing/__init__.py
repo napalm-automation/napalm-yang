@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
   srlbs = __builtin__.property(_get_srlbs, _set_srlbs)
 
 
-  _pyangbind_elements = {'srgbs': srgbs, 'srlbs': srlbs, }
+  _pyangbind_elements = OrderedDict([('srgbs', srgbs), ('srlbs', srlbs), ])
 
 
 from . import srgbs
@@ -291,6 +292,6 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
   srlbs = __builtin__.property(_get_srlbs, _set_srlbs)
 
 
-  _pyangbind_elements = {'srgbs': srgbs, 'srlbs': srlbs, }
+  _pyangbind_elements = OrderedDict([('srgbs', srgbs), ('srlbs', srlbs), ])
 
 

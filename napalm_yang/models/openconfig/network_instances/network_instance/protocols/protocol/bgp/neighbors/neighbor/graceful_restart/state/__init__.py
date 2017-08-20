@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -423,7 +424,7 @@ restart with the peer
   mode = __builtin__.property(_get_mode)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'restart_time': restart_time, 'stale_routes_time': stale_routes_time, 'helper_only': helper_only, 'peer_restart_time': peer_restart_time, 'peer_restarting': peer_restarting, 'local_restarting': local_restarting, 'mode': mode, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('restart_time', restart_time), ('stale_routes_time', stale_routes_time), ('helper_only', helper_only), ('peer_restart_time', peer_restart_time), ('peer_restarting', peer_restarting), ('local_restarting', local_restarting), ('mode', mode), ])
 
 
 class state(PybindBase):
@@ -829,6 +830,6 @@ restart with the peer
   mode = __builtin__.property(_get_mode)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'restart_time': restart_time, 'stale_routes_time': stale_routes_time, 'helper_only': helper_only, 'peer_restart_time': peer_restart_time, 'peer_restarting': peer_restarting, 'local_restarting': local_restarting, 'mode': mode, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('restart_time', restart_time), ('stale_routes_time', stale_routes_time), ('helper_only', helper_only), ('peer_restart_time', peer_restart_time), ('peer_restarting', peer_restarting), ('local_restarting', local_restarting), ('mode', mode), ])
 
 

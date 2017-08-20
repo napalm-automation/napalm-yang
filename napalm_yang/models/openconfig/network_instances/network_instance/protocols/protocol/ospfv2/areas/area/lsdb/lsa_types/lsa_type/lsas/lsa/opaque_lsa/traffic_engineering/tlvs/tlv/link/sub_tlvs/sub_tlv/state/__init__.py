@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -491,7 +492,7 @@ a 32-bit IEEE floating-point number
   maximum_reservable_bandwidth = __builtin__.property(_get_maximum_reservable_bandwidth)
 
 
-  _pyangbind_elements = {'type': type, 'unknown_type': unknown_type, 'unknown_value': unknown_value, 'link_type': link_type, 'link_id': link_id, 'local_ip_address': local_ip_address, 'remote_ip_address': remote_ip_address, 'metric': metric, 'maximum_bandwidth': maximum_bandwidth, 'maximum_reservable_bandwidth': maximum_reservable_bandwidth, }
+  _pyangbind_elements = OrderedDict([('type', type), ('unknown_type', unknown_type), ('unknown_value', unknown_value), ('link_type', link_type), ('link_id', link_id), ('local_ip_address', local_ip_address), ('remote_ip_address', remote_ip_address), ('metric', metric), ('maximum_bandwidth', maximum_bandwidth), ('maximum_reservable_bandwidth', maximum_reservable_bandwidth), ])
 
 
 class state(PybindBase):
@@ -965,6 +966,6 @@ a 32-bit IEEE floating-point number
   maximum_reservable_bandwidth = __builtin__.property(_get_maximum_reservable_bandwidth)
 
 
-  _pyangbind_elements = {'type': type, 'unknown_type': unknown_type, 'unknown_value': unknown_value, 'link_type': link_type, 'link_id': link_id, 'local_ip_address': local_ip_address, 'remote_ip_address': remote_ip_address, 'metric': metric, 'maximum_bandwidth': maximum_bandwidth, 'maximum_reservable_bandwidth': maximum_reservable_bandwidth, }
+  _pyangbind_elements = OrderedDict([('type', type), ('unknown_type', unknown_type), ('unknown_value', unknown_value), ('link_type', link_type), ('link_id', link_id), ('local_ip_address', local_ip_address), ('remote_ip_address', remote_ip_address), ('metric', metric), ('maximum_bandwidth', maximum_bandwidth), ('maximum_reservable_bandwidth', maximum_reservable_bandwidth), ])
 
 

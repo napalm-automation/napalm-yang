@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ virtual link
   virtual_link = __builtin__.property(_get_virtual_link, _set_virtual_link)
 
 
-  _pyangbind_elements = {'virtual_link': virtual_link, }
+  _pyangbind_elements = OrderedDict([('virtual_link', virtual_link), ])
 
 
 from . import virtual_link
@@ -207,6 +208,6 @@ virtual link
   virtual_link = __builtin__.property(_get_virtual_link, _set_virtual_link)
 
 
-  _pyangbind_elements = {'virtual_link': virtual_link, }
+  _pyangbind_elements = OrderedDict([('virtual_link', virtual_link), ])
 
 

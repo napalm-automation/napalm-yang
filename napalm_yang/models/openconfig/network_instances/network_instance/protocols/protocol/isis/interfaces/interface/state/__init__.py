@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -270,7 +271,7 @@ systems, but is advertised into the IS-IS topology.
   circuit_type = __builtin__.property(_get_circuit_type)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'interface_id': interface_id, 'passive': passive, 'hello_padding': hello_padding, 'circuit_type': circuit_type, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('interface_id', interface_id), ('passive', passive), ('hello_padding', hello_padding), ('circuit_type', circuit_type), ])
 
 
 class state(PybindBase):
@@ -523,6 +524,6 @@ systems, but is advertised into the IS-IS topology.
   circuit_type = __builtin__.property(_get_circuit_type)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'interface_id': interface_id, 'passive': passive, 'hello_padding': hello_padding, 'circuit_type': circuit_type, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('interface_id', interface_id), ('passive', passive), ('hello_padding', hello_padding), ('circuit_type', circuit_type), ])
 
 

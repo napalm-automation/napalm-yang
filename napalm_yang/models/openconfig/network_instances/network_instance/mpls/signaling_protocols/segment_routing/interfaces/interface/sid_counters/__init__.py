@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class sid_counters(PybindBase):
   sid_counter = __builtin__.property(_get_sid_counter, _set_sid_counter)
 
 
-  _pyangbind_elements = {'sid_counter': sid_counter, }
+  _pyangbind_elements = OrderedDict([('sid_counter', sid_counter), ])
 
 
 from . import sid_counter
@@ -201,6 +202,6 @@ class sid_counters(PybindBase):
   sid_counter = __builtin__.property(_get_sid_counter, _set_sid_counter)
 
 
-  _pyangbind_elements = {'sid_counter': sid_counter, }
+  _pyangbind_elements = OrderedDict([('sid_counter', sid_counter), ])
 
 

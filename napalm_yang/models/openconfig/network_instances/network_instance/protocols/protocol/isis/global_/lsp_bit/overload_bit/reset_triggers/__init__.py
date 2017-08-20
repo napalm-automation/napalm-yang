@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class reset_triggers(PybindBase):
   reset_trigger = __builtin__.property(_get_reset_trigger, _set_reset_trigger)
 
 
-  _pyangbind_elements = {'reset_trigger': reset_trigger, }
+  _pyangbind_elements = OrderedDict([('reset_trigger', reset_trigger), ])
 
 
 from . import reset_trigger
@@ -201,6 +202,6 @@ class reset_triggers(PybindBase):
   reset_trigger = __builtin__.property(_get_reset_trigger, _set_reset_trigger)
 
 
-  _pyangbind_elements = {'reset_trigger': reset_trigger, }
+  _pyangbind_elements = OrderedDict([('reset_trigger', reset_trigger), ])
 
 

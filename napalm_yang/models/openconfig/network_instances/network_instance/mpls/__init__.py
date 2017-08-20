@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -276,7 +277,7 @@ for interfaces
   lsps = __builtin__.property(_get_lsps, _set_lsps)
 
 
-  _pyangbind_elements = {'global_': global_, 'te_global_attributes': te_global_attributes, 'te_interface_attributes': te_interface_attributes, 'signaling_protocols': signaling_protocols, 'lsps': lsps, }
+  _pyangbind_elements = OrderedDict([('global_', global_), ('te_global_attributes', te_global_attributes), ('te_interface_attributes', te_interface_attributes), ('signaling_protocols', signaling_protocols), ('lsps', lsps), ])
 
 
 from . import global_
@@ -535,6 +536,6 @@ for interfaces
   lsps = __builtin__.property(_get_lsps, _set_lsps)
 
 
-  _pyangbind_elements = {'global_': global_, 'te_global_attributes': te_global_attributes, 'te_interface_attributes': te_interface_attributes, 'signaling_protocols': signaling_protocols, 'lsps': lsps, }
+  _pyangbind_elements = OrderedDict([('global_', global_), ('te_global_attributes', te_global_attributes), ('te_interface_attributes', te_interface_attributes), ('signaling_protocols', signaling_protocols), ('lsps', lsps), ])
 
 

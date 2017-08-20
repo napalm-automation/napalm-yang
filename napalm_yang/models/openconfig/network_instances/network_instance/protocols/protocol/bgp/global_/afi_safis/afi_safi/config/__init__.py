@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ enabled for the neighbour or group
   enabled = __builtin__.property(_get_enabled, _set_enabled)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'enabled': enabled, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('enabled', enabled), ])
 
 
 class config(PybindBase):
@@ -281,6 +282,6 @@ enabled for the neighbour or group
   enabled = __builtin__.property(_get_enabled, _set_enabled)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'enabled': enabled, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('enabled', enabled), ])
 
 

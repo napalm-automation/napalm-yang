@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -402,7 +403,7 @@ instance for Layer 2 frames
   mtu = __builtin__.property(_get_mtu, _set_mtu)
 
 
-  _pyangbind_elements = {'name': name, 'type': type, 'enabled': enabled, 'description': description, 'router_id': router_id, 'route_distinguisher': route_distinguisher, 'enabled_address_families': enabled_address_families, 'mtu': mtu, }
+  _pyangbind_elements = OrderedDict([('name', name), ('type', type), ('enabled', enabled), ('description', description), ('router_id', router_id), ('route_distinguisher', route_distinguisher), ('enabled_address_families', enabled_address_families), ('mtu', mtu), ])
 
 
 class config(PybindBase):
@@ -787,6 +788,6 @@ instance for Layer 2 frames
   mtu = __builtin__.property(_get_mtu, _set_mtu)
 
 
-  _pyangbind_elements = {'name': name, 'type': type, 'enabled': enabled, 'description': description, 'router_id': router_id, 'route_distinguisher': route_distinguisher, 'enabled_address_families': enabled_address_families, 'mtu': mtu, }
+  _pyangbind_elements = OrderedDict([('name', name), ('type', type), ('enabled', enabled), ('description', description), ('router_id', router_id), ('route_distinguisher', route_distinguisher), ('enabled_address_families', enabled_address_families), ('mtu', mtu), ])
 
 

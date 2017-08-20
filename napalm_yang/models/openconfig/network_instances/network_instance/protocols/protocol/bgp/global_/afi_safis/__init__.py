@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ neighbour or group
   afi_safi = __builtin__.property(_get_afi_safi, _set_afi_safi)
 
 
-  _pyangbind_elements = {'afi_safi': afi_safi, }
+  _pyangbind_elements = OrderedDict([('afi_safi', afi_safi), ])
 
 
 from . import afi_safi
@@ -205,6 +206,6 @@ neighbour or group
   afi_safi = __builtin__.property(_get_afi_safi, _set_afi_safi)
 
 
-  _pyangbind_elements = {'afi_safi': afi_safi, }
+  _pyangbind_elements = OrderedDict([('afi_safi', afi_safi), ])
 
 

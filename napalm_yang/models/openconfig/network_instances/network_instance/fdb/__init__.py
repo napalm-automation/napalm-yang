@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ corresponding VLANs in the bridge domain
   mac_table = __builtin__.property(_get_mac_table, _set_mac_table)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'mac_table': mac_table, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('mac_table', mac_table), ])
 
 
 from . import config
@@ -367,6 +368,6 @@ corresponding VLANs in the bridge domain
   mac_table = __builtin__.property(_get_mac_table, _set_mac_table)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'mac_table': mac_table, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('mac_table', mac_table), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ restrict the prefixes for which add-paths is enabled
   eligible_prefix_policy = __builtin__.property(_get_eligible_prefix_policy, _set_eligible_prefix_policy)
 
 
-  _pyangbind_elements = {'receive': receive, 'send_max': send_max, 'eligible_prefix_policy': eligible_prefix_policy, }
+  _pyangbind_elements = OrderedDict([('receive', receive), ('send_max', send_max), ('eligible_prefix_policy', eligible_prefix_policy), ])
 
 
 class config(PybindBase):
@@ -367,6 +368,6 @@ restrict the prefixes for which add-paths is enabled
   eligible_prefix_policy = __builtin__.property(_get_eligible_prefix_policy, _set_eligible_prefix_policy)
 
 
-  _pyangbind_elements = {'receive': receive, 'send_max': send_max, 'eligible_prefix_policy': eligible_prefix_policy, }
+  _pyangbind_elements = OrderedDict([('receive', receive), ('send_max', send_max), ('eligible_prefix_policy', eligible_prefix_policy), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -239,7 +240,7 @@ explicit paths
   explicit_route_objects = __builtin__.property(_get_explicit_route_objects, _set_explicit_route_objects)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'explicit_route_objects': explicit_route_objects, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('explicit_route_objects', explicit_route_objects), ])
 
 
 from . import config
@@ -461,6 +462,6 @@ explicit paths
   explicit_route_objects = __builtin__.property(_get_explicit_route_objects, _set_explicit_route_objects)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'explicit_route_objects': explicit_route_objects, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('explicit_route_objects', explicit_route_objects), ])
 
 

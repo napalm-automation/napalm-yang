@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -195,7 +196,7 @@ been selected of the candidate secondary paths
   active = __builtin__.property(_get_active)
 
 
-  _pyangbind_elements = {'secondary_path': secondary_path, 'priority': priority, 'active': active, }
+  _pyangbind_elements = OrderedDict([('secondary_path', secondary_path), ('priority', priority), ('active', active), ])
 
 
 class state(PybindBase):
@@ -373,6 +374,6 @@ been selected of the candidate secondary paths
   active = __builtin__.property(_get_active)
 
 
-  _pyangbind_elements = {'secondary_path': secondary_path, 'priority': priority, 'active': active, }
+  _pyangbind_elements = OrderedDict([('secondary_path', secondary_path), ('priority', priority), ('active', active), ])
 
 

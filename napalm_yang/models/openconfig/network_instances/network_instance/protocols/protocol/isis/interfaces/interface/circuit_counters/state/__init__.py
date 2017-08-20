@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -446,7 +447,7 @@ MIB Entry: CircNumAdj.
   adj_number = __builtin__.property(_get_adj_number)
 
 
-  _pyangbind_elements = {'adj_changes': adj_changes, 'init_fails': init_fails, 'rejected_adj': rejected_adj, 'id_field_len_mismatches': id_field_len_mismatches, 'max_area_address_mismatches': max_area_address_mismatches, 'auth_type_fails': auth_type_fails, 'auth_fails': auth_fails, 'lan_dis_changes': lan_dis_changes, 'adj_number': adj_number, }
+  _pyangbind_elements = OrderedDict([('adj_changes', adj_changes), ('init_fails', init_fails), ('rejected_adj', rejected_adj), ('id_field_len_mismatches', id_field_len_mismatches), ('max_area_address_mismatches', max_area_address_mismatches), ('auth_type_fails', auth_type_fails), ('auth_fails', auth_fails), ('lan_dis_changes', lan_dis_changes), ('adj_number', adj_number), ])
 
 
 class state(PybindBase):
@@ -875,6 +876,6 @@ MIB Entry: CircNumAdj.
   adj_number = __builtin__.property(_get_adj_number)
 
 
-  _pyangbind_elements = {'adj_changes': adj_changes, 'init_fails': init_fails, 'rejected_adj': rejected_adj, 'id_field_len_mismatches': id_field_len_mismatches, 'max_area_address_mismatches': max_area_address_mismatches, 'auth_type_fails': auth_type_fails, 'auth_fails': auth_fails, 'lan_dis_changes': lan_dis_changes, 'adj_number': adj_number, }
+  _pyangbind_elements = OrderedDict([('adj_changes', adj_changes), ('init_fails', init_fails), ('rejected_adj', rejected_adj), ('id_field_len_mismatches', id_field_len_mismatches), ('max_area_address_mismatches', max_area_address_mismatches), ('auth_type_fails', auth_type_fails), ('auth_fails', auth_fails), ('lan_dis_changes', lan_dis_changes), ('adj_number', adj_number), ])
 
 

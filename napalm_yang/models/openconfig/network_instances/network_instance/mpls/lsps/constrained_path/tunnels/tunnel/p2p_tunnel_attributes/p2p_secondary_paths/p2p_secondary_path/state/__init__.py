@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -524,7 +525,7 @@ that details of the signaling can be retrieved.
   associated_rsvp_session = __builtin__.property(_get_associated_rsvp_session)
 
 
-  _pyangbind_elements = {'name': name, 'path_computation_method': path_computation_method, 'use_cspf': use_cspf, 'cspf_tiebreaker': cspf_tiebreaker, 'path_computation_server': path_computation_server, 'explicit_path_name': explicit_path_name, 'preference': preference, 'setup_priority': setup_priority, 'hold_priority': hold_priority, 'retry_timer': retry_timer, 'associated_rsvp_session': associated_rsvp_session, }
+  _pyangbind_elements = OrderedDict([('name', name), ('path_computation_method', path_computation_method), ('use_cspf', use_cspf), ('cspf_tiebreaker', cspf_tiebreaker), ('path_computation_server', path_computation_server), ('explicit_path_name', explicit_path_name), ('preference', preference), ('setup_priority', setup_priority), ('hold_priority', hold_priority), ('retry_timer', retry_timer), ('associated_rsvp_session', associated_rsvp_session), ])
 
 
 class state(PybindBase):
@@ -1031,6 +1032,6 @@ that details of the signaling can be retrieved.
   associated_rsvp_session = __builtin__.property(_get_associated_rsvp_session)
 
 
-  _pyangbind_elements = {'name': name, 'path_computation_method': path_computation_method, 'use_cspf': use_cspf, 'cspf_tiebreaker': cspf_tiebreaker, 'path_computation_server': path_computation_server, 'explicit_path_name': explicit_path_name, 'preference': preference, 'setup_priority': setup_priority, 'hold_priority': hold_priority, 'retry_timer': retry_timer, 'associated_rsvp_session': associated_rsvp_session, }
+  _pyangbind_elements = OrderedDict([('name', name), ('path_computation_method', path_computation_method), ('use_cspf', use_cspf), ('cspf_tiebreaker', cspf_tiebreaker), ('path_computation_server', path_computation_server), ('explicit_path_name', explicit_path_name), ('preference', preference), ('setup_priority', setup_priority), ('hold_priority', hold_priority), ('retry_timer', retry_timer), ('associated_rsvp_session', associated_rsvp_session), ])
 
 

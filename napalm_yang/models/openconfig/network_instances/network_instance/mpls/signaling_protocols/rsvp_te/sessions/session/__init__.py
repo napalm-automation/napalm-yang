@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -199,7 +200,7 @@ RSVP session
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'local_index': local_index, 'record_route_objects': record_route_objects, 'state': state, }
+  _pyangbind_elements = OrderedDict([('local_index', local_index), ('record_route_objects', record_route_objects), ('state', state), ])
 
 
 from . import record_route_objects
@@ -381,6 +382,6 @@ RSVP session
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'local_index': local_index, 'record_route_objects': record_route_objects, 'state': state, }
+  _pyangbind_elements = OrderedDict([('local_index', local_index), ('record_route_objects', record_route_objects), ('state', state), ])
 
 

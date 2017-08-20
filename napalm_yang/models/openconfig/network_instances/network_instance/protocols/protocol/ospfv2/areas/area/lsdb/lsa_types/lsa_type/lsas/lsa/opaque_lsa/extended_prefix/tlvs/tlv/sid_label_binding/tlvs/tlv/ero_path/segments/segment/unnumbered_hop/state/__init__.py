@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -148,7 +149,7 @@ segment of the ERO
   interface_id = __builtin__.property(_get_interface_id)
 
 
-  _pyangbind_elements = {'router_id': router_id, 'interface_id': interface_id, }
+  _pyangbind_elements = OrderedDict([('router_id', router_id), ('interface_id', interface_id), ])
 
 
 class state(PybindBase):
@@ -279,6 +280,6 @@ segment of the ERO
   interface_id = __builtin__.property(_get_interface_id)
 
 
-  _pyangbind_elements = {'router_id': router_id, 'interface_id': interface_id, }
+  _pyangbind_elements = OrderedDict([('router_id', router_id), ('interface_id', interface_id), ])
 
 

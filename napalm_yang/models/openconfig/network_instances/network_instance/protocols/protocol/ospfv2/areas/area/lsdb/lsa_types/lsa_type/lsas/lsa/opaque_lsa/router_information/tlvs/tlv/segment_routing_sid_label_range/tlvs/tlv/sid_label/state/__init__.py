@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ may represent either a segment identifier or an MPLS label.
   first_value = __builtin__.property(_get_first_value)
 
 
-  _pyangbind_elements = {'entry_type': entry_type, 'first_value': first_value, }
+  _pyangbind_elements = OrderedDict([('entry_type', entry_type), ('first_value', first_value), ])
 
 
 class state(PybindBase):
@@ -295,6 +296,6 @@ may represent either a segment identifier or an MPLS label.
   first_value = __builtin__.property(_get_first_value)
 
 
-  _pyangbind_elements = {'entry_type': entry_type, 'first_value': first_value, }
+  _pyangbind_elements = OrderedDict([('entry_type', entry_type), ('first_value', first_value), ])
 
 

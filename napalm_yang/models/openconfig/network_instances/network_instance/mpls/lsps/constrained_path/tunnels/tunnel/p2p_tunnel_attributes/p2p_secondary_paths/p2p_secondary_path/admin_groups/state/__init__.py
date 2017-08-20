@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ be included
   include_any_group = __builtin__.property(_get_include_any_group)
 
 
-  _pyangbind_elements = {'exclude_group': exclude_group, 'include_all_group': include_all_group, 'include_any_group': include_any_group, }
+  _pyangbind_elements = OrderedDict([('exclude_group', exclude_group), ('include_all_group', include_all_group), ('include_any_group', include_any_group), ])
 
 
 class state(PybindBase):
@@ -367,6 +368,6 @@ be included
   include_any_group = __builtin__.property(_get_include_any_group)
 
 
-  _pyangbind_elements = {'exclude_group': exclude_group, 'include_all_group': include_all_group, 'include_any_group': include_any_group, }
+  _pyangbind_elements = OrderedDict([('exclude_group', exclude_group), ('include_all_group', include_all_group), ('include_any_group', include_any_group), ])
 
 

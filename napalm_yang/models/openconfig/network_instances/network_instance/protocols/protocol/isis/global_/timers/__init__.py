@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -229,7 +230,7 @@ class timers(PybindBase):
   lsp_generation = __builtin__.property(_get_lsp_generation, _set_lsp_generation)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'spf': spf, 'lsp_generation': lsp_generation, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('spf', spf), ('lsp_generation', lsp_generation), ])
 
 
 from . import config
@@ -441,6 +442,6 @@ class timers(PybindBase):
   lsp_generation = __builtin__.property(_get_lsp_generation, _set_lsp_generation)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'spf': spf, 'lsp_generation': lsp_generation, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('spf', spf), ('lsp_generation', lsp_generation), ])
 
 

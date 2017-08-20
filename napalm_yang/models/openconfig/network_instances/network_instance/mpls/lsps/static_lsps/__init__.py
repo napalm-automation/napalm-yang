@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ signaling
   static_lsp = __builtin__.property(_get_static_lsp, _set_static_lsp)
 
 
-  _pyangbind_elements = {'static_lsp': static_lsp, }
+  _pyangbind_elements = OrderedDict([('static_lsp', static_lsp), ])
 
 
 from . import static_lsp
@@ -203,6 +204,6 @@ signaling
   static_lsp = __builtin__.property(_get_static_lsp, _set_static_lsp)
 
 
-  _pyangbind_elements = {'static_lsp': static_lsp, }
+  _pyangbind_elements = OrderedDict([('static_lsp', static_lsp), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -227,7 +228,7 @@ expressed as a canonical name.
   algorithm = __builtin__.property(_get_algorithm)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'value': value, 'flags': flags, 'algorithm': algorithm, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('value', value), ('flags', flags), ('algorithm', algorithm), ])
 
 
 class state(PybindBase):
@@ -437,6 +438,6 @@ expressed as a canonical name.
   algorithm = __builtin__.property(_get_algorithm)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'value': value, 'flags': flags, 'algorithm': algorithm, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('value', value), ('flags', flags), ('algorithm', algorithm), ])
 
 

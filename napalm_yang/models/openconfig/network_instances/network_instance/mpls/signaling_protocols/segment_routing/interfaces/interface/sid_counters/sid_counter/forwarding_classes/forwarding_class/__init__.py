@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -158,7 +159,7 @@ with the MPLS dataplane
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'exp': exp, 'state': state, }
+  _pyangbind_elements = OrderedDict([('exp', exp), ('state', state), ])
 
 
 from . import state
@@ -299,6 +300,6 @@ with the MPLS dataplane
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'exp': exp, 'state': state, }
+  _pyangbind_elements = OrderedDict([('exp', exp), ('state', state), ])
 
 

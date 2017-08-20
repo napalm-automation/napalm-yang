@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -557,6 +558,6 @@ this interface belongs
   aggregate_id = __builtin__.property(_get_aggregate_id)
 
 
-  _pyangbind_elements = {'mac_address': mac_address, 'auto_negotiate': auto_negotiate, 'duplex_mode': duplex_mode, 'port_speed': port_speed, 'enable_flow_control': enable_flow_control, 'hw_mac_address': hw_mac_address, 'effective_speed': effective_speed, 'negotiated_duplex_mode': negotiated_duplex_mode, 'negotiated_port_speed': negotiated_port_speed, 'counters': counters, 'aggregate_id': aggregate_id, }
+  _pyangbind_elements = OrderedDict([('mac_address', mac_address), ('auto_negotiate', auto_negotiate), ('duplex_mode', duplex_mode), ('port_speed', port_speed), ('enable_flow_control', enable_flow_control), ('hw_mac_address', hw_mac_address), ('effective_speed', effective_speed), ('negotiated_duplex_mode', negotiated_duplex_mode), ('negotiated_port_speed', negotiated_port_speed), ('counters', counters), ('aggregate_id', aggregate_id), ])
 
 

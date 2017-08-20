@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -247,7 +248,7 @@ associated.
   neighbor = __builtin__.property(_get_neighbor, _set_neighbor)
 
 
-  _pyangbind_elements = {'sid_id': sid_id, 'protection_eligible': protection_eligible, 'group': group, 'neighbor': neighbor, }
+  _pyangbind_elements = OrderedDict([('sid_id', sid_id), ('protection_eligible', protection_eligible), ('group', group), ('neighbor', neighbor), ])
 
 
 class config(PybindBase):
@@ -477,6 +478,6 @@ associated.
   neighbor = __builtin__.property(_get_neighbor, _set_neighbor)
 
 
-  _pyangbind_elements = {'sid_id': sid_id, 'protection_eligible': protection_eligible, 'group': group, 'neighbor': neighbor, }
+  _pyangbind_elements = OrderedDict([('sid_id', sid_id), ('protection_eligible', protection_eligible), ('group', group), ('neighbor', neighbor), ])
 
 

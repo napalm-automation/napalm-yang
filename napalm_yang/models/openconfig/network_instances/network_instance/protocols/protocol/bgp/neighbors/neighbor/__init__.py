@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -696,7 +697,7 @@ the neighbor
   afi_safis = __builtin__.property(_get_afi_safis, _set_afi_safis)
 
 
-  _pyangbind_elements = {'neighbor_address': neighbor_address, 'config': config, 'state': state, 'timers': timers, 'transport': transport, 'error_handling': error_handling, 'graceful_restart': graceful_restart, 'logging_options': logging_options, 'ebgp_multihop': ebgp_multihop, 'route_reflector': route_reflector, 'as_path_options': as_path_options, 'add_paths': add_paths, 'use_multiple_paths': use_multiple_paths, 'apply_policy': apply_policy, 'afi_safis': afi_safis, }
+  _pyangbind_elements = OrderedDict([('neighbor_address', neighbor_address), ('config', config), ('state', state), ('timers', timers), ('transport', transport), ('error_handling', error_handling), ('graceful_restart', graceful_restart), ('logging_options', logging_options), ('ebgp_multihop', ebgp_multihop), ('route_reflector', route_reflector), ('as_path_options', as_path_options), ('add_paths', add_paths), ('use_multiple_paths', use_multiple_paths), ('apply_policy', apply_policy), ('afi_safis', afi_safis), ])
 
 
 from . import config
@@ -1375,6 +1376,6 @@ the neighbor
   afi_safis = __builtin__.property(_get_afi_safis, _set_afi_safis)
 
 
-  _pyangbind_elements = {'neighbor_address': neighbor_address, 'config': config, 'state': state, 'timers': timers, 'transport': transport, 'error_handling': error_handling, 'graceful_restart': graceful_restart, 'logging_options': logging_options, 'ebgp_multihop': ebgp_multihop, 'route_reflector': route_reflector, 'as_path_options': as_path_options, 'add_paths': add_paths, 'use_multiple_paths': use_multiple_paths, 'apply_policy': apply_policy, 'afi_safis': afi_safis, }
+  _pyangbind_elements = OrderedDict([('neighbor_address', neighbor_address), ('config', config), ('state', state), ('timers', timers), ('transport', transport), ('error_handling', error_handling), ('graceful_restart', graceful_restart), ('logging_options', logging_options), ('ebgp_multihop', ebgp_multihop), ('route_reflector', route_reflector), ('as_path_options', as_path_options), ('add_paths', add_paths), ('use_multiple_paths', use_multiple_paths), ('apply_policy', apply_policy), ('afi_safis', afi_safis), ])
 
 

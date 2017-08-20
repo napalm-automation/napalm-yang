@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -311,7 +312,7 @@ associated
   multi_topology_identifier = __builtin__.property(_get_multi_topology_identifier)
 
 
-  _pyangbind_elements = {'backup': backup, 'group': group, 'sid_type': sid_type, 'sid_value': sid_value, 'weight': weight, 'multi_topology_identifier': multi_topology_identifier, }
+  _pyangbind_elements = OrderedDict([('backup', backup), ('group', group), ('sid_type', sid_type), ('sid_value', sid_value), ('weight', weight), ('multi_topology_identifier', multi_topology_identifier), ])
 
 
 class state(PybindBase):
@@ -605,6 +606,6 @@ associated
   multi_topology_identifier = __builtin__.property(_get_multi_topology_identifier)
 
 
-  _pyangbind_elements = {'backup': backup, 'group': group, 'sid_type': sid_type, 'sid_value': sid_value, 'weight': weight, 'multi_topology_identifier': multi_topology_identifier, }
+  _pyangbind_elements = OrderedDict([('backup', backup), ('group', group), ('sid_type', sid_type), ('sid_value', sid_value), ('weight', weight), ('multi_topology_identifier', multi_topology_identifier), ])
 
 

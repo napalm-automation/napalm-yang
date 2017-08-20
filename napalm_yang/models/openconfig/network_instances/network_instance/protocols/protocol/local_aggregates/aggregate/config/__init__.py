@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -200,7 +201,7 @@ routing protocols.
   set_tag = __builtin__.property(_get_set_tag, _set_set_tag)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'discard': discard, 'set_tag': set_tag, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('discard', discard), ('set_tag', set_tag), ])
 
 
 class config(PybindBase):
@@ -383,6 +384,6 @@ routing protocols.
   set_tag = __builtin__.property(_get_set_tag, _set_set_tag)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'discard': discard, 'set_tag': set_tag, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('discard', discard), ('set_tag', set_tag), ])
 
 

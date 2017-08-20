@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -233,7 +234,7 @@ soft preemption
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'graceful_restart': graceful_restart, 'soft_preemption': soft_preemption, 'hellos': hellos, 'state': state, }
+  _pyangbind_elements = OrderedDict([('graceful_restart', graceful_restart), ('soft_preemption', soft_preemption), ('hellos', hellos), ('state', state), ])
 
 
 from . import graceful_restart
@@ -449,6 +450,6 @@ soft preemption
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'graceful_restart': graceful_restart, 'soft_preemption': soft_preemption, 'hellos': hellos, 'state': state, }
+  _pyangbind_elements = OrderedDict([('graceful_restart', graceful_restart), ('soft_preemption', soft_preemption), ('hellos', hellos), ('state', state), ])
 
 

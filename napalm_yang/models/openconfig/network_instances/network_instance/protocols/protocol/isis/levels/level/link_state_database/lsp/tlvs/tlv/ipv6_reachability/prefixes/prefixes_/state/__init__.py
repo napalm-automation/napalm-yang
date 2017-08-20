@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -278,7 +279,7 @@ will contain the length of the Sub-TLV portion of the structure.
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'up_down': up_down, 'x_bit': x_bit, 's_bit': s_bit, 'ipv6_prefix': ipv6_prefix, 'metric': metric, }
+  _pyangbind_elements = OrderedDict([('up_down', up_down), ('x_bit', x_bit), ('s_bit', s_bit), ('ipv6_prefix', ipv6_prefix), ('metric', metric), ])
 
 
 class state(PybindBase):
@@ -539,6 +540,6 @@ will contain the length of the Sub-TLV portion of the structure.
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'up_down': up_down, 'x_bit': x_bit, 's_bit': s_bit, 'ipv6_prefix': ipv6_prefix, 'metric': metric, }
+  _pyangbind_elements = OrderedDict([('up_down', up_down), ('x_bit', x_bit), ('s_bit', s_bit), ('ipv6_prefix', ipv6_prefix), ('metric', metric), ])
 
 

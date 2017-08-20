@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,6 +193,6 @@ e.g., int8, uint16, etc.
   configurable = __builtin__.property(_get_configurable)
 
 
-  _pyangbind_elements = {'name': name, 'value': value, 'configurable': configurable, }
+  _pyangbind_elements = OrderedDict([('name', name), ('value', value), ('configurable', configurable), ])
 
 

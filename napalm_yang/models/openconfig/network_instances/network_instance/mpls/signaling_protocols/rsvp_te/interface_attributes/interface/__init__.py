@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -437,7 +438,7 @@ on an interface
   protection = __builtin__.property(_get_protection, _set_protection)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'interface_ref': interface_ref, 'bandwidth_reservations': bandwidth_reservations, 'hellos': hellos, 'authentication': authentication, 'subscription': subscription, 'protection': protection, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('interface_ref', interface_ref), ('bandwidth_reservations', bandwidth_reservations), ('hellos', hellos), ('authentication', authentication), ('subscription', subscription), ('protection', protection), ])
 
 
 from . import config
@@ -857,6 +858,6 @@ on an interface
   protection = __builtin__.property(_get_protection, _set_protection)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'interface_ref': interface_ref, 'bandwidth_reservations': bandwidth_reservations, 'hellos': hellos, 'authentication': authentication, 'subscription': subscription, 'protection': protection, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('interface_ref', interface_ref), ('bandwidth_reservations', bandwidth_reservations), ('hellos', hellos), ('authentication', authentication), ('subscription', subscription), ('protection', protection), ])
 
 

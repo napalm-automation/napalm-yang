@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ that nh-type shortcut is enabled for a specified AFI.
   nh_type = __builtin__.property(_get_nh_type)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'nh_type': nh_type, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('nh_type', nh_type), ])
 
 
 class state(PybindBase):
@@ -281,6 +282,6 @@ that nh-type shortcut is enabled for a specified AFI.
   nh_type = __builtin__.property(_get_nh_type)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'nh_type': nh_type, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('nh_type', nh_type), ])
 
 

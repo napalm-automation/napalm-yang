@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -317,7 +318,7 @@ protocols referencing the SRGB.
   used = __builtin__.property(_get_used)
 
 
-  _pyangbind_elements = {'local_id': local_id, 'dataplane_type': dataplane_type, 'mpls_label_blocks': mpls_label_blocks, 'ipv6_prefixes': ipv6_prefixes, 'size': size, 'used': used, }
+  _pyangbind_elements = OrderedDict([('local_id', local_id), ('dataplane_type', dataplane_type), ('mpls_label_blocks', mpls_label_blocks), ('ipv6_prefixes', ipv6_prefixes), ('size', size), ('used', used), ])
 
 
 class state(PybindBase):
@@ -617,6 +618,6 @@ protocols referencing the SRGB.
   used = __builtin__.property(_get_used)
 
 
-  _pyangbind_elements = {'local_id': local_id, 'dataplane_type': dataplane_type, 'mpls_label_blocks': mpls_label_blocks, 'ipv6_prefixes': ipv6_prefixes, 'size': size, 'used': used, }
+  _pyangbind_elements = OrderedDict([('local_id', local_id), ('dataplane_type', dataplane_type), ('mpls_label_blocks', mpls_label_blocks), ('ipv6_prefixes', ipv6_prefixes), ('size', size), ('used', used), ])
 
 

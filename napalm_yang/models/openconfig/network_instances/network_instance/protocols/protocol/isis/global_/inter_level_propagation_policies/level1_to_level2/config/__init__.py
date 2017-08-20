@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ in the import policy chain is satisfied.
   default_import_policy = __builtin__.property(_get_default_import_policy, _set_default_import_policy)
 
 
-  _pyangbind_elements = {'import_policy': import_policy, 'default_import_policy': default_import_policy, }
+  _pyangbind_elements = OrderedDict([('import_policy', import_policy), ('default_import_policy', default_import_policy), ])
 
 
 class config(PybindBase):
@@ -295,6 +296,6 @@ in the import policy chain is satisfied.
   default_import_policy = __builtin__.property(_get_default_import_policy, _set_default_import_policy)
 
 
-  _pyangbind_elements = {'import_policy': import_policy, 'default_import_policy': default_import_policy, }
+  _pyangbind_elements = OrderedDict([('import_policy', import_policy), ('default_import_policy', default_import_policy), ])
 
 

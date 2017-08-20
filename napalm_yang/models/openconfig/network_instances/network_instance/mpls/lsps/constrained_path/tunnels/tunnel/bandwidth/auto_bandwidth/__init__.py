@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -237,7 +238,7 @@ adjustement for the LSP
   underflow = __builtin__.property(_get_underflow, _set_underflow)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'overflow': overflow, 'underflow': underflow, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('overflow', overflow), ('underflow', underflow), ])
 
 
 from . import config
@@ -457,6 +458,6 @@ adjustement for the LSP
   underflow = __builtin__.property(_get_underflow, _set_underflow)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'overflow': overflow, 'underflow': underflow, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('overflow', overflow), ('underflow', underflow), ])
 
 

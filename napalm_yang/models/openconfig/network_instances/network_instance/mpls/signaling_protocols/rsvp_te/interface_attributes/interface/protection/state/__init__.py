@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ of the bypass LSPs
   bypass_optimize_interval = __builtin__.property(_get_bypass_optimize_interval)
 
 
-  _pyangbind_elements = {'link_protection_style_requested': link_protection_style_requested, 'bypass_optimize_interval': bypass_optimize_interval, }
+  _pyangbind_elements = OrderedDict([('link_protection_style_requested', link_protection_style_requested), ('bypass_optimize_interval', bypass_optimize_interval), ])
 
 
 class state(PybindBase):
@@ -285,6 +286,6 @@ of the bypass LSPs
   bypass_optimize_interval = __builtin__.property(_get_bypass_optimize_interval)
 
 
-  _pyangbind_elements = {'link_protection_style_requested': link_protection_style_requested, 'bypass_optimize_interval': bypass_optimize_interval, }
+  _pyangbind_elements = OrderedDict([('link_protection_style_requested', link_protection_style_requested), ('bypass_optimize_interval', bypass_optimize_interval), ])
 
 

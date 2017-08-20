@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -231,7 +232,7 @@ to the device
   interface_attributes = __builtin__.property(_get_interface_attributes, _set_interface_attributes)
 
 
-  _pyangbind_elements = {'sessions': sessions, 'neighbors': neighbors, 'global_': global_, 'interface_attributes': interface_attributes, }
+  _pyangbind_elements = OrderedDict([('sessions', sessions), ('neighbors', neighbors), ('global_', global_), ('interface_attributes', interface_attributes), ])
 
 
 from . import sessions
@@ -445,6 +446,6 @@ to the device
   interface_attributes = __builtin__.property(_get_interface_attributes, _set_interface_attributes)
 
 
-  _pyangbind_elements = {'sessions': sessions, 'neighbors': neighbors, 'global_': global_, 'interface_attributes': interface_attributes, }
+  _pyangbind_elements = OrderedDict([('sessions', sessions), ('neighbors', neighbors), ('global_', global_), ('interface_attributes', interface_attributes), ])
 
 

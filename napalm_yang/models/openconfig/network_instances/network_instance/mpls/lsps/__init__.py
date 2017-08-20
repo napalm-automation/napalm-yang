@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -195,7 +196,7 @@ signaling
   static_lsps = __builtin__.property(_get_static_lsps, _set_static_lsps)
 
 
-  _pyangbind_elements = {'constrained_path': constrained_path, 'unconstrained_path': unconstrained_path, 'static_lsps': static_lsps, }
+  _pyangbind_elements = OrderedDict([('constrained_path', constrained_path), ('unconstrained_path', unconstrained_path), ('static_lsps', static_lsps), ])
 
 
 from . import constrained_path
@@ -373,6 +374,6 @@ signaling
   static_lsps = __builtin__.property(_get_static_lsps, _set_static_lsps)
 
 
-  _pyangbind_elements = {'constrained_path': constrained_path, 'unconstrained_path': unconstrained_path, 'static_lsps': static_lsps, }
+  _pyangbind_elements = OrderedDict([('constrained_path', constrained_path), ('unconstrained_path', unconstrained_path), ('static_lsps', static_lsps), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -190,7 +191,7 @@ NLRI when they are received only from this neighbor
   ebgp = __builtin__.property(_get_ebgp, _set_ebgp)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'ebgp': ebgp, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('ebgp', ebgp), ])
 
 
 from . import config
@@ -363,6 +364,6 @@ NLRI when they are received only from this neighbor
   ebgp = __builtin__.property(_get_ebgp, _set_ebgp)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'ebgp': ebgp, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('ebgp', ebgp), ])
 
 

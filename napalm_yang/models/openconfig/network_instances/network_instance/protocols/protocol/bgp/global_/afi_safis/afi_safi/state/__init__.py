@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -227,7 +228,7 @@ enabled for the neighbour or group
   total_prefixes = __builtin__.property(_get_total_prefixes)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'enabled': enabled, 'total_paths': total_paths, 'total_prefixes': total_prefixes, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('enabled', enabled), ('total_paths', total_paths), ('total_prefixes', total_prefixes), ])
 
 
 class state(PybindBase):
@@ -437,6 +438,6 @@ enabled for the neighbour or group
   total_prefixes = __builtin__.property(_get_total_prefixes)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'enabled': enabled, 'total_paths': total_paths, 'total_prefixes': total_prefixes, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('enabled', enabled), ('total_paths', total_paths), ('total_prefixes', total_prefixes), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -208,7 +209,7 @@ as the maximum value.
   link_loss = __builtin__.property(_get_link_loss)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'link_loss': link_loss, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('link_loss', link_loss), ])
 
 
 class state(PybindBase):
@@ -399,6 +400,6 @@ as the maximum value.
   link_loss = __builtin__.property(_get_link_loss)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'link_loss': link_loss, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('link_loss', link_loss), ])
 
 

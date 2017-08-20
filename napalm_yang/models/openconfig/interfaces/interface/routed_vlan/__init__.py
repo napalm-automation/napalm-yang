@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -232,6 +233,6 @@ interface), IRB (integrated routing and bridging), RVI
   ipv6 = __builtin__.property(_get_ipv6, _set_ipv6)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'ipv4': ipv4, 'ipv6': ipv6, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('ipv4', ipv4), ('ipv6', ipv6), ])
 
 

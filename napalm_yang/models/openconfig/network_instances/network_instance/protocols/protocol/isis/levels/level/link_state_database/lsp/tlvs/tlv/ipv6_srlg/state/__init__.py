@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -344,7 +345,7 @@ expressed as a canonical name.
   srlg_value = __builtin__.property(_get_srlg_value)
 
 
-  _pyangbind_elements = {'type': type, 'system_id': system_id, 'psn_number': psn_number, 'flags': flags, 'ipv6_interface_address': ipv6_interface_address, 'ipv6_neighbor_address': ipv6_neighbor_address, 'srlg_value': srlg_value, }
+  _pyangbind_elements = OrderedDict([('type', type), ('system_id', system_id), ('psn_number', psn_number), ('flags', flags), ('ipv6_interface_address', ipv6_interface_address), ('ipv6_neighbor_address', ipv6_neighbor_address), ('srlg_value', srlg_value), ])
 
 
 class state(PybindBase):
@@ -671,6 +672,6 @@ expressed as a canonical name.
   srlg_value = __builtin__.property(_get_srlg_value)
 
 
-  _pyangbind_elements = {'type': type, 'system_id': system_id, 'psn_number': psn_number, 'flags': flags, 'ipv6_interface_address': ipv6_interface_address, 'ipv6_neighbor_address': ipv6_neighbor_address, 'srlg_value': srlg_value, }
+  _pyangbind_elements = OrderedDict([('type', type), ('system_id', system_id), ('psn_number', psn_number), ('flags', flags), ('ipv6_interface_address', ipv6_interface_address), ('ipv6_neighbor_address', ipv6_neighbor_address), ('srlg_value', srlg_value), ])
 
 

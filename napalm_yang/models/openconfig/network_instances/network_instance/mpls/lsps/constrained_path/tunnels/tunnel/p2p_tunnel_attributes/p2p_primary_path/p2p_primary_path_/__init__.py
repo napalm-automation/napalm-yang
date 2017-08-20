@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -293,7 +294,7 @@ link affinities
   admin_groups = __builtin__.property(_get_admin_groups, _set_admin_groups)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'candidate_secondary_paths': candidate_secondary_paths, 'admin_groups': admin_groups, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('candidate_secondary_paths', candidate_secondary_paths), ('admin_groups', admin_groups), ])
 
 
 from . import config
@@ -569,6 +570,6 @@ link affinities
   admin_groups = __builtin__.property(_get_admin_groups, _set_admin_groups)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'candidate_secondary_paths': candidate_secondary_paths, 'admin_groups': admin_groups, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('candidate_secondary_paths', candidate_secondary_paths), ('admin_groups', admin_groups), ])
 
 

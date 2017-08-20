@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,6 +112,6 @@ associated with the VLAN.
   member = __builtin__.property(_get_member, _set_member)
 
 
-  _pyangbind_elements = {'member': member, }
+  _pyangbind_elements = OrderedDict([('member', member), ])
 
 

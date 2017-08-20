@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -162,7 +163,7 @@ optional flags are present for each entry in the list.
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'index': index, 'state': state, }
+  _pyangbind_elements = OrderedDict([('index', index), ('state', state), ])
 
 
 from . import state
@@ -307,6 +308,6 @@ optional flags are present for each entry in the list.
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'index': index, 'state': state, }
+  _pyangbind_elements = OrderedDict([('index', index), ('state', state), ])
 
 

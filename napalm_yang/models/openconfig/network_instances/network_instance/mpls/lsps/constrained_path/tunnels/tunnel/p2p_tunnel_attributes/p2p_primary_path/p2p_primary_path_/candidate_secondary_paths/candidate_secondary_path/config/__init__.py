@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ path reference with a priority of 0 is the most preferred
   priority = __builtin__.property(_get_priority, _set_priority)
 
 
-  _pyangbind_elements = {'secondary_path': secondary_path, 'priority': priority, }
+  _pyangbind_elements = OrderedDict([('secondary_path', secondary_path), ('priority', priority), ])
 
 
 class config(PybindBase):
@@ -291,6 +292,6 @@ path reference with a priority of 0 is the most preferred
   priority = __builtin__.property(_get_priority, _set_priority)
 
 
-  _pyangbind_elements = {'secondary_path': secondary_path, 'priority': priority, }
+  _pyangbind_elements = OrderedDict([('secondary_path', secondary_path), ('priority', priority), ])
 
 

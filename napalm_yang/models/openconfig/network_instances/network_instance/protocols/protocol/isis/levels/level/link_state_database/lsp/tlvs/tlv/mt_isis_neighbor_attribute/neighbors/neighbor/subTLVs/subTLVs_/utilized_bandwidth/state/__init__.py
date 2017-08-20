@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -161,7 +162,7 @@ link bandwidth utilizations.
   utilized_bandwidth = __builtin__.property(_get_utilized_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'utilized_bandwidth': utilized_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('utilized_bandwidth', utilized_bandwidth), ])
 
 
 class state(PybindBase):
@@ -305,6 +306,6 @@ link bandwidth utilizations.
   utilized_bandwidth = __builtin__.property(_get_utilized_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'utilized_bandwidth': utilized_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('utilized_bandwidth', utilized_bandwidth), ])
 
 

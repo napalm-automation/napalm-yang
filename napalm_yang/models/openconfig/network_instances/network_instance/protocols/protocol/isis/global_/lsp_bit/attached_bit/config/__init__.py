@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -155,7 +156,7 @@ attached bit is not advertised in locally generated PDUs.
   suppress_bit = __builtin__.property(_get_suppress_bit, _set_suppress_bit)
 
 
-  _pyangbind_elements = {'ignore_bit': ignore_bit, 'suppress_bit': suppress_bit, }
+  _pyangbind_elements = OrderedDict([('ignore_bit', ignore_bit), ('suppress_bit', suppress_bit), ])
 
 
 class config(PybindBase):
@@ -293,6 +294,6 @@ attached bit is not advertised in locally generated PDUs.
   suppress_bit = __builtin__.property(_get_suppress_bit, _set_suppress_bit)
 
 
-  _pyangbind_elements = {'ignore_bit': ignore_bit, 'suppress_bit': suppress_bit, }
+  _pyangbind_elements = OrderedDict([('ignore_bit', ignore_bit), ('suppress_bit', suppress_bit), ])
 
 

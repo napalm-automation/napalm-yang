@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ class is_reachability(PybindBase):
   neighbors = __builtin__.property(_get_neighbors)
 
 
-  _pyangbind_elements = {'state': state, 'neighbors': neighbors, }
+  _pyangbind_elements = OrderedDict([('state', state), ('neighbors', neighbors), ])
 
 
 from . import state
@@ -281,6 +282,6 @@ class is_reachability(PybindBase):
   neighbors = __builtin__.property(_get_neighbors)
 
 
-  _pyangbind_elements = {'state': state, 'neighbors': neighbors, }
+  _pyangbind_elements = OrderedDict([('state', state), ('neighbors', neighbors), ])
 
 

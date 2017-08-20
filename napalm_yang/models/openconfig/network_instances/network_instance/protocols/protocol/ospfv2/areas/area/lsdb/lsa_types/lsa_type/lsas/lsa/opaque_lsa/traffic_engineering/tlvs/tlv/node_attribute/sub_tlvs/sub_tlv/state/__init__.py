@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ value is used
   local_ipv6_addresses = __builtin__.property(_get_local_ipv6_addresses)
 
 
-  _pyangbind_elements = {'type': type, 'local_ipv4_addresses': local_ipv4_addresses, 'local_ipv6_addresses': local_ipv6_addresses, }
+  _pyangbind_elements = OrderedDict([('type', type), ('local_ipv4_addresses', local_ipv4_addresses), ('local_ipv6_addresses', local_ipv6_addresses), ])
 
 
 class state(PybindBase):
@@ -367,6 +368,6 @@ value is used
   local_ipv6_addresses = __builtin__.property(_get_local_ipv6_addresses)
 
 
-  _pyangbind_elements = {'type': type, 'local_ipv4_addresses': local_ipv4_addresses, 'local_ipv6_addresses': local_ipv6_addresses, }
+  _pyangbind_elements = OrderedDict([('type', type), ('local_ipv4_addresses', local_ipv4_addresses), ('local_ipv6_addresses', local_ipv6_addresses), ])
 
 

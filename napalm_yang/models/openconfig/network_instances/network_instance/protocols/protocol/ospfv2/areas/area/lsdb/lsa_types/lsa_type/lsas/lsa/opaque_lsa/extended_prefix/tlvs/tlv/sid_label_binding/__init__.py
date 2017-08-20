@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ SID/Label Binding TLV
   tlvs = __builtin__.property(_get_tlvs)
 
 
-  _pyangbind_elements = {'state': state, 'tlvs': tlvs, }
+  _pyangbind_elements = OrderedDict([('state', state), ('tlvs', tlvs), ])
 
 
 from . import state
@@ -291,6 +292,6 @@ SID/Label Binding TLV
   tlvs = __builtin__.property(_get_tlvs)
 
 
-  _pyangbind_elements = {'state': state, 'tlvs': tlvs, }
+  _pyangbind_elements = OrderedDict([('state', state), ('tlvs', tlvs), ])
 
 

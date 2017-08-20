@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ graceful-restart has been advertised to the peer
   advertised = __builtin__.property(_get_advertised)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'received': received, 'advertised': advertised, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('received', received), ('advertised', advertised), ])
 
 
 class state(PybindBase):
@@ -367,6 +368,6 @@ graceful-restart has been advertised to the peer
   advertised = __builtin__.property(_get_advertised)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'received': received, 'advertised': advertised, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('received', received), ('advertised', advertised), ])
 
 

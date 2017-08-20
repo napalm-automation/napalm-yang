@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -246,7 +247,7 @@ connection point
   endpoints = __builtin__.property(_get_endpoints, _set_endpoints)
 
 
-  _pyangbind_elements = {'connection_point_id': connection_point_id, 'config': config, 'state': state, 'endpoints': endpoints, }
+  _pyangbind_elements = OrderedDict([('connection_point_id', connection_point_id), ('config', config), ('state', state), ('endpoints', endpoints), ])
 
 
 from . import config
@@ -475,6 +476,6 @@ connection point
   endpoints = __builtin__.property(_get_endpoints, _set_endpoints)
 
 
-  _pyangbind_elements = {'connection_point_id': connection_point_id, 'config': config, 'state': state, 'endpoints': endpoints, }
+  _pyangbind_elements = OrderedDict([('connection_point_id', connection_point_id), ('config', config), ('state', state), ('endpoints', endpoints), ])
 
 

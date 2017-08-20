@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,7 +198,7 @@ increasing delay between generation of an LSA
   timer_type = __builtin__.property(_get_timer_type)
 
 
-  _pyangbind_elements = {'initial_delay': initial_delay, 'maximum_delay': maximum_delay, 'timer_type': timer_type, }
+  _pyangbind_elements = OrderedDict([('initial_delay', initial_delay), ('maximum_delay', maximum_delay), ('timer_type', timer_type), ])
 
 
 class state(PybindBase):
@@ -377,6 +378,6 @@ increasing delay between generation of an LSA
   timer_type = __builtin__.property(_get_timer_type)
 
 
-  _pyangbind_elements = {'initial_delay': initial_delay, 'maximum_delay': maximum_delay, 'timer_type': timer_type, }
+  _pyangbind_elements = OrderedDict([('initial_delay', initial_delay), ('maximum_delay', maximum_delay), ('timer_type', timer_type), ])
 
 

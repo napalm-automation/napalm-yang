@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ it being considered synchronized by the IGP.
   post_session_up_delay = __builtin__.property(_get_post_session_up_delay)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'post_session_up_delay': post_session_up_delay, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('post_session_up_delay', post_session_up_delay), ])
 
 
 class state(PybindBase):
@@ -295,6 +296,6 @@ it being considered synchronized by the IGP.
   post_session_up_delay = __builtin__.property(_get_post_session_up_delay)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'post_session_up_delay': post_session_up_delay, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('post_session_up_delay', post_session_up_delay), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -188,7 +189,7 @@ defined is enabled, when set to false it is explicitly disabled.
   ipv6_router_id = __builtin__.property(_get_ipv6_router_id)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'ipv4_router_id': ipv4_router_id, 'ipv6_router_id': ipv6_router_id, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('ipv4_router_id', ipv4_router_id), ('ipv6_router_id', ipv6_router_id), ])
 
 
 class state(PybindBase):
@@ -359,6 +360,6 @@ defined is enabled, when set to false it is explicitly disabled.
   ipv6_router_id = __builtin__.property(_get_ipv6_router_id)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'ipv4_router_id': ipv4_router_id, 'ipv6_router_id': ipv6_router_id, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('ipv4_router_id', ipv4_router_id), ('ipv6_router_id', ipv6_router_id), ])
 
 

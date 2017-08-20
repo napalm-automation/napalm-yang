@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -237,7 +238,7 @@ route being specified
   next_hops = __builtin__.property(_get_next_hops, _set_next_hops)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'config': config, 'state': state, 'next_hops': next_hops, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('config', config), ('state', state), ('next_hops', next_hops), ])
 
 
 from . import config
@@ -457,6 +458,6 @@ route being specified
   next_hops = __builtin__.property(_get_next_hops, _set_next_hops)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'config': config, 'state': state, 'next_hops': next_hops, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('config', config), ('state', state), ('next_hops', next_hops), ])
 
 

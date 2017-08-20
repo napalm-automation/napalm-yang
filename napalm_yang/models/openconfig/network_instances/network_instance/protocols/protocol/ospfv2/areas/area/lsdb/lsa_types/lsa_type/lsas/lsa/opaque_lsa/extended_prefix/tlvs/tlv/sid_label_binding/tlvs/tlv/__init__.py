@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -237,7 +238,7 @@ binding TLV
   ero_path = __builtin__.property(_get_ero_path)
 
 
-  _pyangbind_elements = {'state': state, 'sid_label_binding': sid_label_binding, 'ero_metric': ero_metric, 'ero_path': ero_path, }
+  _pyangbind_elements = OrderedDict([('state', state), ('sid_label_binding', sid_label_binding), ('ero_metric', ero_metric), ('ero_path', ero_path), ])
 
 
 from . import state
@@ -457,6 +458,6 @@ binding TLV
   ero_path = __builtin__.property(_get_ero_path)
 
 
-  _pyangbind_elements = {'state': state, 'sid_label_binding': sid_label_binding, 'ero_metric': ero_metric, 'ero_path': ero_path, }
+  _pyangbind_elements = OrderedDict([('state', state), ('sid_label_binding', sid_label_binding), ('ero_metric', ero_metric), ('ero_path', ero_path), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -469,6 +470,6 @@ failure
   out_8021q_frames = __builtin__.property(_get_out_8021q_frames)
 
 
-  _pyangbind_elements = {'in_mac_control_frames': in_mac_control_frames, 'in_mac_pause_frames': in_mac_pause_frames, 'in_oversize_frames': in_oversize_frames, 'in_jabber_frames': in_jabber_frames, 'in_fragment_frames': in_fragment_frames, 'in_8021q_frames': in_8021q_frames, 'in_crc_errors': in_crc_errors, 'out_mac_control_frames': out_mac_control_frames, 'out_mac_pause_frames': out_mac_pause_frames, 'out_8021q_frames': out_8021q_frames, }
+  _pyangbind_elements = OrderedDict([('in_mac_control_frames', in_mac_control_frames), ('in_mac_pause_frames', in_mac_pause_frames), ('in_oversize_frames', in_oversize_frames), ('in_jabber_frames', in_jabber_frames), ('in_fragment_frames', in_fragment_frames), ('in_8021q_frames', in_8021q_frames), ('in_crc_errors', in_crc_errors), ('out_mac_control_frames', out_mac_control_frames), ('out_mac_pause_frames', out_mac_pause_frames), ('out_8021q_frames', out_8021q_frames), ])
 
 

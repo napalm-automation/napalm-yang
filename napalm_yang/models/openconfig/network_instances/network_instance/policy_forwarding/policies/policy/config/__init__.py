@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ used when applying the policy to a particular interface.
   policy_id = __builtin__.property(_get_policy_id, _set_policy_id)
 
 
-  _pyangbind_elements = {'policy_id': policy_id, }
+  _pyangbind_elements = OrderedDict([('policy_id', policy_id), ])
 
 
 class config(PybindBase):
@@ -205,6 +206,6 @@ used when applying the policy to a particular interface.
   policy_id = __builtin__.property(_get_policy_id, _set_policy_id)
 
 
-  _pyangbind_elements = {'policy_id': policy_id, }
+  _pyangbind_elements = OrderedDict([('policy_id', policy_id), ])
 
 

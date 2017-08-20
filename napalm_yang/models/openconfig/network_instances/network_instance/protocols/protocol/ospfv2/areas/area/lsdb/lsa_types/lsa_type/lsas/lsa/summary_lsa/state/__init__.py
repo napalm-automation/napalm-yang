@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ represented as a CIDR mask.
   network_mask = __builtin__.property(_get_network_mask)
 
 
-  _pyangbind_elements = {'network_mask': network_mask, }
+  _pyangbind_elements = OrderedDict([('network_mask', network_mask), ])
 
 
 class state(PybindBase):
@@ -203,6 +204,6 @@ represented as a CIDR mask.
   network_mask = __builtin__.property(_get_network_mask)
 
 
-  _pyangbind_elements = {'network_mask': network_mask, }
+  _pyangbind_elements = OrderedDict([('network_mask', network_mask), ])
 
 

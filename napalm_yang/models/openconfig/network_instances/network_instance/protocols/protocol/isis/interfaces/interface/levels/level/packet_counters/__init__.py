@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -351,7 +352,7 @@ otherwise classified - referred to as Unknown PDUs.
   unknown = __builtin__.property(_get_unknown, _set_unknown)
 
 
-  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'cnsp': cnsp, 'unknown': unknown, }
+  _pyangbind_elements = OrderedDict([('lsp', lsp), ('iih', iih), ('ish', ish), ('esh', esh), ('psnp', psnp), ('cnsp', cnsp), ('unknown', unknown), ])
 
 
 from . import lsp
@@ -685,6 +686,6 @@ otherwise classified - referred to as Unknown PDUs.
   unknown = __builtin__.property(_get_unknown, _set_unknown)
 
 
-  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'cnsp': cnsp, 'unknown': unknown, }
+  _pyangbind_elements = OrderedDict([('lsp', lsp), ('iih', iih), ('ish', ish), ('esh', esh), ('psnp', psnp), ('cnsp', cnsp), ('unknown', unknown), ])
 
 

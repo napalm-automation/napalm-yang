@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -531,7 +532,7 @@ with a peer or group
   description = __builtin__.property(_get_description, _set_description)
 
 
-  _pyangbind_elements = {'peer_group': peer_group, 'neighbor_address': neighbor_address, 'enabled': enabled, 'peer_as': peer_as, 'local_as': local_as, 'peer_type': peer_type, 'auth_password': auth_password, 'remove_private_as': remove_private_as, 'route_flap_damping': route_flap_damping, 'send_community': send_community, 'description': description, }
+  _pyangbind_elements = OrderedDict([('peer_group', peer_group), ('neighbor_address', neighbor_address), ('enabled', enabled), ('peer_as', peer_as), ('local_as', local_as), ('peer_type', peer_type), ('auth_password', auth_password), ('remove_private_as', remove_private_as), ('route_flap_damping', route_flap_damping), ('send_community', send_community), ('description', description), ])
 
 
 class config(PybindBase):
@@ -1045,6 +1046,6 @@ with a peer or group
   description = __builtin__.property(_get_description, _set_description)
 
 
-  _pyangbind_elements = {'peer_group': peer_group, 'neighbor_address': neighbor_address, 'enabled': enabled, 'peer_as': peer_as, 'local_as': local_as, 'peer_type': peer_type, 'auth_password': auth_password, 'remove_private_as': remove_private_as, 'route_flap_damping': route_flap_damping, 'send_community': send_community, 'description': description, }
+  _pyangbind_elements = OrderedDict([('peer_group', peer_group), ('neighbor_address', neighbor_address), ('enabled', enabled), ('peer_as', peer_as), ('local_as', local_as), ('peer_type', peer_type), ('auth_password', auth_password), ('remove_private_as', remove_private_as), ('route_flap_damping', route_flap_damping), ('send_community', send_community), ('description', description), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ the network described by the Network LSA
   attached_router = __builtin__.property(_get_attached_router)
 
 
-  _pyangbind_elements = {'network_mask': network_mask, 'attached_router': attached_router, }
+  _pyangbind_elements = OrderedDict([('network_mask', network_mask), ('attached_router', attached_router), ])
 
 
 class state(PybindBase):
@@ -285,6 +286,6 @@ the network described by the Network LSA
   attached_router = __builtin__.property(_get_attached_router)
 
 
-  _pyangbind_elements = {'network_mask': network_mask, 'attached_router': attached_router, }
+  _pyangbind_elements = OrderedDict([('network_mask', network_mask), ('attached_router', attached_router), ])
 
 

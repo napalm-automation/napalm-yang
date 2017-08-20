@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -157,7 +158,7 @@ extended admin group values as per RFC7308.
   bit_position = __builtin__.property(_get_bit_position, _set_bit_position)
 
 
-  _pyangbind_elements = {'admin_group_name': admin_group_name, 'bit_position': bit_position, }
+  _pyangbind_elements = OrderedDict([('admin_group_name', admin_group_name), ('bit_position', bit_position), ])
 
 
 class config(PybindBase):
@@ -297,6 +298,6 @@ extended admin group values as per RFC7308.
   bit_position = __builtin__.property(_get_bit_position, _set_bit_position)
 
 
-  _pyangbind_elements = {'admin_group_name': admin_group_name, 'bit_position': bit_position, }
+  _pyangbind_elements = OrderedDict([('admin_group_name', admin_group_name), ('bit_position', bit_position), ])
 
 

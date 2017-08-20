@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -282,7 +283,7 @@ recursion is hence disabled.
   recurse = __builtin__.property(_get_recurse, _set_recurse)
 
 
-  _pyangbind_elements = {'index': index, 'next_hop': next_hop, 'metric': metric, 'recurse': recurse, }
+  _pyangbind_elements = OrderedDict([('index', index), ('next_hop', next_hop), ('metric', metric), ('recurse', recurse), ])
 
 
 class config(PybindBase):
@@ -547,6 +548,6 @@ recursion is hence disabled.
   recurse = __builtin__.property(_get_recurse, _set_recurse)
 
 
-  _pyangbind_elements = {'index': index, 'next_hop': next_hop, 'metric': metric, 'recurse': recurse, }
+  _pyangbind_elements = OrderedDict([('index', index), ('next_hop', next_hop), ('metric', metric), ('recurse', recurse), ])
 
 

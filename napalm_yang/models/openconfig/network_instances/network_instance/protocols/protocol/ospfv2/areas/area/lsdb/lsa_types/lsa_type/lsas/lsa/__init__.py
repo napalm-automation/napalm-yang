@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -396,7 +397,7 @@ LSA types
   opaque_lsa = __builtin__.property(_get_opaque_lsa)
 
 
-  _pyangbind_elements = {'link_state_id': link_state_id, 'state': state, 'router_lsa': router_lsa, 'network_lsa': network_lsa, 'summary_lsa': summary_lsa, 'as_external_lsa': as_external_lsa, 'nssa_external_lsa': nssa_external_lsa, 'opaque_lsa': opaque_lsa, }
+  _pyangbind_elements = OrderedDict([('link_state_id', link_state_id), ('state', state), ('router_lsa', router_lsa), ('network_lsa', network_lsa), ('summary_lsa', summary_lsa), ('as_external_lsa', as_external_lsa), ('nssa_external_lsa', nssa_external_lsa), ('opaque_lsa', opaque_lsa), ])
 
 
 from . import state
@@ -775,6 +776,6 @@ LSA types
   opaque_lsa = __builtin__.property(_get_opaque_lsa)
 
 
-  _pyangbind_elements = {'link_state_id': link_state_id, 'state': state, 'router_lsa': router_lsa, 'network_lsa': network_lsa, 'summary_lsa': summary_lsa, 'as_external_lsa': as_external_lsa, 'nssa_external_lsa': nssa_external_lsa, 'opaque_lsa': opaque_lsa, }
+  _pyangbind_elements = OrderedDict([('link_state_id', link_state_id), ('state', state), ('router_lsa', router_lsa), ('network_lsa', network_lsa), ('summary_lsa', summary_lsa), ('as_external_lsa', as_external_lsa), ('nssa_external_lsa', nssa_external_lsa), ('opaque_lsa', opaque_lsa), ])
 
 

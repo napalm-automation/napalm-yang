@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -113,6 +114,6 @@ have a single zero-indexed element
   channel = __builtin__.property(_get_channel, _set_channel)
 
 
-  _pyangbind_elements = {'channel': channel, }
+  _pyangbind_elements = OrderedDict([('channel', channel), ])
 
 

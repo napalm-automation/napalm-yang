@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -196,7 +197,7 @@ within the policy forwarding model.
   path_selection_groups = __builtin__.property(_get_path_selection_groups, _set_path_selection_groups)
 
 
-  _pyangbind_elements = {'policies': policies, 'interfaces': interfaces, 'path_selection_groups': path_selection_groups, }
+  _pyangbind_elements = OrderedDict([('policies', policies), ('interfaces', interfaces), ('path_selection_groups', path_selection_groups), ])
 
 
 from . import policies
@@ -375,6 +376,6 @@ within the policy forwarding model.
   path_selection_groups = __builtin__.property(_get_path_selection_groups, _set_path_selection_groups)
 
 
-  _pyangbind_elements = {'policies': policies, 'interfaces': interfaces, 'path_selection_groups': path_selection_groups, }
+  _pyangbind_elements = OrderedDict([('policies', policies), ('interfaces', interfaces), ('path_selection_groups', path_selection_groups), ])
 
 

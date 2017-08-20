@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ parameters
   send_default_route = __builtin__.property(_get_send_default_route)
 
 
-  _pyangbind_elements = {'send_default_route': send_default_route, }
+  _pyangbind_elements = OrderedDict([('send_default_route', send_default_route), ])
 
 
 class state(PybindBase):
@@ -201,6 +202,6 @@ parameters
   send_default_route = __builtin__.property(_get_send_default_route)
 
 
-  _pyangbind_elements = {'send_default_route': send_default_route, }
+  _pyangbind_elements = OrderedDict([('send_default_route', send_default_route), ])
 
 

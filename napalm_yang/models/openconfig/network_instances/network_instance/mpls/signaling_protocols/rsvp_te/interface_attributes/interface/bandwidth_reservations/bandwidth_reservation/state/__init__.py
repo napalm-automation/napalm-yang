@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -281,7 +282,7 @@ priority level is set to ALL
   highwater_mark = __builtin__.property(_get_highwater_mark)
 
 
-  _pyangbind_elements = {'priority': priority, 'available_bandwidth': available_bandwidth, 'reserved_bandwidth': reserved_bandwidth, 'active_reservations_count': active_reservations_count, 'highwater_mark': highwater_mark, }
+  _pyangbind_elements = OrderedDict([('priority', priority), ('available_bandwidth', available_bandwidth), ('reserved_bandwidth', reserved_bandwidth), ('active_reservations_count', active_reservations_count), ('highwater_mark', highwater_mark), ])
 
 
 class state(PybindBase):
@@ -545,6 +546,6 @@ priority level is set to ALL
   highwater_mark = __builtin__.property(_get_highwater_mark)
 
 
-  _pyangbind_elements = {'priority': priority, 'available_bandwidth': available_bandwidth, 'reserved_bandwidth': reserved_bandwidth, 'active_reservations_count': active_reservations_count, 'highwater_mark': highwater_mark, }
+  _pyangbind_elements = OrderedDict([('priority', priority), ('available_bandwidth', available_bandwidth), ('reserved_bandwidth', reserved_bandwidth), ('active_reservations_count', active_reservations_count), ('highwater_mark', highwater_mark), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -114,7 +115,7 @@ area according to the policy specified
   inter_area_propagation_policy = __builtin__.property(_get_inter_area_propagation_policy, _set_inter_area_propagation_policy)
 
 
-  _pyangbind_elements = {'inter_area_propagation_policy': inter_area_propagation_policy, }
+  _pyangbind_elements = OrderedDict([('inter_area_propagation_policy', inter_area_propagation_policy), ])
 
 
 from . import inter_area_propagation_policy
@@ -211,6 +212,6 @@ area according to the policy specified
   inter_area_propagation_policy = __builtin__.property(_get_inter_area_propagation_policy, _set_inter_area_propagation_policy)
 
 
-  _pyangbind_elements = {'inter_area_propagation_policy': inter_area_propagation_policy, }
+  _pyangbind_elements = OrderedDict([('inter_area_propagation_policy', inter_area_propagation_policy), ])
 
 

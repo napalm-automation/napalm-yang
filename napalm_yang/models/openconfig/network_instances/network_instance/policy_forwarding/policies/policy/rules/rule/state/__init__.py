@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -187,7 +188,7 @@ rule.
   matched_octets = __builtin__.property(_get_matched_octets)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'matched_pkts': matched_pkts, 'matched_octets': matched_octets, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ('matched_pkts', matched_pkts), ('matched_octets', matched_octets), ])
 
 
 class state(PybindBase):
@@ -357,6 +358,6 @@ rule.
   matched_octets = __builtin__.property(_get_matched_octets)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'matched_pkts': matched_pkts, 'matched_octets': matched_octets, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ('matched_pkts', matched_pkts), ('matched_octets', matched_octets), ])
 
 

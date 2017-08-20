@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -119,7 +120,7 @@ connections are allowed.
   dynamic_neighbor_prefix = __builtin__.property(_get_dynamic_neighbor_prefix, _set_dynamic_neighbor_prefix)
 
 
-  _pyangbind_elements = {'dynamic_neighbor_prefix': dynamic_neighbor_prefix, }
+  _pyangbind_elements = OrderedDict([('dynamic_neighbor_prefix', dynamic_neighbor_prefix), ])
 
 
 from . import dynamic_neighbor_prefix
@@ -221,6 +222,6 @@ connections are allowed.
   dynamic_neighbor_prefix = __builtin__.property(_get_dynamic_neighbor_prefix, _set_dynamic_neighbor_prefix)
 
 
-  _pyangbind_elements = {'dynamic_neighbor_prefix': dynamic_neighbor_prefix, }
+  _pyangbind_elements = OrderedDict([('dynamic_neighbor_prefix', dynamic_neighbor_prefix), ])
 
 

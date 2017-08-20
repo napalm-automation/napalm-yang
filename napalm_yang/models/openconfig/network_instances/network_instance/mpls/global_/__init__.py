@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -239,7 +240,7 @@ allocation of labels should be out of the label block specified.
   reserved_label_blocks = __builtin__.property(_get_reserved_label_blocks, _set_reserved_label_blocks)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'interface_attributes': interface_attributes, 'reserved_label_blocks': reserved_label_blocks, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('interface_attributes', interface_attributes), ('reserved_label_blocks', reserved_label_blocks), ])
 
 
 from . import config
@@ -461,6 +462,6 @@ allocation of labels should be out of the label block specified.
   reserved_label_blocks = __builtin__.property(_get_reserved_label_blocks, _set_reserved_label_blocks)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'interface_attributes': interface_attributes, 'reserved_label_blocks': reserved_label_blocks, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('interface_attributes', interface_attributes), ('reserved_label_blocks', reserved_label_blocks), ])
 
 

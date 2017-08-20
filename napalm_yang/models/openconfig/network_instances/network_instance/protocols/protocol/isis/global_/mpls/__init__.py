@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ between the LDP and IS-IS
   igp_ldp_sync = __builtin__.property(_get_igp_ldp_sync, _set_igp_ldp_sync)
 
 
-  _pyangbind_elements = {'igp_ldp_sync': igp_ldp_sync, }
+  _pyangbind_elements = OrderedDict([('igp_ldp_sync', igp_ldp_sync), ])
 
 
 from . import igp_ldp_sync
@@ -207,6 +208,6 @@ between the LDP and IS-IS
   igp_ldp_sync = __builtin__.property(_get_igp_ldp_sync, _set_igp_ldp_sync)
 
 
-  _pyangbind_elements = {'igp_ldp_sync': igp_ldp_sync, }
+  _pyangbind_elements = OrderedDict([('igp_ldp_sync', igp_ldp_sync), ])
 
 

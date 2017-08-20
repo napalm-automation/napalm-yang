@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -325,7 +326,7 @@ which the metric to the next-hop is lowest
   ignore_next_hop_igp_metric = __builtin__.property(_get_ignore_next_hop_igp_metric)
 
 
-  _pyangbind_elements = {'always_compare_med': always_compare_med, 'ignore_as_path_length': ignore_as_path_length, 'external_compare_router_id': external_compare_router_id, 'advertise_inactive_routes': advertise_inactive_routes, 'enable_aigp': enable_aigp, 'ignore_next_hop_igp_metric': ignore_next_hop_igp_metric, }
+  _pyangbind_elements = OrderedDict([('always_compare_med', always_compare_med), ('ignore_as_path_length', ignore_as_path_length), ('external_compare_router_id', external_compare_router_id), ('advertise_inactive_routes', advertise_inactive_routes), ('enable_aigp', enable_aigp), ('ignore_next_hop_igp_metric', ignore_next_hop_igp_metric), ])
 
 
 class state(PybindBase):
@@ -633,6 +634,6 @@ which the metric to the next-hop is lowest
   ignore_next_hop_igp_metric = __builtin__.property(_get_ignore_next_hop_igp_metric)
 
 
-  _pyangbind_elements = {'always_compare_med': always_compare_med, 'ignore_as_path_length': ignore_as_path_length, 'external_compare_router_id': external_compare_router_id, 'advertise_inactive_routes': advertise_inactive_routes, 'enable_aigp': enable_aigp, 'ignore_next_hop_igp_metric': ignore_next_hop_igp_metric, }
+  _pyangbind_elements = OrderedDict([('always_compare_med', always_compare_med), ('ignore_as_path_length', ignore_as_path_length), ('external_compare_router_id', external_compare_router_id), ('advertise_inactive_routes', advertise_inactive_routes), ('enable_aigp', enable_aigp), ('ignore_next_hop_igp_metric', ignore_next_hop_igp_metric), ])
 
 

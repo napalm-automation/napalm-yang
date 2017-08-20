@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -398,7 +399,7 @@ external, level2 external).
   authentication = __builtin__.property(_get_authentication, _set_authentication)
 
 
-  _pyangbind_elements = {'level_number': level_number, 'config': config, 'state': state, 'system_level_counters': system_level_counters, 'link_state_database': link_state_database, 'traffic_engineering': traffic_engineering, 'route_preference': route_preference, 'authentication': authentication, }
+  _pyangbind_elements = OrderedDict([('level_number', level_number), ('config', config), ('state', state), ('system_level_counters', system_level_counters), ('link_state_database', link_state_database), ('traffic_engineering', traffic_engineering), ('route_preference', route_preference), ('authentication', authentication), ])
 
 
 from . import config
@@ -779,6 +780,6 @@ external, level2 external).
   authentication = __builtin__.property(_get_authentication, _set_authentication)
 
 
-  _pyangbind_elements = {'level_number': level_number, 'config': config, 'state': state, 'system_level_counters': system_level_counters, 'link_state_database': link_state_database, 'traffic_engineering': traffic_engineering, 'route_preference': route_preference, 'authentication': authentication, }
+  _pyangbind_elements = OrderedDict([('level_number', level_number), ('config', config), ('state', state), ('system_level_counters', system_level_counters), ('link_state_database', link_state_database), ('traffic_engineering', traffic_engineering), ('route_preference', route_preference), ('authentication', authentication), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -724,7 +725,7 @@ NLRI when they are received only from this neighbor
   use_multiple_paths = __builtin__.property(_get_use_multiple_paths, _set_use_multiple_paths)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'config': config, 'state': state, 'graceful_restart': graceful_restart, 'apply_policy': apply_policy, 'ipv4_unicast': ipv4_unicast, 'ipv6_unicast': ipv6_unicast, 'ipv4_labeled_unicast': ipv4_labeled_unicast, 'ipv6_labeled_unicast': ipv6_labeled_unicast, 'l3vpn_ipv4_unicast': l3vpn_ipv4_unicast, 'l3vpn_ipv6_unicast': l3vpn_ipv6_unicast, 'l3vpn_ipv4_multicast': l3vpn_ipv4_multicast, 'l3vpn_ipv6_multicast': l3vpn_ipv6_multicast, 'l2vpn_vpls': l2vpn_vpls, 'l2vpn_evpn': l2vpn_evpn, 'use_multiple_paths': use_multiple_paths, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('config', config), ('state', state), ('graceful_restart', graceful_restart), ('apply_policy', apply_policy), ('ipv4_unicast', ipv4_unicast), ('ipv6_unicast', ipv6_unicast), ('ipv4_labeled_unicast', ipv4_labeled_unicast), ('ipv6_labeled_unicast', ipv6_labeled_unicast), ('l3vpn_ipv4_unicast', l3vpn_ipv4_unicast), ('l3vpn_ipv6_unicast', l3vpn_ipv6_unicast), ('l3vpn_ipv4_multicast', l3vpn_ipv4_multicast), ('l3vpn_ipv6_multicast', l3vpn_ipv6_multicast), ('l2vpn_vpls', l2vpn_vpls), ('l2vpn_evpn', l2vpn_evpn), ('use_multiple_paths', use_multiple_paths), ])
 
 
 from . import config
@@ -1431,6 +1432,6 @@ NLRI when they are received only from this neighbor
   use_multiple_paths = __builtin__.property(_get_use_multiple_paths, _set_use_multiple_paths)
 
 
-  _pyangbind_elements = {'afi_safi_name': afi_safi_name, 'config': config, 'state': state, 'graceful_restart': graceful_restart, 'apply_policy': apply_policy, 'ipv4_unicast': ipv4_unicast, 'ipv6_unicast': ipv6_unicast, 'ipv4_labeled_unicast': ipv4_labeled_unicast, 'ipv6_labeled_unicast': ipv6_labeled_unicast, 'l3vpn_ipv4_unicast': l3vpn_ipv4_unicast, 'l3vpn_ipv6_unicast': l3vpn_ipv6_unicast, 'l3vpn_ipv4_multicast': l3vpn_ipv4_multicast, 'l3vpn_ipv6_multicast': l3vpn_ipv6_multicast, 'l2vpn_vpls': l2vpn_vpls, 'l2vpn_evpn': l2vpn_evpn, 'use_multiple_paths': use_multiple_paths, }
+  _pyangbind_elements = OrderedDict([('afi_safi_name', afi_safi_name), ('config', config), ('state', state), ('graceful_restart', graceful_restart), ('apply_policy', apply_policy), ('ipv4_unicast', ipv4_unicast), ('ipv6_unicast', ipv6_unicast), ('ipv4_labeled_unicast', ipv4_labeled_unicast), ('ipv6_labeled_unicast', ipv6_labeled_unicast), ('l3vpn_ipv4_unicast', l3vpn_ipv4_unicast), ('l3vpn_ipv6_unicast', l3vpn_ipv6_unicast), ('l3vpn_ipv4_multicast', l3vpn_ipv4_multicast), ('l3vpn_ipv6_multicast', l3vpn_ipv6_multicast), ('l2vpn_vpls', l2vpn_vpls), ('l2vpn_evpn', l2vpn_evpn), ('use_multiple_paths', use_multiple_paths), ])
 
 

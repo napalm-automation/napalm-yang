@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -189,7 +190,7 @@ class authentication(PybindBase):
   key = __builtin__.property(_get_key, _set_key)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'key': key, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('key', key), ])
 
 
 from . import config
@@ -361,6 +362,6 @@ class authentication(PybindBase):
   key = __builtin__.property(_get_key, _set_key)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'key': key, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('key', key), ])
 
 

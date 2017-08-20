@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -226,7 +227,7 @@ RSVP neighbor
   refresh_reduction = __builtin__.property(_get_refresh_reduction)
 
 
-  _pyangbind_elements = {'address': address, 'detected_interface': detected_interface, 'neighbor_status': neighbor_status, 'refresh_reduction': refresh_reduction, }
+  _pyangbind_elements = OrderedDict([('address', address), ('detected_interface', detected_interface), ('neighbor_status', neighbor_status), ('refresh_reduction', refresh_reduction), ])
 
 
 class state(PybindBase):
@@ -435,6 +436,6 @@ RSVP neighbor
   refresh_reduction = __builtin__.property(_get_refresh_reduction)
 
 
-  _pyangbind_elements = {'address': address, 'detected_interface': detected_interface, 'neighbor_status': neighbor_status, 'refresh_reduction': refresh_reduction, }
+  _pyangbind_elements = OrderedDict([('address', address), ('detected_interface', detected_interface), ('neighbor_status', neighbor_status), ('refresh_reduction', refresh_reduction), ])
 
 

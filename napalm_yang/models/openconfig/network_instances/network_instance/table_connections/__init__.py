@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -124,7 +125,7 @@ protocol to advertise, or match within its policies.
   table_connection = __builtin__.property(_get_table_connection, _set_table_connection)
 
 
-  _pyangbind_elements = {'table_connection': table_connection, }
+  _pyangbind_elements = OrderedDict([('table_connection', table_connection), ])
 
 
 from . import table_connection
@@ -231,6 +232,6 @@ protocol to advertise, or match within its policies.
   table_connection = __builtin__.property(_get_table_connection, _set_table_connection)
 
 
-  _pyangbind_elements = {'table_connection': table_connection, }
+  _pyangbind_elements = OrderedDict([('table_connection', table_connection), ])
 
 

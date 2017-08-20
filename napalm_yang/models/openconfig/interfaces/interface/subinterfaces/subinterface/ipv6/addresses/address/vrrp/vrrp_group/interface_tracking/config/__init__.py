@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -157,6 +158,6 @@ the tracked interface goes down
   priority_decrement = __builtin__.property(_get_priority_decrement, _set_priority_decrement)
 
 
-  _pyangbind_elements = {'track_interface': track_interface, 'priority_decrement': priority_decrement, }
+  _pyangbind_elements = OrderedDict([('track_interface', track_interface), ('priority_decrement', priority_decrement), ])
 
 

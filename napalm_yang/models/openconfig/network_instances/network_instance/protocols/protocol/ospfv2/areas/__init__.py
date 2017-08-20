@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ OSPFv2 area.
   area = __builtin__.property(_get_area, _set_area)
 
 
-  _pyangbind_elements = {'area': area, }
+  _pyangbind_elements = OrderedDict([('area', area), ])
 
 
 from . import area
@@ -203,6 +204,6 @@ OSPFv2 area.
   area = __builtin__.property(_get_area, _set_area)
 
 
-  _pyangbind_elements = {'area': area, }
+  _pyangbind_elements = OrderedDict([('area', area), ])
 
 

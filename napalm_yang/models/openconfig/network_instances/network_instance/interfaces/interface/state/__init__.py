@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -250,7 +251,7 @@ those address families that are included in the list.
   associated_address_families = __builtin__.property(_get_associated_address_families)
 
 
-  _pyangbind_elements = {'id': id, 'interface': interface, 'subinterface': subinterface, 'associated_address_families': associated_address_families, }
+  _pyangbind_elements = OrderedDict([('id', id), ('interface', interface), ('subinterface', subinterface), ('associated_address_families', associated_address_families), ])
 
 
 class state(PybindBase):
@@ -483,6 +484,6 @@ those address families that are included in the list.
   associated_address_families = __builtin__.property(_get_associated_address_families)
 
 
-  _pyangbind_elements = {'id': id, 'interface': interface, 'subinterface': subinterface, 'associated_address_families': associated_address_families, }
+  _pyangbind_elements = OrderedDict([('id', id), ('interface', interface), ('subinterface', subinterface), ('associated_address_families', associated_address_families), ])
 
 

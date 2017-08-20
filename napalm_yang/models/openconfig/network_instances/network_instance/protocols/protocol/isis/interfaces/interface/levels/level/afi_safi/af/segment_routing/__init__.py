@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -158,7 +159,7 @@ interface.
   adjacency_sids = __builtin__.property(_get_adjacency_sids, _set_adjacency_sids)
 
 
-  _pyangbind_elements = {'prefix_sids': prefix_sids, 'adjacency_sids': adjacency_sids, }
+  _pyangbind_elements = OrderedDict([('prefix_sids', prefix_sids), ('adjacency_sids', adjacency_sids), ])
 
 
 from . import prefix_sids
@@ -299,6 +300,6 @@ interface.
   adjacency_sids = __builtin__.property(_get_adjacency_sids, _set_adjacency_sids)
 
 
-  _pyangbind_elements = {'prefix_sids': prefix_sids, 'adjacency_sids': adjacency_sids, }
+  _pyangbind_elements = OrderedDict([('prefix_sids', prefix_sids), ('adjacency_sids', adjacency_sids), ])
 
 

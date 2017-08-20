@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -264,7 +265,7 @@ class state(PybindBase):
   ethertype = __builtin__.property(_get_ethertype)
 
 
-  _pyangbind_elements = {'source_mac': source_mac, 'source_mac_mask': source_mac_mask, 'destination_mac': destination_mac, 'destination_mac_mask': destination_mac_mask, 'ethertype': ethertype, }
+  _pyangbind_elements = OrderedDict([('source_mac', source_mac), ('source_mac_mask', source_mac_mask), ('destination_mac', destination_mac), ('destination_mac_mask', destination_mac_mask), ('ethertype', ethertype), ])
 
 
 class state(PybindBase):
@@ -511,6 +512,6 @@ class state(PybindBase):
   ethertype = __builtin__.property(_get_ethertype)
 
 
-  _pyangbind_elements = {'source_mac': source_mac, 'source_mac_mask': source_mac_mask, 'destination_mac': destination_mac, 'destination_mac_mask': destination_mac_mask, 'ethertype': ethertype, }
+  _pyangbind_elements = OrderedDict([('source_mac', source_mac), ('source_mac_mask', source_mac_mask), ('destination_mac', destination_mac), ('destination_mac_mask', destination_mac_mask), ('ethertype', ethertype), ])
 
 

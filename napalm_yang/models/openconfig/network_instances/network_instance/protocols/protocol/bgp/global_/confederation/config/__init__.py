@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -190,7 +191,7 @@ as part of the local confederation.
   member_as = __builtin__.property(_get_member_as, _set_member_as)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'identifier': identifier, 'member_as': member_as, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('identifier', identifier), ('member_as', member_as), ])
 
 
 class config(PybindBase):
@@ -363,6 +364,6 @@ as part of the local confederation.
   member_as = __builtin__.property(_get_member_as, _set_member_as)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'identifier': identifier, 'member_as': member_as, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('identifier', identifier), ('member_as', member_as), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -355,7 +356,7 @@ will be reoptimized.
   next_reoptimization_time = __builtin__.property(_get_next_reoptimization_time)
 
 
-  _pyangbind_elements = {'bytes': bytes, 'packets': packets, 'path_changes': path_changes, 'state_changes': state_changes, 'online_time': online_time, 'current_path_time': current_path_time, 'next_reoptimization_time': next_reoptimization_time, }
+  _pyangbind_elements = OrderedDict([('bytes', bytes), ('packets', packets), ('path_changes', path_changes), ('state_changes', state_changes), ('online_time', online_time), ('current_path_time', current_path_time), ('next_reoptimization_time', next_reoptimization_time), ])
 
 
 class counters(PybindBase):
@@ -693,6 +694,6 @@ will be reoptimized.
   next_reoptimization_time = __builtin__.property(_get_next_reoptimization_time)
 
 
-  _pyangbind_elements = {'bytes': bytes, 'packets': packets, 'path_changes': path_changes, 'state_changes': state_changes, 'online_time': online_time, 'current_path_time': current_path_time, 'next_reoptimization_time': next_reoptimization_time, }
+  _pyangbind_elements = OrderedDict([('bytes', bytes), ('packets', packets), ('path_changes', path_changes), ('state_changes', state_changes), ('online_time', online_time), ('current_path_time', current_path_time), ('next_reoptimization_time', next_reoptimization_time), ])
 
 

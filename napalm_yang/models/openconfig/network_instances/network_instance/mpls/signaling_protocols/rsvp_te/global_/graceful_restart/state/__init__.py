@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -187,7 +188,7 @@ RSVP graceful-restart
   recovery_time = __builtin__.property(_get_recovery_time)
 
 
-  _pyangbind_elements = {'enable': enable, 'restart_time': restart_time, 'recovery_time': recovery_time, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('restart_time', restart_time), ('recovery_time', recovery_time), ])
 
 
 class state(PybindBase):
@@ -357,6 +358,6 @@ RSVP graceful-restart
   recovery_time = __builtin__.property(_get_recovery_time)
 
 
-  _pyangbind_elements = {'enable': enable, 'restart_time': restart_time, 'recovery_time': recovery_time, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('restart_time', restart_time), ('recovery_time', recovery_time), ])
 
 

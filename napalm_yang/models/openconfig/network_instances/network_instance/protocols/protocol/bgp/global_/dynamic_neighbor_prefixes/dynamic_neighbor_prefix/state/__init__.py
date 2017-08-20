@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -158,7 +159,7 @@ group.
   peer_group = __builtin__.property(_get_peer_group)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'peer_group': peer_group, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('peer_group', peer_group), ])
 
 
 class state(PybindBase):
@@ -299,6 +300,6 @@ group.
   peer_group = __builtin__.property(_get_peer_group)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'peer_group': peer_group, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('peer_group', peer_group), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -194,7 +195,7 @@ for mpls affinities/admin-groups
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'admin_group_name': admin_group_name, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('admin_group_name', admin_group_name), ('config', config), ('state', state), ])
 
 
 from . import config
@@ -371,6 +372,6 @@ for mpls affinities/admin-groups
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'admin_group_name': admin_group_name, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('admin_group_name', admin_group_name), ('config', config), ('state', state), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -237,7 +238,7 @@ of service.
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'forwarding_address': forwarding_address, 'external_route_tag': external_route_tag, 'tos': tos, 'metric': metric, }
+  _pyangbind_elements = OrderedDict([('forwarding_address', forwarding_address), ('external_route_tag', external_route_tag), ('tos', tos), ('metric', metric), ])
 
 
 class state(PybindBase):
@@ -457,6 +458,6 @@ of service.
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'forwarding_address': forwarding_address, 'external_route_tag': external_route_tag, 'tos': tos, 'metric': metric, }
+  _pyangbind_elements = OrderedDict([('forwarding_address', forwarding_address), ('external_route_tag', external_route_tag), ('tos', tos), ('metric', metric), ])
 
 

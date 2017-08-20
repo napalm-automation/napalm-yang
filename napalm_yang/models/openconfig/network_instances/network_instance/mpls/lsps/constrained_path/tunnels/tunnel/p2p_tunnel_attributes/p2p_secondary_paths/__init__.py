@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class p2p_secondary_paths(PybindBase):
   p2p_secondary_path = __builtin__.property(_get_p2p_secondary_path, _set_p2p_secondary_path)
 
 
-  _pyangbind_elements = {'p2p_secondary_path': p2p_secondary_path, }
+  _pyangbind_elements = OrderedDict([('p2p_secondary_path', p2p_secondary_path), ])
 
 
 from . import p2p_secondary_path
@@ -201,6 +202,6 @@ class p2p_secondary_paths(PybindBase):
   p2p_secondary_path = __builtin__.property(_get_p2p_secondary_path, _set_p2p_secondary_path)
 
 
-  _pyangbind_elements = {'p2p_secondary_path': p2p_secondary_path, }
+  _pyangbind_elements = OrderedDict([('p2p_secondary_path', p2p_secondary_path), ])
 
 

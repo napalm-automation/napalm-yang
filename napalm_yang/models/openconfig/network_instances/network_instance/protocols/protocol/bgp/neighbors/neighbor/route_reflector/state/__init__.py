@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ id to be set for each neighbor.
   route_reflector_client = __builtin__.property(_get_route_reflector_client)
 
 
-  _pyangbind_elements = {'route_reflector_cluster_id': route_reflector_cluster_id, 'route_reflector_client': route_reflector_client, }
+  _pyangbind_elements = OrderedDict([('route_reflector_cluster_id', route_reflector_cluster_id), ('route_reflector_client', route_reflector_client), ])
 
 
 class state(PybindBase):
@@ -291,6 +292,6 @@ id to be set for each neighbor.
   route_reflector_client = __builtin__.property(_get_route_reflector_client)
 
 
-  _pyangbind_elements = {'route_reflector_cluster_id': route_reflector_cluster_id, 'route_reflector_client': route_reflector_client, }
+  _pyangbind_elements = OrderedDict([('route_reflector_cluster_id', route_reflector_cluster_id), ('route_reflector_client', route_reflector_client), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -160,7 +161,7 @@ referenced by the corresponding interface.
   apply_forwarding_policy = __builtin__.property(_get_apply_forwarding_policy)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'apply_forwarding_policy': apply_forwarding_policy, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('apply_forwarding_policy', apply_forwarding_policy), ])
 
 
 class state(PybindBase):
@@ -303,6 +304,6 @@ referenced by the corresponding interface.
   apply_forwarding_policy = __builtin__.property(_get_apply_forwarding_policy)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'apply_forwarding_policy': apply_forwarding_policy, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('apply_forwarding_policy', apply_forwarding_policy), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ engineering purposes.
   traffic_engineering_metric = __builtin__.property(_get_traffic_engineering_metric)
 
 
-  _pyangbind_elements = {'traffic_engineering_metric': traffic_engineering_metric, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_metric', traffic_engineering_metric), ])
 
 
 class state(PybindBase):
@@ -205,6 +206,6 @@ engineering purposes.
   traffic_engineering_metric = __builtin__.property(_get_traffic_engineering_metric)
 
 
-  _pyangbind_elements = {'traffic_engineering_metric': traffic_engineering_metric, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_metric', traffic_engineering_metric), ])
 
 

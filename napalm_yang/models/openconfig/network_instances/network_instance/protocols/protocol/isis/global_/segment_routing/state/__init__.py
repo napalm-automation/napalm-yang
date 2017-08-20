@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ be advertised by the IGP instance.
   srlb = __builtin__.property(_get_srlb)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'srgb': srgb, 'srlb': srlb, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('srgb', srgb), ('srlb', srlb), ])
 
 
 class state(PybindBase):
@@ -369,6 +370,6 @@ be advertised by the IGP instance.
   srlb = __builtin__.property(_get_srlb)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'srgb': srgb, 'srlb': srlb, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('srgb', srgb), ('srlb', srlb), ])
 
 

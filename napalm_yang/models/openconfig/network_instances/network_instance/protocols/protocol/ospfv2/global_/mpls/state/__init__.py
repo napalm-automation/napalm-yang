@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -113,7 +114,7 @@ Opaque LSAs
   traffic_engineering_extensions = __builtin__.property(_get_traffic_engineering_extensions)
 
 
-  _pyangbind_elements = {'traffic_engineering_extensions': traffic_engineering_extensions, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_extensions', traffic_engineering_extensions), ])
 
 
 class state(PybindBase):
@@ -209,6 +210,6 @@ Opaque LSAs
   traffic_engineering_extensions = __builtin__.property(_get_traffic_engineering_extensions)
 
 
-  _pyangbind_elements = {'traffic_engineering_extensions': traffic_engineering_extensions, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_extensions', traffic_engineering_extensions), ])
 
 

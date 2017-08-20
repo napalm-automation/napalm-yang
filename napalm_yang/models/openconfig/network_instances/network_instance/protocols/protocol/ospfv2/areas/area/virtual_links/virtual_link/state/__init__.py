@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -485,7 +486,7 @@ retransmitted to the neighbor
   retranmission_queue_length = __builtin__.property(_get_retranmission_queue_length)
 
 
-  _pyangbind_elements = {'remote_router_id': remote_router_id, 'priority': priority, 'dead_time': dead_time, 'designated_router': designated_router, 'backup_designated_router': backup_designated_router, 'optional_capabilities': optional_capabilities, 'last_established_time': last_established_time, 'adjacency_state': adjacency_state, 'state_changes': state_changes, 'retranmission_queue_length': retranmission_queue_length, }
+  _pyangbind_elements = OrderedDict([('remote_router_id', remote_router_id), ('priority', priority), ('dead_time', dead_time), ('designated_router', designated_router), ('backup_designated_router', backup_designated_router), ('optional_capabilities', optional_capabilities), ('last_established_time', last_established_time), ('adjacency_state', adjacency_state), ('state_changes', state_changes), ('retranmission_queue_length', retranmission_queue_length), ])
 
 
 class state(PybindBase):
@@ -953,6 +954,6 @@ retransmitted to the neighbor
   retranmission_queue_length = __builtin__.property(_get_retranmission_queue_length)
 
 
-  _pyangbind_elements = {'remote_router_id': remote_router_id, 'priority': priority, 'dead_time': dead_time, 'designated_router': designated_router, 'backup_designated_router': backup_designated_router, 'optional_capabilities': optional_capabilities, 'last_established_time': last_established_time, 'adjacency_state': adjacency_state, 'state_changes': state_changes, 'retranmission_queue_length': retranmission_queue_length, }
+  _pyangbind_elements = OrderedDict([('remote_router_id', remote_router_id), ('priority', priority), ('dead_time', dead_time), ('designated_router', designated_router), ('backup_designated_router', backup_designated_router), ('optional_capabilities', optional_capabilities), ('last_established_time', last_established_time), ('adjacency_state', adjacency_state), ('state_changes', state_changes), ('retranmission_queue_length', retranmission_queue_length), ])
 
 

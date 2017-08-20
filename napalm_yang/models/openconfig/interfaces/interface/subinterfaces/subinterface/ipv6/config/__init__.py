@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -228,6 +229,6 @@ transmission with no follow-up retransmissions.
   dup_addr_detect_transmits = __builtin__.property(_get_dup_addr_detect_transmits, _set_dup_addr_detect_transmits)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, 'dup_addr_detect_transmits': dup_addr_detect_transmits, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('mtu', mtu), ('dup_addr_detect_transmits', dup_addr_detect_transmits), ])
 
 

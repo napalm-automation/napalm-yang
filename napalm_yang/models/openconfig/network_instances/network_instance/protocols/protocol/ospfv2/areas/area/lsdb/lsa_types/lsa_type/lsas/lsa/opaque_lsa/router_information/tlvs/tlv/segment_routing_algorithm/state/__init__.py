@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ by the advertising system
   supported_algorithms = __builtin__.property(_get_supported_algorithms)
 
 
-  _pyangbind_elements = {'supported_algorithms': supported_algorithms, }
+  _pyangbind_elements = OrderedDict([('supported_algorithms', supported_algorithms), ])
 
 
 class state(PybindBase):
@@ -205,6 +206,6 @@ by the advertising system
   supported_algorithms = __builtin__.property(_get_supported_algorithms)
 
 
-  _pyangbind_elements = {'supported_algorithms': supported_algorithms, }
+  _pyangbind_elements = OrderedDict([('supported_algorithms', supported_algorithms), ])
 
 

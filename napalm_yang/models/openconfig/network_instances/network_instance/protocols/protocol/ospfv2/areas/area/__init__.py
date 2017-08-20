@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -359,7 +360,7 @@ links from the source area to a remote router
   virtual_links = __builtin__.property(_get_virtual_links, _set_virtual_links)
 
 
-  _pyangbind_elements = {'identifier': identifier, 'config': config, 'state': state, 'mpls': mpls, 'lsdb': lsdb, 'interfaces': interfaces, 'virtual_links': virtual_links, }
+  _pyangbind_elements = OrderedDict([('identifier', identifier), ('config', config), ('state', state), ('mpls', mpls), ('lsdb', lsdb), ('interfaces', interfaces), ('virtual_links', virtual_links), ])
 
 
 from . import config
@@ -701,6 +702,6 @@ links from the source area to a remote router
   virtual_links = __builtin__.property(_get_virtual_links, _set_virtual_links)
 
 
-  _pyangbind_elements = {'identifier': identifier, 'config': config, 'state': state, 'mpls': mpls, 'lsdb': lsdb, 'interfaces': interfaces, 'virtual_links': virtual_links, }
+  _pyangbind_elements = OrderedDict([('identifier', identifier), ('config', config), ('state', state), ('mpls', mpls), ('lsdb', lsdb), ('interfaces', interfaces), ('virtual_links', virtual_links), ])
 
 

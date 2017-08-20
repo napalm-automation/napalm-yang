@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -194,7 +195,7 @@ connected IS-IS neighbors over a configurable interval.
   delay = __builtin__.property(_get_delay)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'delay': delay, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('delay', delay), ])
 
 
 class state(PybindBase):
@@ -371,6 +372,6 @@ connected IS-IS neighbors over a configurable interval.
   delay = __builtin__.property(_get_delay)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'delay': delay, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('delay', delay), ])
 
 

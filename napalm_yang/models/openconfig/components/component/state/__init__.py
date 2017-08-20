@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -443,6 +444,6 @@ to just supply the instant value
   temperature = __builtin__.property(_get_temperature)
 
 
-  _pyangbind_elements = {'name': name, 'type': type, 'id': id, 'description': description, 'mfg_name': mfg_name, 'version': version, 'serial_no': serial_no, 'part_no': part_no, 'temperature': temperature, }
+  _pyangbind_elements = OrderedDict([('name', name), ('type', type), ('id', id), ('description', description), ('mfg_name', mfg_name), ('version', version), ('serial_no', serial_no), ('part_no', part_no), ('temperature', temperature), ])
 
 

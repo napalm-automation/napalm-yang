@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -518,7 +519,7 @@ with a peer or group
   total_prefixes = __builtin__.property(_get_total_prefixes)
 
 
-  _pyangbind_elements = {'peer_group_name': peer_group_name, 'peer_as': peer_as, 'local_as': local_as, 'peer_type': peer_type, 'auth_password': auth_password, 'remove_private_as': remove_private_as, 'route_flap_damping': route_flap_damping, 'send_community': send_community, 'description': description, 'total_paths': total_paths, 'total_prefixes': total_prefixes, }
+  _pyangbind_elements = OrderedDict([('peer_group_name', peer_group_name), ('peer_as', peer_as), ('local_as', local_as), ('peer_type', peer_type), ('auth_password', auth_password), ('remove_private_as', remove_private_as), ('route_flap_damping', route_flap_damping), ('send_community', send_community), ('description', description), ('total_paths', total_paths), ('total_prefixes', total_prefixes), ])
 
 
 class state(PybindBase):
@@ -1019,6 +1020,6 @@ with a peer or group
   total_prefixes = __builtin__.property(_get_total_prefixes)
 
 
-  _pyangbind_elements = {'peer_group_name': peer_group_name, 'peer_as': peer_as, 'local_as': local_as, 'peer_type': peer_type, 'auth_password': auth_password, 'remove_private_as': remove_private_as, 'route_flap_damping': route_flap_damping, 'send_community': send_community, 'description': description, 'total_paths': total_paths, 'total_prefixes': total_prefixes, }
+  _pyangbind_elements = OrderedDict([('peer_group_name', peer_group_name), ('peer_as', peer_as), ('local_as', local_as), ('peer_type', peer_type), ('auth_password', auth_password), ('remove_private_as', remove_private_as), ('route_flap_damping', route_flap_damping), ('send_community', send_community), ('description', description), ('total_paths', total_paths), ('total_prefixes', total_prefixes), ])
 
 

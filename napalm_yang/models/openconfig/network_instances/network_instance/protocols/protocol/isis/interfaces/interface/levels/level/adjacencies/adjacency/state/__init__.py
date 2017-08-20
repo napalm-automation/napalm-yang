@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -864,7 +865,7 @@ and IPv6 - (0x8e). ISIS reference is TLV 129.
   nlpid = __builtin__.property(_get_nlpid)
 
 
-  _pyangbind_elements = {'system_id': system_id, 'neighbor_ipv4_address': neighbor_ipv4_address, 'neighbor_ipv6_address': neighbor_ipv6_address, 'neighbor_snpa': neighbor_snpa, 'local_extended_circuit_id': local_extended_circuit_id, 'neighbor_extended_circuit_id': neighbor_extended_circuit_id, 'priority': priority, 'dis_system_id': dis_system_id, 'neighbor_circuit_type': neighbor_circuit_type, 'adjacency_type': adjacency_type, 'adjacency_state': adjacency_state, 'remaining_hold_time': remaining_hold_time, 'up_time': up_time, 'multi_topology': multi_topology, 'topology': topology, 'restart_support': restart_support, 'restart_suppress': restart_suppress, 'restart_status': restart_status, 'area_address': area_address, 'nlpid': nlpid, }
+  _pyangbind_elements = OrderedDict([('system_id', system_id), ('neighbor_ipv4_address', neighbor_ipv4_address), ('neighbor_ipv6_address', neighbor_ipv6_address), ('neighbor_snpa', neighbor_snpa), ('local_extended_circuit_id', local_extended_circuit_id), ('neighbor_extended_circuit_id', neighbor_extended_circuit_id), ('priority', priority), ('dis_system_id', dis_system_id), ('neighbor_circuit_type', neighbor_circuit_type), ('adjacency_type', adjacency_type), ('adjacency_state', adjacency_state), ('remaining_hold_time', remaining_hold_time), ('up_time', up_time), ('multi_topology', multi_topology), ('topology', topology), ('restart_support', restart_support), ('restart_suppress', restart_suppress), ('restart_status', restart_status), ('area_address', area_address), ('nlpid', nlpid), ])
 
 
 class state(PybindBase):
@@ -1711,6 +1712,6 @@ and IPv6 - (0x8e). ISIS reference is TLV 129.
   nlpid = __builtin__.property(_get_nlpid)
 
 
-  _pyangbind_elements = {'system_id': system_id, 'neighbor_ipv4_address': neighbor_ipv4_address, 'neighbor_ipv6_address': neighbor_ipv6_address, 'neighbor_snpa': neighbor_snpa, 'local_extended_circuit_id': local_extended_circuit_id, 'neighbor_extended_circuit_id': neighbor_extended_circuit_id, 'priority': priority, 'dis_system_id': dis_system_id, 'neighbor_circuit_type': neighbor_circuit_type, 'adjacency_type': adjacency_type, 'adjacency_state': adjacency_state, 'remaining_hold_time': remaining_hold_time, 'up_time': up_time, 'multi_topology': multi_topology, 'topology': topology, 'restart_support': restart_support, 'restart_suppress': restart_suppress, 'restart_status': restart_status, 'area_address': area_address, 'nlpid': nlpid, }
+  _pyangbind_elements = OrderedDict([('system_id', system_id), ('neighbor_ipv4_address', neighbor_ipv4_address), ('neighbor_ipv6_address', neighbor_ipv6_address), ('neighbor_snpa', neighbor_snpa), ('local_extended_circuit_id', local_extended_circuit_id), ('neighbor_extended_circuit_id', neighbor_extended_circuit_id), ('priority', priority), ('dis_system_id', dis_system_id), ('neighbor_circuit_type', neighbor_circuit_type), ('adjacency_type', adjacency_type), ('adjacency_state', adjacency_state), ('remaining_hold_time', remaining_hold_time), ('up_time', up_time), ('multi_topology', multi_topology), ('topology', topology), ('restart_support', restart_support), ('restart_suppress', restart_suppress), ('restart_status', restart_status), ('area_address', area_address), ('nlpid', nlpid), ])
 
 

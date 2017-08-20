@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -235,7 +236,7 @@ the LSDB
   segment_routing_capability = __builtin__.property(_get_segment_routing_capability)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'segment_routing_algorithm': segment_routing_algorithm, 'segment_routing_capability': segment_routing_capability, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('segment_routing_algorithm', segment_routing_algorithm), ('segment_routing_capability', segment_routing_capability), ])
 
 
 from . import state
@@ -453,6 +454,6 @@ the LSDB
   segment_routing_capability = __builtin__.property(_get_segment_routing_capability)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'segment_routing_algorithm': segment_routing_algorithm, 'segment_routing_capability': segment_routing_capability, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('segment_routing_algorithm', segment_routing_algorithm), ('segment_routing_capability', segment_routing_capability), ])
 
 

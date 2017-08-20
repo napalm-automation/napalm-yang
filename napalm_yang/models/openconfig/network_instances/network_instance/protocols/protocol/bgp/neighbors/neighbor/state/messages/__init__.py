@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -150,7 +151,7 @@ neighbor
   received = __builtin__.property(_get_received)
 
 
-  _pyangbind_elements = {'sent': sent, 'received': received, }
+  _pyangbind_elements = OrderedDict([('sent', sent), ('received', received), ])
 
 
 from . import sent
@@ -283,6 +284,6 @@ neighbor
   received = __builtin__.property(_get_received)
 
 
-  _pyangbind_elements = {'sent': sent, 'received': received, }
+  _pyangbind_elements = OrderedDict([('sent', sent), ('received', received), ])
 
 

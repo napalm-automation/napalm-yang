@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class named_explicit_paths(PybindBase):
   named_explicit_path = __builtin__.property(_get_named_explicit_path, _set_named_explicit_path)
 
 
-  _pyangbind_elements = {'named_explicit_path': named_explicit_path, }
+  _pyangbind_elements = OrderedDict([('named_explicit_path', named_explicit_path), ])
 
 
 from . import named_explicit_path
@@ -201,6 +202,6 @@ class named_explicit_paths(PybindBase):
   named_explicit_path = __builtin__.property(_get_named_explicit_path, _set_named_explicit_path)
 
 
-  _pyangbind_elements = {'named_explicit_path': named_explicit_path, }
+  _pyangbind_elements = OrderedDict([('named_explicit_path', named_explicit_path), ])
 
 

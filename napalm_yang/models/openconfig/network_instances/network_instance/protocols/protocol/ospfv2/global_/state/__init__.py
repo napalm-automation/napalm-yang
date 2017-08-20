@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -284,7 +285,7 @@ the behaviour discussed in RFC6860.
   hide_transit_only_networks = __builtin__.property(_get_hide_transit_only_networks)
 
 
-  _pyangbind_elements = {'router_id': router_id, 'summary_route_cost_mode': summary_route_cost_mode, 'igp_shortcuts': igp_shortcuts, 'log_adjacency_changes': log_adjacency_changes, 'hide_transit_only_networks': hide_transit_only_networks, }
+  _pyangbind_elements = OrderedDict([('router_id', router_id), ('summary_route_cost_mode', summary_route_cost_mode), ('igp_shortcuts', igp_shortcuts), ('log_adjacency_changes', log_adjacency_changes), ('hide_transit_only_networks', hide_transit_only_networks), ])
 
 
 class state(PybindBase):
@@ -551,6 +552,6 @@ the behaviour discussed in RFC6860.
   hide_transit_only_networks = __builtin__.property(_get_hide_transit_only_networks)
 
 
-  _pyangbind_elements = {'router_id': router_id, 'summary_route_cost_mode': summary_route_cost_mode, 'igp_shortcuts': igp_shortcuts, 'log_adjacency_changes': log_adjacency_changes, 'hide_transit_only_networks': hide_transit_only_networks, }
+  _pyangbind_elements = OrderedDict([('router_id', router_id), ('summary_route_cost_mode', summary_route_cost_mode), ('igp_shortcuts', igp_shortcuts), ('log_adjacency_changes', log_adjacency_changes), ('hide_transit_only_networks', hide_transit_only_networks), ])
 
 

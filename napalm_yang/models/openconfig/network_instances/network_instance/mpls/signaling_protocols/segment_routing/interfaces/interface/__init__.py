@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -280,7 +281,7 @@ related to an interface.
   interface_ref = __builtin__.property(_get_interface_ref, _set_interface_ref)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'sid_counters': sid_counters, 'interface_ref': interface_ref, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('sid_counters', sid_counters), ('interface_ref', interface_ref), ])
 
 
 from . import config
@@ -543,6 +544,6 @@ related to an interface.
   interface_ref = __builtin__.property(_get_interface_ref, _set_interface_ref)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'sid_counters': sid_counters, 'interface_ref': interface_ref, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('sid_counters', sid_counters), ('interface_ref', interface_ref), ])
 
 

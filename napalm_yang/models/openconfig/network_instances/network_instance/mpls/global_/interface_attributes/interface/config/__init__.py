@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -147,7 +148,7 @@ class config(PybindBase):
   mpls_enabled = __builtin__.property(_get_mpls_enabled, _set_mpls_enabled)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'mpls_enabled': mpls_enabled, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('mpls_enabled', mpls_enabled), ])
 
 
 class config(PybindBase):
@@ -277,6 +278,6 @@ class config(PybindBase):
   mpls_enabled = __builtin__.property(_get_mpls_enabled, _set_mpls_enabled)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'mpls_enabled': mpls_enabled, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('mpls_enabled', mpls_enabled), ])
 
 

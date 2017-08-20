@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -152,7 +153,7 @@ offline calculation
   set_bandwidth = __builtin__.property(_get_set_bandwidth, _set_set_bandwidth)
 
 
-  _pyangbind_elements = {'specification_type': specification_type, 'set_bandwidth': set_bandwidth, }
+  _pyangbind_elements = OrderedDict([('specification_type', specification_type), ('set_bandwidth', set_bandwidth), ])
 
 
 class config(PybindBase):
@@ -287,6 +288,6 @@ offline calculation
   set_bandwidth = __builtin__.property(_get_set_bandwidth, _set_set_bandwidth)
 
 
-  _pyangbind_elements = {'specification_type': specification_type, 'set_bandwidth': set_bandwidth, }
+  _pyangbind_elements = OrderedDict([('specification_type', specification_type), ('set_bandwidth', set_bandwidth), ])
 
 

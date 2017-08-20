@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -235,7 +236,7 @@ per secondy.
   bandwidth_constraints = __builtin__.property(_get_bandwidth_constraints)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'model_id': model_id, 'reserved': reserved, 'bandwidth_constraints': bandwidth_constraints, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('model_id', model_id), ('reserved', reserved), ('bandwidth_constraints', bandwidth_constraints), ])
 
 
 class state(PybindBase):
@@ -453,6 +454,6 @@ per secondy.
   bandwidth_constraints = __builtin__.property(_get_bandwidth_constraints)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'model_id': model_id, 'reserved': reserved, 'bandwidth_constraints': bandwidth_constraints, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('model_id', model_id), ('reserved', reserved), ('bandwidth_constraints', bandwidth_constraints), ])
 
 

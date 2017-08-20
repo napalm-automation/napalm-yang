@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ events needed to trigger an overflow adjustment
   trigger_event_count = __builtin__.property(_get_trigger_event_count)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'overflow_threshold': overflow_threshold, 'trigger_event_count': trigger_event_count, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('overflow_threshold', overflow_threshold), ('trigger_event_count', trigger_event_count), ])
 
 
 class state(PybindBase):
@@ -369,6 +370,6 @@ events needed to trigger an overflow adjustment
   trigger_event_count = __builtin__.property(_get_trigger_event_count)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'overflow_threshold': overflow_threshold, 'trigger_event_count': trigger_event_count, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('overflow_threshold', overflow_threshold), ('trigger_event_count', trigger_event_count), ])
 
 

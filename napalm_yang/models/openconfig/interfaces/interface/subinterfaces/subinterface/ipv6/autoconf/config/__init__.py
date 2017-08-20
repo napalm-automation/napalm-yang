@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -252,6 +253,6 @@ preferred.
   temporary_preferred_lifetime = __builtin__.property(_get_temporary_preferred_lifetime, _set_temporary_preferred_lifetime)
 
 
-  _pyangbind_elements = {'create_global_addresses': create_global_addresses, 'create_temporary_addresses': create_temporary_addresses, 'temporary_valid_lifetime': temporary_valid_lifetime, 'temporary_preferred_lifetime': temporary_preferred_lifetime, }
+  _pyangbind_elements = OrderedDict([('create_global_addresses', create_global_addresses), ('create_temporary_addresses', create_temporary_addresses), ('temporary_valid_lifetime', temporary_valid_lifetime), ('temporary_preferred_lifetime', temporary_preferred_lifetime), ])
 
 

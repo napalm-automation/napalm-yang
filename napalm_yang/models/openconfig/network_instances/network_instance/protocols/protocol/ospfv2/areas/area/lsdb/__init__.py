@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ in the LSDB for the specified area
   lsa_types = __builtin__.property(_get_lsa_types)
 
 
-  _pyangbind_elements = {'state': state, 'lsa_types': lsa_types, }
+  _pyangbind_elements = OrderedDict([('state', state), ('lsa_types', lsa_types), ])
 
 
 from . import state
@@ -289,6 +290,6 @@ in the LSDB for the specified area
   lsa_types = __builtin__.property(_get_lsa_types)
 
 
-  _pyangbind_elements = {'state': state, 'lsa_types': lsa_types, }
+  _pyangbind_elements = OrderedDict([('state', state), ('lsa_types', lsa_types), ])
 
 

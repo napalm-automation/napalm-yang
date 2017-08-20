@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -229,7 +230,7 @@ in authentication-type or authentication-key.
   authentication_check = __builtin__.property(_get_authentication_check, _set_authentication_check)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'level_number': level_number, 'metric_style': metric_style, 'authentication_check': authentication_check, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('level_number', level_number), ('metric_style', metric_style), ('authentication_check', authentication_check), ])
 
 
 class config(PybindBase):
@@ -441,6 +442,6 @@ in authentication-type or authentication-key.
   authentication_check = __builtin__.property(_get_authentication_check, _set_authentication_check)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'level_number': level_number, 'metric_style': metric_style, 'authentication_check': authentication_check, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('level_number', level_number), ('metric_style', metric_style), ('authentication_check', authentication_check), ])
 
 

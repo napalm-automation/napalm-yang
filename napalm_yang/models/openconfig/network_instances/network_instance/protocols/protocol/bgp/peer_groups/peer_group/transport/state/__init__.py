@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -236,7 +237,7 @@ to the name of an interface.
   local_address = __builtin__.property(_get_local_address)
 
 
-  _pyangbind_elements = {'tcp_mss': tcp_mss, 'mtu_discovery': mtu_discovery, 'passive_mode': passive_mode, 'local_address': local_address, }
+  _pyangbind_elements = OrderedDict([('tcp_mss', tcp_mss), ('mtu_discovery', mtu_discovery), ('passive_mode', passive_mode), ('local_address', local_address), ])
 
 
 class state(PybindBase):
@@ -455,6 +456,6 @@ to the name of an interface.
   local_address = __builtin__.property(_get_local_address)
 
 
-  _pyangbind_elements = {'tcp_mss': tcp_mss, 'mtu_discovery': mtu_discovery, 'passive_mode': passive_mode, 'local_address': local_address, }
+  _pyangbind_elements = OrderedDict([('tcp_mss', tcp_mss), ('mtu_discovery', mtu_discovery), ('passive_mode', passive_mode), ('local_address', local_address), ])
 
 

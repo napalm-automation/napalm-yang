@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -275,7 +276,7 @@ the age field.
   age = __builtin__.property(_get_age)
 
 
-  _pyangbind_elements = {'link_state_id': link_state_id, 'advertising_router': advertising_router, 'sequence_number': sequence_number, 'checksum': checksum, 'age': age, }
+  _pyangbind_elements = OrderedDict([('link_state_id', link_state_id), ('advertising_router', advertising_router), ('sequence_number', sequence_number), ('checksum', checksum), ('age', age), ])
 
 
 class state(PybindBase):
@@ -533,6 +534,6 @@ the age field.
   age = __builtin__.property(_get_age)
 
 
-  _pyangbind_elements = {'link_state_id': link_state_id, 'advertising_router': advertising_router, 'sequence_number': sequence_number, 'checksum': checksum, 'age': age, }
+  _pyangbind_elements = OrderedDict([('link_state_id', link_state_id), ('advertising_router', advertising_router), ('sequence_number', sequence_number), ('checksum', checksum), ('age', age), ])
 
 

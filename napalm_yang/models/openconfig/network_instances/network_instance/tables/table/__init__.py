@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -260,7 +261,7 @@ table
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'protocol': protocol, 'address_family': address_family, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('protocol', protocol), ('address_family', address_family), ('config', config), ('state', state), ])
 
 
 from . import config
@@ -503,6 +504,6 @@ table
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'protocol': protocol, 'address_family': address_family, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('protocol', protocol), ('address_family', address_family), ('config', config), ('state', state), ])
 
 

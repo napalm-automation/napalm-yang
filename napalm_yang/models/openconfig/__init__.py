@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -155,7 +156,7 @@ and state data.
   interfaces = __builtin__.property(_get_interfaces, _set_interfaces)
 
 
-  _pyangbind_elements = {'interfaces': interfaces, }
+  _pyangbind_elements = OrderedDict([('interfaces', interfaces), ])
 
 
 class openconfig_if_ip_ext(PybindBase):
@@ -314,7 +315,7 @@ attributes or status).
   components = __builtin__.property(_get_components, _set_components)
 
 
-  _pyangbind_elements = {'components': components, }
+  _pyangbind_elements = OrderedDict([('components', components), ])
 
 
 from . import network_instances
@@ -412,7 +413,7 @@ configured on the local system
   network_instances = __builtin__.property(_get_network_instances, _set_network_instances)
 
 
-  _pyangbind_elements = {'network_instances': network_instances, }
+  _pyangbind_elements = OrderedDict([('network_instances', network_instances), ])
 
 
 from . import network_instances
@@ -508,7 +509,7 @@ configured on the local system
   network_instances = __builtin__.property(_get_network_instances, _set_network_instances)
 
 
-  _pyangbind_elements = {'network_instances': network_instances, }
+  _pyangbind_elements = OrderedDict([('network_instances', network_instances), ])
 
 
 class openconfig_vlan_types(PybindBase):
@@ -638,7 +639,7 @@ variables
   vlans = __builtin__.property(_get_vlans, _set_vlans)
 
 
-  _pyangbind_elements = {'vlans': vlans, }
+  _pyangbind_elements = OrderedDict([('vlans', vlans), ])
 
 
 class openconfig_if_ethernet(PybindBase):

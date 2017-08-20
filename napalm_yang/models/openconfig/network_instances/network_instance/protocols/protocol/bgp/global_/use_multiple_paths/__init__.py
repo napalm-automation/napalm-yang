@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -230,7 +231,7 @@ same NLRI
   ibgp = __builtin__.property(_get_ibgp, _set_ibgp)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'ebgp': ebgp, 'ibgp': ibgp, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('ebgp', ebgp), ('ibgp', ibgp), ])
 
 
 from . import config
@@ -443,6 +444,6 @@ same NLRI
   ibgp = __builtin__.property(_get_ibgp, _set_ibgp)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'ebgp': ebgp, 'ibgp': ibgp, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('ebgp', ebgp), ('ibgp', ibgp), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -307,7 +308,7 @@ lookup on the local system.
   next_hop = __builtin__.property(_get_next_hop)
 
 
-  _pyangbind_elements = {'discard': discard, 'decapsulate_gre': decapsulate_gre, 'network_instance': network_instance, 'path_selection_group': path_selection_group, 'next_hop': next_hop, }
+  _pyangbind_elements = OrderedDict([('discard', discard), ('decapsulate_gre', decapsulate_gre), ('network_instance', network_instance), ('path_selection_group', path_selection_group), ('next_hop', next_hop), ])
 
 
 class state(PybindBase):
@@ -597,6 +598,6 @@ lookup on the local system.
   next_hop = __builtin__.property(_get_next_hop)
 
 
-  _pyangbind_elements = {'discard': discard, 'decapsulate_gre': decapsulate_gre, 'network_instance': network_instance, 'path_selection_group': path_selection_group, 'next_hop': next_hop, }
+  _pyangbind_elements = OrderedDict([('discard', discard), ('decapsulate_gre', decapsulate_gre), ('network_instance', network_instance), ('path_selection_group', path_selection_group), ('next_hop', next_hop), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -120,7 +121,7 @@ current primary path is in use
   candidate_secondary_path = __builtin__.property(_get_candidate_secondary_path, _set_candidate_secondary_path)
 
 
-  _pyangbind_elements = {'candidate_secondary_path': candidate_secondary_path, }
+  _pyangbind_elements = OrderedDict([('candidate_secondary_path', candidate_secondary_path), ])
 
 
 from . import candidate_secondary_path
@@ -223,6 +224,6 @@ current primary path is in use
   candidate_secondary_path = __builtin__.property(_get_candidate_secondary_path, _set_candidate_secondary_path)
 
 
-  _pyangbind_elements = {'candidate_secondary_path': candidate_secondary_path, }
+  _pyangbind_elements = OrderedDict([('candidate_secondary_path', candidate_secondary_path), ])
 
 

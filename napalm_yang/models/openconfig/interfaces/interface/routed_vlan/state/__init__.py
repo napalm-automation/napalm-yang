@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -114,6 +115,6 @@ interface (SVI), or integrated routing and bridging interface
   vlan = __builtin__.property(_get_vlan)
 
 
-  _pyangbind_elements = {'vlan': vlan, }
+  _pyangbind_elements = OrderedDict([('vlan', vlan), ])
 
 

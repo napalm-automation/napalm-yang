@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -360,7 +361,7 @@ packets matching the rule.
   action = __builtin__.property(_get_action, _set_action)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ip': ip, 'transport': transport, 'action': action, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ('config', config), ('state', state), ('l2', l2), ('ip', ip), ('transport', transport), ('action', action), ])
 
 
 from . import config
@@ -703,6 +704,6 @@ packets matching the rule.
   action = __builtin__.property(_get_action, _set_action)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ip': ip, 'transport': transport, 'action': action, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ('config', config), ('state', state), ('l2', l2), ('ip', ip), ('transport', transport), ('action', action), ])
 
 

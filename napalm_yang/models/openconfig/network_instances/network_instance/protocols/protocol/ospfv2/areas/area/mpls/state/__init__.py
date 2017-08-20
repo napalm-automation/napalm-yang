@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ advertised within the area
   traffic_engineering_enabled = __builtin__.property(_get_traffic_engineering_enabled)
 
 
-  _pyangbind_elements = {'traffic_engineering_enabled': traffic_engineering_enabled, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_enabled', traffic_engineering_enabled), ])
 
 
 class state(PybindBase):
@@ -205,6 +206,6 @@ advertised within the area
   traffic_engineering_enabled = __builtin__.property(_get_traffic_engineering_enabled)
 
 
-  _pyangbind_elements = {'traffic_engineering_enabled': traffic_engineering_enabled, }
+  _pyangbind_elements = OrderedDict([('traffic_engineering_enabled', traffic_engineering_enabled), ])
 
 

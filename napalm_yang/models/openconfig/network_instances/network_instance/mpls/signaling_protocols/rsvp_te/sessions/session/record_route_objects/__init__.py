@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -116,7 +117,7 @@ at the hop, and the flags associated with the entry.
   record_route_object = __builtin__.property(_get_record_route_object)
 
 
-  _pyangbind_elements = {'record_route_object': record_route_object, }
+  _pyangbind_elements = OrderedDict([('record_route_object', record_route_object), ])
 
 
 from . import record_route_object
@@ -215,6 +216,6 @@ at the hop, and the flags associated with the entry.
   record_route_object = __builtin__.property(_get_record_route_object)
 
 
-  _pyangbind_elements = {'record_route_object': record_route_object, }
+  _pyangbind_elements = OrderedDict([('record_route_object', record_route_object), ])
 
 

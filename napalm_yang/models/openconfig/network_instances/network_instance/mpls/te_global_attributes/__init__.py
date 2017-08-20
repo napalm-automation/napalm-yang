@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ and cleanup of TE LSPs
   te_lsp_timers = __builtin__.property(_get_te_lsp_timers, _set_te_lsp_timers)
 
 
-  _pyangbind_elements = {'srlgs': srlgs, 'mpls_admin_groups': mpls_admin_groups, 'te_lsp_timers': te_lsp_timers, }
+  _pyangbind_elements = OrderedDict([('srlgs', srlgs), ('mpls_admin_groups', mpls_admin_groups), ('te_lsp_timers', te_lsp_timers), ])
 
 
 from . import srlgs
@@ -369,6 +370,6 @@ and cleanup of TE LSPs
   te_lsp_timers = __builtin__.property(_get_te_lsp_timers, _set_te_lsp_timers)
 
 
-  _pyangbind_elements = {'srlgs': srlgs, 'mpls_admin_groups': mpls_admin_groups, 'te_lsp_timers': te_lsp_timers, }
+  _pyangbind_elements = OrderedDict([('srlgs', srlgs), ('mpls_admin_groups', mpls_admin_groups), ('te_lsp_timers', te_lsp_timers), ])
 
 

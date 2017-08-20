@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -188,7 +189,7 @@ of load balancing.
   weight = __builtin__.property(_get_weight)
 
 
-  _pyangbind_elements = {'value': value, 'flags': flags, 'weight': weight, }
+  _pyangbind_elements = OrderedDict([('value', value), ('flags', flags), ('weight', weight), ])
 
 
 class state(PybindBase):
@@ -359,6 +360,6 @@ of load balancing.
   weight = __builtin__.property(_get_weight)
 
 
-  _pyangbind_elements = {'value': value, 'flags': flags, 'weight': weight, }
+  _pyangbind_elements = OrderedDict([('value', value), ('flags', flags), ('weight', weight), ])
 
 

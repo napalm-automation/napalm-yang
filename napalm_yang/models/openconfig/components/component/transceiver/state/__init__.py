@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -785,6 +786,6 @@ undefined and not intended to be read.
   fault_condition = __builtin__.property(_get_fault_condition)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'form_factor_preconf': form_factor_preconf, 'ethernet_pmd_preconf': ethernet_pmd_preconf, 'present': present, 'form_factor': form_factor, 'connector_type': connector_type, 'internal_temp': internal_temp, 'vendor': vendor, 'vendor_part': vendor_part, 'vendor_rev': vendor_rev, 'ethernet_pmd': ethernet_pmd, 'sonet_sdh_compliance_code': sonet_sdh_compliance_code, 'otn_compliance_code': otn_compliance_code, 'serial_no': serial_no, 'date_code': date_code, 'fault_condition': fault_condition, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('form_factor_preconf', form_factor_preconf), ('ethernet_pmd_preconf', ethernet_pmd_preconf), ('present', present), ('form_factor', form_factor), ('connector_type', connector_type), ('internal_temp', internal_temp), ('vendor', vendor), ('vendor_part', vendor_part), ('vendor_rev', vendor_rev), ('ethernet_pmd', ethernet_pmd), ('sonet_sdh_compliance_code', sonet_sdh_compliance_code), ('otn_compliance_code', otn_compliance_code), ('serial_no', serial_no), ('date_code', date_code), ('fault_condition', fault_condition), ])
 
 

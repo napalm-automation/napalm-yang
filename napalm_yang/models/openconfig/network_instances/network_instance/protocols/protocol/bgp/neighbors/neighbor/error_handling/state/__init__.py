@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ on erroneous message contents
   erroneous_update_messages = __builtin__.property(_get_erroneous_update_messages)
 
 
-  _pyangbind_elements = {'treat_as_withdraw': treat_as_withdraw, 'erroneous_update_messages': erroneous_update_messages, }
+  _pyangbind_elements = OrderedDict([('treat_as_withdraw', treat_as_withdraw), ('erroneous_update_messages', erroneous_update_messages), ])
 
 
 class state(PybindBase):
@@ -295,6 +296,6 @@ on erroneous message contents
   erroneous_update_messages = __builtin__.property(_get_erroneous_update_messages)
 
 
-  _pyangbind_elements = {'treat_as_withdraw': treat_as_withdraw, 'erroneous_update_messages': erroneous_update_messages, }
+  _pyangbind_elements = OrderedDict([('treat_as_withdraw', treat_as_withdraw), ('erroneous_update_messages', erroneous_update_messages), ])
 
 

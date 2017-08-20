@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -383,7 +384,7 @@ IPv4 packets, and hop limit in IPv6
   hop_limit = __builtin__.property(_get_hop_limit, _set_hop_limit)
 
 
-  _pyangbind_elements = {'ip_version': ip_version, 'source_ip_address': source_ip_address, 'source_ip_flow_label': source_ip_flow_label, 'destination_ip_address': destination_ip_address, 'destination_ip_flow_label': destination_ip_flow_label, 'dscp': dscp, 'protocol': protocol, 'hop_limit': hop_limit, }
+  _pyangbind_elements = OrderedDict([('ip_version', ip_version), ('source_ip_address', source_ip_address), ('source_ip_flow_label', source_ip_flow_label), ('destination_ip_address', destination_ip_address), ('destination_ip_flow_label', destination_ip_flow_label), ('dscp', dscp), ('protocol', protocol), ('hop_limit', hop_limit), ])
 
 
 class config(PybindBase):
@@ -749,6 +750,6 @@ IPv4 packets, and hop limit in IPv6
   hop_limit = __builtin__.property(_get_hop_limit, _set_hop_limit)
 
 
-  _pyangbind_elements = {'ip_version': ip_version, 'source_ip_address': source_ip_address, 'source_ip_flow_label': source_ip_flow_label, 'destination_ip_address': destination_ip_address, 'destination_ip_flow_label': destination_ip_flow_label, 'dscp': dscp, 'protocol': protocol, 'hop_limit': hop_limit, }
+  _pyangbind_elements = OrderedDict([('ip_version', ip_version), ('source_ip_address', source_ip_address), ('source_ip_flow_label', source_ip_flow_label), ('destination_ip_address', destination_ip_address), ('destination_ip_flow_label', destination_ip_flow_label), ('dscp', dscp), ('protocol', protocol), ('hop_limit', hop_limit), ])
 
 

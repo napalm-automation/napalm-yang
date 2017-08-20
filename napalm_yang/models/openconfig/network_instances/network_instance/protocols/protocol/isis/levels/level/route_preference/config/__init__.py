@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -147,7 +148,7 @@ class config(PybindBase):
   internal_route_preference = __builtin__.property(_get_internal_route_preference, _set_internal_route_preference)
 
 
-  _pyangbind_elements = {'external_route_preference': external_route_preference, 'internal_route_preference': internal_route_preference, }
+  _pyangbind_elements = OrderedDict([('external_route_preference', external_route_preference), ('internal_route_preference', internal_route_preference), ])
 
 
 class config(PybindBase):
@@ -277,6 +278,6 @@ class config(PybindBase):
   internal_route_preference = __builtin__.property(_get_internal_route_preference, _set_internal_route_preference)
 
 
-  _pyangbind_elements = {'external_route_preference': external_route_preference, 'internal_route_preference': internal_route_preference, }
+  _pyangbind_elements = OrderedDict([('external_route_preference', external_route_preference), ('internal_route_preference', internal_route_preference), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ to enable logging of peer state changes.
   log_neighbor_state_changes = __builtin__.property(_get_log_neighbor_state_changes, _set_log_neighbor_state_changes)
 
 
-  _pyangbind_elements = {'log_neighbor_state_changes': log_neighbor_state_changes, }
+  _pyangbind_elements = OrderedDict([('log_neighbor_state_changes', log_neighbor_state_changes), ])
 
 
 class config(PybindBase):
@@ -205,6 +206,6 @@ to enable logging of peer state changes.
   log_neighbor_state_changes = __builtin__.property(_get_log_neighbor_state_changes, _set_log_neighbor_state_changes)
 
 
-  _pyangbind_elements = {'log_neighbor_state_changes': log_neighbor_state_changes, }
+  _pyangbind_elements = OrderedDict([('log_neighbor_state_changes', log_neighbor_state_changes), ])
 
 

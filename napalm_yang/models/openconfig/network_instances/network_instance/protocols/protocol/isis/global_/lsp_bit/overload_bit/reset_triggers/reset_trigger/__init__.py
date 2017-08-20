@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,7 +198,7 @@ triggers.
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'reset_trigger': reset_trigger, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('reset_trigger', reset_trigger), ('config', config), ('state', state), ])
 
 
 from . import config
@@ -377,6 +378,6 @@ triggers.
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'reset_trigger': reset_trigger, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('reset_trigger', reset_trigger), ('config', config), ('state', state), ])
 
 

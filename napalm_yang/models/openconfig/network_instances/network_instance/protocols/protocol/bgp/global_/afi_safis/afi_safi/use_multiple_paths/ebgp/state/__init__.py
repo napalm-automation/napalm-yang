@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ BGP multipath. The default is use a single path.
   maximum_paths = __builtin__.property(_get_maximum_paths)
 
 
-  _pyangbind_elements = {'allow_multiple_as': allow_multiple_as, 'maximum_paths': maximum_paths, }
+  _pyangbind_elements = OrderedDict([('allow_multiple_as', allow_multiple_as), ('maximum_paths', maximum_paths), ])
 
 
 class state(PybindBase):
@@ -289,6 +290,6 @@ BGP multipath. The default is use a single path.
   maximum_paths = __builtin__.property(_get_maximum_paths)
 
 
-  _pyangbind_elements = {'allow_multiple_as': allow_multiple_as, 'maximum_paths': maximum_paths, }
+  _pyangbind_elements = OrderedDict([('allow_multiple_as', allow_multiple_as), ('maximum_paths', maximum_paths), ])
 
 

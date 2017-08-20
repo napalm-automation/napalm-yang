@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -132,7 +133,7 @@ destination MAC address.
   path_selection_group = __builtin__.property(_get_path_selection_group, _set_path_selection_group)
 
 
-  _pyangbind_elements = {'path_selection_group': path_selection_group, }
+  _pyangbind_elements = OrderedDict([('path_selection_group', path_selection_group), ])
 
 
 from . import path_selection_group
@@ -247,6 +248,6 @@ destination MAC address.
   path_selection_group = __builtin__.property(_get_path_selection_group, _set_path_selection_group)
 
 
-  _pyangbind_elements = {'path_selection_group': path_selection_group, }
+  _pyangbind_elements = OrderedDict([('path_selection_group', path_selection_group), ])
 
 

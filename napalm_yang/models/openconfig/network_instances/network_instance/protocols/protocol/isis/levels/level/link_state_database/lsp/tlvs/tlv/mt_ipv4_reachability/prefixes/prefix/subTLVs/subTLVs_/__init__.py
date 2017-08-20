@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -395,7 +396,7 @@ the LSDB
   prefix_sid = __builtin__.property(_get_prefix_sid)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'tag': tag, 'tag64': tag64, 'flags': flags, 'ipv4_source_router_id': ipv4_source_router_id, 'ipv6_source_router_id': ipv6_source_router_id, 'prefix_sid': prefix_sid, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('tag', tag), ('tag64', tag64), ('flags', flags), ('ipv4_source_router_id', ipv4_source_router_id), ('ipv6_source_router_id', ipv6_source_router_id), ('prefix_sid', prefix_sid), ])
 
 
 from . import state
@@ -773,6 +774,6 @@ the LSDB
   prefix_sid = __builtin__.property(_get_prefix_sid)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'tag': tag, 'tag64': tag64, 'flags': flags, 'ipv4_source_router_id': ipv4_source_router_id, 'ipv6_source_router_id': ipv6_source_router_id, 'prefix_sid': prefix_sid, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('tag', tag), ('tag64', tag64), ('flags', flags), ('ipv4_source_router_id', ipv4_source_router_id), ('ipv6_source_router_id', ipv6_source_router_id), ('prefix_sid', prefix_sid), ])
 
 

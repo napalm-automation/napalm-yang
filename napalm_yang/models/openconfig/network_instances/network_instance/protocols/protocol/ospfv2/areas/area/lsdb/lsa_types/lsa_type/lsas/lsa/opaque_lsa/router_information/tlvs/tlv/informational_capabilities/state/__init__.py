@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -316,7 +317,7 @@ experimental extensions to OSPF for TE described in RFC4973
   experimental_te = __builtin__.property(_get_experimental_te)
 
 
-  _pyangbind_elements = {'graceful_restart_capable': graceful_restart_capable, 'graceful_restart_helper': graceful_restart_helper, 'stub_router': stub_router, 'traffic_engineering': traffic_engineering, 'point_to_point_over_lan': point_to_point_over_lan, 'experimental_te': experimental_te, }
+  _pyangbind_elements = OrderedDict([('graceful_restart_capable', graceful_restart_capable), ('graceful_restart_helper', graceful_restart_helper), ('stub_router', stub_router), ('traffic_engineering', traffic_engineering), ('point_to_point_over_lan', point_to_point_over_lan), ('experimental_te', experimental_te), ])
 
 
 class state(PybindBase):
@@ -615,6 +616,6 @@ experimental extensions to OSPF for TE described in RFC4973
   experimental_te = __builtin__.property(_get_experimental_te)
 
 
-  _pyangbind_elements = {'graceful_restart_capable': graceful_restart_capable, 'graceful_restart_helper': graceful_restart_helper, 'stub_router': stub_router, 'traffic_engineering': traffic_engineering, 'point_to_point_over_lan': point_to_point_over_lan, 'experimental_te': experimental_te, }
+  _pyangbind_elements = OrderedDict([('graceful_restart_capable', graceful_restart_capable), ('graceful_restart_helper', graceful_restart_helper), ('stub_router', stub_router), ('traffic_engineering', traffic_engineering), ('point_to_point_over_lan', point_to_point_over_lan), ('experimental_te', experimental_te), ])
 
 

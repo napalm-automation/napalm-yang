@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -115,7 +116,7 @@ the end label that should be allocated for use by a specific protocol.
   reserved_label_block = __builtin__.property(_get_reserved_label_block, _set_reserved_label_block)
 
 
-  _pyangbind_elements = {'reserved_label_block': reserved_label_block, }
+  _pyangbind_elements = OrderedDict([('reserved_label_block', reserved_label_block), ])
 
 
 from . import reserved_label_block
@@ -213,6 +214,6 @@ the end label that should be allocated for use by a specific protocol.
   reserved_label_block = __builtin__.property(_get_reserved_label_block, _set_reserved_label_block)
 
 
-  _pyangbind_elements = {'reserved_label_block': reserved_label_block, }
+  _pyangbind_elements = OrderedDict([('reserved_label_block', reserved_label_block), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -233,7 +234,7 @@ Grace LSA is being advertised.
   ip_interface_address = __builtin__.property(_get_ip_interface_address)
 
 
-  _pyangbind_elements = {'type': type, 'period': period, 'reason': reason, 'ip_interface_address': ip_interface_address, }
+  _pyangbind_elements = OrderedDict([('type', type), ('period', period), ('reason', reason), ('ip_interface_address', ip_interface_address), ])
 
 
 class state(PybindBase):
@@ -449,6 +450,6 @@ Grace LSA is being advertised.
   ip_interface_address = __builtin__.property(_get_ip_interface_address)
 
 
-  _pyangbind_elements = {'type': type, 'period': period, 'reason': reason, 'ip_interface_address': ip_interface_address, }
+  _pyangbind_elements = OrderedDict([('type', type), ('period', period), ('reason', reason), ('ip_interface_address', ip_interface_address), ])
 
 

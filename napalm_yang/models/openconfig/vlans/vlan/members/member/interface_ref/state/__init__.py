@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -157,6 +158,6 @@ is requuired, this leaf should not be set.
   subinterface = __builtin__.property(_get_subinterface)
 
 
-  _pyangbind_elements = {'interface': interface, 'subinterface': subinterface, }
+  _pyangbind_elements = OrderedDict([('interface', interface), ('subinterface', subinterface), ])
 
 

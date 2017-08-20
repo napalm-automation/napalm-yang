@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -208,7 +209,7 @@ the local system's IP address
   link_data = __builtin__.property(_get_link_data)
 
 
-  _pyangbind_elements = {'link_type': link_type, 'link_id': link_id, 'link_data': link_data, }
+  _pyangbind_elements = OrderedDict([('link_type', link_type), ('link_id', link_id), ('link_data', link_data), ])
 
 
 class state(PybindBase):
@@ -399,6 +400,6 @@ the local system's IP address
   link_data = __builtin__.property(_get_link_data)
 
 
-  _pyangbind_elements = {'link_type': link_type, 'link_id': link_id, 'link_data': link_data, }
+  _pyangbind_elements = OrderedDict([('link_type', link_type), ('link_id', link_id), ('link_data', link_data), ])
 
 

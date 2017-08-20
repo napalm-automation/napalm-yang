@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ generation delay.
   lsp_second_wait_interval = __builtin__.property(_get_lsp_second_wait_interval, _set_lsp_second_wait_interval)
 
 
-  _pyangbind_elements = {'lsp_max_wait_interval': lsp_max_wait_interval, 'lsp_first_wait_interval': lsp_first_wait_interval, 'lsp_second_wait_interval': lsp_second_wait_interval, }
+  _pyangbind_elements = OrderedDict([('lsp_max_wait_interval', lsp_max_wait_interval), ('lsp_first_wait_interval', lsp_first_wait_interval), ('lsp_second_wait_interval', lsp_second_wait_interval), ])
 
 
 class config(PybindBase):
@@ -369,6 +370,6 @@ generation delay.
   lsp_second_wait_interval = __builtin__.property(_get_lsp_second_wait_interval, _set_lsp_second_wait_interval)
 
 
-  _pyangbind_elements = {'lsp_max_wait_interval': lsp_max_wait_interval, 'lsp_first_wait_interval': lsp_first_wait_interval, 'lsp_second_wait_interval': lsp_second_wait_interval, }
+  _pyangbind_elements = OrderedDict([('lsp_max_wait_interval', lsp_max_wait_interval), ('lsp_first_wait_interval', lsp_first_wait_interval), ('lsp_second_wait_interval', lsp_second_wait_interval), ])
 
 

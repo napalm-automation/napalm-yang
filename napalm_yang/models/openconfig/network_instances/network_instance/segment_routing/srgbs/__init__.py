@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ sets of dataplane addresses (IPv6 addresses, or MPLS labels).
   srgb = __builtin__.property(_get_srgb, _set_srgb)
 
 
-  _pyangbind_elements = {'srgb': srgb, }
+  _pyangbind_elements = OrderedDict([('srgb', srgb), ])
 
 
 from . import srgb
@@ -207,6 +208,6 @@ sets of dataplane addresses (IPv6 addresses, or MPLS labels).
   srgb = __builtin__.property(_get_srgb, _set_srgb)
 
 
-  _pyangbind_elements = {'srgb': srgb, }
+  _pyangbind_elements = OrderedDict([('srgb', srgb), ])
 
 

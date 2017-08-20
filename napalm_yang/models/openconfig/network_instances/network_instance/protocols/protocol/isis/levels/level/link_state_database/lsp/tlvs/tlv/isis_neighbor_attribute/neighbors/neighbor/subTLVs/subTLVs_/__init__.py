@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -1085,7 +1086,7 @@ bandwidth constraint across all Class-Types
   utilized_bandwidth = __builtin__.property(_get_utilized_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'admin_group': admin_group, 'ipv4_interface_address': ipv4_interface_address, 'ipv4_neighbor_address': ipv4_neighbor_address, 'max_link_bandwidth': max_link_bandwidth, 'max_reservable_link_bandwidth': max_reservable_link_bandwidth, 'unreserved_bandwidth': unreserved_bandwidth, 'ipv6_interface_address': ipv6_interface_address, 'ipv6_neighbor_address': ipv6_neighbor_address, 'extended_admin_group': extended_admin_group, 'te_default_metric': te_default_metric, 'link_attributes': link_attributes, 'link_protection_type': link_protection_type, 'bandwidth_constraints': bandwidth_constraints, 'unconstrained_lsp': unconstrained_lsp, 'adjacency_sid': adjacency_sid, 'lan_adjacency_sid': lan_adjacency_sid, 'link_delay': link_delay, 'min_max_link_delay': min_max_link_delay, 'link_delay_variation': link_delay_variation, 'link_loss': link_loss, 'residual_bandwidth': residual_bandwidth, 'available_bandwidth': available_bandwidth, 'utilized_bandwidth': utilized_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('admin_group', admin_group), ('ipv4_interface_address', ipv4_interface_address), ('ipv4_neighbor_address', ipv4_neighbor_address), ('max_link_bandwidth', max_link_bandwidth), ('max_reservable_link_bandwidth', max_reservable_link_bandwidth), ('unreserved_bandwidth', unreserved_bandwidth), ('ipv6_interface_address', ipv6_interface_address), ('ipv6_neighbor_address', ipv6_neighbor_address), ('extended_admin_group', extended_admin_group), ('te_default_metric', te_default_metric), ('link_attributes', link_attributes), ('link_protection_type', link_protection_type), ('bandwidth_constraints', bandwidth_constraints), ('unconstrained_lsp', unconstrained_lsp), ('adjacency_sid', adjacency_sid), ('lan_adjacency_sid', lan_adjacency_sid), ('link_delay', link_delay), ('min_max_link_delay', min_max_link_delay), ('link_delay_variation', link_delay_variation), ('link_loss', link_loss), ('residual_bandwidth', residual_bandwidth), ('available_bandwidth', available_bandwidth), ('utilized_bandwidth', utilized_bandwidth), ])
 
 
 from . import state
@@ -2153,6 +2154,6 @@ bandwidth constraint across all Class-Types
   utilized_bandwidth = __builtin__.property(_get_utilized_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'state': state, 'admin_group': admin_group, 'ipv4_interface_address': ipv4_interface_address, 'ipv4_neighbor_address': ipv4_neighbor_address, 'max_link_bandwidth': max_link_bandwidth, 'max_reservable_link_bandwidth': max_reservable_link_bandwidth, 'unreserved_bandwidth': unreserved_bandwidth, 'ipv6_interface_address': ipv6_interface_address, 'ipv6_neighbor_address': ipv6_neighbor_address, 'extended_admin_group': extended_admin_group, 'te_default_metric': te_default_metric, 'link_attributes': link_attributes, 'link_protection_type': link_protection_type, 'bandwidth_constraints': bandwidth_constraints, 'unconstrained_lsp': unconstrained_lsp, 'adjacency_sid': adjacency_sid, 'lan_adjacency_sid': lan_adjacency_sid, 'link_delay': link_delay, 'min_max_link_delay': min_max_link_delay, 'link_delay_variation': link_delay_variation, 'link_loss': link_loss, 'residual_bandwidth': residual_bandwidth, 'available_bandwidth': available_bandwidth, 'utilized_bandwidth': utilized_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('state', state), ('admin_group', admin_group), ('ipv4_interface_address', ipv4_interface_address), ('ipv4_neighbor_address', ipv4_neighbor_address), ('max_link_bandwidth', max_link_bandwidth), ('max_reservable_link_bandwidth', max_reservable_link_bandwidth), ('unreserved_bandwidth', unreserved_bandwidth), ('ipv6_interface_address', ipv6_interface_address), ('ipv6_neighbor_address', ipv6_neighbor_address), ('extended_admin_group', extended_admin_group), ('te_default_metric', te_default_metric), ('link_attributes', link_attributes), ('link_protection_type', link_protection_type), ('bandwidth_constraints', bandwidth_constraints), ('unconstrained_lsp', unconstrained_lsp), ('adjacency_sid', adjacency_sid), ('lan_adjacency_sid', lan_adjacency_sid), ('link_delay', link_delay), ('min_max_link_delay', min_max_link_delay), ('link_delay_variation', link_delay_variation), ('link_loss', link_loss), ('residual_bandwidth', residual_bandwidth), ('available_bandwidth', available_bandwidth), ('utilized_bandwidth', utilized_bandwidth), ])
 
 

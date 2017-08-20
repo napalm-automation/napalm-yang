@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -246,6 +247,6 @@ Autoconfiguration protocol.
   status = __builtin__.property(_get_status)
 
 
-  _pyangbind_elements = {'ip': ip, 'prefix_length': prefix_length, 'origin': origin, 'status': status, }
+  _pyangbind_elements = OrderedDict([('ip', ip), ('prefix_length', prefix_length), ('origin', origin), ('status', status), ])
 
 

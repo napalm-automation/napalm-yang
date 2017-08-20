@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -195,7 +196,7 @@ parameters
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'prefix_limit': prefix_limit, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('prefix_limit', prefix_limit), ('config', config), ('state', state), ])
 
 
 from . import prefix_limit
@@ -373,6 +374,6 @@ parameters
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'prefix_limit': prefix_limit, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('prefix_limit', prefix_limit), ('config', config), ('state', state), ])
 
 

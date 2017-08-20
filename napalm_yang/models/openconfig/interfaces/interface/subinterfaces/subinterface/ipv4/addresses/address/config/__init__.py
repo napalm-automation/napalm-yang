@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,6 +198,6 @@ on the same interfaces
   secondary = __builtin__.property(_get_secondary, _set_secondary)
 
 
-  _pyangbind_elements = {'ip': ip, 'prefix_length': prefix_length, 'secondary': secondary, }
+  _pyangbind_elements = OrderedDict([('ip', ip), ('prefix_length', prefix_length), ('secondary', secondary), ])
 
 

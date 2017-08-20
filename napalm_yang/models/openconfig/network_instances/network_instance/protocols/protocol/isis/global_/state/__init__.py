@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -434,7 +435,7 @@ before the router actually runs the SPF computation.
   fast_flooding = __builtin__.property(_get_fast_flooding)
 
 
-  _pyangbind_elements = {'authentication_check': authentication_check, 'instance': instance, 'net': net, 'maximum_area_addresses': maximum_area_addresses, 'level_capability': level_capability, 'max_ecmp_paths': max_ecmp_paths, 'poi_tlv': poi_tlv, 'iid_tlv': iid_tlv, 'fast_flooding': fast_flooding, }
+  _pyangbind_elements = OrderedDict([('authentication_check', authentication_check), ('instance', instance), ('net', net), ('maximum_area_addresses', maximum_area_addresses), ('level_capability', level_capability), ('max_ecmp_paths', max_ecmp_paths), ('poi_tlv', poi_tlv), ('iid_tlv', iid_tlv), ('fast_flooding', fast_flooding), ])
 
 
 class state(PybindBase):
@@ -851,6 +852,6 @@ before the router actually runs the SPF computation.
   fast_flooding = __builtin__.property(_get_fast_flooding)
 
 
-  _pyangbind_elements = {'authentication_check': authentication_check, 'instance': instance, 'net': net, 'maximum_area_addresses': maximum_area_addresses, 'level_capability': level_capability, 'max_ecmp_paths': max_ecmp_paths, 'poi_tlv': poi_tlv, 'iid_tlv': iid_tlv, 'fast_flooding': fast_flooding, }
+  _pyangbind_elements = OrderedDict([('authentication_check', authentication_check), ('instance', instance), ('net', net), ('maximum_area_addresses', maximum_area_addresses), ('level_capability', level_capability), ('max_ecmp_paths', max_ecmp_paths), ('poi_tlv', poi_tlv), ('iid_tlv', iid_tlv), ('fast_flooding', fast_flooding), ])
 
 

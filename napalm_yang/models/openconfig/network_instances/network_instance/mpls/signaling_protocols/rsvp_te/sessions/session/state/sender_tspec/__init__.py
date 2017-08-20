@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -195,7 +196,7 @@ device sends traffic at.
   peak_data_rate = __builtin__.property(_get_peak_data_rate)
 
 
-  _pyangbind_elements = {'rate': rate, 'size': size, 'peak_data_rate': peak_data_rate, }
+  _pyangbind_elements = OrderedDict([('rate', rate), ('size', size), ('peak_data_rate', peak_data_rate), ])
 
 
 class sender_tspec(PybindBase):
@@ -373,6 +374,6 @@ device sends traffic at.
   peak_data_rate = __builtin__.property(_get_peak_data_rate)
 
 
-  _pyangbind_elements = {'rate': rate, 'size': size, 'peak_data_rate': peak_data_rate, }
+  _pyangbind_elements = OrderedDict([('rate', rate), ('size', size), ('peak_data_rate', peak_data_rate), ])
 
 

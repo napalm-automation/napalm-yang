@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -277,7 +278,7 @@ associated sessions are maintained per protocol
   p2p_tunnel_attributes = __builtin__.property(_get_p2p_tunnel_attributes, _set_p2p_tunnel_attributes)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'bandwidth': bandwidth, 'p2p_tunnel_attributes': p2p_tunnel_attributes, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('bandwidth', bandwidth), ('p2p_tunnel_attributes', p2p_tunnel_attributes), ])
 
 
 from . import config
@@ -537,6 +538,6 @@ associated sessions are maintained per protocol
   p2p_tunnel_attributes = __builtin__.property(_get_p2p_tunnel_attributes, _set_p2p_tunnel_attributes)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'bandwidth': bandwidth, 'p2p_tunnel_attributes': p2p_tunnel_attributes, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('bandwidth', bandwidth), ('p2p_tunnel_attributes', p2p_tunnel_attributes), ])
 
 

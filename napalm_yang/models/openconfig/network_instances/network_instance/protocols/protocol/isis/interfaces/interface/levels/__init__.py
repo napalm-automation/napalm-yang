@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ particular level on an IS-IS enabled interface.
   level = __builtin__.property(_get_level, _set_level)
 
 
-  _pyangbind_elements = {'level': level, }
+  _pyangbind_elements = OrderedDict([('level', level), ])
 
 
 from . import level
@@ -207,6 +208,6 @@ particular level on an IS-IS enabled interface.
   level = __builtin__.property(_get_level, _set_level)
 
 
-  _pyangbind_elements = {'level': level, }
+  _pyangbind_elements = OrderedDict([('level', level), ])
 
 

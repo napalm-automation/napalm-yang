@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -406,7 +407,7 @@ per the procedure described in RFC6860.
   hide_network = __builtin__.property(_get_hide_network)
 
 
-  _pyangbind_elements = {'id': id, 'network_type': network_type, 'priority': priority, 'multi_area_adjacency_primary': multi_area_adjacency_primary, 'authentication_type': authentication_type, 'metric': metric, 'passive': passive, 'hide_network': hide_network, }
+  _pyangbind_elements = OrderedDict([('id', id), ('network_type', network_type), ('priority', priority), ('multi_area_adjacency_primary', multi_area_adjacency_primary), ('authentication_type', authentication_type), ('metric', metric), ('passive', passive), ('hide_network', hide_network), ])
 
 
 class state(PybindBase):
@@ -795,6 +796,6 @@ per the procedure described in RFC6860.
   hide_network = __builtin__.property(_get_hide_network)
 
 
-  _pyangbind_elements = {'id': id, 'network_type': network_type, 'priority': priority, 'multi_area_adjacency_primary': multi_area_adjacency_primary, 'authentication_type': authentication_type, 'metric': metric, 'passive': passive, 'hide_network': hide_network, }
+  _pyangbind_elements = OrderedDict([('id', id), ('network_type', network_type), ('priority', priority), ('multi_area_adjacency_primary', multi_area_adjacency_primary), ('authentication_type', authentication_type), ('metric', metric), ('passive', passive), ('hide_network', hide_network), ])
 
 

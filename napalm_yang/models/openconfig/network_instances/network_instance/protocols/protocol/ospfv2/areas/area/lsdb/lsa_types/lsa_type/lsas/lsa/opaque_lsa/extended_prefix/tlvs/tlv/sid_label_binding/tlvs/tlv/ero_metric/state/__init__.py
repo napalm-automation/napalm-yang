@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ binding included within the SID/Label Binding TLV
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'metric': metric, }
+  _pyangbind_elements = OrderedDict([('metric', metric), ])
 
 
 class state(PybindBase):
@@ -205,6 +206,6 @@ binding included within the SID/Label Binding TLV
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'metric': metric, }
+  _pyangbind_elements = OrderedDict([('metric', metric), ])
 
 

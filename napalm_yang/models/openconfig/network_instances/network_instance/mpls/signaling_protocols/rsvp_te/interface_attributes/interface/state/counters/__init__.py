@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -773,7 +774,7 @@ messages
   out_ack_messages = __builtin__.property(_get_out_ack_messages)
 
 
-  _pyangbind_elements = {'in_path_messages': in_path_messages, 'in_path_error_messages': in_path_error_messages, 'in_path_tear_messages': in_path_tear_messages, 'in_reservation_messages': in_reservation_messages, 'in_reservation_error_messages': in_reservation_error_messages, 'in_reservation_tear_messages': in_reservation_tear_messages, 'in_hello_messages': in_hello_messages, 'in_srefresh_messages': in_srefresh_messages, 'in_ack_messages': in_ack_messages, 'out_path_messages': out_path_messages, 'out_path_error_messages': out_path_error_messages, 'out_path_tear_messages': out_path_tear_messages, 'out_reservation_messages': out_reservation_messages, 'out_reservation_error_messages': out_reservation_error_messages, 'out_reservation_tear_messages': out_reservation_tear_messages, 'out_hello_messages': out_hello_messages, 'out_srefresh_messages': out_srefresh_messages, 'out_ack_messages': out_ack_messages, }
+  _pyangbind_elements = OrderedDict([('in_path_messages', in_path_messages), ('in_path_error_messages', in_path_error_messages), ('in_path_tear_messages', in_path_tear_messages), ('in_reservation_messages', in_reservation_messages), ('in_reservation_error_messages', in_reservation_error_messages), ('in_reservation_tear_messages', in_reservation_tear_messages), ('in_hello_messages', in_hello_messages), ('in_srefresh_messages', in_srefresh_messages), ('in_ack_messages', in_ack_messages), ('out_path_messages', out_path_messages), ('out_path_error_messages', out_path_error_messages), ('out_path_tear_messages', out_path_tear_messages), ('out_reservation_messages', out_reservation_messages), ('out_reservation_error_messages', out_reservation_error_messages), ('out_reservation_tear_messages', out_reservation_tear_messages), ('out_hello_messages', out_hello_messages), ('out_srefresh_messages', out_srefresh_messages), ('out_ack_messages', out_ack_messages), ])
 
 
 class counters(PybindBase):
@@ -1529,6 +1530,6 @@ messages
   out_ack_messages = __builtin__.property(_get_out_ack_messages)
 
 
-  _pyangbind_elements = {'in_path_messages': in_path_messages, 'in_path_error_messages': in_path_error_messages, 'in_path_tear_messages': in_path_tear_messages, 'in_reservation_messages': in_reservation_messages, 'in_reservation_error_messages': in_reservation_error_messages, 'in_reservation_tear_messages': in_reservation_tear_messages, 'in_hello_messages': in_hello_messages, 'in_srefresh_messages': in_srefresh_messages, 'in_ack_messages': in_ack_messages, 'out_path_messages': out_path_messages, 'out_path_error_messages': out_path_error_messages, 'out_path_tear_messages': out_path_tear_messages, 'out_reservation_messages': out_reservation_messages, 'out_reservation_error_messages': out_reservation_error_messages, 'out_reservation_tear_messages': out_reservation_tear_messages, 'out_hello_messages': out_hello_messages, 'out_srefresh_messages': out_srefresh_messages, 'out_ack_messages': out_ack_messages, }
+  _pyangbind_elements = OrderedDict([('in_path_messages', in_path_messages), ('in_path_error_messages', in_path_error_messages), ('in_path_tear_messages', in_path_tear_messages), ('in_reservation_messages', in_reservation_messages), ('in_reservation_error_messages', in_reservation_error_messages), ('in_reservation_tear_messages', in_reservation_tear_messages), ('in_hello_messages', in_hello_messages), ('in_srefresh_messages', in_srefresh_messages), ('in_ack_messages', in_ack_messages), ('out_path_messages', out_path_messages), ('out_path_error_messages', out_path_error_messages), ('out_path_tear_messages', out_path_tear_messages), ('out_reservation_messages', out_reservation_messages), ('out_reservation_error_messages', out_reservation_error_messages), ('out_reservation_tear_messages', out_reservation_tear_messages), ('out_hello_messages', out_hello_messages), ('out_srefresh_messages', out_srefresh_messages), ('out_ack_messages', out_ack_messages), ])
 
 

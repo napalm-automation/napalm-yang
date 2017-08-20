@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,7 +198,7 @@ purposes
   weight = __builtin__.property(_get_weight)
 
 
-  _pyangbind_elements = {'mirroring': mirroring, 'multi_topology_identifier': multi_topology_identifier, 'weight': weight, }
+  _pyangbind_elements = OrderedDict([('mirroring', mirroring), ('multi_topology_identifier', multi_topology_identifier), ('weight', weight), ])
 
 
 class state(PybindBase):
@@ -377,6 +378,6 @@ purposes
   weight = __builtin__.property(_get_weight)
 
 
-  _pyangbind_elements = {'mirroring': mirroring, 'multi_topology_identifier': multi_topology_identifier, 'weight': weight, }
+  _pyangbind_elements = OrderedDict([('mirroring', mirroring), ('multi_topology_identifier', multi_topology_identifier), ('weight', weight), ])
 
 

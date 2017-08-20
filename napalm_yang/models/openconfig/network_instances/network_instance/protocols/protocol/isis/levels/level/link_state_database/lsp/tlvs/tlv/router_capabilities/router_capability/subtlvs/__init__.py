@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class subtlvs(PybindBase):
   subtlvs = __builtin__.property(_get_subtlvs)
 
 
-  _pyangbind_elements = {'subtlvs': subtlvs, }
+  _pyangbind_elements = OrderedDict([('subtlvs', subtlvs), ])
 
 
 from . import subtlvs_
@@ -201,6 +202,6 @@ class subtlvs(PybindBase):
   subtlvs = __builtin__.property(_get_subtlvs)
 
 
-  _pyangbind_elements = {'subtlvs': subtlvs, }
+  _pyangbind_elements = OrderedDict([('subtlvs', subtlvs), ])
 
 

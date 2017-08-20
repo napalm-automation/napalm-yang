@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -198,7 +199,7 @@ system
   lsa_generation = __builtin__.property(_get_lsa_generation, _set_lsa_generation)
 
 
-  _pyangbind_elements = {'spf': spf, 'max_metric': max_metric, 'lsa_generation': lsa_generation, }
+  _pyangbind_elements = OrderedDict([('spf', spf), ('max_metric', max_metric), ('lsa_generation', lsa_generation), ])
 
 
 from . import spf
@@ -379,6 +380,6 @@ system
   lsa_generation = __builtin__.property(_get_lsa_generation, _set_lsa_generation)
 
 
-  _pyangbind_elements = {'spf': spf, 'max_metric': max_metric, 'lsa_generation': lsa_generation, }
+  _pyangbind_elements = OrderedDict([('spf', spf), ('max_metric', max_metric), ('lsa_generation', lsa_generation), ])
 
 

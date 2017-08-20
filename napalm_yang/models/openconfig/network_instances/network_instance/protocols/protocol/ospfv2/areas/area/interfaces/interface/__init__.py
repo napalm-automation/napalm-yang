@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -403,7 +404,7 @@ an adjacency has been established with on the interface
   neighbors = __builtin__.property(_get_neighbors, _set_neighbors)
 
 
-  _pyangbind_elements = {'id': id, 'config': config, 'state': state, 'interface_ref': interface_ref, 'timers': timers, 'mpls': mpls, 'lsa_filter': lsa_filter, 'neighbors': neighbors, }
+  _pyangbind_elements = OrderedDict([('id', id), ('config', config), ('state', state), ('interface_ref', interface_ref), ('timers', timers), ('mpls', mpls), ('lsa_filter', lsa_filter), ('neighbors', neighbors), ])
 
 
 from . import config
@@ -789,6 +790,6 @@ an adjacency has been established with on the interface
   neighbors = __builtin__.property(_get_neighbors, _set_neighbors)
 
 
-  _pyangbind_elements = {'id': id, 'config': config, 'state': state, 'interface_ref': interface_ref, 'timers': timers, 'mpls': mpls, 'lsa_filter': lsa_filter, 'neighbors': neighbors, }
+  _pyangbind_elements = OrderedDict([('id', id), ('config', config), ('state', state), ('interface_ref', interface_ref), ('timers', timers), ('mpls', mpls), ('lsa_filter', lsa_filter), ('neighbors', neighbors), ])
 
 

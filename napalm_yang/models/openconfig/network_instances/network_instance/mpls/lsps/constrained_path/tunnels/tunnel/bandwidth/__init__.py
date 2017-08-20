@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ configuration of TE tunnels
   auto_bandwidth = __builtin__.property(_get_auto_bandwidth, _set_auto_bandwidth)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'auto_bandwidth': auto_bandwidth, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('auto_bandwidth', auto_bandwidth), ])
 
 
 from . import config
@@ -369,6 +370,6 @@ configuration of TE tunnels
   auto_bandwidth = __builtin__.property(_get_auto_bandwidth, _set_auto_bandwidth)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'auto_bandwidth': auto_bandwidth, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('auto_bandwidth', auto_bandwidth), ])
 
 

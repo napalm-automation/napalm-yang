@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ colors available for advertisement in a network.
   extended_admin_group = __builtin__.property(_get_extended_admin_group)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'extended_admin_group': extended_admin_group, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('extended_admin_group', extended_admin_group), ])
 
 
 class state(PybindBase):
@@ -289,6 +290,6 @@ colors available for advertisement in a network.
   extended_admin_group = __builtin__.property(_get_extended_admin_group)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'extended_admin_group': extended_admin_group, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('extended_admin_group', extended_admin_group), ])
 
 

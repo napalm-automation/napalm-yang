@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -243,7 +244,7 @@ propagation policy
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'src_area': src_area, 'dst_area': dst_area, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('src_area', src_area), ('dst_area', dst_area), ('config', config), ('state', state), ])
 
 
 from . import config
@@ -469,6 +470,6 @@ propagation policy
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'src_area': src_area, 'dst_area': dst_area, 'config': config, 'state': state, }
+  _pyangbind_elements = OrderedDict([('src_area', src_area), ('dst_area', dst_area), ('config', config), ('state', state), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,7 +198,7 @@ subset of the SRGB being advertised
   sid_label = __builtin__.property(_get_sid_label)
 
 
-  _pyangbind_elements = {'unknown_tlv': unknown_tlv, 'state': state, 'sid_label': sid_label, }
+  _pyangbind_elements = OrderedDict([('unknown_tlv', unknown_tlv), ('state', state), ('sid_label', sid_label), ])
 
 
 from . import unknown_tlv
@@ -377,6 +378,6 @@ subset of the SRGB being advertised
   sid_label = __builtin__.property(_get_sid_label)
 
 
-  _pyangbind_elements = {'unknown_tlv': unknown_tlv, 'state': state, 'sid_label': sid_label, }
+  _pyangbind_elements = OrderedDict([('unknown_tlv', unknown_tlv), ('state', state), ('sid_label', sid_label), ])
 
 

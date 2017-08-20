@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -229,7 +230,7 @@ SPF calculation.
   adaptive_timer = __builtin__.property(_get_adaptive_timer)
 
 
-  _pyangbind_elements = {'spf_hold_interval': spf_hold_interval, 'spf_first_interval': spf_first_interval, 'spf_second_interval': spf_second_interval, 'adaptive_timer': adaptive_timer, }
+  _pyangbind_elements = OrderedDict([('spf_hold_interval', spf_hold_interval), ('spf_first_interval', spf_first_interval), ('spf_second_interval', spf_second_interval), ('adaptive_timer', adaptive_timer), ])
 
 
 class state(PybindBase):
@@ -441,6 +442,6 @@ SPF calculation.
   adaptive_timer = __builtin__.property(_get_adaptive_timer)
 
 
-  _pyangbind_elements = {'spf_hold_interval': spf_hold_interval, 'spf_first_interval': spf_first_interval, 'spf_second_interval': spf_second_interval, 'adaptive_timer': adaptive_timer, }
+  _pyangbind_elements = OrderedDict([('spf_hold_interval', spf_hold_interval), ('spf_first_interval', spf_first_interval), ('spf_second_interval', spf_second_interval), ('adaptive_timer', adaptive_timer), ])
 
 

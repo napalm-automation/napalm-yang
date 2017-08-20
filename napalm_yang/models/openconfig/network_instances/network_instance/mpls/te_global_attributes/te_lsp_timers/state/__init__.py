@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -192,7 +193,7 @@ a traffic engineered LSP
   reoptimize_timer = __builtin__.property(_get_reoptimize_timer)
 
 
-  _pyangbind_elements = {'install_delay': install_delay, 'cleanup_delay': cleanup_delay, 'reoptimize_timer': reoptimize_timer, }
+  _pyangbind_elements = OrderedDict([('install_delay', install_delay), ('cleanup_delay', cleanup_delay), ('reoptimize_timer', reoptimize_timer), ])
 
 
 class state(PybindBase):
@@ -367,6 +368,6 @@ a traffic engineered LSP
   reoptimize_timer = __builtin__.property(_get_reoptimize_timer)
 
 
-  _pyangbind_elements = {'install_delay': install_delay, 'cleanup_delay': cleanup_delay, 'reoptimize_timer': reoptimize_timer, }
+  _pyangbind_elements = OrderedDict([('install_delay', install_delay), ('cleanup_delay', cleanup_delay), ('reoptimize_timer', reoptimize_timer), ])
 
 

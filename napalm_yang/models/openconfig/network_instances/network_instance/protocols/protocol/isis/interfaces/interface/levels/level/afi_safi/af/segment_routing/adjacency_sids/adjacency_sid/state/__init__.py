@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -290,7 +291,7 @@ to this interface.
   allocated_dynamic_local = __builtin__.property(_get_allocated_dynamic_local)
 
 
-  _pyangbind_elements = {'sid_id': sid_id, 'protection_eligible': protection_eligible, 'group': group, 'neighbor': neighbor, 'allocated_dynamic_local': allocated_dynamic_local, }
+  _pyangbind_elements = OrderedDict([('sid_id', sid_id), ('protection_eligible', protection_eligible), ('group', group), ('neighbor', neighbor), ('allocated_dynamic_local', allocated_dynamic_local), ])
 
 
 class state(PybindBase):
@@ -563,6 +564,6 @@ to this interface.
   allocated_dynamic_local = __builtin__.property(_get_allocated_dynamic_local)
 
 
-  _pyangbind_elements = {'sid_id': sid_id, 'protection_eligible': protection_eligible, 'group': group, 'neighbor': neighbor, 'allocated_dynamic_local': allocated_dynamic_local, }
+  _pyangbind_elements = OrderedDict([('sid_id', sid_id), ('protection_eligible', protection_eligible), ('group', group), ('neighbor', neighbor), ('allocated_dynamic_local', allocated_dynamic_local), ])
 
 

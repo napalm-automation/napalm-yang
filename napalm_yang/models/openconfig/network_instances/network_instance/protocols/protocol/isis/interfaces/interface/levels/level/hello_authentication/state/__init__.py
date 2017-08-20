@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -108,7 +109,7 @@ class state(PybindBase):
   hello_authentication = __builtin__.property(_get_hello_authentication)
 
 
-  _pyangbind_elements = {'hello_authentication': hello_authentication, }
+  _pyangbind_elements = OrderedDict([('hello_authentication', hello_authentication), ])
 
 
 class state(PybindBase):
@@ -199,6 +200,6 @@ class state(PybindBase):
   hello_authentication = __builtin__.property(_get_hello_authentication)
 
 
-  _pyangbind_elements = {'hello_authentication': hello_authentication, }
+  _pyangbind_elements = OrderedDict([('hello_authentication', hello_authentication), ])
 
 

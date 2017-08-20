@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ the same neighbouring AS.
   allow_multiple_as = __builtin__.property(_get_allow_multiple_as, _set_allow_multiple_as)
 
 
-  _pyangbind_elements = {'allow_multiple_as': allow_multiple_as, }
+  _pyangbind_elements = OrderedDict([('allow_multiple_as', allow_multiple_as), ])
 
 
 class config(PybindBase):
@@ -207,6 +208,6 @@ the same neighbouring AS.
   allow_multiple_as = __builtin__.property(_get_allow_multiple_as, _set_allow_multiple_as)
 
 
-  _pyangbind_elements = {'allow_multiple_as': allow_multiple_as, }
+  _pyangbind_elements = OrderedDict([('allow_multiple_as', allow_multiple_as), ])
 
 

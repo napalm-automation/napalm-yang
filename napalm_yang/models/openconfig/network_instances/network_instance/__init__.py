@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -755,7 +756,7 @@ network-instance.
   protocols = __builtin__.property(_get_protocols, _set_protocols)
 
 
-  _pyangbind_elements = {'name': name, 'fdb': fdb, 'config': config, 'state': state, 'encapsulation': encapsulation, 'inter_instance_policies': inter_instance_policies, 'table_connections': table_connections, 'interfaces': interfaces, 'tables': tables, 'connection_points': connection_points, 'mpls': mpls, 'segment_routing': segment_routing, 'vlans': vlans, 'policy_forwarding': policy_forwarding, 'afts': afts, 'protocols': protocols, }
+  _pyangbind_elements = OrderedDict([('name', name), ('fdb', fdb), ('config', config), ('state', state), ('encapsulation', encapsulation), ('inter_instance_policies', inter_instance_policies), ('table_connections', table_connections), ('interfaces', interfaces), ('tables', tables), ('connection_points', connection_points), ('mpls', mpls), ('segment_routing', segment_routing), ('vlans', vlans), ('policy_forwarding', policy_forwarding), ('afts', afts), ('protocols', protocols), ])
 
 
 from . import fdb
@@ -1493,6 +1494,6 @@ network-instance.
   protocols = __builtin__.property(_get_protocols, _set_protocols)
 
 
-  _pyangbind_elements = {'name': name, 'fdb': fdb, 'config': config, 'state': state, 'encapsulation': encapsulation, 'inter_instance_policies': inter_instance_policies, 'table_connections': table_connections, 'interfaces': interfaces, 'tables': tables, 'connection_points': connection_points, 'mpls': mpls, 'segment_routing': segment_routing, 'vlans': vlans, 'policy_forwarding': policy_forwarding, 'afts': afts, 'protocols': protocols, }
+  _pyangbind_elements = OrderedDict([('name', name), ('fdb', fdb), ('config', config), ('state', state), ('encapsulation', encapsulation), ('inter_instance_policies', inter_instance_policies), ('table_connections', table_connections), ('interfaces', interfaces), ('tables', tables), ('connection_points', connection_points), ('mpls', mpls), ('segment_routing', segment_routing), ('vlans', vlans), ('policy_forwarding', policy_forwarding), ('afts', afts), ('protocols', protocols), ])
 
 

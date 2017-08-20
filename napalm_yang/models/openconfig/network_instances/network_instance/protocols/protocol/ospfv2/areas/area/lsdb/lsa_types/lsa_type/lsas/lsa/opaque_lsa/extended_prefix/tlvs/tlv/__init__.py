@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -283,7 +284,7 @@ local system such that it cannot decode their value.
   unknown_tlv = __builtin__.property(_get_unknown_tlv)
 
 
-  _pyangbind_elements = {'state': state, 'extended_prefix_range': extended_prefix_range, 'prefix_sid': prefix_sid, 'sid_label_binding': sid_label_binding, 'unknown_tlv': unknown_tlv, }
+  _pyangbind_elements = OrderedDict([('state', state), ('extended_prefix_range', extended_prefix_range), ('prefix_sid', prefix_sid), ('sid_label_binding', sid_label_binding), ('unknown_tlv', unknown_tlv), ])
 
 
 from . import state
@@ -549,6 +550,6 @@ local system such that it cannot decode their value.
   unknown_tlv = __builtin__.property(_get_unknown_tlv)
 
 
-  _pyangbind_elements = {'state': state, 'extended_prefix_range': extended_prefix_range, 'prefix_sid': prefix_sid, 'sid_label_binding': sid_label_binding, 'unknown_tlv': unknown_tlv, }
+  _pyangbind_elements = OrderedDict([('state', state), ('extended_prefix_range', extended_prefix_range), ('prefix_sid', prefix_sid), ('sid_label_binding', sid_label_binding), ('unknown_tlv', unknown_tlv), ])
 
 

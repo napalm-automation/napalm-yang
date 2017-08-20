@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -430,6 +431,6 @@ expected to just supply the instant value
   laser_bias_current = __builtin__.property(_get_laser_bias_current)
 
 
-  _pyangbind_elements = {'index': index, 'description': description, 'tx_laser': tx_laser, 'target_output_power': target_output_power, 'output_frequency': output_frequency, 'output_power': output_power, 'input_power': input_power, 'laser_bias_current': laser_bias_current, }
+  _pyangbind_elements = OrderedDict([('index', index), ('description', description), ('tx_laser', tx_laser), ('target_output_power', target_output_power), ('output_frequency', output_frequency), ('output_power', output_power), ('input_power', input_power), ('laser_bias_current', laser_bias_current), ])
 
 

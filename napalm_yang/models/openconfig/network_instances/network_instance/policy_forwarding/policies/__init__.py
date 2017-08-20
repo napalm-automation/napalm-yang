@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -116,7 +117,7 @@ how the local system should forward the packet.
   policy = __builtin__.property(_get_policy, _set_policy)
 
 
-  _pyangbind_elements = {'policy': policy, }
+  _pyangbind_elements = OrderedDict([('policy', policy), ])
 
 
 from . import policy
@@ -215,6 +216,6 @@ how the local system should forward the packet.
   policy = __builtin__.property(_get_policy, _set_policy)
 
 
-  _pyangbind_elements = {'policy': policy, }
+  _pyangbind_elements = OrderedDict([('policy', policy), ])
 
 

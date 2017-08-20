@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -157,7 +158,7 @@ same router.
   tag64 = __builtin__.property(_get_tag64)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'tag64': tag64, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('tag64', tag64), ])
 
 
 class state(PybindBase):
@@ -297,6 +298,6 @@ same router.
   tag64 = __builtin__.property(_get_tag64)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'tag64': tag64, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('tag64', tag64), ])
 
 

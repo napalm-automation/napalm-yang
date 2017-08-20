@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ expressed as a canonical name.
   local_protection = __builtin__.property(_get_local_protection)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'local_protection': local_protection, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('local_protection', local_protection), ])
 
 
 class state(PybindBase):
@@ -281,6 +282,6 @@ expressed as a canonical name.
   local_protection = __builtin__.property(_get_local_protection)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'local_protection': local_protection, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('local_protection', local_protection), ])
 
 

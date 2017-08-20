@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ Level2 to Level 1.
   level2_to_level1 = __builtin__.property(_get_level2_to_level1, _set_level2_to_level1)
 
 
-  _pyangbind_elements = {'level1_to_level2': level1_to_level2, 'level2_to_level1': level2_to_level1, }
+  _pyangbind_elements = OrderedDict([('level1_to_level2', level1_to_level2), ('level2_to_level1', level2_to_level1), ])
 
 
 from . import level1_to_level2
@@ -289,6 +290,6 @@ Level2 to Level 1.
   level2_to_level1 = __builtin__.property(_get_level2_to_level1, _set_level2_to_level1)
 
 
-  _pyangbind_elements = {'level1_to_level2': level1_to_level2, 'level2_to_level1': level2_to_level1, }
+  _pyangbind_elements = OrderedDict([('level1_to_level2', level1_to_level2), ('level2_to_level1', level2_to_level1), ])
 
 

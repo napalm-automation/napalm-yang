@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -194,7 +195,7 @@ into the IGP with.
   label_options = __builtin__.property(_get_label_options)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'sid_id': sid_id, 'label_options': label_options, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('sid_id', sid_id), ('label_options', label_options), ])
 
 
 class state(PybindBase):
@@ -371,6 +372,6 @@ into the IGP with.
   label_options = __builtin__.property(_get_label_options)
 
 
-  _pyangbind_elements = {'prefix': prefix, 'sid_id': sid_id, 'label_options': label_options, }
+  _pyangbind_elements = OrderedDict([('prefix', prefix), ('sid_id', sid_id), ('label_options', label_options), ])
 
 

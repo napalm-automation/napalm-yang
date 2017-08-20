@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -239,7 +240,7 @@ interval.
   max_delay = __builtin__.property(_get_max_delay)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'min_delay': min_delay, 'max_delay': max_delay, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('min_delay', min_delay), ('max_delay', max_delay), ])
 
 
 class state(PybindBase):
@@ -461,6 +462,6 @@ interval.
   max_delay = __builtin__.property(_get_max_delay)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'a_bit': a_bit, 'min_delay': min_delay, 'max_delay': max_delay, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('a_bit', a_bit), ('min_delay', min_delay), ('max_delay', max_delay), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -144,7 +145,7 @@ address-family=IPv4 table is created by the system.
   table = __builtin__.property(_get_table, _set_table)
 
 
-  _pyangbind_elements = {'table': table, }
+  _pyangbind_elements = OrderedDict([('table', table), ])
 
 
 from . import table
@@ -271,6 +272,6 @@ address-family=IPv4 table is created by the system.
   table = __builtin__.property(_get_table, _set_table)
 
 
-  _pyangbind_elements = {'table': table, }
+  _pyangbind_elements = OrderedDict([('table', table), ])
 
 

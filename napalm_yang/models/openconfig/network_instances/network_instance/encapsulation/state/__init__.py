@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ instance
   control_word = __builtin__.property(_get_control_word)
 
 
-  _pyangbind_elements = {'encapsulation_type': encapsulation_type, 'label_allocation_mode': label_allocation_mode, 'control_word': control_word, }
+  _pyangbind_elements = OrderedDict([('encapsulation_type', encapsulation_type), ('label_allocation_mode', label_allocation_mode), ('control_word', control_word), ])
 
 
 class state(PybindBase):
@@ -369,6 +370,6 @@ instance
   control_word = __builtin__.property(_get_control_word)
 
 
-  _pyangbind_elements = {'encapsulation_type': encapsulation_type, 'label_allocation_mode': label_allocation_mode, 'control_word': control_word, }
+  _pyangbind_elements = OrderedDict([('encapsulation_type', encapsulation_type), ('label_allocation_mode', label_allocation_mode), ('control_word', control_word), ])
 
 

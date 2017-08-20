@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -150,7 +151,7 @@ path computation and signaling methods
   tunnels = __builtin__.property(_get_tunnels, _set_tunnels)
 
 
-  _pyangbind_elements = {'named_explicit_paths': named_explicit_paths, 'tunnels': tunnels, }
+  _pyangbind_elements = OrderedDict([('named_explicit_paths', named_explicit_paths), ('tunnels', tunnels), ])
 
 
 from . import named_explicit_paths
@@ -283,6 +284,6 @@ path computation and signaling methods
   tunnels = __builtin__.property(_get_tunnels, _set_tunnels)
 
 
-  _pyangbind_elements = {'named_explicit_paths': named_explicit_paths, 'tunnels': tunnels, }
+  _pyangbind_elements = OrderedDict([('named_explicit_paths', named_explicit_paths), ('tunnels', tunnels), ])
 
 

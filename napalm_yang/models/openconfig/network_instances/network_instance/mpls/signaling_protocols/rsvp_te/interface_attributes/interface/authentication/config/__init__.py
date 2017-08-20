@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -150,7 +151,7 @@ messages
   authentication_key = __builtin__.property(_get_authentication_key, _set_authentication_key)
 
 
-  _pyangbind_elements = {'enable': enable, 'authentication_key': authentication_key, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('authentication_key', authentication_key), ])
 
 
 class config(PybindBase):
@@ -283,6 +284,6 @@ messages
   authentication_key = __builtin__.property(_get_authentication_key, _set_authentication_key)
 
 
-  _pyangbind_elements = {'enable': enable, 'authentication_key': authentication_key, }
+  _pyangbind_elements = OrderedDict([('enable', enable), ('authentication_key', authentication_key), ])
 
 

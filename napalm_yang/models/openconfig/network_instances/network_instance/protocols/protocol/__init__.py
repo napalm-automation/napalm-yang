@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -455,7 +456,7 @@ information.
   isis = __builtin__.property(_get_isis, _set_isis)
 
 
-  _pyangbind_elements = {'identifier': identifier, 'name': name, 'config': config, 'state': state, 'static_routes': static_routes, 'local_aggregates': local_aggregates, 'bgp': bgp, 'ospfv2': ospfv2, 'isis': isis, }
+  _pyangbind_elements = OrderedDict([('identifier', identifier), ('name', name), ('config', config), ('state', state), ('static_routes', static_routes), ('local_aggregates', local_aggregates), ('bgp', bgp), ('ospfv2', ospfv2), ('isis', isis), ])
 
 
 from . import config
@@ -893,6 +894,6 @@ information.
   isis = __builtin__.property(_get_isis, _set_isis)
 
 
-  _pyangbind_elements = {'identifier': identifier, 'name': name, 'config': config, 'state': state, 'static_routes': static_routes, 'local_aggregates': local_aggregates, 'bgp': bgp, 'ospfv2': ospfv2, 'isis': isis, }
+  _pyangbind_elements = OrderedDict([('identifier', identifier), ('name', name), ('config', config), ('state', state), ('static_routes', static_routes), ('local_aggregates', local_aggregates), ('bgp', bgp), ('ospfv2', ospfv2), ('isis', isis), ])
 
 

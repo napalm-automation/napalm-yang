@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -234,6 +235,6 @@ period
   max_ = __builtin__.property(_get_max_)
 
 
-  _pyangbind_elements = {'instant': instant, 'avg': avg, 'min_': min_, 'max_': max_, }
+  _pyangbind_elements = OrderedDict([('instant', instant), ('avg', avg), ('min_', min_), ('max_', max_), ])
 
 

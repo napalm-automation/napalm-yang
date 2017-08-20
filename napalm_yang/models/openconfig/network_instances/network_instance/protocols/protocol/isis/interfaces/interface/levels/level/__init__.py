@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -396,7 +397,7 @@ and state information.
   hello_authentication = __builtin__.property(_get_hello_authentication, _set_hello_authentication)
 
 
-  _pyangbind_elements = {'level_number': level_number, 'config': config, 'state': state, 'packet_counters': packet_counters, 'adjacencies': adjacencies, 'timers': timers, 'afi_safi': afi_safi, 'hello_authentication': hello_authentication, }
+  _pyangbind_elements = OrderedDict([('level_number', level_number), ('config', config), ('state', state), ('packet_counters', packet_counters), ('adjacencies', adjacencies), ('timers', timers), ('afi_safi', afi_safi), ('hello_authentication', hello_authentication), ])
 
 
 from . import config
@@ -775,6 +776,6 @@ and state information.
   hello_authentication = __builtin__.property(_get_hello_authentication, _set_hello_authentication)
 
 
-  _pyangbind_elements = {'level_number': level_number, 'config': config, 'state': state, 'packet_counters': packet_counters, 'adjacencies': adjacencies, 'timers': timers, 'afi_safi': afi_safi, 'hello_authentication': hello_authentication, }
+  _pyangbind_elements = OrderedDict([('level_number', level_number), ('config', config), ('state', state), ('packet_counters', packet_counters), ('adjacencies', adjacencies), ('timers', timers), ('afi_safi', afi_safi), ('hello_authentication', hello_authentication), ])
 
 

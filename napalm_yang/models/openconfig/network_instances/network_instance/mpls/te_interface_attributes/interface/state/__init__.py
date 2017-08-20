@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -227,7 +228,7 @@ interface belongs to.
   admin_group = __builtin__.property(_get_admin_group)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'te_metric': te_metric, 'srlg_membership': srlg_membership, 'admin_group': admin_group, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('te_metric', te_metric), ('srlg_membership', srlg_membership), ('admin_group', admin_group), ])
 
 
 class state(PybindBase):
@@ -437,6 +438,6 @@ interface belongs to.
   admin_group = __builtin__.property(_get_admin_group)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'te_metric': te_metric, 'srlg_membership': srlg_membership, 'admin_group': admin_group, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('te_metric', te_metric), ('srlg_membership', srlg_membership), ('admin_group', admin_group), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -227,6 +228,6 @@ is accepted on the VLAN
   tpid = __builtin__.property(_get_tpid, _set_tpid)
 
 
-  _pyangbind_elements = {'vlan_id': vlan_id, 'name': name, 'status': status, 'tpid': tpid, }
+  _pyangbind_elements = OrderedDict([('vlan_id', vlan_id), ('name', name), ('status', status), ('tpid', tpid), ])
 
 

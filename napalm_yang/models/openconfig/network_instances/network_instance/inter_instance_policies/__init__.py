@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -116,7 +117,7 @@ depending on the context.
   apply_policy = __builtin__.property(_get_apply_policy, _set_apply_policy)
 
 
-  _pyangbind_elements = {'apply_policy': apply_policy, }
+  _pyangbind_elements = OrderedDict([('apply_policy', apply_policy), ])
 
 
 from . import apply_policy
@@ -215,6 +216,6 @@ depending on the context.
   apply_policy = __builtin__.property(_get_apply_policy, _set_apply_policy)
 
 
-  _pyangbind_elements = {'apply_policy': apply_policy, }
+  _pyangbind_elements = OrderedDict([('apply_policy', apply_policy), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ referenced group or neighbors and ebgp-multihop is enabled
   multihop_ttl = __builtin__.property(_get_multihop_ttl, _set_multihop_ttl)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'multihop_ttl': multihop_ttl, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('multihop_ttl', multihop_ttl), ])
 
 
 class config(PybindBase):
@@ -291,6 +292,6 @@ referenced group or neighbors and ebgp-multihop is enabled
   multihop_ttl = __builtin__.property(_get_multihop_ttl, _set_multihop_ttl)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'multihop_ttl': multihop_ttl, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('multihop_ttl', multihop_ttl), ])
 
 

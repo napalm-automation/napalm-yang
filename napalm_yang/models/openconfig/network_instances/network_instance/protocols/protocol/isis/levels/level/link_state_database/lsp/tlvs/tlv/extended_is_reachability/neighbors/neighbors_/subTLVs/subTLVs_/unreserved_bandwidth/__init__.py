@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ per second.
   setup_priority = __builtin__.property(_get_setup_priority)
 
 
-  _pyangbind_elements = {'setup_priority': setup_priority, }
+  _pyangbind_elements = OrderedDict([('setup_priority', setup_priority), ])
 
 
 from . import setup_priority
@@ -203,6 +204,6 @@ per second.
   setup_priority = __builtin__.property(_get_setup_priority)
 
 
-  _pyangbind_elements = {'setup_priority': setup_priority, }
+  _pyangbind_elements = OrderedDict([('setup_priority', setup_priority), ])
 
 

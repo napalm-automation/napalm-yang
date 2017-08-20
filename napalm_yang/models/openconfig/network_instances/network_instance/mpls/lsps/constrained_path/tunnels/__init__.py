@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -117,7 +118,7 @@ associated sessions are maintained per protocol
   tunnel = __builtin__.property(_get_tunnel, _set_tunnel)
 
 
-  _pyangbind_elements = {'tunnel': tunnel, }
+  _pyangbind_elements = OrderedDict([('tunnel', tunnel), ])
 
 
 from . import tunnel
@@ -217,6 +218,6 @@ associated sessions are maintained per protocol
   tunnel = __builtin__.property(_get_tunnel, _set_tunnel)
 
 
-  _pyangbind_elements = {'tunnel': tunnel, }
+  _pyangbind_elements = OrderedDict([('tunnel', tunnel), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -190,7 +191,7 @@ attributes.
   undefined_subtlvs = __builtin__.property(_get_undefined_subtlvs)
 
 
-  _pyangbind_elements = {'state': state, 'subTLVs': subTLVs, 'undefined_subtlvs': undefined_subtlvs, }
+  _pyangbind_elements = OrderedDict([('state', state), ('subTLVs', subTLVs), ('undefined_subtlvs', undefined_subtlvs), ])
 
 
 from . import state
@@ -363,6 +364,6 @@ attributes.
   undefined_subtlvs = __builtin__.property(_get_undefined_subtlvs)
 
 
-  _pyangbind_elements = {'state': state, 'subTLVs': subTLVs, 'undefined_subtlvs': undefined_subtlvs, }
+  _pyangbind_elements = OrderedDict([('state', state), ('subTLVs', subTLVs), ('undefined_subtlvs', undefined_subtlvs), ])
 
 

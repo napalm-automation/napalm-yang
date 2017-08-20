@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -186,7 +187,7 @@ class config(PybindBase):
   tcp_flags = __builtin__.property(_get_tcp_flags, _set_tcp_flags)
 
 
-  _pyangbind_elements = {'source_port': source_port, 'destination_port': destination_port, 'tcp_flags': tcp_flags, }
+  _pyangbind_elements = OrderedDict([('source_port', source_port), ('destination_port', destination_port), ('tcp_flags', tcp_flags), ])
 
 
 class config(PybindBase):
@@ -355,6 +356,6 @@ class config(PybindBase):
   tcp_flags = __builtin__.property(_get_tcp_flags, _set_tcp_flags)
 
 
-  _pyangbind_elements = {'source_port': source_port, 'destination_port': destination_port, 'tcp_flags': tcp_flags, }
+  _pyangbind_elements = OrderedDict([('source_port', source_port), ('destination_port', destination_port), ('tcp_flags', tcp_flags), ])
 
 

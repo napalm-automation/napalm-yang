@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -148,7 +149,7 @@ members
   to_address = __builtin__.property(_get_to_address)
 
 
-  _pyangbind_elements = {'from_address': from_address, 'to_address': to_address, }
+  _pyangbind_elements = OrderedDict([('from_address', from_address), ('to_address', to_address), ])
 
 
 class state(PybindBase):
@@ -279,6 +280,6 @@ members
   to_address = __builtin__.property(_get_to_address)
 
 
-  _pyangbind_elements = {'from_address': from_address, 'to_address': to_address, }
+  _pyangbind_elements = OrderedDict([('from_address', from_address), ('to_address', to_address), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -287,7 +288,7 @@ particular set of NLRI exhibit instability.
   negotiated_hold_time = __builtin__.property(_get_negotiated_hold_time)
 
 
-  _pyangbind_elements = {'connect_retry': connect_retry, 'hold_time': hold_time, 'keepalive_interval': keepalive_interval, 'minimum_advertisement_interval': minimum_advertisement_interval, 'negotiated_hold_time': negotiated_hold_time, }
+  _pyangbind_elements = OrderedDict([('connect_retry', connect_retry), ('hold_time', hold_time), ('keepalive_interval', keepalive_interval), ('minimum_advertisement_interval', minimum_advertisement_interval), ('negotiated_hold_time', negotiated_hold_time), ])
 
 
 class state(PybindBase):
@@ -557,6 +558,6 @@ particular set of NLRI exhibit instability.
   negotiated_hold_time = __builtin__.property(_get_negotiated_hold_time)
 
 
-  _pyangbind_elements = {'connect_retry': connect_retry, 'hold_time': hold_time, 'keepalive_interval': keepalive_interval, 'minimum_advertisement_interval': minimum_advertisement_interval, 'negotiated_hold_time': negotiated_hold_time, }
+  _pyangbind_elements = OrderedDict([('connect_retry', connect_retry), ('hold_time', hold_time), ('keepalive_interval', keepalive_interval), ('minimum_advertisement_interval', minimum_advertisement_interval), ('negotiated_hold_time', negotiated_hold_time), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,6 +155,6 @@ to be available
   min_links = __builtin__.property(_get_min_links, _set_min_links)
 
 
-  _pyangbind_elements = {'lag_type': lag_type, 'min_links': min_links, }
+  _pyangbind_elements = OrderedDict([('lag_type', lag_type), ('min_links', min_links), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -316,7 +317,7 @@ by the OSPF instance
   inter_area_propagation_policies = __builtin__.property(_get_inter_area_propagation_policies, _set_inter_area_propagation_policies)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'timers': timers, 'graceful_restart': graceful_restart, 'mpls': mpls, 'inter_area_propagation_policies': inter_area_propagation_policies, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('timers', timers), ('graceful_restart', graceful_restart), ('mpls', mpls), ('inter_area_propagation_policies', inter_area_propagation_policies), ])
 
 
 from . import config
@@ -615,6 +616,6 @@ by the OSPF instance
   inter_area_propagation_policies = __builtin__.property(_get_inter_area_propagation_policies, _set_inter_area_propagation_policies)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'timers': timers, 'graceful_restart': graceful_restart, 'mpls': mpls, 'inter_area_propagation_policies': inter_area_propagation_policies, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('timers', timers), ('graceful_restart', graceful_restart), ('mpls', mpls), ('inter_area_propagation_policies', inter_area_propagation_policies), ])
 
 

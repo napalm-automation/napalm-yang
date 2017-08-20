@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -148,7 +149,7 @@ table
   address_family = __builtin__.property(_get_address_family, _set_address_family)
 
 
-  _pyangbind_elements = {'protocol': protocol, 'address_family': address_family, }
+  _pyangbind_elements = OrderedDict([('protocol', protocol), ('address_family', address_family), ])
 
 
 class config(PybindBase):
@@ -279,6 +280,6 @@ table
   address_family = __builtin__.property(_get_address_family, _set_address_family)
 
 
-  _pyangbind_elements = {'protocol': protocol, 'address_family': address_family, }
+  _pyangbind_elements = OrderedDict([('protocol', protocol), ('address_family', address_family), ])
 
 

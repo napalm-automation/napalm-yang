@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -272,7 +273,7 @@ retransmitted by the local system on the interface.
   retransmit = __builtin__.property(_get_retransmit)
 
 
-  _pyangbind_elements = {'received': received, 'processed': processed, 'dropped': dropped, 'sent': sent, 'retransmit': retransmit, }
+  _pyangbind_elements = OrderedDict([('received', received), ('processed', processed), ('dropped', dropped), ('sent', sent), ('retransmit', retransmit), ])
 
 
 class state(PybindBase):
@@ -527,6 +528,6 @@ retransmitted by the local system on the interface.
   retransmit = __builtin__.property(_get_retransmit)
 
 
-  _pyangbind_elements = {'received': received, 'processed': processed, 'dropped': dropped, 'sent': sent, 'retransmit': retransmit, }
+  _pyangbind_elements = OrderedDict([('received', received), ('processed', processed), ('dropped', dropped), ('sent', sent), ('retransmit', retransmit), ])
 
 

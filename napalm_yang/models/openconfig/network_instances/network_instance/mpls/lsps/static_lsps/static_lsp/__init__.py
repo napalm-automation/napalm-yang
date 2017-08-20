@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -319,7 +320,7 @@ class static_lsp(PybindBase):
   egress = __builtin__.property(_get_egress, _set_egress)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'ingress': ingress, 'transit': transit, 'egress': egress, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('ingress', ingress), ('transit', transit), ('egress', egress), ])
 
 
 from . import config
@@ -621,6 +622,6 @@ class static_lsp(PybindBase):
   egress = __builtin__.property(_get_egress, _set_egress)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'ingress': ingress, 'transit': transit, 'egress': egress, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('ingress', ingress), ('transit', transit), ('egress', egress), ])
 
 

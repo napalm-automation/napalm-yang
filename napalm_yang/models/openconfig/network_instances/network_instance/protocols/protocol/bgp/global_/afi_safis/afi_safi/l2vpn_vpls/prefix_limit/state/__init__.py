@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -246,7 +247,7 @@ the max-prefix limit.
   restart_timer = __builtin__.property(_get_restart_timer)
 
 
-  _pyangbind_elements = {'max_prefixes': max_prefixes, 'prevent_teardown': prevent_teardown, 'shutdown_threshold_pct': shutdown_threshold_pct, 'restart_timer': restart_timer, }
+  _pyangbind_elements = OrderedDict([('max_prefixes', max_prefixes), ('prevent_teardown', prevent_teardown), ('shutdown_threshold_pct', shutdown_threshold_pct), ('restart_timer', restart_timer), ])
 
 
 class state(PybindBase):
@@ -475,6 +476,6 @@ the max-prefix limit.
   restart_timer = __builtin__.property(_get_restart_timer)
 
 
-  _pyangbind_elements = {'max_prefixes': max_prefixes, 'prevent_teardown': prevent_teardown, 'shutdown_threshold_pct': shutdown_threshold_pct, 'restart_timer': restart_timer, }
+  _pyangbind_elements = OrderedDict([('max_prefixes', max_prefixes), ('prevent_teardown', prevent_teardown), ('shutdown_threshold_pct', shutdown_threshold_pct), ('restart_timer', restart_timer), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -194,7 +195,7 @@ accepted into the FDB
   maximum_entries = __builtin__.property(_get_maximum_entries)
 
 
-  _pyangbind_elements = {'mac_learning': mac_learning, 'mac_aging_time': mac_aging_time, 'maximum_entries': maximum_entries, }
+  _pyangbind_elements = OrderedDict([('mac_learning', mac_learning), ('mac_aging_time', mac_aging_time), ('maximum_entries', maximum_entries), ])
 
 
 class state(PybindBase):
@@ -371,6 +372,6 @@ accepted into the FDB
   maximum_entries = __builtin__.property(_get_maximum_entries)
 
 
-  _pyangbind_elements = {'mac_learning': mac_learning, 'mac_aging_time': mac_aging_time, 'maximum_entries': maximum_entries, }
+  _pyangbind_elements = OrderedDict([('mac_learning', mac_learning), ('mac_aging_time', mac_aging_time), ('maximum_entries', maximum_entries), ])
 
 

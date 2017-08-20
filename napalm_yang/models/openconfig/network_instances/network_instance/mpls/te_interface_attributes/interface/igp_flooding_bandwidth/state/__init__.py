@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -351,7 +352,7 @@ increasing and decreasing
   up_down_thresholds = __builtin__.property(_get_up_down_thresholds)
 
 
-  _pyangbind_elements = {'threshold_type': threshold_type, 'delta_percentage': delta_percentage, 'threshold_specification': threshold_specification, 'up_thresholds': up_thresholds, 'down_thresholds': down_thresholds, 'up_down_thresholds': up_down_thresholds, }
+  _pyangbind_elements = OrderedDict([('threshold_type', threshold_type), ('delta_percentage', delta_percentage), ('threshold_specification', threshold_specification), ('up_thresholds', up_thresholds), ('down_thresholds', down_thresholds), ('up_down_thresholds', up_down_thresholds), ])
 
 
 class state(PybindBase):
@@ -685,6 +686,6 @@ increasing and decreasing
   up_down_thresholds = __builtin__.property(_get_up_down_thresholds)
 
 
-  _pyangbind_elements = {'threshold_type': threshold_type, 'delta_percentage': delta_percentage, 'threshold_specification': threshold_specification, 'up_thresholds': up_thresholds, 'down_thresholds': down_thresholds, 'up_down_thresholds': up_down_thresholds, }
+  _pyangbind_elements = OrderedDict([('threshold_type', threshold_type), ('delta_percentage', delta_percentage), ('threshold_specification', threshold_specification), ('up_thresholds', up_thresholds), ('down_thresholds', down_thresholds), ('up_down_thresholds', up_down_thresholds), ])
 
 

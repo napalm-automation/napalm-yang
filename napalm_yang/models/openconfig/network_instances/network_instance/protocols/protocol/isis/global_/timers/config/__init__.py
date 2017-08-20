@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ that a device originates is transmitted in LSPs.
   lsp_refresh_interval = __builtin__.property(_get_lsp_refresh_interval, _set_lsp_refresh_interval)
 
 
-  _pyangbind_elements = {'lsp_lifetime_interval': lsp_lifetime_interval, 'lsp_refresh_interval': lsp_refresh_interval, }
+  _pyangbind_elements = OrderedDict([('lsp_lifetime_interval', lsp_lifetime_interval), ('lsp_refresh_interval', lsp_refresh_interval), ])
 
 
 class config(PybindBase):
@@ -285,6 +286,6 @@ that a device originates is transmitted in LSPs.
   lsp_refresh_interval = __builtin__.property(_get_lsp_refresh_interval, _set_lsp_refresh_interval)
 
 
-  _pyangbind_elements = {'lsp_lifetime_interval': lsp_lifetime_interval, 'lsp_refresh_interval': lsp_refresh_interval, }
+  _pyangbind_elements = OrderedDict([('lsp_lifetime_interval', lsp_lifetime_interval), ('lsp_refresh_interval', lsp_refresh_interval), ])
 
 

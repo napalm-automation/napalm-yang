@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -150,7 +151,7 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
   set_ = __builtin__.property(_get_set_)
 
 
-  _pyangbind_elements = {'bit_index': bit_index, 'set_': set_, }
+  _pyangbind_elements = OrderedDict([('bit_index', bit_index), ('set_', set_), ])
 
 
 class state(PybindBase):
@@ -283,6 +284,6 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
   set_ = __builtin__.property(_get_set_)
 
 
-  _pyangbind_elements = {'bit_index': bit_index, 'set_': set_, }
+  _pyangbind_elements = OrderedDict([('bit_index', bit_index), ('set_', set_), ])
 
 

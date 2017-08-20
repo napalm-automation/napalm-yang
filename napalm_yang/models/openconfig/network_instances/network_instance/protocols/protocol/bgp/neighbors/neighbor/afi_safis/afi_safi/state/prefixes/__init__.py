@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -188,7 +189,7 @@ Loc-RIB
   installed = __builtin__.property(_get_installed)
 
 
-  _pyangbind_elements = {'received': received, 'sent': sent, 'installed': installed, }
+  _pyangbind_elements = OrderedDict([('received', received), ('sent', sent), ('installed', installed), ])
 
 
 class prefixes(PybindBase):
@@ -359,6 +360,6 @@ Loc-RIB
   installed = __builtin__.property(_get_installed)
 
 
-  _pyangbind_elements = {'received': received, 'sent': sent, 'installed': installed, }
+  _pyangbind_elements = OrderedDict([('received', received), ('sent', sent), ('installed', installed), ])
 
 

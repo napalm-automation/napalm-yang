@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ traffic-engineered, or non constrained-path
   path_setup_protocol = __builtin__.property(_get_path_setup_protocol, _set_path_setup_protocol)
 
 
-  _pyangbind_elements = {'path_setup_protocol': path_setup_protocol, }
+  _pyangbind_elements = OrderedDict([('path_setup_protocol', path_setup_protocol), ])
 
 
 from . import path_setup_protocol
@@ -207,6 +208,6 @@ traffic-engineered, or non constrained-path
   path_setup_protocol = __builtin__.property(_get_path_setup_protocol, _set_path_setup_protocol)
 
 
-  _pyangbind_elements = {'path_setup_protocol': path_setup_protocol, }
+  _pyangbind_elements = OrderedDict([('path_setup_protocol', path_setup_protocol), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -409,6 +410,6 @@ interface), IRB (integrated routing and bridging), RVI
   routed_vlan = __builtin__.property(_get_routed_vlan, _set_routed_vlan)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'hold_time': hold_time, 'subinterfaces': subinterfaces, 'ethernet': ethernet, 'aggregation': aggregation, 'routed_vlan': routed_vlan, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('hold_time', hold_time), ('subinterfaces', subinterfaces), ('ethernet', ethernet), ('aggregation', aggregation), ('routed_vlan', routed_vlan), ])
 
 

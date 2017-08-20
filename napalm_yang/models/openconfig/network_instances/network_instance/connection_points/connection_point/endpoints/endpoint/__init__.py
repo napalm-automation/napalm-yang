@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -287,7 +288,7 @@ relating to a remote interface
   remote = __builtin__.property(_get_remote, _set_remote)
 
 
-  _pyangbind_elements = {'endpoint_id': endpoint_id, 'config': config, 'state': state, 'local_': local_, 'remote': remote, }
+  _pyangbind_elements = OrderedDict([('endpoint_id', endpoint_id), ('config', config), ('state', state), ('local_', local_), ('remote', remote), ])
 
 
 from . import config
@@ -557,6 +558,6 @@ relating to a remote interface
   remote = __builtin__.property(_get_remote, _set_remote)
 
 
-  _pyangbind_elements = {'endpoint_id': endpoint_id, 'config': config, 'state': state, 'local_': local_, 'remote': remote, }
+  _pyangbind_elements = OrderedDict([('endpoint_id', endpoint_id), ('config', config), ('state', state), ('local_', local_), ('remote', remote), ])
 
 

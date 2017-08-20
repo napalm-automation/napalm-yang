@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ IS.
   area_address = __builtin__.property(_get_area_address)
 
 
-  _pyangbind_elements = {'type': type, 'area_address': area_address, }
+  _pyangbind_elements = OrderedDict([('type', type), ('area_address', area_address), ])
 
 
 class state(PybindBase):
@@ -285,6 +286,6 @@ IS.
   area_address = __builtin__.property(_get_area_address)
 
 
-  _pyangbind_elements = {'type': type, 'area_address': area_address, }
+  _pyangbind_elements = OrderedDict([('type', type), ('area_address', area_address), ])
 
 

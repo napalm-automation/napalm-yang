@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -274,7 +275,7 @@ information relating to the external route
   external_route_tag = __builtin__.property(_get_external_route_tag)
 
 
-  _pyangbind_elements = {'mask': mask, 'metric_type': metric_type, 'metric': metric, 'forwarding_address': forwarding_address, 'external_route_tag': external_route_tag, }
+  _pyangbind_elements = OrderedDict([('mask', mask), ('metric_type', metric_type), ('metric', metric), ('forwarding_address', forwarding_address), ('external_route_tag', external_route_tag), ])
 
 
 class state(PybindBase):
@@ -531,6 +532,6 @@ information relating to the external route
   external_route_tag = __builtin__.property(_get_external_route_tag)
 
 
-  _pyangbind_elements = {'mask': mask, 'metric_type': metric_type, 'metric': metric, 'forwarding_address': forwarding_address, 'external_route_tag': external_route_tag, }
+  _pyangbind_elements = OrderedDict([('mask', mask), ('metric_type', metric_type), ('metric', metric), ('forwarding_address', forwarding_address), ('external_route_tag', external_route_tag), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -410,7 +411,7 @@ header that is to be matched by the AFT entry.
   l4_dst_port = __builtin__.property(_get_l4_dst_port)
 
 
-  _pyangbind_elements = {'ip_prefix': ip_prefix, 'mac_address': mac_address, 'mpls_label': mpls_label, 'mpls_tc': mpls_tc, 'ip_dscp': ip_dscp, 'ip_protocol': ip_protocol, 'l4_src_port': l4_src_port, 'l4_dst_port': l4_dst_port, }
+  _pyangbind_elements = OrderedDict([('ip_prefix', ip_prefix), ('mac_address', mac_address), ('mpls_label', mpls_label), ('mpls_tc', mpls_tc), ('ip_dscp', ip_dscp), ('ip_protocol', ip_protocol), ('l4_src_port', l4_src_port), ('l4_dst_port', l4_dst_port), ])
 
 
 class state(PybindBase):
@@ -803,6 +804,6 @@ header that is to be matched by the AFT entry.
   l4_dst_port = __builtin__.property(_get_l4_dst_port)
 
 
-  _pyangbind_elements = {'ip_prefix': ip_prefix, 'mac_address': mac_address, 'mpls_label': mpls_label, 'mpls_tc': mpls_tc, 'ip_dscp': ip_dscp, 'ip_protocol': ip_protocol, 'l4_src_port': l4_src_port, 'l4_dst_port': l4_dst_port, }
+  _pyangbind_elements = OrderedDict([('ip_prefix', ip_prefix), ('mac_address', mac_address), ('mpls_label', mpls_label), ('mpls_tc', mpls_tc), ('ip_dscp', ip_dscp), ('ip_protocol', ip_protocol), ('l4_src_port', l4_src_port), ('l4_dst_port', l4_dst_port), ])
 
 

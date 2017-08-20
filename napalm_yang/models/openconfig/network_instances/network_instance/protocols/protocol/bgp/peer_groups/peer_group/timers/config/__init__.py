@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -248,7 +249,7 @@ particular set of NLRI exhibit instability.
   minimum_advertisement_interval = __builtin__.property(_get_minimum_advertisement_interval, _set_minimum_advertisement_interval)
 
 
-  _pyangbind_elements = {'connect_retry': connect_retry, 'hold_time': hold_time, 'keepalive_interval': keepalive_interval, 'minimum_advertisement_interval': minimum_advertisement_interval, }
+  _pyangbind_elements = OrderedDict([('connect_retry', connect_retry), ('hold_time', hold_time), ('keepalive_interval', keepalive_interval), ('minimum_advertisement_interval', minimum_advertisement_interval), ])
 
 
 class config(PybindBase):
@@ -479,6 +480,6 @@ particular set of NLRI exhibit instability.
   minimum_advertisement_interval = __builtin__.property(_get_minimum_advertisement_interval, _set_minimum_advertisement_interval)
 
 
-  _pyangbind_elements = {'connect_retry': connect_retry, 'hold_time': hold_time, 'keepalive_interval': keepalive_interval, 'minimum_advertisement_interval': minimum_advertisement_interval, }
+  _pyangbind_elements = OrderedDict([('connect_retry', connect_retry), ('hold_time', hold_time), ('keepalive_interval', keepalive_interval), ('minimum_advertisement_interval', minimum_advertisement_interval), ])
 
 

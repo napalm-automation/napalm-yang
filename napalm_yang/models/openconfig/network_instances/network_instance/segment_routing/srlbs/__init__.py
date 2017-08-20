@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -116,7 +117,7 @@ system. A block may optionally be advertised into an IGP.
   srlb = __builtin__.property(_get_srlb, _set_srlb)
 
 
-  _pyangbind_elements = {'srlb': srlb, }
+  _pyangbind_elements = OrderedDict([('srlb', srlb), ])
 
 
 from . import srlb
@@ -215,6 +216,6 @@ system. A block may optionally be advertised into an IGP.
   srlb = __builtin__.property(_get_srlb, _set_srlb)
 
 
-  _pyangbind_elements = {'srlb': srlb, }
+  _pyangbind_elements = OrderedDict([('srlb', srlb), ])
 
 

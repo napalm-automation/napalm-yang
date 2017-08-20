@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ rule.
   sequence_id = __builtin__.property(_get_sequence_id, _set_sequence_id)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ])
 
 
 class config(PybindBase):
@@ -201,6 +202,6 @@ rule.
   sequence_id = __builtin__.property(_get_sequence_id, _set_sequence_id)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, }
+  _pyangbind_elements = OrderedDict([('sequence_id', sequence_id), ])
 
 

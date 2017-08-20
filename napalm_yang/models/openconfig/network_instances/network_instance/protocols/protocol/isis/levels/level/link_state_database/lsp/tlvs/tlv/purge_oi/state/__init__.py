@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -229,7 +230,7 @@ received.
   received_system_id = __builtin__.property(_get_received_system_id)
 
 
-  _pyangbind_elements = {'type': type, 'system_id_count': system_id_count, 'source_system_id': source_system_id, 'received_system_id': received_system_id, }
+  _pyangbind_elements = OrderedDict([('type', type), ('system_id_count', system_id_count), ('source_system_id', source_system_id), ('received_system_id', received_system_id), ])
 
 
 class state(PybindBase):
@@ -441,6 +442,6 @@ received.
   received_system_id = __builtin__.property(_get_received_system_id)
 
 
-  _pyangbind_elements = {'type': type, 'system_id_count': system_id_count, 'source_system_id': source_system_id, 'received_system_id': received_system_id, }
+  _pyangbind_elements = OrderedDict([('type', type), ('system_id_count', system_id_count), ('source_system_id', source_system_id), ('received_system_id', received_system_id), ])
 
 

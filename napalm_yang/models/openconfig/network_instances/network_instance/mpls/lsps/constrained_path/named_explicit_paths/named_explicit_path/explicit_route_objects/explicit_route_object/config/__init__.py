@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -189,7 +190,7 @@ the order of hops in the path
   index = __builtin__.property(_get_index, _set_index)
 
 
-  _pyangbind_elements = {'address': address, 'hop_type': hop_type, 'index': index, }
+  _pyangbind_elements = OrderedDict([('address', address), ('hop_type', hop_type), ('index', index), ])
 
 
 class config(PybindBase):
@@ -361,6 +362,6 @@ the order of hops in the path
   index = __builtin__.property(_get_index, _set_index)
 
 
-  _pyangbind_elements = {'address': address, 'hop_type': hop_type, 'index': index, }
+  _pyangbind_elements = OrderedDict([('address', address), ('hop_type', hop_type), ('index', index), ])
 
 

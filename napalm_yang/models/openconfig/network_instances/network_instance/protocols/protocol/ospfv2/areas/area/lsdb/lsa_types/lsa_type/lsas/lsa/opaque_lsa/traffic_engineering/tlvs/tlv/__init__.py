@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -275,7 +276,7 @@ local system such that it cannot decode their value.
   node_attribute = __builtin__.property(_get_node_attribute)
 
 
-  _pyangbind_elements = {'state': state, 'unknown_tlv': unknown_tlv, 'router_address': router_address, 'link': link, 'node_attribute': node_attribute, }
+  _pyangbind_elements = OrderedDict([('state', state), ('unknown_tlv', unknown_tlv), ('router_address', router_address), ('link', link), ('node_attribute', node_attribute), ])
 
 
 from . import state
@@ -533,6 +534,6 @@ local system such that it cannot decode their value.
   node_attribute = __builtin__.property(_get_node_attribute)
 
 
-  _pyangbind_elements = {'state': state, 'unknown_tlv': unknown_tlv, 'router_address': router_address, 'link': link, 'node_attribute': node_attribute, }
+  _pyangbind_elements = OrderedDict([('state', state), ('unknown_tlv', unknown_tlv), ('router_address', router_address), ('link', link), ('node_attribute', node_attribute), ])
 
 

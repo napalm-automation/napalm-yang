@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -276,7 +277,7 @@ corresponds to an SR Segment Identifier.
   out_octets = __builtin__.property(_get_out_octets)
 
 
-  _pyangbind_elements = {'mpls_label': mpls_label, 'in_pkts': in_pkts, 'in_octets': in_octets, 'out_pkts': out_pkts, 'out_octets': out_octets, }
+  _pyangbind_elements = OrderedDict([('mpls_label', mpls_label), ('in_pkts', in_pkts), ('in_octets', in_octets), ('out_pkts', out_pkts), ('out_octets', out_octets), ])
 
 
 class state(PybindBase):
@@ -535,6 +536,6 @@ corresponds to an SR Segment Identifier.
   out_octets = __builtin__.property(_get_out_octets)
 
 
-  _pyangbind_elements = {'mpls_label': mpls_label, 'in_pkts': in_pkts, 'in_octets': in_octets, 'out_pkts': out_pkts, 'out_octets': out_octets, }
+  _pyangbind_elements = OrderedDict([('mpls_label', mpls_label), ('in_pkts', in_pkts), ('in_octets', in_octets), ('out_pkts', out_pkts), ('out_octets', out_octets), ])
 
 

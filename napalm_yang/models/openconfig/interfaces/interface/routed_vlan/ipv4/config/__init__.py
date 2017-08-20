@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -167,6 +168,6 @@ depends on the interface's type.
   mtu = __builtin__.property(_get_mtu, _set_mtu)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('mtu', mtu), ])
 
 

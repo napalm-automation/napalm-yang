@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -152,7 +153,7 @@ detection of topology change and when the SPF algorithm runs.
   lsp_pacing_interval = __builtin__.property(_get_lsp_pacing_interval, _set_lsp_pacing_interval)
 
 
-  _pyangbind_elements = {'csnp_interval': csnp_interval, 'lsp_pacing_interval': lsp_pacing_interval, }
+  _pyangbind_elements = OrderedDict([('csnp_interval', csnp_interval), ('lsp_pacing_interval', lsp_pacing_interval), ])
 
 
 class config(PybindBase):
@@ -287,6 +288,6 @@ detection of topology change and when the SPF algorithm runs.
   lsp_pacing_interval = __builtin__.property(_get_lsp_pacing_interval, _set_lsp_pacing_interval)
 
 
-  _pyangbind_elements = {'csnp_interval': csnp_interval, 'lsp_pacing_interval': lsp_pacing_interval, }
+  _pyangbind_elements = OrderedDict([('csnp_interval', csnp_interval), ('lsp_pacing_interval', lsp_pacing_interval), ])
 
 

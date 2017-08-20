@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ parameters
   segment_routing = __builtin__.property(_get_segment_routing, _set_segment_routing)
 
 
-  _pyangbind_elements = {'rsvp_te': rsvp_te, 'segment_routing': segment_routing, }
+  _pyangbind_elements = OrderedDict([('rsvp_te', rsvp_te), ('segment_routing', segment_routing), ])
 
 
 from . import rsvp_te
@@ -285,6 +286,6 @@ parameters
   segment_routing = __builtin__.property(_get_segment_routing, _set_segment_routing)
 
 
-  _pyangbind_elements = {'rsvp_te': rsvp_te, 'segment_routing': segment_routing, }
+  _pyangbind_elements = OrderedDict([('rsvp_te', rsvp_te), ('segment_routing', segment_routing), ])
 
 

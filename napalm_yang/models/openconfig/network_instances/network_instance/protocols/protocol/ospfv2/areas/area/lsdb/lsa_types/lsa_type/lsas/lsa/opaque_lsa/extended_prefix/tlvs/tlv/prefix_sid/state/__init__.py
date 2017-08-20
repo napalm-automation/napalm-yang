@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -408,7 +409,7 @@ the 20 right-most bits are used for encoding the label value
   sid_value = __builtin__.property(_get_sid_value)
 
 
-  _pyangbind_elements = {'no_php': no_php, 'mapping_server': mapping_server, 'explicit_null': explicit_null, 'sid_value_type': sid_value_type, 'sid_scope': sid_scope, 'multi_topology_identifier': multi_topology_identifier, 'algorithm': algorithm, 'sid_value': sid_value, }
+  _pyangbind_elements = OrderedDict([('no_php', no_php), ('mapping_server', mapping_server), ('explicit_null', explicit_null), ('sid_value_type', sid_value_type), ('sid_scope', sid_scope), ('multi_topology_identifier', multi_topology_identifier), ('algorithm', algorithm), ('sid_value', sid_value), ])
 
 
 class state(PybindBase):
@@ -799,6 +800,6 @@ the 20 right-most bits are used for encoding the label value
   sid_value = __builtin__.property(_get_sid_value)
 
 
-  _pyangbind_elements = {'no_php': no_php, 'mapping_server': mapping_server, 'explicit_null': explicit_null, 'sid_value_type': sid_value_type, 'sid_scope': sid_scope, 'multi_topology_identifier': multi_topology_identifier, 'algorithm': algorithm, 'sid_value': sid_value, }
+  _pyangbind_elements = OrderedDict([('no_php', no_php), ('mapping_server', mapping_server), ('explicit_null', explicit_null), ('sid_value_type', sid_value_type), ('sid_scope', sid_scope), ('multi_topology_identifier', multi_topology_identifier), ('algorithm', algorithm), ('sid_value', sid_value), ])
 
 

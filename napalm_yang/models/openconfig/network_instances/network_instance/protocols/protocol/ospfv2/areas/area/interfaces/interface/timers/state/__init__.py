@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ retransmitting an unacknowledged LSA.
   retransmission_interval = __builtin__.property(_get_retransmission_interval)
 
 
-  _pyangbind_elements = {'dead_interval': dead_interval, 'hello_interval': hello_interval, 'retransmission_interval': retransmission_interval, }
+  _pyangbind_elements = OrderedDict([('dead_interval', dead_interval), ('hello_interval', hello_interval), ('retransmission_interval', retransmission_interval), ])
 
 
 class state(PybindBase):
@@ -369,6 +370,6 @@ retransmitting an unacknowledged LSA.
   retransmission_interval = __builtin__.property(_get_retransmission_interval)
 
 
-  _pyangbind_elements = {'dead_interval': dead_interval, 'hello_interval': hello_interval, 'retransmission_interval': retransmission_interval, }
+  _pyangbind_elements = OrderedDict([('dead_interval', dead_interval), ('hello_interval', hello_interval), ('retransmission_interval', retransmission_interval), ])
 
 

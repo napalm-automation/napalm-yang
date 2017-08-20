@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -162,7 +163,7 @@ of the system for the grace period specified
   helper_only = __builtin__.property(_get_helper_only, _set_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('helper_only', helper_only), ])
 
 
 class config(PybindBase):
@@ -307,6 +308,6 @@ of the system for the grace period specified
   helper_only = __builtin__.property(_get_helper_only, _set_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('helper_only', helper_only), ])
 
 

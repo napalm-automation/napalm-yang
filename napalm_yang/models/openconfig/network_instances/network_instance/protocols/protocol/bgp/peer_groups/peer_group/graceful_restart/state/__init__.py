@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -251,7 +252,7 @@ for the receiving speaker, as defined in RFC4724.
   helper_only = __builtin__.property(_get_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'restart_time': restart_time, 'stale_routes_time': stale_routes_time, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('restart_time', restart_time), ('stale_routes_time', stale_routes_time), ('helper_only', helper_only), ])
 
 
 class state(PybindBase):
@@ -485,6 +486,6 @@ for the receiving speaker, as defined in RFC4724.
   helper_only = __builtin__.property(_get_helper_only)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'restart_time': restart_time, 'stale_routes_time': stale_routes_time, 'helper_only': helper_only, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('restart_time', restart_time), ('stale_routes_time', stale_routes_time), ('helper_only', helper_only), ])
 
 

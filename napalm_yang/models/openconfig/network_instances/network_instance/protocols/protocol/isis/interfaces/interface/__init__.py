@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -477,7 +478,7 @@ state information.
   interface_ref = __builtin__.property(_get_interface_ref, _set_interface_ref)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'circuit_counters': circuit_counters, 'authentication': authentication, 'afi_safi': afi_safi, 'levels': levels, 'timers': timers, 'bfd': bfd, 'interface_ref': interface_ref, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('circuit_counters', circuit_counters), ('authentication', authentication), ('afi_safi', afi_safi), ('levels', levels), ('timers', timers), ('bfd', bfd), ('interface_ref', interface_ref), ])
 
 
 from . import config
@@ -937,6 +938,6 @@ state information.
   interface_ref = __builtin__.property(_get_interface_ref, _set_interface_ref)
 
 
-  _pyangbind_elements = {'interface_id': interface_id, 'config': config, 'state': state, 'circuit_counters': circuit_counters, 'authentication': authentication, 'afi_safi': afi_safi, 'levels': levels, 'timers': timers, 'bfd': bfd, 'interface_ref': interface_ref, }
+  _pyangbind_elements = OrderedDict([('interface_id', interface_id), ('config', config), ('state', state), ('circuit_counters', circuit_counters), ('authentication', authentication), ('afi_safi', afi_safi), ('levels', levels), ('timers', timers), ('bfd', bfd), ('interface_ref', interface_ref), ])
 
 

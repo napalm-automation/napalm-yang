@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -112,7 +113,7 @@ is a loopback address.
   address = __builtin__.property(_get_address)
 
 
-  _pyangbind_elements = {'address': address, }
+  _pyangbind_elements = OrderedDict([('address', address), ])
 
 
 class state(PybindBase):
@@ -207,6 +208,6 @@ is a loopback address.
   address = __builtin__.property(_get_address)
 
 
-  _pyangbind_elements = {'address': address, }
+  _pyangbind_elements = OrderedDict([('address', address), ])
 
 

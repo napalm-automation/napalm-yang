@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ configured on the local system
   network_instance = __builtin__.property(_get_network_instance, _set_network_instance)
 
 
-  _pyangbind_elements = {'network_instance': network_instance, }
+  _pyangbind_elements = OrderedDict([('network_instance', network_instance), ])
 
 
 from . import network_instance
@@ -203,6 +204,6 @@ configured on the local system
   network_instance = __builtin__.property(_get_network_instance, _set_network_instance)
 
 
-  _pyangbind_elements = {'network_instance': network_instance, }
+  _pyangbind_elements = OrderedDict([('network_instance', network_instance), ])
 
 

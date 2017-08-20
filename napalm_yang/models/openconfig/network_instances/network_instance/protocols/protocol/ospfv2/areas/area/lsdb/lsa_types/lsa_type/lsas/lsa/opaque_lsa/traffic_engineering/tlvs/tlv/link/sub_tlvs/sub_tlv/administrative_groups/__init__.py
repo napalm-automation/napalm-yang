@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -114,7 +115,7 @@ sub-TLV
   admin_group = __builtin__.property(_get_admin_group)
 
 
-  _pyangbind_elements = {'admin_group': admin_group, }
+  _pyangbind_elements = OrderedDict([('admin_group', admin_group), ])
 
 
 from . import admin_group
@@ -211,6 +212,6 @@ sub-TLV
   admin_group = __builtin__.property(_get_admin_group)
 
 
-  _pyangbind_elements = {'admin_group': admin_group, }
+  _pyangbind_elements = OrderedDict([('admin_group', admin_group), ])
 
 

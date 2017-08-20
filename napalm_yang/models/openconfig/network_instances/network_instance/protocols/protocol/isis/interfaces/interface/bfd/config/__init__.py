@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -116,7 +117,7 @@ interface.
   bfd_tlv = __builtin__.property(_get_bfd_tlv, _set_bfd_tlv)
 
 
-  _pyangbind_elements = {'bfd_tlv': bfd_tlv, }
+  _pyangbind_elements = OrderedDict([('bfd_tlv', bfd_tlv), ])
 
 
 class config(PybindBase):
@@ -215,6 +216,6 @@ interface.
   bfd_tlv = __builtin__.property(_get_bfd_tlv, _set_bfd_tlv)
 
 
-  _pyangbind_elements = {'bfd_tlv': bfd_tlv, }
+  _pyangbind_elements = OrderedDict([('bfd_tlv', bfd_tlv), ])
 
 

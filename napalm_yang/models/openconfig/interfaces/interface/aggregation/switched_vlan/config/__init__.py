@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -239,6 +240,6 @@ that the VLAN range is x <= range <= y.
   trunk_vlans = __builtin__.property(_get_trunk_vlans, _set_trunk_vlans)
 
 
-  _pyangbind_elements = {'interface_mode': interface_mode, 'native_vlan': native_vlan, 'access_vlan': access_vlan, 'trunk_vlans': trunk_vlans, }
+  _pyangbind_elements = OrderedDict([('interface_mode', interface_mode), ('native_vlan', native_vlan), ('access_vlan', access_vlan), ('trunk_vlans', trunk_vlans), ])
 
 

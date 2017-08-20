@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -692,7 +693,7 @@ will not preempt the LSPs once established
   hold_priority = __builtin__.property(_get_hold_priority, _set_hold_priority)
 
 
-  _pyangbind_elements = {'name': name, 'type': type, 'signaling_protocol': signaling_protocol, 'description': description, 'admin_status': admin_status, 'preference': preference, 'metric_type': metric_type, 'metric': metric, 'shortcut_eligible': shortcut_eligible, 'protection_style_requested': protection_style_requested, 'reoptimize_timer': reoptimize_timer, 'source': source, 'soft_preemption': soft_preemption, 'setup_priority': setup_priority, 'hold_priority': hold_priority, }
+  _pyangbind_elements = OrderedDict([('name', name), ('type', type), ('signaling_protocol', signaling_protocol), ('description', description), ('admin_status', admin_status), ('preference', preference), ('metric_type', metric_type), ('metric', metric), ('shortcut_eligible', shortcut_eligible), ('protection_style_requested', protection_style_requested), ('reoptimize_timer', reoptimize_timer), ('source', source), ('soft_preemption', soft_preemption), ('setup_priority', setup_priority), ('hold_priority', hold_priority), ])
 
 
 class config(PybindBase):
@@ -1367,6 +1368,6 @@ will not preempt the LSPs once established
   hold_priority = __builtin__.property(_get_hold_priority, _set_hold_priority)
 
 
-  _pyangbind_elements = {'name': name, 'type': type, 'signaling_protocol': signaling_protocol, 'description': description, 'admin_status': admin_status, 'preference': preference, 'metric_type': metric_type, 'metric': metric, 'shortcut_eligible': shortcut_eligible, 'protection_style_requested': protection_style_requested, 'reoptimize_timer': reoptimize_timer, 'source': source, 'soft_preemption': soft_preemption, 'setup_priority': setup_priority, 'hold_priority': hold_priority, }
+  _pyangbind_elements = OrderedDict([('name', name), ('type', type), ('signaling_protocol', signaling_protocol), ('description', description), ('admin_status', admin_status), ('preference', preference), ('metric_type', metric_type), ('metric', metric), ('shortcut_eligible', shortcut_eligible), ('protection_style_requested', protection_style_requested), ('reoptimize_timer', reoptimize_timer), ('source', source), ('soft_preemption', soft_preemption), ('setup_priority', setup_priority), ('hold_priority', hold_priority), ])
 
 

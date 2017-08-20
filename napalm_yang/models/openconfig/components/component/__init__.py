@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -313,6 +314,6 @@ class component(PybindBase):
   transceiver = __builtin__.property(_get_transceiver, _set_transceiver)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'properties': properties, 'subcomponents': subcomponents, 'transceiver': transceiver, }
+  _pyangbind_elements = OrderedDict([('name', name), ('config', config), ('state', state), ('properties', properties), ('subcomponents', subcomponents), ('transceiver', transceiver), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -231,6 +232,6 @@ expressed in increments of 0.01 dBm (decibel-milliwats)
   target_output_power = __builtin__.property(_get_target_output_power, _set_target_output_power)
 
 
-  _pyangbind_elements = {'index': index, 'description': description, 'tx_laser': tx_laser, 'target_output_power': target_output_power, }
+  _pyangbind_elements = OrderedDict([('index', index), ('description', description), ('tx_laser', tx_laser), ('target_output_power', target_output_power), ])
 
 

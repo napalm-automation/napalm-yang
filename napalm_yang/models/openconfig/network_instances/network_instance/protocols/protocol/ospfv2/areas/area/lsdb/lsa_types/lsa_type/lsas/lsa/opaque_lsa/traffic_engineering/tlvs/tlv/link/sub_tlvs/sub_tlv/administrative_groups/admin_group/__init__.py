@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -156,7 +157,7 @@ groups being described for the link
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'bit_index': bit_index, 'state': state, }
+  _pyangbind_elements = OrderedDict([('bit_index', bit_index), ('state', state), ])
 
 
 from . import state
@@ -295,6 +296,6 @@ groups being described for the link
   state = __builtin__.property(_get_state)
 
 
-  _pyangbind_elements = {'bit_index': bit_index, 'state': state, }
+  _pyangbind_elements = OrderedDict([('bit_index', bit_index), ('state', state), ])
 
 

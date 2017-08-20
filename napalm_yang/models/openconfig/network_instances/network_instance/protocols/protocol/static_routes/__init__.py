@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class static_routes(PybindBase):
   static = __builtin__.property(_get_static, _set_static)
 
 
-  _pyangbind_elements = {'static': static, }
+  _pyangbind_elements = OrderedDict([('static', static), ])
 
 
 from . import static
@@ -201,6 +202,6 @@ class static_routes(PybindBase):
   static = __builtin__.property(_get_static, _set_static)
 
 
-  _pyangbind_elements = {'static': static, }
+  _pyangbind_elements = OrderedDict([('static', static), ])
 
 

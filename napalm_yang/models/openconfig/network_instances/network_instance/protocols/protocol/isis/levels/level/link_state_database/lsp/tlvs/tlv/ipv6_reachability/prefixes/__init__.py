@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,7 +110,7 @@ class prefixes(PybindBase):
   prefixes = __builtin__.property(_get_prefixes)
 
 
-  _pyangbind_elements = {'prefixes': prefixes, }
+  _pyangbind_elements = OrderedDict([('prefixes', prefixes), ])
 
 
 from . import prefixes_
@@ -201,6 +202,6 @@ class prefixes(PybindBase):
   prefixes = __builtin__.property(_get_prefixes)
 
 
-  _pyangbind_elements = {'prefixes': prefixes, }
+  _pyangbind_elements = OrderedDict([('prefixes', prefixes), ])
 
 

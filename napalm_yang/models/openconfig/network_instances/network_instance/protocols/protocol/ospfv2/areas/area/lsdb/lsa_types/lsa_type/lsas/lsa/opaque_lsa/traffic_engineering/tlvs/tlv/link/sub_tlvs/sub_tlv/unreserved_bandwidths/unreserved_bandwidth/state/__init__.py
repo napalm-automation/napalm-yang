@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -154,7 +155,7 @@ bandwidth at all levels 0..P.
   unreserved_bandwidth = __builtin__.property(_get_unreserved_bandwidth)
 
 
-  _pyangbind_elements = {'priority': priority, 'unreserved_bandwidth': unreserved_bandwidth, }
+  _pyangbind_elements = OrderedDict([('priority', priority), ('unreserved_bandwidth', unreserved_bandwidth), ])
 
 
 class state(PybindBase):
@@ -291,6 +292,6 @@ bandwidth at all levels 0..P.
   unreserved_bandwidth = __builtin__.property(_get_unreserved_bandwidth)
 
 
-  _pyangbind_elements = {'priority': priority, 'unreserved_bandwidth': unreserved_bandwidth, }
+  _pyangbind_elements = OrderedDict([('priority', priority), ('unreserved_bandwidth', unreserved_bandwidth), ])
 
 

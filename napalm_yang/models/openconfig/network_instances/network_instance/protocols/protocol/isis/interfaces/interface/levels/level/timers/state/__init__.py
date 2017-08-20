@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -147,7 +148,7 @@ class state(PybindBase):
   hello_multiplier = __builtin__.property(_get_hello_multiplier)
 
 
-  _pyangbind_elements = {'hello_interval': hello_interval, 'hello_multiplier': hello_multiplier, }
+  _pyangbind_elements = OrderedDict([('hello_interval', hello_interval), ('hello_multiplier', hello_multiplier), ])
 
 
 class state(PybindBase):
@@ -277,6 +278,6 @@ class state(PybindBase):
   hello_multiplier = __builtin__.property(_get_hello_multiplier)
 
 
-  _pyangbind_elements = {'hello_interval': hello_interval, 'hello_multiplier': hello_multiplier, }
+  _pyangbind_elements = OrderedDict([('hello_interval', hello_interval), ('hello_multiplier', hello_multiplier), ])
 
 

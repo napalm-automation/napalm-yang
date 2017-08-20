@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -194,7 +195,7 @@ with a value of 63.
   advertise_high_metric = __builtin__.property(_get_advertise_high_metric)
 
 
-  _pyangbind_elements = {'set_bit': set_bit, 'set_bit_on_boot': set_bit_on_boot, 'advertise_high_metric': advertise_high_metric, }
+  _pyangbind_elements = OrderedDict([('set_bit', set_bit), ('set_bit_on_boot', set_bit_on_boot), ('advertise_high_metric', advertise_high_metric), ])
 
 
 class state(PybindBase):
@@ -371,6 +372,6 @@ with a value of 63.
   advertise_high_metric = __builtin__.property(_get_advertise_high_metric)
 
 
-  _pyangbind_elements = {'set_bit': set_bit, 'set_bit_on_boot': set_bit_on_boot, 'advertise_high_metric': advertise_high_metric, }
+  _pyangbind_elements = OrderedDict([('set_bit', set_bit), ('set_bit_on_boot', set_bit_on_boot), ('advertise_high_metric', advertise_high_metric), ])
 
 

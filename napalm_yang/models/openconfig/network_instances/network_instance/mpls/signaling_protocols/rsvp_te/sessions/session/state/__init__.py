@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -561,7 +562,7 @@ received for the RSVP session
   sender_tspec = __builtin__.property(_get_sender_tspec)
 
 
-  _pyangbind_elements = {'local_index': local_index, 'source_address': source_address, 'destination_address': destination_address, 'tunnel_id': tunnel_id, 'lsp_id': lsp_id, 'session_name': session_name, 'status': status, 'type': type, 'protection_requested': protection_requested, 'label_in': label_in, 'label_out': label_out, 'sender_tspec': sender_tspec, }
+  _pyangbind_elements = OrderedDict([('local_index', local_index), ('source_address', source_address), ('destination_address', destination_address), ('tunnel_id', tunnel_id), ('lsp_id', lsp_id), ('session_name', session_name), ('status', status), ('type', type), ('protection_requested', protection_requested), ('label_in', label_in), ('label_out', label_out), ('sender_tspec', sender_tspec), ])
 
 
 from . import sender_tspec
@@ -1105,6 +1106,6 @@ received for the RSVP session
   sender_tspec = __builtin__.property(_get_sender_tspec)
 
 
-  _pyangbind_elements = {'local_index': local_index, 'source_address': source_address, 'destination_address': destination_address, 'tunnel_id': tunnel_id, 'lsp_id': lsp_id, 'session_name': session_name, 'status': status, 'type': type, 'protection_requested': protection_requested, 'label_in': label_in, 'label_out': label_out, 'sender_tspec': sender_tspec, }
+  _pyangbind_elements = OrderedDict([('local_index', local_index), ('source_address', source_address), ('destination_address', destination_address), ('tunnel_id', tunnel_id), ('lsp_id', lsp_id), ('session_name', session_name), ('status', status), ('type', type), ('protection_requested', protection_requested), ('label_in', label_in), ('label_out', label_out), ('sender_tspec', sender_tspec), ])
 
 

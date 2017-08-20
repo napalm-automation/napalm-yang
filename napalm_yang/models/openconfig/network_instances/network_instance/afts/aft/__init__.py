@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -240,7 +241,7 @@ entries within the network instance for a particular protocol
   entries = __builtin__.property(_get_entries, _set_entries)
 
 
-  _pyangbind_elements = {'address_family': address_family, 'config': config, 'state': state, 'entries': entries, }
+  _pyangbind_elements = OrderedDict([('address_family', address_family), ('config', config), ('state', state), ('entries', entries), ])
 
 
 from . import config
@@ -463,6 +464,6 @@ entries within the network instance for a particular protocol
   entries = __builtin__.property(_get_entries, _set_entries)
 
 
-  _pyangbind_elements = {'address_family': address_family, 'config': config, 'state': state, 'entries': entries, }
+  _pyangbind_elements = OrderedDict([('address_family', address_family), ('config', config), ('state', state), ('entries', entries), ])
 
 

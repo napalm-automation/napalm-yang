@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -227,7 +228,7 @@ defined is enabled, when set to false it is explicitly disabled.
   enabled = __builtin__.property(_get_enabled)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'safi_name': safi_name, 'metric': metric, 'enabled': enabled, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('safi_name', safi_name), ('metric', metric), ('enabled', enabled), ])
 
 
 class state(PybindBase):
@@ -437,6 +438,6 @@ defined is enabled, when set to false it is explicitly disabled.
   enabled = __builtin__.property(_get_enabled)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'safi_name': safi_name, 'metric': metric, 'enabled': enabled, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('safi_name', safi_name), ('metric', metric), ('enabled', enabled), ])
 
 

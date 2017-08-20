@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ class lsp_bit(PybindBase):
   attached_bit = __builtin__.property(_get_attached_bit, _set_attached_bit)
 
 
-  _pyangbind_elements = {'overload_bit': overload_bit, 'attached_bit': attached_bit, }
+  _pyangbind_elements = OrderedDict([('overload_bit', overload_bit), ('attached_bit', attached_bit), ])
 
 
 from . import overload_bit
@@ -281,6 +282,6 @@ class lsp_bit(PybindBase):
   attached_bit = __builtin__.property(_get_attached_bit, _set_attached_bit)
 
 
-  _pyangbind_elements = {'overload_bit': overload_bit, 'attached_bit': attached_bit, }
+  _pyangbind_elements = OrderedDict([('overload_bit', overload_bit), ('attached_bit', attached_bit), ])
 
 

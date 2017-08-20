@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -149,7 +150,7 @@ entry
   vlan = __builtin__.property(_get_vlan, _set_vlan)
 
 
-  _pyangbind_elements = {'mac_address': mac_address, 'vlan': vlan, }
+  _pyangbind_elements = OrderedDict([('mac_address', mac_address), ('vlan', vlan), ])
 
 
 class config(PybindBase):
@@ -281,6 +282,6 @@ entry
   vlan = __builtin__.property(_get_vlan, _set_vlan)
 
 
-  _pyangbind_elements = {'mac_address': mac_address, 'vlan': vlan, }
+  _pyangbind_elements = OrderedDict([('mac_address', mac_address), ('vlan', vlan), ])
 
 

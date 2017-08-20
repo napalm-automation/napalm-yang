@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -117,7 +118,7 @@ the Global flag should be advertised by the system.
   prefix_sid = __builtin__.property(_get_prefix_sid, _set_prefix_sid)
 
 
-  _pyangbind_elements = {'prefix_sid': prefix_sid, }
+  _pyangbind_elements = OrderedDict([('prefix_sid', prefix_sid), ])
 
 
 from . import prefix_sid
@@ -217,6 +218,6 @@ the Global flag should be advertised by the system.
   prefix_sid = __builtin__.property(_get_prefix_sid, _set_prefix_sid)
 
 
-  _pyangbind_elements = {'prefix_sid': prefix_sid, }
+  _pyangbind_elements = OrderedDict([('prefix_sid', prefix_sid), ])
 
 

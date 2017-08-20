@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -193,7 +194,7 @@ class sid_counter(PybindBase):
   forwarding_classes = __builtin__.property(_get_forwarding_classes)
 
 
-  _pyangbind_elements = {'mpls_label': mpls_label, 'state': state, 'forwarding_classes': forwarding_classes, }
+  _pyangbind_elements = OrderedDict([('mpls_label', mpls_label), ('state', state), ('forwarding_classes', forwarding_classes), ])
 
 
 from . import state
@@ -369,6 +370,6 @@ class sid_counter(PybindBase):
   forwarding_classes = __builtin__.property(_get_forwarding_classes)
 
 
-  _pyangbind_elements = {'mpls_label': mpls_label, 'state': state, 'forwarding_classes': forwarding_classes, }
+  _pyangbind_elements = OrderedDict([('mpls_label', mpls_label), ('state', state), ('forwarding_classes', forwarding_classes), ])
 
 

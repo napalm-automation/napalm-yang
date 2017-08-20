@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ TOS values
   type_of_service = __builtin__.property(_get_type_of_service)
 
 
-  _pyangbind_elements = {'type_of_service': type_of_service, }
+  _pyangbind_elements = OrderedDict([('type_of_service', type_of_service), ])
 
 
 from . import type_of_service
@@ -203,6 +204,6 @@ TOS values
   type_of_service = __builtin__.property(_get_type_of_service)
 
 
-  _pyangbind_elements = {'type_of_service': type_of_service, }
+  _pyangbind_elements = OrderedDict([('type_of_service', type_of_service), ])
 
 

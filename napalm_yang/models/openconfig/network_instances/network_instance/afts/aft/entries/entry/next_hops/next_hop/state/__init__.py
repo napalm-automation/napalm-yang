@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -499,7 +500,7 @@ specified header type.
   origin_protocol = __builtin__.property(_get_origin_protocol)
 
 
-  _pyangbind_elements = {'index': index, 'weight': weight, 'ip_address': ip_address, 'mac_address': mac_address, 'popped_mpls_label_stack': popped_mpls_label_stack, 'pushed_mpls_label_stack': pushed_mpls_label_stack, 'decapsulate_header': decapsulate_header, 'encapsulate_header': encapsulate_header, 'origin_protocol': origin_protocol, }
+  _pyangbind_elements = OrderedDict([('index', index), ('weight', weight), ('ip_address', ip_address), ('mac_address', mac_address), ('popped_mpls_label_stack', popped_mpls_label_stack), ('pushed_mpls_label_stack', pushed_mpls_label_stack), ('decapsulate_header', decapsulate_header), ('encapsulate_header', encapsulate_header), ('origin_protocol', origin_protocol), ])
 
 
 class state(PybindBase):
@@ -981,6 +982,6 @@ specified header type.
   origin_protocol = __builtin__.property(_get_origin_protocol)
 
 
-  _pyangbind_elements = {'index': index, 'weight': weight, 'ip_address': ip_address, 'mac_address': mac_address, 'popped_mpls_label_stack': popped_mpls_label_stack, 'pushed_mpls_label_stack': pushed_mpls_label_stack, 'decapsulate_header': decapsulate_header, 'encapsulate_header': encapsulate_header, 'origin_protocol': origin_protocol, }
+  _pyangbind_elements = OrderedDict([('index', index), ('weight', weight), ('ip_address', ip_address), ('mac_address', mac_address), ('popped_mpls_label_stack', popped_mpls_label_stack), ('pushed_mpls_label_stack', pushed_mpls_label_stack), ('decapsulate_header', decapsulate_header), ('encapsulate_header', encapsulate_header), ('origin_protocol', origin_protocol), ])
 
 

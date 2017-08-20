@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -150,7 +151,7 @@ queued
   output = __builtin__.property(_get_output)
 
 
-  _pyangbind_elements = {'input': input, 'output': output, }
+  _pyangbind_elements = OrderedDict([('input', input), ('output', output), ])
 
 
 class queues(PybindBase):
@@ -283,6 +284,6 @@ queued
   output = __builtin__.property(_get_output)
 
 
-  _pyangbind_elements = {'input': input, 'output': output, }
+  _pyangbind_elements = OrderedDict([('input', input), ('output', output), ])
 
 

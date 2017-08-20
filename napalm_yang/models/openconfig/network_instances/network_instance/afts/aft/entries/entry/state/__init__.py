@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -191,7 +192,7 @@ based on the AFT entry
   octets_forwarded = __builtin__.property(_get_octets_forwarded)
 
 
-  _pyangbind_elements = {'index': index, 'packets_forwarded': packets_forwarded, 'octets_forwarded': octets_forwarded, }
+  _pyangbind_elements = OrderedDict([('index', index), ('packets_forwarded', packets_forwarded), ('octets_forwarded', octets_forwarded), ])
 
 
 class state(PybindBase):
@@ -365,6 +366,6 @@ based on the AFT entry
   octets_forwarded = __builtin__.property(_get_octets_forwarded)
 
 
-  _pyangbind_elements = {'index': index, 'packets_forwarded': packets_forwarded, 'octets_forwarded': octets_forwarded, }
+  _pyangbind_elements = OrderedDict([('index', index), ('packets_forwarded', packets_forwarded), ('octets_forwarded', octets_forwarded), ])
 
 

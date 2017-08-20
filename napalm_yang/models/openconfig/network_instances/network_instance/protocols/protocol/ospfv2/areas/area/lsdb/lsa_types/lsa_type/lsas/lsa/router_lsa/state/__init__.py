@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -327,7 +328,7 @@ including the link metric (which is referred to as TOS 0).
   number_tos_metrics = __builtin__.property(_get_number_tos_metrics)
 
 
-  _pyangbind_elements = {'type': type, 'link_id': link_id, 'link_data': link_data, 'metric': metric, 'number_links': number_links, 'number_tos_metrics': number_tos_metrics, }
+  _pyangbind_elements = OrderedDict([('type', type), ('link_id', link_id), ('link_data', link_data), ('metric', metric), ('number_links', number_links), ('number_tos_metrics', number_tos_metrics), ])
 
 
 class state(PybindBase):
@@ -637,6 +638,6 @@ including the link metric (which is referred to as TOS 0).
   number_tos_metrics = __builtin__.property(_get_number_tos_metrics)
 
 
-  _pyangbind_elements = {'type': type, 'link_id': link_id, 'link_data': link_data, 'metric': metric, 'number_links': number_links, 'number_tos_metrics': number_tos_metrics, }
+  _pyangbind_elements = OrderedDict([('type', type), ('link_id', link_id), ('link_data', link_data), ('metric', metric), ('number_links', number_links), ('number_tos_metrics', number_tos_metrics), ])
 
 

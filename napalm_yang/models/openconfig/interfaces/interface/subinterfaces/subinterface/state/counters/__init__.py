@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -907,6 +908,6 @@ cleared.
   last_clear = __builtin__.property(_get_last_clear)
 
 
-  _pyangbind_elements = {'in_octets': in_octets, 'in_unicast_pkts': in_unicast_pkts, 'in_broadcast_pkts': in_broadcast_pkts, 'in_multicast_pkts': in_multicast_pkts, 'in_discards': in_discards, 'in_errors': in_errors, 'in_unknown_protos': in_unknown_protos, 'out_octets': out_octets, 'out_unicast_pkts': out_unicast_pkts, 'out_broadcast_pkts': out_broadcast_pkts, 'out_multicast_pkts': out_multicast_pkts, 'out_discards': out_discards, 'out_errors': out_errors, 'last_clear': last_clear, }
+  _pyangbind_elements = OrderedDict([('in_octets', in_octets), ('in_unicast_pkts', in_unicast_pkts), ('in_broadcast_pkts', in_broadcast_pkts), ('in_multicast_pkts', in_multicast_pkts), ('in_discards', in_discards), ('in_errors', in_errors), ('in_unknown_protos', in_unknown_protos), ('out_octets', out_octets), ('out_unicast_pkts', out_unicast_pkts), ('out_broadcast_pkts', out_broadcast_pkts), ('out_multicast_pkts', out_multicast_pkts), ('out_discards', out_discards), ('out_errors', out_errors), ('last_clear', last_clear), ])
 
 

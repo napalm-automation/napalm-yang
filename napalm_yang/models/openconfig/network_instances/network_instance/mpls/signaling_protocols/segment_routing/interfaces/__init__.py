@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ Routing on an interface.
   interface = __builtin__.property(_get_interface, _set_interface)
 
 
-  _pyangbind_elements = {'interface': interface, }
+  _pyangbind_elements = OrderedDict([('interface', interface), ])
 
 
 from . import interface
@@ -205,6 +206,6 @@ Routing on an interface.
   interface = __builtin__.property(_get_interface, _set_interface)
 
 
-  _pyangbind_elements = {'interface': interface, }
+  _pyangbind_elements = OrderedDict([('interface', interface), ])
 
 

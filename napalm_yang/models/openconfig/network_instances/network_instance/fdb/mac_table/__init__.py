@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -110,7 +111,7 @@ corresponding VLANs in the bridge domain
   entries = __builtin__.property(_get_entries, _set_entries)
 
 
-  _pyangbind_elements = {'entries': entries, }
+  _pyangbind_elements = OrderedDict([('entries', entries), ])
 
 
 from . import entries
@@ -203,6 +204,6 @@ corresponding VLANs in the bridge domain
   entries = __builtin__.property(_get_entries, _set_entries)
 
 
-  _pyangbind_elements = {'entries': entries, }
+  _pyangbind_elements = OrderedDict([('entries', entries), ])
 
 

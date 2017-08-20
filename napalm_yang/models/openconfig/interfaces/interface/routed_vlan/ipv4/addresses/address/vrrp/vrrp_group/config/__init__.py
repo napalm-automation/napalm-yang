@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -368,6 +369,6 @@ seconds
   advertisement_interval = __builtin__.property(_get_advertisement_interval, _set_advertisement_interval)
 
 
-  _pyangbind_elements = {'virtual_router_id': virtual_router_id, 'virtual_address': virtual_address, 'priority': priority, 'preempt': preempt, 'preempt_delay': preempt_delay, 'accept_mode': accept_mode, 'advertisement_interval': advertisement_interval, }
+  _pyangbind_elements = OrderedDict([('virtual_router_id', virtual_router_id), ('virtual_address', virtual_address), ('priority', priority), ('preempt', preempt), ('preempt_delay', preempt_delay), ('accept_mode', accept_mode), ('advertisement_interval', advertisement_interval), ])
 
 

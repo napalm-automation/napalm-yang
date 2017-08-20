@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -281,7 +282,7 @@ routing for an interface within the IGP.
   segment_routing = __builtin__.property(_get_segment_routing, _set_segment_routing)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'safi_name': safi_name, 'config': config, 'state': state, 'segment_routing': segment_routing, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('safi_name', safi_name), ('config', config), ('state', state), ('segment_routing', segment_routing), ])
 
 
 from . import config
@@ -545,6 +546,6 @@ routing for an interface within the IGP.
   segment_routing = __builtin__.property(_get_segment_routing, _set_segment_routing)
 
 
-  _pyangbind_elements = {'afi_name': afi_name, 'safi_name': safi_name, 'config': config, 'state': state, 'segment_routing': segment_routing, }
+  _pyangbind_elements = OrderedDict([('afi_name', afi_name), ('safi_name', safi_name), ('config', config), ('state', state), ('segment_routing', segment_routing), ])
 
 

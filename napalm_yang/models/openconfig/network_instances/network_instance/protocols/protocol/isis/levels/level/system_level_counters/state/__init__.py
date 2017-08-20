@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -606,7 +607,7 @@ MIB Entry: SysAuthFails.
   lsp_errors = __builtin__.property(_get_lsp_errors)
 
 
-  _pyangbind_elements = {'corrupted_lsps': corrupted_lsps, 'database_overloads': database_overloads, 'manual_address_drop_from_areas': manual_address_drop_from_areas, 'exceed_max_seq_nums': exceed_max_seq_nums, 'seq_num_skips': seq_num_skips, 'own_lsp_purges': own_lsp_purges, 'id_len_mismatch': id_len_mismatch, 'part_changes': part_changes, 'max_area_address_mismatches': max_area_address_mismatches, 'auth_fails': auth_fails, 'spf_runs': spf_runs, 'auth_type_fails': auth_type_fails, 'lsp_errors': lsp_errors, }
+  _pyangbind_elements = OrderedDict([('corrupted_lsps', corrupted_lsps), ('database_overloads', database_overloads), ('manual_address_drop_from_areas', manual_address_drop_from_areas), ('exceed_max_seq_nums', exceed_max_seq_nums), ('seq_num_skips', seq_num_skips), ('own_lsp_purges', own_lsp_purges), ('id_len_mismatch', id_len_mismatch), ('part_changes', part_changes), ('max_area_address_mismatches', max_area_address_mismatches), ('auth_fails', auth_fails), ('spf_runs', spf_runs), ('auth_type_fails', auth_type_fails), ('lsp_errors', lsp_errors), ])
 
 
 class state(PybindBase):
@@ -1195,6 +1196,6 @@ MIB Entry: SysAuthFails.
   lsp_errors = __builtin__.property(_get_lsp_errors)
 
 
-  _pyangbind_elements = {'corrupted_lsps': corrupted_lsps, 'database_overloads': database_overloads, 'manual_address_drop_from_areas': manual_address_drop_from_areas, 'exceed_max_seq_nums': exceed_max_seq_nums, 'seq_num_skips': seq_num_skips, 'own_lsp_purges': own_lsp_purges, 'id_len_mismatch': id_len_mismatch, 'part_changes': part_changes, 'max_area_address_mismatches': max_area_address_mismatches, 'auth_fails': auth_fails, 'spf_runs': spf_runs, 'auth_type_fails': auth_type_fails, 'lsp_errors': lsp_errors, }
+  _pyangbind_elements = OrderedDict([('corrupted_lsps', corrupted_lsps), ('database_overloads', database_overloads), ('manual_address_drop_from_areas', manual_address_drop_from_areas), ('exceed_max_seq_nums', exceed_max_seq_nums), ('seq_num_skips', seq_num_skips), ('own_lsp_purges', own_lsp_purges), ('id_len_mismatch', id_len_mismatch), ('part_changes', part_changes), ('max_area_address_mismatches', max_area_address_mismatches), ('auth_fails', auth_fails), ('spf_runs', spf_runs), ('auth_type_fails', auth_type_fails), ('lsp_errors', lsp_errors), ])
 
 

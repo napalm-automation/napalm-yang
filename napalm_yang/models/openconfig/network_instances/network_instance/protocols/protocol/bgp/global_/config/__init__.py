@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ expressed in dotted quad notation.
   router_id = __builtin__.property(_get_router_id, _set_router_id)
 
 
-  _pyangbind_elements = {'as_': as_, 'router_id': router_id, }
+  _pyangbind_elements = OrderedDict([('as_', as_), ('router_id', router_id), ])
 
 
 class config(PybindBase):
@@ -285,6 +286,6 @@ expressed in dotted quad notation.
   router_id = __builtin__.property(_get_router_id, _set_router_id)
 
 
-  _pyangbind_elements = {'as_': as_, 'router_id': router_id, }
+  _pyangbind_elements = OrderedDict([('as_', as_), ('router_id', router_id), ])
 
 

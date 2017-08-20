@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -109,6 +110,6 @@ class properties(PybindBase):
   property_ = __builtin__.property(_get_property_, _set_property_)
 
 
-  _pyangbind_elements = {'property_': property_, }
+  _pyangbind_elements = OrderedDict([('property_', property_), ])
 
 

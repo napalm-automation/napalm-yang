@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -359,7 +360,7 @@ supporting the BGP session
   remote_port = __builtin__.property(_get_remote_port)
 
 
-  _pyangbind_elements = {'tcp_mss': tcp_mss, 'mtu_discovery': mtu_discovery, 'passive_mode': passive_mode, 'local_address': local_address, 'local_port': local_port, 'remote_address': remote_address, 'remote_port': remote_port, }
+  _pyangbind_elements = OrderedDict([('tcp_mss', tcp_mss), ('mtu_discovery', mtu_discovery), ('passive_mode', passive_mode), ('local_address', local_address), ('local_port', local_port), ('remote_address', remote_address), ('remote_port', remote_port), ])
 
 
 class state(PybindBase):
@@ -701,6 +702,6 @@ supporting the BGP session
   remote_port = __builtin__.property(_get_remote_port)
 
 
-  _pyangbind_elements = {'tcp_mss': tcp_mss, 'mtu_discovery': mtu_discovery, 'passive_mode': passive_mode, 'local_address': local_address, 'local_port': local_port, 'remote_address': remote_address, 'remote_port': remote_port, }
+  _pyangbind_elements = OrderedDict([('tcp_mss', tcp_mss), ('mtu_discovery', mtu_discovery), ('passive_mode', passive_mode), ('local_address', local_address), ('local_port', local_port), ('remote_address', remote_address), ('remote_port', remote_port), ])
 
 

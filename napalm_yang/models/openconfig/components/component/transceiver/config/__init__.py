@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -230,6 +231,6 @@ indicated by the ethernet-pmd state leaf.
   ethernet_pmd_preconf = __builtin__.property(_get_ethernet_pmd_preconf, _set_ethernet_pmd_preconf)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'form_factor_preconf': form_factor_preconf, 'ethernet_pmd_preconf': ethernet_pmd_preconf, }
+  _pyangbind_elements = OrderedDict([('enabled', enabled), ('form_factor_preconf', form_factor_preconf), ('ethernet_pmd_preconf', ethernet_pmd_preconf), ])
 
 

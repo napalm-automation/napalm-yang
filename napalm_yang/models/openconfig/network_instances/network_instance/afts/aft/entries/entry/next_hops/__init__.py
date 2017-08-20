@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -118,7 +119,7 @@ not be included within this list.
   next_hop = __builtin__.property(_get_next_hop, _set_next_hop)
 
 
-  _pyangbind_elements = {'next_hop': next_hop, }
+  _pyangbind_elements = OrderedDict([('next_hop', next_hop), ])
 
 
 from . import next_hop
@@ -219,6 +220,6 @@ not be included within this list.
   next_hop = __builtin__.property(_get_next_hop, _set_next_hop)
 
 
-  _pyangbind_elements = {'next_hop': next_hop, }
+  _pyangbind_elements = OrderedDict([('next_hop', next_hop), ])
 
 

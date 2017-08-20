@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -197,7 +198,7 @@ when the explicit path is instantiated by a SR-TE LSP.
   sid_protection_required = __builtin__.property(_get_sid_protection_required)
 
 
-  _pyangbind_elements = {'name': name, 'sid_selection_mode': sid_selection_mode, 'sid_protection_required': sid_protection_required, }
+  _pyangbind_elements = OrderedDict([('name', name), ('sid_selection_mode', sid_selection_mode), ('sid_protection_required', sid_protection_required), ])
 
 
 class state(PybindBase):
@@ -377,6 +378,6 @@ when the explicit path is instantiated by a SR-TE LSP.
   sid_protection_required = __builtin__.property(_get_sid_protection_required)
 
 
-  _pyangbind_elements = {'name': name, 'sid_selection_mode': sid_selection_mode, 'sid_protection_required': sid_protection_required, }
+  _pyangbind_elements = OrderedDict([('name', name), ('sid_selection_mode', sid_selection_mode), ('sid_protection_required', sid_protection_required), ])
 
 

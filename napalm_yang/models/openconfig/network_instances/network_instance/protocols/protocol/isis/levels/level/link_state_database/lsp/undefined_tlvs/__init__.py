@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -111,7 +112,7 @@ recognised by the system.
   undefined_tlv = __builtin__.property(_get_undefined_tlv)
 
 
-  _pyangbind_elements = {'undefined_tlv': undefined_tlv, }
+  _pyangbind_elements = OrderedDict([('undefined_tlv', undefined_tlv), ])
 
 
 from . import undefined_tlv
@@ -205,6 +206,6 @@ recognised by the system.
   undefined_tlv = __builtin__.property(_get_undefined_tlv)
 
 
-  _pyangbind_elements = {'undefined_tlv': undefined_tlv, }
+  _pyangbind_elements = OrderedDict([('undefined_tlv', undefined_tlv), ])
 
 

@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -155,7 +156,7 @@ format.  The units are bytes (not bits!) per second.
   max_link_bandwidth = __builtin__.property(_get_max_link_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'max_link_bandwidth': max_link_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('max_link_bandwidth', max_link_bandwidth), ])
 
 
 class state(PybindBase):
@@ -293,6 +294,6 @@ format.  The units are bytes (not bits!) per second.
   max_link_bandwidth = __builtin__.property(_get_max_link_bandwidth)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'max_link_bandwidth': max_link_bandwidth, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('max_link_bandwidth', max_link_bandwidth), ])
 
 

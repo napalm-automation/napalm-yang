@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -596,7 +597,7 @@ and state information.
   inter_level_propagation_policies = __builtin__.property(_get_inter_level_propagation_policies, _set_inter_level_propagation_policies)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'lsp_bit': lsp_bit, 'reference_bandwidth': reference_bandwidth, 'nsr': nsr, 'graceful_restart': graceful_restart, 'timers': timers, 'transport': transport, 'mpls': mpls, 'igp_shortcuts': igp_shortcuts, 'afi_safi': afi_safi, 'segment_routing': segment_routing, 'inter_level_propagation_policies': inter_level_propagation_policies, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('lsp_bit', lsp_bit), ('reference_bandwidth', reference_bandwidth), ('nsr', nsr), ('graceful_restart', graceful_restart), ('timers', timers), ('transport', transport), ('mpls', mpls), ('igp_shortcuts', igp_shortcuts), ('afi_safi', afi_safi), ('segment_routing', segment_routing), ('inter_level_propagation_policies', inter_level_propagation_policies), ])
 
 
 from . import config
@@ -1175,6 +1176,6 @@ and state information.
   inter_level_propagation_policies = __builtin__.property(_get_inter_level_propagation_policies, _set_inter_level_propagation_policies)
 
 
-  _pyangbind_elements = {'config': config, 'state': state, 'lsp_bit': lsp_bit, 'reference_bandwidth': reference_bandwidth, 'nsr': nsr, 'graceful_restart': graceful_restart, 'timers': timers, 'transport': transport, 'mpls': mpls, 'igp_shortcuts': igp_shortcuts, 'afi_safi': afi_safi, 'segment_routing': segment_routing, 'inter_level_propagation_policies': inter_level_propagation_policies, }
+  _pyangbind_elements = OrderedDict([('config', config), ('state', state), ('lsp_bit', lsp_bit), ('reference_bandwidth', reference_bandwidth), ('nsr', nsr), ('graceful_restart', graceful_restart), ('timers', timers), ('transport', transport), ('mpls', mpls), ('igp_shortcuts', igp_shortcuts), ('afi_safi', afi_safi), ('segment_routing', segment_routing), ('inter_level_propagation_policies', inter_level_propagation_policies), ])
 
 

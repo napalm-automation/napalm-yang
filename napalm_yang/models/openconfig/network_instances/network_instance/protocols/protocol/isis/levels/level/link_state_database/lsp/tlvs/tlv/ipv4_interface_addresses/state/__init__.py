@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ over which this PDU is to be transmitted.
   ipv4_interface_addresses = __builtin__.property(_get_ipv4_interface_addresses)
 
 
-  _pyangbind_elements = {'type': type, 'ipv4_interface_addresses': ipv4_interface_addresses, }
+  _pyangbind_elements = OrderedDict([('type', type), ('ipv4_interface_addresses', ipv4_interface_addresses), ])
 
 
 class state(PybindBase):
@@ -285,6 +286,6 @@ over which this PDU is to be transmitted.
   ipv4_interface_addresses = __builtin__.property(_get_ipv4_interface_addresses)
 
 
-  _pyangbind_elements = {'type': type, 'ipv4_interface_addresses': ipv4_interface_addresses, }
+  _pyangbind_elements = OrderedDict([('type', type), ('ipv4_interface_addresses', ipv4_interface_addresses), ])
 
 

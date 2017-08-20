@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -188,7 +189,7 @@ LSP
   push_label = __builtin__.property(_get_push_label, _set_push_label)
 
 
-  _pyangbind_elements = {'next_hop': next_hop, 'incoming_label': incoming_label, 'push_label': push_label, }
+  _pyangbind_elements = OrderedDict([('next_hop', next_hop), ('incoming_label', incoming_label), ('push_label', push_label), ])
 
 
 class config(PybindBase):
@@ -359,6 +360,6 @@ LSP
   push_label = __builtin__.property(_get_push_label, _set_push_label)
 
 
-  _pyangbind_elements = {'next_hop': next_hop, 'incoming_label': incoming_label, 'push_label': push_label, }
+  _pyangbind_elements = OrderedDict([('next_hop', next_hop), ('incoming_label', incoming_label), ('push_label', push_label), ])
 
 

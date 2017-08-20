@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -151,7 +152,7 @@ signalled with zero bandwidth).
   unconstrained_lsp = __builtin__.property(_get_unconstrained_lsp)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'unconstrained_lsp': unconstrained_lsp, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('unconstrained_lsp', unconstrained_lsp), ])
 
 
 class state(PybindBase):
@@ -285,6 +286,6 @@ signalled with zero bandwidth).
   unconstrained_lsp = __builtin__.property(_get_unconstrained_lsp)
 
 
-  _pyangbind_elements = {'subtlv_type': subtlv_type, 'unconstrained_lsp': unconstrained_lsp, }
+  _pyangbind_elements = OrderedDict([('subtlv_type', subtlv_type), ('unconstrained_lsp', unconstrained_lsp), ])
 
 

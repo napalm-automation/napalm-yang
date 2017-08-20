@@ -8,6 +8,7 @@ from pyangbind.lib.yangtypes import YANGListType
 from pyangbind.lib.yangtypes import YANGDynClass
 from pyangbind.lib.yangtypes import ReferenceType
 from pyangbind.lib.base import PybindBase
+from collections import OrderedDict
 from decimal import Decimal
 from bitarray import bitarray
 import six
@@ -153,7 +154,7 @@ and summary refresh
   refresh_reduction = __builtin__.property(_get_refresh_reduction)
 
 
-  _pyangbind_elements = {'hello_interval': hello_interval, 'refresh_reduction': refresh_reduction, }
+  _pyangbind_elements = OrderedDict([('hello_interval', hello_interval), ('refresh_reduction', refresh_reduction), ])
 
 
 class state(PybindBase):
@@ -289,6 +290,6 @@ and summary refresh
   refresh_reduction = __builtin__.property(_get_refresh_reduction)
 
 
-  _pyangbind_elements = {'hello_interval': hello_interval, 'refresh_reduction': refresh_reduction, }
+  _pyangbind_elements = OrderedDict([('hello_interval', hello_interval), ('refresh_reduction', refresh_reduction), ])
 
 
