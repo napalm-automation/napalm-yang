@@ -21,6 +21,7 @@ yaml.add_constructor("!include", yaml_include)
 
 
 def config_logging(level=logging.DEBUG, stream=sys.stdout):
+    logger.disabled = False
     logger.setLevel(level)
     ch = logging.StreamHandler(stream)
     formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
@@ -45,7 +46,7 @@ def find_yang_file(profile, filename, path):
         return full_path
     else:
         msg = "Couldn't find parsing file: {}".format(full_path)
-        logger.error(msg)
+        logger.warn(msg)
         raise IOError(msg)
 
 
