@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 import napalm_yang
 
 import pytest
@@ -97,12 +99,10 @@ class Tests(object):
         config.add_model(napalm_yang.models.openconfig_vlan)
 
         vlans_dict = {
-            "vlans": {"vlan": {100: {
-                                    "config": {
-                                        "vlan_id": 100, "name": "production"}},
-                               200: {
-                                    "config": {
-                                        "vlan_id": 200, "name": "dev"}}}}}
+            "vlans": {"vlan": OrderedDict([(100, {"config": {
+                                                    "vlan_id": 100, "name": "production"}}),
+                                           (200, {"config": {
+                                                    "vlan_id": 200, "name": "dev"}})])}}
         config.load_dict(vlans_dict)
         assert list(config.vlans.vlan.keys()) == [100, 200]
         assert config.vlans.vlan[100].config.name == "production"

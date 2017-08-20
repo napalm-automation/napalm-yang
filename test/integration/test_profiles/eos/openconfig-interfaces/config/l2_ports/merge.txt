@@ -1,11 +1,11 @@
+interface Ethernet1
+    switchport mode access
+    switchport access vlan 20
+    switchport trunk vlan 1-4094
+    exit
 interface Ethernet2
+    switchport mode trunk
     switchport native vlan 20
     switchport access vlan 1
     switchport trunk vlan 30
-    switchport mode trunk
-    exit
-interface Ethernet1
-    switchport access vlan 20
-    switchport trunk vlan 1-4094
-    switchport mode access
     exit

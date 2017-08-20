@@ -1,12 +1,12 @@
 vlan 1
-    state active
     name default
-    exit
-vlan 30
     state active
-    name devel
     exit
 vlan 20
-    state suspend
     name prod
+    state suspend
+    exit
+vlan 30
+    name devel
+    state active
     exit
