@@ -88,9 +88,9 @@ class Tests(object):
 
         assert not assert_against, "We didn't iterate over all the interfaces"
 
-        assert config.interfaces.interface.keys() == ['et1', 'et2']
+        assert list(config.interfaces.interface.keys()) == ['et1', 'et2']
         config.interfaces.interface.delete("et1")
-        assert config.interfaces.interface.keys() == ['et2']
+        assert list(config.interfaces.interface.keys()) == ['et2']
 
     def test_populating_from_a_dict(self):
         config = napalm_yang.base.Root()
@@ -104,7 +104,7 @@ class Tests(object):
                                     "config": {
                                         "vlan_id": 200, "name": "dev"}}}}}
         config.load_dict(vlans_dict)
-        assert config.vlans.vlan.keys() == [200, 100]
+        assert list(config.vlans.vlan.keys()) == [100, 200]
         assert config.vlans.vlan[100].config.name == "production"
         assert config.vlans.vlan[200].config.name == "dev"
 
