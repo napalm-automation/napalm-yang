@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import ast
 import copy
 
@@ -31,10 +33,15 @@ class BaseParser(object):
                     if isinstance(b, dict):
                         b = [b]
                     p, var_name = p.split(":")
+
+                    x = OrderedDict()
                     try:
-                        iterator = {e[var_name]: e for e in b}.items()
+                        for e in b:
+                            x[e[var_name]] = e
                     except Exception:
-                        iterator = {e[var_name]["#text"]: e for e in b}.items()
+                        for e in b:
+                            x[e[var_name]["#text"]] = e
+                    iterator = x.items()
 
                 for k, v in iterator:
                     if k.startswith("#"):
