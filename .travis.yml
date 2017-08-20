@@ -8,6 +8,7 @@ install:
 - pip install coveralls
 - pip install -r requirements-dev.txt
 - pip install -e git://github.com/napalm-automation/pyangbind.git@more_py3#egg=pyangbind
+- pip install -e git://github.com/napalm-automation/napalm-base.git@py3#egg=napalm_base
 deploy:
   provider: pypi
   user: dbarroso
@@ -17,7 +18,8 @@ deploy:
     tags: true
     branch: master
 script:
-- tox
+# - tox
+- py.test test/
 after_success:
 - coveralls
 - if [ $travis_tag ]; then curl -x post https://readthedocs.org/build/napalm; fi
