@@ -6,7 +6,7 @@ YANG_OC=yang_oc/release/models
 YANG_IETF=yang_ietf/standard/ietf
 YANG_NAPALM=yang_napalm
 
-PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind
+PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind --lax-quote-checks
 
 
 clean:
