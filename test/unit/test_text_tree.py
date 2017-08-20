@@ -24,12 +24,11 @@ class Tests(object):
             original = [f.read()]
 
         parsed = napalm_yang.parsers.text_tree.TextTree({}, {}).init_native(original)
-        result = json.dumps(parsed, indent=4)
 
         #  with open(expected, 'w') as f:
-        #      f.write(result)
+        #      f.write(json.dumps(parsed, indent=4))
 
         with open(expected, 'r') as f:
-            expected = f.read()
+            expected = json.loads(f.read())
 
-        assert result == expected
+        assert parsed == expected
