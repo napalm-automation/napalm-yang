@@ -1,0 +1,58 @@
+{
+    "interfaces": {
+        "interface": {
+            "GigabitEthernet1": {
+                "name": "GigabitEthernet1",
+                "state": {
+                    "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-octets": 275035,
+                        "in-unicast-pkts": 2890,
+                        "in-unknown-protos": 0,
+                        "last-clear": "2017-08-14T18:02:55.000183+00:00",
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-octets": 460183,
+                        "out-unicast-pkts": 1852
+                    },
+                    "ifindex": 0,
+                    "last-change": 1502733875,
+                    "oper-status": "UP",
+                    "type": "ethernetCsmacd"
+                }
+            },
+            "GigabitEthernet2": {
+                "name": "GigabitEthernet2",
+                "state": {
+                    "admin-status": "DOWN",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-octets": 0,
+                        "in-unicast-pkts": 0,
+                        "in-unknown-protos": 0,
+                        "last-clear": "2017-08-14T18:02:55.000082+00:00",
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-octets": 258,
+                        "out-unicast-pkts": 3
+                    },
+                    "ifindex": 0,
+                    "last-change": 1502733865,
+                    "oper-status": "DOWN",
+                    "type": "ethernetCsmacd"
+                }
+            }
+        }
+    }
+}

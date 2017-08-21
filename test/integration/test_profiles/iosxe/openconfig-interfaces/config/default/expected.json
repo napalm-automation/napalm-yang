@@ -3,59 +3,41 @@
         "interface": {
             "GigabitEthernet1": {
                 "config": {
-                    "description": "",
                     "enabled": true,
-                    "mtu": 1500,
+                    "name": "GigabitEthernet1",
                     "type": "ethernetCsmacd"
                 },
-                "name": "GigabitEthernet1"
+                "name": "GigabitEthernet1",
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "enabled": true,
+                                "name": "GigabitEthernet1"
+                            },
+                            "index": "0"
+                        }
+                    }
+                }
             },
             "GigabitEthernet2": {
                 "config": {
-                    "description": "GbE 2",
                     "enabled": false,
-                    "mtu": 1500,
+                    "name": "GigabitEthernet2",
                     "type": "ethernetCsmacd"
                 },
                 "name": "GigabitEthernet2",
                 "subinterfaces": {
                     "subinterface": {
-                        "10": {
+                        "0": {
                             "config": {
-                                "description": "GbE 2.10",
-                                "enabled": true,
-                                "name": "GigabitEthernet2.10"
+                                "enabled": false,
+                                "name": "GigabitEthernet2"
                             },
-                            "index": "1"
+                            "index": "0"
                         }
                     }
                 }
-            },
-            "GigabitEthernet3": {
-                "config": {
-                    "enabled": false,
-                    "mtu": 1500,
-                    "type": "ethernetCsmacd"
-                },
-                "name": "GigabitEthernet3"
-            },
-            "Loopback0": {
-                "config": {
-                    "description": "Loopback Zero",
-                    "enabled": true,
-                    "mtu": 1514,
-                    "type": "softwareLoopback"
-                },
-                "name": "Loopback1"
-            },
-             "Loopback1": {
-                "config": {
-                    "description": "Loopback One",
-                    "enabled": true,
-                    "mtu": 1514,
-                    "type": "softwareLoopback"
-                },
-                "name": "Loopback1"
             }
         }
     }

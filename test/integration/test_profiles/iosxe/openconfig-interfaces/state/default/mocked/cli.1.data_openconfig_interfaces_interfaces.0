@@ -1,0 +1,168 @@
+{
+  "openconfig-interfaces:interfaces": {
+    "interface": [
+      {
+        "name": "GigabitEthernet1",
+        "config": {
+          "type": "iana-if-type:ethernetCsmacd",
+          "name": "GigabitEthernet1",
+          "enabled": true
+        },
+        "state": {
+          "type": "iana-if-type:ethernetCsmacd",
+          "name": "GigabitEthernet1",
+          "enabled": true,
+          "ifindex": 0,
+          "admin-status": "UP",
+          "oper-status": "UP",
+          "last-change": "2017-08-14T18:04:35.000007+00:00",
+          "counters": {
+            "in-octets": 275035,
+            "in-unicast-pkts": 2890,
+            "in-broadcast-pkts": 0,
+            "in-multicast-pkts": 0,
+            "in-discards": 0,
+            "in-errors": 0,
+            "in-unknown-protos": 0,
+            "out-octets": 460183,
+            "out-unicast-pkts": 1852,
+            "out-broadcast-pkts": 0,
+            "out-multicast-pkts": 0,
+            "out-discards": 0,
+            "out-errors": 0,
+            "last-clear": "2017-08-14T18:02:55.000183+00:00"
+          }
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0,
+                "name": "GigabitEthernet1",
+                "enabled": true
+              },
+              "state": {
+                "index": 0,
+                "name": "GigabitEthernet1.0",
+                "enabled": true,
+                "admin-status": "UP",
+                "oper-status": "UP",
+                "last-change": "2017-08-14T18:04:35.000007+00:00",
+                "counters": {
+                  "in-octets": 275035,
+                  "in-unicast-pkts": 2890,
+                  "in-broadcast-pkts": 0,
+                  "in-multicast-pkts": 0,
+                  "in-discards": 0,
+                  "in-errors": 0,
+                  "out-octets": 460183,
+                  "out-unicast-pkts": 1852,
+                  "out-broadcast-pkts": 0,
+                  "out-multicast-pkts": 0,
+                  "out-discards": 0,
+                  "out-errors": 0,
+                  "last-clear": "2017-08-14T18:02:55.000183+00:00"
+                }
+              },
+              "openconfig-if-ip:ipv6": {
+                "config": {
+                  "enabled": false
+                },
+                "state": {
+                  "enabled": false
+                }
+              }
+            }
+          ]
+        },
+        "openconfig-if-ethernet:ethernet": {
+          "config": {
+            "auto-negotiate": true
+          }
+        }
+      },
+      {
+        "name": "GigabitEthernet2",
+        "config": {
+          "type": "iana-if-type:ethernetCsmacd",
+          "name": "GigabitEthernet2",
+          "enabled": false
+        },
+        "state": {
+          "type": "iana-if-type:ethernetCsmacd",
+          "name": "GigabitEthernet2",
+          "enabled": false,
+          "ifindex": 0,
+          "admin-status": "DOWN",
+          "oper-status": "DOWN",
+          "last-change": "2017-08-14T18:04:25.000356+00:00",
+          "counters": {
+            "in-octets": 0,
+            "in-unicast-pkts": 0,
+            "in-broadcast-pkts": 0,
+            "in-multicast-pkts": 0,
+            "in-discards": 0,
+            "in-errors": 0,
+            "in-unknown-protos": 0,
+            "out-octets": 258,
+            "out-unicast-pkts": 3,
+            "out-broadcast-pkts": 0,
+            "out-multicast-pkts": 0,
+            "out-discards": 0,
+            "out-errors": 0,
+            "last-clear": "2017-08-14T18:02:55.000082+00:00"
+          }
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0,
+                "name": "GigabitEthernet2",
+                "enabled": false
+              },
+              "state": {
+                "index": 0,
+                "name": "GigabitEthernet2.0",
+                "enabled": false,
+                "admin-status": "DOWN",
+                "oper-status": "DOWN",
+                "last-change": "2017-08-14T18:04:25.000356+00:00",
+                "counters": {
+                  "in-octets": 0,
+                  "in-unicast-pkts": 0,
+                  "in-broadcast-pkts": 0,
+                  "in-multicast-pkts": 0,
+                  "in-discards": 0,
+                  "in-errors": 0,
+                  "out-octets": 258,
+                  "out-unicast-pkts": 3,
+                  "out-broadcast-pkts": 0,
+                  "out-multicast-pkts": 0,
+                  "out-discards": 0,
+                  "out-errors": 0,
+                  "last-clear": "2017-08-14T18:02:55.000082+00:00"
+                }
+              },
+              "openconfig-if-ip:ipv6": {
+                "config": {
+                  "enabled": false
+                },
+                "state": {
+                  "enabled": false
+                }
+              }
+            }
+          ]
+        },
+        "openconfig-if-ethernet:ethernet": {
+          "config": {
+            "auto-negotiate": true
+          }
+        }
+      }
+    ]
+  }
+}
