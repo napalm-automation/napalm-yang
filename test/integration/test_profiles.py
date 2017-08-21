@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 #  from napalm_base import get_network_driver
 
 import napalm_yang
@@ -52,7 +54,8 @@ def read_file_content(base, profile, model, mode, case, filename):
 
 
 def read_json(base, profile, model, mode, case, filename):
-    return json.loads(read_file_content(base, profile, model, mode, case, filename))
+    return json.loads(read_file_content(base, profile, model, mode, case, filename),
+                      object_pairs_hook=OrderedDict)
 
 
 def load_json_model(base, profile, model, mode, case, filename):

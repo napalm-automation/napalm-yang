@@ -1,47 +1,47 @@
-no interface Port-channel1
-interface Port-channel1
+default interface GigabitEthernet1
+interface GigabitEthernet1
+    mtu 1500
     no switchport
-    no switchport
-    description blah
-    mtu 9000
     exit
-no interface Port-channel1.1
-interface Port-channel1.1
+default interface GigabitEthernet2
+interface GigabitEthernet2
+    mtu 9000
+    description so much oc
+    shutdown
+    no switchport
+    no switchport
+    ip address 192.168.0.1 255.255.255.0
+    no switchport
+    exit
+no interface GigabitEthernet2.1
+interface GigabitEthernet2.1
+    description another subiface
+    ip address 192.168.20.1 255.255.255.0 secondary
+    ip address 192.168.1.1 255.255.255.0
+    exit
+no interface GigabitEthernet2.2
+interface GigabitEthernet2.2
+    description asdasdasd
+    encapsulation dot1q 2
+    ip address 192.168.2.1 255.255.255.0
+    exit
+default interface GigabitEthernet3
+interface GigabitEthernet3
+    mtu 1500
+    shutdown
+    no switchport
     exit
 no interface Loopback1
 interface Loopback1
     description a loopback
     exit
-default interface GigabitEthernet1
-interface GigabitEthernet1
-    no switchport
-    mtu 1500
-    exit
-default interface GigabitEthernet2
-interface GigabitEthernet2
-    no switchport
-    ip address 192.168.0.1 255.255.255.0
-    no switchport
-    no switchport
-    shutdown
-    description so much oc
+no interface Port-channel1
+interface Port-channel1
     mtu 9000
-    exit
-no interface GigabitEthernet2.1
-interface GigabitEthernet2.1
-    ip address 192.168.20.1 255.255.255.0 secondary
-    ip address 192.168.1.1 255.255.255.0
-    description another subiface
-    exit
-no interface GigabitEthernet2.2
-interface GigabitEthernet2.2
-    encapsulation dot1q 2
-    ip address 192.168.2.1 255.255.255.0
-    description asdasdasd
-    exit
-default interface GigabitEthernet3
-interface GigabitEthernet3
+    description blah
     no switchport
-    shutdown
-    mtu 1500
+    no switchport
+    exit
+no interface Port-channel1.1
+interface Port-channel1.1
     exit

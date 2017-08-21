@@ -23,25 +23,6 @@ schedule tech-support interval 60 max-log-files 100 command show tech-support
 no logging event storm-control discards global
 no logging event storm-control discards interval
 !
-cvx
-   shutdown
-   port 9979
-   heartbeat-interval 20
-   heartbeat-timeout 60
-   no ssl profile
-   service debug
-      no shutdown
-      interval 1
-   service hsc
-      vtep flood list type any
-   service openstack
-      shutdown
-      grace-period 60
-      name-resolution interval 21600
-   service vxlan
-      shutdown
-      vtep mac-learning control-plane
-      resync-period 300
 !
 no dcbx application
 !
@@ -66,14 +47,6 @@ email
 !
 errdisable detect cause arp-inspection
 errdisable detect cause link-flap
-no errdisable recovery cause arp-inspection
-no errdisable recovery cause bpduguard
-no errdisable recovery cause hitless-reload-down
-no errdisable recovery cause link-flap
-no errdisable recovery cause loopprotectguard
-no errdisable recovery cause no-internal-vlan
-no errdisable recovery cause portchannelguard
-no errdisable recovery cause portsec
 no errdisable recovery cause tapagg
 no errdisable recovery cause uplink-failure-detection
 no errdisable recovery cause xcvr-unsupported
@@ -93,11 +66,6 @@ no ip igmp snooping restart query-interval
 ip igmp snooping immediate-leave
 default ip igmp snooping vlan 1
 default ip igmp snooping vlan 1 querier
-no ip igmp snooping vlan 1 querier address
-no ip igmp snooping vlan 1 querier query-interval
-no ip igmp snooping vlan 1 querier max-response-time
-no ip igmp snooping vlan 1 querier last-member-query-interval
-no ip igmp snooping vlan 1 querier last-member-query-count
 no ip igmp snooping vlan 1 querier startup-query-interval
 no ip igmp snooping vlan 1 querier startup-query-count
 no ip igmp snooping vlan 1 querier version
@@ -106,10 +74,6 @@ default ip igmp snooping vlan 1 immediate-leave
 no ip igmp snooping querier
 no ip igmp snooping querier address
 ip igmp snooping querier query-interval 125
-ip igmp snooping querier max-response-time 10
-ip igmp snooping querier last-member-query-interval 1
-no ip igmp snooping querier last-member-query-count
-no ip igmp snooping querier startup-query-interval
 no ip igmp snooping querier startup-query-count
 no ip igmp snooping querier version
 !
@@ -178,87 +142,6 @@ no logging source-interface
 logging level AAA debugging
 logging level ACCOUNTING debugging
 logging level ACL debugging
-logging level AGENT debugging
-logging level ALE debugging
-logging level ARP debugging
-logging level BFD debugging
-logging level BGP debugging
-logging level CAPACITY debugging
-logging level CAPI debugging
-logging level CLEAR debugging
-logging level DATAPLANE debugging
-logging level DOT1X debugging
-logging level ENVMON debugging
-logging level ETH debugging
-logging level EVENTMON debugging
-logging level EXTENSION debugging
-logging level FHRP debugging
-logging level FLOW debugging
-logging level FORWARDING debugging
-logging level FRU debugging
-logging level FWK debugging
-logging level GMP debugging
-logging level HARDWARE debugging
-logging level IGMP debugging
-logging level IGMPSNOOPING debugging
-logging level INTF debugging
-logging level IP6ROUTING debugging
-logging level IRA debugging
-logging level ISIS debugging
-logging level KERNELFIB debugging
-logging level LACP debugging
-logging level LAG debugging
-logging level LAUNCHER debugging
-logging level LINEPROTO debugging
-logging level LLDP debugging
-logging level LOGMGR debugging
-logging level LOOPBACK debugging
-logging level LOOPPROTECT debugging
-logging level MAPREDUCEMONITOR debugging
-logging level MDIO debugging
-logging level MIRRORING debugging
-logging level MLAG debugging
-logging level MMODE debugging
-logging level MROUTE debugging
-logging level MRP debugging
-logging level MSDP debugging
-logging level MSRP debugging
-logging level MVRP debugging
-logging level NAT debugging
-logging level OPENFLOW debugging
-logging level OSPF debugging
-logging level OSPF3 debugging
-logging level PFC debugging
-logging level PIM debugging
-logging level PIMBSR debugging
-logging level PORTSECURITY debugging
-logging level PTP debugging
-logging level PWRMGMT debugging
-logging level QOS debugging
-logging level QUEUEMONITOR debugging
-logging level REACHABILITYMONITOR debugging
-logging level REDUNDANCY debugging
-logging level RIB debugging
-logging level ROUTING debugging
-logging level SECURITY debugging
-logging level SERVERMONITOR debugging
-logging level SPANTREE debugging
-logging level STAGEMGR debugging
-logging level SYS debugging
-logging level SYSDB debugging
-logging level TAPAGG debugging
-logging level TCP debugging
-logging level TRANSCEIVER debugging
-logging level TUNNEL debugging
-logging level VM debugging
-logging level VMTRACERSESS debugging
-logging level VMWAREVI debugging
-logging level VMWAREVS debugging
-logging level VRF debugging
-logging level VRRP debugging
-logging level VXLAN debugging
-logging level XMPP debugging
-logging level ZTP debugging
 !
 logging event link-status global
 !
@@ -312,38 +195,6 @@ no snmp-server source-interface
 default snmp-server enable traps
 default snmp-server enable traps bgp
 default snmp-server enable traps bgp arista-backward-transition
-default snmp-server enable traps bgp arista-established
-default snmp-server enable traps bgp backward-transition
-default snmp-server enable traps bgp established
-default snmp-server enable traps entity
-default snmp-server enable traps entity arista-ent-sensor-alarm
-default snmp-server enable traps entity ent-config-change
-default snmp-server enable traps entity ent-state-oper-disabled
-default snmp-server enable traps entity ent-state-oper-enabled
-default snmp-server enable traps lldp
-default snmp-server enable traps lldp rem-tables-change
-default snmp-server enable traps msdp
-default snmp-server enable traps msdp backward-transition
-default snmp-server enable traps msdp established
-default snmp-server enable traps ospf
-default snmp-server enable traps ospf if-auth-failure
-default snmp-server enable traps ospf if-config-error
-default snmp-server enable traps ospf if-state-change
-default snmp-server enable traps ospf nbr-state-change
-default snmp-server enable traps pim
-default snmp-server enable traps pim neighbor-loss
-default snmp-server enable traps snmp
-default snmp-server enable traps snmp authentication
-default snmp-server enable traps snmp link-down
-default snmp-server enable traps snmp link-up
-default snmp-server enable traps snmpConfigManEvent
-default snmp-server enable traps snmpConfigManEvent arista-config-man-event
-default snmp-server enable traps switchover
-default snmp-server enable traps switchover arista-redundancy-switch-over-notif
-default snmp-server enable traps test
-default snmp-server enable traps test arista-test-notification
-default snmp-server enable traps vrrp
-default snmp-server enable traps vrrp trap-new-master
 snmp-server vrf default
 !
 spanning-tree mode mstp
@@ -843,281 +694,6 @@ interface Ethernet1
    no switchport tool group
    no switchport tool dot1q remove outer
 !
-interface Ethernet2
-   description so much oc
-   shutdown
-   default load-interval
-   mtu 1500
-   logging event link-status use-global
-   no dcbx mode
-   no mac-address
-   no link-debounce
-   no flowcontrol send
-   no flowcontrol receive
-   no mac timestamp
-   no speed
-   no l2 mtu
-   default logging event congestion-drops
-   default unidirectional
-   no traffic-loopback
-   default error-correction encoding
-   no error-correction reed-solomon bypass
-   switchport dot1q ethertype 0x8100
-   no switchport
-   default encapsulation dot1q vlan
-   no l2-protocol encapsulation dot1q vlan 0
-   snmp trap link-status
-   no ip proxy-arp
-   no ip local-proxy-arp
-   ip address 192.168.0.1/24
-   no ip verify unicast
-   default arp timeout 14400
-   default ipv6 nd cache expire 14400
-   bfd interval 300 min_rx 300 multiplier 3
-   no bfd echo
-   default ip dhcp smart-relay
-   no ip helper-address
-   no ipv6 dhcp relay destination
-   ip dhcp relay information option circuit-id Ethernet2
-   no ip igmp
-   ip igmp version 3
-   ip igmp last-member-query-count 2
-   ip igmp last-member-query-interval 10
-   ip igmp query-max-response-time 100
-   ip igmp query-interval 125
-   ip igmp startup-query-count 2
-   ip igmp startup-query-interval 310
-   ip igmp router-alert optional connected
-   no ip igmp host-proxy
-   no ipv6 enable
-   no ipv6 address
-   no ipv6 verify unicast
-   no ipv6 nd ra suppress
-   ipv6 nd ra interval msec 200000
-   ipv6 nd ra lifetime 1800
-   no ipv6 nd ra mtu suppress
-   no ipv6 nd managed-config-flag
-   no ipv6 nd other-config-flag
-   ipv6 nd reachable-time 0
-   ipv6 nd router-preference medium
-   ipv6 nd ra dns-servers lifetime 300
-   ipv6 nd ra dns-suffixes lifetime 300
-   ipv6 nd ra hop-limit 64
-   no channel-group
-   lacp rate normal
-   lacp port-priority 32768
-   lldp transmit
-   lldp receive
-   no ip multicast static
-   ip mfib fastdrop
-   no msrp
-   no mvrp
-   default ntp serve
-   no ip pim sparse-mode
-   no ip pim bidirectional
-   no ip pim border-router
-   ip pim query-interval 30
-   ip pim join-prune-interval 60
-   ip pim dr-priority 1
-   no ip pim neighbor-filter
-   default ip pim bfd-instance
-   no ip pim bsr-border
-   default qos trust
-   qos cos 5
-   qos dscp 2
-   no shape rate
-   mc-tx-queue 0
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   mc-tx-queue 1
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   mc-tx-queue 2
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   mc-tx-queue 3
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 0
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 1
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 2
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 3
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 4
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 5
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 6
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   !
-   uc-tx-queue 7
-      priority strict
-      no bandwidth percent
-      no shape rate
-      no bandwidth guaranteed
-   sflow enable
-!
-interface Ethernet2.1
-   description another subiface
-   no shutdown
-   default load-interval
-   logging event link-status use-global
-   encapsulation dot1q vlan 1
-   no l2-protocol encapsulation dot1q vlan 0
-   snmp trap link-status
-   vrf forwarding prod
-   no ip proxy-arp
-   no ip local-proxy-arp
-   ip address 192.168.1.1/24
-   ip address 172.20.0.1/24 secondary
-   no ip verify unicast
-   default arp timeout 14400
-   default ipv6 nd cache expire 14400
-   bfd interval 300 min_rx 300 multiplier 3
-   no bfd echo
-   default ip dhcp smart-relay
-   no ip helper-address
-   no ipv6 dhcp relay destination
-   ip dhcp relay information option circuit-id Ethernet2.1
-   no ip igmp
-   ip igmp version 3
-   ip igmp last-member-query-count 2
-   ip igmp last-member-query-interval 10
-   ip igmp query-max-response-time 100
-   ip igmp query-interval 125
-   ip igmp startup-query-count 2
-   ip igmp startup-query-interval 310
-   ip igmp router-alert optional connected
-   no ip igmp host-proxy
-   no ipv6 enable
-   no ipv6 address
-   no ipv6 verify unicast
-   no ipv6 nd ra suppress
-   ipv6 nd ra interval msec 200000
-   ipv6 nd ra lifetime 1800
-   no ipv6 nd ra mtu suppress
-   no ipv6 nd managed-config-flag
-   no ipv6 nd other-config-flag
-   ipv6 nd reachable-time 0
-   ipv6 nd router-preference medium
-   ipv6 nd ra dns-servers lifetime 300
-   ipv6 nd ra dns-suffixes lifetime 300
-   ipv6 nd ra hop-limit 64
-   no ip multicast static
-   ip mfib fastdrop
-   default ntp serve
-   no ip pim sparse-mode
-   no ip pim bidirectional
-   no ip pim border-router
-   ip pim query-interval 30
-   ip pim join-prune-interval 60
-   ip pim dr-priority 1
-   no ip pim neighbor-filter
-   default ip pim bfd-instance
-   no ip pim bsr-border
-   sflow enable
-!
-interface Ethernet2.2
-   description asdasdasd
-   no shutdown
-   default load-interval
-   logging event link-status use-global
-   encapsulation dot1q vlan 2
-   no l2-protocol encapsulation dot1q vlan 0
-   snmp trap link-status
-   vrf forwarding devel
-   no ip proxy-arp
-   no ip local-proxy-arp
-   ip address 192.168.2.1/24
-   no ip verify unicast
-   default arp timeout 14400
-   default ipv6 nd cache expire 14400
-   bfd interval 300 min_rx 300 multiplier 3
-   no bfd echo
-   default ip dhcp smart-relay
-   no ip helper-address
-   no ipv6 dhcp relay destination
-   ip dhcp relay information option circuit-id Ethernet2.2
-   no ip igmp
-   ip igmp version 3
-   ip igmp last-member-query-count 2
-   ip igmp last-member-query-interval 10
-   ip igmp query-max-response-time 100
-   ip igmp query-interval 125
-   ip igmp startup-query-count 2
-   ip igmp startup-query-interval 310
-   ip igmp router-alert optional connected
-   no ip igmp host-proxy
-   no ipv6 enable
-   no ipv6 address
-   no ipv6 verify unicast
-   no ipv6 nd ra suppress
-   ipv6 nd ra interval msec 200000
-   ipv6 nd ra lifetime 1800
-   no ipv6 nd ra mtu suppress
-   no ipv6 nd managed-config-flag
-   no ipv6 nd other-config-flag
-   ipv6 nd reachable-time 0
-   ipv6 nd router-preference medium
-   ipv6 nd ra dns-servers lifetime 300
-   ipv6 nd ra dns-suffixes lifetime 300
-   ipv6 nd ra hop-limit 64
-   no ip multicast static
-   ip mfib fastdrop
-   default ntp serve
-   no ip pim sparse-mode
-   no ip pim bidirectional
-   no ip pim border-router
-   ip pim query-interval 30
-   ip pim join-prune-interval 60
-   ip pim dr-priority 1
-   no ip pim neighbor-filter
-   default ip pim bfd-instance
-   no ip pim bsr-border
-   sflow enable
-!
 interface Loopback1
    description a loopback
    no shutdown
@@ -1147,51 +723,6 @@ interface Loopback1
    ipv6 nd ra dns-servers lifetime 300
    ipv6 nd ra dns-suffixes lifetime 300
    ipv6 nd ra hop-limit 64
-   default ntp serve
-!
-interface Management1
-   no description
-   no shutdown
-   default load-interval
-   mtu 1500
-   logging event link-status use-global
-   no mac-address
-   no link-debounce
-   no flowcontrol send
-   no flowcontrol receive
-   no mac timestamp
-   no speed
-   no l2 mtu
-   default logging event congestion-drops
-   default unidirectional
-   no traffic-loopback
-   default error-correction encoding
-   no error-correction reed-solomon bypass
-   snmp trap link-status
-   no ip proxy-arp
-   no ip local-proxy-arp
-   ip address 10.0.2.15/24
-   no ip verify unicast
-   default arp timeout 300
-   default ipv6 nd cache expire 300
-   bfd interval 300 min_rx 300 multiplier 3
-   no bfd echo
-   no ipv6 enable
-   no ipv6 address
-   no ipv6 verify unicast
-   ipv6 nd ra suppress all
-   ipv6 nd ra interval msec 200000
-   ipv6 nd ra lifetime 1800
-   no ipv6 nd ra mtu suppress
-   no ipv6 nd managed-config-flag
-   no ipv6 nd other-config-flag
-   ipv6 nd reachable-time 0
-   ipv6 nd router-preference medium
-   ipv6 nd ra dns-servers lifetime 300
-   ipv6 nd ra dns-suffixes lifetime 300
-   ipv6 nd ra hop-limit 64
-   lldp transmit
-   lldp receive
    default ntp serve
 !
 mac address-table aging-time 300
@@ -1721,33 +1252,6 @@ management cvx
       no shutdown
       interval 1
 !
-management defaults
-   secret hash md5
-!
-management security
-   no entropy source hardware
-   no password minimum length
-!
-management ssh
-   idle-timeout 0
-   authentication mode keyboard-interactive
-   server-port 22
-   hostkey server rsa dsa
-   no fips restrictions
-   no hostkey client strict-checking
-   no shutdown
-   login timeout 120
-   log-level info
-!
-management telnet
-   shutdown
-   idle-timeout 0
-!
-management xmpp
-   shutdown
-   vrf default
-   session privilege 1
 !
 !
 end
-

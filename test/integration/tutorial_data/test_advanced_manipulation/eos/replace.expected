@@ -1,47 +1,47 @@
 no interface Port-Channel1
 interface Port-Channel1
-    no switchport
-    no switchport
     description blah
+    no switchport
+    no switchport
     exit
 no interface Port-Channel1.1
 interface Port-Channel1.1
     exit
 default interface Ethernet1
 interface Ethernet1
+    description This is a description
+    switchport mode access
     switchport native vlan 1
     switchport access vlan 1
     switchport trunk vlan 1-4094
-    switchport mode access
-    description This is a description
     exit
 default interface Ethernet2
 interface Ethernet2
+    mtu 1500
+    description so much oc
+    shutdown
+    no switchport
     no switchport
     ip address 192.168.0.1/24 
     no switchport
-    no switchport
-    shutdown
-    description so much oc
-    mtu 1500
     exit
 no interface Ethernet2.1
 interface Ethernet2.1
+    description another subiface
     encapsulation dot1q vlan 1
     ip address 192.168.1.1/24 
     ip address 172.20.0.1/24 secondary
-    description another subiface
     exit
 no interface Ethernet2.2
 interface Ethernet2.2
+    description asdasdasd
     encapsulation dot1q vlan 2
     ip address 192.168.2.1/24 
-    description asdasdasd
     exit
 default interface Management1
 interface Management1
-    ip address 10.0.2.15/24 
     mtu 1500
+    ip address 10.0.2.15/24 
     exit
 no interface Loopback0
 interface Loopback0

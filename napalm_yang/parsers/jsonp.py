@@ -25,7 +25,7 @@ class JSONParser(BaseParser):
             if isinstance(k, dict):
                 resp.append(k)
             else:
-                resp.append(json.loads(k))
+                resp.append(json.loads(k, object_pairs_hook=OrderedDict))
 
         return resp
 

@@ -6,7 +6,16 @@ from napalm_yang import helpers
 from napalm_yang.parsers import get_parser
 
 import logging
+import six
+
+
 logger = logging.getLogger("napalm-yang")
+
+
+if six.PY3:
+    basestring = str
+    long = int
+    unicode = str
 
 
 class Parser(object):
