@@ -1,11 +1,13 @@
 import ip_filters
 import json_filters
 import vlan_filters
+import timestamp_filters
 
 JINJA_FILTERS = [
     ip_filters,
     json_filters,
     vlan_filters,
+    timestamp_filters,
 ]
 
 

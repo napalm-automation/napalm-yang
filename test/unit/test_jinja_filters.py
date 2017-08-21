@@ -16,7 +16,7 @@ try:
 except ImportError:
     HAS_NETADDR = False
 
-from napalm_yang.jinja_filters import ip_filters, load_filters, vlan_filters
+from napalm_yang.jinja_filters import ip_filters, load_filters, vlan_filters, timestamp_filters
 
 
 class TestJinjaFilters(unittest.TestCase):
@@ -141,3 +141,27 @@ class TestJinjaFilters(unittest.TestCase):
                          "1,2,4-10")
         self.assertEqual(vlan_filters.oc_to_vlan_range([1,  '2', '4..10', '100..200']),
                          "1,2,4-10,100-200")
+
+    def test_iso8601_to_unix(self):
+        """
+        Tests Jinja2 filter ```iso8601_to_unix```:
+
+            * check if load_filters returns the correct function
+            * check if returns empty string on None
+            * check if unix timestamp is returned as expected
+        """
+
+        self.assertEqual(load_filters()['iso8601_to_unix'], timestamp_filters.iso8601_to_unix)
+
+        self.assertEqual(timestamp_filters.iso8601_to_unix(None), '')
+
+        unix = 1500000000
+        cases = [
+            '2017-07-14T02:40:00Z',
+            '2017-07-14T02:40:00+00:00',
+            '2017-07-14T02:40:00.000000+00:00',
+            '2017-07-13T22:40:00-04:00',
+            '2017-07-13T22:40:00.000000-04:00'
+        ]
+        for case in cases:
+            self.assertEqual(timestamp_filters.iso8601_to_unix(case), unix)
