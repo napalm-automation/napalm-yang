@@ -42,6 +42,7 @@ interfaces:
                           vlan: ethernetCsmacd
                           lo: softwareLoopback
                           ae: ieee8023adLag
+                          fxp: ethernetCsmacd
             enabled:
                 _process:
                     - path: "disable"
