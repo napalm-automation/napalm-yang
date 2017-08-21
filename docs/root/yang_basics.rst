@@ -6,5 +6,5 @@ It's not really necessary to fully understand how YANG works to work with ``napa
 Here is a list or resources to start learning YANG:
 
 
-* `YANG for dummies <https://napalm-automation.net/YANG-for-dummies/>`_
+* `YANG for dummies <https://napalm-automation.net/yang-for-dummies/>`_
 
