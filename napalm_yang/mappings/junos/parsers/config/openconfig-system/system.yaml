@@ -1,9 +1,15 @@
 ---
 metadata:
-    processor: unset
+    processor: XMLParser
+    execute:
+        - method: _rpc
+          kwargs:
+              get: <get-configuration/>
 
 system:
-    _process: not_implemented
+    _process:
+        - path: configuration.system
+          from: root_system.0
     aaa:
         _process: not_implemented
         accounting:
@@ -259,7 +265,8 @@ system:
         state:
             _process: not_implemented
     ntp:
-        _process: not_implemented
+        _process:
+            - path: ntp
         config:
             _process: not_implemented
             enable-ntp-auth:
@@ -285,17 +292,21 @@ system:
                 state:
                     _process: not_implemented
         servers:
-            _process: not_implemented
+            _process: unnecessary
             server:
-                _process: not_implemented
+                _process:
+                    - path: server
+                      key: name
                 address:
-                    _process: not_implemented
+                    _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     address:
-                        _process: not_implemented
+                        _process:
+                            - value: "{{ server_key }}"
                     association-type:
-                        _process: not_implemented
+                        _process:
+                            - value: SERVER
                     iburst:
                         _process: not_implemented
                     port:
