@@ -6,7 +6,7 @@ YANG_OC=yang_oc/release/models
 YANG_IETF=yang_ietf/standard/ietf
 YANG_NAPALM=yang_napalm
 
-PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind
+PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind --lax-quote-checks
 
 
 clean:
@@ -29,6 +29,7 @@ models_openconfig:
 		$(YANG_OC)/interfaces/*.yang \
 		$(YANG_OC)/platform/*.yang \
 		$(YANG_OC)/vlan/*.yang \
+		$(YANG_OC)/system/*.yang \
 		$(YANG_NAPALM)/interfaces/*.yang
 
 # .PHONY: models_ietf
