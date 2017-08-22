@@ -4,4 +4,5 @@ SUPPORTED_MODELS = (
     ("openconfig-network-instance", ["network_instances"]),
     ("openconfig-platform", ["components"]),
     ("openconfig-vlan", ["vlans"]),
+    ('openconfig-system', ['system'])
 )
