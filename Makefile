@@ -29,6 +29,7 @@ models_openconfig:
 		$(YANG_OC)/interfaces/*.yang \
 		$(YANG_OC)/platform/*.yang \
 		$(YANG_OC)/vlan/*.yang \
+		$(YANG_OC)/system/*.yang \
 		$(YANG_NAPALM)/interfaces/*.yang
 
 # .PHONY: models_ietf
