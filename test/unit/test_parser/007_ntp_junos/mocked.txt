@@ -1,0 +1,13 @@
+<configuration>
+        <system>
+            <ntp>
+                <peer>
+                    <name>172.17.19.1</name>
+                </peer>
+                <server>
+                    <name>172.17.19.2</name>
+                    <name>172.17.19.3</name>
+                </server>
+            </ntp>
+        </system>
+</configuration>

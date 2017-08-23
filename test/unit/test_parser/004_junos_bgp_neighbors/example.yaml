@@ -40,35 +40,35 @@ data:
     - keys: {}
       extra_vars: {}
 rule:
-    - path: "group.?peer_group:name.neighbor.?neighbor:name"
-      key: "neighbor"
+    - path: "group.?peer_group:name.neighbor.?ip:name"
+      key: "ip"
 expected:
-    - - key: 192.168.100.3
-        block:
-          name:
-              '#text': my_peers
-          neighbor: 192.168.100.3
-          peer-as:
-              '#text': '65100'
-          peer_group: my_peers
-        extra_vars: {}
-      - key: 192.168.100.2
+    - - key: 192.168.100.2
         block:
           description:
               '#text': adsasd
-          name:
-              '#text': my_peers
-          neighbor: 192.168.100.2
           peer-as:
               '#text': '65100'
-          peer_group: my_peers
+          ip:
+              '#text': 192.168.100.2
+          peer_group:
+              '#text': my_peers
+        extra_vars: {}
+      - key: 192.168.100.3
+        block:
+          peer-as:
+              '#text': '65100'
+          ip:
+              '#text': 192.168.100.3
+          peer_group:
+              '#text': my_peers
         extra_vars: {}
       - key: 172.20.0.1
         block:
-          name:
-              '#text': my_other_peers
-          neighbor: 172.20.0.1
+          ip:
+              '#text': 172.20.0.1
           peer-as:
               '#text': '65200'
-          peer_group: my_other_peers
+          peer_group:
+              '#text': my_other_peers
         extra_vars: {}
