@@ -315,9 +315,12 @@ system:
                     port:
                         _process: not_implemented
                     prefer:
-                        _process: not_implemented
+                        _process:
+                            - path: prefer
+                              present: yes
                     version:
-                        _process: not_implemented
+                        _process:
+                            - path: version
                 state:
                     _process: not_implemented
         state:
