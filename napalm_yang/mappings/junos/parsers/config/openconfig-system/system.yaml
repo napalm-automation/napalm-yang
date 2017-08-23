@@ -295,7 +295,7 @@ system:
             _process: unnecessary
             server:
                 _process:
-                    - path: server
+                    - path: ?assoctype  # this hack selects from both peer and server tags
                       key: name
                 address:
                     _process: unnecessary
@@ -306,8 +306,7 @@ system:
                             - value: "{{ server_key }}"
                     association-type:
                         _process:
-                            - path: configuration.system.ntp.?type.name
-                              key: "{{ type | upper }}"
+                            - key: assoctype
                     iburst:
                         _process: not_implemented
                     port:
