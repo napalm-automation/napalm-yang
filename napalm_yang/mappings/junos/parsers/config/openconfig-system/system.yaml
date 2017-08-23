@@ -306,7 +306,8 @@ system:
                             - value: "{{ server_key }}"
                     association-type:
                         _process:
-                            - value: SERVER
+                            - path: configuration.system.ntp.?type.name
+                              key: "{{ type | upper }}"
                     iburst:
                         _process: not_implemented
                     port:
