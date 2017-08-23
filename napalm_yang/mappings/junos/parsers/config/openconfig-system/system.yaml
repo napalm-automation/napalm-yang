@@ -306,7 +306,10 @@ system:
                             - value: "{{ server_key }}"
                     association-type:
                         _process:
-                            - key: assoctype
+                            - path: assoctype
+                              map:
+                                server: SERVER
+                                peer: PEER
                     iburst:
                         _process: not_implemented
                     port:
