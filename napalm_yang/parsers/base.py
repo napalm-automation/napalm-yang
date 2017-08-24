@@ -112,6 +112,9 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars,
                                        None, process_all=False)
         for m in mapping:
+            if m.get("pdb"):
+                import pdb
+                pdb.set_trace()
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
@@ -128,6 +131,9 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys,
                                        self.extra_vars, None, process_all=False)
         for m in mapping:
+            if m.get("pdb"):
+                import pdb
+                pdb.set_trace()
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result = self._parse_leaf_default(attribute, m, data)
 
@@ -142,6 +148,9 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
         for m in mapping:
+            if m.get("pdb"):
+                import pdb
+                pdb.set_trace()
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
