@@ -99,6 +99,9 @@ class BaseParser(object):
             r = _resolve_path(obj, path)
         except (KeyError, IndexError):
             return default
+
+        if check_presence:
+            return not bool(path)
         return r
 
     def init_native(self, native):
