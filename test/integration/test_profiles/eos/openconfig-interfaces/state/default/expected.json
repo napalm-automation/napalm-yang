@@ -6,8 +6,18 @@
                 "state": {
                     "admin-status": "UP",
                     "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-octets": 0,
+                        "in-unicast-pkts": 0,
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
                         "out-multicast-pkts": 875697,
-                        "out-octets": 114560338
+                        "out-octets": 114560338,
+                        "out-unicast-pkts": 0
                     },
                     "description": "This is a description",
                     "enabled": true,
@@ -22,8 +32,18 @@
                 "state": {
                     "admin-status": "DOWN",
                     "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-octets": 0,
+                        "in-unicast-pkts": 0,
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
                         "out-multicast-pkts": 56,
-                        "out-octets": 7268
+                        "out-octets": 7268,
+                        "out-unicast-pkts": 0
                     },
                     "description": "so much oc",
                     "enabled": false,
@@ -75,10 +95,19 @@
                     "admin-status": "UP",
                     "counters": {
                         "in-broadcast-pkts": 4,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
                         "in-octets": 4116864,
+                        "in-unicast-pkts": 0,
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
                         "out-octets": 13968476,
                         "out-unicast-pkts": 58110
                     },
+                    "description": "",
                     "enabled": true,
                     "mtu": 1500,
                     "name": "Management1",
@@ -90,6 +119,20 @@
                 "name": "Port-Channel1",
                 "state": {
                     "admin-status": "UP",
+                    "counters": {
+                        "in-broadcast-pkts": 0,
+                        "in-discards": 0,
+                        "in-errors": 0,
+                        "in-multicast-pkts": 0,
+                        "in-octets": 0,
+                        "in-unicast-pkts": 0,
+                        "out-broadcast-pkts": 0,
+                        "out-discards": 0,
+                        "out-errors": 0,
+                        "out-multicast-pkts": 0,
+                        "out-octets": 0,
+                        "out-unicast-pkts": 0
+                    },
                     "description": "blah",
                     "enabled": true,
                     "mtu": 9000,
@@ -103,6 +146,7 @@
                             "index": "1",
                             "state": {
                                 "admin-status": "DOWN",
+                                "description": "",
                                 "enabled": true,
                                 "name": "Port-Channel1.1",
                                 "oper-status": "LOWER_LAYER_DOWN"
@@ -114,3 +158,4 @@
         }
     }
 }
+

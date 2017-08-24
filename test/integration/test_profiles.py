@@ -86,7 +86,7 @@ class Tests(object):
 
         #  print(pretty_json(yang.get(filter=True)))
         #  print(pretty_json(expected.get(filter=True)))
-        assert not napalm_yang.utils.diff(yang, expected)
+        assert pretty_json(yang.get(filter=True)) == pretty_json(expected.get(filter=True))
 
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
     def test_translate(self, profile, mode, model, case):
