@@ -25,6 +25,11 @@ def _flatten_dictionary(obj, path, key_name):
       ba: 4
     """
     result = []
+    if ">" in key_name:
+        key_name, group_key = key_name.split(">")
+    else:
+        group_key = None
+
     for k, v in obj.items():
         if path:
             if k == path[0]:
@@ -39,6 +44,8 @@ def _flatten_dictionary(obj, path, key_name):
             r = [r]
 
         for e in r:
+            if group_key:
+                e[group_key] = {kk: vv for kk, vv in v.items() if kk not in path}
             e[key_name] = k
             result.append(e)
     return result
@@ -58,7 +65,9 @@ def _flatten_list(obj, path, key_name):
         old_value = o.pop(key)
         for e in r:
             e[new_key] = old_value
-            result.append(e)
+            merged_dict = dict({kk: vv for kk, vv in o.items() if kk not in path})
+            merged_dict.update(e)
+            result.append(merged_dict)
 
     return result
 
