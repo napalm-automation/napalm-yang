@@ -295,8 +295,14 @@ system:
             _process: unnecessary
             server:
                 _process:
-                    - path: ?assoctype  # this hack selects from both peer and server tags
+                    - path: server
                       key: name
+                      extra_vars:
+                          assoctype: SERVER
+                    - path: peer
+                      key: name
+                      extra_vars:
+                          assoctype: PEER
                 address:
                     _process: unnecessary
                 config:
@@ -307,9 +313,6 @@ system:
                     association-type:
                         _process:
                             - path: assoctype
-                              map:
-                                server: SERVER
-                                peer: PEER
                     iburst:
                         _process: not_implemented
                     port:
