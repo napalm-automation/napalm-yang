@@ -82,6 +82,7 @@ class JSONParser(BaseParser):
                 continue
             key, extra_vars = _process_key_value(k, v, regexp, mapping)
             if key:
+                extra_vars.update(mapping.get("extra_vars", {}))
                 yield key, v, extra_vars
 
     def _parse_leaf_default(self, attribute, mapping, data):
