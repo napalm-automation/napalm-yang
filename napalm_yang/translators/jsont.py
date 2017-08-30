@@ -11,7 +11,7 @@ class JSONTranslator(XMLTranslator):
 
     def post_processing(self, translator):
         data = etree_to_dict(translator.translation)
-        return json.dumps(data, indent=4, separators=(',', ': '))
+        return json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '))
 
 def etree_to_dict(t):
     d = {t.tag: {} if t.attrib else None}

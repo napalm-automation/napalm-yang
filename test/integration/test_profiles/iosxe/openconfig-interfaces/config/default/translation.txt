@@ -3,35 +3,35 @@
         "interface": [
             {
                 "config": {
-                    "type": "ethernetCsmacd",
                     "enabled": true,
-                    "name": "GigabitEthernet1"
+                    "name": "GigabitEthernet1",
+                    "type": "ethernetCsmacd"
                 },
                 "name": "GigabitEthernet1",
                 "subinterfaces": {
                     "subinterface": {
-                        "index": "0",
                         "config": {
                             "enabled": true,
                             "name": "GigabitEthernet1"
-                        }
+                        },
+                        "index": "0"
                     }
                 }
             },
             {
                 "config": {
-                    "type": "ethernetCsmacd",
                     "enabled": false,
-                    "name": "GigabitEthernet2"
+                    "name": "GigabitEthernet2",
+                    "type": "ethernetCsmacd"
                 },
                 "name": "GigabitEthernet2",
                 "subinterfaces": {
                     "subinterface": {
-                        "index": "0",
                         "config": {
                             "enabled": false,
                             "name": "GigabitEthernet2"
-                        }
+                        },
+                        "index": "0"
                     }
                 }
             }
