@@ -43,6 +43,7 @@ test_parse_models = [
     ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
     ["iosxe", "config", napalm_yang.models.openconfig_interfaces, "default"],
     ["iosxe", "state", napalm_yang.models.openconfig_interfaces, "default"],
+    ["iosxe", "config", napalm_yang.models.openconfig_network_instance, "default"],
 ]
 
 
