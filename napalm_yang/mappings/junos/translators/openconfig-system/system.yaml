@@ -1,9 +1,11 @@
 ---
 metadata:
-    processor: unset
+    processor: XMLTranslator
+    xml_root: configuration
 
 system:
-    _process: not_implemented
+    _process:
+        - container: system
     aaa:
         _process: not_implemented
         accounting:
@@ -259,51 +261,71 @@ system:
         state:
             _process: not_implemented
     ntp:
-        _process: not_implemented
+        _process:
+            - container: ntp
+              replace: true
         config:
-            _process: not_implemented
+            _process: unnecessary
             enable-ntp-auth:
                 _process: not_implemented
             enabled:
                 _process: not_implemented
             ntp-source-address:
-                _process: not_implemented
+                _process:
+                    - element: source-address/name
         ntp-keys:
-            _process: not_implemented
+            _process: unnecessary
             ntp-key:
-                _process: not_implemented
+                _process:
+                    - container: authentication-key
+                      key_element: name
+                      key_value: "{{ ntp_key_key }}"
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     key-id:
-                        _process: not_implemented
+                        _process: unnecessary
                     key-type:
-                        _process: not_implemented
+                        _process:
+                            - container: authentication-key
+                              element: type
+                              value: md5  # junos only has MD5
                     key-value:
-                        _process: not_implemented
+                        _process:
+                            - container: authentication-key
+                              element: value
                 key-id:
                     _process: not_implemented
                 state:
                     _process: not_implemented
         servers:
-            _process: not_implemented
+            _process: unnecessary
             server:
-                _process: not_implemented
+                _process:
+                    - container: "{{ model.config.association_type | lower }}"
+                      key_element: name
+                      key_value: "{{ server_key }}"
                 address:
-                    _process: not_implemented
+                    _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     address:
-                        _process: not_implemented
+                        _process: unnecessary
                     association-type:
-                        _process: not_implemented
+                        _process: unnecessary
                     iburst:
-                        _process: not_implemented
+                        _process: unnecessary
                     port:
-                        _process: not_implemented
+                        _process: unnecessary
                     prefer:
-                        _process: not_implemented
+                        _process:
+                            - container: server
+                              element: prefer
+                              when: "{{ model }}"
+                              value: null
                     version:
-                        _process: not_implemented
+                        _process:
+                            - container: server
+                              element: version
                 state:
                     _process: not_implemented
         state:
