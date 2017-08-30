@@ -43,6 +43,7 @@ interfaces:
                           lo: softwareLoopback
                           ae: ieee8023adLag
                           fxp: ethernetCsmacd
+                          lt: tunnel
             enabled:
                 _process:
                     - path: "disable"
