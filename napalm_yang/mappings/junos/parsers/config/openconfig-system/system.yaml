@@ -323,7 +323,7 @@ system:
                             - value: "{{ server_key }}"
                     association-type:
                         _process:
-                            - path: assoctype
+                            - value: "{{ extra_vars.server.assoctype }}"
                     iburst:
                         _process: not_implemented
                     port:
