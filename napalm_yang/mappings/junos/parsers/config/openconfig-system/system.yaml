@@ -268,25 +268,36 @@ system:
         _process:
             - path: ntp
         config:
-            _process: not_implemented
+            _process: unnecessary
             enable-ntp-auth:
-                _process: not_implemented
+                _process:
+                    - path: enable-ntp-auth
+                      present: no
             enabled:
-                _process: not_implemented
+                _process:
+                    - present: no
             ntp-source-address:
-                _process: not_implemented
+                _process:
+                    - path: source-address.name
         ntp-keys:
-            _process: not_implemented
+            _process: unnecessary
             ntp-key:
-                _process: not_implemented
+                _process:
+                    - path: authentication-key
+                      key: name
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     key-id:
-                        _process: not_implemented
+                        _process:
+                            - path: name
                     key-type:
-                        _process: not_implemented
+                        _process:
+                            - path: type
+                              map:
+                                md5: NTP_AUTH_MD5
                     key-value:
-                        _process: not_implemented
+                        _process:
+                            - path: value
                 key-id:
                     _process: not_implemented
                 state:
@@ -295,8 +306,14 @@ system:
             _process: unnecessary
             server:
                 _process:
-                    - path: ?assoctype  # this hack selects from both peer and server tags
+                    - path: server
                       key: name
+                      extra_vars:
+                          assoctype: SERVER
+                    - path: peer
+                      key: name
+                      extra_vars:
+                          assoctype: PEER
                 address:
                     _process: unnecessary
                 config:
@@ -307,9 +324,6 @@ system:
                     association-type:
                         _process:
                             - path: assoctype
-                              map:
-                                server: SERVER
-                                peer: PEER
                     iburst:
                         _process: not_implemented
                     port:
