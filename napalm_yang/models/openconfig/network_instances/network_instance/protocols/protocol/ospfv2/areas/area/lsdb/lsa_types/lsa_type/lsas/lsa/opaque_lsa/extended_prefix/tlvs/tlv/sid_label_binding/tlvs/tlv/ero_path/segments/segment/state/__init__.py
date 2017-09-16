@@ -41,8 +41,8 @@ contained within the sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__loose = None
+    self.__type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ contained within the sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments', u'segment', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state/type (identityref)
 
     YANG Description: The type of the segment being specified as part of the ERO
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -89,6 +94,9 @@ contained within the sub-TLV
 
     YANG Description: The type of the segment being specified as part of the ERO
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ contained within the sub-TLV
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_loose(self):
+    return self.__loose is not None
+
   def _get_loose(self):
     """
     Getter method for loose, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state/loose (boolean)
@@ -115,6 +126,8 @@ contained within the sub-TLV
     YANG Description: If this leaf is set the segment is identifier as a loose path
 segment, otherwise the path strictly follows the path specified
     """
+    if self.__loose is None:
+        self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__loose
       
   def _set_loose(self, v, load=False):
@@ -128,6 +141,9 @@ segment, otherwise the path strictly follows the path specified
     YANG Description: If this leaf is set the segment is identifier as a loose path
 segment, otherwise the path strictly follows the path specified
     """
+    if self.__loose is None:
+        self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ contained within the sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__loose = None
+    self.__type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,12 +220,17 @@ contained within the sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments', u'segment', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state/type (identityref)
 
     YANG Description: The type of the segment being specified as part of the ERO
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -222,6 +243,9 @@ contained within the sub-TLV
 
     YANG Description: The type of the segment being specified as part of the ERO
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -241,6 +265,9 @@ contained within the sub-TLV
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:IPV4_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'UNNUMBERED_INTERFACE_SEGMENT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_loose(self):
+    return self.__loose is not None
+
   def _get_loose(self):
     """
     Getter method for loose, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state/loose (boolean)
@@ -248,6 +275,8 @@ contained within the sub-TLV
     YANG Description: If this leaf is set the segment is identifier as a loose path
 segment, otherwise the path strictly follows the path specified
     """
+    if self.__loose is None:
+        self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__loose
       
   def _set_loose(self, v, load=False):
@@ -261,6 +290,9 @@ segment, otherwise the path strictly follows the path specified
     YANG Description: If this leaf is set the segment is identifier as a loose path
 segment, otherwise the path strictly follows the path specified
     """
+    if self.__loose is None:
+        self.__loose = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="loose", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

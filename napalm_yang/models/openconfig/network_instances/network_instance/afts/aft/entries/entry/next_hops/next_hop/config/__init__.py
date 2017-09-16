@@ -41,7 +41,7 @@ entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    self.__index = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops', u'next-hop', u'config']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/config/index (uint64)
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -88,6 +93,9 @@ entry
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    self.__index = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops', u'next-hop', u'config']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/config/index (uint64)
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -180,6 +193,9 @@ entry
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

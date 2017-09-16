@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__te_metric = None
+    self.__admin_group = None
+    self.__srlg_membership = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-interface-attributes', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Id of the interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -90,6 +95,9 @@ class config(PybindBase):
 
     YANG Description: Id of the interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class config(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_te_metric(self):
+    return self.__te_metric is not None
+
   def _get_te_metric(self):
     """
     Getter method for te_metric, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/te_metric (uint32)
 
     YANG Description: TE specific metric for the link
     """
+    if self.__te_metric is None:
+        self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__te_metric
       
   def _set_te_metric(self, v, load=False):
@@ -127,6 +140,9 @@ class config(PybindBase):
 
     YANG Description: TE specific metric for the link
     """
+    if self.__te_metric is None:
+        self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,6 +162,9 @@ class config(PybindBase):
     self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_srlg_membership(self):
+    return self.__srlg_membership is not None
+
   def _get_srlg_membership(self):
     """
     Getter method for srlg_membership, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/srlg_membership (leafref)
@@ -153,6 +172,8 @@ class config(PybindBase):
     YANG Description: list of references to named shared risk link groups that the
 interface belongs to.
     """
+    if self.__srlg_membership is None:
+        self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__srlg_membership
       
   def _set_srlg_membership(self, v, load=False):
@@ -166,6 +187,9 @@ interface belongs to.
     YANG Description: list of references to named shared risk link groups that the
 interface belongs to.
     """
+    if self.__srlg_membership is None:
+        self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -185,12 +209,17 @@ interface belongs to.
     self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/admin_group (string)
 
     YANG Description: list of admin groups (by name) on the interface
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -203,6 +232,9 @@ interface belongs to.
 
     YANG Description: list of admin groups (by name) on the interface
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,10 +282,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__te_metric = None
+    self.__admin_group = None
+    self.__srlg_membership = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -282,12 +314,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-interface-attributes', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Id of the interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -300,6 +337,9 @@ class config(PybindBase):
 
     YANG Description: Id of the interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,12 +359,17 @@ class config(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_te_metric(self):
+    return self.__te_metric is not None
+
   def _get_te_metric(self):
     """
     Getter method for te_metric, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/te_metric (uint32)
 
     YANG Description: TE specific metric for the link
     """
+    if self.__te_metric is None:
+        self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__te_metric
       
   def _set_te_metric(self, v, load=False):
@@ -337,6 +382,9 @@ class config(PybindBase):
 
     YANG Description: TE specific metric for the link
     """
+    if self.__te_metric is None:
+        self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,6 +404,9 @@ class config(PybindBase):
     self.__te_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="te-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_srlg_membership(self):
+    return self.__srlg_membership is not None
+
   def _get_srlg_membership(self):
     """
     Getter method for srlg_membership, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/srlg_membership (leafref)
@@ -363,6 +414,8 @@ class config(PybindBase):
     YANG Description: list of references to named shared risk link groups that the
 interface belongs to.
     """
+    if self.__srlg_membership is None:
+        self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__srlg_membership
       
   def _set_srlg_membership(self, v, load=False):
@@ -376,6 +429,9 @@ interface belongs to.
     YANG Description: list of references to named shared risk link groups that the
 interface belongs to.
     """
+    if self.__srlg_membership is None:
+        self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -395,12 +451,17 @@ interface belongs to.
     self.__srlg_membership = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="srlg-membership", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/config/admin_group (string)
 
     YANG Description: list of admin groups (by name) on the interface
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -413,6 +474,9 @@ interface belongs to.
 
     YANG Description: list of admin groups (by name) on the interface
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

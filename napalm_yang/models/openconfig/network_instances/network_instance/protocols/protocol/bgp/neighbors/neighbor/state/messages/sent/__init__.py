@@ -40,8 +40,8 @@ class sent(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__NOTIFICATION = None
+    self.__UPDATE = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class sent(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'messages', u'sent']
 
+  def _initialized_UPDATE(self):
+    return self.__UPDATE is not None
+
   def _get_UPDATE(self):
     """
     Getter method for UPDATE, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent/UPDATE (uint64)
@@ -77,6 +80,8 @@ class sent(PybindBase):
     YANG Description: Number of BGP UPDATE messages announcing, withdrawing
 or modifying paths exchanged.
     """
+    if self.__UPDATE is None:
+        self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__UPDATE
       
   def _set_UPDATE(self, v, load=False):
@@ -90,6 +95,9 @@ or modifying paths exchanged.
     YANG Description: Number of BGP UPDATE messages announcing, withdrawing
 or modifying paths exchanged.
     """
+    if self.__UPDATE is None:
+        self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ or modifying paths exchanged.
     self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_NOTIFICATION(self):
+    return self.__NOTIFICATION is not None
+
   def _get_NOTIFICATION(self):
     """
     Getter method for NOTIFICATION, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent/NOTIFICATION (uint64)
@@ -116,6 +127,8 @@ or modifying paths exchanged.
     YANG Description: Number of BGP NOTIFICATION messages indicating an
 error condition has occurred exchanged.
     """
+    if self.__NOTIFICATION is None:
+        self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__NOTIFICATION
       
   def _set_NOTIFICATION(self, v, load=False):
@@ -129,6 +142,9 @@ error condition has occurred exchanged.
     YANG Description: Number of BGP NOTIFICATION messages indicating an
 error condition has occurred exchanged.
     """
+    if self.__NOTIFICATION is None:
+        self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class sent(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__NOTIFICATION = None
+    self.__UPDATE = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class sent(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'messages', u'sent']
 
+  def _initialized_UPDATE(self):
+    return self.__UPDATE is not None
+
   def _get_UPDATE(self):
     """
     Getter method for UPDATE, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent/UPDATE (uint64)
@@ -211,6 +230,8 @@ class sent(PybindBase):
     YANG Description: Number of BGP UPDATE messages announcing, withdrawing
 or modifying paths exchanged.
     """
+    if self.__UPDATE is None:
+        self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__UPDATE
       
   def _set_UPDATE(self, v, load=False):
@@ -224,6 +245,9 @@ or modifying paths exchanged.
     YANG Description: Number of BGP UPDATE messages announcing, withdrawing
 or modifying paths exchanged.
     """
+    if self.__UPDATE is None:
+        self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ or modifying paths exchanged.
     self.__UPDATE = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="UPDATE", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_NOTIFICATION(self):
+    return self.__NOTIFICATION is not None
+
   def _get_NOTIFICATION(self):
     """
     Getter method for NOTIFICATION, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent/NOTIFICATION (uint64)
@@ -250,6 +277,8 @@ or modifying paths exchanged.
     YANG Description: Number of BGP NOTIFICATION messages indicating an
 error condition has occurred exchanged.
     """
+    if self.__NOTIFICATION is None:
+        self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__NOTIFICATION
       
   def _set_NOTIFICATION(self, v, load=False):
@@ -263,6 +292,9 @@ error condition has occurred exchanged.
     YANG Description: Number of BGP NOTIFICATION messages indicating an
 error condition has occurred exchanged.
     """
+    if self.__NOTIFICATION is None:
+        self.__NOTIFICATION = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="NOTIFICATION", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

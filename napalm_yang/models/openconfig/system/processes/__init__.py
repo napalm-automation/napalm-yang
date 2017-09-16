@@ -41,7 +41,7 @@ class processes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__process = YANGDynClass(base=YANGListType("pid",process.process, yang_name="process", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='pid', extensions=None), is_container='list', yang_name="process", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__process = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class processes(PybindBase):
     else:
       return [u'system', u'processes']
 
+  def _initialized_process(self):
+    return self.__process is not None
+
   def _get_process(self):
     """
     Getter method for process, mapped from YANG variable /system/processes/process (list)
 
     YANG Description: List of monitored processes
     """
+    if self.__process is None:
+        self.__process = YANGDynClass(base=YANGListType("pid",process.process, yang_name="process", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='pid', extensions=None), is_container='list', yang_name="process", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__process
       
   def _set_process(self, v, load=False):
@@ -88,6 +93,9 @@ class processes(PybindBase):
 
     YANG Description: List of monitored processes
     """
+    if self.__process is None:
+        self.__process = YANGDynClass(base=YANGListType("pid",process.process, yang_name="process", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='pid', extensions=None), is_container='list', yang_name="process", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

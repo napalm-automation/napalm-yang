@@ -45,11 +45,11 @@ Routing on an interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__sid_counters = None
+    self.__state = None
+    self.__config = None
+    self.__interface_ref = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,6 +78,9 @@ Routing on an interface.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/interface_id (leafref)
@@ -85,6 +88,8 @@ Routing on an interface.
     YANG Description: A reference to the ID for the interface for which SR is
 configured
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -98,6 +103,9 @@ configured
     YANG Description: A reference to the ID for the interface for which SR is
 configured
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -122,6 +130,9 @@ configured
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/config (container)
@@ -129,6 +140,8 @@ configured
     YANG Description: MPLS-specific Segment Routing configuration parameters
 related to an interface.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -142,6 +155,9 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing configuration parameters
 related to an interface.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -161,6 +177,9 @@ related to an interface.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/state (container)
@@ -168,6 +187,8 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing operational state parameters
 related to an interface.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -181,6 +202,9 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing operational state parameters
 related to an interface.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,12 +224,17 @@ related to an interface.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_sid_counters(self):
+    return self.__sid_counters is not None
+
   def _get_sid_counters(self):
     """
     Getter method for sid_counters, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters (container)
 
     YANG Description: Per-SID statistics for MPLS
     """
+    if self.__sid_counters is None:
+        self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__sid_counters
       
   def _set_sid_counters(self, v, load=False):
@@ -218,6 +247,9 @@ related to an interface.
 
     YANG Description: Per-SID statistics for MPLS
     """
+    if self.__sid_counters is None:
+        self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +269,17 @@ related to an interface.
     self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -255,6 +292,9 @@ related to an interface.
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -308,11 +348,11 @@ Routing on an interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__sid_counters = None
+    self.__state = None
+    self.__config = None
+    self.__interface_ref = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -341,6 +381,9 @@ Routing on an interface.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/interface_id (leafref)
@@ -348,6 +391,8 @@ Routing on an interface.
     YANG Description: A reference to the ID for the interface for which SR is
 configured
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -361,6 +406,9 @@ configured
     YANG Description: A reference to the ID for the interface for which SR is
 configured
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -385,6 +433,9 @@ configured
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/config (container)
@@ -392,6 +443,8 @@ configured
     YANG Description: MPLS-specific Segment Routing configuration parameters
 related to an interface.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -405,6 +458,9 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing configuration parameters
 related to an interface.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -424,6 +480,9 @@ related to an interface.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/state (container)
@@ -431,6 +490,8 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing operational state parameters
 related to an interface.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -444,6 +505,9 @@ related to an interface.
     YANG Description: MPLS-specific Segment Routing operational state parameters
 related to an interface.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -463,12 +527,17 @@ related to an interface.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_sid_counters(self):
+    return self.__sid_counters is not None
+
   def _get_sid_counters(self):
     """
     Getter method for sid_counters, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters (container)
 
     YANG Description: Per-SID statistics for MPLS
     """
+    if self.__sid_counters is None:
+        self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__sid_counters
       
   def _set_sid_counters(self, v, load=False):
@@ -481,6 +550,9 @@ related to an interface.
 
     YANG Description: Per-SID statistics for MPLS
     """
+    if self.__sid_counters is None:
+        self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -500,12 +572,17 @@ related to an interface.
     self.__sid_counters = YANGDynClass(base=sid_counters.sid_counters, is_container='container', yang_name="sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -518,6 +595,9 @@ related to an interface.
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

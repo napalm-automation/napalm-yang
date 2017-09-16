@@ -41,9 +41,9 @@ adjustment
     self._path_helper = False
 
     self._extmethods = False
-    self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
-    self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__overflow_threshold = None
+    self.__trigger_event_count = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ adjustment
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth', u'overflow', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/enabled (boolean)
@@ -79,6 +82,8 @@ adjustment
     YANG Description: enables mpls lsp bandwidth overflow
 adjustment on the lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -92,6 +97,9 @@ adjustment on the lsp
     YANG Description: enables mpls lsp bandwidth overflow
 adjustment on the lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ adjustment on the lsp
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_overflow_threshold(self):
+    return self.__overflow_threshold is not None
+
   def _get_overflow_threshold(self):
     """
     Getter method for overflow_threshold, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/overflow_threshold (oc-types:percentage)
@@ -118,6 +129,8 @@ adjustment on the lsp
     YANG Description: bandwidth percentage change to trigger
 an overflow event
     """
+    if self.__overflow_threshold is None:
+        self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
     return self.__overflow_threshold
       
   def _set_overflow_threshold(self, v, load=False):
@@ -131,6 +144,9 @@ an overflow event
     YANG Description: bandwidth percentage change to trigger
 an overflow event
     """
+    if self.__overflow_threshold is None:
+        self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ an overflow event
     self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
 
 
+  def _initialized_trigger_event_count(self):
+    return self.__trigger_event_count is not None
+
   def _get_trigger_event_count(self):
     """
     Getter method for trigger_event_count, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/trigger_event_count (uint16)
@@ -157,6 +176,8 @@ an overflow event
     YANG Description: number of consecutive overflow sample
 events needed to trigger an overflow adjustment
     """
+    if self.__trigger_event_count is None:
+        self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__trigger_event_count
       
   def _set_trigger_event_count(self, v, load=False):
@@ -170,6 +191,9 @@ events needed to trigger an overflow adjustment
     YANG Description: number of consecutive overflow sample
 events needed to trigger an overflow adjustment
     """
+    if self.__trigger_event_count is None:
+        self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ adjustment
     self._path_helper = False
 
     self._extmethods = False
-    self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
-    self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__overflow_threshold = None
+    self.__trigger_event_count = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ adjustment
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth', u'overflow', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/enabled (boolean)
@@ -255,6 +282,8 @@ adjustment
     YANG Description: enables mpls lsp bandwidth overflow
 adjustment on the lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -268,6 +297,9 @@ adjustment on the lsp
     YANG Description: enables mpls lsp bandwidth overflow
 adjustment on the lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ adjustment on the lsp
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_overflow_threshold(self):
+    return self.__overflow_threshold is not None
+
   def _get_overflow_threshold(self):
     """
     Getter method for overflow_threshold, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/overflow_threshold (oc-types:percentage)
@@ -294,6 +329,8 @@ adjustment on the lsp
     YANG Description: bandwidth percentage change to trigger
 an overflow event
     """
+    if self.__overflow_threshold is None:
+        self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
     return self.__overflow_threshold
       
   def _set_overflow_threshold(self, v, load=False):
@@ -307,6 +344,9 @@ an overflow event
     YANG Description: bandwidth percentage change to trigger
 an overflow event
     """
+    if self.__overflow_threshold is None:
+        self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ an overflow event
     self.__overflow_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="overflow-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=True)
 
 
+  def _initialized_trigger_event_count(self):
+    return self.__trigger_event_count is not None
+
   def _get_trigger_event_count(self):
     """
     Getter method for trigger_event_count, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow/config/trigger_event_count (uint16)
@@ -333,6 +376,8 @@ an overflow event
     YANG Description: number of consecutive overflow sample
 events needed to trigger an overflow adjustment
     """
+    if self.__trigger_event_count is None:
+        self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__trigger_event_count
       
   def _set_trigger_event_count(self, v, load=False):
@@ -346,6 +391,9 @@ events needed to trigger an overflow adjustment
     YANG Description: number of consecutive overflow sample
 events needed to trigger an overflow adjustment
     """
+    if self.__trigger_event_count is None:
+        self.__trigger_event_count = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="trigger-event-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

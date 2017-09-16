@@ -41,10 +41,10 @@ aggregate / LAG interfaces
     self._path_helper = False
 
     self._extmethods = False
-    self.__member = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='oc-if:base-interface-ref', is_config=False)
-    self.__lag_speed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lag-speed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint32', is_config=False)
-    self.__min_links = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="min-links", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint16', is_config=False)
-    self.__lag_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LACP': {}, u'STATIC': {}},), is_leaf=True, yang_name="lag-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='aggregation-type', is_config=False)
+    self.__member = None
+    self.__lag_speed = None
+    self.__min_links = None
+    self.__lag_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ aggregate / LAG interfaces
     else:
       return [u'interfaces', u'interface', u'aggregation', u'state']
 
+  def _initialized_lag_type(self):
+    return self.__lag_type is not None
+
   def _get_lag_type(self):
     """
     Getter method for lag_type, mapped from YANG variable /interfaces/interface/aggregation/state/lag_type (aggregation-type)
@@ -80,6 +83,8 @@ aggregate / LAG interfaces
     YANG Description: Sets the type of LAG, i.e., how it is
 configured / maintained
     """
+    if self.__lag_type is None:
+        self.__lag_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LACP': {}, u'STATIC': {}},), is_leaf=True, yang_name="lag-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='aggregation-type', is_config=False)
     return self.__lag_type
       
   def _set_lag_type(self, v, load=False):
@@ -93,6 +98,9 @@ configured / maintained
     YANG Description: Sets the type of LAG, i.e., how it is
 configured / maintained
     """
+    if self.__lag_type is None:
+        self.__lag_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LACP': {}, u'STATIC': {}},), is_leaf=True, yang_name="lag-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='aggregation-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ configured / maintained
     self.__lag_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LACP': {}, u'STATIC': {}},), is_leaf=True, yang_name="lag-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='aggregation-type', is_config=False)
 
 
+  def _initialized_min_links(self):
+    return self.__min_links is not None
+
   def _get_min_links(self):
     """
     Getter method for min_links, mapped from YANG variable /interfaces/interface/aggregation/state/min_links (uint16)
@@ -120,6 +131,8 @@ configured / maintained
 interfaces that must be active for the aggregate interface
 to be available
     """
+    if self.__min_links is None:
+        self.__min_links = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="min-links", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint16', is_config=False)
     return self.__min_links
       
   def _set_min_links(self, v, load=False):
@@ -134,6 +147,9 @@ to be available
 interfaces that must be active for the aggregate interface
 to be available
     """
+    if self.__min_links is None:
+        self.__min_links = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="min-links", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ to be available
     self.__min_links = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="min-links", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint16', is_config=False)
 
 
+  def _initialized_lag_speed(self):
+    return self.__lag_speed is not None
+
   def _get_lag_speed(self):
     """
     Getter method for lag_speed, mapped from YANG variable /interfaces/interface/aggregation/state/lag_speed (uint32)
@@ -160,6 +179,8 @@ to be available
     YANG Description: Reports effective speed of the aggregate interface,
 based on speed of active member interfaces
     """
+    if self.__lag_speed is None:
+        self.__lag_speed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lag-speed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint32', is_config=False)
     return self.__lag_speed
       
   def _set_lag_speed(self, v, load=False):
@@ -173,6 +194,9 @@ based on speed of active member interfaces
     YANG Description: Reports effective speed of the aggregate interface,
 based on speed of active member interfaces
     """
+    if self.__lag_speed is None:
+        self.__lag_speed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lag-speed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -192,6 +216,9 @@ based on speed of active member interfaces
     self.__lag_speed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lag-speed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='uint32', is_config=False)
 
 
+  def _initialized_member(self):
+    return self.__member is not None
+
   def _get_member(self):
     """
     Getter method for member, mapped from YANG variable /interfaces/interface/aggregation/state/member (oc-if:base-interface-ref)
@@ -199,6 +226,8 @@ based on speed of active member interfaces
     YANG Description: List of current member interfaces for the aggregate,
 expressed as references to existing interfaces
     """
+    if self.__member is None:
+        self.__member = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='oc-if:base-interface-ref', is_config=False)
     return self.__member
       
   def _set_member(self, v, load=False):
@@ -212,6 +241,9 @@ expressed as references to existing interfaces
     YANG Description: List of current member interfaces for the aggregate,
 expressed as references to existing interfaces
     """
+    if self.__member is None:
+        self.__member = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='oc-if:base-interface-ref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

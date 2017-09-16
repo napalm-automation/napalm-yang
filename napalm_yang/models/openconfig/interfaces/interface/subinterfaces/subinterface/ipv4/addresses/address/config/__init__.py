@@ -41,9 +41,9 @@ address on the interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=True)
-    self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
-    self.__secondary = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="secondary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='https://github.com/napalm-automation/napalm-yang/yang_napalm/interfaces', defining_module='napalm-if-ip', yang_type='boolean', is_config=True)
+    self.__ip = None
+    self.__prefix_length = None
+    self.__secondary = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ address on the interface
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv4', u'addresses', u'address', u'config']
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/ip (inet:ipv4-address-no-zone)
@@ -80,6 +83,8 @@ address on the interface
 
 The IPv4 address on the interface.
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=True)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -94,6 +99,9 @@ The IPv4 address on the interface.
 
 The IPv4 address on the interface.
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ The IPv4 address on the interface.
     self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=True)
 
 
+  def _initialized_prefix_length(self):
+    return self.__prefix_length is not None
+
   def _get_prefix_length(self):
     """
     Getter method for prefix_length, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix_length (uint8)
@@ -121,6 +132,8 @@ The IPv4 address on the interface.
 
 The length of the subnet prefix.
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
     return self.__prefix_length
       
   def _set_prefix_length(self, v, load=False):
@@ -135,6 +148,9 @@ The length of the subnet prefix.
 
 The length of the subnet prefix.
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ The length of the subnet prefix.
     self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
 
 
+  def _initialized_secondary(self):
+    return self.__secondary is not None
+
   def _get_secondary(self):
     """
     Getter method for secondary, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/secondary (boolean)
@@ -161,6 +180,8 @@ The length of the subnet prefix.
     YANG Description: Most platforms need a secondary statement on when configuring multiple IPv4 addresses
 on the same interfaces
     """
+    if self.__secondary is None:
+        self.__secondary = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="secondary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='https://github.com/napalm-automation/napalm-yang/yang_napalm/interfaces', defining_module='napalm-if-ip', yang_type='boolean', is_config=True)
     return self.__secondary
       
   def _set_secondary(self, v, load=False):
@@ -174,6 +195,9 @@ on the same interfaces
     YANG Description: Most platforms need a secondary statement on when configuring multiple IPv4 addresses
 on the same interfaces
     """
+    if self.__secondary is None:
+        self.__secondary = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="secondary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='https://github.com/napalm-automation/napalm-yang/yang_napalm/interfaces', defining_module='napalm-if-ip', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

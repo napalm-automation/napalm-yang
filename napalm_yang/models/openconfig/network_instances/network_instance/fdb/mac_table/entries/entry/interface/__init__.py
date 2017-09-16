@@ -42,7 +42,7 @@ MAC table entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interface_ref = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ MAC table entry
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'interface']
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -89,6 +94,9 @@ MAC table entry
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ MAC table entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interface_ref = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ MAC table entry
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'interface']
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -182,6 +195,9 @@ MAC table entry
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

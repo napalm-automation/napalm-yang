@@ -41,9 +41,9 @@ configuration of TE tunnels
     self._path_helper = False
 
     self._extmethods = False
-    self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
-    self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    self.__specification_type = None
+    self.__set_bandwidth = None
+    self.__signaled_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ configuration of TE tunnels
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'state']
 
+  def _initialized_specification_type(self):
+    return self.__specification_type is not None
+
   def _get_specification_type(self):
     """
     Getter method for specification_type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/specification_type (te-bandwidth-type)
@@ -79,6 +82,8 @@ configuration of TE tunnels
     YANG Description: The method used for settign the bandwidth, either explicitly
 specified or configured
     """
+    if self.__specification_type is None:
+        self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
     return self.__specification_type
       
   def _set_specification_type(self, v, load=False):
@@ -92,6 +97,9 @@ specified or configured
     YANG Description: The method used for settign the bandwidth, either explicitly
 specified or configured
     """
+    if self.__specification_type is None:
+        self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ specified or configured
     self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
 
 
+  def _initialized_set_bandwidth(self):
+    return self.__set_bandwidth is not None
+
   def _get_set_bandwidth(self):
     """
     Getter method for set_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/set_bandwidth (oc-mplst:bandwidth-kbps)
@@ -118,6 +129,8 @@ specified or configured
     YANG Description: set bandwidth explicitly, e.g., using
 offline calculation
     """
+    if self.__set_bandwidth is None:
+        self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__set_bandwidth
       
   def _set_set_bandwidth(self, v, load=False):
@@ -131,6 +144,9 @@ offline calculation
     YANG Description: set bandwidth explicitly, e.g., using
 offline calculation
     """
+    if self.__set_bandwidth is None:
+        self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ offline calculation
     self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_signaled_bandwidth(self):
+    return self.__signaled_bandwidth is not None
+
   def _get_signaled_bandwidth(self):
     """
     Getter method for signaled_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/signaled_bandwidth (oc-mplst:bandwidth-kbps)
@@ -160,6 +179,8 @@ value of the set-bandwidth leaf; in cases where the bandwidth is
 dynamically computed by the system, the current value of the
 bandwidth should be reflected.
     """
+    if self.__signaled_bandwidth is None:
+        self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__signaled_bandwidth
       
   def _set_signaled_bandwidth(self, v, load=False):
@@ -176,6 +197,9 @@ value of the set-bandwidth leaf; in cases where the bandwidth is
 dynamically computed by the system, the current value of the
 bandwidth should be reflected.
     """
+    if self.__signaled_bandwidth is None:
+        self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -223,9 +247,9 @@ configuration of TE tunnels
     self._path_helper = False
 
     self._extmethods = False
-    self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
-    self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    self.__specification_type = None
+    self.__set_bandwidth = None
+    self.__signaled_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -254,6 +278,9 @@ configuration of TE tunnels
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'state']
 
+  def _initialized_specification_type(self):
+    return self.__specification_type is not None
+
   def _get_specification_type(self):
     """
     Getter method for specification_type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/specification_type (te-bandwidth-type)
@@ -261,6 +288,8 @@ configuration of TE tunnels
     YANG Description: The method used for settign the bandwidth, either explicitly
 specified or configured
     """
+    if self.__specification_type is None:
+        self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
     return self.__specification_type
       
   def _set_specification_type(self, v, load=False):
@@ -274,6 +303,9 @@ specified or configured
     YANG Description: The method used for settign the bandwidth, either explicitly
 specified or configured
     """
+    if self.__specification_type is None:
+        self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -293,6 +325,9 @@ specified or configured
     self.__specification_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AUTO': {}, u'SPECIFIED': {}},), default=unicode("SPECIFIED"), is_leaf=True, yang_name="specification-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='te-bandwidth-type', is_config=False)
 
 
+  def _initialized_set_bandwidth(self):
+    return self.__set_bandwidth is not None
+
   def _get_set_bandwidth(self):
     """
     Getter method for set_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/set_bandwidth (oc-mplst:bandwidth-kbps)
@@ -300,6 +335,8 @@ specified or configured
     YANG Description: set bandwidth explicitly, e.g., using
 offline calculation
     """
+    if self.__set_bandwidth is None:
+        self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__set_bandwidth
       
   def _set_set_bandwidth(self, v, load=False):
@@ -313,6 +350,9 @@ offline calculation
     YANG Description: set bandwidth explicitly, e.g., using
 offline calculation
     """
+    if self.__set_bandwidth is None:
+        self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -332,6 +372,9 @@ offline calculation
     self.__set_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="set-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_signaled_bandwidth(self):
+    return self.__signaled_bandwidth is not None
+
   def _get_signaled_bandwidth(self):
     """
     Getter method for signaled_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/state/signaled_bandwidth (oc-mplst:bandwidth-kbps)
@@ -342,6 +385,8 @@ value of the set-bandwidth leaf; in cases where the bandwidth is
 dynamically computed by the system, the current value of the
 bandwidth should be reflected.
     """
+    if self.__signaled_bandwidth is None:
+        self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__signaled_bandwidth
       
   def _set_signaled_bandwidth(self, v, load=False):
@@ -358,6 +403,9 @@ value of the set-bandwidth leaf; in cases where the bandwidth is
 dynamically computed by the system, the current value of the
 bandwidth should be reflected.
     """
+    if self.__signaled_bandwidth is None:
+        self.__signaled_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="signaled-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

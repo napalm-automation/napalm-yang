@@ -47,12 +47,12 @@ that are global to the OSPFv2 instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__graceful_restart = None
+    self.__mpls = None
+    self.__inter_area_propagation_policies = None
+    self.__state = None
+    self.__timers = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -81,12 +81,17 @@ that are global to the OSPFv2 instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config (container)
 
     YANG Description: Global configuration parameters for OSPFv2
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -99,6 +104,9 @@ that are global to the OSPFv2 instance
 
     YANG Description: Global configuration parameters for OSPFv2
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -118,12 +126,17 @@ that are global to the OSPFv2 instance
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/state (container)
 
     YANG Description: Operational state parameters for OSPFv2
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -136,6 +149,9 @@ that are global to the OSPFv2 instance
 
     YANG Description: Operational state parameters for OSPFv2
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ that are global to the OSPFv2 instance
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers (container)
@@ -162,6 +181,8 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state parameters for OSPFv2
 timers
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -175,6 +196,9 @@ timers
     YANG Description: Configuration and operational state parameters for OSPFv2
 timers
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,6 +218,9 @@ timers
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart (container)
@@ -201,6 +228,8 @@ timers
     YANG Description: Configuration and operational state parameters for OSPFv2
 graceful restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -214,6 +243,9 @@ graceful restart
     YANG Description: Configuration and operational state parameters for OSPFv2
 graceful restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -233,12 +265,17 @@ graceful restart
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/mpls (container)
 
     YANG Description: OSPFv2 parameters relating to MPLS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -251,6 +288,9 @@ graceful restart
 
     YANG Description: OSPFv2 parameters relating to MPLS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -270,6 +310,9 @@ graceful restart
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_inter_area_propagation_policies(self):
+    return self.__inter_area_propagation_policies is not None
+
   def _get_inter_area_propagation_policies(self):
     """
     Getter method for inter_area_propagation_policies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies (container)
@@ -277,6 +320,8 @@ graceful restart
     YANG Description: Policies defining how inter-area propagation should be performed
 by the OSPF instance
     """
+    if self.__inter_area_propagation_policies is None:
+        self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__inter_area_propagation_policies
       
   def _set_inter_area_propagation_policies(self, v, load=False):
@@ -290,6 +335,9 @@ by the OSPF instance
     YANG Description: Policies defining how inter-area propagation should be performed
 by the OSPF instance
     """
+    if self.__inter_area_propagation_policies is None:
+        self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -346,12 +394,12 @@ that are global to the OSPFv2 instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__graceful_restart = None
+    self.__mpls = None
+    self.__inter_area_propagation_policies = None
+    self.__state = None
+    self.__timers = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -380,12 +428,17 @@ that are global to the OSPFv2 instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config (container)
 
     YANG Description: Global configuration parameters for OSPFv2
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -398,6 +451,9 @@ that are global to the OSPFv2 instance
 
     YANG Description: Global configuration parameters for OSPFv2
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -417,12 +473,17 @@ that are global to the OSPFv2 instance
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/state (container)
 
     YANG Description: Operational state parameters for OSPFv2
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -435,6 +496,9 @@ that are global to the OSPFv2 instance
 
     YANG Description: Operational state parameters for OSPFv2
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -454,6 +518,9 @@ that are global to the OSPFv2 instance
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers (container)
@@ -461,6 +528,8 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state parameters for OSPFv2
 timers
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -474,6 +543,9 @@ timers
     YANG Description: Configuration and operational state parameters for OSPFv2
 timers
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -493,6 +565,9 @@ timers
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart (container)
@@ -500,6 +575,8 @@ timers
     YANG Description: Configuration and operational state parameters for OSPFv2
 graceful restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -513,6 +590,9 @@ graceful restart
     YANG Description: Configuration and operational state parameters for OSPFv2
 graceful restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -532,12 +612,17 @@ graceful restart
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/mpls (container)
 
     YANG Description: OSPFv2 parameters relating to MPLS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -550,6 +635,9 @@ graceful restart
 
     YANG Description: OSPFv2 parameters relating to MPLS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -569,6 +657,9 @@ graceful restart
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_inter_area_propagation_policies(self):
+    return self.__inter_area_propagation_policies is not None
+
   def _get_inter_area_propagation_policies(self):
     """
     Getter method for inter_area_propagation_policies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies (container)
@@ -576,6 +667,8 @@ graceful restart
     YANG Description: Policies defining how inter-area propagation should be performed
 by the OSPF instance
     """
+    if self.__inter_area_propagation_policies is None:
+        self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__inter_area_propagation_policies
       
   def _set_inter_area_propagation_policies(self, v, load=False):
@@ -589,6 +682,9 @@ by the OSPF instance
     YANG Description: Policies defining how inter-area propagation should be performed
 by the OSPF instance
     """
+    if self.__inter_area_propagation_policies is None:
+        self.__inter_area_propagation_policies = YANGDynClass(base=inter_area_propagation_policies.inter_area_propagation_policies, is_container='container', yang_name="inter-area-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -49,7 +49,7 @@ configuration was derived.
     self._path_helper = False
 
     self._extmethods = False
-    self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__dynamic_neighbor_prefix = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,6 +78,9 @@ configuration was derived.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'dynamic-neighbor-prefixes']
 
+  def _initialized_dynamic_neighbor_prefix(self):
+    return self.__dynamic_neighbor_prefix is not None
+
   def _get_dynamic_neighbor_prefix(self):
     """
     Getter method for dynamic_neighbor_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix (list)
@@ -85,6 +88,8 @@ configuration was derived.
     YANG Description: An individual prefix from which dynamic neighbor
 connections are allowed.
     """
+    if self.__dynamic_neighbor_prefix is None:
+        self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__dynamic_neighbor_prefix
       
   def _set_dynamic_neighbor_prefix(self, v, load=False):
@@ -98,6 +103,9 @@ connections are allowed.
     YANG Description: An individual prefix from which dynamic neighbor
 connections are allowed.
     """
+    if self.__dynamic_neighbor_prefix is None:
+        self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -151,7 +159,7 @@ configuration was derived.
     self._path_helper = False
 
     self._extmethods = False
-    self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__dynamic_neighbor_prefix = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -180,6 +188,9 @@ configuration was derived.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'dynamic-neighbor-prefixes']
 
+  def _initialized_dynamic_neighbor_prefix(self):
+    return self.__dynamic_neighbor_prefix is not None
+
   def _get_dynamic_neighbor_prefix(self):
     """
     Getter method for dynamic_neighbor_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix (list)
@@ -187,6 +198,8 @@ configuration was derived.
     YANG Description: An individual prefix from which dynamic neighbor
 connections are allowed.
     """
+    if self.__dynamic_neighbor_prefix is None:
+        self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__dynamic_neighbor_prefix
       
   def _set_dynamic_neighbor_prefix(self, v, load=False):
@@ -200,6 +213,9 @@ connections are allowed.
     YANG Description: An individual prefix from which dynamic neighbor
 connections are allowed.
     """
+    if self.__dynamic_neighbor_prefix is None:
+        self.__dynamic_neighbor_prefix = YANGDynClass(base=YANGListType("prefix",dynamic_neighbor_prefix.dynamic_neighbor_prefix, yang_name="dynamic-neighbor-prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="dynamic-neighbor-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

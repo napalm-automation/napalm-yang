@@ -41,13 +41,13 @@ data is specific to a single label switched path.
     self._path_helper = False
 
     self._extmethods = False
-    self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__current_path_time = None
+    self.__bytes = None
+    self.__packets = None
+    self.__next_reoptimization_time = None
+    self.__state_changes = None
+    self.__online_time = None
+    self.__path_changes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,6 +76,9 @@ data is specific to a single label switched path.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'state', u'counters']
 
+  def _initialized_bytes(self):
+    return self.__bytes is not None
+
   def _get_bytes(self):
     """
     Getter method for bytes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/bytes (yang:counter64)
@@ -83,6 +86,8 @@ data is specific to a single label switched path.
     YANG Description: Number of bytes that have been forwarded over the
 label switched path.
     """
+    if self.__bytes is None:
+        self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__bytes
       
   def _set_bytes(self, v, load=False):
@@ -96,6 +101,9 @@ label switched path.
     YANG Description: Number of bytes that have been forwarded over the
 label switched path.
     """
+    if self.__bytes is None:
+        self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ label switched path.
     self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_packets(self):
+    return self.__packets is not None
+
   def _get_packets(self):
     """
     Getter method for packets, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/packets (yang:counter64)
@@ -122,6 +133,8 @@ label switched path.
     YANG Description: Number of pacets that have been forwarded over the
 label switched path.
     """
+    if self.__packets is None:
+        self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__packets
       
   def _set_packets(self, v, load=False):
@@ -135,6 +148,9 @@ label switched path.
     YANG Description: Number of pacets that have been forwarded over the
 label switched path.
     """
+    if self.__packets is None:
+        self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ label switched path.
     self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_path_changes(self):
+    return self.__path_changes is not None
+
   def _get_path_changes(self):
     """
     Getter method for path_changes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/path_changes (yang:counter64)
 
     YANG Description: Number of path changes for the label switched path
     """
+    if self.__path_changes is None:
+        self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__path_changes
       
   def _set_path_changes(self, v, load=False):
@@ -172,6 +193,9 @@ label switched path.
 
     YANG Description: Number of path changes for the label switched path
     """
+    if self.__path_changes is None:
+        self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,12 +215,17 @@ label switched path.
     self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_state_changes(self):
+    return self.__state_changes is not None
+
   def _get_state_changes(self):
     """
     Getter method for state_changes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/state_changes (yang:counter64)
 
     YANG Description: Number of state changes for the label switched path
     """
+    if self.__state_changes is None:
+        self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__state_changes
       
   def _set_state_changes(self, v, load=False):
@@ -209,6 +238,9 @@ label switched path.
 
     YANG Description: Number of state changes for the label switched path
     """
+    if self.__state_changes is None:
+        self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -228,6 +260,9 @@ label switched path.
     self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_online_time(self):
+    return self.__online_time is not None
+
   def _get_online_time(self):
     """
     Getter method for online_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/online_time (yang:date-and-time)
@@ -235,6 +270,8 @@ label switched path.
     YANG Description: Indication of the time the label switched path
 transitioned to an Oper Up or in-service state
     """
+    if self.__online_time is None:
+        self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__online_time
       
   def _set_online_time(self, v, load=False):
@@ -248,6 +285,9 @@ transitioned to an Oper Up or in-service state
     YANG Description: Indication of the time the label switched path
 transitioned to an Oper Up or in-service state
     """
+    if self.__online_time is None:
+        self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -267,6 +307,9 @@ transitioned to an Oper Up or in-service state
     self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
 
 
+  def _initialized_current_path_time(self):
+    return self.__current_path_time is not None
+
   def _get_current_path_time(self):
     """
     Getter method for current_path_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/current_path_time (yang:date-and-time)
@@ -275,6 +318,8 @@ transitioned to an Oper Up or in-service state
 current path. This is reset upon a LSP path
 change.
     """
+    if self.__current_path_time is None:
+        self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__current_path_time
       
   def _set_current_path_time(self, v, load=False):
@@ -289,6 +334,9 @@ change.
 current path. This is reset upon a LSP path
 change.
     """
+    if self.__current_path_time is None:
+        self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -308,6 +356,9 @@ change.
     self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
 
 
+  def _initialized_next_reoptimization_time(self):
+    return self.__next_reoptimization_time is not None
+
   def _get_next_reoptimization_time(self):
     """
     Getter method for next_reoptimization_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/next_reoptimization_time (yang:date-and-time)
@@ -315,6 +366,8 @@ change.
     YANG Description: Indicates the next scheduled time the LSP
 will be reoptimized.
     """
+    if self.__next_reoptimization_time is None:
+        self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__next_reoptimization_time
       
   def _set_next_reoptimization_time(self, v, load=False):
@@ -328,6 +381,9 @@ will be reoptimized.
     YANG Description: Indicates the next scheduled time the LSP
 will be reoptimized.
     """
+    if self.__next_reoptimization_time is None:
+        self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -379,13 +435,13 @@ data is specific to a single label switched path.
     self._path_helper = False
 
     self._extmethods = False
-    self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
-    self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__current_path_time = None
+    self.__bytes = None
+    self.__packets = None
+    self.__next_reoptimization_time = None
+    self.__state_changes = None
+    self.__online_time = None
+    self.__path_changes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -414,6 +470,9 @@ data is specific to a single label switched path.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'state', u'counters']
 
+  def _initialized_bytes(self):
+    return self.__bytes is not None
+
   def _get_bytes(self):
     """
     Getter method for bytes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/bytes (yang:counter64)
@@ -421,6 +480,8 @@ data is specific to a single label switched path.
     YANG Description: Number of bytes that have been forwarded over the
 label switched path.
     """
+    if self.__bytes is None:
+        self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__bytes
       
   def _set_bytes(self, v, load=False):
@@ -434,6 +495,9 @@ label switched path.
     YANG Description: Number of bytes that have been forwarded over the
 label switched path.
     """
+    if self.__bytes is None:
+        self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -453,6 +517,9 @@ label switched path.
     self.__bytes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="bytes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_packets(self):
+    return self.__packets is not None
+
   def _get_packets(self):
     """
     Getter method for packets, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/packets (yang:counter64)
@@ -460,6 +527,8 @@ label switched path.
     YANG Description: Number of pacets that have been forwarded over the
 label switched path.
     """
+    if self.__packets is None:
+        self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__packets
       
   def _set_packets(self, v, load=False):
@@ -473,6 +542,9 @@ label switched path.
     YANG Description: Number of pacets that have been forwarded over the
 label switched path.
     """
+    if self.__packets is None:
+        self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -492,12 +564,17 @@ label switched path.
     self.__packets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_path_changes(self):
+    return self.__path_changes is not None
+
   def _get_path_changes(self):
     """
     Getter method for path_changes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/path_changes (yang:counter64)
 
     YANG Description: Number of path changes for the label switched path
     """
+    if self.__path_changes is None:
+        self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__path_changes
       
   def _set_path_changes(self, v, load=False):
@@ -510,6 +587,9 @@ label switched path.
 
     YANG Description: Number of path changes for the label switched path
     """
+    if self.__path_changes is None:
+        self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -529,12 +609,17 @@ label switched path.
     self.__path_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_state_changes(self):
+    return self.__state_changes is not None
+
   def _get_state_changes(self):
     """
     Getter method for state_changes, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/state_changes (yang:counter64)
 
     YANG Description: Number of state changes for the label switched path
     """
+    if self.__state_changes is None:
+        self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__state_changes
       
   def _set_state_changes(self, v, load=False):
@@ -547,6 +632,9 @@ label switched path.
 
     YANG Description: Number of state changes for the label switched path
     """
+    if self.__state_changes is None:
+        self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -566,6 +654,9 @@ label switched path.
     self.__state_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_online_time(self):
+    return self.__online_time is not None
+
   def _get_online_time(self):
     """
     Getter method for online_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/online_time (yang:date-and-time)
@@ -573,6 +664,8 @@ label switched path.
     YANG Description: Indication of the time the label switched path
 transitioned to an Oper Up or in-service state
     """
+    if self.__online_time is None:
+        self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__online_time
       
   def _set_online_time(self, v, load=False):
@@ -586,6 +679,9 @@ transitioned to an Oper Up or in-service state
     YANG Description: Indication of the time the label switched path
 transitioned to an Oper Up or in-service state
     """
+    if self.__online_time is None:
+        self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -605,6 +701,9 @@ transitioned to an Oper Up or in-service state
     self.__online_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="online-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
 
 
+  def _initialized_current_path_time(self):
+    return self.__current_path_time is not None
+
   def _get_current_path_time(self):
     """
     Getter method for current_path_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/current_path_time (yang:date-and-time)
@@ -613,6 +712,8 @@ transitioned to an Oper Up or in-service state
 current path. This is reset upon a LSP path
 change.
     """
+    if self.__current_path_time is None:
+        self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__current_path_time
       
   def _set_current_path_time(self, v, load=False):
@@ -627,6 +728,9 @@ change.
 current path. This is reset upon a LSP path
 change.
     """
+    if self.__current_path_time is None:
+        self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -646,6 +750,9 @@ change.
     self.__current_path_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="current-path-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
 
 
+  def _initialized_next_reoptimization_time(self):
+    return self.__next_reoptimization_time is not None
+
   def _get_next_reoptimization_time(self):
     """
     Getter method for next_reoptimization_time, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/state/counters/next_reoptimization_time (yang:date-and-time)
@@ -653,6 +760,8 @@ change.
     YANG Description: Indicates the next scheduled time the LSP
 will be reoptimized.
     """
+    if self.__next_reoptimization_time is None:
+        self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
     return self.__next_reoptimization_time
       
   def _set_next_reoptimization_time(self, v, load=False):
@@ -666,6 +775,9 @@ will be reoptimized.
     YANG Description: Indicates the next scheduled time the LSP
 will be reoptimized.
     """
+    if self.__next_reoptimization_time is None:
+        self.__next_reoptimization_time = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="next-reoptimization-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

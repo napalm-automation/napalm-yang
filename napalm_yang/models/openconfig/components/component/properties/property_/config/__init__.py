@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=True)
-    self.__value = YANGDynClass(base=[unicode,YANGBool,RestrictedClassType(base_type=long, restriction_dict={'range': ['-9223372036854775808..9223372036854775807']}, int_size=64),RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64),RestrictedPrecisionDecimalType(precision=2),], is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=True)
+    self.__name = None
+    self.__value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'components', u'component', u'properties', u'property', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /components/component/properties/property/config/name (string)
@@ -77,6 +80,8 @@ class config(PybindBase):
     YANG Description: System-supplied name of the property -- this is typically
 non-configurable
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -90,6 +95,9 @@ non-configurable
     YANG Description: System-supplied name of the property -- this is typically
 non-configurable
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ non-configurable
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=True)
 
 
+  def _initialized_value(self):
+    return self.__value is not None
+
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /components/component/properties/property/config/value (union)
@@ -117,6 +128,8 @@ non-configurable
 unsigned integer types may be provided in smaller sizes,
 e.g., int8, uint16, etc.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=[unicode,YANGBool,RestrictedClassType(base_type=long, restriction_dict={'range': ['-9223372036854775808..9223372036854775807']}, int_size=64),RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64),RestrictedPrecisionDecimalType(precision=2),], is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=True)
     return self.__value
       
   def _set_value(self, v, load=False):
@@ -131,6 +144,9 @@ e.g., int8, uint16, etc.
 unsigned integer types may be provided in smaller sizes,
 e.g., int8, uint16, etc.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=[unicode,YANGBool,RestrictedClassType(base_type=long, restriction_dict={'range': ['-9223372036854775808..9223372036854775807']}, int_size=64),RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64),RestrictedPrecisionDecimalType(precision=2),], is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

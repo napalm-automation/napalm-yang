@@ -42,7 +42,7 @@ traffic engineered tunnel.
     self._path_helper = False
 
     self._extmethods = False
-    self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__record_route_object = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ traffic engineered tunnel.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session', u'record-route-objects']
 
+  def _initialized_record_route_object(self):
+    return self.__record_route_object is not None
+
   def _get_record_route_object(self):
     """
     Getter method for record_route_object, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/record_route_objects/record_route_object (list)
@@ -80,6 +83,8 @@ traffic engineered tunnel. Each entry in the list
 may contain a hop IP address, MPLS label allocated
 at the hop, and the flags associated with the entry.
     """
+    if self.__record_route_object is None:
+        self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__record_route_object
       
   def _set_record_route_object(self, v, load=False):
@@ -95,6 +100,9 @@ traffic engineered tunnel. Each entry in the list
 may contain a hop IP address, MPLS label allocated
 at the hop, and the flags associated with the entry.
     """
+    if self.__record_route_object is None:
+        self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -141,7 +149,7 @@ traffic engineered tunnel.
     self._path_helper = False
 
     self._extmethods = False
-    self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__record_route_object = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -170,6 +178,9 @@ traffic engineered tunnel.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session', u'record-route-objects']
 
+  def _initialized_record_route_object(self):
+    return self.__record_route_object is not None
+
   def _get_record_route_object(self):
     """
     Getter method for record_route_object, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/record_route_objects/record_route_object (list)
@@ -179,6 +190,8 @@ traffic engineered tunnel. Each entry in the list
 may contain a hop IP address, MPLS label allocated
 at the hop, and the flags associated with the entry.
     """
+    if self.__record_route_object is None:
+        self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__record_route_object
       
   def _set_record_route_object(self, v, load=False):
@@ -194,6 +207,9 @@ traffic engineered tunnel. Each entry in the list
 may contain a hop IP address, MPLS label allocated
 at the hop, and the flags associated with the entry.
     """
+    if self.__record_route_object is None:
+        self.__record_route_object = YANGDynClass(base=YANGListType("index",record_route_object.record_route_object, yang_name="record-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="record-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

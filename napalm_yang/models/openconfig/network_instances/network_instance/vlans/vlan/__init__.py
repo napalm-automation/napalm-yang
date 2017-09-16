@@ -43,10 +43,10 @@ class vlan(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__members = None
+    self.__vlan_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,12 +75,17 @@ class vlan(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'vlans', u'vlan']
 
+  def _initialized_vlan_id(self):
+    return self.__vlan_id is not None
+
   def _get_vlan_id(self):
     """
     Getter method for vlan_id, mapped from YANG variable /network_instances/network_instance/vlans/vlan/vlan_id (leafref)
 
     YANG Description: references the configured vlan-id
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__vlan_id
       
   def _set_vlan_id(self, v, load=False):
@@ -93,6 +98,9 @@ class vlan(PybindBase):
 
     YANG Description: references the configured vlan-id
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,12 +125,17 @@ class vlan(PybindBase):
     self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config (container)
 
     YANG Description: Configuration parameters for VLANs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -135,6 +148,9 @@ class vlan(PybindBase):
 
     YANG Description: Configuration parameters for VLANs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ class vlan(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/vlans/vlan/state (container)
 
     YANG Description: State variables for VLANs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -172,6 +193,9 @@ class vlan(PybindBase):
 
     YANG Description: State variables for VLANs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,12 +215,17 @@ class vlan(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_members(self):
+    return self.__members is not None
+
   def _get_members(self):
     """
     Getter method for members, mapped from YANG variable /network_instances/network_instance/vlans/vlan/members (container)
 
     YANG Description: Enclosing container for list of member interfaces
     """
+    if self.__members is None:
+        self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__members
       
   def _set_members(self, v, load=False):
@@ -209,6 +238,9 @@ class vlan(PybindBase):
 
     YANG Description: Enclosing container for list of member interfaces
     """
+    if self.__members is None:
+        self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -259,10 +291,10 @@ class vlan(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__members = None
+    self.__vlan_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -291,12 +323,17 @@ class vlan(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'vlans', u'vlan']
 
+  def _initialized_vlan_id(self):
+    return self.__vlan_id is not None
+
   def _get_vlan_id(self):
     """
     Getter method for vlan_id, mapped from YANG variable /network_instances/network_instance/vlans/vlan/vlan_id (leafref)
 
     YANG Description: references the configured vlan-id
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__vlan_id
       
   def _set_vlan_id(self, v, load=False):
@@ -309,6 +346,9 @@ class vlan(PybindBase):
 
     YANG Description: references the configured vlan-id
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -333,12 +373,17 @@ class vlan(PybindBase):
     self.__vlan_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config (container)
 
     YANG Description: Configuration parameters for VLANs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -351,6 +396,9 @@ class vlan(PybindBase):
 
     YANG Description: Configuration parameters for VLANs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -370,12 +418,17 @@ class vlan(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/vlans/vlan/state (container)
 
     YANG Description: State variables for VLANs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -388,6 +441,9 @@ class vlan(PybindBase):
 
     YANG Description: State variables for VLANs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -407,12 +463,17 @@ class vlan(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_members(self):
+    return self.__members is not None
+
   def _get_members(self):
     """
     Getter method for members, mapped from YANG variable /network_instances/network_instance/vlans/vlan/members (container)
 
     YANG Description: Enclosing container for list of member interfaces
     """
+    if self.__members is None:
+        self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__members
       
   def _set_members(self, v, load=False):
@@ -425,6 +486,9 @@ class vlan(PybindBase):
 
     YANG Description: Enclosing container for list of member interfaces
     """
+    if self.__members is None:
+        self.__members = YANGDynClass(base=members.members, is_container='container', yang_name="members", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

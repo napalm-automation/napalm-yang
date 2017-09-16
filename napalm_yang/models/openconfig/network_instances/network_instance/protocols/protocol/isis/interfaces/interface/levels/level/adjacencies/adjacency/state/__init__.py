@@ -41,26 +41,26 @@ remote system
     self._path_helper = False
 
     self._extmethods = False
-    self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
-    self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
-    self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
-    self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
-    self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
-    self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
-    self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
-    self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
-    self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
-    self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
-    self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    self.__restart_suppress = None
+    self.__up_time = None
+    self.__local_extended_circuit_id = None
+    self.__multi_topology = None
+    self.__restart_status = None
+    self.__neighbor_extended_circuit_id = None
+    self.__adjacency_state = None
+    self.__nlpid = None
+    self.__area_address = None
+    self.__topology = None
+    self.__priority = None
+    self.__neighbor_ipv6_address = None
+    self.__system_id = None
+    self.__dis_system_id = None
+    self.__neighbor_snpa = None
+    self.__neighbor_ipv4_address = None
+    self.__remaining_hold_time = None
+    self.__neighbor_circuit_type = None
+    self.__restart_support = None
+    self.__adjacency_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -89,12 +89,17 @@ remote system
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'adjacencies', u'adjacency', u'state']
 
+  def _initialized_system_id(self):
+    return self.__system_id is not None
+
   def _get_system_id(self):
     """
     Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/system_id (oc-isis-types:system-id)
 
     YANG Description: ISIS neighbor system-id.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__system_id
       
   def _set_system_id(self, v, load=False):
@@ -107,6 +112,9 @@ remote system
 
     YANG Description: ISIS neighbor system-id.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -126,12 +134,17 @@ remote system
     self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
 
 
+  def _initialized_neighbor_ipv4_address(self):
+    return self.__neighbor_ipv4_address is not None
+
   def _get_neighbor_ipv4_address(self):
     """
     Getter method for neighbor_ipv4_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_ipv4_address (inet:ipv4-address-no-zone)
 
     YANG Description: ISIS Neighbor IPv4 address.
     """
+    if self.__neighbor_ipv4_address is None:
+        self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__neighbor_ipv4_address
       
   def _set_neighbor_ipv4_address(self, v, load=False):
@@ -144,6 +157,9 @@ remote system
 
     YANG Description: ISIS Neighbor IPv4 address.
     """
+    if self.__neighbor_ipv4_address is None:
+        self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -163,12 +179,17 @@ remote system
     self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_neighbor_ipv6_address(self):
+    return self.__neighbor_ipv6_address is not None
+
   def _get_neighbor_ipv6_address(self):
     """
     Getter method for neighbor_ipv6_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_ipv6_address (inet:ipv6-address-no-zone)
 
     YANG Description: ISIS Neighbor IPv6 address.
     """
+    if self.__neighbor_ipv6_address is None:
+        self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
     return self.__neighbor_ipv6_address
       
   def _set_neighbor_ipv6_address(self, v, load=False):
@@ -181,6 +202,9 @@ remote system
 
     YANG Description: ISIS Neighbor IPv6 address.
     """
+    if self.__neighbor_ipv6_address is None:
+        self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,12 +224,17 @@ remote system
     self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
 
 
+  def _initialized_neighbor_snpa(self):
+    return self.__neighbor_snpa is not None
+
   def _get_neighbor_snpa(self):
     """
     Getter method for neighbor_snpa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_snpa (oc-isis-types:snpa)
 
     YANG Description: ISIS neighbor SNPA.
     """
+    if self.__neighbor_snpa is None:
+        self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
     return self.__neighbor_snpa
       
   def _set_neighbor_snpa(self, v, load=False):
@@ -218,6 +247,9 @@ remote system
 
     YANG Description: ISIS neighbor SNPA.
     """
+    if self.__neighbor_snpa is None:
+        self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +269,17 @@ remote system
     self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
 
 
+  def _initialized_local_extended_circuit_id(self):
+    return self.__local_extended_circuit_id is not None
+
   def _get_local_extended_circuit_id(self):
     """
     Getter method for local_extended_circuit_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/local_extended_circuit_id (oc-isis-types:extended-circuit-id)
 
     YANG Description: Local extended circuit ID.
     """
+    if self.__local_extended_circuit_id is None:
+        self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
     return self.__local_extended_circuit_id
       
   def _set_local_extended_circuit_id(self, v, load=False):
@@ -255,6 +292,9 @@ remote system
 
     YANG Description: Local extended circuit ID.
     """
+    if self.__local_extended_circuit_id is None:
+        self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -274,12 +314,17 @@ remote system
     self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
 
 
+  def _initialized_neighbor_extended_circuit_id(self):
+    return self.__neighbor_extended_circuit_id is not None
+
   def _get_neighbor_extended_circuit_id(self):
     """
     Getter method for neighbor_extended_circuit_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_extended_circuit_id (oc-isis-types:extended-circuit-id)
 
     YANG Description: ISIS neighbor extended circuit ID.
     """
+    if self.__neighbor_extended_circuit_id is None:
+        self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
     return self.__neighbor_extended_circuit_id
       
   def _set_neighbor_extended_circuit_id(self, v, load=False):
@@ -292,6 +337,9 @@ remote system
 
     YANG Description: ISIS neighbor extended circuit ID.
     """
+    if self.__neighbor_extended_circuit_id is None:
+        self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -311,12 +359,17 @@ remote system
     self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/priority (uint8)
 
     YANG Description: Priority of the neighboring IS(LAN Hello only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -329,6 +382,9 @@ remote system
 
     YANG Description: Priority of the neighboring IS(LAN Hello only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -348,12 +404,17 @@ remote system
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_dis_system_id(self):
+    return self.__dis_system_id is not None
+
   def _get_dis_system_id(self):
     """
     Getter method for dis_system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/dis_system_id (oc-isis-types:system-id)
 
     YANG Description: DIS System ID(LAN hello only).
     """
+    if self.__dis_system_id is None:
+        self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__dis_system_id
       
   def _set_dis_system_id(self, v, load=False):
@@ -366,6 +427,9 @@ remote system
 
     YANG Description: DIS System ID(LAN hello only).
     """
+    if self.__dis_system_id is None:
+        self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -385,12 +449,17 @@ remote system
     self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
 
 
+  def _initialized_neighbor_circuit_type(self):
+    return self.__neighbor_circuit_type is not None
+
   def _get_neighbor_circuit_type(self):
     """
     Getter method for neighbor_circuit_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_circuit_type (oc-isis-types:level-type)
 
     YANG Description: Received ISIS circuit type (level-1, level-2, level-1-2).
     """
+    if self.__neighbor_circuit_type is None:
+        self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__neighbor_circuit_type
       
   def _set_neighbor_circuit_type(self, v, load=False):
@@ -403,6 +472,9 @@ remote system
 
     YANG Description: Received ISIS circuit type (level-1, level-2, level-1-2).
     """
+    if self.__neighbor_circuit_type is None:
+        self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -422,12 +494,17 @@ remote system
     self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_adjacency_type(self):
+    return self.__adjacency_type is not None
+
   def _get_adjacency_type(self):
     """
     Getter method for adjacency_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/adjacency_type (oc-isis-types:level-type)
 
     YANG Description: Formed ISIS adjacency type(level-1, level-2, level-1-2).
     """
+    if self.__adjacency_type is None:
+        self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__adjacency_type
       
   def _set_adjacency_type(self, v, load=False):
@@ -440,6 +517,9 @@ remote system
 
     YANG Description: Formed ISIS adjacency type(level-1, level-2, level-1-2).
     """
+    if self.__adjacency_type is None:
+        self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -459,12 +539,17 @@ remote system
     self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_adjacency_state(self):
+    return self.__adjacency_state is not None
+
   def _get_adjacency_state(self):
     """
     Getter method for adjacency_state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/adjacency_state (oc-isis-types:isis-interface-adj-state)
 
     YANG Description: P2P 3-way ISIS adjacency state(up, down, init, failed).
     """
+    if self.__adjacency_state is None:
+        self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
     return self.__adjacency_state
       
   def _set_adjacency_state(self, v, load=False):
@@ -477,6 +562,9 @@ remote system
 
     YANG Description: P2P 3-way ISIS adjacency state(up, down, init, failed).
     """
+    if self.__adjacency_state is None:
+        self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -496,6 +584,9 @@ remote system
     self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
 
 
+  def _initialized_remaining_hold_time(self):
+    return self.__remaining_hold_time is not None
+
   def _get_remaining_hold_time(self):
     """
     Getter method for remaining_hold_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/remaining_hold_time (uint16)
@@ -503,6 +594,8 @@ remote system
     YANG Description: Holding time in seconds for adjacency. This value is based on received
 hello PDUs and the elapsed time since receipt.
     """
+    if self.__remaining_hold_time is None:
+        self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__remaining_hold_time
       
   def _set_remaining_hold_time(self, v, load=False):
@@ -516,6 +609,9 @@ hello PDUs and the elapsed time since receipt.
     YANG Description: Holding time in seconds for adjacency. This value is based on received
 hello PDUs and the elapsed time since receipt.
     """
+    if self.__remaining_hold_time is None:
+        self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -535,12 +631,17 @@ hello PDUs and the elapsed time since receipt.
     self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_up_time(self):
+    return self.__up_time is not None
+
   def _get_up_time(self):
     """
     Getter method for up_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/up_time (yang:timestamp)
 
     YANG Description: Adjacency up time.
     """
+    if self.__up_time is None:
+        self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
     return self.__up_time
       
   def _set_up_time(self, v, load=False):
@@ -553,6 +654,9 @@ hello PDUs and the elapsed time since receipt.
 
     YANG Description: Adjacency up time.
     """
+    if self.__up_time is None:
+        self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -572,12 +676,17 @@ hello PDUs and the elapsed time since receipt.
     self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
 
 
+  def _initialized_multi_topology(self):
+    return self.__multi_topology is not None
+
   def _get_multi_topology(self):
     """
     Getter method for multi_topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/multi_topology (boolean)
 
     YANG Description: When set to true, ISIS multi-topology is supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__multi_topology
       
   def _set_multi_topology(self, v, load=False):
@@ -590,6 +699,9 @@ hello PDUs and the elapsed time since receipt.
 
     YANG Description: When set to true, ISIS multi-topology is supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -609,6 +721,9 @@ hello PDUs and the elapsed time since receipt.
     self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_topology(self):
+    return self.__topology is not None
+
   def _get_topology(self):
     """
     Getter method for topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/topology (identityref)
@@ -616,6 +731,8 @@ hello PDUs and the elapsed time since receipt.
     YANG Description: ISIS topology type support(ipv4-unicast, ipv6-unicast,
 ipv4-multicast, ipv6-multicast).
     """
+    if self.__topology is None:
+        self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__topology
       
   def _set_topology(self, v, load=False):
@@ -629,6 +746,9 @@ ipv4-multicast, ipv6-multicast).
     YANG Description: ISIS topology type support(ipv4-unicast, ipv6-unicast,
 ipv4-multicast, ipv6-multicast).
     """
+    if self.__topology is None:
+        self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -648,12 +768,17 @@ ipv4-multicast, ipv6-multicast).
     self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_restart_support(self):
+    return self.__restart_support is not None
+
   def _get_restart_support(self):
     """
     Getter method for restart_support, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_support (boolean)
 
     YANG Description: When set to true, Graceful-restart signaling is supported.
     """
+    if self.__restart_support is None:
+        self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_support
       
   def _set_restart_support(self, v, load=False):
@@ -666,6 +791,9 @@ ipv4-multicast, ipv6-multicast).
 
     YANG Description: When set to true, Graceful-restart signaling is supported.
     """
+    if self.__restart_support is None:
+        self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -685,6 +813,9 @@ ipv4-multicast, ipv6-multicast).
     self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_suppress(self):
+    return self.__restart_suppress is not None
+
   def _get_restart_suppress(self):
     """
     Getter method for restart_suppress, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_suppress (boolean)
@@ -693,6 +824,8 @@ ipv4-multicast, ipv6-multicast).
 starting router to  request that its neighbor suppress advertisement of
 the adjacency  to the starting router in the neighbor's LSPs.
     """
+    if self.__restart_suppress is None:
+        self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_suppress
       
   def _set_restart_suppress(self, v, load=False):
@@ -707,6 +840,9 @@ the adjacency  to the starting router in the neighbor's LSPs.
 starting router to  request that its neighbor suppress advertisement of
 the adjacency  to the starting router in the neighbor's LSPs.
     """
+    if self.__restart_suppress is None:
+        self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -726,6 +862,9 @@ the adjacency  to the starting router in the neighbor's LSPs.
     self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_status(self):
+    return self.__restart_status is not None
+
   def _get_restart_status(self):
     """
     Getter method for restart_status, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_status (boolean)
@@ -734,6 +873,8 @@ the adjacency  to the starting router in the neighbor's LSPs.
 (re)starting router to signal to its neighbors that a (re)start is in
 progress.
     """
+    if self.__restart_status is None:
+        self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_status
       
   def _set_restart_status(self, v, load=False):
@@ -748,6 +889,9 @@ progress.
 (re)starting router to signal to its neighbors that a (re)start is in
 progress.
     """
+    if self.__restart_status is None:
+        self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -767,12 +911,17 @@ progress.
     self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_area_address(self):
+    return self.__area_address is not None
+
   def _get_area_address(self):
     """
     Getter method for area_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/area_address (oc-isis-types:area-address)
 
     YANG Description: List of ISIS area-address(es).
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
     return self.__area_address
       
   def _set_area_address(self, v, load=False):
@@ -785,6 +934,9 @@ progress.
 
     YANG Description: List of ISIS area-address(es).
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -804,6 +956,9 @@ progress.
     self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
 
 
+  def _initialized_nlpid(self):
+    return self.__nlpid is not None
+
   def _get_nlpid(self):
     """
     Getter method for nlpid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/nlpid (enumeration)
@@ -811,6 +966,8 @@ progress.
     YANG Description: Supported Protocol. IPv4 is defined as (0xcc)
 and IPv6 - (0x8e). ISIS reference is TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__nlpid
       
   def _set_nlpid(self, v, load=False):
@@ -824,6 +981,9 @@ and IPv6 - (0x8e). ISIS reference is TLV 129.
     YANG Description: Supported Protocol. IPv4 is defined as (0xcc)
 and IPv6 - (0x8e). ISIS reference is TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -888,26 +1048,26 @@ remote system
     self._path_helper = False
 
     self._extmethods = False
-    self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
-    self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
-    self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
-    self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
-    self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
-    self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
-    self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
-    self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
-    self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
-    self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
-    self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    self.__restart_suppress = None
+    self.__up_time = None
+    self.__local_extended_circuit_id = None
+    self.__multi_topology = None
+    self.__restart_status = None
+    self.__neighbor_extended_circuit_id = None
+    self.__adjacency_state = None
+    self.__nlpid = None
+    self.__area_address = None
+    self.__topology = None
+    self.__priority = None
+    self.__neighbor_ipv6_address = None
+    self.__system_id = None
+    self.__dis_system_id = None
+    self.__neighbor_snpa = None
+    self.__neighbor_ipv4_address = None
+    self.__remaining_hold_time = None
+    self.__neighbor_circuit_type = None
+    self.__restart_support = None
+    self.__adjacency_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -936,12 +1096,17 @@ remote system
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'adjacencies', u'adjacency', u'state']
 
+  def _initialized_system_id(self):
+    return self.__system_id is not None
+
   def _get_system_id(self):
     """
     Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/system_id (oc-isis-types:system-id)
 
     YANG Description: ISIS neighbor system-id.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__system_id
       
   def _set_system_id(self, v, load=False):
@@ -954,6 +1119,9 @@ remote system
 
     YANG Description: ISIS neighbor system-id.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -973,12 +1141,17 @@ remote system
     self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
 
 
+  def _initialized_neighbor_ipv4_address(self):
+    return self.__neighbor_ipv4_address is not None
+
   def _get_neighbor_ipv4_address(self):
     """
     Getter method for neighbor_ipv4_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_ipv4_address (inet:ipv4-address-no-zone)
 
     YANG Description: ISIS Neighbor IPv4 address.
     """
+    if self.__neighbor_ipv4_address is None:
+        self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__neighbor_ipv4_address
       
   def _set_neighbor_ipv4_address(self, v, load=False):
@@ -991,6 +1164,9 @@ remote system
 
     YANG Description: ISIS Neighbor IPv4 address.
     """
+    if self.__neighbor_ipv4_address is None:
+        self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1010,12 +1186,17 @@ remote system
     self.__neighbor_ipv4_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="neighbor-ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_neighbor_ipv6_address(self):
+    return self.__neighbor_ipv6_address is not None
+
   def _get_neighbor_ipv6_address(self):
     """
     Getter method for neighbor_ipv6_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_ipv6_address (inet:ipv6-address-no-zone)
 
     YANG Description: ISIS Neighbor IPv6 address.
     """
+    if self.__neighbor_ipv6_address is None:
+        self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
     return self.__neighbor_ipv6_address
       
   def _set_neighbor_ipv6_address(self, v, load=False):
@@ -1028,6 +1209,9 @@ remote system
 
     YANG Description: ISIS Neighbor IPv6 address.
     """
+    if self.__neighbor_ipv6_address is None:
+        self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1047,12 +1231,17 @@ remote system
     self.__neighbor_ipv6_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="neighbor-ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-address-no-zone', is_config=False)
 
 
+  def _initialized_neighbor_snpa(self):
+    return self.__neighbor_snpa is not None
+
   def _get_neighbor_snpa(self):
     """
     Getter method for neighbor_snpa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_snpa (oc-isis-types:snpa)
 
     YANG Description: ISIS neighbor SNPA.
     """
+    if self.__neighbor_snpa is None:
+        self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
     return self.__neighbor_snpa
       
   def _set_neighbor_snpa(self, v, load=False):
@@ -1065,6 +1254,9 @@ remote system
 
     YANG Description: ISIS neighbor SNPA.
     """
+    if self.__neighbor_snpa is None:
+        self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1084,12 +1276,17 @@ remote system
     self.__neighbor_snpa = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'length': [u'0 .. 20']}), is_leaf=True, yang_name="neighbor-snpa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:snpa', is_config=False)
 
 
+  def _initialized_local_extended_circuit_id(self):
+    return self.__local_extended_circuit_id is not None
+
   def _get_local_extended_circuit_id(self):
     """
     Getter method for local_extended_circuit_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/local_extended_circuit_id (oc-isis-types:extended-circuit-id)
 
     YANG Description: Local extended circuit ID.
     """
+    if self.__local_extended_circuit_id is None:
+        self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
     return self.__local_extended_circuit_id
       
   def _set_local_extended_circuit_id(self, v, load=False):
@@ -1102,6 +1299,9 @@ remote system
 
     YANG Description: Local extended circuit ID.
     """
+    if self.__local_extended_circuit_id is None:
+        self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1121,12 +1321,17 @@ remote system
     self.__local_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
 
 
+  def _initialized_neighbor_extended_circuit_id(self):
+    return self.__neighbor_extended_circuit_id is not None
+
   def _get_neighbor_extended_circuit_id(self):
     """
     Getter method for neighbor_extended_circuit_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_extended_circuit_id (oc-isis-types:extended-circuit-id)
 
     YANG Description: ISIS neighbor extended circuit ID.
     """
+    if self.__neighbor_extended_circuit_id is None:
+        self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
     return self.__neighbor_extended_circuit_id
       
   def _set_neighbor_extended_circuit_id(self, v, load=False):
@@ -1139,6 +1344,9 @@ remote system
 
     YANG Description: ISIS neighbor extended circuit ID.
     """
+    if self.__neighbor_extended_circuit_id is None:
+        self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1158,12 +1366,17 @@ remote system
     self.__neighbor_extended_circuit_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="neighbor-extended-circuit-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:extended-circuit-id', is_config=False)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/priority (uint8)
 
     YANG Description: Priority of the neighboring IS(LAN Hello only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -1176,6 +1389,9 @@ remote system
 
     YANG Description: Priority of the neighboring IS(LAN Hello only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1195,12 +1411,17 @@ remote system
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_dis_system_id(self):
+    return self.__dis_system_id is not None
+
   def _get_dis_system_id(self):
     """
     Getter method for dis_system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/dis_system_id (oc-isis-types:system-id)
 
     YANG Description: DIS System ID(LAN hello only).
     """
+    if self.__dis_system_id is None:
+        self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__dis_system_id
       
   def _set_dis_system_id(self, v, load=False):
@@ -1213,6 +1434,9 @@ remote system
 
     YANG Description: DIS System ID(LAN hello only).
     """
+    if self.__dis_system_id is None:
+        self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1232,12 +1456,17 @@ remote system
     self.__dis_system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="dis-system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
 
 
+  def _initialized_neighbor_circuit_type(self):
+    return self.__neighbor_circuit_type is not None
+
   def _get_neighbor_circuit_type(self):
     """
     Getter method for neighbor_circuit_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/neighbor_circuit_type (oc-isis-types:level-type)
 
     YANG Description: Received ISIS circuit type (level-1, level-2, level-1-2).
     """
+    if self.__neighbor_circuit_type is None:
+        self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__neighbor_circuit_type
       
   def _set_neighbor_circuit_type(self, v, load=False):
@@ -1250,6 +1479,9 @@ remote system
 
     YANG Description: Received ISIS circuit type (level-1, level-2, level-1-2).
     """
+    if self.__neighbor_circuit_type is None:
+        self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1269,12 +1501,17 @@ remote system
     self.__neighbor_circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="neighbor-circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_adjacency_type(self):
+    return self.__adjacency_type is not None
+
   def _get_adjacency_type(self):
     """
     Getter method for adjacency_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/adjacency_type (oc-isis-types:level-type)
 
     YANG Description: Formed ISIS adjacency type(level-1, level-2, level-1-2).
     """
+    if self.__adjacency_type is None:
+        self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__adjacency_type
       
   def _set_adjacency_type(self, v, load=False):
@@ -1287,6 +1524,9 @@ remote system
 
     YANG Description: Formed ISIS adjacency type(level-1, level-2, level-1-2).
     """
+    if self.__adjacency_type is None:
+        self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1306,12 +1546,17 @@ remote system
     self.__adjacency_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="adjacency-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_adjacency_state(self):
+    return self.__adjacency_state is not None
+
   def _get_adjacency_state(self):
     """
     Getter method for adjacency_state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/adjacency_state (oc-isis-types:isis-interface-adj-state)
 
     YANG Description: P2P 3-way ISIS adjacency state(up, down, init, failed).
     """
+    if self.__adjacency_state is None:
+        self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
     return self.__adjacency_state
       
   def _set_adjacency_state(self, v, load=False):
@@ -1324,6 +1569,9 @@ remote system
 
     YANG Description: P2P 3-way ISIS adjacency state(up, down, init, failed).
     """
+    if self.__adjacency_state is None:
+        self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1343,6 +1591,9 @@ remote system
     self.__adjacency_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'FAILED': {}, u'INIT': {}, u'UP': {}},), is_leaf=True, yang_name="adjacency-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:isis-interface-adj-state', is_config=False)
 
 
+  def _initialized_remaining_hold_time(self):
+    return self.__remaining_hold_time is not None
+
   def _get_remaining_hold_time(self):
     """
     Getter method for remaining_hold_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/remaining_hold_time (uint16)
@@ -1350,6 +1601,8 @@ remote system
     YANG Description: Holding time in seconds for adjacency. This value is based on received
 hello PDUs and the elapsed time since receipt.
     """
+    if self.__remaining_hold_time is None:
+        self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__remaining_hold_time
       
   def _set_remaining_hold_time(self, v, load=False):
@@ -1363,6 +1616,9 @@ hello PDUs and the elapsed time since receipt.
     YANG Description: Holding time in seconds for adjacency. This value is based on received
 hello PDUs and the elapsed time since receipt.
     """
+    if self.__remaining_hold_time is None:
+        self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1382,12 +1638,17 @@ hello PDUs and the elapsed time since receipt.
     self.__remaining_hold_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_up_time(self):
+    return self.__up_time is not None
+
   def _get_up_time(self):
     """
     Getter method for up_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/up_time (yang:timestamp)
 
     YANG Description: Adjacency up time.
     """
+    if self.__up_time is None:
+        self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
     return self.__up_time
       
   def _set_up_time(self, v, load=False):
@@ -1400,6 +1661,9 @@ hello PDUs and the elapsed time since receipt.
 
     YANG Description: Adjacency up time.
     """
+    if self.__up_time is None:
+        self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1419,12 +1683,17 @@ hello PDUs and the elapsed time since receipt.
     self.__up_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="up-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:timestamp', is_config=False)
 
 
+  def _initialized_multi_topology(self):
+    return self.__multi_topology is not None
+
   def _get_multi_topology(self):
     """
     Getter method for multi_topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/multi_topology (boolean)
 
     YANG Description: When set to true, ISIS multi-topology is supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__multi_topology
       
   def _set_multi_topology(self, v, load=False):
@@ -1437,6 +1706,9 @@ hello PDUs and the elapsed time since receipt.
 
     YANG Description: When set to true, ISIS multi-topology is supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1456,6 +1728,9 @@ hello PDUs and the elapsed time since receipt.
     self.__multi_topology = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_topology(self):
+    return self.__topology is not None
+
   def _get_topology(self):
     """
     Getter method for topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/topology (identityref)
@@ -1463,6 +1738,8 @@ hello PDUs and the elapsed time since receipt.
     YANG Description: ISIS topology type support(ipv4-unicast, ipv6-unicast,
 ipv4-multicast, ipv6-multicast).
     """
+    if self.__topology is None:
+        self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__topology
       
   def _set_topology(self, v, load=False):
@@ -1476,6 +1753,9 @@ ipv4-multicast, ipv6-multicast).
     YANG Description: ISIS topology type support(ipv4-unicast, ipv6-unicast,
 ipv4-multicast, ipv6-multicast).
     """
+    if self.__topology is None:
+        self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1495,12 +1775,17 @@ ipv4-multicast, ipv6-multicast).
     self.__topology = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},)), is_leaf=False, yang_name="topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_restart_support(self):
+    return self.__restart_support is not None
+
   def _get_restart_support(self):
     """
     Getter method for restart_support, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_support (boolean)
 
     YANG Description: When set to true, Graceful-restart signaling is supported.
     """
+    if self.__restart_support is None:
+        self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_support
       
   def _set_restart_support(self, v, load=False):
@@ -1513,6 +1798,9 @@ ipv4-multicast, ipv6-multicast).
 
     YANG Description: When set to true, Graceful-restart signaling is supported.
     """
+    if self.__restart_support is None:
+        self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1532,6 +1820,9 @@ ipv4-multicast, ipv6-multicast).
     self.__restart_support = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-support", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_suppress(self):
+    return self.__restart_suppress is not None
+
   def _get_restart_suppress(self):
     """
     Getter method for restart_suppress, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_suppress (boolean)
@@ -1540,6 +1831,8 @@ ipv4-multicast, ipv6-multicast).
 starting router to  request that its neighbor suppress advertisement of
 the adjacency  to the starting router in the neighbor's LSPs.
     """
+    if self.__restart_suppress is None:
+        self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_suppress
       
   def _set_restart_suppress(self, v, load=False):
@@ -1554,6 +1847,9 @@ the adjacency  to the starting router in the neighbor's LSPs.
 starting router to  request that its neighbor suppress advertisement of
 the adjacency  to the starting router in the neighbor's LSPs.
     """
+    if self.__restart_suppress is None:
+        self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1573,6 +1869,9 @@ the adjacency  to the starting router in the neighbor's LSPs.
     self.__restart_suppress = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-suppress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_status(self):
+    return self.__restart_status is not None
+
   def _get_restart_status(self):
     """
     Getter method for restart_status, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/restart_status (boolean)
@@ -1581,6 +1880,8 @@ the adjacency  to the starting router in the neighbor's LSPs.
 (re)starting router to signal to its neighbors that a (re)start is in
 progress.
     """
+    if self.__restart_status is None:
+        self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__restart_status
       
   def _set_restart_status(self, v, load=False):
@@ -1595,6 +1896,9 @@ progress.
 (re)starting router to signal to its neighbors that a (re)start is in
 progress.
     """
+    if self.__restart_status is None:
+        self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1614,12 +1918,17 @@ progress.
     self.__restart_status = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="restart-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_area_address(self):
+    return self.__area_address is not None
+
   def _get_area_address(self):
     """
     Getter method for area_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/area_address (oc-isis-types:area-address)
 
     YANG Description: List of ISIS area-address(es).
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
     return self.__area_address
       
   def _set_area_address(self, v, load=False):
@@ -1632,6 +1941,9 @@ progress.
 
     YANG Description: List of ISIS area-address(es).
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1651,6 +1963,9 @@ progress.
     self.__area_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{2}\\.([0-9A-Fa-f]{4}\\.){0,3}'})), is_leaf=False, yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:area-address', is_config=False)
 
 
+  def _initialized_nlpid(self):
+    return self.__nlpid is not None
+
   def _get_nlpid(self):
     """
     Getter method for nlpid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency/state/nlpid (enumeration)
@@ -1658,6 +1973,8 @@ progress.
     YANG Description: Supported Protocol. IPv4 is defined as (0xcc)
 and IPv6 - (0x8e). ISIS reference is TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__nlpid
       
   def _set_nlpid(self, v, load=False):
@@ -1671,6 +1988,9 @@ and IPv6 - (0x8e). ISIS reference is TLV 129.
     YANG Description: Supported Protocol. IPv4 is defined as (0xcc)
 and IPv6 - (0x8e). ISIS reference is TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4': {}, u'IPV6': {}},)), is_leaf=False, yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

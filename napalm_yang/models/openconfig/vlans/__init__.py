@@ -42,7 +42,7 @@ variables
     self._path_helper = False
 
     self._extmethods = False
-    self.__vlan = YANGDynClass(base=YANGListType("vlan_id",vlan.vlan, yang_name="vlan", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='vlan-id', extensions=None), is_container='list', yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
+    self.__vlan = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ variables
     else:
       return [u'vlans']
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /vlans/vlan (list)
 
     YANG Description: Configured VLANs keyed by id
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=YANGListType("vlan_id",vlan.vlan, yang_name="vlan", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='vlan-id', extensions=None), is_container='list', yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -89,6 +94,9 @@ variables
 
     YANG Description: Configured VLANs keyed by id
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=YANGListType("vlan_id",vlan.vlan, yang_name="vlan", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='vlan-id', extensions=None), is_container='list', yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

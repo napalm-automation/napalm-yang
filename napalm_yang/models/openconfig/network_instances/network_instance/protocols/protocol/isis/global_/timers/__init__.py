@@ -44,10 +44,10 @@ class timers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsp_generation = None
+    self.__state = None
+    self.__config = None
+    self.__spf = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class timers(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config (container)
 
     YANG Description: This container defines ISIS global timers configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -94,6 +99,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS global timers configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ class timers(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/state (container)
 
     YANG Description: This container defines state information for ISIS global timers.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -131,6 +144,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines state information for ISIS global timers.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,12 +166,17 @@ class timers(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_spf(self):
+    return self.__spf is not None
+
   def _get_spf(self):
     """
     Getter method for spf, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf (container)
 
     YANG Description: This container defines ISIS SPF timer settings.
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__spf
       
   def _set_spf(self, v, load=False):
@@ -168,6 +189,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS SPF timer settings.
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ class timers(PybindBase):
     self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsp_generation(self):
+    return self.__lsp_generation is not None
+
   def _get_lsp_generation(self):
     """
     Getter method for lsp_generation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation (container)
 
     YANG Description: This container defines ISIS LSP Generation.
     """
+    if self.__lsp_generation is None:
+        self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp_generation
       
   def _set_lsp_generation(self, v, load=False):
@@ -205,6 +234,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS LSP Generation.
     """
+    if self.__lsp_generation is None:
+        self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -256,10 +288,10 @@ class timers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsp_generation = None
+    self.__state = None
+    self.__config = None
+    self.__spf = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -288,12 +320,17 @@ class timers(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config (container)
 
     YANG Description: This container defines ISIS global timers configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -306,6 +343,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS global timers configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -325,12 +365,17 @@ class timers(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/state (container)
 
     YANG Description: This container defines state information for ISIS global timers.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -343,6 +388,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines state information for ISIS global timers.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,12 +410,17 @@ class timers(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_spf(self):
+    return self.__spf is not None
+
   def _get_spf(self):
     """
     Getter method for spf, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf (container)
 
     YANG Description: This container defines ISIS SPF timer settings.
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__spf
       
   def _set_spf(self, v, load=False):
@@ -380,6 +433,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS SPF timer settings.
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,12 +455,17 @@ class timers(PybindBase):
     self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsp_generation(self):
+    return self.__lsp_generation is not None
+
   def _get_lsp_generation(self):
     """
     Getter method for lsp_generation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation (container)
 
     YANG Description: This container defines ISIS LSP Generation.
     """
+    if self.__lsp_generation is None:
+        self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp_generation
       
   def _set_lsp_generation(self, v, load=False):
@@ -417,6 +478,9 @@ class timers(PybindBase):
 
     YANG Description: This container defines ISIS LSP Generation.
     """
+    if self.__lsp_generation is None:
+        self.__lsp_generation = YANGDynClass(base=lsp_generation.lsp_generation, is_container='container', yang_name="lsp-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

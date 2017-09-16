@@ -42,7 +42,7 @@ and state
     self._path_helper = False
 
     self._extmethods = False
-    self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__admin_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ and state
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups']
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group (list)
@@ -78,6 +81,8 @@ and state
     YANG Description: configuration of value to name mapping
 for mpls affinities/admin-groups
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -91,6 +96,9 @@ for mpls affinities/admin-groups
     YANG Description: configuration of value to name mapping
 for mpls affinities/admin-groups
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ and state
     self._path_helper = False
 
     self._extmethods = False
-    self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__admin_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ and state
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups']
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group (list)
@@ -173,6 +184,8 @@ and state
     YANG Description: configuration of value to name mapping
 for mpls affinities/admin-groups
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -186,6 +199,9 @@ for mpls affinities/admin-groups
     YANG Description: configuration of value to name mapping
 for mpls affinities/admin-groups
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("admin_group_name",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='admin-group-name', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

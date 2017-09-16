@@ -43,9 +43,9 @@ virtual link
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__remote_router_id = None
+    self.__config = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ virtual link
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links', u'virtual-link']
 
+  def _initialized_remote_router_id(self):
+    return self.__remote_router_id is not None
+
   def _get_remote_router_id(self):
     """
     Getter method for remote_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/remote_router_id (leafref)
 
     YANG Description: Reference to the remote router ID
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__remote_router_id
       
   def _set_remote_router_id(self, v, load=False):
@@ -92,6 +97,9 @@ virtual link
 
     YANG Description: Reference to the remote router ID
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -116,12 +124,17 @@ virtual link
     self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/config (container)
 
     YANG Description: Configuration parameters relating to the OSPF virtual link
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -134,6 +147,9 @@ virtual link
 
     YANG Description: Configuration parameters relating to the OSPF virtual link
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,12 +169,17 @@ virtual link
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/state (container)
 
     YANG Description: State parameters relating to the OSPF virtual link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -171,6 +192,9 @@ virtual link
 
     YANG Description: State parameters relating to the OSPF virtual link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -220,9 +244,9 @@ virtual link
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__remote_router_id = None
+    self.__config = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -251,12 +275,17 @@ virtual link
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links', u'virtual-link']
 
+  def _initialized_remote_router_id(self):
+    return self.__remote_router_id is not None
+
   def _get_remote_router_id(self):
     """
     Getter method for remote_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/remote_router_id (leafref)
 
     YANG Description: Reference to the remote router ID
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__remote_router_id
       
   def _set_remote_router_id(self, v, load=False):
@@ -269,6 +298,9 @@ virtual link
 
     YANG Description: Reference to the remote router ID
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -293,12 +325,17 @@ virtual link
     self.__remote_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/config (container)
 
     YANG Description: Configuration parameters relating to the OSPF virtual link
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -311,6 +348,9 @@ virtual link
 
     YANG Description: Configuration parameters relating to the OSPF virtual link
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,12 +370,17 @@ virtual link
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/state (container)
 
     YANG Description: State parameters relating to the OSPF virtual link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -348,6 +393,9 @@ virtual link
 
     YANG Description: State parameters relating to the OSPF virtual link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

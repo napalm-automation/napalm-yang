@@ -40,13 +40,13 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__virtual_address = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),]), is_leaf=False, yang_name="virtual-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ip-address', is_config=True)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(100), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
-    self.__preempt = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="preempt", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
-    self.__advertisement_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4095']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(100), is_leaf=True, yang_name="advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
-    self.__virtual_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
-    self.__preempt_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(0), is_leaf=True, yang_name="preempt-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
-    self.__accept_mode = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="accept-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    self.__virtual_address = None
+    self.__priority = None
+    self.__preempt = None
+    self.__advertisement_interval = None
+    self.__virtual_router_id = None
+    self.__preempt_delay = None
+    self.__accept_mode = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ class config(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv4', u'addresses', u'address', u'vrrp', u'vrrp-group', u'config']
 
+  def _initialized_virtual_router_id(self):
+    return self.__virtual_router_id is not None
+
   def _get_virtual_router_id(self):
     """
     Getter method for virtual_router_id, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/virtual_router_id (uint8)
@@ -83,6 +86,8 @@ class config(PybindBase):
 usually also determines the virtual MAC address that is
 generated for the VRRP group
     """
+    if self.__virtual_router_id is None:
+        self.__virtual_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
     return self.__virtual_router_id
       
   def _set_virtual_router_id(self, v, load=False):
@@ -97,6 +102,9 @@ generated for the VRRP group
 usually also determines the virtual MAC address that is
 generated for the VRRP group
     """
+    if self.__virtual_router_id is None:
+        self.__virtual_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ generated for the VRRP group
     self.__virtual_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
 
 
+  def _initialized_virtual_address(self):
+    return self.__virtual_address is not None
+
   def _get_virtual_address(self):
     """
     Getter method for virtual_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/virtual_address (inet:ip-address)
@@ -123,6 +134,8 @@ generated for the VRRP group
     YANG Description: Configure one or more virtual addresses for the
 VRRP group
     """
+    if self.__virtual_address is None:
+        self.__virtual_address = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),]), is_leaf=False, yang_name="virtual-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ip-address', is_config=True)
     return self.__virtual_address
       
   def _set_virtual_address(self, v, load=False):
@@ -136,6 +149,9 @@ VRRP group
     YANG Description: Configure one or more virtual addresses for the
 VRRP group
     """
+    if self.__virtual_address is None:
+        self.__virtual_address = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),]), is_leaf=False, yang_name="virtual-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ip-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ VRRP group
     self.__virtual_address = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),]), is_leaf=False, yang_name="virtual-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ip-address', is_config=True)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/priority (uint8)
@@ -163,6 +182,8 @@ VRRP group
 for the virtual router.  Higher values equal higher
 priority
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(100), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -177,6 +198,9 @@ priority
 for the virtual router.  Higher values equal higher
 priority
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(100), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ priority
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(100), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=True)
 
 
+  def _initialized_preempt(self):
+    return self.__preempt is not None
+
   def _get_preempt(self):
     """
     Getter method for preempt, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/preempt (boolean)
@@ -203,6 +230,8 @@ priority
     YANG Description: When set to true, enables preemption by a higher
 priority backup router of a lower priority master router
     """
+    if self.__preempt is None:
+        self.__preempt = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="preempt", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
     return self.__preempt
       
   def _set_preempt(self, v, load=False):
@@ -216,6 +245,9 @@ priority backup router of a lower priority master router
     YANG Description: When set to true, enables preemption by a higher
 priority backup router of a lower priority master router
     """
+    if self.__preempt is None:
+        self.__preempt = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="preempt", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -235,6 +267,9 @@ priority backup router of a lower priority master router
     self.__preempt = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="preempt", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
 
 
+  def _initialized_preempt_delay(self):
+    return self.__preempt_delay is not None
+
   def _get_preempt_delay(self):
     """
     Getter method for preempt_delay, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/preempt_delay (uint16)
@@ -242,6 +277,8 @@ priority backup router of a lower priority master router
     YANG Description: Set the delay the higher priority router waits
 before preempting
     """
+    if self.__preempt_delay is None:
+        self.__preempt_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(0), is_leaf=True, yang_name="preempt-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
     return self.__preempt_delay
       
   def _set_preempt_delay(self, v, load=False):
@@ -255,6 +292,9 @@ before preempting
     YANG Description: Set the delay the higher priority router waits
 before preempting
     """
+    if self.__preempt_delay is None:
+        self.__preempt_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(0), is_leaf=True, yang_name="preempt-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -274,6 +314,9 @@ before preempting
     self.__preempt_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(0), is_leaf=True, yang_name="preempt-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
 
 
+  def _initialized_accept_mode(self):
+    return self.__accept_mode is not None
+
   def _get_accept_mode(self):
     """
     Getter method for accept_mode, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/accept_mode (boolean)
@@ -282,6 +325,8 @@ before preempting
 virtual addresses are accepted even when the virtual
 address is not owned by the router interface
     """
+    if self.__accept_mode is None:
+        self.__accept_mode = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="accept-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
     return self.__accept_mode
       
   def _set_accept_mode(self, v, load=False):
@@ -296,6 +341,9 @@ address is not owned by the router interface
 virtual addresses are accepted even when the virtual
 address is not owned by the router interface
     """
+    if self.__accept_mode is None:
+        self.__accept_mode = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="accept-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -315,6 +363,9 @@ address is not owned by the router interface
     self.__accept_mode = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="accept-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
 
 
+  def _initialized_advertisement_interval(self):
+    return self.__advertisement_interval is not None
+
   def _get_advertisement_interval(self):
     """
     Getter method for advertisement_interval, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/vrrp/vrrp_group/config/advertisement_interval (uint16)
@@ -325,6 +376,8 @@ value expressed as 0.1 seconds, with default 100, i.e.,
 1 second.  Several implementation express this in units of
 seconds
     """
+    if self.__advertisement_interval is None:
+        self.__advertisement_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4095']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(100), is_leaf=True, yang_name="advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
     return self.__advertisement_interval
       
   def _set_advertisement_interval(self, v, load=False):
@@ -341,6 +394,9 @@ value expressed as 0.1 seconds, with default 100, i.e.,
 1 second.  Several implementation express this in units of
 seconds
     """
+    if self.__advertisement_interval is None:
+        self.__advertisement_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4095']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(100), is_leaf=True, yang_name="advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

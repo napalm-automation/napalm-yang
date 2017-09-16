@@ -42,7 +42,7 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__connection_point = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'connection-points']
 
+  def _initialized_connection_point(self):
+    return self.__connection_point is not None
+
   def _get_connection_point(self):
     """
     Getter method for connection_point, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point (list)
@@ -82,6 +85,8 @@ the specification of whether an interface is local
 (i.e., exists within this network-instance), or remote,
 all configuration and state parameters are common
     """
+    if self.__connection_point is None:
+        self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__connection_point
       
   def _set_connection_point(self, v, load=False):
@@ -99,6 +104,9 @@ the specification of whether an interface is local
 (i.e., exists within this network-instance), or remote,
 all configuration and state parameters are common
     """
+    if self.__connection_point is None:
+        self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -145,7 +153,7 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__connection_point = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -174,6 +182,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'connection-points']
 
+  def _initialized_connection_point(self):
+    return self.__connection_point is not None
+
   def _get_connection_point(self):
     """
     Getter method for connection_point, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point (list)
@@ -185,6 +196,8 @@ the specification of whether an interface is local
 (i.e., exists within this network-instance), or remote,
 all configuration and state parameters are common
     """
+    if self.__connection_point is None:
+        self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__connection_point
       
   def _set_connection_point(self, v, load=False):
@@ -202,6 +215,9 @@ the specification of whether an interface is local
 (i.e., exists within this network-instance), or remote,
 all configuration and state parameters are common
     """
+    if self.__connection_point is None:
+        self.__connection_point = YANGDynClass(base=YANGListType("connection_point_id",connection_point.connection_point, yang_name="connection-point", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='connection-point-id', extensions=None), is_container='list', yang_name="connection-point", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

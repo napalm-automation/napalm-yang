@@ -42,9 +42,9 @@ class afi(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__afi_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class afi(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'igp-shortcuts', u'afi']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/afi_name (leafref)
 
     YANG Description: Reference to address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -91,6 +96,9 @@ class afi(PybindBase):
 
     YANG Description: Reference to address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -115,12 +123,17 @@ class afi(PybindBase):
     self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/config (container)
 
     YANG Description: This container defines ISIS Shortcuts configuration parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -133,6 +146,9 @@ class afi(PybindBase):
 
     YANG Description: This container defines ISIS Shortcuts configuration parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ class afi(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state (container)
 
     YANG Description: This container defines ISIS Shortcuts state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -170,6 +191,9 @@ class afi(PybindBase):
 
     YANG Description: This container defines ISIS Shortcuts state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -218,9 +242,9 @@ class afi(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__afi_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -249,12 +273,17 @@ class afi(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'igp-shortcuts', u'afi']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/afi_name (leafref)
 
     YANG Description: Reference to address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -267,6 +296,9 @@ class afi(PybindBase):
 
     YANG Description: Reference to address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -291,12 +323,17 @@ class afi(PybindBase):
     self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/config (container)
 
     YANG Description: This container defines ISIS Shortcuts configuration parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -309,6 +346,9 @@ class afi(PybindBase):
 
     YANG Description: This container defines ISIS Shortcuts configuration parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -328,12 +368,17 @@ class afi(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state (container)
 
     YANG Description: This container defines ISIS Shortcuts state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -346,6 +391,9 @@ class afi(PybindBase):
 
     YANG Description: This container defines ISIS Shortcuts state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

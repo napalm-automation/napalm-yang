@@ -44,10 +44,10 @@ area according to the policy specified
     self._path_helper = False
 
     self._extmethods = False
-    self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__src_area = None
+    self.__config = None
+    self.__state = None
+    self.__dst_area = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ area according to the policy specified
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'inter-area-propagation-policies', u'inter-area-propagation-policy']
 
+  def _initialized_src_area(self):
+    return self.__src_area is not None
+
   def _get_src_area(self):
     """
     Getter method for src_area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/src_area (leafref)
 
     YANG Description: Reference to the source area
     """
+    if self.__src_area is None:
+        self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__src_area
       
   def _set_src_area(self, v, load=False):
@@ -94,6 +99,9 @@ area according to the policy specified
 
     YANG Description: Reference to the source area
     """
+    if self.__src_area is None:
+        self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -118,12 +126,17 @@ area according to the policy specified
     self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_dst_area(self):
+    return self.__dst_area is not None
+
   def _get_dst_area(self):
     """
     Getter method for dst_area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/dst_area (leafref)
 
     YANG Description: Reference to the destination area
     """
+    if self.__dst_area is None:
+        self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__dst_area
       
   def _set_dst_area(self, v, load=False):
@@ -136,6 +149,9 @@ area according to the policy specified
 
     YANG Description: Reference to the destination area
     """
+    if self.__dst_area is None:
+        self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -160,6 +176,9 @@ area according to the policy specified
     self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/config (container)
@@ -167,6 +186,8 @@ area according to the policy specified
     YANG Description: Configuration parameters relating to the inter-area
 propagation policy
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -180,6 +201,9 @@ propagation policy
     YANG Description: Configuration parameters relating to the inter-area
 propagation policy
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -199,6 +223,9 @@ propagation policy
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/state (container)
@@ -206,6 +233,8 @@ propagation policy
     YANG Description: Operational state parameters relating to the inter-area
 propagation policy
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -219,6 +248,9 @@ propagation policy
     YANG Description: Operational state parameters relating to the inter-area
 propagation policy
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -270,10 +302,10 @@ area according to the policy specified
     self._path_helper = False
 
     self._extmethods = False
-    self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__src_area = None
+    self.__config = None
+    self.__state = None
+    self.__dst_area = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -302,12 +334,17 @@ area according to the policy specified
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'inter-area-propagation-policies', u'inter-area-propagation-policy']
 
+  def _initialized_src_area(self):
+    return self.__src_area is not None
+
   def _get_src_area(self):
     """
     Getter method for src_area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/src_area (leafref)
 
     YANG Description: Reference to the source area
     """
+    if self.__src_area is None:
+        self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__src_area
       
   def _set_src_area(self, v, load=False):
@@ -320,6 +357,9 @@ area according to the policy specified
 
     YANG Description: Reference to the source area
     """
+    if self.__src_area is None:
+        self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -344,12 +384,17 @@ area according to the policy specified
     self.__src_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_dst_area(self):
+    return self.__dst_area is not None
+
   def _get_dst_area(self):
     """
     Getter method for dst_area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/dst_area (leafref)
 
     YANG Description: Reference to the destination area
     """
+    if self.__dst_area is None:
+        self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__dst_area
       
   def _set_dst_area(self, v, load=False):
@@ -362,6 +407,9 @@ area according to the policy specified
 
     YANG Description: Reference to the destination area
     """
+    if self.__dst_area is None:
+        self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -386,6 +434,9 @@ area according to the policy specified
     self.__dst_area = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/config (container)
@@ -393,6 +444,8 @@ area according to the policy specified
     YANG Description: Configuration parameters relating to the inter-area
 propagation policy
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -406,6 +459,9 @@ propagation policy
     YANG Description: Configuration parameters relating to the inter-area
 propagation policy
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -425,6 +481,9 @@ propagation policy
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy/state (container)
@@ -432,6 +491,8 @@ propagation policy
     YANG Description: Operational state parameters relating to the inter-area
 propagation policy
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -445,6 +506,9 @@ propagation policy
     YANG Description: Operational state parameters relating to the inter-area
 propagation policy
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

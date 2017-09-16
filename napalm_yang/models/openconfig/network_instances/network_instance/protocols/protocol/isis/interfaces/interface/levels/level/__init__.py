@@ -48,14 +48,14 @@ particular level on an IS-IS enabled interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__adjacencies = None
+    self.__state = None
+    self.__level_number = None
+    self.__timers = None
+    self.__afi_safi = None
+    self.__hello_authentication = None
+    self.__config = None
+    self.__packet_counters = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -84,12 +84,17 @@ particular level on an IS-IS enabled interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level']
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/level_number (leafref)
 
     YANG Description: Reference to ISIS level-number.
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -102,6 +107,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: Reference to ISIS level-number.
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -126,12 +134,17 @@ particular level on an IS-IS enabled interface.
     self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config (container)
 
     YANG Description: This container defines interface ISIS level configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -144,6 +157,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines interface ISIS level configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -163,12 +179,17 @@ particular level on an IS-IS enabled interface.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/state (container)
 
     YANG Description: This container defines interface ISIS level state information.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -181,6 +202,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines interface ISIS level state information.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,12 +224,17 @@ particular level on an IS-IS enabled interface.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_packet_counters(self):
+    return self.__packet_counters is not None
+
   def _get_packet_counters(self):
     """
     Getter method for packet_counters, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters (container)
 
     YANG Description: This container defines ISIS interface packet counters.
     """
+    if self.__packet_counters is None:
+        self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__packet_counters
       
   def _set_packet_counters(self, v, load=False):
@@ -218,6 +247,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS interface packet counters.
     """
+    if self.__packet_counters is None:
+        self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +269,17 @@ particular level on an IS-IS enabled interface.
     self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_adjacencies(self):
+    return self.__adjacencies is not None
+
   def _get_adjacencies(self):
     """
     Getter method for adjacencies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies (container)
 
     YANG Description: This container defines ISIS adjacencies.
     """
+    if self.__adjacencies is None:
+        self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__adjacencies
       
   def _set_adjacencies(self, v, load=False):
@@ -255,6 +292,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS adjacencies.
     """
+    if self.__adjacencies is None:
+        self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -274,12 +314,17 @@ particular level on an IS-IS enabled interface.
     self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/timers (container)
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -292,6 +337,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -311,6 +359,9 @@ particular level on an IS-IS enabled interface.
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi (container)
@@ -318,6 +369,8 @@ particular level on an IS-IS enabled interface.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -331,6 +384,9 @@ and state information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -350,12 +406,17 @@ and state information.
     self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hello_authentication(self):
+    return self.__hello_authentication is not None
+
   def _get_hello_authentication(self):
     """
     Getter method for hello_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/hello_authentication (container)
 
     YANG Description: This container defines ISIS authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hello_authentication
       
   def _set_hello_authentication(self, v, load=False):
@@ -368,6 +429,9 @@ and state information.
 
     YANG Description: This container defines ISIS authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -427,14 +491,14 @@ particular level on an IS-IS enabled interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__adjacencies = None
+    self.__state = None
+    self.__level_number = None
+    self.__timers = None
+    self.__afi_safi = None
+    self.__hello_authentication = None
+    self.__config = None
+    self.__packet_counters = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -463,12 +527,17 @@ particular level on an IS-IS enabled interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level']
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/level_number (leafref)
 
     YANG Description: Reference to ISIS level-number.
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -481,6 +550,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: Reference to ISIS level-number.
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -505,12 +577,17 @@ particular level on an IS-IS enabled interface.
     self.__level_number = YANGDynClass(base=unicode, is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config (container)
 
     YANG Description: This container defines interface ISIS level configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -523,6 +600,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines interface ISIS level configuration.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -542,12 +622,17 @@ particular level on an IS-IS enabled interface.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/state (container)
 
     YANG Description: This container defines interface ISIS level state information.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -560,6 +645,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines interface ISIS level state information.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -579,12 +667,17 @@ particular level on an IS-IS enabled interface.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_packet_counters(self):
+    return self.__packet_counters is not None
+
   def _get_packet_counters(self):
     """
     Getter method for packet_counters, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters (container)
 
     YANG Description: This container defines ISIS interface packet counters.
     """
+    if self.__packet_counters is None:
+        self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__packet_counters
       
   def _set_packet_counters(self, v, load=False):
@@ -597,6 +690,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS interface packet counters.
     """
+    if self.__packet_counters is None:
+        self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -616,12 +712,17 @@ particular level on an IS-IS enabled interface.
     self.__packet_counters = YANGDynClass(base=packet_counters.packet_counters, is_container='container', yang_name="packet-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_adjacencies(self):
+    return self.__adjacencies is not None
+
   def _get_adjacencies(self):
     """
     Getter method for adjacencies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies (container)
 
     YANG Description: This container defines ISIS adjacencies.
     """
+    if self.__adjacencies is None:
+        self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__adjacencies
       
   def _set_adjacencies(self, v, load=False):
@@ -634,6 +735,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS adjacencies.
     """
+    if self.__adjacencies is None:
+        self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -653,12 +757,17 @@ particular level on an IS-IS enabled interface.
     self.__adjacencies = YANGDynClass(base=adjacencies.adjacencies, is_container='container', yang_name="adjacencies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/timers (container)
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -671,6 +780,9 @@ particular level on an IS-IS enabled interface.
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -690,6 +802,9 @@ particular level on an IS-IS enabled interface.
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi (container)
@@ -697,6 +812,8 @@ particular level on an IS-IS enabled interface.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -710,6 +827,9 @@ and state information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -729,12 +849,17 @@ and state information.
     self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hello_authentication(self):
+    return self.__hello_authentication is not None
+
   def _get_hello_authentication(self):
     """
     Getter method for hello_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/hello_authentication (container)
 
     YANG Description: This container defines ISIS authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hello_authentication
       
   def _set_hello_authentication(self, v, load=False):
@@ -747,6 +872,9 @@ and state information.
 
     YANG Description: This container defines ISIS authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=hello_authentication.hello_authentication, is_container='container', yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

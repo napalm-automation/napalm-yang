@@ -42,8 +42,8 @@ class autoconf(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class autoconf(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv6', u'autoconf']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/config (container)
@@ -81,6 +84,8 @@ class autoconf(PybindBase):
 Parameters to control the autoconfiguration of IPv6
 addresses, as described in RFC 4862.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -96,6 +101,9 @@ addresses, as described in RFC 4862.
 Parameters to control the autoconfiguration of IPv6
 addresses, as described in RFC 4862.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,12 +123,17 @@ addresses, as described in RFC 4862.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/state (container)
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -133,6 +146,9 @@ addresses, as described in RFC 4862.
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

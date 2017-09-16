@@ -47,14 +47,14 @@ class interface(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__lsa_filter = None
+    self.__mpls = None
+    self.__state = None
+    self.__timers = None
+    self.__config = None
+    self.__id = None
+    self.__interface_ref = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -83,12 +83,17 @@ class interface(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id (leafref)
 
     YANG Description: A pointer to the identifier for the interface.
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -101,6 +106,9 @@ class interface(PybindBase):
 
     YANG Description: A pointer to the identifier for the interface.
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -125,6 +133,9 @@ class interface(PybindBase):
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config (container)
@@ -132,6 +143,8 @@ class interface(PybindBase):
     YANG Description: Configuration parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -145,6 +158,9 @@ OSPFv2 is enabled
     YANG Description: Configuration parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,6 +180,9 @@ OSPFv2 is enabled
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/state (container)
@@ -171,6 +190,8 @@ OSPFv2 is enabled
     YANG Description: Operational state parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -184,6 +205,9 @@ OSPFv2 is enabled
     YANG Description: Operational state parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -203,12 +227,17 @@ OSPFv2 is enabled
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -221,6 +250,9 @@ OSPFv2 is enabled
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -240,12 +272,17 @@ OSPFv2 is enabled
     self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers (container)
 
     YANG Description: Timers relating to OSPFv2 on the interface
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -258,6 +295,9 @@ OSPFv2 is enabled
 
     YANG Description: Timers relating to OSPFv2 on the interface
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -277,6 +317,9 @@ OSPFv2 is enabled
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls (container)
@@ -284,6 +327,8 @@ OSPFv2 is enabled
     YANG Description: Configuration and operational state parameters for
 OSPFv2 extensions related to MPLS on the interface.
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -297,6 +342,9 @@ OSPFv2 extensions related to MPLS on the interface.
     YANG Description: Configuration and operational state parameters for
 OSPFv2 extensions related to MPLS on the interface.
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -316,6 +364,9 @@ OSPFv2 extensions related to MPLS on the interface.
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsa_filter(self):
+    return self.__lsa_filter is not None
+
   def _get_lsa_filter(self):
     """
     Getter method for lsa_filter, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/lsa_filter (container)
@@ -323,6 +374,8 @@ OSPFv2 extensions related to MPLS on the interface.
     YANG Description: OSPFv2 parameters relating to filtering of LSAs to
 neighbors the specified interface.
     """
+    if self.__lsa_filter is None:
+        self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsa_filter
       
   def _set_lsa_filter(self, v, load=False):
@@ -336,6 +389,9 @@ neighbors the specified interface.
     YANG Description: OSPFv2 parameters relating to filtering of LSAs to
 neighbors the specified interface.
     """
+    if self.__lsa_filter is None:
+        self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -355,6 +411,9 @@ neighbors the specified interface.
     self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/neighbors (container)
@@ -362,6 +421,8 @@ neighbors the specified interface.
     YANG Description: Enclosing container for the list of neighbors that
 an adjacency has been established with on the interface
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -375,6 +436,9 @@ an adjacency has been established with on the interface
     YANG Description: Enclosing container for the list of neighbors that
 an adjacency has been established with on the interface
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -433,14 +497,14 @@ class interface(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__lsa_filter = None
+    self.__mpls = None
+    self.__state = None
+    self.__timers = None
+    self.__config = None
+    self.__id = None
+    self.__interface_ref = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -469,12 +533,17 @@ class interface(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id (leafref)
 
     YANG Description: A pointer to the identifier for the interface.
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -487,6 +556,9 @@ class interface(PybindBase):
 
     YANG Description: A pointer to the identifier for the interface.
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -511,6 +583,9 @@ class interface(PybindBase):
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config (container)
@@ -518,6 +593,8 @@ class interface(PybindBase):
     YANG Description: Configuration parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -531,6 +608,9 @@ OSPFv2 is enabled
     YANG Description: Configuration parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -550,6 +630,9 @@ OSPFv2 is enabled
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/state (container)
@@ -557,6 +640,8 @@ OSPFv2 is enabled
     YANG Description: Operational state parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -570,6 +655,9 @@ OSPFv2 is enabled
     YANG Description: Operational state parameters for the interface on which
 OSPFv2 is enabled
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -589,12 +677,17 @@ OSPFv2 is enabled
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -607,6 +700,9 @@ OSPFv2 is enabled
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -626,12 +722,17 @@ OSPFv2 is enabled
     self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers (container)
 
     YANG Description: Timers relating to OSPFv2 on the interface
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -644,6 +745,9 @@ OSPFv2 is enabled
 
     YANG Description: Timers relating to OSPFv2 on the interface
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -663,6 +767,9 @@ OSPFv2 is enabled
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls (container)
@@ -670,6 +777,8 @@ OSPFv2 is enabled
     YANG Description: Configuration and operational state parameters for
 OSPFv2 extensions related to MPLS on the interface.
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -683,6 +792,9 @@ OSPFv2 extensions related to MPLS on the interface.
     YANG Description: Configuration and operational state parameters for
 OSPFv2 extensions related to MPLS on the interface.
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -702,6 +814,9 @@ OSPFv2 extensions related to MPLS on the interface.
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsa_filter(self):
+    return self.__lsa_filter is not None
+
   def _get_lsa_filter(self):
     """
     Getter method for lsa_filter, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/lsa_filter (container)
@@ -709,6 +824,8 @@ OSPFv2 extensions related to MPLS on the interface.
     YANG Description: OSPFv2 parameters relating to filtering of LSAs to
 neighbors the specified interface.
     """
+    if self.__lsa_filter is None:
+        self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsa_filter
       
   def _set_lsa_filter(self, v, load=False):
@@ -722,6 +839,9 @@ neighbors the specified interface.
     YANG Description: OSPFv2 parameters relating to filtering of LSAs to
 neighbors the specified interface.
     """
+    if self.__lsa_filter is None:
+        self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -741,6 +861,9 @@ neighbors the specified interface.
     self.__lsa_filter = YANGDynClass(base=lsa_filter.lsa_filter, is_container='container', yang_name="lsa-filter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/neighbors (container)
@@ -748,6 +871,8 @@ neighbors the specified interface.
     YANG Description: Enclosing container for the list of neighbors that
 an adjacency has been established with on the interface
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -761,6 +886,9 @@ an adjacency has been established with on the interface
     YANG Description: Enclosing container for the list of neighbors that
 an adjacency has been established with on the interface
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

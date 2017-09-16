@@ -42,7 +42,7 @@ an adjacency has been established with on the interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__neighbor = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ an adjacency has been established with on the interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'neighbors']
 
+  def _initialized_neighbor(self):
+    return self.__neighbor is not None
+
   def _get_neighbor(self):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/neighbors/neighbor (list)
@@ -78,6 +81,8 @@ an adjacency has been established with on the interface
     YANG Description: A neighbor with which an OSPFv2 adjacency has been
 established within this area
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__neighbor
       
   def _set_neighbor(self, v, load=False):
@@ -91,6 +96,9 @@ established within this area
     YANG Description: A neighbor with which an OSPFv2 adjacency has been
 established within this area
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ an adjacency has been established with on the interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__neighbor = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ an adjacency has been established with on the interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'neighbors']
 
+  def _initialized_neighbor(self):
+    return self.__neighbor is not None
+
   def _get_neighbor(self):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/neighbors/neighbor (list)
@@ -173,6 +184,8 @@ an adjacency has been established with on the interface
     YANG Description: A neighbor with which an OSPFv2 adjacency has been
 established within this area
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__neighbor
       
   def _set_neighbor(self, v, load=False):
@@ -186,6 +199,9 @@ established within this area
     YANG Description: A neighbor with which an OSPFv2 adjacency has been
 established within this area
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("router_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='router-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

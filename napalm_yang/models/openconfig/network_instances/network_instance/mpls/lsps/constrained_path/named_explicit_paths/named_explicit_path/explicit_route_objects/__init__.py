@@ -41,7 +41,7 @@ class explicit_route_objects(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__explicit_route_object = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class explicit_route_objects(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'explicit-route-objects']
 
+  def _initialized_explicit_route_object(self):
+    return self.__explicit_route_object is not None
+
   def _get_explicit_route_object(self):
     """
     Getter method for explicit_route_object, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object (list)
 
     YANG Description: List of explicit route objects
     """
+    if self.__explicit_route_object is None:
+        self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__explicit_route_object
       
   def _set_explicit_route_object(self, v, load=False):
@@ -88,6 +93,9 @@ class explicit_route_objects(PybindBase):
 
     YANG Description: List of explicit route objects
     """
+    if self.__explicit_route_object is None:
+        self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class explicit_route_objects(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__explicit_route_object = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class explicit_route_objects(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'explicit-route-objects']
 
+  def _initialized_explicit_route_object(self):
+    return self.__explicit_route_object is not None
+
   def _get_explicit_route_object(self):
     """
     Getter method for explicit_route_object, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object (list)
 
     YANG Description: List of explicit route objects
     """
+    if self.__explicit_route_object is None:
+        self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__explicit_route_object
       
   def _set_explicit_route_object(self, v, load=False):
@@ -180,6 +193,9 @@ class explicit_route_objects(PybindBase):
 
     YANG Description: List of explicit route objects
     """
+    if self.__explicit_route_object is None:
+        self.__explicit_route_object = YANGDynClass(base=YANGListType("index",explicit_route_object.explicit_route_object, yang_name="explicit-route-object", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="explicit-route-object", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

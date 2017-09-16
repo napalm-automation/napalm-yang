@@ -41,9 +41,9 @@ interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__retransmission_interval = None
+    self.__dead_interval = None
+    self.__hello_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'timers', u'config']
 
+  def _initialized_dead_interval(self):
+    return self.__dead_interval is not None
+
   def _get_dead_interval(self):
     """
     Getter method for dead_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/dead_interval (uint32)
@@ -79,6 +82,8 @@ interface
     YANG Description: The number of seconds that the local system should let
 elapse before declaring a silent router down
     """
+    if self.__dead_interval is None:
+        self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__dead_interval
       
   def _set_dead_interval(self, v, load=False):
@@ -92,6 +97,9 @@ elapse before declaring a silent router down
     YANG Description: The number of seconds that the local system should let
 elapse before declaring a silent router down
     """
+    if self.__dead_interval is None:
+        self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ elapse before declaring a silent router down
     self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_hello_interval(self):
+    return self.__hello_interval is not None
+
   def _get_hello_interval(self):
     """
     Getter method for hello_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/hello_interval (uint32)
@@ -118,6 +129,8 @@ elapse before declaring a silent router down
     YANG Description: The number of seconds the local system waits between the
 transmission of subsequent Hello packets
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__hello_interval
       
   def _set_hello_interval(self, v, load=False):
@@ -131,6 +144,9 @@ transmission of subsequent Hello packets
     YANG Description: The number of seconds the local system waits between the
 transmission of subsequent Hello packets
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ transmission of subsequent Hello packets
     self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_retransmission_interval(self):
+    return self.__retransmission_interval is not None
+
   def _get_retransmission_interval(self):
     """
     Getter method for retransmission_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/retransmission_interval (uint32)
@@ -157,6 +176,8 @@ transmission of subsequent Hello packets
     YANG Description: The number of seconds that the local system waits before
 retransmitting an unacknowledged LSA.
     """
+    if self.__retransmission_interval is None:
+        self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__retransmission_interval
       
   def _set_retransmission_interval(self, v, load=False):
@@ -170,6 +191,9 @@ retransmitting an unacknowledged LSA.
     YANG Description: The number of seconds that the local system waits before
 retransmitting an unacknowledged LSA.
     """
+    if self.__retransmission_interval is None:
+        self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__retransmission_interval = None
+    self.__dead_interval = None
+    self.__hello_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'timers', u'config']
 
+  def _initialized_dead_interval(self):
+    return self.__dead_interval is not None
+
   def _get_dead_interval(self):
     """
     Getter method for dead_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/dead_interval (uint32)
@@ -255,6 +282,8 @@ interface
     YANG Description: The number of seconds that the local system should let
 elapse before declaring a silent router down
     """
+    if self.__dead_interval is None:
+        self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__dead_interval
       
   def _set_dead_interval(self, v, load=False):
@@ -268,6 +297,9 @@ elapse before declaring a silent router down
     YANG Description: The number of seconds that the local system should let
 elapse before declaring a silent router down
     """
+    if self.__dead_interval is None:
+        self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ elapse before declaring a silent router down
     self.__dead_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dead-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_hello_interval(self):
+    return self.__hello_interval is not None
+
   def _get_hello_interval(self):
     """
     Getter method for hello_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/hello_interval (uint32)
@@ -294,6 +329,8 @@ elapse before declaring a silent router down
     YANG Description: The number of seconds the local system waits between the
 transmission of subsequent Hello packets
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__hello_interval
       
   def _set_hello_interval(self, v, load=False):
@@ -307,6 +344,9 @@ transmission of subsequent Hello packets
     YANG Description: The number of seconds the local system waits between the
 transmission of subsequent Hello packets
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ transmission of subsequent Hello packets
     self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_retransmission_interval(self):
+    return self.__retransmission_interval is not None
+
   def _get_retransmission_interval(self):
     """
     Getter method for retransmission_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/timers/config/retransmission_interval (uint32)
@@ -333,6 +376,8 @@ transmission of subsequent Hello packets
     YANG Description: The number of seconds that the local system waits before
 retransmitting an unacknowledged LSA.
     """
+    if self.__retransmission_interval is None:
+        self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__retransmission_interval
       
   def _set_retransmission_interval(self, v, load=False):
@@ -346,6 +391,9 @@ retransmitting an unacknowledged LSA.
     YANG Description: The number of seconds that the local system waits before
 retransmitting an unacknowledged LSA.
     """
+    if self.__retransmission_interval is None:
+        self.__retransmission_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmission-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

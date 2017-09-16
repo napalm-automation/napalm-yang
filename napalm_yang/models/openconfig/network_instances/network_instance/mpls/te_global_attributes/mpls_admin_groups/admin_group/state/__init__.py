@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__bit_position = None
+    self.__admin_group_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups', u'admin-group', u'state']
 
+  def _initialized_admin_group_name(self):
+    return self.__admin_group_name is not None
+
   def _get_admin_group_name(self):
     """
     Getter method for admin_group_name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state/admin_group_name (string)
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__admin_group_name
       
   def _set_admin_group_name(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,6 +115,9 @@ class state(PybindBase):
     self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_bit_position(self):
+    return self.__bit_position is not None
+
   def _get_bit_position(self):
     """
     Getter method for bit_position, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state/bit_position (uint32)
@@ -118,6 +129,8 @@ between 0 and 31 are interpreted as the original limit
 of 32 admin groups. Values >=32 are interpreted as
 extended admin group values as per RFC7308.
     """
+    if self.__bit_position is None:
+        self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__bit_position
       
   def _set_bit_position(self, v, load=False):
@@ -135,6 +148,9 @@ between 0 and 31 are interpreted as the original limit
 of 32 admin groups. Values >=32 are interpreted as
 extended admin group values as per RFC7308.
     """
+    if self.__bit_position is None:
+        self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__bit_position = None
+    self.__admin_group_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,12 +226,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups', u'admin-group', u'state']
 
+  def _initialized_admin_group_name(self):
+    return self.__admin_group_name is not None
+
   def _get_admin_group_name(self):
     """
     Getter method for admin_group_name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state/admin_group_name (string)
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__admin_group_name
       
   def _set_admin_group_name(self, v, load=False):
@@ -228,6 +249,9 @@ class state(PybindBase):
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ class state(PybindBase):
     self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_bit_position(self):
+    return self.__bit_position is not None
+
   def _get_bit_position(self):
     """
     Getter method for bit_position, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state/bit_position (uint32)
@@ -258,6 +285,8 @@ between 0 and 31 are interpreted as the original limit
 of 32 admin groups. Values >=32 are interpreted as
 extended admin group values as per RFC7308.
     """
+    if self.__bit_position is None:
+        self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__bit_position
       
   def _set_bit_position(self, v, load=False):
@@ -275,6 +304,9 @@ between 0 and 31 are interpreted as the original limit
 of 32 admin groups. Values >=32 are interpreted as
 extended admin group values as per RFC7308.
     """
+    if self.__bit_position is None:
+        self.__bit_position = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="bit-position", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

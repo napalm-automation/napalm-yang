@@ -41,11 +41,11 @@ with the MPLS dataplane
     self._path_helper = False
 
     self._extmethods = False
-    self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__in_octets = None
+    self.__in_pkts = None
+    self.__out_octets = None
+    self.__exp = None
+    self.__out_pkts = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ with the MPLS dataplane
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes', u'forwarding-class', u'state']
 
+  def _initialized_exp(self):
+    return self.__exp is not None
+
   def _get_exp(self):
     """
     Getter method for exp, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/exp (uint8)
@@ -87,6 +90,8 @@ SID should be counted towards this value. In the egress direction, where
 forwarding follows a SID value that requires PHP at the local node,
 packets should still be counted towards the egress counters.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__exp
       
   def _set_exp(self, v, load=False):
@@ -106,6 +111,9 @@ SID should be counted towards this value. In the egress direction, where
 forwarding follows a SID value that requires PHP at the local node,
 packets should still be counted towards the egress counters.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -125,6 +133,9 @@ packets should still be counted towards the egress counters.
     self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_in_pkts(self):
+    return self.__in_pkts is not None
+
   def _get_in_pkts(self):
     """
     Getter method for in_pkts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/in_pkts (yang:counter64)
@@ -132,6 +143,8 @@ packets should still be counted towards the egress counters.
     YANG Description: A cumulative counter of the packets received within the context
 which have matched a label corresponding to an SR Segment Identifier.
     """
+    if self.__in_pkts is None:
+        self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_pkts
       
   def _set_in_pkts(self, v, load=False):
@@ -145,6 +158,9 @@ which have matched a label corresponding to an SR Segment Identifier.
     YANG Description: A cumulative counter of the packets received within the context
 which have matched a label corresponding to an SR Segment Identifier.
     """
+    if self.__in_pkts is None:
+        self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,6 +180,9 @@ which have matched a label corresponding to an SR Segment Identifier.
     self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_octets(self):
+    return self.__in_octets is not None
+
   def _get_in_octets(self):
     """
     Getter method for in_octets, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/in_octets (yang:counter64)
@@ -171,6 +190,8 @@ which have matched a label corresponding to an SR Segment Identifier.
     YANG Description: The cumulative counter of the total bytes received within the context
 which have matched a label corresponding to an SR Segment Identifier
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_octets
       
   def _set_in_octets(self, v, load=False):
@@ -184,6 +205,9 @@ which have matched a label corresponding to an SR Segment Identifier
     YANG Description: The cumulative counter of the total bytes received within the context
 which have matched a label corresponding to an SR Segment Identifier
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -203,6 +227,9 @@ which have matched a label corresponding to an SR Segment Identifier
     self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_pkts(self):
+    return self.__out_pkts is not None
+
   def _get_out_pkts(self):
     """
     Getter method for out_pkts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/out_pkts (yang:counter64)
@@ -211,6 +238,8 @@ which have matched a label corresponding to an SR Segment Identifier
 the local system within the context which have a label imposed that
 corresponds to an Segment Identifier.
     """
+    if self.__out_pkts is None:
+        self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_pkts
       
   def _set_out_pkts(self, v, load=False):
@@ -225,6 +254,9 @@ corresponds to an Segment Identifier.
 the local system within the context which have a label imposed that
 corresponds to an Segment Identifier.
     """
+    if self.__out_pkts is None:
+        self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -244,6 +276,9 @@ corresponds to an Segment Identifier.
     self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_octets(self):
+    return self.__out_octets is not None
+
   def _get_out_octets(self):
     """
     Getter method for out_octets, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/out_octets (yang:counter64)
@@ -252,6 +287,8 @@ corresponds to an Segment Identifier.
 system within the context which have a label imported that
 corresponds to an SR Segment Identifier.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_octets
       
   def _set_out_octets(self, v, load=False):
@@ -266,6 +303,9 @@ corresponds to an SR Segment Identifier.
 system within the context which have a label imported that
 corresponds to an SR Segment Identifier.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -315,11 +355,11 @@ with the MPLS dataplane
     self._path_helper = False
 
     self._extmethods = False
-    self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__in_octets = None
+    self.__in_pkts = None
+    self.__out_octets = None
+    self.__exp = None
+    self.__out_pkts = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -348,6 +388,9 @@ with the MPLS dataplane
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes', u'forwarding-class', u'state']
 
+  def _initialized_exp(self):
+    return self.__exp is not None
+
   def _get_exp(self):
     """
     Getter method for exp, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/exp (uint8)
@@ -361,6 +404,8 @@ SID should be counted towards this value. In the egress direction, where
 forwarding follows a SID value that requires PHP at the local node,
 packets should still be counted towards the egress counters.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__exp
       
   def _set_exp(self, v, load=False):
@@ -380,6 +425,9 @@ SID should be counted towards this value. In the egress direction, where
 forwarding follows a SID value that requires PHP at the local node,
 packets should still be counted towards the egress counters.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,6 +447,9 @@ packets should still be counted towards the egress counters.
     self.__exp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_in_pkts(self):
+    return self.__in_pkts is not None
+
   def _get_in_pkts(self):
     """
     Getter method for in_pkts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/in_pkts (yang:counter64)
@@ -406,6 +457,8 @@ packets should still be counted towards the egress counters.
     YANG Description: A cumulative counter of the packets received within the context
 which have matched a label corresponding to an SR Segment Identifier.
     """
+    if self.__in_pkts is None:
+        self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_pkts
       
   def _set_in_pkts(self, v, load=False):
@@ -419,6 +472,9 @@ which have matched a label corresponding to an SR Segment Identifier.
     YANG Description: A cumulative counter of the packets received within the context
 which have matched a label corresponding to an SR Segment Identifier.
     """
+    if self.__in_pkts is None:
+        self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -438,6 +494,9 @@ which have matched a label corresponding to an SR Segment Identifier.
     self.__in_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_octets(self):
+    return self.__in_octets is not None
+
   def _get_in_octets(self):
     """
     Getter method for in_octets, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/in_octets (yang:counter64)
@@ -445,6 +504,8 @@ which have matched a label corresponding to an SR Segment Identifier.
     YANG Description: The cumulative counter of the total bytes received within the context
 which have matched a label corresponding to an SR Segment Identifier
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_octets
       
   def _set_in_octets(self, v, load=False):
@@ -458,6 +519,9 @@ which have matched a label corresponding to an SR Segment Identifier
     YANG Description: The cumulative counter of the total bytes received within the context
 which have matched a label corresponding to an SR Segment Identifier
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -477,6 +541,9 @@ which have matched a label corresponding to an SR Segment Identifier
     self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_pkts(self):
+    return self.__out_pkts is not None
+
   def _get_out_pkts(self):
     """
     Getter method for out_pkts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/out_pkts (yang:counter64)
@@ -485,6 +552,8 @@ which have matched a label corresponding to an SR Segment Identifier
 the local system within the context which have a label imposed that
 corresponds to an Segment Identifier.
     """
+    if self.__out_pkts is None:
+        self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_pkts
       
   def _set_out_pkts(self, v, load=False):
@@ -499,6 +568,9 @@ corresponds to an Segment Identifier.
 the local system within the context which have a label imposed that
 corresponds to an Segment Identifier.
     """
+    if self.__out_pkts is None:
+        self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -518,6 +590,9 @@ corresponds to an Segment Identifier.
     self.__out_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_octets(self):
+    return self.__out_octets is not None
+
   def _get_out_octets(self):
     """
     Getter method for out_octets, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state/out_octets (yang:counter64)
@@ -526,6 +601,8 @@ corresponds to an Segment Identifier.
 system within the context which have a label imported that
 corresponds to an SR Segment Identifier.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_octets
       
   def _set_out_octets(self, v, load=False):
@@ -540,6 +617,9 @@ corresponds to an SR Segment Identifier.
 system within the context which have a label imported that
 corresponds to an SR Segment Identifier.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

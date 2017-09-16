@@ -41,7 +41,7 @@ class servers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__server = YANGDynClass(base=YANGListType("address",server.server, yang_name="server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__server = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class servers(PybindBase):
     else:
       return [u'system', u'ntp', u'servers']
 
+  def _initialized_server(self):
+    return self.__server is not None
+
   def _get_server(self):
     """
     Getter method for server, mapped from YANG variable /system/ntp/servers/server (list)
@@ -81,6 +84,8 @@ synchronization.  If '/system/ntp/enabled'
 is 'true', then the system will attempt to
 contact and utilize the specified NTP servers.
     """
+    if self.__server is None:
+        self.__server = YANGDynClass(base=YANGListType("address",server.server, yang_name="server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__server
       
   def _set_server(self, v, load=False):
@@ -98,6 +103,9 @@ synchronization.  If '/system/ntp/enabled'
 is 'true', then the system will attempt to
 contact and utilize the specified NTP servers.
     """
+    if self.__server is None:
+        self.__server = YANGDynClass(base=YANGListType("address",server.server, yang_name="server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

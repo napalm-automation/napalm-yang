@@ -41,9 +41,9 @@ entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__index = None
+    self.__packets_forwarded = None
+    self.__octets_forwarded = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/index (uint64)
 
     YANG Description: A unique index referring to the AFT entry
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -90,6 +95,9 @@ entry
 
     YANG Description: A unique index referring to the AFT entry
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ entry
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_packets_forwarded(self):
+    return self.__packets_forwarded is not None
+
   def _get_packets_forwarded(self):
     """
     Getter method for packets_forwarded, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/packets_forwarded (yang:counter64)
@@ -116,6 +127,8 @@ entry
     YANG Description: The number of packets which have matched, and been forwarded,
 based on the AFT entry.
     """
+    if self.__packets_forwarded is None:
+        self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__packets_forwarded
       
   def _set_packets_forwarded(self, v, load=False):
@@ -129,6 +142,9 @@ based on the AFT entry.
     YANG Description: The number of packets which have matched, and been forwarded,
 based on the AFT entry.
     """
+    if self.__packets_forwarded is None:
+        self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,6 +164,9 @@ based on the AFT entry.
     self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_octets_forwarded(self):
+    return self.__octets_forwarded is not None
+
   def _get_octets_forwarded(self):
     """
     Getter method for octets_forwarded, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/octets_forwarded (yang:counter64)
@@ -155,6 +174,8 @@ based on the AFT entry.
     YANG Description: The number of octets which have matched, and been forwarded,
 based on the AFT entry
     """
+    if self.__octets_forwarded is None:
+        self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__octets_forwarded
       
   def _set_octets_forwarded(self, v, load=False):
@@ -168,6 +189,9 @@ based on the AFT entry
     YANG Description: The number of octets which have matched, and been forwarded,
 based on the AFT entry
     """
+    if self.__octets_forwarded is None:
+        self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__index = None
+    self.__packets_forwarded = None
+    self.__octets_forwarded = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,12 +270,17 @@ entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/index (uint64)
 
     YANG Description: A unique index referring to the AFT entry
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -264,6 +293,9 @@ entry
 
     YANG Description: A unique index referring to the AFT entry
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -283,6 +315,9 @@ entry
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_packets_forwarded(self):
+    return self.__packets_forwarded is not None
+
   def _get_packets_forwarded(self):
     """
     Getter method for packets_forwarded, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/packets_forwarded (yang:counter64)
@@ -290,6 +325,8 @@ entry
     YANG Description: The number of packets which have matched, and been forwarded,
 based on the AFT entry.
     """
+    if self.__packets_forwarded is None:
+        self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__packets_forwarded
       
   def _set_packets_forwarded(self, v, load=False):
@@ -303,6 +340,9 @@ based on the AFT entry.
     YANG Description: The number of packets which have matched, and been forwarded,
 based on the AFT entry.
     """
+    if self.__packets_forwarded is None:
+        self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -322,6 +362,9 @@ based on the AFT entry.
     self.__packets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="packets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_octets_forwarded(self):
+    return self.__octets_forwarded is not None
+
   def _get_octets_forwarded(self):
     """
     Getter method for octets_forwarded, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state/octets_forwarded (yang:counter64)
@@ -329,6 +372,8 @@ based on the AFT entry.
     YANG Description: The number of octets which have matched, and been forwarded,
 based on the AFT entry
     """
+    if self.__octets_forwarded is None:
+        self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__octets_forwarded
       
   def _set_octets_forwarded(self, v, load=False):
@@ -342,6 +387,9 @@ based on the AFT entry
     YANG Description: The number of octets which have matched, and been forwarded,
 based on the AFT entry
     """
+    if self.__octets_forwarded is None:
+        self.__octets_forwarded = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="octets-forwarded", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

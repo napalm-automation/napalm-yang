@@ -43,8 +43,8 @@ of the extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ of the extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state (container)
@@ -80,6 +83,8 @@ of the extended prefix LSA
     YANG Description: State parameters relating to the SID/Label binding sub-TLV
 of the extended prefix LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -93,6 +98,9 @@ of the extended prefix LSA
     YANG Description: State parameters relating to the SID/Label binding sub-TLV
 of the extended prefix LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ of the extended prefix LSA
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs (container)
@@ -119,6 +130,8 @@ of the extended prefix LSA
     YANG Description: TLVs contained within the SID/Label Binding sub-TLV of the
 SID/Label Binding TLV
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -132,6 +145,9 @@ SID/Label Binding TLV
     YANG Description: TLVs contained within the SID/Label Binding sub-TLV of the
 SID/Label Binding TLV
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ of the extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ of the extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state (container)
@@ -217,6 +236,8 @@ of the extended prefix LSA
     YANG Description: State parameters relating to the SID/Label binding sub-TLV
 of the extended prefix LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -230,6 +251,9 @@ of the extended prefix LSA
     YANG Description: State parameters relating to the SID/Label binding sub-TLV
 of the extended prefix LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,6 +273,9 @@ of the extended prefix LSA
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs (container)
@@ -256,6 +283,8 @@ of the extended prefix LSA
     YANG Description: TLVs contained within the SID/Label Binding sub-TLV of the
 SID/Label Binding TLV
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -269,6 +298,9 @@ SID/Label Binding TLV
     YANG Description: TLVs contained within the SID/Label Binding sub-TLV of the
 SID/Label Binding TLV
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

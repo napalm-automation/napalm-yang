@@ -41,7 +41,7 @@ class link(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__sub_tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class link(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link']
 
+  def _initialized_sub_tlvs(self):
+    return self.__sub_tlvs is not None
+
   def _get_sub_tlvs(self):
     """
     Getter method for sub_tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs (container)
 
     YANG Description: Sub-TLVs included in the Link TLV
     """
+    if self.__sub_tlvs is None:
+        self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sub_tlvs
       
   def _set_sub_tlvs(self, v, load=False):
@@ -88,6 +93,9 @@ class link(PybindBase):
 
     YANG Description: Sub-TLVs included in the Link TLV
     """
+    if self.__sub_tlvs is None:
+        self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class link(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__sub_tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class link(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link']
 
+  def _initialized_sub_tlvs(self):
+    return self.__sub_tlvs is not None
+
   def _get_sub_tlvs(self):
     """
     Getter method for sub_tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs (container)
 
     YANG Description: Sub-TLVs included in the Link TLV
     """
+    if self.__sub_tlvs is None:
+        self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sub_tlvs
       
   def _set_sub_tlvs(self, v, load=False):
@@ -180,6 +193,9 @@ class link(PybindBase):
 
     YANG Description: Sub-TLVs included in the Link TLV
     """
+    if self.__sub_tlvs is None:
+        self.__sub_tlvs = YANGDynClass(base=sub_tlvs.sub_tlvs, is_container='container', yang_name="sub-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

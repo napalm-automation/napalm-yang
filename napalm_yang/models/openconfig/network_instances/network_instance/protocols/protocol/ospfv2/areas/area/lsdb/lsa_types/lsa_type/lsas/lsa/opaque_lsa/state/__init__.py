@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__scope = None
+    self.__type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'state']
 
+  def _initialized_scope(self):
+    return self.__scope is not None
+
   def _get_scope(self):
     """
     Getter method for scope, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state/scope (enumeration)
@@ -79,6 +82,8 @@ indicates its scope - the value of this leaf
 determines both the flooding domain, and the type
 of the LSA.
     """
+    if self.__scope is None:
+        self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__scope
       
   def _set_scope(self, v, load=False):
@@ -94,6 +99,9 @@ indicates its scope - the value of this leaf
 determines both the flooding domain, and the type
 of the LSA.
     """
+    if self.__scope is None:
+        self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ of the LSA.
     self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state/type (identityref)
@@ -120,6 +131,8 @@ of the LSA.
     YANG Description: The Opaque Type of the LSA. This value is used to
 indicate the type of data carried by the opaque LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -133,6 +146,9 @@ indicate the type of data carried by the opaque LSA
     YANG Description: The Opaque Type of the LSA. This value is used to
 indicate the type of data carried by the opaque LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__scope = None
+    self.__type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'state']
 
+  def _initialized_scope(self):
+    return self.__scope is not None
+
   def _get_scope(self):
     """
     Getter method for scope, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state/scope (enumeration)
@@ -217,6 +236,8 @@ indicates its scope - the value of this leaf
 determines both the flooding domain, and the type
 of the LSA.
     """
+    if self.__scope is None:
+        self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__scope
       
   def _set_scope(self, v, load=False):
@@ -232,6 +253,9 @@ indicates its scope - the value of this leaf
 determines both the flooding domain, and the type
 of the LSA.
     """
+    if self.__scope is None:
+        self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ of the LSA.
     self.__scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'AS': {}, u'LINK': {}, u'AREA': {}},), is_leaf=True, yang_name="scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state/type (identityref)
@@ -258,6 +285,8 @@ of the LSA.
     YANG Description: The Opaque Type of the LSA. This value is used to
 indicate the type of data carried by the opaque LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -271,6 +300,9 @@ indicate the type of data carried by the opaque LSA
     YANG Description: The Opaque Type of the LSA. This value is used to
 indicate the type of data carried by the opaque LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_PREFIX': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TRAFFIC_ENGINEERING': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_LSA': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:ROUTER_INFORMATION': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:OSPFV2_EXTENDED_LINK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,8 +41,8 @@ prefix for the dynamic BGP neighbor connections.
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
-    self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__prefix = None
+    self.__peer_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ prefix for the dynamic BGP neighbor connections.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'dynamic-neighbor-prefixes', u'dynamic-neighbor-prefix', u'state']
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix/state/prefix (oc-inet:ip-prefix)
@@ -79,6 +82,8 @@ prefix for the dynamic BGP neighbor connections.
 BGP speaker must fall to be considered eligible to the
 dynamically configured.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -93,6 +98,9 @@ dynamically configured.
 BGP speaker must fall to be considered eligible to the
 dynamically configured.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ dynamically configured.
     self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
 
 
+  def _initialized_peer_group(self):
+    return self.__peer_group is not None
+
   def _get_peer_group(self):
     """
     Getter method for peer_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix/state/peer_group (leafref)
@@ -121,6 +132,8 @@ configured.  The configuration parameters used for the dynamic
 neighbor are those specified within the referenced peer
 group.
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__peer_group
       
   def _set_peer_group(self, v, load=False):
@@ -136,6 +149,9 @@ configured.  The configuration parameters used for the dynamic
 neighbor are those specified within the referenced peer
 group.
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -182,8 +198,8 @@ prefix for the dynamic BGP neighbor connections.
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
-    self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__prefix = None
+    self.__peer_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -212,6 +228,9 @@ prefix for the dynamic BGP neighbor connections.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'dynamic-neighbor-prefixes', u'dynamic-neighbor-prefix', u'state']
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix/state/prefix (oc-inet:ip-prefix)
@@ -220,6 +239,8 @@ prefix for the dynamic BGP neighbor connections.
 BGP speaker must fall to be considered eligible to the
 dynamically configured.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -234,6 +255,9 @@ dynamically configured.
 BGP speaker must fall to be considered eligible to the
 dynamically configured.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -253,6 +277,9 @@ dynamically configured.
     self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-prefix', is_config=False)
 
 
+  def _initialized_peer_group(self):
+    return self.__peer_group is not None
+
   def _get_peer_group(self):
     """
     Getter method for peer_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/dynamic_neighbor_prefixes/dynamic_neighbor_prefix/state/peer_group (leafref)
@@ -262,6 +289,8 @@ configured.  The configuration parameters used for the dynamic
 neighbor are those specified within the referenced peer
 group.
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__peer_group
       
   def _set_peer_group(self, v, load=False):
@@ -277,6 +306,9 @@ configured.  The configuration parameters used for the dynamic
 neighbor are those specified within the referenced peer
 group.
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

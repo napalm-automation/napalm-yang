@@ -41,8 +41,8 @@ class type_of_service(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tos = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class type_of_service(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'nssa-external-lsa', u'types-of-service', u'type-of-service']
 
+  def _initialized_tos(self):
+    return self.__tos is not None
+
   def _get_tos(self):
     """
     Getter method for tos, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa/types_of_service/type_of_service/tos (leafref)
@@ -78,6 +81,8 @@ class type_of_service(PybindBase):
     YANG Description: Reference to the type of services identifier which is specified
 in the NSSA External LSA
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__tos
       
   def _set_tos(self, v, load=False):
@@ -91,6 +96,9 @@ in the NSSA External LSA
     YANG Description: Reference to the type of services identifier which is specified
 in the NSSA External LSA
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -115,12 +123,17 @@ in the NSSA External LSA
     self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa/types_of_service/type_of_service/state (container)
 
     YANG Description: Per-TOS parameters for the LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -133,6 +146,9 @@ in the NSSA External LSA
 
     YANG Description: Per-TOS parameters for the LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -179,8 +195,8 @@ class type_of_service(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tos = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -209,6 +225,9 @@ class type_of_service(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'nssa-external-lsa', u'types-of-service', u'type-of-service']
 
+  def _initialized_tos(self):
+    return self.__tos is not None
+
   def _get_tos(self):
     """
     Getter method for tos, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa/types_of_service/type_of_service/tos (leafref)
@@ -216,6 +235,8 @@ class type_of_service(PybindBase):
     YANG Description: Reference to the type of services identifier which is specified
 in the NSSA External LSA
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__tos
       
   def _set_tos(self, v, load=False):
@@ -229,6 +250,9 @@ in the NSSA External LSA
     YANG Description: Reference to the type of services identifier which is specified
 in the NSSA External LSA
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -253,12 +277,17 @@ in the NSSA External LSA
     self.__tos = YANGDynClass(base=unicode, is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa/types_of_service/type_of_service/state (container)
 
     YANG Description: Per-TOS parameters for the LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -271,6 +300,9 @@ in the NSSA External LSA
 
     YANG Description: Per-TOS parameters for the LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

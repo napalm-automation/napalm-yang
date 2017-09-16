@@ -40,15 +40,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__max_area_address_mismatches = None
+    self.__rejected_adj = None
+    self.__id_field_len_mismatches = None
+    self.__adj_number = None
+    self.__auth_type_fails = None
+    self.__lan_dis_changes = None
+    self.__auth_fails = None
+    self.__adj_changes = None
+    self.__init_fails = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'circuit-counters', u'state']
 
+  def _initialized_adj_changes(self):
+    return self.__adj_changes is not None
+
   def _get_adj_changes(self):
     """
     Getter method for adj_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/adj_changes (yang:counter32)
@@ -84,6 +87,8 @@ class state(PybindBase):
     YANG Description: Number of times an adjacency state change has occurred on this circuit.
 MIB Entry: CircAdjChanges.
     """
+    if self.__adj_changes is None:
+        self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__adj_changes
       
   def _set_adj_changes(self, v, load=False):
@@ -97,6 +102,9 @@ MIB Entry: CircAdjChanges.
     YANG Description: Number of times an adjacency state change has occurred on this circuit.
 MIB Entry: CircAdjChanges.
     """
+    if self.__adj_changes is None:
+        self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ MIB Entry: CircAdjChanges.
     self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_init_fails(self):
+    return self.__init_fails is not None
+
   def _get_init_fails(self):
     """
     Getter method for init_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/init_fails (yang:counter32)
@@ -123,6 +134,8 @@ MIB Entry: CircAdjChanges.
     YANG Description: Number of times initialization of this circuit has failed. This counts
 events such as PPP NCP failures. MIB Entry: CircInitFails.
     """
+    if self.__init_fails is None:
+        self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__init_fails
       
   def _set_init_fails(self, v, load=False):
@@ -136,6 +149,9 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     YANG Description: Number of times initialization of this circuit has failed. This counts
 events such as PPP NCP failures. MIB Entry: CircInitFails.
     """
+    if self.__init_fails is None:
+        self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_rejected_adj(self):
+    return self.__rejected_adj is not None
+
   def _get_rejected_adj(self):
     """
     Getter method for rejected_adj, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/rejected_adj (yang:counter32)
@@ -162,6 +181,8 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     YANG Description: Number of times an adjacency has been rejected on this circuit. MIB
 Entry: CircRejAdjs.
     """
+    if self.__rejected_adj is None:
+        self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__rejected_adj
       
   def _set_rejected_adj(self, v, load=False):
@@ -175,6 +196,9 @@ Entry: CircRejAdjs.
     YANG Description: Number of times an adjacency has been rejected on this circuit. MIB
 Entry: CircRejAdjs.
     """
+    if self.__rejected_adj is None:
+        self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,6 +218,9 @@ Entry: CircRejAdjs.
     self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_id_field_len_mismatches(self):
+    return self.__id_field_len_mismatches is not None
+
   def _get_id_field_len_mismatches(self):
     """
     Getter method for id_field_len_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/id_field_len_mismatches (yang:counter32)
@@ -202,6 +229,8 @@ Entry: CircRejAdjs.
 from that for this system has been received.
 MIB Entry: CircIDFieldLenMismatches.
     """
+    if self.__id_field_len_mismatches is None:
+        self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__id_field_len_mismatches
       
   def _set_id_field_len_mismatches(self, v, load=False):
@@ -216,6 +245,9 @@ MIB Entry: CircIDFieldLenMismatches.
 from that for this system has been received.
 MIB Entry: CircIDFieldLenMismatches.
     """
+    if self.__id_field_len_mismatches is None:
+        self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -235,6 +267,9 @@ MIB Entry: CircIDFieldLenMismatches.
     self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_max_area_address_mismatches(self):
+    return self.__max_area_address_mismatches is not None
+
   def _get_max_area_address_mismatches(self):
     """
     Getter method for max_area_address_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/max_area_address_mismatches (yang:counter32)
@@ -243,6 +278,8 @@ MIB Entry: CircIDFieldLenMismatches.
 different from that for this system has been received. MIB Entry:
 CircMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__max_area_address_mismatches
       
   def _set_max_area_address_mismatches(self, v, load=False):
@@ -257,6 +294,9 @@ CircMaxAreaAddrMismatches.
 different from that for this system has been received. MIB Entry:
 CircMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,6 +316,9 @@ CircMaxAreaAddrMismatches.
     self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_type_fails(self):
+    return self.__auth_type_fails is not None
+
   def _get_auth_type_fails(self):
     """
     Getter method for auth_type_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/auth_type_fails (yang:counter32)
@@ -284,6 +327,8 @@ CircMaxAreaAddrMismatches.
 from that for this system has been received. MIB Entry:
 CircAuthTypeFails.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_type_fails
       
   def _set_auth_type_fails(self, v, load=False):
@@ -298,6 +343,9 @@ CircAuthTypeFails.
 from that for this system has been received. MIB Entry:
 CircAuthTypeFails.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -317,6 +365,9 @@ CircAuthTypeFails.
     self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_fails(self):
+    return self.__auth_fails is not None
+
   def _get_auth_fails(self):
     """
     Getter method for auth_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/auth_fails (yang:counter32)
@@ -324,6 +375,8 @@ CircAuthTypeFails.
     YANG Description: Number of times an IS-IS control PDU with the correct auth type has
 failed to pass authentication validation. MIB Entry: CircAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_fails
       
   def _set_auth_fails(self, v, load=False):
@@ -337,6 +390,9 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
     YANG Description: Number of times an IS-IS control PDU with the correct auth type has
 failed to pass authentication validation. MIB Entry: CircAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,6 +412,9 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
     self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_lan_dis_changes(self):
+    return self.__lan_dis_changes is not None
+
   def _get_lan_dis_changes(self):
     """
     Getter method for lan_dis_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/lan_dis_changes (yang:counter32)
@@ -364,6 +423,8 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
 level. If the circuit is point to point, this count is zero. MIB Entry:
 CircLANDesISChanges.
     """
+    if self.__lan_dis_changes is None:
+        self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__lan_dis_changes
       
   def _set_lan_dis_changes(self, v, load=False):
@@ -378,6 +439,9 @@ CircLANDesISChanges.
 level. If the circuit is point to point, this count is zero. MIB Entry:
 CircLANDesISChanges.
     """
+    if self.__lan_dis_changes is None:
+        self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -397,6 +461,9 @@ CircLANDesISChanges.
     self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_adj_number(self):
+    return self.__adj_number is not None
+
   def _get_adj_number(self):
     """
     Getter method for adj_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/adj_number (uint32)
@@ -404,6 +471,8 @@ CircLANDesISChanges.
     YANG Description: Number of adjacencies on this circuit.
 MIB Entry: CircNumAdj.
     """
+    if self.__adj_number is None:
+        self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__adj_number
       
   def _set_adj_number(self, v, load=False):
@@ -417,6 +486,9 @@ MIB Entry: CircNumAdj.
     YANG Description: Number of adjacencies on this circuit.
 MIB Entry: CircNumAdj.
     """
+    if self.__adj_number is None:
+        self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -469,15 +541,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__max_area_address_mismatches = None
+    self.__rejected_adj = None
+    self.__id_field_len_mismatches = None
+    self.__adj_number = None
+    self.__auth_type_fails = None
+    self.__lan_dis_changes = None
+    self.__auth_fails = None
+    self.__adj_changes = None
+    self.__init_fails = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -506,6 +578,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'circuit-counters', u'state']
 
+  def _initialized_adj_changes(self):
+    return self.__adj_changes is not None
+
   def _get_adj_changes(self):
     """
     Getter method for adj_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/adj_changes (yang:counter32)
@@ -513,6 +588,8 @@ class state(PybindBase):
     YANG Description: Number of times an adjacency state change has occurred on this circuit.
 MIB Entry: CircAdjChanges.
     """
+    if self.__adj_changes is None:
+        self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__adj_changes
       
   def _set_adj_changes(self, v, load=False):
@@ -526,6 +603,9 @@ MIB Entry: CircAdjChanges.
     YANG Description: Number of times an adjacency state change has occurred on this circuit.
 MIB Entry: CircAdjChanges.
     """
+    if self.__adj_changes is None:
+        self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -545,6 +625,9 @@ MIB Entry: CircAdjChanges.
     self.__adj_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_init_fails(self):
+    return self.__init_fails is not None
+
   def _get_init_fails(self):
     """
     Getter method for init_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/init_fails (yang:counter32)
@@ -552,6 +635,8 @@ MIB Entry: CircAdjChanges.
     YANG Description: Number of times initialization of this circuit has failed. This counts
 events such as PPP NCP failures. MIB Entry: CircInitFails.
     """
+    if self.__init_fails is None:
+        self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__init_fails
       
   def _set_init_fails(self, v, load=False):
@@ -565,6 +650,9 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     YANG Description: Number of times initialization of this circuit has failed. This counts
 events such as PPP NCP failures. MIB Entry: CircInitFails.
     """
+    if self.__init_fails is None:
+        self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -584,6 +672,9 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     self.__init_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="init-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_rejected_adj(self):
+    return self.__rejected_adj is not None
+
   def _get_rejected_adj(self):
     """
     Getter method for rejected_adj, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/rejected_adj (yang:counter32)
@@ -591,6 +682,8 @@ events such as PPP NCP failures. MIB Entry: CircInitFails.
     YANG Description: Number of times an adjacency has been rejected on this circuit. MIB
 Entry: CircRejAdjs.
     """
+    if self.__rejected_adj is None:
+        self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__rejected_adj
       
   def _set_rejected_adj(self, v, load=False):
@@ -604,6 +697,9 @@ Entry: CircRejAdjs.
     YANG Description: Number of times an adjacency has been rejected on this circuit. MIB
 Entry: CircRejAdjs.
     """
+    if self.__rejected_adj is None:
+        self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -623,6 +719,9 @@ Entry: CircRejAdjs.
     self.__rejected_adj = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="rejected-adj", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_id_field_len_mismatches(self):
+    return self.__id_field_len_mismatches is not None
+
   def _get_id_field_len_mismatches(self):
     """
     Getter method for id_field_len_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/id_field_len_mismatches (yang:counter32)
@@ -631,6 +730,8 @@ Entry: CircRejAdjs.
 from that for this system has been received.
 MIB Entry: CircIDFieldLenMismatches.
     """
+    if self.__id_field_len_mismatches is None:
+        self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__id_field_len_mismatches
       
   def _set_id_field_len_mismatches(self, v, load=False):
@@ -645,6 +746,9 @@ MIB Entry: CircIDFieldLenMismatches.
 from that for this system has been received.
 MIB Entry: CircIDFieldLenMismatches.
     """
+    if self.__id_field_len_mismatches is None:
+        self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -664,6 +768,9 @@ MIB Entry: CircIDFieldLenMismatches.
     self.__id_field_len_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-field-len-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_max_area_address_mismatches(self):
+    return self.__max_area_address_mismatches is not None
+
   def _get_max_area_address_mismatches(self):
     """
     Getter method for max_area_address_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/max_area_address_mismatches (yang:counter32)
@@ -672,6 +779,8 @@ MIB Entry: CircIDFieldLenMismatches.
 different from that for this system has been received. MIB Entry:
 CircMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__max_area_address_mismatches
       
   def _set_max_area_address_mismatches(self, v, load=False):
@@ -686,6 +795,9 @@ CircMaxAreaAddrMismatches.
 different from that for this system has been received. MIB Entry:
 CircMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -705,6 +817,9 @@ CircMaxAreaAddrMismatches.
     self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_type_fails(self):
+    return self.__auth_type_fails is not None
+
   def _get_auth_type_fails(self):
     """
     Getter method for auth_type_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/auth_type_fails (yang:counter32)
@@ -713,6 +828,8 @@ CircMaxAreaAddrMismatches.
 from that for this system has been received. MIB Entry:
 CircAuthTypeFails.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_type_fails
       
   def _set_auth_type_fails(self, v, load=False):
@@ -727,6 +844,9 @@ CircAuthTypeFails.
 from that for this system has been received. MIB Entry:
 CircAuthTypeFails.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -746,6 +866,9 @@ CircAuthTypeFails.
     self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_fails(self):
+    return self.__auth_fails is not None
+
   def _get_auth_fails(self):
     """
     Getter method for auth_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/auth_fails (yang:counter32)
@@ -753,6 +876,8 @@ CircAuthTypeFails.
     YANG Description: Number of times an IS-IS control PDU with the correct auth type has
 failed to pass authentication validation. MIB Entry: CircAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_fails
       
   def _set_auth_fails(self, v, load=False):
@@ -766,6 +891,9 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
     YANG Description: Number of times an IS-IS control PDU with the correct auth type has
 failed to pass authentication validation. MIB Entry: CircAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -785,6 +913,9 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
     self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_lan_dis_changes(self):
+    return self.__lan_dis_changes is not None
+
   def _get_lan_dis_changes(self):
     """
     Getter method for lan_dis_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/lan_dis_changes (yang:counter32)
@@ -793,6 +924,8 @@ failed to pass authentication validation. MIB Entry: CircAuthFails.
 level. If the circuit is point to point, this count is zero. MIB Entry:
 CircLANDesISChanges.
     """
+    if self.__lan_dis_changes is None:
+        self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__lan_dis_changes
       
   def _set_lan_dis_changes(self, v, load=False):
@@ -807,6 +940,9 @@ CircLANDesISChanges.
 level. If the circuit is point to point, this count is zero. MIB Entry:
 CircLANDesISChanges.
     """
+    if self.__lan_dis_changes is None:
+        self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -826,6 +962,9 @@ CircLANDesISChanges.
     self.__lan_dis_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lan-dis-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_adj_number(self):
+    return self.__adj_number is not None
+
   def _get_adj_number(self):
     """
     Getter method for adj_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/circuit_counters/state/adj_number (uint32)
@@ -833,6 +972,8 @@ CircLANDesISChanges.
     YANG Description: Number of adjacencies on this circuit.
 MIB Entry: CircNumAdj.
     """
+    if self.__adj_number is None:
+        self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__adj_number
       
   def _set_adj_number(self, v, load=False):
@@ -846,6 +987,9 @@ MIB Entry: CircNumAdj.
     YANG Description: Number of adjacencies on this circuit.
 MIB Entry: CircNumAdj.
     """
+    if self.__adj_number is None:
+        self.__adj_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adj-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

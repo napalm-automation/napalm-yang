@@ -41,7 +41,7 @@ class components(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__component = YANGDynClass(base=YANGListType("name",component.component, yang_name="component", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="component", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    self.__component = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class components(PybindBase):
     else:
       return [u'components']
 
+  def _initialized_component(self):
+    return self.__component is not None
+
   def _get_component(self):
     """
     Getter method for component, mapped from YANG variable /components/component (list)
 
     YANG Description: List of components, keyed by component name.
     """
+    if self.__component is None:
+        self.__component = YANGDynClass(base=YANGListType("name",component.component, yang_name="component", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="component", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
     return self.__component
       
   def _set_component(self, v, load=False):
@@ -88,6 +93,9 @@ class components(PybindBase):
 
     YANG Description: List of components, keyed by component name.
     """
+    if self.__component is None:
+        self.__component = YANGDynClass(base=YANGListType("name",component.component, yang_name="component", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="component", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

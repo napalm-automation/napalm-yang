@@ -42,7 +42,7 @@ SID/Label binding TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ SID/Label binding TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'sid-label-binding']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state (container)
@@ -78,6 +81,8 @@ SID/Label binding TLV
     YANG Description: State parameteres relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -91,6 +96,9 @@ sub-TLV
     YANG Description: State parameteres relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ SID/Label binding TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ SID/Label binding TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'sid-label-binding']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state (container)
@@ -173,6 +184,8 @@ SID/Label binding TLV
     YANG Description: State parameteres relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -186,6 +199,9 @@ sub-TLV
     YANG Description: State parameteres relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

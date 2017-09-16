@@ -42,7 +42,7 @@ for accounting
     self._path_helper = False
 
     self._extmethods = False
-    self.__event = YANGDynClass(base=YANGListType("event_type",event.event, yang_name="event", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='event-type', extensions=None), is_container='list', yang_name="event", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__event = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ for accounting
     else:
       return [u'system', u'aaa', u'accounting', u'events']
 
+  def _initialized_event(self):
+    return self.__event is not None
+
   def _get_event(self):
     """
     Getter method for event, mapped from YANG variable /system/aaa/accounting/events/event (list)
 
     YANG Description: List of events subject to accounting
     """
+    if self.__event is None:
+        self.__event = YANGDynClass(base=YANGListType("event_type",event.event, yang_name="event", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='event-type', extensions=None), is_container='list', yang_name="event", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__event
       
   def _set_event(self, v, load=False):
@@ -89,6 +94,9 @@ for accounting
 
     YANG Description: List of events subject to accounting
     """
+    if self.__event is None:
+        self.__event = YANGDynClass(base=YANGListType("event_type",event.event, yang_name="event", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='event-type', extensions=None), is_container='list', yang_name="event", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

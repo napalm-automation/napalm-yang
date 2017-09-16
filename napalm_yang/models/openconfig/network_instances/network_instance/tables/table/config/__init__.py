@@ -41,8 +41,8 @@ table
     self._path_helper = False
 
     self._extmethods = False
-    self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__protocol = None
+    self.__address_family = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ table
     else:
       return [u'network-instances', u'network-instance', u'tables', u'table', u'config']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/tables/table/config/protocol (leafref)
 
     YANG Description: Reference to the protocol that the table is associated with.
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -89,6 +94,9 @@ table
 
     YANG Description: Reference to the protocol that the table is associated with.
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,12 +116,17 @@ table
     self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/tables/table/config/address_family (identityref)
 
     YANG Description: The address family (IPv4, IPv6) of the table's entries
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -126,6 +139,9 @@ table
 
     YANG Description: The address family (IPv4, IPv6) of the table's entries
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -172,8 +188,8 @@ table
     self._path_helper = False
 
     self._extmethods = False
-    self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__protocol = None
+    self.__address_family = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -202,12 +218,17 @@ table
     else:
       return [u'network-instances', u'network-instance', u'tables', u'table', u'config']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/tables/table/config/protocol (leafref)
 
     YANG Description: Reference to the protocol that the table is associated with.
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -220,6 +241,9 @@ table
 
     YANG Description: Reference to the protocol that the table is associated with.
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,12 +263,17 @@ table
     self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/tables/table/config/address_family (identityref)
 
     YANG Description: The address family (IPv4, IPv6) of the table's entries
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -257,6 +286,9 @@ table
 
     YANG Description: The address family (IPv4, IPv6) of the table's entries
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,8 +41,8 @@ BGP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__input = None
+    self.__output = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ BGP neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'queues']
 
+  def _initialized_input(self):
+    return self.__input is not None
+
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues/input (uint32)
@@ -78,6 +81,8 @@ BGP neighbor
     YANG Description: The number of messages received from the peer currently
 queued
     """
+    if self.__input is None:
+        self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__input
       
   def _set_input(self, v, load=False):
@@ -91,6 +96,9 @@ queued
     YANG Description: The number of messages received from the peer currently
 queued
     """
+    if self.__input is None:
+        self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ queued
     self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_output(self):
+    return self.__output is not None
+
   def _get_output(self):
     """
     Getter method for output, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues/output (uint32)
 
     YANG Description: The number of messages queued to be sent to the peer
     """
+    if self.__output is None:
+        self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__output
       
   def _set_output(self, v, load=False):
@@ -128,6 +141,9 @@ queued
 
     YANG Description: The number of messages queued to be sent to the peer
     """
+    if self.__output is None:
+        self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ BGP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__input = None
+    self.__output = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ BGP neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'queues']
 
+  def _initialized_input(self):
+    return self.__input is not None
+
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues/input (uint32)
@@ -211,6 +230,8 @@ BGP neighbor
     YANG Description: The number of messages received from the peer currently
 queued
     """
+    if self.__input is None:
+        self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__input
       
   def _set_input(self, v, load=False):
@@ -224,6 +245,9 @@ queued
     YANG Description: The number of messages received from the peer currently
 queued
     """
+    if self.__input is None:
+        self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ queued
     self.__input = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="input", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_output(self):
+    return self.__output is not None
+
   def _get_output(self):
     """
     Getter method for output, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues/output (uint32)
 
     YANG Description: The number of messages queued to be sent to the peer
     """
+    if self.__output is None:
+        self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__output
       
   def _set_output(self, v, load=False):
@@ -261,6 +290,9 @@ queued
 
     YANG Description: The number of messages queued to be sent to the peer
     """
+    if self.__output is None:
+        self.__output = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="output", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

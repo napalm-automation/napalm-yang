@@ -42,7 +42,7 @@ of a system to other systems who receive the LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ of a system to other systems who receive the LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information']
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs (container)
 
     YANG Description: The TLVs included within the Router Information LSA.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -89,6 +94,9 @@ of a system to other systems who receive the LSA
 
     YANG Description: The TLVs included within the Router Information LSA.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ of a system to other systems who receive the LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ of a system to other systems who receive the LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information']
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs (container)
 
     YANG Description: The TLVs included within the Router Information LSA.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -182,6 +195,9 @@ of a system to other systems who receive the LSA
 
     YANG Description: The TLVs included within the Router Information LSA.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

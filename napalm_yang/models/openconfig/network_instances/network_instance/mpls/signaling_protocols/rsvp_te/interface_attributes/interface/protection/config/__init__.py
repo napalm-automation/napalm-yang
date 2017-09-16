@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__bypass_optimize_interval = None
+    self.__link_protection_style_requested = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'protection', u'config']
 
+  def _initialized_link_protection_style_requested(self):
+    return self.__link_protection_style_requested is not None
+
   def _get_link_protection_style_requested(self):
     """
     Getter method for link_protection_style_requested, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection/config/link_protection_style_requested (identityref)
@@ -77,6 +80,8 @@ class config(PybindBase):
     YANG Description: Style of mpls frr protection desired:
 link, link-node, or unprotected
     """
+    if self.__link_protection_style_requested is None:
+        self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__link_protection_style_requested
       
   def _set_link_protection_style_requested(self, v, load=False):
@@ -90,6 +95,9 @@ link, link-node, or unprotected
     YANG Description: Style of mpls frr protection desired:
 link, link-node, or unprotected
     """
+    if self.__link_protection_style_requested is None:
+        self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ link, link-node, or unprotected
     self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_bypass_optimize_interval(self):
+    return self.__bypass_optimize_interval is not None
+
   def _get_bypass_optimize_interval(self):
     """
     Getter method for bypass_optimize_interval, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection/config/bypass_optimize_interval (uint16)
@@ -116,6 +127,8 @@ link, link-node, or unprotected
     YANG Description: interval between periodic optimization
 of the bypass LSPs
     """
+    if self.__bypass_optimize_interval is None:
+        self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__bypass_optimize_interval
       
   def _set_bypass_optimize_interval(self, v, load=False):
@@ -129,6 +142,9 @@ of the bypass LSPs
     YANG Description: interval between periodic optimization
 of the bypass LSPs
     """
+    if self.__bypass_optimize_interval is None:
+        self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__bypass_optimize_interval = None
+    self.__link_protection_style_requested = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'protection', u'config']
 
+  def _initialized_link_protection_style_requested(self):
+    return self.__link_protection_style_requested is not None
+
   def _get_link_protection_style_requested(self):
     """
     Getter method for link_protection_style_requested, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection/config/link_protection_style_requested (identityref)
@@ -211,6 +230,8 @@ class config(PybindBase):
     YANG Description: Style of mpls frr protection desired:
 link, link-node, or unprotected
     """
+    if self.__link_protection_style_requested is None:
+        self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__link_protection_style_requested
       
   def _set_link_protection_style_requested(self, v, load=False):
@@ -224,6 +245,9 @@ link, link-node, or unprotected
     YANG Description: Style of mpls frr protection desired:
 link, link-node, or unprotected
     """
+    if self.__link_protection_style_requested is None:
+        self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ link, link-node, or unprotected
     self.__link_protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LINK_NODE_PROTECTION_REQUESTED"), is_leaf=True, yang_name="link-protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_bypass_optimize_interval(self):
+    return self.__bypass_optimize_interval is not None
+
   def _get_bypass_optimize_interval(self):
     """
     Getter method for bypass_optimize_interval, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection/config/bypass_optimize_interval (uint16)
@@ -250,6 +277,8 @@ link, link-node, or unprotected
     YANG Description: interval between periodic optimization
 of the bypass LSPs
     """
+    if self.__bypass_optimize_interval is None:
+        self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__bypass_optimize_interval
       
   def _set_bypass_optimize_interval(self, v, load=False):
@@ -263,6 +292,9 @@ of the bypass LSPs
     YANG Description: interval between periodic optimization
 of the bypass LSPs
     """
+    if self.__bypass_optimize_interval is None:
+        self.__bypass_optimize_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="bypass-optimize-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    self.__flags = None
+    self.__weight = None
+    self.__value = None
+    self.__neighbor_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'extended-is-reachability', u'neighbors', u'neighbors', u'subTLVs', u'subTLVs', u'lan-adjacency-sid', u'sid', u'state']
 
+  def _initialized_value(self):
+    return self.__value is not None
+
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/value (uint32)
 
     YANG Description: LAN Adjacency-SID value.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__value
       
   def _set_value(self, v, load=False):
@@ -90,6 +95,9 @@ class state(PybindBase):
 
     YANG Description: LAN Adjacency-SID value.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class state(PybindBase):
     self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/flags (enumeration)
 
     YANG Description: Flags associated with LAN-Adj-Segment-ID.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -127,6 +140,9 @@ class state(PybindBase):
 
     YANG Description: Flags associated with LAN-Adj-Segment-ID.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,6 +162,9 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/weight (uint8)
@@ -153,6 +172,8 @@ class state(PybindBase):
     YANG Description: Value that represents the weight of the Adj-SID for the purpose
 of load balancing.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -166,6 +187,9 @@ of load balancing.
     YANG Description: Value that represents the weight of the Adj-SID for the purpose
 of load balancing.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -185,6 +209,9 @@ of load balancing.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_neighbor_id(self):
+    return self.__neighbor_id is not None
+
   def _get_neighbor_id(self):
     """
     Getter method for neighbor_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/neighbor_id (oc-isis-types:system-id)
@@ -192,6 +219,8 @@ of load balancing.
     YANG Description: System ID of the neighbor associated with the LAN-Adj-Segment-ID
 value.
     """
+    if self.__neighbor_id is None:
+        self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__neighbor_id
       
   def _set_neighbor_id(self, v, load=False):
@@ -205,6 +234,9 @@ value.
     YANG Description: System ID of the neighbor associated with the LAN-Adj-Segment-ID
 value.
     """
+    if self.__neighbor_id is None:
+        self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -252,10 +284,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    self.__flags = None
+    self.__weight = None
+    self.__value = None
+    self.__neighbor_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -284,12 +316,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'extended-is-reachability', u'neighbors', u'neighbors', u'subTLVs', u'subTLVs', u'lan-adjacency-sid', u'sid', u'state']
 
+  def _initialized_value(self):
+    return self.__value is not None
+
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/value (uint32)
 
     YANG Description: LAN Adjacency-SID value.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__value
       
   def _set_value(self, v, load=False):
@@ -302,6 +339,9 @@ class state(PybindBase):
 
     YANG Description: LAN Adjacency-SID value.
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -321,12 +361,17 @@ class state(PybindBase):
     self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/flags (enumeration)
 
     YANG Description: Flags associated with LAN-Adj-Segment-ID.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -339,6 +384,9 @@ class state(PybindBase):
 
     YANG Description: Flags associated with LAN-Adj-Segment-ID.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -358,6 +406,9 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LOCAL': {}, u'SET': {}, u'BACKUP': {}, u'ADDRESS_FAMILY': {}, u'VALUE': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/weight (uint8)
@@ -365,6 +416,8 @@ class state(PybindBase):
     YANG Description: Value that represents the weight of the Adj-SID for the purpose
 of load balancing.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -378,6 +431,9 @@ of load balancing.
     YANG Description: Value that represents the weight of the Adj-SID for the purpose
 of load balancing.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -397,6 +453,9 @@ of load balancing.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_neighbor_id(self):
+    return self.__neighbor_id is not None
+
   def _get_neighbor_id(self):
     """
     Getter method for neighbor_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/subTLVs/subTLVs/lan_adjacency_sid/sid/state/neighbor_id (oc-isis-types:system-id)
@@ -404,6 +463,8 @@ of load balancing.
     YANG Description: System ID of the neighbor associated with the LAN-Adj-Segment-ID
 value.
     """
+    if self.__neighbor_id is None:
+        self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__neighbor_id
       
   def _set_neighbor_id(self, v, load=False):
@@ -417,6 +478,9 @@ value.
     YANG Description: System ID of the neighbor associated with the LAN-Adj-Segment-ID
 value.
     """
+    if self.__neighbor_id is None:
+        self.__neighbor_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="neighbor-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

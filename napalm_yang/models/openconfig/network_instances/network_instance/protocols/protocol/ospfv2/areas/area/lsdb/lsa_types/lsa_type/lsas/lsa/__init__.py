@@ -48,14 +48,14 @@ LSDB for the specified area
     self._path_helper = False
 
     self._extmethods = False
-    self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__summary_lsa = None
+    self.__link_state_id = None
+    self.__router_lsa = None
+    self.__as_external_lsa = None
+    self.__state = None
+    self.__network_lsa = None
+    self.__nssa_external_lsa = None
+    self.__opaque_lsa = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -84,12 +84,17 @@ LSDB for the specified area
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa']
 
+  def _initialized_link_state_id(self):
+    return self.__link_state_id is not None
+
   def _get_link_state_id(self):
     """
     Getter method for link_state_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/link_state_id (leafref)
 
     YANG Description: Reference to the Link State ID of the LSA
     """
+    if self.__link_state_id is None:
+        self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__link_state_id
       
   def _set_link_state_id(self, v, load=False):
@@ -102,6 +107,9 @@ LSDB for the specified area
 
     YANG Description: Reference to the Link State ID of the LSA
     """
+    if self.__link_state_id is None:
+        self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -126,6 +134,9 @@ LSDB for the specified area
     self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/state (container)
@@ -133,6 +144,8 @@ LSDB for the specified area
     YANG Description: Operational state parameters relating to all
 LSA types
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -146,6 +159,9 @@ LSA types
     YANG Description: Operational state parameters relating to all
 LSA types
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -165,12 +181,17 @@ LSA types
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_lsa(self):
+    return self.__router_lsa is not None
+
   def _get_router_lsa(self):
     """
     Getter method for router_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa (container)
 
     YANG Description: Contents of the router LSA
     """
+    if self.__router_lsa is None:
+        self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_lsa
       
   def _set_router_lsa(self, v, load=False):
@@ -183,6 +204,9 @@ LSA types
 
     YANG Description: Contents of the router LSA
     """
+    if self.__router_lsa is None:
+        self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,12 +226,17 @@ LSA types
     self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_network_lsa(self):
+    return self.__network_lsa is not None
+
   def _get_network_lsa(self):
     """
     Getter method for network_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa (container)
 
     YANG Description: Contents of the network LSA
     """
+    if self.__network_lsa is None:
+        self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__network_lsa
       
   def _set_network_lsa(self, v, load=False):
@@ -220,6 +249,9 @@ LSA types
 
     YANG Description: Contents of the network LSA
     """
+    if self.__network_lsa is None:
+        self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,12 +271,17 @@ LSA types
     self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_summary_lsa(self):
+    return self.__summary_lsa is not None
+
   def _get_summary_lsa(self):
     """
     Getter method for summary_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/summary_lsa (container)
 
     YANG Description: Contents of the summary LSA
     """
+    if self.__summary_lsa is None:
+        self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__summary_lsa
       
   def _set_summary_lsa(self, v, load=False):
@@ -257,6 +294,9 @@ LSA types
 
     YANG Description: Contents of the summary LSA
     """
+    if self.__summary_lsa is None:
+        self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,12 +316,17 @@ LSA types
     self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_as_external_lsa(self):
+    return self.__as_external_lsa is not None
+
   def _get_as_external_lsa(self):
     """
     Getter method for as_external_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/as_external_lsa (container)
 
     YANG Description: Contents of the AS External LSA
     """
+    if self.__as_external_lsa is None:
+        self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__as_external_lsa
       
   def _set_as_external_lsa(self, v, load=False):
@@ -294,6 +339,9 @@ LSA types
 
     YANG Description: Contents of the AS External LSA
     """
+    if self.__as_external_lsa is None:
+        self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -313,12 +361,17 @@ LSA types
     self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_nssa_external_lsa(self):
+    return self.__nssa_external_lsa is not None
+
   def _get_nssa_external_lsa(self):
     """
     Getter method for nssa_external_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa (container)
 
     YANG Description: Contents of the NSSA External LSA
     """
+    if self.__nssa_external_lsa is None:
+        self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__nssa_external_lsa
       
   def _set_nssa_external_lsa(self, v, load=False):
@@ -331,6 +384,9 @@ LSA types
 
     YANG Description: Contents of the NSSA External LSA
     """
+    if self.__nssa_external_lsa is None:
+        self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -350,12 +406,17 @@ LSA types
     self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_opaque_lsa(self):
+    return self.__opaque_lsa is not None
+
   def _get_opaque_lsa(self):
     """
     Getter method for opaque_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa (container)
 
     YANG Description: Contents of the opaque LSA
     """
+    if self.__opaque_lsa is None:
+        self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__opaque_lsa
       
   def _set_opaque_lsa(self, v, load=False):
@@ -368,6 +429,9 @@ LSA types
 
     YANG Description: Contents of the opaque LSA
     """
+    if self.__opaque_lsa is None:
+        self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -427,14 +491,14 @@ LSDB for the specified area
     self._path_helper = False
 
     self._extmethods = False
-    self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__summary_lsa = None
+    self.__link_state_id = None
+    self.__router_lsa = None
+    self.__as_external_lsa = None
+    self.__state = None
+    self.__network_lsa = None
+    self.__nssa_external_lsa = None
+    self.__opaque_lsa = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -463,12 +527,17 @@ LSDB for the specified area
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa']
 
+  def _initialized_link_state_id(self):
+    return self.__link_state_id is not None
+
   def _get_link_state_id(self):
     """
     Getter method for link_state_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/link_state_id (leafref)
 
     YANG Description: Reference to the Link State ID of the LSA
     """
+    if self.__link_state_id is None:
+        self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__link_state_id
       
   def _set_link_state_id(self, v, load=False):
@@ -481,6 +550,9 @@ LSDB for the specified area
 
     YANG Description: Reference to the Link State ID of the LSA
     """
+    if self.__link_state_id is None:
+        self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -505,6 +577,9 @@ LSDB for the specified area
     self.__link_state_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="link-state-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/state (container)
@@ -512,6 +587,8 @@ LSDB for the specified area
     YANG Description: Operational state parameters relating to all
 LSA types
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -525,6 +602,9 @@ LSA types
     YANG Description: Operational state parameters relating to all
 LSA types
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -544,12 +624,17 @@ LSA types
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_lsa(self):
+    return self.__router_lsa is not None
+
   def _get_router_lsa(self):
     """
     Getter method for router_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa (container)
 
     YANG Description: Contents of the router LSA
     """
+    if self.__router_lsa is None:
+        self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_lsa
       
   def _set_router_lsa(self, v, load=False):
@@ -562,6 +647,9 @@ LSA types
 
     YANG Description: Contents of the router LSA
     """
+    if self.__router_lsa is None:
+        self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -581,12 +669,17 @@ LSA types
     self.__router_lsa = YANGDynClass(base=router_lsa.router_lsa, is_container='container', yang_name="router-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_network_lsa(self):
+    return self.__network_lsa is not None
+
   def _get_network_lsa(self):
     """
     Getter method for network_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa (container)
 
     YANG Description: Contents of the network LSA
     """
+    if self.__network_lsa is None:
+        self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__network_lsa
       
   def _set_network_lsa(self, v, load=False):
@@ -599,6 +692,9 @@ LSA types
 
     YANG Description: Contents of the network LSA
     """
+    if self.__network_lsa is None:
+        self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -618,12 +714,17 @@ LSA types
     self.__network_lsa = YANGDynClass(base=network_lsa.network_lsa, is_container='container', yang_name="network-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_summary_lsa(self):
+    return self.__summary_lsa is not None
+
   def _get_summary_lsa(self):
     """
     Getter method for summary_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/summary_lsa (container)
 
     YANG Description: Contents of the summary LSA
     """
+    if self.__summary_lsa is None:
+        self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__summary_lsa
       
   def _set_summary_lsa(self, v, load=False):
@@ -636,6 +737,9 @@ LSA types
 
     YANG Description: Contents of the summary LSA
     """
+    if self.__summary_lsa is None:
+        self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -655,12 +759,17 @@ LSA types
     self.__summary_lsa = YANGDynClass(base=summary_lsa.summary_lsa, is_container='container', yang_name="summary-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_as_external_lsa(self):
+    return self.__as_external_lsa is not None
+
   def _get_as_external_lsa(self):
     """
     Getter method for as_external_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/as_external_lsa (container)
 
     YANG Description: Contents of the AS External LSA
     """
+    if self.__as_external_lsa is None:
+        self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__as_external_lsa
       
   def _set_as_external_lsa(self, v, load=False):
@@ -673,6 +782,9 @@ LSA types
 
     YANG Description: Contents of the AS External LSA
     """
+    if self.__as_external_lsa is None:
+        self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -692,12 +804,17 @@ LSA types
     self.__as_external_lsa = YANGDynClass(base=as_external_lsa.as_external_lsa, is_container='container', yang_name="as-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_nssa_external_lsa(self):
+    return self.__nssa_external_lsa is not None
+
   def _get_nssa_external_lsa(self):
     """
     Getter method for nssa_external_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/nssa_external_lsa (container)
 
     YANG Description: Contents of the NSSA External LSA
     """
+    if self.__nssa_external_lsa is None:
+        self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__nssa_external_lsa
       
   def _set_nssa_external_lsa(self, v, load=False):
@@ -710,6 +827,9 @@ LSA types
 
     YANG Description: Contents of the NSSA External LSA
     """
+    if self.__nssa_external_lsa is None:
+        self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -729,12 +849,17 @@ LSA types
     self.__nssa_external_lsa = YANGDynClass(base=nssa_external_lsa.nssa_external_lsa, is_container='container', yang_name="nssa-external-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_opaque_lsa(self):
+    return self.__opaque_lsa is not None
+
   def _get_opaque_lsa(self):
     """
     Getter method for opaque_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa (container)
 
     YANG Description: Contents of the opaque LSA
     """
+    if self.__opaque_lsa is None:
+        self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__opaque_lsa
       
   def _set_opaque_lsa(self, v, load=False):
@@ -747,6 +872,9 @@ LSA types
 
     YANG Description: Contents of the opaque LSA
     """
+    if self.__opaque_lsa is None:
+        self.__opaque_lsa = YANGDynClass(base=opaque_lsa.opaque_lsa, is_container='container', yang_name="opaque-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

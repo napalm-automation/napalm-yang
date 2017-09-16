@@ -41,10 +41,10 @@ maximum metric for a set of advertised entities.
     self._path_helper = False
 
     self._extmethods = False
-    self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__include = None
+    self.__set_ = None
+    self.__timeout = None
+    self.__trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ maximum metric for a set of advertised entities.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers', u'max-metric', u'config']
 
+  def _initialized_set_(self):
+    return self.__set_ is not None
+
   def _get_set_(self):
     """
     Getter method for set_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/set (boolean)
@@ -82,6 +85,8 @@ the local system are advertised with the maximum metric,
 such that the router does not act as a transit system,
 (similarly to the IS-IS overload functionality).
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_
       
   def _set_set_(self, v, load=False):
@@ -97,6 +102,9 @@ the local system are advertised with the maximum metric,
 such that the router does not act as a transit system,
 (similarly to the IS-IS overload functionality).
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ such that the router does not act as a transit system,
     self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_timeout(self):
+    return self.__timeout is not None
+
   def _get_timeout(self):
     """
     Getter method for timeout, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/timeout (uint64)
@@ -124,6 +135,8 @@ such that the router does not act as a transit system,
 entities with the maximum metric should be cleared, and
 the system reverts to the default, or configured, metrics.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__timeout
       
   def _set_timeout(self, v, load=False):
@@ -138,6 +151,9 @@ the system reverts to the default, or configured, metrics.
 entities with the maximum metric should be cleared, and
 the system reverts to the default, or configured, metrics.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ the system reverts to the default, or configured, metrics.
     self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_include(self):
+    return self.__include is not None
+
   def _get_include(self):
     """
     Getter method for include, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/include (identityref)
@@ -167,6 +186,8 @@ specified within this leaf-list, additional entities
 are also advertised with the maximum metric according
 to the values within the list.
     """
+    if self.__include is None:
+        self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__include
       
   def _set_include(self, v, load=False):
@@ -183,6 +204,9 @@ specified within this leaf-list, additional entities
 are also advertised with the maximum metric according
 to the values within the list.
     """
+    if self.__include is None:
+        self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,6 +226,9 @@ to the values within the list.
     self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_trigger(self):
+    return self.__trigger is not None
+
   def _get_trigger(self):
     """
     Getter method for trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/trigger (identityref)
@@ -215,6 +242,8 @@ case, the system should still honour the timeout specified
 by the max-metric/timeout leaf, and clear the max-metric
 advertisements after the expiration of this timer.
     """
+    if self.__trigger is None:
+        self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__trigger
       
   def _set_trigger(self, v, load=False):
@@ -234,6 +263,9 @@ case, the system should still honour the timeout specified
 by the max-metric/timeout leaf, and clear the max-metric
 advertisements after the expiration of this timer.
     """
+    if self.__trigger is None:
+        self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -282,10 +314,10 @@ maximum metric for a set of advertised entities.
     self._path_helper = False
 
     self._extmethods = False
-    self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__include = None
+    self.__set_ = None
+    self.__timeout = None
+    self.__trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -314,6 +346,9 @@ maximum metric for a set of advertised entities.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers', u'max-metric', u'config']
 
+  def _initialized_set_(self):
+    return self.__set_ is not None
+
   def _get_set_(self):
     """
     Getter method for set_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/set (boolean)
@@ -323,6 +358,8 @@ the local system are advertised with the maximum metric,
 such that the router does not act as a transit system,
 (similarly to the IS-IS overload functionality).
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_
       
   def _set_set_(self, v, load=False):
@@ -338,6 +375,9 @@ the local system are advertised with the maximum metric,
 such that the router does not act as a transit system,
 (similarly to the IS-IS overload functionality).
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -357,6 +397,9 @@ such that the router does not act as a transit system,
     self.__set_ = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_timeout(self):
+    return self.__timeout is not None
+
   def _get_timeout(self):
     """
     Getter method for timeout, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/timeout (uint64)
@@ -365,6 +408,8 @@ such that the router does not act as a transit system,
 entities with the maximum metric should be cleared, and
 the system reverts to the default, or configured, metrics.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__timeout
       
   def _set_timeout(self, v, load=False):
@@ -379,6 +424,9 @@ the system reverts to the default, or configured, metrics.
 entities with the maximum metric should be cleared, and
 the system reverts to the default, or configured, metrics.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -398,6 +446,9 @@ the system reverts to the default, or configured, metrics.
     self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_include(self):
+    return self.__include is not None
+
   def _get_include(self):
     """
     Getter method for include, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/include (identityref)
@@ -408,6 +459,8 @@ specified within this leaf-list, additional entities
 are also advertised with the maximum metric according
 to the values within the list.
     """
+    if self.__include is None:
+        self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__include
       
   def _set_include(self, v, load=False):
@@ -424,6 +477,9 @@ specified within this leaf-list, additional entities
 are also advertised with the maximum metric according
 to the values within the list.
     """
+    if self.__include is None:
+        self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -443,6 +499,9 @@ to the values within the list.
     self.__include = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospft:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_TYPE2_EXTERNAL': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_INCLUDE_STUB': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="include", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_trigger(self):
+    return self.__trigger is not None
+
   def _get_trigger(self):
     """
     Getter method for trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric/config/trigger (identityref)
@@ -456,6 +515,8 @@ case, the system should still honour the timeout specified
 by the max-metric/timeout leaf, and clear the max-metric
 advertisements after the expiration of this timer.
     """
+    if self.__trigger is None:
+        self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__trigger
       
   def _set_trigger(self, v, load=False):
@@ -475,6 +536,9 @@ case, the system should still honour the timeout specified
 by the max-metric/timeout leaf, and clear the max-metric
 advertisements after the expiration of this timer.
     """
+    if self.__trigger is None:
+        self.__trigger = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:MAX_METRIC_ON_SYSTEM_BOOT': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},)), is_leaf=False, yang_name="trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,7 +41,7 @@ class reset_triggers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__reset_trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class reset_triggers(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'reset-triggers']
 
+  def _initialized_reset_trigger(self):
+    return self.__reset_trigger is not None
+
   def _get_reset_trigger(self):
     """
     Getter method for reset_trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger (list)
 
     YANG Description: This list describes ISIS Overload reset trigger reasons.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__reset_trigger
       
   def _set_reset_trigger(self, v, load=False):
@@ -88,6 +93,9 @@ class reset_triggers(PybindBase):
 
     YANG Description: This list describes ISIS Overload reset trigger reasons.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class reset_triggers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__reset_trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class reset_triggers(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'reset-triggers']
 
+  def _initialized_reset_trigger(self):
+    return self.__reset_trigger is not None
+
   def _get_reset_trigger(self):
     """
     Getter method for reset_trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger (list)
 
     YANG Description: This list describes ISIS Overload reset trigger reasons.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__reset_trigger
       
   def _set_reset_trigger(self, v, load=False):
@@ -180,6 +193,9 @@ class reset_triggers(PybindBase):
 
     YANG Description: This list describes ISIS Overload reset trigger reasons.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=YANGListType("reset_trigger",reset_trigger.reset_trigger, yang_name="reset-trigger", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='reset-trigger', extensions=None), is_container='list', yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

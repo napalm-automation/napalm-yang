@@ -41,8 +41,8 @@ class process(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=False)
-    self.__pid = YANGDynClass(base=unicode, is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__pid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class process(PybindBase):
     else:
       return [u'system', u'processes', u'process']
 
+  def _initialized_pid(self):
+    return self.__pid is not None
+
   def _get_pid(self):
     """
     Getter method for pid, mapped from YANG variable /system/processes/process/pid (leafref)
 
     YANG Description: Reference to the process pid key
     """
+    if self.__pid is None:
+        self.__pid = YANGDynClass(base=unicode, is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=False)
     return self.__pid
       
   def _set_pid(self, v, load=False):
@@ -89,6 +94,9 @@ class process(PybindBase):
 
     YANG Description: Reference to the process pid key
     """
+    if self.__pid is None:
+        self.__pid = YANGDynClass(base=unicode, is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -113,12 +121,17 @@ class process(PybindBase):
     self.__pid = YANGDynClass(base=unicode, is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/processes/process/state (container)
 
     YANG Description: State parameters related to monitored processes
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -131,6 +144,9 @@ class process(PybindBase):
 
     YANG Description: State parameters related to monitored processes
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

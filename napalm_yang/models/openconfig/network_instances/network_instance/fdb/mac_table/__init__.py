@@ -42,7 +42,7 @@ corresponding VLANs in the bridge domain
     self._path_helper = False
 
     self._extmethods = False
-    self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__entries = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ corresponding VLANs in the bridge domain
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table']
 
+  def _initialized_entries(self):
+    return self.__entries is not None
+
   def _get_entries(self):
     """
     Getter method for entries, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries (container)
 
     YANG Description: Enclosing container for list of MAC table entries
     """
+    if self.__entries is None:
+        self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__entries
       
   def _set_entries(self, v, load=False):
@@ -89,6 +94,9 @@ corresponding VLANs in the bridge domain
 
     YANG Description: Enclosing container for list of MAC table entries
     """
+    if self.__entries is None:
+        self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ corresponding VLANs in the bridge domain
     self._path_helper = False
 
     self._extmethods = False
-    self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__entries = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ corresponding VLANs in the bridge domain
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table']
 
+  def _initialized_entries(self):
+    return self.__entries is not None
+
   def _get_entries(self):
     """
     Getter method for entries, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries (container)
 
     YANG Description: Enclosing container for list of MAC table entries
     """
+    if self.__entries is None:
+        self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__entries
       
   def _set_entries(self, v, load=False):
@@ -182,6 +195,9 @@ corresponding VLANs in the bridge domain
 
     YANG Description: Enclosing container for list of MAC table entries
     """
+    if self.__entries is None:
+        self.__entries = YANGDynClass(base=entries.entries, is_container='container', yang_name="entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

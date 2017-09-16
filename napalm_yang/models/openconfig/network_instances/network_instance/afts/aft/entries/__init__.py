@@ -43,7 +43,7 @@ entries within the network instance for a particular protocol
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__entry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ entries within the network instance for a particular protocol
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries']
 
+  def _initialized_entry(self):
+    return self.__entry is not None
+
   def _get_entry(self):
     """
     Getter method for entry, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry (list)
 
     YANG Description: A forwarding database entry within the network instance
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__entry
       
   def _set_entry(self, v, load=False):
@@ -90,6 +95,9 @@ entries within the network instance for a particular protocol
 
     YANG Description: A forwarding database entry within the network instance
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ entries within the network instance for a particular protocol
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__entry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,12 +174,17 @@ entries within the network instance for a particular protocol
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries']
 
+  def _initialized_entry(self):
+    return self.__entry is not None
+
   def _get_entry(self):
     """
     Getter method for entry, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry (list)
 
     YANG Description: A forwarding database entry within the network instance
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__entry
       
   def _set_entry(self, v, load=False):
@@ -184,6 +197,9 @@ entries within the network instance for a particular protocol
 
     YANG Description: A forwarding database entry within the network instance
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("index",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

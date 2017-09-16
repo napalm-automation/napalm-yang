@@ -41,7 +41,7 @@ class forwarding_classes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__forwarding_class = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class forwarding_classes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes']
 
+  def _initialized_forwarding_class(self):
+    return self.__forwarding_class is not None
+
   def _get_forwarding_class(self):
     """
     Getter method for forwarding_class, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class (list)
@@ -77,6 +80,8 @@ class forwarding_classes(PybindBase):
     YANG Description: SID entries for the forwarding class associated with the
 referenced MPLS EXP.
     """
+    if self.__forwarding_class is None:
+        self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__forwarding_class
       
   def _set_forwarding_class(self, v, load=False):
@@ -90,6 +95,9 @@ referenced MPLS EXP.
     YANG Description: SID entries for the forwarding class associated with the
 referenced MPLS EXP.
     """
+    if self.__forwarding_class is None:
+        self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class forwarding_classes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__forwarding_class = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class forwarding_classes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes']
 
+  def _initialized_forwarding_class(self):
+    return self.__forwarding_class is not None
+
   def _get_forwarding_class(self):
     """
     Getter method for forwarding_class, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class (list)
@@ -171,6 +182,8 @@ class forwarding_classes(PybindBase):
     YANG Description: SID entries for the forwarding class associated with the
 referenced MPLS EXP.
     """
+    if self.__forwarding_class is None:
+        self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__forwarding_class
       
   def _set_forwarding_class(self, v, load=False):
@@ -184,6 +197,9 @@ referenced MPLS EXP.
     YANG Description: SID entries for the forwarding class associated with the
 referenced MPLS EXP.
     """
+    if self.__forwarding_class is None:
+        self.__forwarding_class = YANGDynClass(base=YANGListType("exp",forwarding_class.forwarding_class, yang_name="forwarding-class", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='exp', extensions=None), is_container='list', yang_name="forwarding-class", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

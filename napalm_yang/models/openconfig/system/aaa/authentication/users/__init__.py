@@ -41,7 +41,7 @@ class users(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__user = YANGDynClass(base=YANGListType("username",user.user, yang_name="user", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='username', extensions=None), is_container='list', yang_name="user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__user = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class users(PybindBase):
     else:
       return [u'system', u'aaa', u'authentication', u'users']
 
+  def _initialized_user(self):
+    return self.__user is not None
+
   def _get_user(self):
     """
     Getter method for user, mapped from YANG variable /system/aaa/authentication/users/user (list)
 
     YANG Description: List of local users on the system
     """
+    if self.__user is None:
+        self.__user = YANGDynClass(base=YANGListType("username",user.user, yang_name="user", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='username', extensions=None), is_container='list', yang_name="user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__user
       
   def _set_user(self, v, load=False):
@@ -88,6 +93,9 @@ class users(PybindBase):
 
     YANG Description: List of local users on the system
     """
+    if self.__user is None:
+        self.__user = YANGDynClass(base=YANGListType("username",user.user, yang_name="user", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='username', extensions=None), is_container='list', yang_name="user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

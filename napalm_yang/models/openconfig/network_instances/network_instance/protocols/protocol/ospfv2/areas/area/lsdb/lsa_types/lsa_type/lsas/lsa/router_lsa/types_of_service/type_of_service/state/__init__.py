@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
+    self.__tos = None
+    self.__metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'router-lsa', u'types-of-service', u'type-of-service', u'state']
 
+  def _initialized_tos(self):
+    return self.__tos is not None
+
   def _get_tos(self):
     """
     Getter method for tos, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa/types_of_service/type_of_service/state/tos (uint8)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: OSPF encoding of the type of service referred to by this
 LSA. Encoding for OSPF TOS are described in RFC2328.
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__tos
       
   def _set_tos(self, v, load=False):
@@ -90,6 +95,9 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
     YANG Description: OSPF encoding of the type of service referred to by this
 LSA. Encoding for OSPF TOS are described in RFC2328.
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
     self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa/types_of_service/type_of_service/state/metric (oc-ospf-types:ospf-metric)
@@ -117,6 +128,8 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
 represents the cost of use of the link for the specific type
 of service.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -131,6 +144,9 @@ of service.
 represents the cost of use of the link for the specific type
 of service.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
+    self.__tos = None
+    self.__metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'router-lsa', u'types-of-service', u'type-of-service', u'state']
 
+  def _initialized_tos(self):
+    return self.__tos is not None
+
   def _get_tos(self):
     """
     Getter method for tos, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa/types_of_service/type_of_service/state/tos (uint8)
@@ -213,6 +232,8 @@ class state(PybindBase):
     YANG Description: OSPF encoding of the type of service referred to by this
 LSA. Encoding for OSPF TOS are described in RFC2328.
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__tos
       
   def _set_tos(self, v, load=False):
@@ -226,6 +247,9 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
     YANG Description: OSPF encoding of the type of service referred to by this
 LSA. Encoding for OSPF TOS are described in RFC2328.
     """
+    if self.__tos is None:
+        self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
     self.__tos = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="tos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/router_lsa/types_of_service/type_of_service/state/metric (oc-ospf-types:ospf-metric)
@@ -253,6 +280,8 @@ LSA. Encoding for OSPF TOS are described in RFC2328.
 represents the cost of use of the link for the specific type
 of service.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -267,6 +296,9 @@ of service.
 represents the cost of use of the link for the specific type
 of service.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

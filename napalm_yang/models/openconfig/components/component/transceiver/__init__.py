@@ -43,9 +43,9 @@ class transceiver(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
-    self.__physical_channels = YANGDynClass(base=physical_channels.physical_channels, is_container='container', yang_name="physical-channels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
+    self.__state = None
+    self.__physical_channels = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ class transceiver(PybindBase):
     else:
       return [u'components', u'component', u'transceiver']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /components/component/transceiver/config (container)
 
     YANG Description: Configuration data for client port transceivers
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -92,6 +97,9 @@ class transceiver(PybindBase):
 
     YANG Description: Configuration data for client port transceivers
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ class transceiver(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /components/component/transceiver/state (container)
 
     YANG Description: Operational state data for client port transceivers
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -129,6 +142,9 @@ class transceiver(PybindBase):
 
     YANG Description: Operational state data for client port transceivers
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,12 +164,17 @@ class transceiver(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
 
 
+  def _initialized_physical_channels(self):
+    return self.__physical_channels is not None
+
   def _get_physical_channels(self):
     """
     Getter method for physical_channels, mapped from YANG variable /components/component/transceiver/physical_channels (container)
 
     YANG Description: Enclosing container for client channels
     """
+    if self.__physical_channels is None:
+        self.__physical_channels = YANGDynClass(base=physical_channels.physical_channels, is_container='container', yang_name="physical-channels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
     return self.__physical_channels
       
   def _set_physical_channels(self, v, load=False):
@@ -166,6 +187,9 @@ class transceiver(PybindBase):
 
     YANG Description: Enclosing container for client channels
     """
+    if self.__physical_channels is None:
+        self.__physical_channels = YANGDynClass(base=physical_channels.physical_channels, is_container='container', yang_name="physical-channels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

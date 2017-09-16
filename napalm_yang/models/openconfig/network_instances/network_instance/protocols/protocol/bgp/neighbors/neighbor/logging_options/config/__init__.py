@@ -41,7 +41,7 @@ for events relating to the BGPgroup
     self._path_helper = False
 
     self._extmethods = False
-    self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__log_neighbor_state_changes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ for events relating to the BGPgroup
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'logging-options', u'config']
 
+  def _initialized_log_neighbor_state_changes(self):
+    return self.__log_neighbor_state_changes is not None
+
   def _get_log_neighbor_state_changes(self):
     """
     Getter method for log_neighbor_state_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/logging_options/config/log_neighbor_state_changes (boolean)
@@ -77,6 +80,8 @@ for events relating to the BGPgroup
     YANG Description: Configure logging of peer state changes.  Default is
 to enable logging of peer state changes.
     """
+    if self.__log_neighbor_state_changes is None:
+        self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__log_neighbor_state_changes
       
   def _set_log_neighbor_state_changes(self, v, load=False):
@@ -90,6 +95,9 @@ to enable logging of peer state changes.
     YANG Description: Configure logging of peer state changes.  Default is
 to enable logging of peer state changes.
     """
+    if self.__log_neighbor_state_changes is None:
+        self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ for events relating to the BGPgroup
     self._path_helper = False
 
     self._extmethods = False
-    self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__log_neighbor_state_changes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ for events relating to the BGPgroup
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'logging-options', u'config']
 
+  def _initialized_log_neighbor_state_changes(self):
+    return self.__log_neighbor_state_changes is not None
+
   def _get_log_neighbor_state_changes(self):
     """
     Getter method for log_neighbor_state_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/logging_options/config/log_neighbor_state_changes (boolean)
@@ -171,6 +182,8 @@ for events relating to the BGPgroup
     YANG Description: Configure logging of peer state changes.  Default is
 to enable logging of peer state changes.
     """
+    if self.__log_neighbor_state_changes is None:
+        self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__log_neighbor_state_changes
       
   def _set_log_neighbor_state_changes(self, v, load=False):
@@ -184,6 +197,9 @@ to enable logging of peer state changes.
     YANG Description: Configure logging of peer state changes.  Default is
 to enable logging of peer state changes.
     """
+    if self.__log_neighbor_state_changes is None:
+        self.__log_neighbor_state_changes = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="log-neighbor-state-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

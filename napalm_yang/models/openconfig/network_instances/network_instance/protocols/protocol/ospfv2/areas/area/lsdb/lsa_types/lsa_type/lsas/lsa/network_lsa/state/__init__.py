@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    self.__network_mask = None
+    self.__attached_router = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'network-lsa', u'state']
 
+  def _initialized_network_mask(self):
+    return self.__network_mask is not None
+
   def _get_network_mask(self):
     """
     Getter method for network_mask, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa/state/network_mask (uint8)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: The mask of the network described by the Network LSA
 represented as a CIDR mask.
     """
+    if self.__network_mask is None:
+        self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__network_mask
       
   def _set_network_mask(self, v, load=False):
@@ -90,6 +95,9 @@ represented as a CIDR mask.
     YANG Description: The mask of the network described by the Network LSA
 represented as a CIDR mask.
     """
+    if self.__network_mask is None:
+        self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ represented as a CIDR mask.
     self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_attached_router(self):
+    return self.__attached_router is not None
+
   def _get_attached_router(self):
     """
     Getter method for attached_router, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa/state/attached_router (yang:dotted-quad)
@@ -116,6 +127,8 @@ represented as a CIDR mask.
     YANG Description: A list of the router ID of the routers that are attached to
 the network described by the Network LSA
     """
+    if self.__attached_router is None:
+        self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__attached_router
       
   def _set_attached_router(self, v, load=False):
@@ -129,6 +142,9 @@ the network described by the Network LSA
     YANG Description: A list of the router ID of the routers that are attached to
 the network described by the Network LSA
     """
+    if self.__attached_router is None:
+        self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    self.__network_mask = None
+    self.__attached_router = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'network-lsa', u'state']
 
+  def _initialized_network_mask(self):
+    return self.__network_mask is not None
+
   def _get_network_mask(self):
     """
     Getter method for network_mask, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa/state/network_mask (uint8)
@@ -211,6 +230,8 @@ class state(PybindBase):
     YANG Description: The mask of the network described by the Network LSA
 represented as a CIDR mask.
     """
+    if self.__network_mask is None:
+        self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__network_mask
       
   def _set_network_mask(self, v, load=False):
@@ -224,6 +245,9 @@ represented as a CIDR mask.
     YANG Description: The mask of the network described by the Network LSA
 represented as a CIDR mask.
     """
+    if self.__network_mask is None:
+        self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ represented as a CIDR mask.
     self.__network_mask = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="network-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_attached_router(self):
+    return self.__attached_router is not None
+
   def _get_attached_router(self):
     """
     Getter method for attached_router, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/network_lsa/state/attached_router (yang:dotted-quad)
@@ -250,6 +277,8 @@ represented as a CIDR mask.
     YANG Description: A list of the router ID of the routers that are attached to
 the network described by the Network LSA
     """
+    if self.__attached_router is None:
+        self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__attached_router
       
   def _set_attached_router(self, v, load=False):
@@ -263,6 +292,9 @@ the network described by the Network LSA
     YANG Description: A list of the router ID of the routers that are attached to
 the network described by the Network LSA
     """
+    if self.__attached_router is None:
+        self.__attached_router = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'})), is_leaf=False, yang_name="attached-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__null_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'state']
 
+  def _initialized_null_label(self):
+    return self.__null_label is not None
+
   def _get_null_label(self):
     """
     Getter method for null_label, mapped from YANG variable /network_instances/network_instance/mpls/global/state/null_label (identityref)
 
     YANG Description: The null-label type used, implicit or explicit
     """
+    if self.__null_label is None:
+        self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__null_label
       
   def _set_null_label(self, v, load=False):
@@ -87,6 +92,9 @@ class state(PybindBase):
 
     YANG Description: The null-label type used, implicit or explicit
     """
+    if self.__null_label is None:
+        self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__null_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'state']
 
+  def _initialized_null_label(self):
+    return self.__null_label is not None
+
   def _get_null_label(self):
     """
     Getter method for null_label, mapped from YANG variable /network_instances/network_instance/mpls/global/state/null_label (identityref)
 
     YANG Description: The null-label type used, implicit or explicit
     """
+    if self.__null_label is None:
+        self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__null_label
       
   def _set_null_label(self, v, load=False):
@@ -178,6 +191,9 @@ class state(PybindBase):
 
     YANG Description: The null-label type used, implicit or explicit
     """
+    if self.__null_label is None:
+        self.__null_label = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:EXPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'IMPLICIT': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:IMPLICIT"), is_leaf=True, yang_name="null-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

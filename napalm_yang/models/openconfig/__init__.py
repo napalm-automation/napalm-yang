@@ -128,7 +128,7 @@ additional configuration items.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    self.__interfaces = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -157,6 +157,9 @@ additional configuration items.
     else:
       return []
 
+  def _initialized_interfaces(self):
+    return self.__interfaces is not None
+
   def _get_interfaces(self):
     """
     Getter method for interfaces, mapped from YANG variable /interfaces (container)
@@ -164,6 +167,8 @@ additional configuration items.
     YANG Description: Top level container for interfaces, including configuration
 and state data.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
     return self.__interfaces
       
   def _set_interfaces(self, v, load=False):
@@ -177,6 +182,9 @@ and state data.
     YANG Description: Top level container for interfaces, including configuration
 and state data.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -352,7 +360,7 @@ attributes or status).
     self._path_helper = False
 
     self._extmethods = False
-    self.__components = YANGDynClass(base=components.components, is_container='container', yang_name="components", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__components = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -381,12 +389,17 @@ attributes or status).
     else:
       return []
 
+  def _initialized_components(self):
+    return self.__components is not None
+
   def _get_components(self):
     """
     Getter method for components, mapped from YANG variable /components (container)
 
     YANG Description: Enclosing container for the components in the system.
     """
+    if self.__components is None:
+        self.__components = YANGDynClass(base=components.components, is_container='container', yang_name="components", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     return self.__components
       
   def _set_components(self, v, load=False):
@@ -399,6 +412,9 @@ attributes or status).
 
     YANG Description: Enclosing container for the components in the system.
     """
+    if self.__components is None:
+        self.__components = YANGDynClass(base=components.components, is_container='container', yang_name="components", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -462,7 +478,7 @@ instances are also supported.
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__network_instances = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -491,6 +507,9 @@ instances are also supported.
     else:
       return []
 
+  def _initialized_network_instances(self):
+    return self.__network_instances is not None
+
   def _get_network_instances(self):
     """
     Getter method for network_instances, mapped from YANG variable /network_instances (container)
@@ -498,6 +517,8 @@ instances are also supported.
     YANG Description: The L2, L3, or L2+L3 forwarding instances that are
 configured on the local system
     """
+    if self.__network_instances is None:
+        self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__network_instances
       
   def _set_network_instances(self, v, load=False):
@@ -511,6 +532,9 @@ configured on the local system
     YANG Description: The L2, L3, or L2+L3 forwarding instances that are
 configured on the local system
     """
+    if self.__network_instances is None:
+        self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -558,7 +582,7 @@ parameters.
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__network_instances = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -587,6 +611,9 @@ parameters.
     else:
       return []
 
+  def _initialized_network_instances(self):
+    return self.__network_instances is not None
+
   def _get_network_instances(self):
     """
     Getter method for network_instances, mapped from YANG variable /network_instances (container)
@@ -594,6 +621,8 @@ parameters.
     YANG Description: The L2, L3, or L2+L3 forwarding instances that are
 configured on the local system
     """
+    if self.__network_instances is None:
+        self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__network_instances
       
   def _set_network_instances(self, v, load=False):
@@ -607,6 +636,9 @@ configured on the local system
     YANG Description: The L2, L3, or L2+L3 forwarding instances that are
 configured on the local system
     """
+    if self.__network_instances is None:
+        self.__network_instances = YANGDynClass(base=network_instances.network_instances, is_container='container', yang_name="network-instances", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -657,7 +689,7 @@ Management.
     self._path_helper = False
 
     self._extmethods = False
-    self.__system = YANGDynClass(base=system.system, is_container='container', yang_name="system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__system = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -686,6 +718,9 @@ Management.
     else:
       return []
 
+  def _initialized_system(self):
+    return self.__system is not None
+
   def _get_system(self):
     """
     Getter method for system, mapped from YANG variable /system (container)
@@ -693,6 +728,8 @@ Management.
     YANG Description: Enclosing container for system-related configuration and
 operational state data
     """
+    if self.__system is None:
+        self.__system = YANGDynClass(base=system.system, is_container='container', yang_name="system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__system
       
   def _set_system(self, v, load=False):
@@ -706,6 +743,9 @@ operational state data
     YANG Description: Enclosing container for system-related configuration and
 operational state data
     """
+    if self.__system is None:
+        self.__system = YANGDynClass(base=system.system, is_container='container', yang_name="system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -787,7 +827,7 @@ in addition to VLAN parameters associated with interfaces
     self._path_helper = False
 
     self._extmethods = False
-    self.__vlans = YANGDynClass(base=vlans.vlans, is_container='container', yang_name="vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
+    self.__vlans = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -816,6 +856,9 @@ in addition to VLAN parameters associated with interfaces
     else:
       return []
 
+  def _initialized_vlans(self):
+    return self.__vlans is not None
+
   def _get_vlans(self):
     """
     Getter method for vlans, mapped from YANG variable /vlans (container)
@@ -823,6 +866,8 @@ in addition to VLAN parameters associated with interfaces
     YANG Description: Container for VLAN configuration and state
 variables
     """
+    if self.__vlans is None:
+        self.__vlans = YANGDynClass(base=vlans.vlans, is_container='container', yang_name="vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
     return self.__vlans
       
   def _set_vlans(self, v, load=False):
@@ -836,6 +881,9 @@ variables
     YANG Description: Container for VLAN configuration and state
 variables
     """
+    if self.__vlans is None:
+        self.__vlans = YANGDynClass(base=vlans.vlans, is_container='container', yang_name="vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

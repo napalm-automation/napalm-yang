@@ -43,9 +43,9 @@ class segment(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__ipv4_segment = None
+    self.__unnumbered_hop = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class segment(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments', u'segment']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state (container)
@@ -81,6 +84,8 @@ class segment(PybindBase):
     YANG Description: State parameters relating to the path segment
 contained within the sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -94,6 +99,9 @@ contained within the sub-TLV
     YANG Description: State parameters relating to the path segment
 contained within the sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ contained within the sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_segment(self):
+    return self.__ipv4_segment is not None
+
   def _get_ipv4_segment(self):
     """
     Getter method for ipv4_segment, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/ipv4_segment (container)
 
     YANG Description: Details of the IPv4 segment interface of the ERO
     """
+    if self.__ipv4_segment is None:
+        self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_segment
       
   def _set_ipv4_segment(self, v, load=False):
@@ -131,6 +144,9 @@ contained within the sub-TLV
 
     YANG Description: Details of the IPv4 segment interface of the ERO
     """
+    if self.__ipv4_segment is None:
+        self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ contained within the sub-TLV
     self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unnumbered_hop(self):
+    return self.__unnumbered_hop is not None
+
   def _get_unnumbered_hop(self):
     """
     Getter method for unnumbered_hop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/unnumbered_hop (container)
@@ -157,6 +176,8 @@ contained within the sub-TLV
     YANG Description: Details of the unnumbered interface segment of the
 ERO
     """
+    if self.__unnumbered_hop is None:
+        self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unnumbered_hop
       
   def _set_unnumbered_hop(self, v, load=False):
@@ -170,6 +191,9 @@ ERO
     YANG Description: Details of the unnumbered interface segment of the
 ERO
     """
+    if self.__unnumbered_hop is None:
+        self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -219,9 +243,9 @@ class segment(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__ipv4_segment = None
+    self.__unnumbered_hop = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -250,6 +274,9 @@ class segment(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments', u'segment']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/state (container)
@@ -257,6 +284,8 @@ class segment(PybindBase):
     YANG Description: State parameters relating to the path segment
 contained within the sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -270,6 +299,9 @@ contained within the sub-TLV
     YANG Description: State parameters relating to the path segment
 contained within the sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -289,12 +321,17 @@ contained within the sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_segment(self):
+    return self.__ipv4_segment is not None
+
   def _get_ipv4_segment(self):
     """
     Getter method for ipv4_segment, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/ipv4_segment (container)
 
     YANG Description: Details of the IPv4 segment interface of the ERO
     """
+    if self.__ipv4_segment is None:
+        self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_segment
       
   def _set_ipv4_segment(self, v, load=False):
@@ -307,6 +344,9 @@ contained within the sub-TLV
 
     YANG Description: Details of the IPv4 segment interface of the ERO
     """
+    if self.__ipv4_segment is None:
+        self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ contained within the sub-TLV
     self.__ipv4_segment = YANGDynClass(base=ipv4_segment.ipv4_segment, is_container='container', yang_name="ipv4-segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unnumbered_hop(self):
+    return self.__unnumbered_hop is not None
+
   def _get_unnumbered_hop(self):
     """
     Getter method for unnumbered_hop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment/unnumbered_hop (container)
@@ -333,6 +376,8 @@ contained within the sub-TLV
     YANG Description: Details of the unnumbered interface segment of the
 ERO
     """
+    if self.__unnumbered_hop is None:
+        self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unnumbered_hop
       
   def _set_unnumbered_hop(self, v, load=False):
@@ -346,6 +391,9 @@ ERO
     YANG Description: Details of the unnumbered interface segment of the
 ERO
     """
+    if self.__unnumbered_hop is None:
+        self.__unnumbered_hop = YANGDynClass(base=unnumbered_hop.unnumbered_hop, is_container='container', yang_name="unnumbered-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

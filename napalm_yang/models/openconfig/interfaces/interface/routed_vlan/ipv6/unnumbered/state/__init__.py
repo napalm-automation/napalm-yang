@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv6', u'unnumbered', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/unnumbered/state/enabled (boolean)
@@ -77,6 +80,8 @@ class state(PybindBase):
 the subinterface is numbered, i.e., expected to have an
 IP address configuration.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -91,6 +96,9 @@ IP address configuration.
 the subinterface is numbered, i.e., expected to have an
 IP address configuration.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

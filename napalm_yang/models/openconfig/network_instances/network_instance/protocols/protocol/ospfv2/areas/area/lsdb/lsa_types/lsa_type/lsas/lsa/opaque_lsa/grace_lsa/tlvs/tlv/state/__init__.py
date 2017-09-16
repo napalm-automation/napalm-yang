@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__ip_interface_address = None
+    self.__reason = None
+    self.__type = None
+    self.__period = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'grace-lsa', u'tlvs', u'tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/type (identityref)
 
     YANG Description: The type of the sub-TLV received within the Grace LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -90,6 +95,9 @@ class state(PybindBase):
 
     YANG Description: The type of the sub-TLV received within the Grace LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ class state(PybindBase):
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_period(self):
+    return self.__period is not None
+
   def _get_period(self):
     """
     Getter method for period, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/period (uint32)
@@ -117,6 +128,8 @@ class state(PybindBase):
 the local system as fully adjacent regardless of database
 synchronization state
     """
+    if self.__period is None:
+        self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__period
       
   def _set_period(self, v, load=False):
@@ -131,6 +144,9 @@ synchronization state
 the local system as fully adjacent regardless of database
 synchronization state
     """
+    if self.__period is None:
+        self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ synchronization state
     self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_reason(self):
+    return self.__reason is not None
+
   def _get_reason(self):
     """
     Getter method for reason, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/reason (enumeration)
@@ -157,6 +176,8 @@ synchronization state
     YANG Description: The reason for the graceful restart event occurring, as advertised
 by the restarting system
     """
+    if self.__reason is None:
+        self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__reason
       
   def _set_reason(self, v, load=False):
@@ -170,6 +191,9 @@ by the restarting system
     YANG Description: The reason for the graceful restart event occurring, as advertised
 by the restarting system
     """
+    if self.__reason is None:
+        self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,6 +213,9 @@ by the restarting system
     self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_ip_interface_address(self):
+    return self.__ip_interface_address is not None
+
   def _get_ip_interface_address(self):
     """
     Getter method for ip_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/ip_interface_address (inet:ipv4-address-no-zone)
@@ -196,6 +223,8 @@ by the restarting system
     YANG Description: The restarting system's IP address on the interface via which the
 Grace LSA is being advertised.
     """
+    if self.__ip_interface_address is None:
+        self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__ip_interface_address
       
   def _set_ip_interface_address(self, v, load=False):
@@ -209,6 +238,9 @@ Grace LSA is being advertised.
     YANG Description: The restarting system's IP address on the interface via which the
 Grace LSA is being advertised.
     """
+    if self.__ip_interface_address is None:
+        self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -256,10 +288,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__ip_interface_address = None
+    self.__reason = None
+    self.__type = None
+    self.__period = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -288,12 +320,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'grace-lsa', u'tlvs', u'tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/type (identityref)
 
     YANG Description: The type of the sub-TLV received within the Grace LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -306,6 +343,9 @@ class state(PybindBase):
 
     YANG Description: The type of the sub-TLV received within the Grace LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -325,6 +365,9 @@ class state(PybindBase):
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_RESTART_REASON': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_PERIOD': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:GRACE_IP_INTERFACE_ADDRESS': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_period(self):
+    return self.__period is not None
+
   def _get_period(self):
     """
     Getter method for period, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/period (uint32)
@@ -333,6 +376,8 @@ class state(PybindBase):
 the local system as fully adjacent regardless of database
 synchronization state
     """
+    if self.__period is None:
+        self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__period
       
   def _set_period(self, v, load=False):
@@ -347,6 +392,9 @@ synchronization state
 the local system as fully adjacent regardless of database
 synchronization state
     """
+    if self.__period is None:
+        self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -366,6 +414,9 @@ synchronization state
     self.__period = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="period", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_reason(self):
+    return self.__reason is not None
+
   def _get_reason(self):
     """
     Getter method for reason, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/reason (enumeration)
@@ -373,6 +424,8 @@ synchronization state
     YANG Description: The reason for the graceful restart event occurring, as advertised
 by the restarting system
     """
+    if self.__reason is None:
+        self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__reason
       
   def _set_reason(self, v, load=False):
@@ -386,6 +439,9 @@ by the restarting system
     YANG Description: The reason for the graceful restart event occurring, as advertised
 by the restarting system
     """
+    if self.__reason is None:
+        self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -405,6 +461,9 @@ by the restarting system
     self.__reason = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {'value': 0}, u'SOFTWARE_RESTART': {'value': 1}, u'CONTROL_PROCESSOR_SWITCH': {'value': 3}, u'SOFTWARE_RELOAD_UPGRADE': {'value': 2}},), is_leaf=True, yang_name="reason", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_ip_interface_address(self):
+    return self.__ip_interface_address is not None
+
   def _get_ip_interface_address(self):
     """
     Getter method for ip_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa/tlvs/tlv/state/ip_interface_address (inet:ipv4-address-no-zone)
@@ -412,6 +471,8 @@ by the restarting system
     YANG Description: The restarting system's IP address on the interface via which the
 Grace LSA is being advertised.
     """
+    if self.__ip_interface_address is None:
+        self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__ip_interface_address
       
   def _set_ip_interface_address(self, v, load=False):
@@ -425,6 +486,9 @@ Grace LSA is being advertised.
     YANG Description: The restarting system's IP address on the interface via which the
 Grace LSA is being advertised.
     """
+    if self.__ip_interface_address is None:
+        self.__ip_interface_address = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

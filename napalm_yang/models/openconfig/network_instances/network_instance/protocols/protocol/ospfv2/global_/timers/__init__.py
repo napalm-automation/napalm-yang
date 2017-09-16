@@ -44,9 +44,9 @@ timers
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsa_generation = None
+    self.__spf = None
+    self.__max_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ timers
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers']
 
+  def _initialized_spf(self):
+    return self.__spf is not None
+
   def _get_spf(self):
     """
     Getter method for spf, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf (container)
@@ -82,6 +85,8 @@ timers
     YANG Description: Configuration and operational state parameters relating
 to timers governing the operation of SPF runs
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__spf
       
   def _set_spf(self, v, load=False):
@@ -95,6 +100,9 @@ to timers governing the operation of SPF runs
     YANG Description: Configuration and operational state parameters relating
 to timers governing the operation of SPF runs
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ to timers governing the operation of SPF runs
     self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_max_metric(self):
+    return self.__max_metric is not None
+
   def _get_max_metric(self):
     """
     Getter method for max_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric (container)
@@ -121,6 +132,8 @@ to timers governing the operation of SPF runs
     YANG Description: Configuration and operational state parameters relating
 to setting the OSPFv2 maximum metric.
     """
+    if self.__max_metric is None:
+        self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__max_metric
       
   def _set_max_metric(self, v, load=False):
@@ -134,6 +147,9 @@ to setting the OSPFv2 maximum metric.
     YANG Description: Configuration and operational state parameters relating
 to setting the OSPFv2 maximum metric.
     """
+    if self.__max_metric is None:
+        self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ to setting the OSPFv2 maximum metric.
     self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsa_generation(self):
+    return self.__lsa_generation is not None
+
   def _get_lsa_generation(self):
     """
     Getter method for lsa_generation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/lsa_generation (container)
@@ -161,6 +180,8 @@ to setting the OSPFv2 maximum metric.
 to timers governing the generation of LSAs by the local
 system
     """
+    if self.__lsa_generation is None:
+        self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsa_generation
       
   def _set_lsa_generation(self, v, load=False):
@@ -175,6 +196,9 @@ system
 to timers governing the generation of LSAs by the local
 system
     """
+    if self.__lsa_generation is None:
+        self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -225,9 +249,9 @@ timers
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsa_generation = None
+    self.__spf = None
+    self.__max_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -256,6 +280,9 @@ timers
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers']
 
+  def _initialized_spf(self):
+    return self.__spf is not None
+
   def _get_spf(self):
     """
     Getter method for spf, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf (container)
@@ -263,6 +290,8 @@ timers
     YANG Description: Configuration and operational state parameters relating
 to timers governing the operation of SPF runs
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__spf
       
   def _set_spf(self, v, load=False):
@@ -276,6 +305,9 @@ to timers governing the operation of SPF runs
     YANG Description: Configuration and operational state parameters relating
 to timers governing the operation of SPF runs
     """
+    if self.__spf is None:
+        self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -295,6 +327,9 @@ to timers governing the operation of SPF runs
     self.__spf = YANGDynClass(base=spf.spf, is_container='container', yang_name="spf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_max_metric(self):
+    return self.__max_metric is not None
+
   def _get_max_metric(self):
     """
     Getter method for max_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/max_metric (container)
@@ -302,6 +337,8 @@ to timers governing the operation of SPF runs
     YANG Description: Configuration and operational state parameters relating
 to setting the OSPFv2 maximum metric.
     """
+    if self.__max_metric is None:
+        self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__max_metric
       
   def _set_max_metric(self, v, load=False):
@@ -315,6 +352,9 @@ to setting the OSPFv2 maximum metric.
     YANG Description: Configuration and operational state parameters relating
 to setting the OSPFv2 maximum metric.
     """
+    if self.__max_metric is None:
+        self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -334,6 +374,9 @@ to setting the OSPFv2 maximum metric.
     self.__max_metric = YANGDynClass(base=max_metric.max_metric, is_container='container', yang_name="max-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsa_generation(self):
+    return self.__lsa_generation is not None
+
   def _get_lsa_generation(self):
     """
     Getter method for lsa_generation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/lsa_generation (container)
@@ -342,6 +385,8 @@ to setting the OSPFv2 maximum metric.
 to timers governing the generation of LSAs by the local
 system
     """
+    if self.__lsa_generation is None:
+        self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsa_generation
       
   def _set_lsa_generation(self, v, load=False):
@@ -356,6 +401,9 @@ system
 to timers governing the generation of LSAs by the local
 system
     """
+    if self.__lsa_generation is None:
+        self.__lsa_generation = YANGDynClass(base=lsa_generation.lsa_generation, is_container='container', yang_name="lsa-generation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

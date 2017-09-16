@@ -42,7 +42,7 @@ SID/Label Binding TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ SID/Label Binding TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs']
 
+  def _initialized_tlv(self):
+    return self.__tlv is not None
+
   def _get_tlv(self):
     """
     Getter method for tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv (list)
 
     YANG Description: A TLV contained within the SID/Label Binding sub-TLV
     """
+    if self.__tlv is None:
+        self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__tlv
       
   def _set_tlv(self, v, load=False):
@@ -89,6 +94,9 @@ SID/Label Binding TLV
 
     YANG Description: A TLV contained within the SID/Label Binding sub-TLV
     """
+    if self.__tlv is None:
+        self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ SID/Label Binding TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ SID/Label Binding TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs']
 
+  def _initialized_tlv(self):
+    return self.__tlv is not None
+
   def _get_tlv(self):
     """
     Getter method for tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv (list)
 
     YANG Description: A TLV contained within the SID/Label Binding sub-TLV
     """
+    if self.__tlv is None:
+        self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__tlv
       
   def _set_tlv(self, v, load=False):
@@ -182,6 +195,9 @@ SID/Label Binding TLV
 
     YANG Description: A TLV contained within the SID/Label Binding sub-TLV
     """
+    if self.__tlv is None:
+        self.__tlv = YANGDynClass(base=YANGListType(False,tlv.tlv, yang_name="tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

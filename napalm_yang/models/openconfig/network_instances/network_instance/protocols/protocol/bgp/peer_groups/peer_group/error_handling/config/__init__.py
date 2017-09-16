@@ -42,7 +42,7 @@ group
     self._path_helper = False
 
     self._extmethods = False
-    self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__treat_as_withdraw = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'error-handling', u'config']
 
+  def _initialized_treat_as_withdraw(self):
+    return self.__treat_as_withdraw is not None
+
   def _get_treat_as_withdraw(self):
     """
     Getter method for treat_as_withdraw, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/error_handling/config/treat_as_withdraw (boolean)
@@ -79,6 +82,8 @@ group
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__treat_as_withdraw
       
   def _set_treat_as_withdraw(self, v, load=False):
@@ -93,6 +98,9 @@ withdrawn - avoiding session reset
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -139,7 +147,7 @@ group
     self._path_helper = False
 
     self._extmethods = False
-    self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__treat_as_withdraw = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -168,6 +176,9 @@ group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'error-handling', u'config']
 
+  def _initialized_treat_as_withdraw(self):
+    return self.__treat_as_withdraw is not None
+
   def _get_treat_as_withdraw(self):
     """
     Getter method for treat_as_withdraw, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/error_handling/config/treat_as_withdraw (boolean)
@@ -176,6 +187,8 @@ group
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__treat_as_withdraw
       
   def _set_treat_as_withdraw(self, v, load=False):
@@ -190,6 +203,9 @@ withdrawn - avoiding session reset
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

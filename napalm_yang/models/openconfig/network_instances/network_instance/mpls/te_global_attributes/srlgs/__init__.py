@@ -41,7 +41,7 @@ class srlgs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srlg = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class srlgs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs']
 
+  def _initialized_srlg(self):
+    return self.__srlg is not None
+
   def _get_srlg(self):
     """
     Getter method for srlg, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg (list)
 
     YANG Description: List of shared risk link groups
     """
+    if self.__srlg is None:
+        self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srlg
       
   def _set_srlg(self, v, load=False):
@@ -88,6 +93,9 @@ class srlgs(PybindBase):
 
     YANG Description: List of shared risk link groups
     """
+    if self.__srlg is None:
+        self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class srlgs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srlg = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class srlgs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs']
 
+  def _initialized_srlg(self):
+    return self.__srlg is not None
+
   def _get_srlg(self):
     """
     Getter method for srlg, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg (list)
 
     YANG Description: List of shared risk link groups
     """
+    if self.__srlg is None:
+        self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srlg
       
   def _set_srlg(self, v, load=False):
@@ -180,6 +193,9 @@ class srlgs(PybindBase):
 
     YANG Description: List of shared risk link groups
     """
+    if self.__srlg is None:
+        self.__srlg = YANGDynClass(base=YANGListType("name",srlg.srlg, yang_name="srlg", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

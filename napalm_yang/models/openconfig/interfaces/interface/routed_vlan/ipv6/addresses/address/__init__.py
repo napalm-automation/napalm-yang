@@ -43,10 +43,10 @@ class address(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__vrrp = YANGDynClass(base=vrrp.vrrp, is_container='container', yang_name="vrrp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__ip = None
+    self.__state = None
+    self.__config = None
+    self.__vrrp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,12 +75,17 @@ class address(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv6', u'addresses', u'address']
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/ip (leafref)
 
     YANG Description: References the configured IP address
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -93,6 +98,9 @@ class address(PybindBase):
 
     YANG Description: References the configured IP address
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,6 +125,9 @@ class address(PybindBase):
     self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/config (container)
@@ -124,6 +135,8 @@ class address(PybindBase):
     YANG Description: Configuration data for each IPv6 address on
 the interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -137,6 +150,9 @@ the interface
     YANG Description: Configuration data for each IPv6 address on
 the interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,6 +172,9 @@ the interface
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state (container)
@@ -163,6 +182,8 @@ the interface
     YANG Description: State data for each IPv6 address on the
 interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -176,6 +197,9 @@ interface
     YANG Description: State data for each IPv6 address on the
 interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,6 +219,9 @@ interface
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_vrrp(self):
+    return self.__vrrp is not None
+
   def _get_vrrp(self):
     """
     Getter method for vrrp, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp (container)
@@ -202,6 +229,8 @@ interface
     YANG Description: Enclosing container for VRRP groups handled by this
 IP interface
     """
+    if self.__vrrp is None:
+        self.__vrrp = YANGDynClass(base=vrrp.vrrp, is_container='container', yang_name="vrrp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__vrrp
       
   def _set_vrrp(self, v, load=False):
@@ -215,6 +244,9 @@ IP interface
     YANG Description: Enclosing container for VRRP groups handled by this
 IP interface
     """
+    if self.__vrrp is None:
+        self.__vrrp = YANGDynClass(base=vrrp.vrrp, is_container='container', yang_name="vrrp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

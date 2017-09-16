@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    self.__system_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'is-reachability', u'neighbors', u'neighbors', u'state']
 
+  def _initialized_system_id(self):
+    return self.__system_id is not None
+
   def _get_system_id(self):
     """
     Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability/neighbors/neighbors/state/system_id (oc-isis-types:system-id)
 
     YANG Description: System-ID of IS neighbor.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__system_id
       
   def _set_system_id(self, v, load=False):
@@ -87,6 +92,9 @@ class state(PybindBase):
 
     YANG Description: System-ID of IS neighbor.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    self.__system_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'is-reachability', u'neighbors', u'neighbors', u'state']
 
+  def _initialized_system_id(self):
+    return self.__system_id is not None
+
   def _get_system_id(self):
     """
     Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability/neighbors/neighbors/state/system_id (oc-isis-types:system-id)
 
     YANG Description: System-ID of IS neighbor.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
     return self.__system_id
       
   def _set_system_id(self, v, load=False):
@@ -178,6 +191,9 @@ class state(PybindBase):
 
     YANG Description: System-ID of IS neighbor.
     """
+    if self.__system_id is None:
+        self.__system_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}'}), is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:system-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

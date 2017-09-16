@@ -42,10 +42,10 @@ class selector(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__severity = YANGDynClass(base=unicode, is_leaf=True, yang_name="severity", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
-    self.__facility = YANGDynClass(base=unicode, is_leaf=True, yang_name="facility", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__severity = None
+    self.__facility = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ class selector(PybindBase):
     else:
       return [u'system', u'logging', u'console', u'selectors', u'selector']
 
+  def _initialized_facility(self):
+    return self.__facility is not None
+
   def _get_facility(self):
     """
     Getter method for facility, mapped from YANG variable /system/logging/console/selectors/selector/facility (leafref)
 
     YANG Description: Reference to facility list key
     """
+    if self.__facility is None:
+        self.__facility = YANGDynClass(base=unicode, is_leaf=True, yang_name="facility", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
     return self.__facility
       
   def _set_facility(self, v, load=False):
@@ -92,6 +97,9 @@ class selector(PybindBase):
 
     YANG Description: Reference to facility list key
     """
+    if self.__facility is None:
+        self.__facility = YANGDynClass(base=unicode, is_leaf=True, yang_name="facility", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -116,12 +124,17 @@ class selector(PybindBase):
     self.__facility = YANGDynClass(base=unicode, is_leaf=True, yang_name="facility", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
 
 
+  def _initialized_severity(self):
+    return self.__severity is not None
+
   def _get_severity(self):
     """
     Getter method for severity, mapped from YANG variable /system/logging/console/selectors/selector/severity (leafref)
 
     YANG Description: Reference to severity list key
     """
+    if self.__severity is None:
+        self.__severity = YANGDynClass(base=unicode, is_leaf=True, yang_name="severity", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
     return self.__severity
       
   def _set_severity(self, v, load=False):
@@ -134,6 +147,9 @@ class selector(PybindBase):
 
     YANG Description: Reference to severity list key
     """
+    if self.__severity is None:
+        self.__severity = YANGDynClass(base=unicode, is_leaf=True, yang_name="severity", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -158,12 +174,17 @@ class selector(PybindBase):
     self.__severity = YANGDynClass(base=unicode, is_leaf=True, yang_name="severity", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/logging/console/selectors/selector/config (container)
 
     YANG Description: Configuration data 
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -176,6 +197,9 @@ class selector(PybindBase):
 
     YANG Description: Configuration data 
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,12 +219,17 @@ class selector(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/logging/console/selectors/selector/state (container)
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -213,6 +242,9 @@ class selector(PybindBase):
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

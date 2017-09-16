@@ -41,9 +41,9 @@ received for the RSVP session
     self._path_helper = False
 
     self._extmethods = False
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = None
+    self.__peak_data_rate = None
+    self.__size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ received for the RSVP session
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session', u'state', u'sender-tspec']
 
+  def _initialized_rate(self):
+    return self.__rate is not None
+
   def _get_rate(self):
     """
     Getter method for rate, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/rate (oc-types:ieeefloat32)
@@ -79,6 +82,8 @@ received for the RSVP session
     YANG Description: The rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__rate is None:
+        self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__rate
       
   def _set_rate(self, v, load=False):
@@ -92,6 +97,9 @@ expressed in bytes per second.
     YANG Description: The rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__rate is None:
+        self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ expressed in bytes per second.
     self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_size(self):
+    return self.__size is not None
+
   def _get_size(self):
     """
     Getter method for size, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/size (oc-types:ieeefloat32)
@@ -119,6 +130,8 @@ expressed in bytes per second.
 the rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__size is None:
+        self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__size
       
   def _set_size(self, v, load=False):
@@ -133,6 +146,9 @@ expressed in bytes per second.
 the rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__size is None:
+        self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ expressed in bytes per second.
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_peak_data_rate(self):
+    return self.__peak_data_rate is not None
+
   def _get_peak_data_rate(self):
     """
     Getter method for peak_data_rate, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/peak_data_rate (union)
@@ -159,6 +178,8 @@ expressed in bytes per second.
     YANG Description: The maximum traffic generation rate that the head-end
 device sends traffic at.
     """
+    if self.__peak_data_rate is None:
+        self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__peak_data_rate
       
   def _set_peak_data_rate(self, v, load=False):
@@ -172,6 +193,9 @@ device sends traffic at.
     YANG Description: The maximum traffic generation rate that the head-end
 device sends traffic at.
     """
+    if self.__peak_data_rate is None:
+        self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -219,9 +243,9 @@ received for the RSVP session
     self._path_helper = False
 
     self._extmethods = False
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = None
+    self.__peak_data_rate = None
+    self.__size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -250,6 +274,9 @@ received for the RSVP session
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session', u'state', u'sender-tspec']
 
+  def _initialized_rate(self):
+    return self.__rate is not None
+
   def _get_rate(self):
     """
     Getter method for rate, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/rate (oc-types:ieeefloat32)
@@ -257,6 +284,8 @@ received for the RSVP session
     YANG Description: The rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__rate is None:
+        self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__rate
       
   def _set_rate(self, v, load=False):
@@ -270,6 +299,9 @@ expressed in bytes per second.
     YANG Description: The rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__rate is None:
+        self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -289,6 +321,9 @@ expressed in bytes per second.
     self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_size(self):
+    return self.__size is not None
+
   def _get_size(self):
     """
     Getter method for size, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/size (oc-types:ieeefloat32)
@@ -297,6 +332,8 @@ expressed in bytes per second.
 the rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__size is None:
+        self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__size
       
   def _set_size(self, v, load=False):
@@ -311,6 +348,9 @@ expressed in bytes per second.
 the rate at which the head-end device generates traffic,
 expressed in bytes per second.
     """
+    if self.__size is None:
+        self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,6 +370,9 @@ expressed in bytes per second.
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_peak_data_rate(self):
+    return self.__peak_data_rate is not None
+
   def _get_peak_data_rate(self):
     """
     Getter method for peak_data_rate, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state/sender_tspec/peak_data_rate (union)
@@ -337,6 +380,8 @@ expressed in bytes per second.
     YANG Description: The maximum traffic generation rate that the head-end
 device sends traffic at.
     """
+    if self.__peak_data_rate is None:
+        self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__peak_data_rate
       
   def _set_peak_data_rate(self, v, load=False):
@@ -350,6 +395,9 @@ device sends traffic at.
     YANG Description: The maximum traffic generation rate that the head-end
 device sends traffic at.
     """
+    if self.__peak_data_rate is None:
+        self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

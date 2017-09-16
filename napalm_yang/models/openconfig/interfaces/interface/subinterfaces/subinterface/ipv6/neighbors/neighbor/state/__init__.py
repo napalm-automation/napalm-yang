@@ -41,11 +41,11 @@ interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='neighbor-origin', is_config=False)
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
-    self.__is_router = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="is-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='empty', is_config=False)
-    self.__neighbor_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DELAY': {}, u'STALE': {}, u'PROBE': {}, u'REACHABLE': {}, u'INCOMPLETE': {}},), is_leaf=True, yang_name="neighbor-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='enumeration', is_config=False)
-    self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
+    self.__origin = None
+    self.__ip = None
+    self.__is_router = None
+    self.__neighbor_state = None
+    self.__link_layer_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ interface
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv6', u'neighbors', u'neighbor', u'state']
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/state/ip (inet:ipv6-address-no-zone)
@@ -82,6 +85,8 @@ interface
 
 The IPv6 address of the neighbor node.
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -96,6 +101,9 @@ The IPv6 address of the neighbor node.
 
 The IPv6 address of the neighbor node.
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ The IPv6 address of the neighbor node.
     self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
 
 
+  def _initialized_link_layer_address(self):
+    return self.__link_layer_address is not None
+
   def _get_link_layer_address(self):
     """
     Getter method for link_layer_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/state/link_layer_address (yang:phys-address)
@@ -123,6 +134,8 @@ The IPv6 address of the neighbor node.
 
 The link-layer address of the neighbor node.
     """
+    if self.__link_layer_address is None:
+        self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
     return self.__link_layer_address
       
   def _set_link_layer_address(self, v, load=False):
@@ -137,6 +150,9 @@ The link-layer address of the neighbor node.
 
 The link-layer address of the neighbor node.
     """
+    if self.__link_layer_address is None:
+        self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,6 +172,9 @@ The link-layer address of the neighbor node.
     self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
 
 
+  def _initialized_origin(self):
+    return self.__origin is not None
+
   def _get_origin(self):
     """
     Getter method for origin, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/state/origin (neighbor-origin)
@@ -164,6 +183,8 @@ The link-layer address of the neighbor node.
 
 The origin of this neighbor entry.
     """
+    if self.__origin is None:
+        self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='neighbor-origin', is_config=False)
     return self.__origin
       
   def _set_origin(self, v, load=False):
@@ -178,6 +199,9 @@ The origin of this neighbor entry.
 
 The origin of this neighbor entry.
     """
+    if self.__origin is None:
+        self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='neighbor-origin', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -197,6 +221,9 @@ The origin of this neighbor entry.
     self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='neighbor-origin', is_config=False)
 
 
+  def _initialized_is_router(self):
+    return self.__is_router is not None
+
   def _get_is_router(self):
     """
     Getter method for is_router, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/state/is_router (empty)
@@ -205,6 +232,8 @@ The origin of this neighbor entry.
 
 Indicates that the neighbor node acts as a router.
     """
+    if self.__is_router is None:
+        self.__is_router = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="is-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='empty', is_config=False)
     return self.__is_router
       
   def _set_is_router(self, v, load=False):
@@ -219,6 +248,9 @@ Indicates that the neighbor node acts as a router.
 
 Indicates that the neighbor node acts as a router.
     """
+    if self.__is_router is None:
+        self.__is_router = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="is-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='empty', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -238,6 +270,9 @@ Indicates that the neighbor node acts as a router.
     self.__is_router = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="is-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='empty', is_config=False)
 
 
+  def _initialized_neighbor_state(self):
+    return self.__neighbor_state is not None
+
   def _get_neighbor_state(self):
     """
     Getter method for neighbor_state, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors/neighbor/state/neighbor_state (enumeration)
@@ -247,6 +282,8 @@ Indicates that the neighbor node acts as a router.
 The Neighbor Unreachability Detection state of this
 entry.
     """
+    if self.__neighbor_state is None:
+        self.__neighbor_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DELAY': {}, u'STALE': {}, u'PROBE': {}, u'REACHABLE': {}, u'INCOMPLETE': {}},), is_leaf=True, yang_name="neighbor-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='enumeration', is_config=False)
     return self.__neighbor_state
       
   def _set_neighbor_state(self, v, load=False):
@@ -262,6 +299,9 @@ entry.
 The Neighbor Unreachability Detection state of this
 entry.
     """
+    if self.__neighbor_state is None:
+        self.__neighbor_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DELAY': {}, u'STALE': {}, u'PROBE': {}, u'REACHABLE': {}, u'INCOMPLETE': {}},), is_leaf=True, yang_name="neighbor-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

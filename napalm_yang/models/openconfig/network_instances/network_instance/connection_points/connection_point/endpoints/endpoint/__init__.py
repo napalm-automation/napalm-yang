@@ -48,11 +48,11 @@ with
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__remote = None
+    self.__state = None
+    self.__config = None
+    self.__local_ = None
+    self.__endpoint_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -81,6 +81,9 @@ with
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints', u'endpoint']
 
+  def _initialized_endpoint_id(self):
+    return self.__endpoint_id is not None
+
   def _get_endpoint_id(self):
     """
     Getter method for endpoint_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/endpoint_id (leafref)
@@ -88,6 +91,8 @@ with
     YANG Description: A pointer to the configured identifier for the
 endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__endpoint_id
       
   def _set_endpoint_id(self, v, load=False):
@@ -101,6 +106,9 @@ endpoint
     YANG Description: A pointer to the configured identifier for the
 endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -125,6 +133,9 @@ endpoint
     self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config (container)
@@ -132,6 +143,8 @@ endpoint
     YANG Description: Configuration parameters relating to the
 endpoint
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -145,6 +158,9 @@ endpoint
     YANG Description: Configuration parameters relating to the
 endpoint
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,6 +180,9 @@ endpoint
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/state (container)
@@ -171,6 +190,8 @@ endpoint
     YANG Description: Operational state parameters relating to the
 endpoint
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -184,6 +205,9 @@ endpoint
     YANG Description: Operational state parameters relating to the
 endpoint
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -203,6 +227,9 @@ endpoint
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_local_(self):
+    return self.__local_ is not None
+
   def _get_local_(self):
     """
     Getter method for local_, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/local (container)
@@ -210,6 +237,8 @@ endpoint
     YANG Description: Configuration and operational state parameters
 relating to a local interface
     """
+    if self.__local_ is None:
+        self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__local_
       
   def _set_local_(self, v, load=False):
@@ -223,6 +252,9 @@ relating to a local interface
     YANG Description: Configuration and operational state parameters
 relating to a local interface
     """
+    if self.__local_ is None:
+        self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -242,6 +274,9 @@ relating to a local interface
     self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_remote(self):
+    return self.__remote is not None
+
   def _get_remote(self):
     """
     Getter method for remote, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/remote (container)
@@ -249,6 +284,8 @@ relating to a local interface
     YANG Description: Configuration and operational state parameters
 relating to a remote interface
     """
+    if self.__remote is None:
+        self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__remote
       
   def _set_remote(self, v, load=False):
@@ -262,6 +299,9 @@ relating to a remote interface
     YANG Description: Configuration and operational state parameters
 relating to a remote interface
     """
+    if self.__remote is None:
+        self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -318,11 +358,11 @@ with
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__remote = None
+    self.__state = None
+    self.__config = None
+    self.__local_ = None
+    self.__endpoint_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -351,6 +391,9 @@ with
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints', u'endpoint']
 
+  def _initialized_endpoint_id(self):
+    return self.__endpoint_id is not None
+
   def _get_endpoint_id(self):
     """
     Getter method for endpoint_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/endpoint_id (leafref)
@@ -358,6 +401,8 @@ with
     YANG Description: A pointer to the configured identifier for the
 endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__endpoint_id
       
   def _set_endpoint_id(self, v, load=False):
@@ -371,6 +416,9 @@ endpoint
     YANG Description: A pointer to the configured identifier for the
 endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -395,6 +443,9 @@ endpoint
     self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config (container)
@@ -402,6 +453,8 @@ endpoint
     YANG Description: Configuration parameters relating to the
 endpoint
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -415,6 +468,9 @@ endpoint
     YANG Description: Configuration parameters relating to the
 endpoint
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -434,6 +490,9 @@ endpoint
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/state (container)
@@ -441,6 +500,8 @@ endpoint
     YANG Description: Operational state parameters relating to the
 endpoint
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -454,6 +515,9 @@ endpoint
     YANG Description: Operational state parameters relating to the
 endpoint
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -473,6 +537,9 @@ endpoint
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_local_(self):
+    return self.__local_ is not None
+
   def _get_local_(self):
     """
     Getter method for local_, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/local (container)
@@ -480,6 +547,8 @@ endpoint
     YANG Description: Configuration and operational state parameters
 relating to a local interface
     """
+    if self.__local_ is None:
+        self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__local_
       
   def _set_local_(self, v, load=False):
@@ -493,6 +562,9 @@ relating to a local interface
     YANG Description: Configuration and operational state parameters
 relating to a local interface
     """
+    if self.__local_ is None:
+        self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -512,6 +584,9 @@ relating to a local interface
     self.__local_ = YANGDynClass(base=local_.local_, is_container='container', yang_name="local", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_remote(self):
+    return self.__remote is not None
+
   def _get_remote(self):
     """
     Getter method for remote, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/remote (container)
@@ -519,6 +594,8 @@ relating to a local interface
     YANG Description: Configuration and operational state parameters
 relating to a remote interface
     """
+    if self.__remote is None:
+        self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__remote
       
   def _set_remote(self, v, load=False):
@@ -532,6 +609,9 @@ relating to a remote interface
     YANG Description: Configuration and operational state parameters
 relating to a remote interface
     """
+    if self.__remote is None:
+        self.__remote = YANGDynClass(base=remote.remote, is_container='container', yang_name="remote", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

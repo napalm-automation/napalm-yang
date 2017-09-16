@@ -43,8 +43,8 @@ Open Shortest Path First (OSPF) v2
     self._path_helper = False
 
     self._extmethods = False
-    self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__areas = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ Open Shortest Path First (OSPF) v2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global (container)
@@ -80,6 +83,8 @@ Open Shortest Path First (OSPF) v2
     YANG Description: Configuration and operational state parameters for settings
 that are global to the OSPFv2 instance
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -93,6 +98,9 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state parameters for settings
 that are global to the OSPFv2 instance
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ that are global to the OSPFv2 instance
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_areas(self):
+    return self.__areas is not None
+
   def _get_areas(self):
     """
     Getter method for areas, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas (container)
@@ -119,6 +130,8 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state relating to an
 OSPFv2 area.
     """
+    if self.__areas is None:
+        self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__areas
       
   def _set_areas(self, v, load=False):
@@ -132,6 +145,9 @@ OSPFv2 area.
     YANG Description: Configuration and operational state relating to an
 OSPFv2 area.
     """
+    if self.__areas is None:
+        self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ Open Shortest Path First (OSPF) v2
     self._path_helper = False
 
     self._extmethods = False
-    self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__areas = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ Open Shortest Path First (OSPF) v2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global (container)
@@ -217,6 +236,8 @@ Open Shortest Path First (OSPF) v2
     YANG Description: Configuration and operational state parameters for settings
 that are global to the OSPFv2 instance
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -230,6 +251,9 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state parameters for settings
 that are global to the OSPFv2 instance
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,6 +273,9 @@ that are global to the OSPFv2 instance
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_areas(self):
+    return self.__areas is not None
+
   def _get_areas(self):
     """
     Getter method for areas, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas (container)
@@ -256,6 +283,8 @@ that are global to the OSPFv2 instance
     YANG Description: Configuration and operational state relating to an
 OSPFv2 area.
     """
+    if self.__areas is None:
+        self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__areas
       
   def _set_areas(self, v, load=False):
@@ -269,6 +298,9 @@ OSPFv2 area.
     YANG Description: Configuration and operational state relating to an
 OSPFv2 area.
     """
+    if self.__areas is None:
+        self.__areas = YANGDynClass(base=areas.areas, is_container='container', yang_name="areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

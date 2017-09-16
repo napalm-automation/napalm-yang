@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__temporary_valid_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(604800), is_leaf=True, yang_name="temporary-valid-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
-    self.__temporary_preferred_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(86400), is_leaf=True, yang_name="temporary-preferred-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
-    self.__create_temporary_addresses = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="create-temporary-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
-    self.__create_global_addresses = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="create-global-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
+    self.__temporary_valid_lifetime = None
+    self.__temporary_preferred_lifetime = None
+    self.__create_temporary_addresses = None
+    self.__create_global_addresses = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv6', u'autoconf', u'state']
 
+  def _initialized_create_global_addresses(self):
+    return self.__create_global_addresses is not None
+
   def _get_create_global_addresses(self):
     """
     Getter method for create_global_addresses, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/state/create_global_addresses (boolean)
@@ -81,6 +84,8 @@ class state(PybindBase):
 If enabled, the host creates global addresses as
 described in RFC 4862.
     """
+    if self.__create_global_addresses is None:
+        self.__create_global_addresses = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="create-global-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
     return self.__create_global_addresses
       
   def _set_create_global_addresses(self, v, load=False):
@@ -96,6 +101,9 @@ described in RFC 4862.
 If enabled, the host creates global addresses as
 described in RFC 4862.
     """
+    if self.__create_global_addresses is None:
+        self.__create_global_addresses = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="create-global-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ described in RFC 4862.
     self.__create_global_addresses = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="create-global-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
 
 
+  def _initialized_create_temporary_addresses(self):
+    return self.__create_temporary_addresses is not None
+
   def _get_create_temporary_addresses(self):
     """
     Getter method for create_temporary_addresses, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/state/create_temporary_addresses (boolean)
@@ -124,6 +135,8 @@ described in RFC 4862.
 If enabled, the host creates temporary addresses as
 described in RFC 4941.
     """
+    if self.__create_temporary_addresses is None:
+        self.__create_temporary_addresses = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="create-temporary-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
     return self.__create_temporary_addresses
       
   def _set_create_temporary_addresses(self, v, load=False):
@@ -139,6 +152,9 @@ described in RFC 4941.
 If enabled, the host creates temporary addresses as
 described in RFC 4941.
     """
+    if self.__create_temporary_addresses is None:
+        self.__create_temporary_addresses = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="create-temporary-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,6 +174,9 @@ described in RFC 4941.
     self.__create_temporary_addresses = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="create-temporary-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='boolean', is_config=False)
 
 
+  def _initialized_temporary_valid_lifetime(self):
+    return self.__temporary_valid_lifetime is not None
+
   def _get_temporary_valid_lifetime(self):
     """
     Getter method for temporary_valid_lifetime, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/state/temporary_valid_lifetime (uint32)
@@ -167,6 +186,8 @@ described in RFC 4941.
 The time period during which the temporary address
 is valid.
     """
+    if self.__temporary_valid_lifetime is None:
+        self.__temporary_valid_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(604800), is_leaf=True, yang_name="temporary-valid-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
     return self.__temporary_valid_lifetime
       
   def _set_temporary_valid_lifetime(self, v, load=False):
@@ -182,6 +203,9 @@ is valid.
 The time period during which the temporary address
 is valid.
     """
+    if self.__temporary_valid_lifetime is None:
+        self.__temporary_valid_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(604800), is_leaf=True, yang_name="temporary-valid-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -201,6 +225,9 @@ is valid.
     self.__temporary_valid_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(604800), is_leaf=True, yang_name="temporary-valid-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
 
 
+  def _initialized_temporary_preferred_lifetime(self):
+    return self.__temporary_preferred_lifetime is not None
+
   def _get_temporary_preferred_lifetime(self):
     """
     Getter method for temporary_preferred_lifetime, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf/state/temporary_preferred_lifetime (uint32)
@@ -210,6 +237,8 @@ is valid.
 The time period during which the temporary address is
 preferred.
     """
+    if self.__temporary_preferred_lifetime is None:
+        self.__temporary_preferred_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(86400), is_leaf=True, yang_name="temporary-preferred-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
     return self.__temporary_preferred_lifetime
       
   def _set_temporary_preferred_lifetime(self, v, load=False):
@@ -225,6 +254,9 @@ preferred.
 The time period during which the temporary address is
 preferred.
     """
+    if self.__temporary_preferred_lifetime is None:
+        self.__temporary_preferred_lifetime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(86400), is_leaf=True, yang_name="temporary-preferred-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

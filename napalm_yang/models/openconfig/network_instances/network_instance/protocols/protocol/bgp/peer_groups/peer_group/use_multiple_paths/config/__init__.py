@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'use-multiple-paths', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/use_multiple_paths/config/enabled (boolean)
@@ -77,6 +80,8 @@ class config(PybindBase):
 enabled for the neighbor. This value is overridden by
 any more specific configuration value.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -91,6 +96,9 @@ any more specific configuration value.
 enabled for the neighbor. This value is overridden by
 any more specific configuration value.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'use-multiple-paths', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/use_multiple_paths/config/enabled (boolean)
@@ -172,6 +183,8 @@ class config(PybindBase):
 enabled for the neighbor. This value is overridden by
 any more specific configuration value.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -186,6 +199,9 @@ any more specific configuration value.
 enabled for the neighbor. This value is overridden by
 any more specific configuration value.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

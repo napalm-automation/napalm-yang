@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__login_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="login-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
-    self.__hostname = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
-    self.__domain_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="domain-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
-    self.__motd_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="motd-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    self.__login_banner = None
+    self.__hostname = None
+    self.__domain_name = None
+    self.__motd_banner = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class config(PybindBase):
     else:
       return [u'system', u'config']
 
+  def _initialized_hostname(self):
+    return self.__hostname is not None
+
   def _get_hostname(self):
     """
     Getter method for hostname, mapped from YANG variable /system/config/hostname (inet:domain-name)
@@ -79,6 +82,8 @@ class config(PybindBase):
     YANG Description: The hostname of the device -- should be a single domain
 label, without the domain.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
     return self.__hostname
       
   def _set_hostname(self, v, load=False):
@@ -92,6 +97,9 @@ label, without the domain.
     YANG Description: The hostname of the device -- should be a single domain
 label, without the domain.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ label, without the domain.
     self.__hostname = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
 
 
+  def _initialized_domain_name(self):
+    return self.__domain_name is not None
+
   def _get_domain_name(self):
     """
     Getter method for domain_name, mapped from YANG variable /system/config/domain_name (inet:domain-name)
@@ -118,6 +129,8 @@ label, without the domain.
     YANG Description: Specifies the domain name used to form fully qualified name
 for unqualified hostnames.
     """
+    if self.__domain_name is None:
+        self.__domain_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="domain-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
     return self.__domain_name
       
   def _set_domain_name(self, v, load=False):
@@ -131,6 +144,9 @@ for unqualified hostnames.
     YANG Description: Specifies the domain name used to form fully qualified name
 for unqualified hostnames.
     """
+    if self.__domain_name is None:
+        self.__domain_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="domain-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ for unqualified hostnames.
     self.__domain_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}), is_leaf=True, yang_name="domain-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
 
 
+  def _initialized_login_banner(self):
+    return self.__login_banner is not None
+
   def _get_login_banner(self):
     """
     Getter method for login_banner, mapped from YANG variable /system/config/login_banner (string)
@@ -157,6 +176,8 @@ for unqualified hostnames.
     YANG Description: The console login message displayed before the login prompt,
 i.e., before a user logs into the system.
     """
+    if self.__login_banner is None:
+        self.__login_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="login-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__login_banner
       
   def _set_login_banner(self, v, load=False):
@@ -170,6 +191,9 @@ i.e., before a user logs into the system.
     YANG Description: The console login message displayed before the login prompt,
 i.e., before a user logs into the system.
     """
+    if self.__login_banner is None:
+        self.__login_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="login-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,6 +213,9 @@ i.e., before a user logs into the system.
     self.__login_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="login-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
+  def _initialized_motd_banner(self):
+    return self.__motd_banner is not None
+
   def _get_motd_banner(self):
     """
     Getter method for motd_banner, mapped from YANG variable /system/config/motd_banner (string)
@@ -198,6 +225,8 @@ system.  They system may append additional standard
 information such as the current system date and time, uptime,
 last login timestamp, etc.
     """
+    if self.__motd_banner is None:
+        self.__motd_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="motd-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__motd_banner
       
   def _set_motd_banner(self, v, load=False):
@@ -213,6 +242,9 @@ system.  They system may append additional standard
 information such as the current system date and time, uptime,
 last login timestamp, etc.
     """
+    if self.__motd_banner is None:
+        self.__motd_banner = YANGDynClass(base=unicode, is_leaf=True, yang_name="motd-banner", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

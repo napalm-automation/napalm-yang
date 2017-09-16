@@ -42,9 +42,9 @@ class host_entry(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__state = None
+    self.__hostname = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class host_entry(PybindBase):
     else:
       return [u'system', u'dns', u'host-entries', u'host-entry']
 
+  def _initialized_hostname(self):
+    return self.__hostname is not None
+
   def _get_hostname(self):
     """
     Getter method for hostname, mapped from YANG variable /system/dns/host_entries/host_entry/hostname (leafref)
 
     YANG Description: Reference to the hostname list key
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
     return self.__hostname
       
   def _set_hostname(self, v, load=False):
@@ -91,6 +96,9 @@ class host_entry(PybindBase):
 
     YANG Description: Reference to the hostname list key
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -115,12 +123,17 @@ class host_entry(PybindBase):
     self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/dns/host_entries/host_entry/config (container)
 
     YANG Description: Configuration data for static host entries
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -133,6 +146,9 @@ class host_entry(PybindBase):
 
     YANG Description: Configuration data for static host entries
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ class host_entry(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/dns/host_entries/host_entry/state (container)
 
     YANG Description: Operational state data for static host entries
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -170,6 +191,9 @@ class host_entry(PybindBase):
 
     YANG Description: Operational state data for static host entries
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

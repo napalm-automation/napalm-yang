@@ -41,7 +41,7 @@ subscription options
     self._path_helper = False
 
     self._extmethods = False
-    self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__subscription = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ subscription options
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'subscription', u'state']
 
+  def _initialized_subscription(self):
+    return self.__subscription is not None
+
   def _get_subscription(self):
     """
     Getter method for subscription, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/subscription/state/subscription (oc-types:percentage)
@@ -77,6 +80,8 @@ subscription options
     YANG Description: percentage of the interface bandwidth that
 RSVP can reserve
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__subscription
       
   def _set_subscription(self, v, load=False):
@@ -90,6 +95,9 @@ RSVP can reserve
     YANG Description: percentage of the interface bandwidth that
 RSVP can reserve
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ subscription options
     self._path_helper = False
 
     self._extmethods = False
-    self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__subscription = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ subscription options
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'subscription', u'state']
 
+  def _initialized_subscription(self):
+    return self.__subscription is not None
+
   def _get_subscription(self):
     """
     Getter method for subscription, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/subscription/state/subscription (oc-types:percentage)
@@ -171,6 +182,8 @@ subscription options
     YANG Description: percentage of the interface bandwidth that
 RSVP can reserve
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__subscription
       
   def _set_subscription(self, v, load=False):
@@ -184,6 +197,9 @@ RSVP can reserve
     YANG Description: percentage of the interface bandwidth that
 RSVP can reserve
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

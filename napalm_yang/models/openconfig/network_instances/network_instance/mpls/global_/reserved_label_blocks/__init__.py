@@ -45,7 +45,7 @@ allocation of labels should be out of the label block specified.
     self._path_helper = False
 
     self._extmethods = False
-    self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__reserved_label_block = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ allocation of labels should be out of the label block specified.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'reserved-label-blocks']
 
+  def _initialized_reserved_label_block(self):
+    return self.__reserved_label_block is not None
+
   def _get_reserved_label_block(self):
     """
     Getter method for reserved_label_block, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block (list)
@@ -81,6 +84,8 @@ allocation of labels should be out of the label block specified.
     YANG Description: A range of labels starting with the start-label up to and including
 the end label that should be allocated for use by a specific protocol.
     """
+    if self.__reserved_label_block is None:
+        self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__reserved_label_block
       
   def _set_reserved_label_block(self, v, load=False):
@@ -94,6 +99,9 @@ the end label that should be allocated for use by a specific protocol.
     YANG Description: A range of labels starting with the start-label up to and including
 the end label that should be allocated for use by a specific protocol.
     """
+    if self.__reserved_label_block is None:
+        self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -143,7 +151,7 @@ allocation of labels should be out of the label block specified.
     self._path_helper = False
 
     self._extmethods = False
-    self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__reserved_label_block = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -172,6 +180,9 @@ allocation of labels should be out of the label block specified.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'reserved-label-blocks']
 
+  def _initialized_reserved_label_block(self):
+    return self.__reserved_label_block is not None
+
   def _get_reserved_label_block(self):
     """
     Getter method for reserved_label_block, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block (list)
@@ -179,6 +190,8 @@ allocation of labels should be out of the label block specified.
     YANG Description: A range of labels starting with the start-label up to and including
 the end label that should be allocated for use by a specific protocol.
     """
+    if self.__reserved_label_block is None:
+        self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__reserved_label_block
       
   def _set_reserved_label_block(self, v, load=False):
@@ -192,6 +205,9 @@ the end label that should be allocated for use by a specific protocol.
     YANG Description: A range of labels starting with the start-label up to and including
 the end label that should be allocated for use by a specific protocol.
     """
+    if self.__reserved_label_block is None:
+        self.__reserved_label_block = YANGDynClass(base=YANGListType("local_id",reserved_label_block.reserved_label_block, yang_name="reserved-label-block", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="reserved-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

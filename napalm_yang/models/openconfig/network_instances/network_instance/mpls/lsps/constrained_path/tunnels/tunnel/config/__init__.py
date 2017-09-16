@@ -40,21 +40,21 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
-    self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
-    self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__setup_priority = None
+    self.__signaling_protocol = None
+    self.__name = None
+    self.__protection_style_requested = None
+    self.__metric = None
+    self.__source = None
+    self.__admin_status = None
+    self.__hold_priority = None
+    self.__reoptimize_timer = None
+    self.__preference = None
+    self.__shortcut_eligible = None
+    self.__metric_type = None
+    self.__type = None
+    self.__soft_preemption = None
+    self.__description = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -83,12 +83,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/name (string)
 
     YANG Description: The tunnel name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -101,6 +106,9 @@ class config(PybindBase):
 
     YANG Description: The tunnel name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -120,12 +128,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/type (identityref)
 
     YANG Description: Tunnel type, p2p or p2mp
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -138,6 +151,9 @@ class config(PybindBase):
 
     YANG Description: Tunnel type, p2p or p2mp
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,12 +173,17 @@ class config(PybindBase):
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_signaling_protocol(self):
+    return self.__signaling_protocol is not None
+
   def _get_signaling_protocol(self):
     """
     Getter method for signaling_protocol, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/signaling_protocol (identityref)
 
     YANG Description: Signaling protocol used to set up this tunnel
     """
+    if self.__signaling_protocol is None:
+        self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__signaling_protocol
       
   def _set_signaling_protocol(self, v, load=False):
@@ -175,6 +196,9 @@ class config(PybindBase):
 
     YANG Description: Signaling protocol used to set up this tunnel
     """
+    if self.__signaling_protocol is None:
+        self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,12 +218,17 @@ class config(PybindBase):
     self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/description (string)
 
     YANG Description: optional text description for the tunnel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -212,6 +241,9 @@ class config(PybindBase):
 
     YANG Description: optional text description for the tunnel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -231,12 +263,17 @@ class config(PybindBase):
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_admin_status(self):
+    return self.__admin_status is not None
+
   def _get_admin_status(self):
     """
     Getter method for admin_status, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/admin_status (identityref)
 
     YANG Description: TE tunnel administrative state.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__admin_status
       
   def _set_admin_status(self, v, load=False):
@@ -249,6 +286,9 @@ class config(PybindBase):
 
     YANG Description: TE tunnel administrative state.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -268,6 +308,9 @@ class config(PybindBase):
     self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_preference(self):
+    return self.__preference is not None
+
   def _get_preference(self):
     """
     Getter method for preference, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/preference (uint8)
@@ -275,6 +318,8 @@ class config(PybindBase):
     YANG Description: Specifies a preference for this tunnel.
 A lower number signifies a better preference
     """
+    if self.__preference is None:
+        self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__preference
       
   def _set_preference(self, v, load=False):
@@ -288,6 +333,9 @@ A lower number signifies a better preference
     YANG Description: Specifies a preference for this tunnel.
 A lower number signifies a better preference
     """
+    if self.__preference is None:
+        self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -307,6 +355,9 @@ A lower number signifies a better preference
     self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_metric_type(self):
+    return self.__metric_type is not None
+
   def _get_metric_type(self):
     """
     Getter method for metric_type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/metric_type (identityref)
@@ -314,6 +365,8 @@ A lower number signifies a better preference
     YANG Description: The type of metric specification that should be used to set
 the LSP(s) metric
     """
+    if self.__metric_type is None:
+        self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__metric_type
       
   def _set_metric_type(self, v, load=False):
@@ -327,6 +380,9 @@ the LSP(s) metric
     YANG Description: The type of metric specification that should be used to set
 the LSP(s) metric
     """
+    if self.__metric_type is None:
+        self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -346,6 +402,9 @@ the LSP(s) metric
     self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/metric (int32)
@@ -360,6 +419,8 @@ offset is used to formulate the metric; where metric-type
 is LSP_METRIC_INHERITED, the value of this leaf is not
 utilised
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -380,6 +441,9 @@ offset is used to formulate the metric; where metric-type
 is LSP_METRIC_INHERITED, the value of this leaf is not
 utilised
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,6 +463,9 @@ utilised
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
 
 
+  def _initialized_shortcut_eligible(self):
+    return self.__shortcut_eligible is not None
+
   def _get_shortcut_eligible(self):
     """
     Getter method for shortcut_eligible, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/shortcut_eligible (boolean)
@@ -408,6 +475,8 @@ shortcut in the IGP. In the case that this leaf is set to
 true, the IGP SPF calculation uses the metric specified to
 determine whether traffic should be carried over this LSP
     """
+    if self.__shortcut_eligible is None:
+        self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__shortcut_eligible
       
   def _set_shortcut_eligible(self, v, load=False):
@@ -423,6 +492,9 @@ shortcut in the IGP. In the case that this leaf is set to
 true, the IGP SPF calculation uses the metric specified to
 determine whether traffic should be carried over this LSP
     """
+    if self.__shortcut_eligible is None:
+        self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -442,6 +514,9 @@ determine whether traffic should be carried over this LSP
     self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_protection_style_requested(self):
+    return self.__protection_style_requested is not None
+
   def _get_protection_style_requested(self):
     """
     Getter method for protection_style_requested, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/protection_style_requested (identityref)
@@ -449,6 +524,8 @@ determine whether traffic should be carried over this LSP
     YANG Description: style of mpls frr protection desired: can be
 link, link-node or unprotected.
     """
+    if self.__protection_style_requested is None:
+        self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__protection_style_requested
       
   def _set_protection_style_requested(self, v, load=False):
@@ -462,6 +539,9 @@ link, link-node or unprotected.
     YANG Description: style of mpls frr protection desired: can be
 link, link-node or unprotected.
     """
+    if self.__protection_style_requested is None:
+        self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -481,6 +561,9 @@ link, link-node or unprotected.
     self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_reoptimize_timer(self):
+    return self.__reoptimize_timer is not None
+
   def _get_reoptimize_timer(self):
     """
     Getter method for reoptimize_timer, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/reoptimize_timer (uint16)
@@ -488,6 +571,8 @@ link, link-node or unprotected.
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__reoptimize_timer
       
   def _set_reoptimize_timer(self, v, load=False):
@@ -501,6 +586,9 @@ a traffic engineered LSP
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -520,12 +608,17 @@ a traffic engineered LSP
     self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_source(self):
+    return self.__source is not None
+
   def _get_source(self):
     """
     Getter method for source, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/source (inet:ip-address)
 
     YANG Description: RSVP-TE tunnel source address
     """
+    if self.__source is None:
+        self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
     return self.__source
       
   def _set_source(self, v, load=False):
@@ -538,6 +631,9 @@ a traffic engineered LSP
 
     YANG Description: RSVP-TE tunnel source address
     """
+    if self.__source is None:
+        self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -557,12 +653,17 @@ a traffic engineered LSP
     self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
 
 
+  def _initialized_soft_preemption(self):
+    return self.__soft_preemption is not None
+
   def _get_soft_preemption(self):
     """
     Getter method for soft_preemption, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/soft_preemption (boolean)
 
     YANG Description: Enables RSVP soft-preemption on this LSP
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__soft_preemption
       
   def _set_soft_preemption(self, v, load=False):
@@ -575,6 +676,9 @@ a traffic engineered LSP
 
     YANG Description: Enables RSVP soft-preemption on this LSP
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -594,6 +698,9 @@ a traffic engineered LSP
     self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_setup_priority(self):
+    return self.__setup_priority is not None
+
   def _get_setup_priority(self):
     """
     Getter method for setup_priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/setup_priority (uint8)
@@ -602,6 +709,8 @@ a traffic engineered LSP
 higher priority; default 7 indicates that LSP will not
 preempt established LSPs during setup
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__setup_priority
       
   def _set_setup_priority(self, v, load=False):
@@ -616,6 +725,9 @@ preempt established LSPs during setup
 higher priority; default 7 indicates that LSP will not
 preempt established LSPs during setup
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -635,6 +747,9 @@ preempt established LSPs during setup
     self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_hold_priority(self):
+    return self.__hold_priority is not None
+
   def _get_hold_priority(self):
     """
     Getter method for hold_priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/hold_priority (uint8)
@@ -643,6 +758,8 @@ preempt established LSPs during setup
 lower is higher priority; default 0 indicates other LSPs
 will not preempt the LSPs once established
     """
+    if self.__hold_priority is None:
+        self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__hold_priority
       
   def _set_hold_priority(self, v, load=False):
@@ -657,6 +774,9 @@ will not preempt the LSPs once established
 lower is higher priority; default 0 indicates other LSPs
 will not preempt the LSPs once established
     """
+    if self.__hold_priority is None:
+        self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -715,21 +835,21 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
-    self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
-    self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__setup_priority = None
+    self.__signaling_protocol = None
+    self.__name = None
+    self.__protection_style_requested = None
+    self.__metric = None
+    self.__source = None
+    self.__admin_status = None
+    self.__hold_priority = None
+    self.__reoptimize_timer = None
+    self.__preference = None
+    self.__shortcut_eligible = None
+    self.__metric_type = None
+    self.__type = None
+    self.__soft_preemption = None
+    self.__description = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -758,12 +878,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/name (string)
 
     YANG Description: The tunnel name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -776,6 +901,9 @@ class config(PybindBase):
 
     YANG Description: The tunnel name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -795,12 +923,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/type (identityref)
 
     YANG Description: Tunnel type, p2p or p2mp
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -813,6 +946,9 @@ class config(PybindBase):
 
     YANG Description: Tunnel type, p2p or p2mp
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -832,12 +968,17 @@ class config(PybindBase):
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2P': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'P2MP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_signaling_protocol(self):
+    return self.__signaling_protocol is not None
+
   def _get_signaling_protocol(self):
     """
     Getter method for signaling_protocol, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/signaling_protocol (identityref)
 
     YANG Description: Signaling protocol used to set up this tunnel
     """
+    if self.__signaling_protocol is None:
+        self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__signaling_protocol
       
   def _set_signaling_protocol(self, v, load=False):
@@ -850,6 +991,9 @@ class config(PybindBase):
 
     YANG Description: Signaling protocol used to set up this tunnel
     """
+    if self.__signaling_protocol is None:
+        self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -869,12 +1013,17 @@ class config(PybindBase):
     self.__signaling_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), is_leaf=True, yang_name="signaling-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/description (string)
 
     YANG Description: optional text description for the tunnel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -887,6 +1036,9 @@ class config(PybindBase):
 
     YANG Description: optional text description for the tunnel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -906,12 +1058,17 @@ class config(PybindBase):
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_admin_status(self):
+    return self.__admin_status is not None
+
   def _get_admin_status(self):
     """
     Getter method for admin_status, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/admin_status (identityref)
 
     YANG Description: TE tunnel administrative state.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__admin_status
       
   def _set_admin_status(self, v, load=False):
@@ -924,6 +1081,9 @@ class config(PybindBase):
 
     YANG Description: TE tunnel administrative state.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -943,6 +1103,9 @@ class config(PybindBase):
     self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_DOWN': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:ADMIN_UP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:ADMIN_UP"), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_preference(self):
+    return self.__preference is not None
+
   def _get_preference(self):
     """
     Getter method for preference, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/preference (uint8)
@@ -950,6 +1113,8 @@ class config(PybindBase):
     YANG Description: Specifies a preference for this tunnel.
 A lower number signifies a better preference
     """
+    if self.__preference is None:
+        self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__preference
       
   def _set_preference(self, v, load=False):
@@ -963,6 +1128,9 @@ A lower number signifies a better preference
     YANG Description: Specifies a preference for this tunnel.
 A lower number signifies a better preference
     """
+    if self.__preference is None:
+        self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -982,6 +1150,9 @@ A lower number signifies a better preference
     self.__preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_metric_type(self):
+    return self.__metric_type is not None
+
   def _get_metric_type(self):
     """
     Getter method for metric_type, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/metric_type (identityref)
@@ -989,6 +1160,8 @@ A lower number signifies a better preference
     YANG Description: The type of metric specification that should be used to set
 the LSP(s) metric
     """
+    if self.__metric_type is None:
+        self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__metric_type
       
   def _set_metric_type(self, v, load=False):
@@ -1002,6 +1175,9 @@ the LSP(s) metric
     YANG Description: The type of metric specification that should be used to set
 the LSP(s) metric
     """
+    if self.__metric_type is None:
+        self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1021,6 +1197,9 @@ the LSP(s) metric
     self.__metric_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_RELATIVE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LSP_METRIC_ABSOLUTE': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LSP_METRIC_INHERITED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:LSP_METRIC_INHERITED"), is_leaf=True, yang_name="metric-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/metric (int32)
@@ -1035,6 +1214,8 @@ offset is used to formulate the metric; where metric-type
 is LSP_METRIC_INHERITED, the value of this leaf is not
 utilised
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -1055,6 +1236,9 @@ offset is used to formulate the metric; where metric-type
 is LSP_METRIC_INHERITED, the value of this leaf is not
 utilised
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1074,6 +1258,9 @@ utilised
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['-2147483648..2147483647']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='int32', is_config=True)
 
 
+  def _initialized_shortcut_eligible(self):
+    return self.__shortcut_eligible is not None
+
   def _get_shortcut_eligible(self):
     """
     Getter method for shortcut_eligible, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/shortcut_eligible (boolean)
@@ -1083,6 +1270,8 @@ shortcut in the IGP. In the case that this leaf is set to
 true, the IGP SPF calculation uses the metric specified to
 determine whether traffic should be carried over this LSP
     """
+    if self.__shortcut_eligible is None:
+        self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__shortcut_eligible
       
   def _set_shortcut_eligible(self, v, load=False):
@@ -1098,6 +1287,9 @@ shortcut in the IGP. In the case that this leaf is set to
 true, the IGP SPF calculation uses the metric specified to
 determine whether traffic should be carried over this LSP
     """
+    if self.__shortcut_eligible is None:
+        self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1117,6 +1309,9 @@ determine whether traffic should be carried over this LSP
     self.__shortcut_eligible = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="shortcut-eligible", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_protection_style_requested(self):
+    return self.__protection_style_requested is not None
+
   def _get_protection_style_requested(self):
     """
     Getter method for protection_style_requested, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/protection_style_requested (identityref)
@@ -1124,6 +1319,8 @@ determine whether traffic should be carried over this LSP
     YANG Description: style of mpls frr protection desired: can be
 link, link-node or unprotected.
     """
+    if self.__protection_style_requested is None:
+        self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__protection_style_requested
       
   def _set_protection_style_requested(self, v, load=False):
@@ -1137,6 +1334,9 @@ link, link-node or unprotected.
     YANG Description: style of mpls frr protection desired: can be
 link, link-node or unprotected.
     """
+    if self.__protection_style_requested is None:
+        self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1156,6 +1356,9 @@ link, link-node or unprotected.
     self.__protection_style_requested = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mplst:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:UNPROTECTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:LINK_NODE_PROTECTION_REQUESTED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'LINK_PROTECTION_REQUIRED': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},), default=unicode("oc-mplst:UNPROTECTED"), is_leaf=True, yang_name="protection-style-requested", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_reoptimize_timer(self):
+    return self.__reoptimize_timer is not None
+
   def _get_reoptimize_timer(self):
     """
     Getter method for reoptimize_timer, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/reoptimize_timer (uint16)
@@ -1163,6 +1366,8 @@ link, link-node or unprotected.
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__reoptimize_timer
       
   def _set_reoptimize_timer(self, v, load=False):
@@ -1176,6 +1381,9 @@ a traffic engineered LSP
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1195,12 +1403,17 @@ a traffic engineered LSP
     self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_source(self):
+    return self.__source is not None
+
   def _get_source(self):
     """
     Getter method for source, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/source (inet:ip-address)
 
     YANG Description: RSVP-TE tunnel source address
     """
+    if self.__source is None:
+        self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
     return self.__source
       
   def _set_source(self, v, load=False):
@@ -1213,6 +1426,9 @@ a traffic engineered LSP
 
     YANG Description: RSVP-TE tunnel source address
     """
+    if self.__source is None:
+        self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1232,12 +1448,17 @@ a traffic engineered LSP
     self.__source = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=True)
 
 
+  def _initialized_soft_preemption(self):
+    return self.__soft_preemption is not None
+
   def _get_soft_preemption(self):
     """
     Getter method for soft_preemption, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/soft_preemption (boolean)
 
     YANG Description: Enables RSVP soft-preemption on this LSP
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__soft_preemption
       
   def _set_soft_preemption(self, v, load=False):
@@ -1250,6 +1471,9 @@ a traffic engineered LSP
 
     YANG Description: Enables RSVP soft-preemption on this LSP
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1269,6 +1493,9 @@ a traffic engineered LSP
     self.__soft_preemption = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_setup_priority(self):
+    return self.__setup_priority is not None
+
   def _get_setup_priority(self):
     """
     Getter method for setup_priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/setup_priority (uint8)
@@ -1277,6 +1504,8 @@ a traffic engineered LSP
 higher priority; default 7 indicates that LSP will not
 preempt established LSPs during setup
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__setup_priority
       
   def _set_setup_priority(self, v, load=False):
@@ -1291,6 +1520,9 @@ preempt established LSPs during setup
 higher priority; default 7 indicates that LSP will not
 preempt established LSPs during setup
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1310,6 +1542,9 @@ preempt established LSPs during setup
     self.__setup_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(7), is_leaf=True, yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_hold_priority(self):
+    return self.__hold_priority is not None
+
   def _get_hold_priority(self):
     """
     Getter method for hold_priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/config/hold_priority (uint8)
@@ -1318,6 +1553,8 @@ preempt established LSPs during setup
 lower is higher priority; default 0 indicates other LSPs
 will not preempt the LSPs once established
     """
+    if self.__hold_priority is None:
+        self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__hold_priority
       
   def _set_hold_priority(self, v, load=False):
@@ -1332,6 +1569,9 @@ will not preempt the LSPs once established
 lower is higher priority; default 0 indicates other LSPs
 will not preempt the LSPs once established
     """
+    if self.__hold_priority is None:
+        self.__hold_priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="hold-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

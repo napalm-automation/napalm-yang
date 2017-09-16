@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__refresh_reduction = None
+    self.__hello_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'hellos', u'state']
 
+  def _initialized_hello_interval(self):
+    return self.__hello_interval is not None
+
   def _get_hello_interval(self):
     """
     Getter method for hello_interval, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos/state/hello_interval (uint16)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: set the interval in ms between RSVP hello
 messages
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__hello_interval
       
   def _set_hello_interval(self, v, load=False):
@@ -90,6 +95,9 @@ messages
     YANG Description: set the interval in ms between RSVP hello
 messages
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ messages
     self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_refresh_reduction(self):
+    return self.__refresh_reduction is not None
+
   def _get_refresh_reduction(self):
     """
     Getter method for refresh_reduction, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos/state/refresh_reduction (boolean)
@@ -117,6 +128,8 @@ messages
 bundling, RSVP message ID, reliable message delivery
 and summary refresh
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__refresh_reduction
       
   def _set_refresh_reduction(self, v, load=False):
@@ -131,6 +144,9 @@ and summary refresh
 bundling, RSVP message ID, reliable message delivery
 and summary refresh
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__refresh_reduction = None
+    self.__hello_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'hellos', u'state']
 
+  def _initialized_hello_interval(self):
+    return self.__hello_interval is not None
+
   def _get_hello_interval(self):
     """
     Getter method for hello_interval, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos/state/hello_interval (uint16)
@@ -213,6 +232,8 @@ class state(PybindBase):
     YANG Description: set the interval in ms between RSVP hello
 messages
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__hello_interval
       
   def _set_hello_interval(self, v, load=False):
@@ -226,6 +247,9 @@ messages
     YANG Description: set the interval in ms between RSVP hello
 messages
     """
+    if self.__hello_interval is None:
+        self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ messages
     self.__hello_interval = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1000..60000']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(9000), is_leaf=True, yang_name="hello-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_refresh_reduction(self):
+    return self.__refresh_reduction is not None
+
   def _get_refresh_reduction(self):
     """
     Getter method for refresh_reduction, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos/state/refresh_reduction (boolean)
@@ -253,6 +280,8 @@ messages
 bundling, RSVP message ID, reliable message delivery
 and summary refresh
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__refresh_reduction
       
   def _set_refresh_reduction(self, v, load=False):
@@ -267,6 +296,9 @@ and summary refresh
 bundling, RSVP message ID, reliable message delivery
 and summary refresh
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

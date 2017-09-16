@@ -41,9 +41,9 @@ graceful-restart
     self._path_helper = False
 
     self._extmethods = False
-    self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__restart_time = None
+    self.__enable = None
+    self.__recovery_time = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ graceful-restart
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'graceful-restart', u'config']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/enable (boolean)
 
     YANG Description: Enables graceful restart on the node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -90,6 +95,9 @@ graceful-restart
 
     YANG Description: Enables graceful restart on the node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ graceful-restart
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_restart_time(self):
+    return self.__restart_time is not None
+
   def _get_restart_time(self):
     """
     Getter method for restart_time, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/restart_time (uint32)
 
     YANG Description: Graceful restart time (seconds).
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__restart_time
       
   def _set_restart_time(self, v, load=False):
@@ -127,6 +140,9 @@ graceful-restart
 
     YANG Description: Graceful restart time (seconds).
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,12 +162,17 @@ graceful-restart
     self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_recovery_time(self):
+    return self.__recovery_time is not None
+
   def _get_recovery_time(self):
     """
     Getter method for recovery_time, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/recovery_time (uint32)
 
     YANG Description: RSVP state recovery time
     """
+    if self.__recovery_time is None:
+        self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__recovery_time
       
   def _set_recovery_time(self, v, load=False):
@@ -164,6 +185,9 @@ graceful-restart
 
     YANG Description: RSVP state recovery time
     """
+    if self.__recovery_time is None:
+        self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -211,9 +235,9 @@ graceful-restart
     self._path_helper = False
 
     self._extmethods = False
-    self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__restart_time = None
+    self.__enable = None
+    self.__recovery_time = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -242,12 +266,17 @@ graceful-restart
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'graceful-restart', u'config']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/enable (boolean)
 
     YANG Description: Enables graceful restart on the node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -260,6 +289,9 @@ graceful-restart
 
     YANG Description: Enables graceful restart on the node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -279,12 +311,17 @@ graceful-restart
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_restart_time(self):
+    return self.__restart_time is not None
+
   def _get_restart_time(self):
     """
     Getter method for restart_time, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/restart_time (uint32)
 
     YANG Description: Graceful restart time (seconds).
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__restart_time
       
   def _set_restart_time(self, v, load=False):
@@ -297,6 +334,9 @@ graceful-restart
 
     YANG Description: Graceful restart time (seconds).
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -316,12 +356,17 @@ graceful-restart
     self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_recovery_time(self):
+    return self.__recovery_time is not None
+
   def _get_recovery_time(self):
     """
     Getter method for recovery_time, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart/config/recovery_time (uint32)
 
     YANG Description: RSVP state recovery time
     """
+    if self.__recovery_time is None:
+        self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__recovery_time
       
   def _set_recovery_time(self, v, load=False):
@@ -334,6 +379,9 @@ graceful-restart
 
     YANG Description: RSVP state recovery time
     """
+    if self.__recovery_time is None:
+        self.__recovery_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="recovery-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

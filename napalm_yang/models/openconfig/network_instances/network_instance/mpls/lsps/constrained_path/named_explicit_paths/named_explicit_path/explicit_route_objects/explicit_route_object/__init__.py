@@ -42,9 +42,9 @@ class explicit_route_object(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__index = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class explicit_route_object(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'explicit-route-objects', u'explicit-route-object']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/index (leafref)
@@ -80,6 +83,8 @@ class explicit_route_object(PybindBase):
     YANG Description: Index of this explicit route object,
 to express the order of hops in path
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -93,6 +98,9 @@ to express the order of hops in path
     YANG Description: Index of this explicit route object,
 to express the order of hops in path
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,6 +125,9 @@ to express the order of hops in path
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/config (container)
@@ -124,6 +135,8 @@ to express the order of hops in path
     YANG Description: Configuration parameters relating to an explicit
 route
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -137,6 +150,9 @@ route
     YANG Description: Configuration parameters relating to an explicit
 route
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ route
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/state (container)
 
     YANG Description: State parameters relating to an explicit route
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -174,6 +195,9 @@ route
 
     YANG Description: State parameters relating to an explicit route
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -222,9 +246,9 @@ class explicit_route_object(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__index = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -253,6 +277,9 @@ class explicit_route_object(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'explicit-route-objects', u'explicit-route-object']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/index (leafref)
@@ -260,6 +287,8 @@ class explicit_route_object(PybindBase):
     YANG Description: Index of this explicit route object,
 to express the order of hops in path
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -273,6 +302,9 @@ to express the order of hops in path
     YANG Description: Index of this explicit route object,
 to express the order of hops in path
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -297,6 +329,9 @@ to express the order of hops in path
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/config (container)
@@ -304,6 +339,8 @@ to express the order of hops in path
     YANG Description: Configuration parameters relating to an explicit
 route
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -317,6 +354,9 @@ route
     YANG Description: Configuration parameters relating to an explicit
 route
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -336,12 +376,17 @@ route
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/explicit_route_objects/explicit_route_object/state (container)
 
     YANG Description: State parameters relating to an explicit route
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -354,6 +399,9 @@ route
 
     YANG Description: State parameters relating to an explicit route
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__hello_authentication = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'authentication', u'state']
 
+  def _initialized_hello_authentication(self):
+    return self.__hello_authentication is not None
+
   def _get_hello_authentication(self):
     """
     Getter method for hello_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/authentication/state/hello_authentication (boolean)
 
     YANG Description: Enabled or disable ISIS Hello authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__hello_authentication
       
   def _set_hello_authentication(self, v, load=False):
@@ -87,6 +92,9 @@ class state(PybindBase):
 
     YANG Description: Enabled or disable ISIS Hello authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__hello_authentication = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'authentication', u'state']
 
+  def _initialized_hello_authentication(self):
+    return self.__hello_authentication is not None
+
   def _get_hello_authentication(self):
     """
     Getter method for hello_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/authentication/state/hello_authentication (boolean)
 
     YANG Description: Enabled or disable ISIS Hello authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__hello_authentication
       
   def _set_hello_authentication(self, v, load=False):
@@ -178,6 +191,9 @@ class state(PybindBase):
 
     YANG Description: Enabled or disable ISIS Hello authentication.
     """
+    if self.__hello_authentication is None:
+        self.__hello_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="hello-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

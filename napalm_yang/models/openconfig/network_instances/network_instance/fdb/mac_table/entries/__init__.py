@@ -41,7 +41,7 @@ class entries(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__entry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class entries(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries']
 
+  def _initialized_entry(self):
+    return self.__entry is not None
+
   def _get_entry(self):
     """
     Getter method for entry, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry (list)
 
     YANG Description: List of learned MAC addresses
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__entry
       
   def _set_entry(self, v, load=False):
@@ -88,6 +93,9 @@ class entries(PybindBase):
 
     YANG Description: List of learned MAC addresses
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class entries(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__entry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class entries(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries']
 
+  def _initialized_entry(self):
+    return self.__entry is not None
+
   def _get_entry(self):
     """
     Getter method for entry, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry (list)
 
     YANG Description: List of learned MAC addresses
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__entry
       
   def _set_entry(self, v, load=False):
@@ -180,6 +193,9 @@ class entries(PybindBase):
 
     YANG Description: List of learned MAC addresses
     """
+    if self.__entry is None:
+        self.__entry = YANGDynClass(base=YANGListType("mac_address",entry.entry, yang_name="entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mac-address', extensions=None), is_container='list', yang_name="entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

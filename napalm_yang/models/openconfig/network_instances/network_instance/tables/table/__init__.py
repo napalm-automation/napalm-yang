@@ -59,10 +59,10 @@ address-family=IPv4 table is created by the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__protocol = None
+    self.__address_family = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -91,6 +91,9 @@ address-family=IPv4 table is created by the system.
     else:
       return [u'network-instances', u'network-instance', u'tables', u'table']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/tables/table/protocol (leafref)
@@ -98,6 +101,8 @@ address-family=IPv4 table is created by the system.
     YANG Description: A reference to the protocol that populates
 the table
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -111,6 +116,9 @@ the table
     YANG Description: A reference to the protocol that populates
 the table
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -135,6 +143,9 @@ the table
     self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/tables/table/address_family (leafref)
@@ -142,6 +153,8 @@ the table
     YANG Description: A reference to the address-family that the
 table represents
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -155,6 +168,9 @@ table represents
     YANG Description: A reference to the address-family that the
 table represents
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -179,6 +195,9 @@ table represents
     self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/tables/table/config (container)
@@ -186,6 +205,8 @@ table represents
     YANG Description: Configuration parameters relating to the
 table
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -199,6 +220,9 @@ table
     YANG Description: Configuration parameters relating to the
 table
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -218,12 +242,17 @@ table
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/tables/table/state (container)
 
     YANG Description: State parameters related to the table
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -236,6 +265,9 @@ table
 
     YANG Description: State parameters related to the table
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -302,10 +334,10 @@ address-family=IPv4 table is created by the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__protocol = None
+    self.__address_family = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -334,6 +366,9 @@ address-family=IPv4 table is created by the system.
     else:
       return [u'network-instances', u'network-instance', u'tables', u'table']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/tables/table/protocol (leafref)
@@ -341,6 +376,8 @@ address-family=IPv4 table is created by the system.
     YANG Description: A reference to the protocol that populates
 the table
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -354,6 +391,9 @@ the table
     YANG Description: A reference to the protocol that populates
 the table
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -378,6 +418,9 @@ the table
     self.__protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/tables/table/address_family (leafref)
@@ -385,6 +428,8 @@ the table
     YANG Description: A reference to the address-family that the
 table represents
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -398,6 +443,9 @@ table represents
     YANG Description: A reference to the address-family that the
 table represents
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -422,6 +470,9 @@ table represents
     self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/tables/table/config (container)
@@ -429,6 +480,8 @@ table represents
     YANG Description: Configuration parameters relating to the
 table
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -442,6 +495,9 @@ table
     YANG Description: Configuration parameters relating to the
 table
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -461,12 +517,17 @@ table
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/tables/table/state (container)
 
     YANG Description: State parameters related to the table
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -479,6 +540,9 @@ table
 
     YANG Description: State parameters related to the table
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

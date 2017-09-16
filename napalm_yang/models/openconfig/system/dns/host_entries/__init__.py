@@ -41,7 +41,7 @@ class host_entries(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__host_entry = YANGDynClass(base=YANGListType("hostname",host_entry.host_entry, yang_name="host-entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='hostname', extensions=None), is_container='list', yang_name="host-entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__host_entry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class host_entries(PybindBase):
     else:
       return [u'system', u'dns', u'host-entries']
 
+  def _initialized_host_entry(self):
+    return self.__host_entry is not None
+
   def _get_host_entry(self):
     """
     Getter method for host_entry, mapped from YANG variable /system/dns/host_entries/host_entry (list)
 
     YANG Description: List of static host entries
     """
+    if self.__host_entry is None:
+        self.__host_entry = YANGDynClass(base=YANGListType("hostname",host_entry.host_entry, yang_name="host-entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='hostname', extensions=None), is_container='list', yang_name="host-entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__host_entry
       
   def _set_host_entry(self, v, load=False):
@@ -88,6 +93,9 @@ class host_entries(PybindBase):
 
     YANG Description: List of static host entries
     """
+    if self.__host_entry is None:
+        self.__host_entry = YANGDynClass(base=YANGListType("hostname",host_entry.host_entry, yang_name="host-entry", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='hostname', extensions=None), is_container='list', yang_name="host-entry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

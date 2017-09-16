@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__total_paths = None
+    self.__enabled = None
+    self.__afi_safi_name = None
+    self.__total_prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis', u'afi-safi', u'state']
 
+  def _initialized_afi_safi_name(self):
+    return self.__afi_safi_name is not None
+
   def _get_afi_safi_name(self):
     """
     Getter method for afi_safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/afi_safi_name (identityref)
 
     YANG Description: AFI,SAFI
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__afi_safi_name
       
   def _set_afi_safi_name(self, v, load=False):
@@ -90,6 +95,9 @@ class state(PybindBase):
 
     YANG Description: AFI,SAFI
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ class state(PybindBase):
     self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/enabled (boolean)
@@ -116,6 +127,8 @@ class state(PybindBase):
     YANG Description: This leaf indicates whether the IPv4 Unicast AFI,SAFI is
 enabled for the neighbour or group
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -129,6 +142,9 @@ enabled for the neighbour or group
     YANG Description: This leaf indicates whether the IPv4 Unicast AFI,SAFI is
 enabled for the neighbour or group
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,12 +164,17 @@ enabled for the neighbour or group
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_total_paths(self):
+    return self.__total_paths is not None
+
   def _get_total_paths(self):
     """
     Getter method for total_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/total_paths (uint32)
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_paths
       
   def _set_total_paths(self, v, load=False):
@@ -166,6 +187,9 @@ enabled for the neighbour or group
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -185,12 +209,17 @@ enabled for the neighbour or group
     self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_total_prefixes(self):
+    return self.__total_prefixes is not None
+
   def _get_total_prefixes(self):
     """
     Getter method for total_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/total_prefixes (uint32)
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_prefixes
       
   def _set_total_prefixes(self, v, load=False):
@@ -203,6 +232,9 @@ enabled for the neighbour or group
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,10 +282,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__total_paths = None
+    self.__enabled = None
+    self.__afi_safi_name = None
+    self.__total_prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -282,12 +314,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis', u'afi-safi', u'state']
 
+  def _initialized_afi_safi_name(self):
+    return self.__afi_safi_name is not None
+
   def _get_afi_safi_name(self):
     """
     Getter method for afi_safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/afi_safi_name (identityref)
 
     YANG Description: AFI,SAFI
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__afi_safi_name
       
   def _set_afi_safi_name(self, v, load=False):
@@ -300,6 +337,9 @@ class state(PybindBase):
 
     YANG Description: AFI,SAFI
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,6 +359,9 @@ class state(PybindBase):
     self.__afi_safi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'IPV6_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV6_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_MULTICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_EVPN': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L3VPN_IPV4_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'L3VPN_IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV6_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:IPV4_LABELED_UNICAST': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:L2VPN_VPLS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/enabled (boolean)
@@ -326,6 +369,8 @@ class state(PybindBase):
     YANG Description: This leaf indicates whether the IPv4 Unicast AFI,SAFI is
 enabled for the neighbour or group
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -339,6 +384,9 @@ enabled for the neighbour or group
     YANG Description: This leaf indicates whether the IPv4 Unicast AFI,SAFI is
 enabled for the neighbour or group
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -358,12 +406,17 @@ enabled for the neighbour or group
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_total_paths(self):
+    return self.__total_paths is not None
+
   def _get_total_paths(self):
     """
     Getter method for total_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/total_paths (uint32)
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_paths
       
   def _set_total_paths(self, v, load=False):
@@ -376,6 +429,9 @@ enabled for the neighbour or group
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -395,12 +451,17 @@ enabled for the neighbour or group
     self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_total_prefixes(self):
+    return self.__total_prefixes is not None
+
   def _get_total_prefixes(self):
     """
     Getter method for total_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/state/total_prefixes (uint32)
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_prefixes
       
   def _set_total_prefixes(self, v, load=False):
@@ -413,6 +474,9 @@ enabled for the neighbour or group
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

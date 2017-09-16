@@ -43,11 +43,11 @@ class af(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__config = None
+    self.__safi_name = None
+    self.__segment_routing = None
+    self.__afi_name = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class af(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/afi_name (leafref)
 
     YANG Description: Reference to address-family type
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -94,6 +99,9 @@ class af(PybindBase):
 
     YANG Description: Reference to address-family type
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -118,12 +126,17 @@ class af(PybindBase):
     self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_safi_name(self):
+    return self.__safi_name is not None
+
   def _get_safi_name(self):
     """
     Getter method for safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/safi_name (leafref)
 
     YANG Description: Reference to subsequent address-family type
     """
+    if self.__safi_name is None:
+        self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__safi_name
       
   def _set_safi_name(self, v, load=False):
@@ -136,6 +149,9 @@ class af(PybindBase):
 
     YANG Description: Reference to subsequent address-family type
     """
+    if self.__safi_name is None:
+        self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -160,6 +176,9 @@ class af(PybindBase):
     self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/config (container)
@@ -167,6 +186,8 @@ class af(PybindBase):
     YANG Description: This container defines AFI-SAFI configuration parameters. Single
 topology is the default setting.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -180,6 +201,9 @@ topology is the default setting.
     YANG Description: This container defines AFI-SAFI configuration parameters. Single
 topology is the default setting.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -199,12 +223,17 @@ topology is the default setting.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/state (container)
 
     YANG Description: This container defines AFI-SAFI State information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -217,6 +246,9 @@ topology is the default setting.
 
     YANG Description: This container defines AFI-SAFI State information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -236,6 +268,9 @@ topology is the default setting.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing (container)
@@ -243,6 +278,8 @@ topology is the default setting.
     YANG Description: Configuration and operatioanl state parameters relating to segment
 routing for an interface within the IGP.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -256,6 +293,9 @@ routing for an interface within the IGP.
     YANG Description: Configuration and operatioanl state parameters relating to segment
 routing for an interface within the IGP.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -307,11 +347,11 @@ class af(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__config = None
+    self.__safi_name = None
+    self.__segment_routing = None
+    self.__afi_name = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -340,12 +380,17 @@ class af(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/afi_name (leafref)
 
     YANG Description: Reference to address-family type
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -358,6 +403,9 @@ class af(PybindBase):
 
     YANG Description: Reference to address-family type
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -382,12 +430,17 @@ class af(PybindBase):
     self.__afi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_safi_name(self):
+    return self.__safi_name is not None
+
   def _get_safi_name(self):
     """
     Getter method for safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/safi_name (leafref)
 
     YANG Description: Reference to subsequent address-family type
     """
+    if self.__safi_name is None:
+        self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__safi_name
       
   def _set_safi_name(self, v, load=False):
@@ -400,6 +453,9 @@ class af(PybindBase):
 
     YANG Description: Reference to subsequent address-family type
     """
+    if self.__safi_name is None:
+        self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -424,6 +480,9 @@ class af(PybindBase):
     self.__safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/config (container)
@@ -431,6 +490,8 @@ class af(PybindBase):
     YANG Description: This container defines AFI-SAFI configuration parameters. Single
 topology is the default setting.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -444,6 +505,9 @@ topology is the default setting.
     YANG Description: This container defines AFI-SAFI configuration parameters. Single
 topology is the default setting.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -463,12 +527,17 @@ topology is the default setting.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/state (container)
 
     YANG Description: This container defines AFI-SAFI State information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -481,6 +550,9 @@ topology is the default setting.
 
     YANG Description: This container defines AFI-SAFI State information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -500,6 +572,9 @@ topology is the default setting.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing (container)
@@ -507,6 +582,8 @@ topology is the default setting.
     YANG Description: Configuration and operatioanl state parameters relating to segment
 routing for an interface within the IGP.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -520,6 +597,9 @@ routing for an interface within the IGP.
     YANG Description: Configuration and operatioanl state parameters relating to segment
 routing for an interface within the IGP.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

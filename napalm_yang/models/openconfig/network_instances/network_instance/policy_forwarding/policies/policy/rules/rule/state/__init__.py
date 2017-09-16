@@ -41,9 +41,9 @@ rule.
     self._path_helper = False
 
     self._extmethods = False
-    self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__sequence_id = None
+    self.__matched_octets = None
+    self.__matched_pkts = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ rule.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'state']
 
+  def _initialized_sequence_id(self):
+    return self.__sequence_id is not None
+
   def _get_sequence_id(self):
     """
     Getter method for sequence_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/sequence_id (uint32)
 
     YANG Description: Unique sequence number for the policy rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sequence_id
       
   def _set_sequence_id(self, v, load=False):
@@ -90,6 +95,9 @@ rule.
 
     YANG Description: Unique sequence number for the policy rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ rule.
     self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_matched_pkts(self):
+    return self.__matched_pkts is not None
+
   def _get_matched_pkts(self):
     """
     Getter method for matched_pkts, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/matched_pkts (yang:counter64)
 
     YANG Description: Number of packets matched by the rule.
     """
+    if self.__matched_pkts is None:
+        self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__matched_pkts
       
   def _set_matched_pkts(self, v, load=False):
@@ -127,6 +140,9 @@ rule.
 
     YANG Description: Number of packets matched by the rule.
     """
+    if self.__matched_pkts is None:
+        self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,12 +162,17 @@ rule.
     self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_matched_octets(self):
+    return self.__matched_octets is not None
+
   def _get_matched_octets(self):
     """
     Getter method for matched_octets, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/matched_octets (yang:counter64)
 
     YANG Description: Bytes matched by the rule.
     """
+    if self.__matched_octets is None:
+        self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__matched_octets
       
   def _set_matched_octets(self, v, load=False):
@@ -164,6 +185,9 @@ rule.
 
     YANG Description: Bytes matched by the rule.
     """
+    if self.__matched_octets is None:
+        self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -211,9 +235,9 @@ rule.
     self._path_helper = False
 
     self._extmethods = False
-    self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__sequence_id = None
+    self.__matched_octets = None
+    self.__matched_pkts = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -242,12 +266,17 @@ rule.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'state']
 
+  def _initialized_sequence_id(self):
+    return self.__sequence_id is not None
+
   def _get_sequence_id(self):
     """
     Getter method for sequence_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/sequence_id (uint32)
 
     YANG Description: Unique sequence number for the policy rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sequence_id
       
   def _set_sequence_id(self, v, load=False):
@@ -260,6 +289,9 @@ rule.
 
     YANG Description: Unique sequence number for the policy rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -279,12 +311,17 @@ rule.
     self.__sequence_id = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_matched_pkts(self):
+    return self.__matched_pkts is not None
+
   def _get_matched_pkts(self):
     """
     Getter method for matched_pkts, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/matched_pkts (yang:counter64)
 
     YANG Description: Number of packets matched by the rule.
     """
+    if self.__matched_pkts is None:
+        self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__matched_pkts
       
   def _set_matched_pkts(self, v, load=False):
@@ -297,6 +334,9 @@ rule.
 
     YANG Description: Number of packets matched by the rule.
     """
+    if self.__matched_pkts is None:
+        self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -316,12 +356,17 @@ rule.
     self.__matched_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_matched_octets(self):
+    return self.__matched_octets is not None
+
   def _get_matched_octets(self):
     """
     Getter method for matched_octets, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state/matched_octets (yang:counter64)
 
     YANG Description: Bytes matched by the rule.
     """
+    if self.__matched_octets is None:
+        self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__matched_octets
       
   def _set_matched_octets(self, v, load=False):
@@ -334,6 +379,9 @@ rule.
 
     YANG Description: Bytes matched by the rule.
     """
+    if self.__matched_octets is None:
+        self.__matched_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="matched-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

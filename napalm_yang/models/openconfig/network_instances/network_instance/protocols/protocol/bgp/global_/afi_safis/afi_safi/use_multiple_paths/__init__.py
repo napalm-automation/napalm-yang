@@ -45,10 +45,10 @@ same NLRI
     self._path_helper = False
 
     self._extmethods = False
-    self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ibgp = None
+    self.__ebgp = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,12 +77,17 @@ same NLRI
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis', u'afi-safi', u'use-multiple-paths']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/config (container)
 
     YANG Description: Configuration parameters relating to multipath
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -95,6 +100,9 @@ same NLRI
 
     YANG Description: Configuration parameters relating to multipath
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,12 +122,17 @@ same NLRI
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/state (container)
 
     YANG Description: State parameters relating to multipath
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -132,6 +145,9 @@ same NLRI
 
     YANG Description: State parameters relating to multipath
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -151,12 +167,17 @@ same NLRI
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ebgp(self):
+    return self.__ebgp is not None
+
   def _get_ebgp(self):
     """
     Getter method for ebgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/ebgp (container)
 
     YANG Description: Multipath parameters for eBGP
     """
+    if self.__ebgp is None:
+        self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ebgp
       
   def _set_ebgp(self, v, load=False):
@@ -169,6 +190,9 @@ same NLRI
 
     YANG Description: Multipath parameters for eBGP
     """
+    if self.__ebgp is None:
+        self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -188,12 +212,17 @@ same NLRI
     self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ibgp(self):
+    return self.__ibgp is not None
+
   def _get_ibgp(self):
     """
     Getter method for ibgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/ibgp (container)
 
     YANG Description: Multipath parameters for iBGP
     """
+    if self.__ibgp is None:
+        self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ibgp
       
   def _set_ibgp(self, v, load=False):
@@ -206,6 +235,9 @@ same NLRI
 
     YANG Description: Multipath parameters for iBGP
     """
+    if self.__ibgp is None:
+        self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -258,10 +290,10 @@ same NLRI
     self._path_helper = False
 
     self._extmethods = False
-    self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ibgp = None
+    self.__ebgp = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -290,12 +322,17 @@ same NLRI
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis', u'afi-safi', u'use-multiple-paths']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/config (container)
 
     YANG Description: Configuration parameters relating to multipath
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -308,6 +345,9 @@ same NLRI
 
     YANG Description: Configuration parameters relating to multipath
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -327,12 +367,17 @@ same NLRI
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/state (container)
 
     YANG Description: State parameters relating to multipath
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -345,6 +390,9 @@ same NLRI
 
     YANG Description: State parameters relating to multipath
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -364,12 +412,17 @@ same NLRI
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ebgp(self):
+    return self.__ebgp is not None
+
   def _get_ebgp(self):
     """
     Getter method for ebgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/ebgp (container)
 
     YANG Description: Multipath parameters for eBGP
     """
+    if self.__ebgp is None:
+        self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ebgp
       
   def _set_ebgp(self, v, load=False):
@@ -382,6 +435,9 @@ same NLRI
 
     YANG Description: Multipath parameters for eBGP
     """
+    if self.__ebgp is None:
+        self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -401,12 +457,17 @@ same NLRI
     self.__ebgp = YANGDynClass(base=ebgp.ebgp, is_container='container', yang_name="ebgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ibgp(self):
+    return self.__ibgp is not None
+
   def _get_ibgp(self):
     """
     Getter method for ibgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi/use_multiple_paths/ibgp (container)
 
     YANG Description: Multipath parameters for iBGP
     """
+    if self.__ibgp is None:
+        self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ibgp
       
   def _set_ibgp(self, v, load=False):
@@ -419,6 +480,9 @@ same NLRI
 
     YANG Description: Multipath parameters for iBGP
     """
+    if self.__ibgp is None:
+        self.__ibgp = YANGDynClass(base=ibgp.ibgp, is_container='container', yang_name="ibgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=True)
+    self.__timezone_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'system', u'clock', u'config']
 
+  def _initialized_timezone_name(self):
+    return self.__timezone_name is not None
+
   def _get_timezone_name(self):
     """
     Getter method for timezone_name, mapped from YANG variable /system/clock/config/timezone_name (timezone-name-type)
@@ -76,6 +79,8 @@ class config(PybindBase):
     YANG Description: The TZ database name to use for the system, such
 as 'Europe/Stockholm'.
     """
+    if self.__timezone_name is None:
+        self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=True)
     return self.__timezone_name
       
   def _set_timezone_name(self, v, load=False):
@@ -89,6 +94,9 @@ as 'Europe/Stockholm'.
     YANG Description: The TZ database name to use for the system, such
 as 'Europe/Stockholm'.
     """
+    if self.__timezone_name is None:
+        self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

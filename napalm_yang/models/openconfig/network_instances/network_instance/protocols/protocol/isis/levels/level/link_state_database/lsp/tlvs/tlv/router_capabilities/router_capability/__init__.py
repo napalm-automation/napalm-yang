@@ -43,9 +43,9 @@ class router_capability(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__subtlvs = None
+    self.__state = None
+    self.__undefined_subtlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ class router_capability(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/state (container)
 
     YANG Description: State parameters of TLV 242.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -92,6 +97,9 @@ class router_capability(PybindBase):
 
     YANG Description: State parameters of TLV 242.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ class router_capability(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_subtlvs(self):
+    return self.__subtlvs is not None
+
   def _get_subtlvs(self):
     """
     Getter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs (container)
 
     YANG Description: This container describes IS Neighbor sub-TLVs
     """
+    if self.__subtlvs is None:
+        self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__subtlvs
       
   def _set_subtlvs(self, v, load=False):
@@ -129,6 +142,9 @@ class router_capability(PybindBase):
 
     YANG Description: This container describes IS Neighbor sub-TLVs
     """
+    if self.__subtlvs is None:
+        self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,12 +164,17 @@ class router_capability(PybindBase):
     self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_undefined_subtlvs(self):
+    return self.__undefined_subtlvs is not None
+
   def _get_undefined_subtlvs(self):
     """
     Getter method for undefined_subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/undefined_subtlvs (container)
 
     YANG Description: This container describes undefined ISIS TLVs.
     """
+    if self.__undefined_subtlvs is None:
+        self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__undefined_subtlvs
       
   def _set_undefined_subtlvs(self, v, load=False):
@@ -166,6 +187,9 @@ class router_capability(PybindBase):
 
     YANG Description: This container describes undefined ISIS TLVs.
     """
+    if self.__undefined_subtlvs is None:
+        self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ class router_capability(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__subtlvs = None
+    self.__state = None
+    self.__undefined_subtlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,12 +270,17 @@ class router_capability(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/state (container)
 
     YANG Description: State parameters of TLV 242.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -264,6 +293,9 @@ class router_capability(PybindBase):
 
     YANG Description: State parameters of TLV 242.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -283,12 +315,17 @@ class router_capability(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_subtlvs(self):
+    return self.__subtlvs is not None
+
   def _get_subtlvs(self):
     """
     Getter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs (container)
 
     YANG Description: This container describes IS Neighbor sub-TLVs
     """
+    if self.__subtlvs is None:
+        self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__subtlvs
       
   def _set_subtlvs(self, v, load=False):
@@ -301,6 +338,9 @@ class router_capability(PybindBase):
 
     YANG Description: This container describes IS Neighbor sub-TLVs
     """
+    if self.__subtlvs is None:
+        self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -320,12 +360,17 @@ class router_capability(PybindBase):
     self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_undefined_subtlvs(self):
+    return self.__undefined_subtlvs is not None
+
   def _get_undefined_subtlvs(self):
     """
     Getter method for undefined_subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/undefined_subtlvs (container)
 
     YANG Description: This container describes undefined ISIS TLVs.
     """
+    if self.__undefined_subtlvs is None:
+        self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__undefined_subtlvs
       
   def _set_undefined_subtlvs(self, v, load=False):
@@ -338,6 +383,9 @@ class router_capability(PybindBase):
 
     YANG Description: This container describes undefined ISIS TLVs.
     """
+    if self.__undefined_subtlvs is None:
+        self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

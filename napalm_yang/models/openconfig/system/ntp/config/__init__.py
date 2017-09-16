@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable_ntp_auth = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-ntp-auth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
-    self.__ntp_source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="ntp-source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
+    self.__enable_ntp_auth = None
+    self.__ntp_source_address = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class config(PybindBase):
     else:
       return [u'system', u'ntp', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /system/ntp/config/enabled (boolean)
@@ -81,6 +84,8 @@ Enables the NTP protocol and indicates that the system should
 attempt to synchronize the system clock with an NTP server
 from the servers defined in the 'ntp/server' list.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -97,6 +102,9 @@ Enables the NTP protocol and indicates that the system should
 attempt to synchronize the system clock with an NTP server
 from the servers defined in the 'ntp/server' list.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ from the servers defined in the 'ntp/server' list.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
 
 
+  def _initialized_ntp_source_address(self):
+    return self.__ntp_source_address is not None
+
   def _get_ntp_source_address(self):
     """
     Getter method for ntp_source_address, mapped from YANG variable /system/ntp/config/ntp_source_address (inet:ip-address)
@@ -124,6 +135,8 @@ from the servers defined in the 'ntp/server' list.
 
 Source address to use on outgoing NTP packets
     """
+    if self.__ntp_source_address is None:
+        self.__ntp_source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="ntp-source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=True)
     return self.__ntp_source_address
       
   def _set_ntp_source_address(self, v, load=False):
@@ -138,6 +151,9 @@ Source address to use on outgoing NTP packets
 
 Source address to use on outgoing NTP packets
     """
+    if self.__ntp_source_address is None:
+        self.__ntp_source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="ntp-source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ Source address to use on outgoing NTP packets
     self.__ntp_source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="ntp-source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=True)
 
 
+  def _initialized_enable_ntp_auth(self):
+    return self.__enable_ntp_auth is not None
+
   def _get_enable_ntp_auth(self):
     """
     Getter method for enable_ntp_auth, mapped from YANG variable /system/ntp/config/enable_ntp_auth (boolean)
@@ -165,6 +184,8 @@ Source address to use on outgoing NTP packets
 system will only use packets containing a trusted
 authentication key to synchronize the time.
     """
+    if self.__enable_ntp_auth is None:
+        self.__enable_ntp_auth = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-ntp-auth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
     return self.__enable_ntp_auth
       
   def _set_enable_ntp_auth(self, v, load=False):
@@ -179,6 +200,9 @@ authentication key to synchronize the time.
 system will only use packets containing a trusted
 authentication key to synchronize the time.
     """
+    if self.__enable_ntp_auth is None:
+        self.__enable_ntp_auth = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-ntp-auth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,16 +40,16 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
-    self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
-    self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__unknown_type = None
+    self.__remote_ip_address = None
+    self.__maximum_bandwidth = None
+    self.__local_ip_address = None
+    self.__link_id = None
+    self.__unknown_value = None
+    self.__maximum_reservable_bandwidth = None
+    self.__type = None
+    self.__metric = None
+    self.__link_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,6 +78,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/type (union)
@@ -87,6 +90,8 @@ known by the local system, a canonical name of the sub-TLV is utilised
 - the special UNKNOWN value indicates that the system did not
 support the sub-TLV type received in the LSA.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -102,6 +107,9 @@ known by the local system, a canonical name of the sub-TLV is utilised
 - the special UNKNOWN value indicates that the system did not
 support the sub-TLV type received in the LSA.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -121,12 +129,17 @@ support the sub-TLV type received in the LSA.
     self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_unknown_type(self):
+    return self.__unknown_type is not None
+
   def _get_unknown_type(self):
     """
     Getter method for unknown_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/unknown_type (uint16)
 
     YANG Description: The value of the type field of an unknown sub-TLV
     """
+    if self.__unknown_type is None:
+        self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__unknown_type
       
   def _set_unknown_type(self, v, load=False):
@@ -139,6 +152,9 @@ support the sub-TLV type received in the LSA.
 
     YANG Description: The value of the type field of an unknown sub-TLV
     """
+    if self.__unknown_type is None:
+        self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,12 +174,17 @@ support the sub-TLV type received in the LSA.
     self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_unknown_value(self):
+    return self.__unknown_value is not None
+
   def _get_unknown_value(self):
     """
     Getter method for unknown_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/unknown_value (binary)
 
     YANG Description: The binary contents of the unknown TLV
     """
+    if self.__unknown_value is None:
+        self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
     return self.__unknown_value
       
   def _set_unknown_value(self, v, load=False):
@@ -176,6 +197,9 @@ support the sub-TLV type received in the LSA.
 
     YANG Description: The binary contents of the unknown TLV
     """
+    if self.__unknown_value is None:
+        self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,6 +219,9 @@ support the sub-TLV type received in the LSA.
     self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
 
 
+  def _initialized_link_type(self):
+    return self.__link_type is not None
+
   def _get_link_type(self):
     """
     Getter method for link_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/link_type (enumeration)
@@ -202,6 +229,8 @@ support the sub-TLV type received in the LSA.
     YANG Description: The type of the link that is being described by the TE LSA Link
 sub-TLV
     """
+    if self.__link_type is None:
+        self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__link_type
       
   def _set_link_type(self, v, load=False):
@@ -215,6 +244,9 @@ sub-TLV
     YANG Description: The type of the link that is being described by the TE LSA Link
 sub-TLV
     """
+    if self.__link_type is None:
+        self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -234,6 +266,9 @@ sub-TLV
     self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_link_id(self):
+    return self.__link_id is not None
+
   def _get_link_id(self):
     """
     Getter method for link_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/link_id (yang:dotted-quad)
@@ -242,6 +277,8 @@ sub-TLV
 router ID of the neighbor. For multi-access links it is the address
 of the designated router.
     """
+    if self.__link_id is None:
+        self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__link_id
       
   def _set_link_id(self, v, load=False):
@@ -256,6 +293,9 @@ of the designated router.
 router ID of the neighbor. For multi-access links it is the address
 of the designated router.
     """
+    if self.__link_id is None:
+        self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -275,6 +315,9 @@ of the designated router.
     self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
 
 
+  def _initialized_local_ip_address(self):
+    return self.__local_ip_address is not None
+
   def _get_local_ip_address(self):
     """
     Getter method for local_ip_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/local_ip_address (inet:ipv4-address-no-zone)
@@ -282,6 +325,8 @@ of the designated router.
     YANG Description: The IP address(es) of the local system that correspond to the
 specified TE link
     """
+    if self.__local_ip_address is None:
+        self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__local_ip_address
       
   def _set_local_ip_address(self, v, load=False):
@@ -295,6 +340,9 @@ specified TE link
     YANG Description: The IP address(es) of the local system that correspond to the
 specified TE link
     """
+    if self.__local_ip_address is None:
+        self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -314,6 +362,9 @@ specified TE link
     self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_remote_ip_address(self):
+    return self.__remote_ip_address is not None
+
   def _get_remote_ip_address(self):
     """
     Getter method for remote_ip_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/remote_ip_address (inet:ipv4-address-no-zone)
@@ -321,6 +372,8 @@ specified TE link
     YANG Description: The IP address(es) of the remote systems that are attached to the
 specified TE link
     """
+    if self.__remote_ip_address is None:
+        self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__remote_ip_address
       
   def _set_remote_ip_address(self, v, load=False):
@@ -334,6 +387,9 @@ specified TE link
     YANG Description: The IP address(es) of the remote systems that are attached to the
 specified TE link
     """
+    if self.__remote_ip_address is None:
+        self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -353,6 +409,9 @@ specified TE link
     self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/metric (uint32)
@@ -361,6 +420,8 @@ specified TE link
 purposes. This link may be different than the standard OSPF link
 metric.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -375,6 +436,9 @@ metric.
 purposes. This link may be different than the standard OSPF link
 metric.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -394,6 +458,9 @@ metric.
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_maximum_bandwidth(self):
+    return self.__maximum_bandwidth is not None
+
   def _get_maximum_bandwidth(self):
     """
     Getter method for maximum_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/maximum_bandwidth (oc-types:ieeefloat32)
@@ -402,6 +469,8 @@ metric.
 bandwidth of the link expressed asn IEEE 32-bit floating point
 number
     """
+    if self.__maximum_bandwidth is None:
+        self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__maximum_bandwidth
       
   def _set_maximum_bandwidth(self, v, load=False):
@@ -416,6 +485,9 @@ number
 bandwidth of the link expressed asn IEEE 32-bit floating point
 number
     """
+    if self.__maximum_bandwidth is None:
+        self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -435,6 +507,9 @@ number
     self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_maximum_reservable_bandwidth(self):
+    return self.__maximum_reservable_bandwidth is not None
+
   def _get_maximum_reservable_bandwidth(self):
     """
     Getter method for maximum_reservable_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/maximum_reservable_bandwidth (oc-types:ieeefloat32)
@@ -445,6 +520,8 @@ purposes. The value may exceed the maximum-bandwidth value
 in cases where the link is oversubscribed. The value is reflected as
 a 32-bit IEEE floating-point number
     """
+    if self.__maximum_reservable_bandwidth is None:
+        self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__maximum_reservable_bandwidth
       
   def _set_maximum_reservable_bandwidth(self, v, load=False):
@@ -461,6 +538,9 @@ purposes. The value may exceed the maximum-bandwidth value
 in cases where the link is oversubscribed. The value is reflected as
 a 32-bit IEEE floating-point number
     """
+    if self.__maximum_reservable_bandwidth is None:
+        self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -514,16 +594,16 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
-    self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
-    self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__unknown_type = None
+    self.__remote_ip_address = None
+    self.__maximum_bandwidth = None
+    self.__local_ip_address = None
+    self.__link_id = None
+    self.__unknown_value = None
+    self.__maximum_reservable_bandwidth = None
+    self.__type = None
+    self.__metric = None
+    self.__link_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -552,6 +632,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/type (union)
@@ -561,6 +644,8 @@ known by the local system, a canonical name of the sub-TLV is utilised
 - the special UNKNOWN value indicates that the system did not
 support the sub-TLV type received in the LSA.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -576,6 +661,9 @@ known by the local system, a canonical name of the sub-TLV is utilised
 - the special UNKNOWN value indicates that the system did not
 support the sub-TLV type received in the LSA.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -595,12 +683,17 @@ support the sub-TLV type received in the LSA.
     self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ospf-types:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_TYPE': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_LOCAL_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_ID': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_UNRESERVED_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_REMOTE_IP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_ADMIN_GROUP': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:TE_LINK_MAXIMUM_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'TE_LINK_MAXIMUM_RESERVABLE_BANDWIDTH': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:TE_LINK_METRIC': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_unknown_type(self):
+    return self.__unknown_type is not None
+
   def _get_unknown_type(self):
     """
     Getter method for unknown_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/unknown_type (uint16)
 
     YANG Description: The value of the type field of an unknown sub-TLV
     """
+    if self.__unknown_type is None:
+        self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__unknown_type
       
   def _set_unknown_type(self, v, load=False):
@@ -613,6 +706,9 @@ support the sub-TLV type received in the LSA.
 
     YANG Description: The value of the type field of an unknown sub-TLV
     """
+    if self.__unknown_type is None:
+        self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -632,12 +728,17 @@ support the sub-TLV type received in the LSA.
     self.__unknown_type = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="unknown-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_unknown_value(self):
+    return self.__unknown_value is not None
+
   def _get_unknown_value(self):
     """
     Getter method for unknown_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/unknown_value (binary)
 
     YANG Description: The binary contents of the unknown TLV
     """
+    if self.__unknown_value is None:
+        self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
     return self.__unknown_value
       
   def _set_unknown_value(self, v, load=False):
@@ -650,6 +751,9 @@ support the sub-TLV type received in the LSA.
 
     YANG Description: The binary contents of the unknown TLV
     """
+    if self.__unknown_value is None:
+        self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -669,6 +773,9 @@ support the sub-TLV type received in the LSA.
     self.__unknown_value = YANGDynClass(base=bitarray, is_leaf=True, yang_name="unknown-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='binary', is_config=False)
 
 
+  def _initialized_link_type(self):
+    return self.__link_type is not None
+
   def _get_link_type(self):
     """
     Getter method for link_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/link_type (enumeration)
@@ -676,6 +783,8 @@ support the sub-TLV type received in the LSA.
     YANG Description: The type of the link that is being described by the TE LSA Link
 sub-TLV
     """
+    if self.__link_type is None:
+        self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__link_type
       
   def _set_link_type(self, v, load=False):
@@ -689,6 +798,9 @@ sub-TLV
     YANG Description: The type of the link that is being described by the TE LSA Link
 sub-TLV
     """
+    if self.__link_type is None:
+        self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -708,6 +820,9 @@ sub-TLV
     self.__link_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}, u'MULTI_ACCESS': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="link-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_link_id(self):
+    return self.__link_id is not None
+
   def _get_link_id(self):
     """
     Getter method for link_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/link_id (yang:dotted-quad)
@@ -716,6 +831,8 @@ sub-TLV
 router ID of the neighbor. For multi-access links it is the address
 of the designated router.
     """
+    if self.__link_id is None:
+        self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__link_id
       
   def _set_link_id(self, v, load=False):
@@ -730,6 +847,9 @@ of the designated router.
 router ID of the neighbor. For multi-access links it is the address
 of the designated router.
     """
+    if self.__link_id is None:
+        self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -749,6 +869,9 @@ of the designated router.
     self.__link_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
 
 
+  def _initialized_local_ip_address(self):
+    return self.__local_ip_address is not None
+
   def _get_local_ip_address(self):
     """
     Getter method for local_ip_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/local_ip_address (inet:ipv4-address-no-zone)
@@ -756,6 +879,8 @@ of the designated router.
     YANG Description: The IP address(es) of the local system that correspond to the
 specified TE link
     """
+    if self.__local_ip_address is None:
+        self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__local_ip_address
       
   def _set_local_ip_address(self, v, load=False):
@@ -769,6 +894,9 @@ specified TE link
     YANG Description: The IP address(es) of the local system that correspond to the
 specified TE link
     """
+    if self.__local_ip_address is None:
+        self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -788,6 +916,9 @@ specified TE link
     self.__local_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="local-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_remote_ip_address(self):
+    return self.__remote_ip_address is not None
+
   def _get_remote_ip_address(self):
     """
     Getter method for remote_ip_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/remote_ip_address (inet:ipv4-address-no-zone)
@@ -795,6 +926,8 @@ specified TE link
     YANG Description: The IP address(es) of the remote systems that are attached to the
 specified TE link
     """
+    if self.__remote_ip_address is None:
+        self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__remote_ip_address
       
   def _set_remote_ip_address(self, v, load=False):
@@ -808,6 +941,9 @@ specified TE link
     YANG Description: The IP address(es) of the remote systems that are attached to the
 specified TE link
     """
+    if self.__remote_ip_address is None:
+        self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -827,6 +963,9 @@ specified TE link
     self.__remote_ip_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'})), is_leaf=False, yang_name="remote-ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/metric (uint32)
@@ -835,6 +974,8 @@ specified TE link
 purposes. This link may be different than the standard OSPF link
 metric.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -849,6 +990,9 @@ metric.
 purposes. This link may be different than the standard OSPF link
 metric.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -868,6 +1012,9 @@ metric.
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_maximum_bandwidth(self):
+    return self.__maximum_bandwidth is not None
+
   def _get_maximum_bandwidth(self):
     """
     Getter method for maximum_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/maximum_bandwidth (oc-types:ieeefloat32)
@@ -876,6 +1023,8 @@ metric.
 bandwidth of the link expressed asn IEEE 32-bit floating point
 number
     """
+    if self.__maximum_bandwidth is None:
+        self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__maximum_bandwidth
       
   def _set_maximum_bandwidth(self, v, load=False):
@@ -890,6 +1039,9 @@ number
 bandwidth of the link expressed asn IEEE 32-bit floating point
 number
     """
+    if self.__maximum_bandwidth is None:
+        self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -909,6 +1061,9 @@ number
     self.__maximum_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
+  def _initialized_maximum_reservable_bandwidth(self):
+    return self.__maximum_reservable_bandwidth is not None
+
   def _get_maximum_reservable_bandwidth(self):
     """
     Getter method for maximum_reservable_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state/maximum_reservable_bandwidth (oc-types:ieeefloat32)
@@ -919,6 +1074,8 @@ purposes. The value may exceed the maximum-bandwidth value
 in cases where the link is oversubscribed. The value is reflected as
 a 32-bit IEEE floating-point number
     """
+    if self.__maximum_reservable_bandwidth is None:
+        self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__maximum_reservable_bandwidth
       
   def _set_maximum_reservable_bandwidth(self, v, load=False):
@@ -935,6 +1092,9 @@ purposes. The value may exceed the maximum-bandwidth value
 in cases where the link is oversubscribed. The value is reflected as
 a 32-bit IEEE floating-point number
     """
+    if self.__maximum_reservable_bandwidth is None:
+        self.__maximum_reservable_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="maximum-reservable-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

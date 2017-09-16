@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__record = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'START_STOP': {}, u'STOP': {}},), is_leaf=True, yang_name="record", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
-    self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
+    self.__record = None
+    self.__event_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'system', u'aaa', u'accounting', u'events', u'event', u'state']
 
+  def _initialized_event_type(self):
+    return self.__event_type is not None
+
   def _get_event_type(self):
     """
     Getter method for event_type, mapped from YANG variable /system/aaa/accounting/events/event/state/event_type (identityref)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: The type of activity to record at the AAA accounting
 server
     """
+    if self.__event_type is None:
+        self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
     return self.__event_type
       
   def _set_event_type(self, v, load=False):
@@ -90,6 +95,9 @@ server
     YANG Description: The type of activity to record at the AAA accounting
 server
     """
+    if self.__event_type is None:
+        self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ server
     self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_AUTHORIZATION_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_COMMAND': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'AAA_ACCOUNTING_EVENT_LOGIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:AAA_AUTHORIZATION_EVENT_CONFIG': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
 
 
+  def _initialized_record(self):
+    return self.__record is not None
+
   def _get_record(self):
     """
     Getter method for record, mapped from YANG variable /system/aaa/accounting/events/event/state/record (enumeration)
@@ -116,6 +127,8 @@ server
     YANG Description: Type of record to send to the accounting server for this
 activity type
     """
+    if self.__record is None:
+        self.__record = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'START_STOP': {}, u'STOP': {}},), is_leaf=True, yang_name="record", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
     return self.__record
       
   def _set_record(self, v, load=False):
@@ -129,6 +142,9 @@ activity type
     YANG Description: Type of record to send to the accounting server for this
 activity type
     """
+    if self.__record is None:
+        self.__record = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'START_STOP': {}, u'STOP': {}},), is_leaf=True, yang_name="record", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

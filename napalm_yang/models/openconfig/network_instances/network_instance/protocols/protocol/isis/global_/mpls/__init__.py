@@ -42,7 +42,7 @@ features in IS-IS
     self._path_helper = False
 
     self._extmethods = False
-    self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__igp_ldp_sync = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ features in IS-IS
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'mpls']
 
+  def _initialized_igp_ldp_sync(self):
+    return self.__igp_ldp_sync is not None
+
   def _get_igp_ldp_sync(self):
     """
     Getter method for igp_ldp_sync, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/mpls/igp_ldp_sync (container)
@@ -78,6 +81,8 @@ features in IS-IS
     YANG Description: Configuration and operational state relating to synchronisation
 between the LDP and IS-IS
     """
+    if self.__igp_ldp_sync is None:
+        self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__igp_ldp_sync
       
   def _set_igp_ldp_sync(self, v, load=False):
@@ -91,6 +96,9 @@ between the LDP and IS-IS
     YANG Description: Configuration and operational state relating to synchronisation
 between the LDP and IS-IS
     """
+    if self.__igp_ldp_sync is None:
+        self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ features in IS-IS
     self._path_helper = False
 
     self._extmethods = False
-    self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__igp_ldp_sync = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ features in IS-IS
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'mpls']
 
+  def _initialized_igp_ldp_sync(self):
+    return self.__igp_ldp_sync is not None
+
   def _get_igp_ldp_sync(self):
     """
     Getter method for igp_ldp_sync, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/mpls/igp_ldp_sync (container)
@@ -173,6 +184,8 @@ features in IS-IS
     YANG Description: Configuration and operational state relating to synchronisation
 between the LDP and IS-IS
     """
+    if self.__igp_ldp_sync is None:
+        self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__igp_ldp_sync
       
   def _set_igp_ldp_sync(self, v, load=False):
@@ -186,6 +199,9 @@ between the LDP and IS-IS
     YANG Description: Configuration and operational state relating to synchronisation
 between the LDP and IS-IS
     """
+    if self.__igp_ldp_sync is None:
+        self.__igp_ldp_sync = YANGDynClass(base=igp_ldp_sync.igp_ldp_sync, is_container='container', yang_name="igp-ldp-sync", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

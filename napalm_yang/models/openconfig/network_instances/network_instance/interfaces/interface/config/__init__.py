@@ -41,10 +41,10 @@ interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__interface = None
+    self.__associated_address_families = None
+    self.__id = None
+    self.__subinterface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ interface
     else:
       return [u'network-instances', u'network-instance', u'interfaces', u'interface', u'config']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/id (string)
@@ -80,6 +83,8 @@ interface
     YANG Description: A unique identifier for this interface - this is expressed
 as a free-text string
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -93,6 +98,9 @@ as a free-text string
     YANG Description: A unique identifier for this interface - this is expressed
 as a free-text string
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ as a free-text string
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/interface (leafref)
@@ -120,6 +131,8 @@ as a free-text string
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -134,6 +147,9 @@ to indicate the base interface.
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ to indicate the base interface.
     self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_subinterface(self):
+    return self.__subinterface is not None
+
   def _get_subinterface(self):
     """
     Getter method for subinterface, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/subinterface (leafref)
@@ -162,6 +181,8 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__subinterface
       
   def _set_subinterface(self, v, load=False):
@@ -177,6 +198,9 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ is requuired, this leaf should not be set.
     self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_associated_address_families(self):
+    return self.__associated_address_families is not None
+
   def _get_associated_address_families(self):
     """
     Getter method for associated_address_families, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/associated_address_families (identityref)
@@ -208,6 +235,8 @@ enabled should be imported. If the value of this leaf-list
 is specified then the association MUST only be made for
 those address families that are included in the list.
     """
+    if self.__associated_address_families is None:
+        self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__associated_address_families
       
   def _set_associated_address_families(self, v, load=False):
@@ -226,6 +255,9 @@ enabled should be imported. If the value of this leaf-list
 is specified then the association MUST only be made for
 those address families that are included in the list.
     """
+    if self.__associated_address_families is None:
+        self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -274,10 +306,10 @@ interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__interface = None
+    self.__associated_address_families = None
+    self.__id = None
+    self.__subinterface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -306,6 +338,9 @@ interface
     else:
       return [u'network-instances', u'network-instance', u'interfaces', u'interface', u'config']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/id (string)
@@ -313,6 +348,8 @@ interface
     YANG Description: A unique identifier for this interface - this is expressed
 as a free-text string
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -326,6 +363,9 @@ as a free-text string
     YANG Description: A unique identifier for this interface - this is expressed
 as a free-text string
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -345,6 +385,9 @@ as a free-text string
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/interface (leafref)
@@ -353,6 +396,8 @@ as a free-text string
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -367,6 +412,9 @@ to indicate the base interface.
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -386,6 +434,9 @@ to indicate the base interface.
     self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_subinterface(self):
+    return self.__subinterface is not None
+
   def _get_subinterface(self):
     """
     Getter method for subinterface, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/subinterface (leafref)
@@ -395,6 +446,8 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__subinterface
       
   def _set_subinterface(self, v, load=False):
@@ -410,6 +463,9 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -429,6 +485,9 @@ is requuired, this leaf should not be set.
     self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_associated_address_families(self):
+    return self.__associated_address_families is not None
+
   def _get_associated_address_families(self):
     """
     Getter method for associated_address_families, mapped from YANG variable /network_instances/network_instance/interfaces/interface/config/associated_address_families (identityref)
@@ -441,6 +500,8 @@ enabled should be imported. If the value of this leaf-list
 is specified then the association MUST only be made for
 those address families that are included in the list.
     """
+    if self.__associated_address_families is None:
+        self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__associated_address_families
       
   def _set_associated_address_families(self, v, load=False):
@@ -459,6 +520,9 @@ enabled should be imported. If the value of this leaf-list
 is specified then the association MUST only be made for
 those address families that are included in the list.
     """
+    if self.__associated_address_families is None:
+        self.__associated_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="associated-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

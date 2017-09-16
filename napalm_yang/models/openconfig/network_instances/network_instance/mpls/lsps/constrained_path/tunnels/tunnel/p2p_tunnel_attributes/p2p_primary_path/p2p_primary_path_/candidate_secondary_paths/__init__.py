@@ -50,7 +50,7 @@ is in use.
     self._path_helper = False
 
     self._extmethods = False
-    self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__candidate_secondary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,6 +79,9 @@ is in use.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'candidate-secondary-paths']
 
+  def _initialized_candidate_secondary_path(self):
+    return self.__candidate_secondary_path is not None
+
   def _get_candidate_secondary_path(self):
     """
     Getter method for candidate_secondary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path (list)
@@ -86,6 +89,8 @@ is in use.
     YANG Description: List of secondary paths which may be utilised when the
 current primary path is in use
     """
+    if self.__candidate_secondary_path is None:
+        self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__candidate_secondary_path
       
   def _set_candidate_secondary_path(self, v, load=False):
@@ -99,6 +104,9 @@ current primary path is in use
     YANG Description: List of secondary paths which may be utilised when the
 current primary path is in use
     """
+    if self.__candidate_secondary_path is None:
+        self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,7 +161,7 @@ is in use.
     self._path_helper = False
 
     self._extmethods = False
-    self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__candidate_secondary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -182,6 +190,9 @@ is in use.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'candidate-secondary-paths']
 
+  def _initialized_candidate_secondary_path(self):
+    return self.__candidate_secondary_path is not None
+
   def _get_candidate_secondary_path(self):
     """
     Getter method for candidate_secondary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path (list)
@@ -189,6 +200,8 @@ is in use.
     YANG Description: List of secondary paths which may be utilised when the
 current primary path is in use
     """
+    if self.__candidate_secondary_path is None:
+        self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__candidate_secondary_path
       
   def _set_candidate_secondary_path(self, v, load=False):
@@ -202,6 +215,9 @@ current primary path is in use
     YANG Description: List of secondary paths which may be utilised when the
 current primary path is in use
     """
+    if self.__candidate_secondary_path is None:
+        self.__candidate_secondary_path = YANGDynClass(base=YANGListType("secondary_path",candidate_secondary_path.candidate_secondary_path, yang_name="candidate-secondary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='secondary-path', extensions=None), is_container='list', yang_name="candidate-secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

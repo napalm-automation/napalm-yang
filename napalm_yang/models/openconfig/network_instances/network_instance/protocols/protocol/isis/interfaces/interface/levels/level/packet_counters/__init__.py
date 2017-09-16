@@ -47,13 +47,13 @@ class packet_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__psnp = None
+    self.__cnsp = None
+    self.__unknown = None
+    self.__ish = None
+    self.__lsp = None
+    self.__iih = None
+    self.__esh = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -82,12 +82,17 @@ class packet_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'packet-counters']
 
+  def _initialized_lsp(self):
+    return self.__lsp is not None
+
   def _get_lsp(self):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/lsp (container)
 
     YANG Description: This container defines LSP packet counters.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp
       
   def _set_lsp(self, v, load=False):
@@ -100,6 +105,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines LSP packet counters.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -119,12 +127,17 @@ class packet_counters(PybindBase):
     self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_iih(self):
+    return self.__iih is not None
+
   def _get_iih(self):
     """
     Getter method for iih, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/iih (container)
 
     YANG Description: This container defines IIH packet counters.
     """
+    if self.__iih is None:
+        self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__iih
       
   def _set_iih(self, v, load=False):
@@ -137,6 +150,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines IIH packet counters.
     """
+    if self.__iih is None:
+        self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ class packet_counters(PybindBase):
     self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ish(self):
+    return self.__ish is not None
+
   def _get_ish(self):
     """
     Getter method for ish, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/ish (container)
 
     YANG Description: This container defines ISH packet counters.
     """
+    if self.__ish is None:
+        self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ish
       
   def _set_ish(self, v, load=False):
@@ -174,6 +195,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines ISH packet counters.
     """
+    if self.__ish is None:
+        self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ class packet_counters(PybindBase):
     self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_esh(self):
+    return self.__esh is not None
+
   def _get_esh(self):
     """
     Getter method for esh, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/esh (container)
 
     YANG Description: This container defines ESH packet counters.
     """
+    if self.__esh is None:
+        self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__esh
       
   def _set_esh(self, v, load=False):
@@ -211,6 +240,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines ESH packet counters.
     """
+    if self.__esh is None:
+        self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -230,12 +262,17 @@ class packet_counters(PybindBase):
     self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_psnp(self):
+    return self.__psnp is not None
+
   def _get_psnp(self):
     """
     Getter method for psnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/psnp (container)
 
     YANG Description: This container defines PSNP packet counters.
     """
+    if self.__psnp is None:
+        self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__psnp
       
   def _set_psnp(self, v, load=False):
@@ -248,6 +285,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines PSNP packet counters.
     """
+    if self.__psnp is None:
+        self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -267,12 +307,17 @@ class packet_counters(PybindBase):
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_cnsp(self):
+    return self.__cnsp is not None
+
   def _get_cnsp(self):
     """
     Getter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
 
     YANG Description: Operational state parameters relating to CNSPs.
     """
+    if self.__cnsp is None:
+        self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__cnsp
       
   def _set_cnsp(self, v, load=False):
@@ -285,6 +330,9 @@ class packet_counters(PybindBase):
 
     YANG Description: Operational state parameters relating to CNSPs.
     """
+    if self.__cnsp is None:
+        self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -304,6 +352,9 @@ class packet_counters(PybindBase):
     self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_unknown(self):
+    return self.__unknown is not None
+
   def _get_unknown(self):
     """
     Getter method for unknown, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/unknown (container)
@@ -311,6 +362,8 @@ class packet_counters(PybindBase):
     YANG Description: Operational state parameters relating to IS-IS PDUs that are not
 otherwise classified - referred to as Unknown PDUs.
     """
+    if self.__unknown is None:
+        self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__unknown
       
   def _set_unknown(self, v, load=False):
@@ -324,6 +377,9 @@ otherwise classified - referred to as Unknown PDUs.
     YANG Description: Operational state parameters relating to IS-IS PDUs that are not
 otherwise classified - referred to as Unknown PDUs.
     """
+    if self.__unknown is None:
+        self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -381,13 +437,13 @@ class packet_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__psnp = None
+    self.__cnsp = None
+    self.__unknown = None
+    self.__ish = None
+    self.__lsp = None
+    self.__iih = None
+    self.__esh = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -416,12 +472,17 @@ class packet_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'packet-counters']
 
+  def _initialized_lsp(self):
+    return self.__lsp is not None
+
   def _get_lsp(self):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/lsp (container)
 
     YANG Description: This container defines LSP packet counters.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp
       
   def _set_lsp(self, v, load=False):
@@ -434,6 +495,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines LSP packet counters.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -453,12 +517,17 @@ class packet_counters(PybindBase):
     self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_iih(self):
+    return self.__iih is not None
+
   def _get_iih(self):
     """
     Getter method for iih, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/iih (container)
 
     YANG Description: This container defines IIH packet counters.
     """
+    if self.__iih is None:
+        self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__iih
       
   def _set_iih(self, v, load=False):
@@ -471,6 +540,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines IIH packet counters.
     """
+    if self.__iih is None:
+        self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -490,12 +562,17 @@ class packet_counters(PybindBase):
     self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ish(self):
+    return self.__ish is not None
+
   def _get_ish(self):
     """
     Getter method for ish, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/ish (container)
 
     YANG Description: This container defines ISH packet counters.
     """
+    if self.__ish is None:
+        self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ish
       
   def _set_ish(self, v, load=False):
@@ -508,6 +585,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines ISH packet counters.
     """
+    if self.__ish is None:
+        self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -527,12 +607,17 @@ class packet_counters(PybindBase):
     self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_esh(self):
+    return self.__esh is not None
+
   def _get_esh(self):
     """
     Getter method for esh, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/esh (container)
 
     YANG Description: This container defines ESH packet counters.
     """
+    if self.__esh is None:
+        self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__esh
       
   def _set_esh(self, v, load=False):
@@ -545,6 +630,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines ESH packet counters.
     """
+    if self.__esh is None:
+        self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -564,12 +652,17 @@ class packet_counters(PybindBase):
     self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_psnp(self):
+    return self.__psnp is not None
+
   def _get_psnp(self):
     """
     Getter method for psnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/psnp (container)
 
     YANG Description: This container defines PSNP packet counters.
     """
+    if self.__psnp is None:
+        self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__psnp
       
   def _set_psnp(self, v, load=False):
@@ -582,6 +675,9 @@ class packet_counters(PybindBase):
 
     YANG Description: This container defines PSNP packet counters.
     """
+    if self.__psnp is None:
+        self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -601,12 +697,17 @@ class packet_counters(PybindBase):
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_cnsp(self):
+    return self.__cnsp is not None
+
   def _get_cnsp(self):
     """
     Getter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
 
     YANG Description: Operational state parameters relating to CNSPs.
     """
+    if self.__cnsp is None:
+        self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__cnsp
       
   def _set_cnsp(self, v, load=False):
@@ -619,6 +720,9 @@ class packet_counters(PybindBase):
 
     YANG Description: Operational state parameters relating to CNSPs.
     """
+    if self.__cnsp is None:
+        self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -638,6 +742,9 @@ class packet_counters(PybindBase):
     self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_unknown(self):
+    return self.__unknown is not None
+
   def _get_unknown(self):
     """
     Getter method for unknown, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/unknown (container)
@@ -645,6 +752,8 @@ class packet_counters(PybindBase):
     YANG Description: Operational state parameters relating to IS-IS PDUs that are not
 otherwise classified - referred to as Unknown PDUs.
     """
+    if self.__unknown is None:
+        self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__unknown
       
   def _set_unknown(self, v, load=False):
@@ -658,6 +767,9 @@ otherwise classified - referred to as Unknown PDUs.
     YANG Description: Operational state parameters relating to IS-IS PDUs that are not
 otherwise classified - referred to as Unknown PDUs.
     """
+    if self.__unknown is None:
+        self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

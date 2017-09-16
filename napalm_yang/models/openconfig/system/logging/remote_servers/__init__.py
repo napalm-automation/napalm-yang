@@ -41,7 +41,7 @@ class remote_servers(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote_server = YANGDynClass(base=YANGListType("host",remote_server.remote_server, yang_name="remote-server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='host', extensions=None), is_container='list', yang_name="remote-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__remote_server = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class remote_servers(PybindBase):
     else:
       return [u'system', u'logging', u'remote-servers']
 
+  def _initialized_remote_server(self):
+    return self.__remote_server is not None
+
   def _get_remote_server(self):
     """
     Getter method for remote_server, mapped from YANG variable /system/logging/remote_servers/remote_server (list)
 
     YANG Description: List of remote log servers
     """
+    if self.__remote_server is None:
+        self.__remote_server = YANGDynClass(base=YANGListType("host",remote_server.remote_server, yang_name="remote-server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='host', extensions=None), is_container='list', yang_name="remote-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__remote_server
       
   def _set_remote_server(self, v, load=False):
@@ -88,6 +93,9 @@ class remote_servers(PybindBase):
 
     YANG Description: List of remote log servers
     """
+    if self.__remote_server is None:
+        self.__remote_server = YANGDynClass(base=YANGListType("host",remote_server.remote_server, yang_name="remote-server", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='host', extensions=None), is_container='list', yang_name="remote-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

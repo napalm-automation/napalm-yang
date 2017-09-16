@@ -42,9 +42,9 @@ class sid_counter(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__forwarding_classes = None
+    self.__mpls_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class sid_counter(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter']
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/mpls_label (leafref)
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -91,6 +96,9 @@ class sid_counter(PybindBase):
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -115,12 +123,17 @@ class sid_counter(PybindBase):
     self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/state (container)
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -133,6 +146,9 @@ class sid_counter(PybindBase):
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ class sid_counter(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_forwarding_classes(self):
+    return self.__forwarding_classes is not None
+
   def _get_forwarding_classes(self):
     """
     Getter method for forwarding_classes, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes (container)
 
     YANG Description: Per-SID per-forwarding class counters for Segment Routing.
     """
+    if self.__forwarding_classes is None:
+        self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__forwarding_classes
       
   def _set_forwarding_classes(self, v, load=False):
@@ -170,6 +191,9 @@ class sid_counter(PybindBase):
 
     YANG Description: Per-SID per-forwarding class counters for Segment Routing.
     """
+    if self.__forwarding_classes is None:
+        self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -218,9 +242,9 @@ class sid_counter(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__forwarding_classes = None
+    self.__mpls_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -249,12 +273,17 @@ class sid_counter(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter']
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/mpls_label (leafref)
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -267,6 +296,9 @@ class sid_counter(PybindBase):
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -291,12 +323,17 @@ class sid_counter(PybindBase):
     self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/state (container)
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -309,6 +346,9 @@ class sid_counter(PybindBase):
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -328,12 +368,17 @@ class sid_counter(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_forwarding_classes(self):
+    return self.__forwarding_classes is not None
+
   def _get_forwarding_classes(self):
     """
     Getter method for forwarding_classes, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes (container)
 
     YANG Description: Per-SID per-forwarding class counters for Segment Routing.
     """
+    if self.__forwarding_classes is None:
+        self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__forwarding_classes
       
   def _set_forwarding_classes(self, v, load=False):
@@ -346,6 +391,9 @@ class sid_counter(PybindBase):
 
     YANG Description: Per-SID per-forwarding class counters for Segment Routing.
     """
+    if self.__forwarding_classes is None:
+        self.__forwarding_classes = YANGDynClass(base=forwarding_classes.forwarding_classes, is_container='container', yang_name="forwarding-classes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

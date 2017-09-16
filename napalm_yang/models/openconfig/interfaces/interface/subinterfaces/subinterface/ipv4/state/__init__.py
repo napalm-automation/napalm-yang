@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
-    self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'68..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=False)
+    self.__enabled = None
+    self.__mtu = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv4', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/state/enabled (boolean)
@@ -79,6 +82,8 @@ interface.  When IPv4 is enabled, this interface is
 connected to an IPv4 stack, and the interface can send
 and receive IPv4 packets.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -94,6 +99,9 @@ interface.  When IPv4 is enabled, this interface is
 connected to an IPv4 stack, and the interface can send
 and receive IPv4 packets.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ and receive IPv4 packets.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mtu(self):
+    return self.__mtu is not None
+
   def _get_mtu(self):
     """
     Getter method for mtu, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu (uint16)
@@ -126,6 +137,8 @@ depending on the interface's type.
 If this leaf is not configured, the operationally used MTU
 depends on the interface's type.
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'68..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=False)
     return self.__mtu
       
   def _set_mtu(self, v, load=False):
@@ -145,6 +158,9 @@ depending on the interface's type.
 If this leaf is not configured, the operationally used MTU
 depends on the interface's type.
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'68..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

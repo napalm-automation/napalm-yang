@@ -41,14 +41,14 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
-    self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__router_id = None
+    self.__name = None
+    self.__enabled = None
+    self.__mtu = None
+    self.__route_distinguisher = None
+    self.__enabled_address_families = None
+    self.__type = None
+    self.__description = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/state/name (string)
@@ -84,6 +87,8 @@ instance
     YANG Description: An operator-assigned unique name for the forwarding
 instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -97,6 +102,9 @@ instance
     YANG Description: An operator-assigned unique name for the forwarding
 instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ instance
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/state/type (identityref)
@@ -124,6 +135,8 @@ instance
 indicates the type of forwarding entries that should be
 supported by this network instance
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -138,6 +151,9 @@ supported by this network instance
 indicates the type of forwarding entries that should be
 supported by this network instance
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ supported by this network instance
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/state/enabled (boolean)
@@ -164,6 +183,8 @@ supported by this network instance
     YANG Description: Whether the network instance should be configured to be
 active on the network element
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -177,6 +198,9 @@ active on the network element
     YANG Description: Whether the network instance should be configured to be
 active on the network element
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ active on the network element
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/state/description (string)
@@ -203,6 +230,8 @@ active on the network element
     YANG Description: A free-form string to be used by the network operator to
 describe the function of this network instance
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -216,6 +245,9 @@ describe the function of this network instance
     YANG Description: A free-form string to be used by the network operator to
 describe the function of this network instance
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -235,6 +267,9 @@ describe the function of this network instance
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/state/router_id (yang:dotted-quad)
@@ -243,6 +278,8 @@ describe the function of this network instance
 used within associated routing protocols or signalling
 routing information in another network instance
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -257,6 +294,9 @@ routing information in another network instance
 used within associated routing protocols or signalling
 routing information in another network instance
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,6 +316,9 @@ routing information in another network instance
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
 
 
+  def _initialized_route_distinguisher(self):
+    return self.__route_distinguisher is not None
+
   def _get_route_distinguisher(self):
     """
     Getter method for route_distinguisher, mapped from YANG variable /network_instances/network_instance/state/route_distinguisher (oc-ni-types:route-distinguisher)
@@ -283,6 +326,8 @@ routing information in another network instance
     YANG Description: The route distinguisher that should be used for the local
 VRF or VSI instance when it is signalled via BGP.
     """
+    if self.__route_distinguisher is None:
+        self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
     return self.__route_distinguisher
       
   def _set_route_distinguisher(self, v, load=False):
@@ -296,6 +341,9 @@ VRF or VSI instance when it is signalled via BGP.
     YANG Description: The route distinguisher that should be used for the local
 VRF or VSI instance when it is signalled via BGP.
     """
+    if self.__route_distinguisher is None:
+        self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -315,6 +363,9 @@ VRF or VSI instance when it is signalled via BGP.
     self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
 
 
+  def _initialized_enabled_address_families(self):
+    return self.__enabled_address_families is not None
+
   def _get_enabled_address_families(self):
     """
     Getter method for enabled_address_families, mapped from YANG variable /network_instances/network_instance/state/enabled_address_families (identityref)
@@ -322,6 +373,8 @@ VRF or VSI instance when it is signalled via BGP.
     YANG Description: The address families that are to be enabled for this
 network instance.
     """
+    if self.__enabled_address_families is None:
+        self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__enabled_address_families
       
   def _set_enabled_address_families(self, v, load=False):
@@ -335,6 +388,9 @@ network instance.
     YANG Description: The address families that are to be enabled for this
 network instance.
     """
+    if self.__enabled_address_families is None:
+        self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -354,6 +410,9 @@ network instance.
     self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_mtu(self):
+    return self.__mtu is not None
+
   def _get_mtu(self):
     """
     Getter method for mtu, mapped from YANG variable /network_instances/network_instance/state/mtu (uint16)
@@ -361,6 +420,8 @@ network instance.
     YANG Description: The maximum frame size which should be supported for this
 instance for Layer 2 frames
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__mtu
       
   def _set_mtu(self, v, load=False):
@@ -374,6 +435,9 @@ instance for Layer 2 frames
     YANG Description: The maximum frame size which should be supported for this
 instance for Layer 2 frames
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -426,14 +490,14 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
-    self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__router_id = None
+    self.__name = None
+    self.__enabled = None
+    self.__mtu = None
+    self.__route_distinguisher = None
+    self.__enabled_address_families = None
+    self.__type = None
+    self.__description = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -462,6 +526,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/state/name (string)
@@ -469,6 +536,8 @@ instance
     YANG Description: An operator-assigned unique name for the forwarding
 instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -482,6 +551,9 @@ instance
     YANG Description: An operator-assigned unique name for the forwarding
 instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -501,6 +573,9 @@ instance
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/state/type (identityref)
@@ -509,6 +584,8 @@ instance
 indicates the type of forwarding entries that should be
 supported by this network instance
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -523,6 +600,9 @@ supported by this network instance
 indicates the type of forwarding entries that should be
 supported by this network instance
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -542,6 +622,9 @@ supported by this network instance
     self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2VSI': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L3VRF': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2P2P': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'DEFAULT_INSTANCE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'L2L3': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/state/enabled (boolean)
@@ -549,6 +632,8 @@ supported by this network instance
     YANG Description: Whether the network instance should be configured to be
 active on the network element
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -562,6 +647,9 @@ active on the network element
     YANG Description: Whether the network instance should be configured to be
 active on the network element
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -581,6 +669,9 @@ active on the network element
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/state/description (string)
@@ -588,6 +679,8 @@ active on the network element
     YANG Description: A free-form string to be used by the network operator to
 describe the function of this network instance
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -601,6 +694,9 @@ describe the function of this network instance
     YANG Description: A free-form string to be used by the network operator to
 describe the function of this network instance
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -620,6 +716,9 @@ describe the function of this network instance
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/state/router_id (yang:dotted-quad)
@@ -628,6 +727,8 @@ describe the function of this network instance
 used within associated routing protocols or signalling
 routing information in another network instance
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -642,6 +743,9 @@ routing information in another network instance
 used within associated routing protocols or signalling
 routing information in another network instance
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -661,6 +765,9 @@ routing information in another network instance
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=False)
 
 
+  def _initialized_route_distinguisher(self):
+    return self.__route_distinguisher is not None
+
   def _get_route_distinguisher(self):
     """
     Getter method for route_distinguisher, mapped from YANG variable /network_instances/network_instance/state/route_distinguisher (oc-ni-types:route-distinguisher)
@@ -668,6 +775,8 @@ routing information in another network instance
     YANG Description: The route distinguisher that should be used for the local
 VRF or VSI instance when it is signalled via BGP.
     """
+    if self.__route_distinguisher is None:
+        self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
     return self.__route_distinguisher
       
   def _set_route_distinguisher(self, v, load=False):
@@ -681,6 +790,9 @@ VRF or VSI instance when it is signalled via BGP.
     YANG Description: The route distinguisher that should be used for the local
 VRF or VSI instance when it is signalled via BGP.
     """
+    if self.__route_distinguisher is None:
+        self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -700,6 +812,9 @@ VRF or VSI instance when it is signalled via BGP.
     self.__route_distinguisher = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9]):(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]):(65[0-5][0-3][0-5]|[1-5][1-5][0-9][0-9][0-9]|[1-9]?[1-9]?[0-9][0-9]|[1-9])$'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(4[0-2][0-9][0-4][0-9][0-6][0-7][0-2][0-9][0-5]|[0-3][0-9]{9}|[1-9][0-9]{1,8}|[1-9]):(65[0-5][0-3][0-5]|[1-5]{2}[0-9]{3}|[1-9]{0,2}[0-9][0-9]|[1-9])$'}),], is_leaf=True, yang_name="route-distinguisher", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ni-types:route-distinguisher', is_config=False)
 
 
+  def _initialized_enabled_address_families(self):
+    return self.__enabled_address_families is not None
+
   def _get_enabled_address_families(self):
     """
     Getter method for enabled_address_families, mapped from YANG variable /network_instances/network_instance/state/enabled_address_families (identityref)
@@ -707,6 +822,8 @@ VRF or VSI instance when it is signalled via BGP.
     YANG Description: The address families that are to be enabled for this
 network instance.
     """
+    if self.__enabled_address_families is None:
+        self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__enabled_address_families
       
   def _set_enabled_address_families(self, v, load=False):
@@ -720,6 +837,9 @@ network instance.
     YANG Description: The address families that are to be enabled for this
 network instance.
     """
+    if self.__enabled_address_families is None:
+        self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -739,6 +859,9 @@ network instance.
     self.__enabled_address_families = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-types:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'oc-types:MPLS': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:L2_ETHERNET': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'octypes:IPV6': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/openconfig-types', '@module': u'openconfig-types'}},)), is_leaf=False, yang_name="enabled-address-families", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_mtu(self):
+    return self.__mtu is not None
+
   def _get_mtu(self):
     """
     Getter method for mtu, mapped from YANG variable /network_instances/network_instance/state/mtu (uint16)
@@ -746,6 +869,8 @@ network instance.
     YANG Description: The maximum frame size which should be supported for this
 instance for Layer 2 frames
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__mtu
       
   def _set_mtu(self, v, load=False):
@@ -759,6 +884,9 @@ instance for Layer 2 frames
     YANG Description: The maximum frame size which should be supported for this
 instance for Layer 2 frames
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

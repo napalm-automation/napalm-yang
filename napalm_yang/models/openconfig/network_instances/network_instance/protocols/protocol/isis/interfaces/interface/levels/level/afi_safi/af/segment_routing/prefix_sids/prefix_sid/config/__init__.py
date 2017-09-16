@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
-    self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
-    self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
+    self.__label_options = None
+    self.__prefix = None
+    self.__sid_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'prefix-sids', u'prefix-sid', u'config']
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/prefix (inet:ip-prefix)
@@ -79,6 +82,8 @@ class config(PybindBase):
 value specified is a local prefix on the interface which is advertised
 into the IGP.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -93,6 +98,9 @@ into the IGP.
 value specified is a local prefix on the interface which is advertised
 into the IGP.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,12 +120,17 @@ into the IGP.
     self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
 
 
+  def _initialized_sid_id(self):
+    return self.__sid_id is not None
+
   def _get_sid_id(self):
     """
     Getter method for sid_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/sid_id (sr-sid-type)
 
     YANG Description: The Segment Identifier to be used when advertising the IGP Prefix SID.
     """
+    if self.__sid_id is None:
+        self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
     return self.__sid_id
       
   def _set_sid_id(self, v, load=False):
@@ -130,6 +143,9 @@ into the IGP.
 
     YANG Description: The Segment Identifier to be used when advertising the IGP Prefix SID.
     """
+    if self.__sid_id is None:
+        self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ into the IGP.
     self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
 
 
+  def _initialized_label_options(self):
+    return self.__label_options is not None
+
   def _get_label_options(self):
     """
     Getter method for label_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/label_options (enumeration)
@@ -157,6 +176,8 @@ into the IGP.
 of this leaf specifies the option that the SID should be advertised
 into the IGP with.
     """
+    if self.__label_options is None:
+        self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__label_options
       
   def _set_label_options(self, v, load=False):
@@ -171,6 +192,9 @@ into the IGP with.
 of this leaf specifies the option that the SID should be advertised
 into the IGP with.
     """
+    if self.__label_options is None:
+        self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
-    self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
-    self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
+    self.__label_options = None
+    self.__prefix = None
+    self.__sid_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'prefix-sids', u'prefix-sid', u'config']
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/prefix (inet:ip-prefix)
@@ -256,6 +283,8 @@ class config(PybindBase):
 value specified is a local prefix on the interface which is advertised
 into the IGP.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -270,6 +299,9 @@ into the IGP.
 value specified is a local prefix on the interface which is advertised
 into the IGP.
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -289,12 +321,17 @@ into the IGP.
     self.__prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=True)
 
 
+  def _initialized_sid_id(self):
+    return self.__sid_id is not None
+
   def _get_sid_id(self):
     """
     Getter method for sid_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/sid_id (sr-sid-type)
 
     YANG Description: The Segment Identifier to be used when advertising the IGP Prefix SID.
     """
+    if self.__sid_id is None:
+        self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
     return self.__sid_id
       
   def _set_sid_id(self, v, load=False):
@@ -307,6 +344,9 @@ into the IGP.
 
     YANG Description: The Segment Identifier to be used when advertising the IGP Prefix SID.
     """
+    if self.__sid_id is None:
+        self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ into the IGP.
     self.__sid_id = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="sid-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-sid-type', is_config=True)
 
 
+  def _initialized_label_options(self):
+    return self.__label_options is not None
+
   def _get_label_options(self):
     """
     Getter method for label_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid/config/label_options (enumeration)
@@ -334,6 +377,8 @@ into the IGP.
 of this leaf specifies the option that the SID should be advertised
 into the IGP with.
     """
+    if self.__label_options is None:
+        self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__label_options
       
   def _set_label_options(self, v, load=False):
@@ -348,6 +393,9 @@ into the IGP with.
 of this leaf specifies the option that the SID should be advertised
 into the IGP with.
     """
+    if self.__label_options is None:
+        self.__label_options = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPLICIT_NULL': {}, u'NO_PHP': {}},), is_leaf=True, yang_name="label-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

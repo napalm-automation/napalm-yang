@@ -41,7 +41,7 @@ class l3vpn_ipv6_multicast(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__prefix_limit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class l3vpn_ipv6_multicast(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'l3vpn-ipv6-multicast']
 
+  def _initialized_prefix_limit(self):
+    return self.__prefix_limit is not None
+
   def _get_prefix_limit(self):
     """
     Getter method for prefix_limit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_multicast/prefix_limit (container)
@@ -77,6 +80,8 @@ class l3vpn_ipv6_multicast(PybindBase):
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_limit
       
   def _set_prefix_limit(self, v, load=False):
@@ -90,6 +95,9 @@ accepted from a peer
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class l3vpn_ipv6_multicast(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__prefix_limit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class l3vpn_ipv6_multicast(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'l3vpn-ipv6-multicast']
 
+  def _initialized_prefix_limit(self):
+    return self.__prefix_limit is not None
+
   def _get_prefix_limit(self):
     """
     Getter method for prefix_limit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_multicast/prefix_limit (container)
@@ -171,6 +182,8 @@ class l3vpn_ipv6_multicast(PybindBase):
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_limit
       
   def _set_prefix_limit(self, v, load=False):
@@ -184,6 +197,9 @@ accepted from a peer
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

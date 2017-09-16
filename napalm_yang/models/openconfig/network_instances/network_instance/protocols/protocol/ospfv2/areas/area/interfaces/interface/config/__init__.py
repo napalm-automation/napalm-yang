@@ -41,14 +41,14 @@ OSPFv2 is enabled
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
-    self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__multi_area_adjacency_primary = None
+    self.__hide_network = None
+    self.__metric = None
+    self.__network_type = None
+    self.__priority = None
+    self.__passive = None
+    self.__id = None
+    self.__authentication_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ OSPFv2 is enabled
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'config']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/id (string)
@@ -84,6 +87,8 @@ OSPFv2 is enabled
     YANG Description: An operator-specified string utilised to uniquely
 reference this interface
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -97,6 +102,9 @@ reference this interface
     YANG Description: An operator-specified string utilised to uniquely
 reference this interface
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ reference this interface
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_network_type(self):
+    return self.__network_type is not None
+
   def _get_network_type(self):
     """
     Getter method for network_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/network_type (identityref)
@@ -123,6 +134,8 @@ reference this interface
     YANG Description: The type of network that OSPFv2 should use for the specified
 interface.
     """
+    if self.__network_type is None:
+        self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__network_type
       
   def _set_network_type(self, v, load=False):
@@ -136,6 +149,9 @@ interface.
     YANG Description: The type of network that OSPFv2 should use for the specified
 interface.
     """
+    if self.__network_type is None:
+        self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ interface.
     self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/priority (uint8)
@@ -162,6 +181,8 @@ interface.
     YANG Description: The local system's priority to become the designated
 router
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -175,6 +196,9 @@ router
     YANG Description: The local system's priority to become the designated
 router
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,6 +218,9 @@ router
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_multi_area_adjacency_primary(self):
+    return self.__multi_area_adjacency_primary is not None
+
   def _get_multi_area_adjacency_primary(self):
     """
     Getter method for multi_area_adjacency_primary, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/multi_area_adjacency_primary (boolean)
@@ -204,6 +231,8 @@ be considered the primary (when the value is true). In the
 case that this value is false, the area is considered a
 secondary area.
     """
+    if self.__multi_area_adjacency_primary is None:
+        self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__multi_area_adjacency_primary
       
   def _set_multi_area_adjacency_primary(self, v, load=False):
@@ -220,6 +249,9 @@ be considered the primary (when the value is true). In the
 case that this value is false, the area is considered a
 secondary area.
     """
+    if self.__multi_area_adjacency_primary is None:
+        self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,6 +271,9 @@ secondary area.
     self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_authentication_type(self):
+    return self.__authentication_type is not None
+
   def _get_authentication_type(self):
     """
     Getter method for authentication_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/authentication_type (string)
@@ -246,6 +281,8 @@ secondary area.
     YANG Description: The type of authentication that should be used on this
 interface
     """
+    if self.__authentication_type is None:
+        self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__authentication_type
       
   def _set_authentication_type(self, v, load=False):
@@ -259,6 +296,9 @@ interface
     YANG Description: The type of authentication that should be used on this
 interface
     """
+    if self.__authentication_type is None:
+        self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -278,12 +318,17 @@ interface
     self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/metric (oc-ospf-types:ospf-metric)
 
     YANG Description: The metric for the interface
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -296,6 +341,9 @@ interface
 
     YANG Description: The metric for the interface
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -315,6 +363,9 @@ interface
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/passive (boolean)
@@ -323,6 +374,8 @@ interface
 advertised within the OSPF area but OSPF adjacencies should
 not be established over the interface
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -337,6 +390,9 @@ not be established over the interface
 advertised within the OSPF area but OSPF adjacencies should
 not be established over the interface
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,6 +412,9 @@ not be established over the interface
     self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hide_network(self):
+    return self.__hide_network is not None
+
   def _get_hide_network(self):
     """
     Getter method for hide_network, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/hide_network (boolean)
@@ -364,6 +423,8 @@ not be established over the interface
 the interface should be hidden from OSPFv2 advertisements
 per the procedure described in RFC6860.
     """
+    if self.__hide_network is None:
+        self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__hide_network
       
   def _set_hide_network(self, v, load=False):
@@ -378,6 +439,9 @@ per the procedure described in RFC6860.
 the interface should be hidden from OSPFv2 advertisements
 per the procedure described in RFC6860.
     """
+    if self.__hide_network is None:
+        self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -430,14 +494,14 @@ OSPFv2 is enabled
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
-    self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__multi_area_adjacency_primary = None
+    self.__hide_network = None
+    self.__metric = None
+    self.__network_type = None
+    self.__priority = None
+    self.__passive = None
+    self.__id = None
+    self.__authentication_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -466,6 +530,9 @@ OSPFv2 is enabled
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'config']
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/id (string)
@@ -473,6 +540,8 @@ OSPFv2 is enabled
     YANG Description: An operator-specified string utilised to uniquely
 reference this interface
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -486,6 +555,9 @@ reference this interface
     YANG Description: An operator-specified string utilised to uniquely
 reference this interface
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -505,6 +577,9 @@ reference this interface
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_network_type(self):
+    return self.__network_type is not None
+
   def _get_network_type(self):
     """
     Getter method for network_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/network_type (identityref)
@@ -512,6 +587,8 @@ reference this interface
     YANG Description: The type of network that OSPFv2 should use for the specified
 interface.
     """
+    if self.__network_type is None:
+        self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__network_type
       
   def _set_network_type(self, v, load=False):
@@ -525,6 +602,9 @@ interface.
     YANG Description: The type of network that OSPFv2 should use for the specified
 interface.
     """
+    if self.__network_type is None:
+        self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -544,6 +624,9 @@ interface.
     self.__network_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'POINT_TO_POINT_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:NON_BROADCAST_NETWORK': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},), is_leaf=True, yang_name="network-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/priority (uint8)
@@ -551,6 +634,8 @@ interface.
     YANG Description: The local system's priority to become the designated
 router
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -564,6 +649,9 @@ router
     YANG Description: The local system's priority to become the designated
 router
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -583,6 +671,9 @@ router
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_multi_area_adjacency_primary(self):
+    return self.__multi_area_adjacency_primary is not None
+
   def _get_multi_area_adjacency_primary(self):
     """
     Getter method for multi_area_adjacency_primary, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/multi_area_adjacency_primary (boolean)
@@ -593,6 +684,8 @@ be considered the primary (when the value is true). In the
 case that this value is false, the area is considered a
 secondary area.
     """
+    if self.__multi_area_adjacency_primary is None:
+        self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__multi_area_adjacency_primary
       
   def _set_multi_area_adjacency_primary(self, v, load=False):
@@ -609,6 +702,9 @@ be considered the primary (when the value is true). In the
 case that this value is false, the area is considered a
 secondary area.
     """
+    if self.__multi_area_adjacency_primary is None:
+        self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -628,6 +724,9 @@ secondary area.
     self.__multi_area_adjacency_primary = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="multi-area-adjacency-primary", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_authentication_type(self):
+    return self.__authentication_type is not None
+
   def _get_authentication_type(self):
     """
     Getter method for authentication_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/authentication_type (string)
@@ -635,6 +734,8 @@ secondary area.
     YANG Description: The type of authentication that should be used on this
 interface
     """
+    if self.__authentication_type is None:
+        self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__authentication_type
       
   def _set_authentication_type(self, v, load=False):
@@ -648,6 +749,9 @@ interface
     YANG Description: The type of authentication that should be used on this
 interface
     """
+    if self.__authentication_type is None:
+        self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -667,12 +771,17 @@ interface
     self.__authentication_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="authentication-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/metric (oc-ospf-types:ospf-metric)
 
     YANG Description: The metric for the interface
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -685,6 +794,9 @@ interface
 
     YANG Description: The metric for the interface
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -704,6 +816,9 @@ interface
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-metric', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/passive (boolean)
@@ -712,6 +827,8 @@ interface
 advertised within the OSPF area but OSPF adjacencies should
 not be established over the interface
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -726,6 +843,9 @@ not be established over the interface
 advertised within the OSPF area but OSPF adjacencies should
 not be established over the interface
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -745,6 +865,9 @@ not be established over the interface
     self.__passive = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hide_network(self):
+    return self.__hide_network is not None
+
   def _get_hide_network(self):
     """
     Getter method for hide_network, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/hide_network (boolean)
@@ -753,6 +876,8 @@ not be established over the interface
 the interface should be hidden from OSPFv2 advertisements
 per the procedure described in RFC6860.
     """
+    if self.__hide_network is None:
+        self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__hide_network
       
   def _set_hide_network(self, v, load=False):
@@ -767,6 +892,9 @@ per the procedure described in RFC6860.
 the interface should be hidden from OSPFv2 advertisements
 per the procedure described in RFC6860.
     """
+    if self.__hide_network is None:
+        self.__hide_network = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-network", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

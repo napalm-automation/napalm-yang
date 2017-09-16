@@ -41,7 +41,7 @@ AFI-SAFI options
     self._path_helper = False
 
     self._extmethods = False
-    self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__send_default_route = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ AFI-SAFI options
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'ipv6-unicast', u'config']
 
+  def _initialized_send_default_route(self):
+    return self.__send_default_route is not None
+
   def _get_send_default_route(self):
     """
     Getter method for send_default_route, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv6_unicast/config/send_default_route (boolean)
 
     YANG Description: If set to true, send the default-route to the neighbour(s)
     """
+    if self.__send_default_route is None:
+        self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__send_default_route
       
   def _set_send_default_route(self, v, load=False):
@@ -88,6 +93,9 @@ AFI-SAFI options
 
     YANG Description: If set to true, send the default-route to the neighbour(s)
     """
+    if self.__send_default_route is None:
+        self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ AFI-SAFI options
     self._path_helper = False
 
     self._extmethods = False
-    self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__send_default_route = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ AFI-SAFI options
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'ipv6-unicast', u'config']
 
+  def _initialized_send_default_route(self):
+    return self.__send_default_route is not None
+
   def _get_send_default_route(self):
     """
     Getter method for send_default_route, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv6_unicast/config/send_default_route (boolean)
 
     YANG Description: If set to true, send the default-route to the neighbour(s)
     """
+    if self.__send_default_route is None:
+        self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__send_default_route
       
   def _set_send_default_route(self, v, load=False):
@@ -180,6 +193,9 @@ AFI-SAFI options
 
     YANG Description: If set to true, send the default-route to the neighbour(s)
     """
+    if self.__send_default_route is None:
+        self.__send_default_route = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="send-default-route", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

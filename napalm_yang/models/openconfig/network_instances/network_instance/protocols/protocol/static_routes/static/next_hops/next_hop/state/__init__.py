@@ -41,10 +41,10 @@ next-hop entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__index = None
+    self.__metric = None
+    self.__next_hop = None
+    self.__recurse = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ next-hop entry
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'static-routes', u'static', u'next-hops', u'next-hop', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/index (string)
@@ -82,6 +85,8 @@ the next-hop entry in the next-hop list. The value of this
 index has no semantic meaning other than for referencing
 the entry.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -97,6 +102,9 @@ the next-hop entry in the next-hop list. The value of this
 index has no semantic meaning other than for referencing
 the entry.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ the entry.
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/next_hop (union)
@@ -128,6 +139,8 @@ value is specified for the next-hop, then the system should
 treat the prefix as though it is directly connected to the
 interface.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -146,6 +159,9 @@ value is specified for the next-hop, then the system should
 treat the prefix as though it is directly connected to the
 interface.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -165,6 +181,9 @@ interface.
     self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/metric (uint32)
@@ -182,6 +201,8 @@ next-hops have the same metric (be it specified, or simply
 the default) then these next-hops should all be installed
 in the RIB
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -205,6 +226,9 @@ next-hops have the same metric (be it specified, or simply
 the default) then these next-hops should all be installed
 in the RIB
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -224,6 +248,9 @@ in the RIB
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_recurse(self):
+    return self.__recurse is not None
+
   def _get_recurse(self):
     """
     Getter method for recurse, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/recurse (boolean)
@@ -238,6 +265,8 @@ next-hop entry is set (i.e., is not null) then forwarding is
 restricted to being via the interface specified - and
 recursion is hence disabled.
     """
+    if self.__recurse is None:
+        self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__recurse
       
   def _set_recurse(self, v, load=False):
@@ -258,6 +287,9 @@ next-hop entry is set (i.e., is not null) then forwarding is
 restricted to being via the interface specified - and
 recursion is hence disabled.
     """
+    if self.__recurse is None:
+        self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -306,10 +338,10 @@ next-hop entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__index = None
+    self.__metric = None
+    self.__next_hop = None
+    self.__recurse = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -338,6 +370,9 @@ next-hop entry
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'static-routes', u'static', u'next-hops', u'next-hop', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/index (string)
@@ -347,6 +382,8 @@ the next-hop entry in the next-hop list. The value of this
 index has no semantic meaning other than for referencing
 the entry.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -362,6 +399,9 @@ the next-hop entry in the next-hop list. The value of this
 index has no semantic meaning other than for referencing
 the entry.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -381,6 +421,9 @@ the entry.
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/next_hop (union)
@@ -393,6 +436,8 @@ value is specified for the next-hop, then the system should
 treat the prefix as though it is directly connected to the
 interface.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -411,6 +456,9 @@ value is specified for the next-hop, then the system should
 treat the prefix as though it is directly connected to the
 interface.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -430,6 +478,9 @@ interface.
     self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'oc-loc-rt:DROP': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}, u'LOCAL_LINK': {'@namespace': u'http://openconfig.net/yang/local-routing', '@module': u'openconfig-local-routing'}},),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/metric (uint32)
@@ -447,6 +498,8 @@ next-hops have the same metric (be it specified, or simply
 the default) then these next-hops should all be installed
 in the RIB
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -470,6 +523,9 @@ next-hops have the same metric (be it specified, or simply
 the default) then these next-hops should all be installed
 in the RIB
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -489,6 +545,9 @@ in the RIB
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_recurse(self):
+    return self.__recurse is not None
+
   def _get_recurse(self):
     """
     Getter method for recurse, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static/next_hops/next_hop/state/recurse (boolean)
@@ -503,6 +562,8 @@ next-hop entry is set (i.e., is not null) then forwarding is
 restricted to being via the interface specified - and
 recursion is hence disabled.
     """
+    if self.__recurse is None:
+        self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__recurse
       
   def _set_recurse(self, v, load=False):
@@ -523,6 +584,9 @@ next-hop entry is set (i.e., is not null) then forwarding is
 restricted to being via the interface specified - and
 recursion is hence disabled.
     """
+    if self.__recurse is None:
+        self.__recurse = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="recurse", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

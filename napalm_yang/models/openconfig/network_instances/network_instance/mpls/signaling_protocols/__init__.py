@@ -42,8 +42,8 @@ class signaling_protocols(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__rsvp_te = None
+    self.__segment_routing = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class signaling_protocols(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols']
 
+  def _initialized_rsvp_te(self):
+    return self.__rsvp_te is not None
+
   def _get_rsvp_te(self):
     """
     Getter method for rsvp_te, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te (container)
 
     YANG Description: RSVP-TE global signaling protocol configuration
     """
+    if self.__rsvp_te is None:
+        self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__rsvp_te
       
   def _set_rsvp_te(self, v, load=False):
@@ -90,6 +95,9 @@ class signaling_protocols(PybindBase):
 
     YANG Description: RSVP-TE global signaling protocol configuration
     """
+    if self.__rsvp_te is None:
+        self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ class signaling_protocols(PybindBase):
     self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing (container)
@@ -116,6 +127,8 @@ class signaling_protocols(PybindBase):
     YANG Description: MPLS-specific Segment Routing configuration and operational state
 parameters
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -129,6 +142,9 @@ parameters
     YANG Description: MPLS-specific Segment Routing configuration and operational state
 parameters
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ class signaling_protocols(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__rsvp_te = None
+    self.__segment_routing = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,12 +222,17 @@ class signaling_protocols(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols']
 
+  def _initialized_rsvp_te(self):
+    return self.__rsvp_te is not None
+
   def _get_rsvp_te(self):
     """
     Getter method for rsvp_te, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te (container)
 
     YANG Description: RSVP-TE global signaling protocol configuration
     """
+    if self.__rsvp_te is None:
+        self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__rsvp_te
       
   def _set_rsvp_te(self, v, load=False):
@@ -224,6 +245,9 @@ class signaling_protocols(PybindBase):
 
     YANG Description: RSVP-TE global signaling protocol configuration
     """
+    if self.__rsvp_te is None:
+        self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ class signaling_protocols(PybindBase):
     self.__rsvp_te = YANGDynClass(base=rsvp_te.rsvp_te, is_container='container', yang_name="rsvp-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing (container)
@@ -250,6 +277,8 @@ class signaling_protocols(PybindBase):
     YANG Description: MPLS-specific Segment Routing configuration and operational state
 parameters
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -263,6 +292,9 @@ parameters
     YANG Description: MPLS-specific Segment Routing configuration and operational state
 parameters
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,7 +41,7 @@ class sid_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__sid_counter = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class sid_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters']
 
+  def _initialized_sid_counter(self):
+    return self.__sid_counter is not None
+
   def _get_sid_counter(self):
     """
     Getter method for sid_counter, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter (list)
 
     YANG Description: Per segment identifier counters for the MPLS dataplane.
     """
+    if self.__sid_counter is None:
+        self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__sid_counter
       
   def _set_sid_counter(self, v, load=False):
@@ -88,6 +93,9 @@ class sid_counters(PybindBase):
 
     YANG Description: Per segment identifier counters for the MPLS dataplane.
     """
+    if self.__sid_counter is None:
+        self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class sid_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__sid_counter = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class sid_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters']
 
+  def _initialized_sid_counter(self):
+    return self.__sid_counter is not None
+
   def _get_sid_counter(self):
     """
     Getter method for sid_counter, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter (list)
 
     YANG Description: Per segment identifier counters for the MPLS dataplane.
     """
+    if self.__sid_counter is None:
+        self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__sid_counter
       
   def _set_sid_counter(self, v, load=False):
@@ -180,6 +193,9 @@ class sid_counters(PybindBase):
 
     YANG Description: Per segment identifier counters for the MPLS dataplane.
     """
+    if self.__sid_counter is None:
+        self.__sid_counter = YANGDynClass(base=YANGListType("mpls_label",sid_counter.sid_counter, yang_name="sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

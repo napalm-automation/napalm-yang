@@ -43,8 +43,8 @@ path computation and signaling methods
     self._path_helper = False
 
     self._extmethods = False
-    self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__named_explicit_paths = None
+    self.__tunnels = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ path computation and signaling methods
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path']
 
+  def _initialized_named_explicit_paths(self):
+    return self.__named_explicit_paths is not None
+
   def _get_named_explicit_paths(self):
     """
     Getter method for named_explicit_paths, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths (container)
 
     YANG Description: Enclosing container for the named explicit paths
     """
+    if self.__named_explicit_paths is None:
+        self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__named_explicit_paths
       
   def _set_named_explicit_paths(self, v, load=False):
@@ -91,6 +96,9 @@ path computation and signaling methods
 
     YANG Description: Enclosing container for the named explicit paths
     """
+    if self.__named_explicit_paths is None:
+        self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ path computation and signaling methods
     self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_tunnels(self):
+    return self.__tunnels is not None
+
   def _get_tunnels(self):
     """
     Getter method for tunnels, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels (container)
 
     YANG Description: Enclosing container for tunnels
     """
+    if self.__tunnels is None:
+        self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__tunnels
       
   def _set_tunnels(self, v, load=False):
@@ -128,6 +141,9 @@ path computation and signaling methods
 
     YANG Description: Enclosing container for tunnels
     """
+    if self.__tunnels is None:
+        self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ path computation and signaling methods
     self._path_helper = False
 
     self._extmethods = False
-    self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__named_explicit_paths = None
+    self.__tunnels = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,12 +222,17 @@ path computation and signaling methods
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path']
 
+  def _initialized_named_explicit_paths(self):
+    return self.__named_explicit_paths is not None
+
   def _get_named_explicit_paths(self):
     """
     Getter method for named_explicit_paths, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths (container)
 
     YANG Description: Enclosing container for the named explicit paths
     """
+    if self.__named_explicit_paths is None:
+        self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__named_explicit_paths
       
   def _set_named_explicit_paths(self, v, load=False):
@@ -224,6 +245,9 @@ path computation and signaling methods
 
     YANG Description: Enclosing container for the named explicit paths
     """
+    if self.__named_explicit_paths is None:
+        self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ path computation and signaling methods
     self.__named_explicit_paths = YANGDynClass(base=named_explicit_paths.named_explicit_paths, is_container='container', yang_name="named-explicit-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_tunnels(self):
+    return self.__tunnels is not None
+
   def _get_tunnels(self):
     """
     Getter method for tunnels, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels (container)
 
     YANG Description: Enclosing container for tunnels
     """
+    if self.__tunnels is None:
+        self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__tunnels
       
   def _set_tunnels(self, v, load=False):
@@ -261,6 +290,9 @@ path computation and signaling methods
 
     YANG Description: Enclosing container for tunnels
     """
+    if self.__tunnels is None:
+        self.__tunnels = YANGDynClass(base=tunnels.tunnels, is_container='container', yang_name="tunnels", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

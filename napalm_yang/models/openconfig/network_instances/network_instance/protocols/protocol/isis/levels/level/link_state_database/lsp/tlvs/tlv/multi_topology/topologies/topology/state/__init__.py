@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__MT_ID = None
+    self.__attributes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'multi-topology', u'topologies', u'topology', u'state']
 
+  def _initialized_MT_ID(self):
+    return self.__MT_ID is not None
+
   def _get_MT_ID(self):
     """
     Getter method for MT_ID, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/topologies/topology/state/MT_ID (uint16)
 
     YANG Description: Multi-topology ID.
     """
+    if self.__MT_ID is None:
+        self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__MT_ID
       
   def _set_MT_ID(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: Multi-topology ID.
     """
+    if self.__MT_ID is None:
+        self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,12 +115,17 @@ class state(PybindBase):
     self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_attributes(self):
+    return self.__attributes is not None
+
   def _get_attributes(self):
     """
     Getter method for attributes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/topologies/topology/state/attributes (enumeration)
 
     YANG Description: Attributes of the LSP for the associated topology.
     """
+    if self.__attributes is None:
+        self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__attributes
       
   def _set_attributes(self, v, load=False):
@@ -125,6 +138,9 @@ class state(PybindBase):
 
     YANG Description: Attributes of the LSP for the associated topology.
     """
+    if self.__attributes is None:
+        self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -170,8 +186,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__MT_ID = None
+    self.__attributes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -200,12 +216,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'multi-topology', u'topologies', u'topology', u'state']
 
+  def _initialized_MT_ID(self):
+    return self.__MT_ID is not None
+
   def _get_MT_ID(self):
     """
     Getter method for MT_ID, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/topologies/topology/state/MT_ID (uint16)
 
     YANG Description: Multi-topology ID.
     """
+    if self.__MT_ID is None:
+        self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__MT_ID
       
   def _set_MT_ID(self, v, load=False):
@@ -218,6 +239,9 @@ class state(PybindBase):
 
     YANG Description: Multi-topology ID.
     """
+    if self.__MT_ID is None:
+        self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +261,17 @@ class state(PybindBase):
     self.__MT_ID = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0 .. 4095']}), is_leaf=True, yang_name="MT-ID", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_attributes(self):
+    return self.__attributes is not None
+
   def _get_attributes(self):
     """
     Getter method for attributes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/topologies/topology/state/attributes (enumeration)
 
     YANG Description: Attributes of the LSP for the associated topology.
     """
+    if self.__attributes is None:
+        self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__attributes
       
   def _set_attributes(self, v, load=False):
@@ -255,6 +284,9 @@ class state(PybindBase):
 
     YANG Description: Attributes of the LSP for the associated topology.
     """
+    if self.__attributes is None:
+        self.__attributes = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED': {}, u'OVERLOAD': {}},), is_leaf=True, yang_name="attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

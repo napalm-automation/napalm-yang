@@ -41,7 +41,7 @@ related to an interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ related to an interface.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/config/interface_id (string)
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -88,6 +93,9 @@ related to an interface.
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ related to an interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ related to an interface.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/config/interface_id (string)
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -180,6 +193,9 @@ related to an interface.
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

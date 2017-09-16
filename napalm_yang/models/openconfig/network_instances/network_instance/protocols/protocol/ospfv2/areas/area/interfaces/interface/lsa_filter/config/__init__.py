@@ -41,7 +41,7 @@ on the specified interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__all = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ on the specified interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'lsa-filter', u'config']
 
+  def _initialized_all(self):
+    return self.__all is not None
+
   def _get_all(self):
     """
     Getter method for all, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/lsa_filter/config/all (boolean)
@@ -78,6 +81,8 @@ on the specified interface.
 filtered to the neighbours with whom adjacencies are
 formed on the interface.
     """
+    if self.__all is None:
+        self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__all
       
   def _set_all(self, v, load=False):
@@ -92,6 +97,9 @@ formed on the interface.
 filtered to the neighbours with whom adjacencies are
 formed on the interface.
     """
+    if self.__all is None:
+        self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ on the specified interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__all = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ on the specified interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'lsa-filter', u'config']
 
+  def _initialized_all(self):
+    return self.__all is not None
+
   def _get_all(self):
     """
     Getter method for all, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/lsa_filter/config/all (boolean)
@@ -174,6 +185,8 @@ on the specified interface.
 filtered to the neighbours with whom adjacencies are
 formed on the interface.
     """
+    if self.__all is None:
+        self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__all
       
   def _set_all(self, v, load=False):
@@ -188,6 +201,9 @@ formed on the interface.
 filtered to the neighbours with whom adjacencies are
 formed on the interface.
     """
+    if self.__all is None:
+        self.__all = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="all", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

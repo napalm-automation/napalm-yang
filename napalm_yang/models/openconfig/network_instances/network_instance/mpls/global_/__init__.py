@@ -46,10 +46,10 @@ entropy label supportmay be added here
     self._path_helper = False
 
     self._extmethods = False
-    self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__reserved_label_blocks = None
+    self.__state = None
+    self.__interface_attributes = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,12 +78,17 @@ entropy label supportmay be added here
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/global/config (container)
 
     YANG Description: Top level global MPLS configuration
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -96,6 +101,9 @@ entropy label supportmay be added here
 
     YANG Description: Top level global MPLS configuration
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,12 +123,17 @@ entropy label supportmay be added here
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/global/state (container)
 
     YANG Description: Top level global MPLS state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -133,6 +146,9 @@ entropy label supportmay be added here
 
     YANG Description: Top level global MPLS state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ entropy label supportmay be added here
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_attributes(self):
+    return self.__interface_attributes is not None
+
   def _get_interface_attributes(self):
     """
     Getter method for interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes (container)
 
     YANG Description: Parameters related to MPLS interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_attributes
       
   def _set_interface_attributes(self, v, load=False):
@@ -170,6 +191,9 @@ entropy label supportmay be added here
 
     YANG Description: Parameters related to MPLS interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,6 +213,9 @@ entropy label supportmay be added here
     self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_reserved_label_blocks(self):
+    return self.__reserved_label_blocks is not None
+
   def _get_reserved_label_blocks(self):
     """
     Getter method for reserved_label_blocks, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks (container)
@@ -199,6 +226,8 @@ not be utilised by any dynamic label allocation on the local system unless
 the allocating protocol is explicitly configured to specify that
 allocation of labels should be out of the label block specified.
     """
+    if self.__reserved_label_blocks is None:
+        self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__reserved_label_blocks
       
   def _set_reserved_label_blocks(self, v, load=False):
@@ -215,6 +244,9 @@ not be utilised by any dynamic label allocation on the local system unless
 the allocating protocol is explicitly configured to specify that
 allocation of labels should be out of the label block specified.
     """
+    if self.__reserved_label_blocks is None:
+        self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -268,10 +300,10 @@ entropy label supportmay be added here
     self._path_helper = False
 
     self._extmethods = False
-    self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__reserved_label_blocks = None
+    self.__state = None
+    self.__interface_attributes = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -300,12 +332,17 @@ entropy label supportmay be added here
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/global/config (container)
 
     YANG Description: Top level global MPLS configuration
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -318,6 +355,9 @@ entropy label supportmay be added here
 
     YANG Description: Top level global MPLS configuration
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -337,12 +377,17 @@ entropy label supportmay be added here
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/global/state (container)
 
     YANG Description: Top level global MPLS state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -355,6 +400,9 @@ entropy label supportmay be added here
 
     YANG Description: Top level global MPLS state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,12 +422,17 @@ entropy label supportmay be added here
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_attributes(self):
+    return self.__interface_attributes is not None
+
   def _get_interface_attributes(self):
     """
     Getter method for interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes (container)
 
     YANG Description: Parameters related to MPLS interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_attributes
       
   def _set_interface_attributes(self, v, load=False):
@@ -392,6 +445,9 @@ entropy label supportmay be added here
 
     YANG Description: Parameters related to MPLS interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -411,6 +467,9 @@ entropy label supportmay be added here
     self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_reserved_label_blocks(self):
+    return self.__reserved_label_blocks is not None
+
   def _get_reserved_label_blocks(self):
     """
     Getter method for reserved_label_blocks, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks (container)
@@ -421,6 +480,8 @@ not be utilised by any dynamic label allocation on the local system unless
 the allocating protocol is explicitly configured to specify that
 allocation of labels should be out of the label block specified.
     """
+    if self.__reserved_label_blocks is None:
+        self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__reserved_label_blocks
       
   def _set_reserved_label_blocks(self, v, load=False):
@@ -437,6 +498,9 @@ not be utilised by any dynamic label allocation on the local system unless
 the allocating protocol is explicitly configured to specify that
 allocation of labels should be out of the label block specified.
     """
+    if self.__reserved_label_blocks is None:
+        self.__reserved_label_blocks = YANGDynClass(base=reserved_label_blocks.reserved_label_blocks, is_container='container', yang_name="reserved-label-blocks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

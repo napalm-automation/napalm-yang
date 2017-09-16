@@ -41,7 +41,7 @@ class afi_safis(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__afi_safi = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class afi_safis(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis']
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi (list)
@@ -77,6 +80,8 @@ class afi_safis(PybindBase):
     YANG Description: AFI,SAFI configuration available for the
 neighbour or group
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -90,6 +95,9 @@ neighbour or group
     YANG Description: AFI,SAFI configuration available for the
 neighbour or group
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class afi_safis(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__afi_safi = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class afi_safis(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'afi-safis']
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/afi_safis/afi_safi (list)
@@ -171,6 +182,8 @@ class afi_safis(PybindBase):
     YANG Description: AFI,SAFI configuration available for the
 neighbour or group
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -184,6 +197,9 @@ neighbour or group
     YANG Description: AFI,SAFI configuration available for the
 neighbour or group
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=YANGListType("afi_safi_name",afi_safi.afi_safi, yang_name="afi-safi", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-safi-name', extensions=None), is_container='list', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

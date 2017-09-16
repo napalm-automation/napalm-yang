@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__segment_routing_algorithm = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability', u'subtlvs', u'subtlvs', u'segment-routing-algorithm', u'state']
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_algorithm/state/segment_routing_algorithm (enumeration)
 
     YANG Description: Segment routing algorithm.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -87,6 +92,9 @@ class state(PybindBase):
 
     YANG Description: Segment routing algorithm.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__segment_routing_algorithm = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability', u'subtlvs', u'subtlvs', u'segment-routing-algorithm', u'state']
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_algorithm/state/segment_routing_algorithm (enumeration)
 
     YANG Description: Segment routing algorithm.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -178,6 +191,9 @@ class state(PybindBase):
 
     YANG Description: Segment routing algorithm.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT_SPF': {}, u'SPF': {}},), is_leaf=True, yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

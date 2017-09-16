@@ -42,7 +42,7 @@ IP interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__vrrp_group = YANGDynClass(base=YANGListType("virtual_router_id",vrrp_group.vrrp_group, yang_name="vrrp-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='virtual-router-id', extensions=None), is_container='list', yang_name="vrrp-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    self.__vrrp_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ IP interface
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv6', u'addresses', u'address', u'vrrp']
 
+  def _initialized_vrrp_group(self):
+    return self.__vrrp_group is not None
+
   def _get_vrrp_group(self):
     """
     Getter method for vrrp_group, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp/vrrp_group (list)
 
     YANG Description: List of VRRP groups, keyed by virtual router id
     """
+    if self.__vrrp_group is None:
+        self.__vrrp_group = YANGDynClass(base=YANGListType("virtual_router_id",vrrp_group.vrrp_group, yang_name="vrrp-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='virtual-router-id', extensions=None), is_container='list', yang_name="vrrp-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
     return self.__vrrp_group
       
   def _set_vrrp_group(self, v, load=False):
@@ -89,6 +94,9 @@ IP interface
 
     YANG Description: List of VRRP groups, keyed by virtual router id
     """
+    if self.__vrrp_group is None:
+        self.__vrrp_group = YANGDynClass(base=YANGListType("virtual_router_id",vrrp_group.vrrp_group, yang_name="vrrp-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='virtual-router-id', extensions=None), is_container='list', yang_name="vrrp-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

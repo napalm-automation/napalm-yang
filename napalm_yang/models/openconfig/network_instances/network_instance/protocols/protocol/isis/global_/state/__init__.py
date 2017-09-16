@@ -40,15 +40,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
-    self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
+    self.__poi_tlv = None
+    self.__level_capability = None
+    self.__max_ecmp_paths = None
+    self.__fast_flooding = None
+    self.__instance = None
+    self.__iid_tlv = None
+    self.__authentication_check = None
+    self.__maximum_area_addresses = None
+    self.__net = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'state']
 
+  def _initialized_authentication_check(self):
+    return self.__authentication_check is not None
+
   def _get_authentication_check(self):
     """
     Getter method for authentication_check, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/authentication_check (boolean)
@@ -84,6 +87,8 @@ class state(PybindBase):
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__authentication_check
       
   def _set_authentication_check(self, v, load=False):
@@ -97,6 +102,9 @@ in authentication-type or authentication-key.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,12 +124,17 @@ in authentication-type or authentication-key.
     self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_instance(self):
+    return self.__instance is not None
+
   def _get_instance(self):
     """
     Getter method for instance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/instance (string)
 
     YANG Description: ISIS Instance.
     """
+    if self.__instance is None:
+        self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__instance
       
   def _set_instance(self, v, load=False):
@@ -134,6 +147,9 @@ in authentication-type or authentication-key.
 
     YANG Description: ISIS Instance.
     """
+    if self.__instance is None:
+        self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ in authentication-type or authentication-key.
     self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_net(self):
+    return self.__net is not None
+
   def _get_net(self):
     """
     Getter method for net, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/net (oc-isis-types:net)
@@ -161,6 +180,8 @@ in authentication-type or authentication-key.
 49 (private AFI), next 16 bits represent area, next 48 bits represent
 system id and final 8 bits are set to 0.
     """
+    if self.__net is None:
+        self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
     return self.__net
       
   def _set_net(self, v, load=False):
@@ -175,6 +196,9 @@ system id and final 8 bits are set to 0.
 49 (private AFI), next 16 bits represent area, next 48 bits represent
 system id and final 8 bits are set to 0.
     """
+    if self.__net is None:
+        self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,12 +218,17 @@ system id and final 8 bits are set to 0.
     self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
 
 
+  def _initialized_maximum_area_addresses(self):
+    return self.__maximum_area_addresses is not None
+
   def _get_maximum_area_addresses(self):
     """
     Getter method for maximum_area_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/maximum_area_addresses (uint8)
 
     YANG Description: Maximum areas supported.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__maximum_area_addresses
       
   def _set_maximum_area_addresses(self, v, load=False):
@@ -212,6 +241,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: Maximum areas supported.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -231,12 +263,17 @@ system id and final 8 bits are set to 0.
     self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_level_capability(self):
+    return self.__level_capability is not None
+
   def _get_level_capability(self):
     """
     Getter method for level_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/level_capability (oc-isis-types:level-type)
 
     YANG Description: ISIS level capability(level-1, level-2,vlevel-1-2).
     """
+    if self.__level_capability is None:
+        self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__level_capability
       
   def _set_level_capability(self, v, load=False):
@@ -249,6 +286,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: ISIS level capability(level-1, level-2,vlevel-1-2).
     """
+    if self.__level_capability is None:
+        self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -268,12 +308,17 @@ system id and final 8 bits are set to 0.
     self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_max_ecmp_paths(self):
+    return self.__max_ecmp_paths is not None
+
   def _get_max_ecmp_paths(self):
     """
     Getter method for max_ecmp_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/max_ecmp_paths (uint8)
 
     YANG Description: ISIS max-paths count.
     """
+    if self.__max_ecmp_paths is None:
+        self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__max_ecmp_paths
       
   def _set_max_ecmp_paths(self, v, load=False):
@@ -286,6 +331,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: ISIS max-paths count.
     """
+    if self.__max_ecmp_paths is None:
+        self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -305,6 +353,9 @@ system id and final 8 bits are set to 0.
     self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_poi_tlv(self):
+    return self.__poi_tlv is not None
+
   def _get_poi_tlv(self):
     """
     Getter method for poi_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/poi_tlv (boolean)
@@ -312,6 +363,8 @@ system id and final 8 bits are set to 0.
     YANG Description: ISIS purge TLV. When set to true, a TLV is added to purges to record
 the system ID  of the IS generating the purge.
     """
+    if self.__poi_tlv is None:
+        self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__poi_tlv
       
   def _set_poi_tlv(self, v, load=False):
@@ -325,6 +378,9 @@ the system ID  of the IS generating the purge.
     YANG Description: ISIS purge TLV. When set to true, a TLV is added to purges to record
 the system ID  of the IS generating the purge.
     """
+    if self.__poi_tlv is None:
+        self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -344,6 +400,9 @@ the system ID  of the IS generating the purge.
     self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_iid_tlv(self):
+    return self.__iid_tlv is not None
+
   def _get_iid_tlv(self):
     """
     Getter method for iid_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/iid_tlv (boolean)
@@ -352,6 +411,8 @@ the system ID  of the IS generating the purge.
 the unique instance as well as the topology/topologies to which the
 PDU applies.
     """
+    if self.__iid_tlv is None:
+        self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__iid_tlv
       
   def _set_iid_tlv(self, v, load=False):
@@ -366,6 +427,9 @@ PDU applies.
 the unique instance as well as the topology/topologies to which the
 PDU applies.
     """
+    if self.__iid_tlv is None:
+        self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -385,6 +449,9 @@ PDU applies.
     self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_fast_flooding(self):
+    return self.__fast_flooding is not None
+
   def _get_fast_flooding(self):
     """
     Getter method for fast_flooding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/fast_flooding (boolean)
@@ -392,6 +459,8 @@ PDU applies.
     YANG Description: When set to true, IS will always flood the LSP that triggered an SPF
 before the router actually runs the SPF computation.
     """
+    if self.__fast_flooding is None:
+        self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__fast_flooding
       
   def _set_fast_flooding(self, v, load=False):
@@ -405,6 +474,9 @@ before the router actually runs the SPF computation.
     YANG Description: When set to true, IS will always flood the LSP that triggered an SPF
 before the router actually runs the SPF computation.
     """
+    if self.__fast_flooding is None:
+        self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -457,15 +529,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
-    self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
+    self.__poi_tlv = None
+    self.__level_capability = None
+    self.__max_ecmp_paths = None
+    self.__fast_flooding = None
+    self.__instance = None
+    self.__iid_tlv = None
+    self.__authentication_check = None
+    self.__maximum_area_addresses = None
+    self.__net = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -494,6 +566,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'state']
 
+  def _initialized_authentication_check(self):
+    return self.__authentication_check is not None
+
   def _get_authentication_check(self):
     """
     Getter method for authentication_check, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/authentication_check (boolean)
@@ -501,6 +576,8 @@ class state(PybindBase):
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__authentication_check
       
   def _set_authentication_check(self, v, load=False):
@@ -514,6 +591,9 @@ in authentication-type or authentication-key.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -533,12 +613,17 @@ in authentication-type or authentication-key.
     self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_instance(self):
+    return self.__instance is not None
+
   def _get_instance(self):
     """
     Getter method for instance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/instance (string)
 
     YANG Description: ISIS Instance.
     """
+    if self.__instance is None:
+        self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__instance
       
   def _set_instance(self, v, load=False):
@@ -551,6 +636,9 @@ in authentication-type or authentication-key.
 
     YANG Description: ISIS Instance.
     """
+    if self.__instance is None:
+        self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -570,6 +658,9 @@ in authentication-type or authentication-key.
     self.__instance = YANGDynClass(base=unicode, default=unicode("0"), is_leaf=True, yang_name="instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_net(self):
+    return self.__net is not None
+
   def _get_net(self):
     """
     Getter method for net, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/net (oc-isis-types:net)
@@ -578,6 +669,8 @@ in authentication-type or authentication-key.
 49 (private AFI), next 16 bits represent area, next 48 bits represent
 system id and final 8 bits are set to 0.
     """
+    if self.__net is None:
+        self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
     return self.__net
       
   def _set_net(self, v, load=False):
@@ -592,6 +685,9 @@ system id and final 8 bits are set to 0.
 49 (private AFI), next 16 bits represent area, next 48 bits represent
 system id and final 8 bits are set to 0.
     """
+    if self.__net is None:
+        self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -611,12 +707,17 @@ system id and final 8 bits are set to 0.
     self.__net = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[a-fA-F0-9]{2}(\\.[a-fA-F0-9]{4}){3,9}\\.[a-fA-F0-9]{2}'})), is_leaf=False, yang_name="net", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:net', is_config=False)
 
 
+  def _initialized_maximum_area_addresses(self):
+    return self.__maximum_area_addresses is not None
+
   def _get_maximum_area_addresses(self):
     """
     Getter method for maximum_area_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/maximum_area_addresses (uint8)
 
     YANG Description: Maximum areas supported.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__maximum_area_addresses
       
   def _set_maximum_area_addresses(self, v, load=False):
@@ -629,6 +730,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: Maximum areas supported.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -648,12 +752,17 @@ system id and final 8 bits are set to 0.
     self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(3), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_level_capability(self):
+    return self.__level_capability is not None
+
   def _get_level_capability(self):
     """
     Getter method for level_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/level_capability (oc-isis-types:level-type)
 
     YANG Description: ISIS level capability(level-1, level-2,vlevel-1-2).
     """
+    if self.__level_capability is None:
+        self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
     return self.__level_capability
       
   def _set_level_capability(self, v, load=False):
@@ -666,6 +775,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: ISIS level capability(level-1, level-2,vlevel-1-2).
     """
+    if self.__level_capability is None:
+        self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -685,12 +797,17 @@ system id and final 8 bits are set to 0.
     self.__level_capability = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1_2': {}, u'LEVEL_1': {}, u'LEVEL_2': {}},), default=unicode("LEVEL_1_2"), is_leaf=True, yang_name="level-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-type', is_config=False)
 
 
+  def _initialized_max_ecmp_paths(self):
+    return self.__max_ecmp_paths is not None
+
   def _get_max_ecmp_paths(self):
     """
     Getter method for max_ecmp_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/max_ecmp_paths (uint8)
 
     YANG Description: ISIS max-paths count.
     """
+    if self.__max_ecmp_paths is None:
+        self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__max_ecmp_paths
       
   def _set_max_ecmp_paths(self, v, load=False):
@@ -703,6 +820,9 @@ system id and final 8 bits are set to 0.
 
     YANG Description: ISIS max-paths count.
     """
+    if self.__max_ecmp_paths is None:
+        self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -722,6 +842,9 @@ system id and final 8 bits are set to 0.
     self.__max_ecmp_paths = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="max-ecmp-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_poi_tlv(self):
+    return self.__poi_tlv is not None
+
   def _get_poi_tlv(self):
     """
     Getter method for poi_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/poi_tlv (boolean)
@@ -729,6 +852,8 @@ system id and final 8 bits are set to 0.
     YANG Description: ISIS purge TLV. When set to true, a TLV is added to purges to record
 the system ID  of the IS generating the purge.
     """
+    if self.__poi_tlv is None:
+        self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__poi_tlv
       
   def _set_poi_tlv(self, v, load=False):
@@ -742,6 +867,9 @@ the system ID  of the IS generating the purge.
     YANG Description: ISIS purge TLV. When set to true, a TLV is added to purges to record
 the system ID  of the IS generating the purge.
     """
+    if self.__poi_tlv is None:
+        self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -761,6 +889,9 @@ the system ID  of the IS generating the purge.
     self.__poi_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="poi-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_iid_tlv(self):
+    return self.__iid_tlv is not None
+
   def _get_iid_tlv(self):
     """
     Getter method for iid_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/iid_tlv (boolean)
@@ -769,6 +900,8 @@ the system ID  of the IS generating the purge.
 the unique instance as well as the topology/topologies to which the
 PDU applies.
     """
+    if self.__iid_tlv is None:
+        self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__iid_tlv
       
   def _set_iid_tlv(self, v, load=False):
@@ -783,6 +916,9 @@ PDU applies.
 the unique instance as well as the topology/topologies to which the
 PDU applies.
     """
+    if self.__iid_tlv is None:
+        self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -802,6 +938,9 @@ PDU applies.
     self.__iid_tlv = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iid-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_fast_flooding(self):
+    return self.__fast_flooding is not None
+
   def _get_fast_flooding(self):
     """
     Getter method for fast_flooding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state/fast_flooding (boolean)
@@ -809,6 +948,8 @@ PDU applies.
     YANG Description: When set to true, IS will always flood the LSP that triggered an SPF
 before the router actually runs the SPF computation.
     """
+    if self.__fast_flooding is None:
+        self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__fast_flooding
       
   def _set_fast_flooding(self, v, load=False):
@@ -822,6 +963,9 @@ before the router actually runs the SPF computation.
     YANG Description: When set to true, IS will always flood the LSP that triggered an SPF
 before the router actually runs the SPF computation.
     """
+    if self.__fast_flooding is None:
+        self.__fast_flooding = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="fast-flooding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -42,7 +42,7 @@ with the forwarding entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__next_hop = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ with the forwarding entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops']
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop (list)
@@ -81,6 +84,8 @@ next-hops that are actively used by the local system.
 That is to say inactive, backup or FRR next-hops should
 not be included within this list.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -97,6 +102,9 @@ next-hops that are actively used by the local system.
 That is to say inactive, backup or FRR next-hops should
 not be included within this list.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -143,7 +151,7 @@ with the forwarding entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__next_hop = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -172,6 +180,9 @@ with the forwarding entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops']
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop (list)
@@ -182,6 +193,8 @@ next-hops that are actively used by the local system.
 That is to say inactive, backup or FRR next-hops should
 not be included within this list.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -198,6 +211,9 @@ next-hops that are actively used by the local system.
 That is to say inactive, backup or FRR next-hops should
 not be included within this list.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=YANGListType("index",next_hop.next_hop, yang_name="next-hop", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

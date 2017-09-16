@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
+    self.__name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class config(PybindBase):
     else:
       return [u'components', u'component', u'subcomponents', u'subcomponent', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /components/component/subcomponents/subcomponent/config/name (leafref)
 
     YANG Description: Reference to the name of the subcomponent
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -87,6 +92,9 @@ class config(PybindBase):
 
     YANG Description: Reference to the name of the subcomponent
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

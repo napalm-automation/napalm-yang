@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
-    self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__default_metric = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-external-reachability', u'prefixes', u'prefixes', u'default-metric', u'state']
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/default_metric/state/flags (enumeration)
 
     YANG Description: ISIS Default-Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: ISIS Default-Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,6 +115,9 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/default_metric/state/default_metric (oc-isis-types:narrow-metric)
@@ -119,6 +130,8 @@ convention is intended to measure the capacity of the circuit for
 handling traffic, for example, its throughput in  bits-per-second.
 Higher values indicate a lower capacity.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -137,6 +150,9 @@ convention is intended to measure the capacity of the circuit for
 handling traffic, for example, its throughput in  bits-per-second.
 Higher values indicate a lower capacity.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -182,8 +198,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
-    self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__default_metric = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -212,12 +228,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-external-reachability', u'prefixes', u'prefixes', u'default-metric', u'state']
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/default_metric/state/flags (enumeration)
 
     YANG Description: ISIS Default-Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -230,6 +251,9 @@ class state(PybindBase):
 
     YANG Description: ISIS Default-Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,6 +273,9 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}},), is_leaf=True, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/default_metric/state/default_metric (oc-isis-types:narrow-metric)
@@ -261,6 +288,8 @@ convention is intended to measure the capacity of the circuit for
 handling traffic, for example, its throughput in  bits-per-second.
 Higher values indicate a lower capacity.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -279,6 +308,9 @@ convention is intended to measure the capacity of the circuit for
 handling traffic, for example, its throughput in  bits-per-second.
 Higher values indicate a lower capacity.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

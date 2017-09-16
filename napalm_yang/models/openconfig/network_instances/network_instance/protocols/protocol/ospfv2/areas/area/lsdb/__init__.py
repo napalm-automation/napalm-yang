@@ -42,8 +42,8 @@ class lsdb(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__lsa_types = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class lsdb(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/state (container)
@@ -79,6 +82,8 @@ class lsdb(PybindBase):
     YANG Description: Operational state parameters relating to the OSPFv2
 area
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -92,6 +97,9 @@ area
     YANG Description: Operational state parameters relating to the OSPFv2
 area
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ area
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_lsa_types(self):
+    return self.__lsa_types is not None
+
   def _get_lsa_types(self):
     """
     Getter method for lsa_types, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types (container)
@@ -118,6 +129,8 @@ area
     YANG Description: Enclosing container for a list of LSA types that are
 in the LSDB for the specified area
     """
+    if self.__lsa_types is None:
+        self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__lsa_types
       
   def _set_lsa_types(self, v, load=False):
@@ -131,6 +144,9 @@ in the LSDB for the specified area
     YANG Description: Enclosing container for a list of LSA types that are
 in the LSDB for the specified area
     """
+    if self.__lsa_types is None:
+        self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ class lsdb(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__lsa_types = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ class lsdb(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/state (container)
@@ -215,6 +234,8 @@ class lsdb(PybindBase):
     YANG Description: Operational state parameters relating to the OSPFv2
 area
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -228,6 +249,9 @@ area
     YANG Description: Operational state parameters relating to the OSPFv2
 area
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ area
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_lsa_types(self):
+    return self.__lsa_types is not None
+
   def _get_lsa_types(self):
     """
     Getter method for lsa_types, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types (container)
@@ -254,6 +281,8 @@ area
     YANG Description: Enclosing container for a list of LSA types that are
 in the LSDB for the specified area
     """
+    if self.__lsa_types is None:
+        self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__lsa_types
       
   def _set_lsa_types(self, v, load=False):
@@ -267,6 +296,9 @@ in the LSDB for the specified area
     YANG Description: Enclosing container for a list of LSA types that are
 in the LSDB for the specified area
     """
+    if self.__lsa_types is None:
+        self.__lsa_types = YANGDynClass(base=lsa_types.lsa_types, is_container='container', yang_name="lsa-types", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

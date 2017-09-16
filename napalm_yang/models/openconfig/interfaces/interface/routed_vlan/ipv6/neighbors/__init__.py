@@ -41,7 +41,7 @@ class neighbors(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType("ip",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    self.__neighbor = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class neighbors(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv6', u'neighbors']
 
+  def _initialized_neighbor(self):
+    return self.__neighbor is not None
+
   def _get_neighbor(self):
     """
     Getter method for neighbor, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/neighbors/neighbor (list)
 
     YANG Description: List of IPv6 neighbors
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("ip",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
     return self.__neighbor
       
   def _set_neighbor(self, v, load=False):
@@ -88,6 +93,9 @@ class neighbors(PybindBase):
 
     YANG Description: List of IPv6 neighbors
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("ip",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

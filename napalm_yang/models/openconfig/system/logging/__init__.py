@@ -42,8 +42,8 @@ class logging(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__console = YANGDynClass(base=console.console, is_container='container', yang_name="console", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__remote_servers = YANGDynClass(base=remote_servers.remote_servers, is_container='container', yang_name="remote-servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__console = None
+    self.__remote_servers = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class logging(PybindBase):
     else:
       return [u'system', u'logging']
 
+  def _initialized_console(self):
+    return self.__console is not None
+
   def _get_console(self):
     """
     Getter method for console, mapped from YANG variable /system/logging/console (container)
@@ -79,6 +82,8 @@ class logging(PybindBase):
     YANG Description: Top-level container for data related to console-based
 logging
     """
+    if self.__console is None:
+        self.__console = YANGDynClass(base=console.console, is_container='container', yang_name="console", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__console
       
   def _set_console(self, v, load=False):
@@ -92,6 +97,9 @@ logging
     YANG Description: Top-level container for data related to console-based
 logging
     """
+    if self.__console is None:
+        self.__console = YANGDynClass(base=console.console, is_container='container', yang_name="console", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ logging
     self.__console = YANGDynClass(base=console.console, is_container='container', yang_name="console", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_remote_servers(self):
+    return self.__remote_servers is not None
+
   def _get_remote_servers(self):
     """
     Getter method for remote_servers, mapped from YANG variable /system/logging/remote_servers (container)
 
     YANG Description: Enclosing container for the list of remote log servers
     """
+    if self.__remote_servers is None:
+        self.__remote_servers = YANGDynClass(base=remote_servers.remote_servers, is_container='container', yang_name="remote-servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__remote_servers
       
   def _set_remote_servers(self, v, load=False):
@@ -129,6 +142,9 @@ logging
 
     YANG Description: Enclosing container for the list of remote log servers
     """
+    if self.__remote_servers is None:
+        self.__remote_servers = YANGDynClass(base=remote_servers.remote_servers, is_container='container', yang_name="remote-servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

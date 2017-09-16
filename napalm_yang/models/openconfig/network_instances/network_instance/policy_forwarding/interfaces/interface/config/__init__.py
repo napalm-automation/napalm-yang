@@ -41,8 +41,8 @@ policy forwarding rule binding.
     self._path_helper = False
 
     self._extmethods = False
-    self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__apply_forwarding_policy = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ policy forwarding rule binding.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'interfaces', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -89,6 +94,9 @@ policy forwarding rule binding.
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ policy forwarding rule binding.
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_apply_forwarding_policy(self):
+    return self.__apply_forwarding_policy is not None
+
   def _get_apply_forwarding_policy(self):
     """
     Getter method for apply_forwarding_policy, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces/interface/config/apply_forwarding_policy (leafref)
@@ -120,6 +131,8 @@ applied. These policies should be applied following quality of
 service classification, and ACL actions if such entities are
 referenced by the corresponding interface.
     """
+    if self.__apply_forwarding_policy is None:
+        self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__apply_forwarding_policy
       
   def _set_apply_forwarding_policy(self, v, load=False):
@@ -138,6 +151,9 @@ applied. These policies should be applied following quality of
 service classification, and ACL actions if such entities are
 referenced by the corresponding interface.
     """
+    if self.__apply_forwarding_policy is None:
+        self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -184,8 +200,8 @@ policy forwarding rule binding.
     self._path_helper = False
 
     self._extmethods = False
-    self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__apply_forwarding_policy = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -214,12 +230,17 @@ policy forwarding rule binding.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'interfaces', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -232,6 +253,9 @@ policy forwarding rule binding.
 
     YANG Description: A unique identifier for the interface.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ policy forwarding rule binding.
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_apply_forwarding_policy(self):
+    return self.__apply_forwarding_policy is not None
+
   def _get_apply_forwarding_policy(self):
     """
     Getter method for apply_forwarding_policy, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces/interface/config/apply_forwarding_policy (leafref)
@@ -263,6 +290,8 @@ applied. These policies should be applied following quality of
 service classification, and ACL actions if such entities are
 referenced by the corresponding interface.
     """
+    if self.__apply_forwarding_policy is None:
+        self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__apply_forwarding_policy
       
   def _set_apply_forwarding_policy(self, v, load=False):
@@ -281,6 +310,9 @@ applied. These policies should be applied following quality of
 service classification, and ACL actions if such entities are
 referenced by the corresponding interface.
     """
+    if self.__apply_forwarding_policy is None:
+        self.__apply_forwarding_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="apply-forwarding-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

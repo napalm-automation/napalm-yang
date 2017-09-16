@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__type = None
+    self.__range_size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'segment-routing-sid-label-range', u'tlvs', u'tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/state/type (union)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: The type of the sub-TLV received by the local system within the
 SR SID/Label Range TLV of the RI LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -90,6 +95,9 @@ SR SID/Label Range TLV of the RI LSA
     YANG Description: The type of the sub-TLV received by the local system within the
 SR SID/Label Range TLV of the RI LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ SR SID/Label Range TLV of the RI LSA
     self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_range_size(self):
+    return self.__range_size is not None
+
   def _get_range_size(self):
     """
     Getter method for range_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/state/range_size (uint32)
@@ -116,6 +127,8 @@ SR SID/Label Range TLV of the RI LSA
     YANG Description: The number of entries within the range being described within the
 SID/Label range TLV
     """
+    if self.__range_size is None:
+        self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__range_size
       
   def _set_range_size(self, v, load=False):
@@ -129,6 +142,9 @@ SID/Label range TLV
     YANG Description: The number of entries within the range being described within the
 SID/Label range TLV
     """
+    if self.__range_size is None:
+        self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__type = None
+    self.__range_size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'segment-routing-sid-label-range', u'tlvs', u'tlv', u'state']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/state/type (union)
@@ -211,6 +230,8 @@ class state(PybindBase):
     YANG Description: The type of the sub-TLV received by the local system within the
 SR SID/Label Range TLV of the RI LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -224,6 +245,9 @@ SR SID/Label Range TLV of the RI LSA
     YANG Description: The type of the sub-TLV received by the local system within the
 SR SID/Label Range TLV of the RI LSA
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ SR SID/Label Range TLV of the RI LSA
     self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospf-types:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}, u'oc-ospft:SR_SID_LABEL_TLV': {'@namespace': u'http://openconfig.net/yang/ospf-types', '@module': u'openconfig-ospf-types'}},),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'UNKNOWN': {}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_range_size(self):
+    return self.__range_size is not None
+
   def _get_range_size(self):
     """
     Getter method for range_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/state/range_size (uint32)
@@ -250,6 +277,8 @@ SR SID/Label Range TLV of the RI LSA
     YANG Description: The number of entries within the range being described within the
 SID/Label range TLV
     """
+    if self.__range_size is None:
+        self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__range_size
       
   def _set_range_size(self, v, load=False):
@@ -263,6 +292,9 @@ SID/Label range TLV
     YANG Description: The number of entries within the range being described within the
 SID/Label range TLV
     """
+    if self.__range_size is None:
+        self.__range_size = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'0..16777216']}), is_leaf=True, yang_name="range-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

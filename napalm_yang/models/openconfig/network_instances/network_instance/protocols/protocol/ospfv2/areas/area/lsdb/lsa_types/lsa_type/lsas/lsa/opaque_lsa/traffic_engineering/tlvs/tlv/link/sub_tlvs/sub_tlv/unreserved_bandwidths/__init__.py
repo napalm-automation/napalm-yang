@@ -44,7 +44,7 @@ bandwidth
     self._path_helper = False
 
     self._extmethods = False
-    self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__unreserved_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ bandwidth
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'unreserved-bandwidths']
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth (list)
 
     YANG Description: The unreserved bandwidth at each priority level
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -91,6 +96,9 @@ bandwidth
 
     YANG Description: The unreserved bandwidth at each priority level
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -139,7 +147,7 @@ bandwidth
     self._path_helper = False
 
     self._extmethods = False
-    self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__unreserved_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -168,12 +176,17 @@ bandwidth
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'unreserved-bandwidths']
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth (list)
 
     YANG Description: The unreserved bandwidth at each priority level
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -186,6 +199,9 @@ bandwidth
 
     YANG Description: The unreserved bandwidth at each priority level
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=YANGListType("priority",unreserved_bandwidth.unreserved_bandwidth, yang_name="unreserved-bandwidth", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

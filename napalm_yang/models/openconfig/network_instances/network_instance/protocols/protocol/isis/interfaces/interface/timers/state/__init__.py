@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__lsp_pacing_interval = None
+    self.__csnp_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'timers', u'state']
 
+  def _initialized_csnp_interval(self):
+    return self.__csnp_interval is not None
+
   def _get_csnp_interval(self):
     """
     Getter method for csnp_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/timers/state/csnp_interval (uint16)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: The interval, specified in seconds, at which periodic CSNP packets
 should be transmitted by the local IS.
     """
+    if self.__csnp_interval is None:
+        self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__csnp_interval
       
   def _set_csnp_interval(self, v, load=False):
@@ -90,6 +95,9 @@ should be transmitted by the local IS.
     YANG Description: The interval, specified in seconds, at which periodic CSNP packets
 should be transmitted by the local IS.
     """
+    if self.__csnp_interval is None:
+        self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ should be transmitted by the local IS.
     self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_lsp_pacing_interval(self):
+    return self.__lsp_pacing_interval is not None
+
   def _get_lsp_pacing_interval(self):
     """
     Getter method for lsp_pacing_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/timers/state/lsp_pacing_interval (uint64)
@@ -116,6 +127,8 @@ should be transmitted by the local IS.
     YANG Description: The interval interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__lsp_pacing_interval is None:
+        self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_pacing_interval
       
   def _set_lsp_pacing_interval(self, v, load=False):
@@ -129,6 +142,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: The interval interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__lsp_pacing_interval is None:
+        self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__lsp_pacing_interval = None
+    self.__csnp_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'timers', u'state']
 
+  def _initialized_csnp_interval(self):
+    return self.__csnp_interval is not None
+
   def _get_csnp_interval(self):
     """
     Getter method for csnp_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/timers/state/csnp_interval (uint16)
@@ -211,6 +230,8 @@ class state(PybindBase):
     YANG Description: The interval, specified in seconds, at which periodic CSNP packets
 should be transmitted by the local IS.
     """
+    if self.__csnp_interval is None:
+        self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__csnp_interval
       
   def _set_csnp_interval(self, v, load=False):
@@ -224,6 +245,9 @@ should be transmitted by the local IS.
     YANG Description: The interval, specified in seconds, at which periodic CSNP packets
 should be transmitted by the local IS.
     """
+    if self.__csnp_interval is None:
+        self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ should be transmitted by the local IS.
     self.__csnp_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="csnp-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_lsp_pacing_interval(self):
+    return self.__lsp_pacing_interval is not None
+
   def _get_lsp_pacing_interval(self):
     """
     Getter method for lsp_pacing_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/timers/state/lsp_pacing_interval (uint64)
@@ -250,6 +277,8 @@ should be transmitted by the local IS.
     YANG Description: The interval interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__lsp_pacing_interval is None:
+        self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_pacing_interval
       
   def _set_lsp_pacing_interval(self, v, load=False):
@@ -263,6 +292,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: The interval interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__lsp_pacing_interval is None:
+        self.__lsp_pacing_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-pacing-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__received = None
+    self.__enabled = None
+    self.__advertised = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/enabled (boolean)
@@ -78,6 +81,8 @@ class state(PybindBase):
     YANG Description: This leaf indicates whether graceful-restart is enabled for
 this AFI-SAFI
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -91,6 +96,9 @@ this AFI-SAFI
     YANG Description: This leaf indicates whether graceful-restart is enabled for
 this AFI-SAFI
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ this AFI-SAFI
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/received (boolean)
@@ -117,6 +128,8 @@ this AFI-SAFI
     YANG Description: This leaf indicates whether the neighbor advertised the
 ability to support graceful-restart for this AFI-SAFI
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -130,6 +143,9 @@ ability to support graceful-restart for this AFI-SAFI
     YANG Description: This leaf indicates whether the neighbor advertised the
 ability to support graceful-restart for this AFI-SAFI
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ ability to support graceful-restart for this AFI-SAFI
     self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_advertised(self):
+    return self.__advertised is not None
+
   def _get_advertised(self):
     """
     Getter method for advertised, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/advertised (boolean)
@@ -156,6 +175,8 @@ ability to support graceful-restart for this AFI-SAFI
     YANG Description: This leaf indicates whether the ability to support
 graceful-restart has been advertised to the peer
     """
+    if self.__advertised is None:
+        self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__advertised
       
   def _set_advertised(self, v, load=False):
@@ -169,6 +190,9 @@ graceful-restart has been advertised to the peer
     YANG Description: This leaf indicates whether the ability to support
 graceful-restart has been advertised to the peer
     """
+    if self.__advertised is None:
+        self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__received = None
+    self.__enabled = None
+    self.__advertised = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,6 +270,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/enabled (boolean)
@@ -253,6 +280,8 @@ class state(PybindBase):
     YANG Description: This leaf indicates whether graceful-restart is enabled for
 this AFI-SAFI
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -266,6 +295,9 @@ this AFI-SAFI
     YANG Description: This leaf indicates whether graceful-restart is enabled for
 this AFI-SAFI
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -285,6 +317,9 @@ this AFI-SAFI
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/received (boolean)
@@ -292,6 +327,8 @@ this AFI-SAFI
     YANG Description: This leaf indicates whether the neighbor advertised the
 ability to support graceful-restart for this AFI-SAFI
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -305,6 +342,9 @@ ability to support graceful-restart for this AFI-SAFI
     YANG Description: This leaf indicates whether the neighbor advertised the
 ability to support graceful-restart for this AFI-SAFI
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -324,6 +364,9 @@ ability to support graceful-restart for this AFI-SAFI
     self.__received = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_advertised(self):
+    return self.__advertised is not None
+
   def _get_advertised(self):
     """
     Getter method for advertised, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/graceful_restart/state/advertised (boolean)
@@ -331,6 +374,8 @@ ability to support graceful-restart for this AFI-SAFI
     YANG Description: This leaf indicates whether the ability to support
 graceful-restart has been advertised to the peer
     """
+    if self.__advertised is None:
+        self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__advertised
       
   def _set_advertised(self, v, load=False):
@@ -344,6 +389,9 @@ graceful-restart has been advertised to the peer
     YANG Description: This leaf indicates whether the ability to support
 graceful-restart has been advertised to the peer
     """
+    if self.__advertised is None:
+        self.__advertised = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="advertised", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

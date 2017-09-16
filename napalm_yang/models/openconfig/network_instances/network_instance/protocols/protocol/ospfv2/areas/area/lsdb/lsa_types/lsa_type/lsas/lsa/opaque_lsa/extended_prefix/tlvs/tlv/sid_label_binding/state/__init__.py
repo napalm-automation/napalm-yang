@@ -41,9 +41,9 @@ of the extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__multi_topology_identifier = None
+    self.__weight = None
+    self.__mirroring = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ of the extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'state']
 
+  def _initialized_mirroring(self):
+    return self.__mirroring is not None
+
   def _get_mirroring(self):
     """
     Getter method for mirroring, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/mirroring (boolean)
@@ -80,6 +83,8 @@ of the extended prefix LSA
 entries contained within this TLV are indicative of a mirroring
 context
     """
+    if self.__mirroring is None:
+        self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__mirroring
       
   def _set_mirroring(self, v, load=False):
@@ -94,6 +99,9 @@ context
 entries contained within this TLV are indicative of a mirroring
 context
     """
+    if self.__mirroring is None:
+        self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ context
     self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/multi_topology_identifier (uint8)
@@ -121,6 +132,8 @@ context
 sub-TLV is associated. The value of this leaf is a MT-ID as defined
 in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -135,6 +148,9 @@ in RFC4915
 sub-TLV is associated. The value of this leaf is a MT-ID as defined
 in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ in RFC4915
     self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/weight (uint8)
@@ -161,6 +180,8 @@ in RFC4915
     YANG Description: The weight of the advertised binding when used for load-balancing
 purposes
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -174,6 +195,9 @@ purposes
     YANG Description: The weight of the advertised binding when used for load-balancing
 purposes
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -221,9 +245,9 @@ of the extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__multi_topology_identifier = None
+    self.__weight = None
+    self.__mirroring = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -252,6 +276,9 @@ of the extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'state']
 
+  def _initialized_mirroring(self):
+    return self.__mirroring is not None
+
   def _get_mirroring(self):
     """
     Getter method for mirroring, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/mirroring (boolean)
@@ -260,6 +287,8 @@ of the extended prefix LSA
 entries contained within this TLV are indicative of a mirroring
 context
     """
+    if self.__mirroring is None:
+        self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__mirroring
       
   def _set_mirroring(self, v, load=False):
@@ -274,6 +303,9 @@ context
 entries contained within this TLV are indicative of a mirroring
 context
     """
+    if self.__mirroring is None:
+        self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -293,6 +325,9 @@ context
     self.__mirroring = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mirroring", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/multi_topology_identifier (uint8)
@@ -301,6 +336,8 @@ context
 sub-TLV is associated. The value of this leaf is a MT-ID as defined
 in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -315,6 +352,9 @@ in RFC4915
 sub-TLV is associated. The value of this leaf is a MT-ID as defined
 in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -334,6 +374,9 @@ in RFC4915
     self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/state/weight (uint8)
@@ -341,6 +384,8 @@ in RFC4915
     YANG Description: The weight of the advertised binding when used for load-balancing
 purposes
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -354,6 +399,9 @@ purposes
     YANG Description: The weight of the advertised binding when used for load-balancing
 purposes
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

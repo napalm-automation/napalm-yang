@@ -47,14 +47,14 @@ class interface(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='leafref', is_config=True)
-    self.__subinterfaces = YANGDynClass(base=subinterfaces.subinterfaces, is_container='container', yang_name="subinterfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
-    self.__aggregation = YANGDynClass(base=aggregation.aggregation, is_container='container', yang_name="aggregation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
-    self.__routed_vlan = YANGDynClass(base=routed_vlan.routed_vlan, is_container='container', yang_name="routed-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
-    self.__ethernet = YANGDynClass(base=ethernet.ethernet, is_container='container', yang_name="ethernet", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='container', is_config=True)
-    self.__hold_time = YANGDynClass(base=hold_time.hold_time, is_container='container', yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    self.__name = None
+    self.__subinterfaces = None
+    self.__config = None
+    self.__aggregation = None
+    self.__routed_vlan = None
+    self.__state = None
+    self.__ethernet = None
+    self.__hold_time = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -83,12 +83,17 @@ class interface(PybindBase):
     else:
       return [u'interfaces', u'interface']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /interfaces/interface/name (leafref)
 
     YANG Description: References the configured name of the interface
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -101,6 +106,9 @@ class interface(PybindBase):
 
     YANG Description: References the configured name of the interface
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -125,6 +133,9 @@ class interface(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/config (container)
@@ -132,6 +143,8 @@ class interface(PybindBase):
     YANG Description: Configurable items at the global, physical interface
 level
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -145,6 +158,9 @@ level
     YANG Description: Configurable items at the global, physical interface
 level
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,12 +180,17 @@ level
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/state (container)
 
     YANG Description: Operational state data at the global interface level
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -182,6 +203,9 @@ level
 
     YANG Description: Operational state data at the global interface level
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -201,6 +225,9 @@ level
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
 
 
+  def _initialized_hold_time(self):
+    return self.__hold_time is not None
+
   def _get_hold_time(self):
     """
     Getter method for hold_time, mapped from YANG variable /interfaces/interface/hold_time (container)
@@ -208,6 +235,8 @@ level
     YANG Description: Top-level container for hold-time settings to enable
 dampening advertisements of interface transitions.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=hold_time.hold_time, is_container='container', yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
     return self.__hold_time
       
   def _set_hold_time(self, v, load=False):
@@ -221,6 +250,9 @@ dampening advertisements of interface transitions.
     YANG Description: Top-level container for hold-time settings to enable
 dampening advertisements of interface transitions.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=hold_time.hold_time, is_container='container', yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -240,6 +272,9 @@ dampening advertisements of interface transitions.
     self.__hold_time = YANGDynClass(base=hold_time.hold_time, is_container='container', yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
 
 
+  def _initialized_subinterfaces(self):
+    return self.__subinterfaces is not None
+
   def _get_subinterfaces(self):
     """
     Getter method for subinterfaces, mapped from YANG variable /interfaces/interface/subinterfaces (container)
@@ -247,6 +282,8 @@ dampening advertisements of interface transitions.
     YANG Description: Enclosing container for the list of subinterfaces associated
 with a physical interface
     """
+    if self.__subinterfaces is None:
+        self.__subinterfaces = YANGDynClass(base=subinterfaces.subinterfaces, is_container='container', yang_name="subinterfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
     return self.__subinterfaces
       
   def _set_subinterfaces(self, v, load=False):
@@ -260,6 +297,9 @@ with a physical interface
     YANG Description: Enclosing container for the list of subinterfaces associated
 with a physical interface
     """
+    if self.__subinterfaces is None:
+        self.__subinterfaces = YANGDynClass(base=subinterfaces.subinterfaces, is_container='container', yang_name="subinterfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -279,6 +319,9 @@ with a physical interface
     self.__subinterfaces = YANGDynClass(base=subinterfaces.subinterfaces, is_container='container', yang_name="subinterfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=True)
 
 
+  def _initialized_ethernet(self):
+    return self.__ethernet is not None
+
   def _get_ethernet(self):
     """
     Getter method for ethernet, mapped from YANG variable /interfaces/interface/ethernet (container)
@@ -286,6 +329,8 @@ with a physical interface
     YANG Description: Top-level container for ethernet configuration
 and state
     """
+    if self.__ethernet is None:
+        self.__ethernet = YANGDynClass(base=ethernet.ethernet, is_container='container', yang_name="ethernet", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='container', is_config=True)
     return self.__ethernet
       
   def _set_ethernet(self, v, load=False):
@@ -299,6 +344,9 @@ and state
     YANG Description: Top-level container for ethernet configuration
 and state
     """
+    if self.__ethernet is None:
+        self.__ethernet = YANGDynClass(base=ethernet.ethernet, is_container='container', yang_name="ethernet", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -318,6 +366,9 @@ and state
     self.__ethernet = YANGDynClass(base=ethernet.ethernet, is_container='container', yang_name="ethernet", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='container', is_config=True)
 
 
+  def _initialized_aggregation(self):
+    return self.__aggregation is not None
+
   def _get_aggregation(self):
     """
     Getter method for aggregation, mapped from YANG variable /interfaces/interface/aggregation (container)
@@ -325,6 +376,8 @@ and state
     YANG Description: Options for logical interfaces representing
 aggregates
     """
+    if self.__aggregation is None:
+        self.__aggregation = YANGDynClass(base=aggregation.aggregation, is_container='container', yang_name="aggregation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
     return self.__aggregation
       
   def _set_aggregation(self, v, load=False):
@@ -338,6 +391,9 @@ aggregates
     YANG Description: Options for logical interfaces representing
 aggregates
     """
+    if self.__aggregation is None:
+        self.__aggregation = YANGDynClass(base=aggregation.aggregation, is_container='container', yang_name="aggregation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -357,6 +413,9 @@ aggregates
     self.__aggregation = YANGDynClass(base=aggregation.aggregation, is_container='container', yang_name="aggregation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
 
 
+  def _initialized_routed_vlan(self):
+    return self.__routed_vlan is not None
+
   def _get_routed_vlan(self):
     """
     Getter method for routed_vlan, mapped from YANG variable /interfaces/interface/routed_vlan (container)
@@ -366,6 +425,8 @@ logical interfaces are also known as SVI (switched virtual
 interface), IRB (integrated routing and bridging), RVI
 (routed VLAN interface)
     """
+    if self.__routed_vlan is None:
+        self.__routed_vlan = YANGDynClass(base=routed_vlan.routed_vlan, is_container='container', yang_name="routed-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
     return self.__routed_vlan
       
   def _set_routed_vlan(self, v, load=False):
@@ -381,6 +442,9 @@ logical interfaces are also known as SVI (switched virtual
 interface), IRB (integrated routing and bridging), RVI
 (routed VLAN interface)
     """
+    if self.__routed_vlan is None:
+        self.__routed_vlan = YANGDynClass(base=routed_vlan.routed_vlan, is_container='container', yang_name="routed-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -45,12 +45,12 @@ class static_lsp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ingress = None
+    self.__name = None
+    self.__transit = None
+    self.__state = None
+    self.__egress = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,12 +79,17 @@ class static_lsp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'static-lsps', u'static-lsp']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/name (leafref)
 
     YANG Description: Reference the name list key
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -97,6 +102,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Reference the name list key
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -121,12 +129,17 @@ class static_lsp(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/config (container)
 
     YANG Description: Configuration data for the static lsp
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -139,6 +152,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Configuration data for the static lsp
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,12 +174,17 @@ class static_lsp(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/state (container)
 
     YANG Description: Operational state data for the static lsp
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -176,6 +197,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Operational state data for the static lsp
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,6 +219,9 @@ class static_lsp(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ingress(self):
+    return self.__ingress is not None
+
   def _get_ingress(self):
     """
     Getter method for ingress, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/ingress (container)
@@ -202,6 +229,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  ingress node
     """
+    if self.__ingress is None:
+        self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ingress
       
   def _set_ingress(self, v, load=False):
@@ -215,6 +244,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  ingress node
     """
+    if self.__ingress is None:
+        self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -234,6 +266,9 @@ class static_lsp(PybindBase):
     self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transit(self):
+    return self.__transit is not None
+
   def _get_transit(self):
     """
     Getter method for transit, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/transit (container)
@@ -241,6 +276,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  transit node
     """
+    if self.__transit is None:
+        self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transit
       
   def _set_transit(self, v, load=False):
@@ -254,6 +291,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  transit node
     """
+    if self.__transit is None:
+        self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -273,6 +313,9 @@ class static_lsp(PybindBase):
     self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_egress(self):
+    return self.__egress is not None
+
   def _get_egress(self):
     """
     Getter method for egress, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/egress (container)
@@ -280,6 +323,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  egress node
     """
+    if self.__egress is None:
+        self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__egress
       
   def _set_egress(self, v, load=False):
@@ -293,6 +338,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  egress node
     """
+    if self.__egress is None:
+        self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -347,12 +395,12 @@ class static_lsp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ingress = None
+    self.__name = None
+    self.__transit = None
+    self.__state = None
+    self.__egress = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -381,12 +429,17 @@ class static_lsp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'static-lsps', u'static-lsp']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/name (leafref)
 
     YANG Description: Reference the name list key
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -399,6 +452,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Reference the name list key
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -423,12 +479,17 @@ class static_lsp(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/config (container)
 
     YANG Description: Configuration data for the static lsp
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -441,6 +502,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Configuration data for the static lsp
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -460,12 +524,17 @@ class static_lsp(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/state (container)
 
     YANG Description: Operational state data for the static lsp
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -478,6 +547,9 @@ class static_lsp(PybindBase):
 
     YANG Description: Operational state data for the static lsp
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -497,6 +569,9 @@ class static_lsp(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ingress(self):
+    return self.__ingress is not None
+
   def _get_ingress(self):
     """
     Getter method for ingress, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/ingress (container)
@@ -504,6 +579,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  ingress node
     """
+    if self.__ingress is None:
+        self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ingress
       
   def _set_ingress(self, v, load=False):
@@ -517,6 +594,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  ingress node
     """
+    if self.__ingress is None:
+        self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -536,6 +616,9 @@ class static_lsp(PybindBase):
     self.__ingress = YANGDynClass(base=ingress.ingress, is_container='container', yang_name="ingress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transit(self):
+    return self.__transit is not None
+
   def _get_transit(self):
     """
     Getter method for transit, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/transit (container)
@@ -543,6 +626,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  transit node
     """
+    if self.__transit is None:
+        self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transit
       
   def _set_transit(self, v, load=False):
@@ -556,6 +641,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  transit node
     """
+    if self.__transit is None:
+        self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -575,6 +663,9 @@ class static_lsp(PybindBase):
     self.__transit = YANGDynClass(base=transit.transit, is_container='container', yang_name="transit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_egress(self):
+    return self.__egress is not None
+
   def _get_egress(self):
     """
     Getter method for egress, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp/egress (container)
@@ -582,6 +673,8 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  egress node
     """
+    if self.__egress is None:
+        self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__egress
       
   def _set_egress(self, v, load=False):
@@ -595,6 +688,9 @@ class static_lsp(PybindBase):
     YANG Description: Static LSPs for which the router is an
  egress node
     """
+    if self.__egress is None:
+        self.__egress = YANGDynClass(base=egress.egress, is_container='container', yang_name="egress", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

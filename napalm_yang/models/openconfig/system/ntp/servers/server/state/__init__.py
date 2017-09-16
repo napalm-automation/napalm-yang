@@ -40,17 +40,17 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__root_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="root-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
-    self.__version = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..4']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(4), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
-    self.__association_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'PEER': {}, u'POOL': {}, u'SERVER': {}},), default=unicode("SERVER"), is_leaf=True, yang_name="association-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
-    self.__poll_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="poll-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
-    self.__stratum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="stratum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
-    self.__prefer = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prefer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
-    self.__offset = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="offset", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
-    self.__iburst = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iburst", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
-    self.__root_dispersion = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="root-dispersion", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
-    self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:host', is_config=False)
-    self.__port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(123), is_leaf=True, yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
+    self.__root_delay = None
+    self.__version = None
+    self.__association_type = None
+    self.__poll_interval = None
+    self.__stratum = None
+    self.__prefer = None
+    self.__offset = None
+    self.__iburst = None
+    self.__root_dispersion = None
+    self.__address = None
+    self.__port = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,6 +79,9 @@ class state(PybindBase):
     else:
       return [u'system', u'ntp', u'servers', u'server', u'state']
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /system/ntp/servers/server/state/address (inet:host)
@@ -87,6 +90,8 @@ class state(PybindBase):
 
 The address or hostname of the NTP server.
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:host', is_config=False)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -101,6 +106,9 @@ The address or hostname of the NTP server.
 
 The address or hostname of the NTP server.
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:host', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -120,6 +128,9 @@ The address or hostname of the NTP server.
     self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:host', is_config=False)
 
 
+  def _initialized_port(self):
+    return self.__port is not None
+
   def _get_port(self):
     """
     Getter method for port, mapped from YANG variable /system/ntp/servers/server/state/port (inet:port-number)
@@ -128,6 +139,8 @@ The address or hostname of the NTP server.
 
 The port number of the NTP server.
     """
+    if self.__port is None:
+        self.__port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(123), is_leaf=True, yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
     return self.__port
       
   def _set_port(self, v, load=False):
@@ -142,6 +155,9 @@ The port number of the NTP server.
 
 The port number of the NTP server.
     """
+    if self.__port is None:
+        self.__port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(123), is_leaf=True, yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -161,6 +177,9 @@ The port number of the NTP server.
     self.__port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(123), is_leaf=True, yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
 
 
+  def _initialized_version(self):
+    return self.__version is not None
+
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /system/ntp/servers/server/state/version (uint8)
@@ -169,6 +188,8 @@ The port number of the NTP server.
 
 Version number to put in outgoing NTP packets
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..4']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(4), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
     return self.__version
       
   def _set_version(self, v, load=False):
@@ -183,6 +204,9 @@ Version number to put in outgoing NTP packets
 
 Version number to put in outgoing NTP packets
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..4']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(4), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,6 +226,9 @@ Version number to put in outgoing NTP packets
     self.__version = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..4']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(4), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
 
 
+  def _initialized_association_type(self):
+    return self.__association_type is not None
+
   def _get_association_type(self):
     """
     Getter method for association_type, mapped from YANG variable /system/ntp/servers/server/state/association_type (enumeration)
@@ -210,6 +237,8 @@ Version number to put in outgoing NTP packets
 
 The desired association type for this NTP server.
     """
+    if self.__association_type is None:
+        self.__association_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'PEER': {}, u'POOL': {}, u'SERVER': {}},), default=unicode("SERVER"), is_leaf=True, yang_name="association-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
     return self.__association_type
       
   def _set_association_type(self, v, load=False):
@@ -224,6 +253,9 @@ The desired association type for this NTP server.
 
 The desired association type for this NTP server.
     """
+    if self.__association_type is None:
+        self.__association_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'PEER': {}, u'POOL': {}, u'SERVER': {}},), default=unicode("SERVER"), is_leaf=True, yang_name="association-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +275,9 @@ The desired association type for this NTP server.
     self.__association_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'PEER': {}, u'POOL': {}, u'SERVER': {}},), default=unicode("SERVER"), is_leaf=True, yang_name="association-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_iburst(self):
+    return self.__iburst is not None
+
   def _get_iburst(self):
     """
     Getter method for iburst, mapped from YANG variable /system/ntp/servers/server/state/iburst (boolean)
@@ -252,6 +287,8 @@ The desired association type for this NTP server.
 Indicates whether this server should enable burst
 synchronization or not.
     """
+    if self.__iburst is None:
+        self.__iburst = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iburst", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
     return self.__iburst
       
   def _set_iburst(self, v, load=False):
@@ -267,6 +304,9 @@ synchronization or not.
 Indicates whether this server should enable burst
 synchronization or not.
     """
+    if self.__iburst is None:
+        self.__iburst = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iburst", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -286,6 +326,9 @@ synchronization or not.
     self.__iburst = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="iburst", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
 
 
+  def _initialized_prefer(self):
+    return self.__prefer is not None
+
   def _get_prefer(self):
     """
     Getter method for prefer, mapped from YANG variable /system/ntp/servers/server/state/prefer (boolean)
@@ -295,6 +338,8 @@ synchronization or not.
 Indicates whether this server should be preferred
 or not.
     """
+    if self.__prefer is None:
+        self.__prefer = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prefer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
     return self.__prefer
       
   def _set_prefer(self, v, load=False):
@@ -310,6 +355,9 @@ or not.
 Indicates whether this server should be preferred
 or not.
     """
+    if self.__prefer is None:
+        self.__prefer = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prefer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -329,6 +377,9 @@ or not.
     self.__prefer = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prefer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
 
 
+  def _initialized_stratum(self):
+    return self.__stratum is not None
+
   def _get_stratum(self):
     """
     Getter method for stratum, mapped from YANG variable /system/ntp/servers/server/state/stratum (uint8)
@@ -345,6 +396,8 @@ semantics:
 | 16     | unsynchronized
 | 17-255 | reserved
     """
+    if self.__stratum is None:
+        self.__stratum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="stratum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
     return self.__stratum
       
   def _set_stratum(self, v, load=False):
@@ -367,6 +420,9 @@ semantics:
 | 16     | unsynchronized
 | 17-255 | reserved
     """
+    if self.__stratum is None:
+        self.__stratum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="stratum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -386,12 +442,17 @@ semantics:
     self.__stratum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="stratum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
 
 
+  def _initialized_root_delay(self):
+    return self.__root_delay is not None
+
   def _get_root_delay(self):
     """
     Getter method for root_delay, mapped from YANG variable /system/ntp/servers/server/state/root_delay (uint32)
 
     YANG Description: The round-trip delay to the server, in milliseconds.
     """
+    if self.__root_delay is None:
+        self.__root_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="root-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
     return self.__root_delay
       
   def _set_root_delay(self, v, load=False):
@@ -404,6 +465,9 @@ semantics:
 
     YANG Description: The round-trip delay to the server, in milliseconds.
     """
+    if self.__root_delay is None:
+        self.__root_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="root-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -423,6 +487,9 @@ semantics:
     self.__root_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="root-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
 
 
+  def _initialized_root_dispersion(self):
+    return self.__root_dispersion is not None
+
   def _get_root_dispersion(self):
     """
     Getter method for root_dispersion, mapped from YANG variable /system/ntp/servers/server/state/root_dispersion (uint64)
@@ -430,6 +497,8 @@ semantics:
     YANG Description: Dispersion (epsilon) represents the maximum error inherent
 in the measurement
     """
+    if self.__root_dispersion is None:
+        self.__root_dispersion = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="root-dispersion", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__root_dispersion
       
   def _set_root_dispersion(self, v, load=False):
@@ -443,6 +512,9 @@ in the measurement
     YANG Description: Dispersion (epsilon) represents the maximum error inherent
 in the measurement
     """
+    if self.__root_dispersion is None:
+        self.__root_dispersion = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="root-dispersion", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -462,6 +534,9 @@ in the measurement
     self.__root_dispersion = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="root-dispersion", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_offset(self):
+    return self.__offset is not None
+
   def _get_offset(self):
     """
     Getter method for offset, mapped from YANG variable /system/ntp/servers/server/state/offset (uint64)
@@ -469,6 +544,8 @@ in the measurement
     YANG Description: Estimate of the current time offset from the peer.  This is
 the time difference between the local and reference clock.
     """
+    if self.__offset is None:
+        self.__offset = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="offset", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__offset
       
   def _set_offset(self, v, load=False):
@@ -482,6 +559,9 @@ the time difference between the local and reference clock.
     YANG Description: Estimate of the current time offset from the peer.  This is
 the time difference between the local and reference clock.
     """
+    if self.__offset is None:
+        self.__offset = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="offset", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -501,12 +581,17 @@ the time difference between the local and reference clock.
     self.__offset = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="offset", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_poll_interval(self):
+    return self.__poll_interval is not None
+
   def _get_poll_interval(self):
     """
     Getter method for poll_interval, mapped from YANG variable /system/ntp/servers/server/state/poll_interval (uint32)
 
     YANG Description: Polling interval of the peer
     """
+    if self.__poll_interval is None:
+        self.__poll_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="poll-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
     return self.__poll_interval
       
   def _set_poll_interval(self, v, load=False):
@@ -519,6 +604,9 @@ the time difference between the local and reference clock.
 
     YANG Description: Polling interval of the peer
     """
+    if self.__poll_interval is None:
+        self.__poll_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="poll-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

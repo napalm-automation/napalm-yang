@@ -41,7 +41,7 @@ OSPFv2
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__traffic_engineering_extensions = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ OSPFv2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'mpls', u'state']
 
+  def _initialized_traffic_engineering_extensions(self):
+    return self.__traffic_engineering_extensions is not None
+
   def _get_traffic_engineering_extensions(self):
     """
     Getter method for traffic_engineering_extensions, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/mpls/state/traffic_engineering_extensions (boolean)
@@ -78,6 +81,8 @@ OSPFv2
 extensions for OSPF to advertise TE parameters via type 10
 Opaque LSAs
     """
+    if self.__traffic_engineering_extensions is None:
+        self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__traffic_engineering_extensions
       
   def _set_traffic_engineering_extensions(self, v, load=False):
@@ -92,6 +97,9 @@ Opaque LSAs
 extensions for OSPF to advertise TE parameters via type 10
 Opaque LSAs
     """
+    if self.__traffic_engineering_extensions is None:
+        self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ OSPFv2
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__traffic_engineering_extensions = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ OSPFv2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'mpls', u'state']
 
+  def _initialized_traffic_engineering_extensions(self):
+    return self.__traffic_engineering_extensions is not None
+
   def _get_traffic_engineering_extensions(self):
     """
     Getter method for traffic_engineering_extensions, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/mpls/state/traffic_engineering_extensions (boolean)
@@ -174,6 +185,8 @@ OSPFv2
 extensions for OSPF to advertise TE parameters via type 10
 Opaque LSAs
     """
+    if self.__traffic_engineering_extensions is None:
+        self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__traffic_engineering_extensions
       
   def _set_traffic_engineering_extensions(self, v, load=False):
@@ -188,6 +201,9 @@ Opaque LSAs
 extensions for OSPF to advertise TE parameters via type 10
 Opaque LSAs
     """
+    if self.__traffic_engineering_extensions is None:
+        self.__traffic_engineering_extensions = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-extensions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

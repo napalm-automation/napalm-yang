@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    self.__vlan = None
+    self.__mac_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'config']
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/config/mac_address (yang:mac-address)
@@ -77,6 +80,8 @@ class config(PybindBase):
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -90,6 +95,9 @@ entry
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ entry
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/config/vlan (leafref)
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -127,6 +140,9 @@ entry
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -172,8 +188,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    self.__vlan = None
+    self.__mac_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -202,6 +218,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'config']
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/config/mac_address (yang:mac-address)
@@ -209,6 +228,8 @@ class config(PybindBase):
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -222,6 +243,9 @@ entry
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -241,12 +265,17 @@ entry
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/config/vlan (leafref)
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -259,6 +288,9 @@ entry
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

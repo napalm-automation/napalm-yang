@@ -44,10 +44,10 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ero_metric = None
+    self.__state = None
+    self.__sid_label_binding = None
+    self.__ero_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,6 +76,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/state (container)
@@ -83,6 +86,8 @@ class tlv(PybindBase):
     YANG Description: State parameters relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -96,6 +101,9 @@ sub-TLV
     YANG Description: State parameters relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_sid_label_binding(self):
+    return self.__sid_label_binding is not None
+
   def _get_sid_label_binding(self):
     """
     Getter method for sid_label_binding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding (container)
@@ -122,6 +133,8 @@ sub-TLV
     YANG Description: Parameters for the SID/Label Binding sub-TLV of the
 SID/Label binding TLV
     """
+    if self.__sid_label_binding is None:
+        self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sid_label_binding
       
   def _set_sid_label_binding(self, v, load=False):
@@ -135,6 +148,9 @@ SID/Label binding TLV
     YANG Description: Parameters for the SID/Label Binding sub-TLV of the
 SID/Label binding TLV
     """
+    if self.__sid_label_binding is None:
+        self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ SID/Label binding TLV
     self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ero_metric(self):
+    return self.__ero_metric is not None
+
   def _get_ero_metric(self):
     """
     Getter method for ero_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_metric (container)
@@ -161,6 +180,8 @@ SID/Label binding TLV
     YANG Description: Parameters for the ERO Metric Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_metric is None:
+        self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ero_metric
       
   def _set_ero_metric(self, v, load=False):
@@ -174,6 +195,9 @@ binding TLV
     YANG Description: Parameters for the ERO Metric Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_metric is None:
+        self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,6 +217,9 @@ binding TLV
     self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ero_path(self):
+    return self.__ero_path is not None
+
   def _get_ero_path(self):
     """
     Getter method for ero_path, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path (container)
@@ -200,6 +227,8 @@ binding TLV
     YANG Description: Parameters for the ERO Path Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_path is None:
+        self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ero_path
       
   def _set_ero_path(self, v, load=False):
@@ -213,6 +242,9 @@ binding TLV
     YANG Description: Parameters for the ERO Path Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_path is None:
+        self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -264,10 +296,10 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ero_metric = None
+    self.__state = None
+    self.__sid_label_binding = None
+    self.__ero_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -296,6 +328,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/state (container)
@@ -303,6 +338,8 @@ class tlv(PybindBase):
     YANG Description: State parameters relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -316,6 +353,9 @@ sub-TLV
     YANG Description: State parameters relating to the SID/Label Binding
 sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -335,6 +375,9 @@ sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_sid_label_binding(self):
+    return self.__sid_label_binding is not None
+
   def _get_sid_label_binding(self):
     """
     Getter method for sid_label_binding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding (container)
@@ -342,6 +385,8 @@ sub-TLV
     YANG Description: Parameters for the SID/Label Binding sub-TLV of the
 SID/Label binding TLV
     """
+    if self.__sid_label_binding is None:
+        self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sid_label_binding
       
   def _set_sid_label_binding(self, v, load=False):
@@ -355,6 +400,9 @@ SID/Label binding TLV
     YANG Description: Parameters for the SID/Label Binding sub-TLV of the
 SID/Label binding TLV
     """
+    if self.__sid_label_binding is None:
+        self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,6 +422,9 @@ SID/Label binding TLV
     self.__sid_label_binding = YANGDynClass(base=sid_label_binding.sid_label_binding, is_container='container', yang_name="sid-label-binding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ero_metric(self):
+    return self.__ero_metric is not None
+
   def _get_ero_metric(self):
     """
     Getter method for ero_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_metric (container)
@@ -381,6 +432,8 @@ SID/Label binding TLV
     YANG Description: Parameters for the ERO Metric Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_metric is None:
+        self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ero_metric
       
   def _set_ero_metric(self, v, load=False):
@@ -394,6 +447,9 @@ binding TLV
     YANG Description: Parameters for the ERO Metric Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_metric is None:
+        self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -413,6 +469,9 @@ binding TLV
     self.__ero_metric = YANGDynClass(base=ero_metric.ero_metric, is_container='container', yang_name="ero-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ero_path(self):
+    return self.__ero_path is not None
+
   def _get_ero_path(self):
     """
     Getter method for ero_path, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path (container)
@@ -420,6 +479,8 @@ binding TLV
     YANG Description: Parameters for the ERO Path Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_path is None:
+        self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ero_path
       
   def _set_ero_path(self, v, load=False):
@@ -433,6 +494,9 @@ binding TLV
     YANG Description: Parameters for the ERO Path Sub-TLV of the SID/Label
 binding TLV
     """
+    if self.__ero_path is None:
+        self.__ero_path = YANGDynClass(base=ero_path.ero_path, is_container='container', yang_name="ero-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

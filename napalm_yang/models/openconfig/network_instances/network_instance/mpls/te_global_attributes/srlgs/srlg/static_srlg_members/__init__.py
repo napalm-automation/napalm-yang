@@ -41,7 +41,7 @@ class static_srlg_members(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__members_list = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class static_srlg_members(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs', u'srlg', u'static-srlg-members']
 
+  def _initialized_members_list(self):
+    return self.__members_list is not None
+
   def _get_members_list(self):
     """
     Getter method for members_list, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/static_srlg_members/members_list (list)
@@ -78,6 +81,8 @@ class static_srlg_members(PybindBase):
 as IP address endpoints of links contained in the
 SRLG
     """
+    if self.__members_list is None:
+        self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__members_list
       
   def _set_members_list(self, v, load=False):
@@ -92,6 +97,9 @@ SRLG
 as IP address endpoints of links contained in the
 SRLG
     """
+    if self.__members_list is None:
+        self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ class static_srlg_members(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__members_list = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ class static_srlg_members(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs', u'srlg', u'static-srlg-members']
 
+  def _initialized_members_list(self):
+    return self.__members_list is not None
+
   def _get_members_list(self):
     """
     Getter method for members_list, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/static_srlg_members/members_list (list)
@@ -174,6 +185,8 @@ class static_srlg_members(PybindBase):
 as IP address endpoints of links contained in the
 SRLG
     """
+    if self.__members_list is None:
+        self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__members_list
       
   def _set_members_list(self, v, load=False):
@@ -188,6 +201,9 @@ SRLG
 as IP address endpoints of links contained in the
 SRLG
     """
+    if self.__members_list is None:
+        self.__members_list = YANGDynClass(base=YANGListType("from_address",members_list.members_list, yang_name="members-list", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='from-address', extensions=None), is_container='list', yang_name="members-list", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

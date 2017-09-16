@@ -42,9 +42,9 @@ class session(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__record_route_objects = None
+    self.__state = None
+    self.__local_index = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class session(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session']
 
+  def _initialized_local_index(self):
+    return self.__local_index is not None
+
   def _get_local_index(self):
     """
     Getter method for local_index, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/local_index (leafref)
@@ -80,6 +83,8 @@ class session(PybindBase):
     YANG Description: Reference to the local index for the RSVP
 session
     """
+    if self.__local_index is None:
+        self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__local_index
       
   def _set_local_index(self, v, load=False):
@@ -93,6 +98,9 @@ session
     YANG Description: Reference to the local index for the RSVP
 session
     """
+    if self.__local_index is None:
+        self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,6 +125,9 @@ session
     self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_record_route_objects(self):
+    return self.__record_route_objects is not None
+
   def _get_record_route_objects(self):
     """
     Getter method for record_route_objects, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/record_route_objects (container)
@@ -124,6 +135,8 @@ session
     YANG Description: Enclosing container for MPLS RRO objects associated with the
 traffic engineered tunnel.
     """
+    if self.__record_route_objects is None:
+        self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__record_route_objects
       
   def _set_record_route_objects(self, v, load=False):
@@ -137,6 +150,9 @@ traffic engineered tunnel.
     YANG Description: Enclosing container for MPLS RRO objects associated with the
 traffic engineered tunnel.
     """
+    if self.__record_route_objects is None:
+        self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,6 +172,9 @@ traffic engineered tunnel.
     self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state (container)
@@ -163,6 +182,8 @@ traffic engineered tunnel.
     YANG Description: Operational state parameters relating to the
 RSVP session
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -176,6 +197,9 @@ RSVP session
     YANG Description: Operational state parameters relating to the
 RSVP session
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -224,9 +248,9 @@ class session(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__record_route_objects = None
+    self.__state = None
+    self.__local_index = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -255,6 +279,9 @@ class session(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions', u'session']
 
+  def _initialized_local_index(self):
+    return self.__local_index is not None
+
   def _get_local_index(self):
     """
     Getter method for local_index, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/local_index (leafref)
@@ -262,6 +289,8 @@ class session(PybindBase):
     YANG Description: Reference to the local index for the RSVP
 session
     """
+    if self.__local_index is None:
+        self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__local_index
       
   def _set_local_index(self, v, load=False):
@@ -275,6 +304,9 @@ session
     YANG Description: Reference to the local index for the RSVP
 session
     """
+    if self.__local_index is None:
+        self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -299,6 +331,9 @@ session
     self.__local_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_record_route_objects(self):
+    return self.__record_route_objects is not None
+
   def _get_record_route_objects(self):
     """
     Getter method for record_route_objects, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/record_route_objects (container)
@@ -306,6 +341,8 @@ session
     YANG Description: Enclosing container for MPLS RRO objects associated with the
 traffic engineered tunnel.
     """
+    if self.__record_route_objects is None:
+        self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__record_route_objects
       
   def _set_record_route_objects(self, v, load=False):
@@ -319,6 +356,9 @@ traffic engineered tunnel.
     YANG Description: Enclosing container for MPLS RRO objects associated with the
 traffic engineered tunnel.
     """
+    if self.__record_route_objects is None:
+        self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -338,6 +378,9 @@ traffic engineered tunnel.
     self.__record_route_objects = YANGDynClass(base=record_route_objects.record_route_objects, is_container='container', yang_name="record-route-objects", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session/state (container)
@@ -345,6 +388,8 @@ traffic engineered tunnel.
     YANG Description: Operational state parameters relating to the
 RSVP session
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -358,6 +403,9 @@ RSVP session
     YANG Description: Operational state parameters relating to the
 RSVP session
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

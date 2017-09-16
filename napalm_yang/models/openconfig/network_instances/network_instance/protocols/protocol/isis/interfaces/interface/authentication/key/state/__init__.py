@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    self.__auth_password = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'authentication', u'key', u'state']
 
+  def _initialized_auth_password(self):
+    return self.__auth_password is not None
+
   def _get_auth_password(self):
     """
     Getter method for auth_password, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/authentication/key/state/auth_password (oc-types:routing-password)
 
     YANG Description: Authentication key string.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
     return self.__auth_password
       
   def _set_auth_password(self, v, load=False):
@@ -87,6 +92,9 @@ class state(PybindBase):
 
     YANG Description: Authentication key string.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    self.__auth_password = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'authentication', u'key', u'state']
 
+  def _initialized_auth_password(self):
+    return self.__auth_password is not None
+
   def _get_auth_password(self):
     """
     Getter method for auth_password, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/authentication/key/state/auth_password (oc-types:routing-password)
 
     YANG Description: Authentication key string.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
     return self.__auth_password
       
   def _set_auth_password(self, v, load=False):
@@ -178,6 +191,9 @@ class state(PybindBase):
 
     YANG Description: Authentication key string.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

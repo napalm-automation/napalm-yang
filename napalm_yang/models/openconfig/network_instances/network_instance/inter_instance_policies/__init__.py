@@ -42,7 +42,7 @@ to and exported from this instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__apply_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ to and exported from this instance
     else:
       return [u'network-instances', u'network-instance', u'inter-instance-policies']
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/inter_instance_policies/apply_policy (container)
@@ -80,6 +83,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -95,6 +100,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -141,7 +149,7 @@ to and exported from this instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__apply_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -170,6 +178,9 @@ to and exported from this instance
     else:
       return [u'network-instances', u'network-instance', u'inter-instance-policies']
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/inter_instance_policies/apply_policy (container)
@@ -179,6 +190,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -194,6 +207,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

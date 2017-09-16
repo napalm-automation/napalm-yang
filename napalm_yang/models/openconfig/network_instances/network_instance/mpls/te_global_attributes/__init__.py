@@ -43,9 +43,9 @@ class te_global_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__mpls_admin_groups = None
+    self.__te_lsp_timers = None
+    self.__srlgs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ class te_global_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes']
 
+  def _initialized_srlgs(self):
+    return self.__srlgs is not None
+
   def _get_srlgs(self):
     """
     Getter method for srlgs, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs (container)
 
     YANG Description: Shared risk link groups attributes
     """
+    if self.__srlgs is None:
+        self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srlgs
       
   def _set_srlgs(self, v, load=False):
@@ -92,6 +97,9 @@ class te_global_attributes(PybindBase):
 
     YANG Description: Shared risk link groups attributes
     """
+    if self.__srlgs is None:
+        self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ class te_global_attributes(PybindBase):
     self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls_admin_groups(self):
+    return self.__mpls_admin_groups is not None
+
   def _get_mpls_admin_groups(self):
     """
     Getter method for mpls_admin_groups, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups (container)
@@ -118,6 +129,8 @@ class te_global_attributes(PybindBase):
     YANG Description: Top-level container for admin-groups configuration
 and state
     """
+    if self.__mpls_admin_groups is None:
+        self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls_admin_groups
       
   def _set_mpls_admin_groups(self, v, load=False):
@@ -131,6 +144,9 @@ and state
     YANG Description: Top-level container for admin-groups configuration
 and state
     """
+    if self.__mpls_admin_groups is None:
+        self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ and state
     self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_lsp_timers(self):
+    return self.__te_lsp_timers is not None
+
   def _get_te_lsp_timers(self):
     """
     Getter method for te_lsp_timers, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers (container)
@@ -157,6 +176,8 @@ and state
     YANG Description: Definition for delays associated with setup
 and cleanup of TE LSPs
     """
+    if self.__te_lsp_timers is None:
+        self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_lsp_timers
       
   def _set_te_lsp_timers(self, v, load=False):
@@ -170,6 +191,9 @@ and cleanup of TE LSPs
     YANG Description: Definition for delays associated with setup
 and cleanup of TE LSPs
     """
+    if self.__te_lsp_timers is None:
+        self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -219,9 +243,9 @@ class te_global_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__mpls_admin_groups = None
+    self.__te_lsp_timers = None
+    self.__srlgs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -250,12 +274,17 @@ class te_global_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes']
 
+  def _initialized_srlgs(self):
+    return self.__srlgs is not None
+
   def _get_srlgs(self):
     """
     Getter method for srlgs, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs (container)
 
     YANG Description: Shared risk link groups attributes
     """
+    if self.__srlgs is None:
+        self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srlgs
       
   def _set_srlgs(self, v, load=False):
@@ -268,6 +297,9 @@ class te_global_attributes(PybindBase):
 
     YANG Description: Shared risk link groups attributes
     """
+    if self.__srlgs is None:
+        self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ class te_global_attributes(PybindBase):
     self.__srlgs = YANGDynClass(base=srlgs.srlgs, is_container='container', yang_name="srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls_admin_groups(self):
+    return self.__mpls_admin_groups is not None
+
   def _get_mpls_admin_groups(self):
     """
     Getter method for mpls_admin_groups, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups (container)
@@ -294,6 +329,8 @@ class te_global_attributes(PybindBase):
     YANG Description: Top-level container for admin-groups configuration
 and state
     """
+    if self.__mpls_admin_groups is None:
+        self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls_admin_groups
       
   def _set_mpls_admin_groups(self, v, load=False):
@@ -307,6 +344,9 @@ and state
     YANG Description: Top-level container for admin-groups configuration
 and state
     """
+    if self.__mpls_admin_groups is None:
+        self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ and state
     self.__mpls_admin_groups = YANGDynClass(base=mpls_admin_groups.mpls_admin_groups, is_container='container', yang_name="mpls-admin-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_lsp_timers(self):
+    return self.__te_lsp_timers is not None
+
   def _get_te_lsp_timers(self):
     """
     Getter method for te_lsp_timers, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers (container)
@@ -333,6 +376,8 @@ and state
     YANG Description: Definition for delays associated with setup
 and cleanup of TE LSPs
     """
+    if self.__te_lsp_timers is None:
+        self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_lsp_timers
       
   def _set_te_lsp_timers(self, v, load=False):
@@ -346,6 +391,9 @@ and cleanup of TE LSPs
     YANG Description: Definition for delays associated with setup
 and cleanup of TE LSPs
     """
+    if self.__te_lsp_timers is None:
+        self.__te_lsp_timers = YANGDynClass(base=te_lsp_timers.te_lsp_timers, is_container='container', yang_name="te-lsp-timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

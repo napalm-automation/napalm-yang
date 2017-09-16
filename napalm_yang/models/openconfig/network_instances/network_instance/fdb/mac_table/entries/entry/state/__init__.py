@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    self.__entry_type = None
+    self.__age = None
+    self.__vlan = None
+    self.__mac_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'state']
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/mac_address (yang:mac-address)
@@ -79,6 +82,8 @@ class state(PybindBase):
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -92,6 +97,9 @@ entry
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ entry
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/vlan (leafref)
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -129,6 +142,9 @@ entry
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,6 +164,9 @@ entry
     self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_age(self):
+    return self.__age is not None
+
   def _get_age(self):
     """
     Getter method for age, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/age (uint64)
@@ -155,6 +174,8 @@ entry
     YANG Description: The time in seconds since the MAC address has been in the
 table
     """
+    if self.__age is None:
+        self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__age
       
   def _set_age(self, v, load=False):
@@ -168,6 +189,9 @@ table
     YANG Description: The time in seconds since the MAC address has been in the
 table
     """
+    if self.__age is None:
+        self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,6 +211,9 @@ table
     self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_entry_type(self):
+    return self.__entry_type is not None
+
   def _get_entry_type(self):
     """
     Getter method for entry_type, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/entry_type (enumeration)
@@ -194,6 +221,8 @@ table
     YANG Description: Indicates whether the entry was statically configured, or
 dynamically learned.
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__entry_type
       
   def _set_entry_type(self, v, load=False):
@@ -207,6 +236,9 @@ dynamically learned.
     YANG Description: Indicates whether the entry was statically configured, or
 dynamically learned.
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -254,10 +286,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    self.__entry_type = None
+    self.__age = None
+    self.__vlan = None
+    self.__mac_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -286,6 +318,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'mac-table', u'entries', u'entry', u'state']
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/mac_address (yang:mac-address)
@@ -293,6 +328,8 @@ class state(PybindBase):
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -306,6 +343,9 @@ entry
     YANG Description: MAC address for the dynamic or static MAC table
 entry
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -325,12 +365,17 @@ entry
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/vlan (leafref)
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -343,6 +388,9 @@ entry
 
     YANG Description: VLAN from which this MAC address was received
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,6 +410,9 @@ entry
     self.__vlan = YANGDynClass(base=unicode, is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_age(self):
+    return self.__age is not None
+
   def _get_age(self):
     """
     Getter method for age, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/age (uint64)
@@ -369,6 +420,8 @@ entry
     YANG Description: The time in seconds since the MAC address has been in the
 table
     """
+    if self.__age is None:
+        self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__age
       
   def _set_age(self, v, load=False):
@@ -382,6 +435,9 @@ table
     YANG Description: The time in seconds since the MAC address has been in the
 table
     """
+    if self.__age is None:
+        self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -401,6 +457,9 @@ table
     self.__age = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="age", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_entry_type(self):
+    return self.__entry_type is not None
+
   def _get_entry_type(self):
     """
     Getter method for entry_type, mapped from YANG variable /network_instances/network_instance/fdb/mac_table/entries/entry/state/entry_type (enumeration)
@@ -408,6 +467,8 @@ table
     YANG Description: Indicates whether the entry was statically configured, or
 dynamically learned.
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__entry_type
       
   def _set_entry_type(self, v, load=False):
@@ -421,6 +482,9 @@ dynamically learned.
     YANG Description: Indicates whether the entry was statically configured, or
 dynamically learned.
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'STATIC': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__interface = None
+    self.__subinterface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'interface-ref', u'state']
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref/state/interface (leafref)
@@ -78,6 +81,8 @@ class state(PybindBase):
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -92,6 +97,9 @@ to indicate the base interface.
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ to indicate the base interface.
     self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_subinterface(self):
+    return self.__subinterface is not None
+
   def _get_subinterface(self):
     """
     Getter method for subinterface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref/state/subinterface (leafref)
@@ -120,6 +131,8 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subinterface
       
   def _set_subinterface(self, v, load=False):
@@ -135,6 +148,9 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__interface = None
+    self.__subinterface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'interface-ref', u'state']
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref/state/interface (leafref)
@@ -218,6 +237,8 @@ class state(PybindBase):
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -232,6 +253,9 @@ to indicate the base interface.
 subinterface is required, this leaf must be specified
 to indicate the base interface.
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ to indicate the base interface.
     self.__interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_subinterface(self):
+    return self.__subinterface is not None
+
   def _get_subinterface(self):
     """
     Getter method for subinterface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref/state/subinterface (leafref)
@@ -260,6 +287,8 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subinterface
       
   def _set_subinterface(self, v, load=False):
@@ -275,6 +304,9 @@ interface to be specified using the interface leaf in
 this container.  If only a reference to a base interface
 is requuired, this leaf should not be set.
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=unicode, is_leaf=True, yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

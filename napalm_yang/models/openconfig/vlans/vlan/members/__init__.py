@@ -41,7 +41,7 @@ class members(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__member = YANGDynClass(base=YANGListType(False,member.member, yang_name="member", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
+    self.__member = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class members(PybindBase):
     else:
       return [u'vlans', u'vlan', u'members']
 
+  def _initialized_member(self):
+    return self.__member is not None
+
   def _get_member(self):
     """
     Getter method for member, mapped from YANG variable /vlans/vlan/members/member (list)
@@ -77,6 +80,8 @@ class members(PybindBase):
     YANG Description: List of references to interfaces / subinterfaces
 associated with the VLAN.
     """
+    if self.__member is None:
+        self.__member = YANGDynClass(base=YANGListType(False,member.member, yang_name="member", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
     return self.__member
       
   def _set_member(self, v, load=False):
@@ -90,6 +95,9 @@ associated with the VLAN.
     YANG Description: List of references to interfaces / subinterfaces
 associated with the VLAN.
     """
+    if self.__member is None:
+        self.__member = YANGDynClass(base=YANGListType(False,member.member, yang_name="member", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="member", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

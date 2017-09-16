@@ -41,8 +41,8 @@ range TLV of the RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__entry_type = None
+    self.__first_value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ range TLV of the RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'segment-routing-sid-label-range', u'tlvs', u'tlv', u'sid-label', u'state']
 
+  def _initialized_entry_type(self):
+    return self.__entry_type is not None
+
   def _get_entry_type(self):
     """
     Getter method for entry_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/sid_label/state/entry_type (oc-ospf-types:sr-sid-type)
@@ -79,6 +82,8 @@ range TLV of the RI LSA
 be represented as either a range of MPLS labels, or numeric segment
 identifiers
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__entry_type
       
   def _set_entry_type(self, v, load=False):
@@ -93,6 +98,9 @@ identifiers
 be represented as either a range of MPLS labels, or numeric segment
 identifiers
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ identifiers
     self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_first_value(self):
+    return self.__first_value is not None
+
   def _get_first_value(self):
     """
     Getter method for first_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/sid_label/state/first_value (uint32)
@@ -120,6 +131,8 @@ identifiers
 entry is determined based on the value of the entry type as this value
 may represent either a segment identifier or an MPLS label.
     """
+    if self.__first_value is None:
+        self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__first_value
       
   def _set_first_value(self, v, load=False):
@@ -134,6 +147,9 @@ may represent either a segment identifier or an MPLS label.
 entry is determined based on the value of the entry type as this value
 may represent either a segment identifier or an MPLS label.
     """
+    if self.__first_value is None:
+        self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ range TLV of the RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__entry_type = None
+    self.__first_value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ range TLV of the RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'segment-routing-sid-label-range', u'tlvs', u'tlv', u'sid-label', u'state']
 
+  def _initialized_entry_type(self):
+    return self.__entry_type is not None
+
   def _get_entry_type(self):
     """
     Getter method for entry_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/sid_label/state/entry_type (oc-ospf-types:sr-sid-type)
@@ -218,6 +237,8 @@ range TLV of the RI LSA
 be represented as either a range of MPLS labels, or numeric segment
 identifiers
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__entry_type
       
   def _set_entry_type(self, v, load=False):
@@ -232,6 +253,9 @@ identifiers
 be represented as either a range of MPLS labels, or numeric segment
 identifiers
     """
+    if self.__entry_type is None:
+        self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ identifiers
     self.__entry_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="entry-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_first_value(self):
+    return self.__first_value is not None
+
   def _get_first_value(self):
     """
     Getter method for first_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range/tlvs/tlv/sid_label/state/first_value (uint32)
@@ -259,6 +286,8 @@ identifiers
 entry is determined based on the value of the entry type as this value
 may represent either a segment identifier or an MPLS label.
     """
+    if self.__first_value is None:
+        self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__first_value
       
   def _set_first_value(self, v, load=False):
@@ -273,6 +302,9 @@ may represent either a segment identifier or an MPLS label.
 entry is determined based on the value of the entry type as this value
 may represent either a segment identifier or an MPLS label.
     """
+    if self.__first_value is None:
+        self.__first_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="first-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

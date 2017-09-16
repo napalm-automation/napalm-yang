@@ -41,7 +41,7 @@ class prefix_sid(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class prefix_sid(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-ipv6-reachability', u'prefixes', u'prefix', u'subTLVs', u'subTLVs', u'prefix-sid']
 
+  def _initialized_sid(self):
+    return self.__sid is not None
+
   def _get_sid(self):
     """
     Getter method for sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability/prefixes/prefix/subTLVs/subTLVs/prefix_sid/sid (list)
@@ -78,6 +81,8 @@ class prefix_sid(PybindBase):
 to an IGP prefix. An IGP-Prefix Segment is global (unless explicitly
 advertised otherwise) within the SR/IGP domain.
     """
+    if self.__sid is None:
+        self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__sid
       
   def _set_sid(self, v, load=False):
@@ -92,6 +97,9 @@ advertised otherwise) within the SR/IGP domain.
 to an IGP prefix. An IGP-Prefix Segment is global (unless explicitly
 advertised otherwise) within the SR/IGP domain.
     """
+    if self.__sid is None:
+        self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ class prefix_sid(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ class prefix_sid(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-ipv6-reachability', u'prefixes', u'prefix', u'subTLVs', u'subTLVs', u'prefix-sid']
 
+  def _initialized_sid(self):
+    return self.__sid is not None
+
   def _get_sid(self):
     """
     Getter method for sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability/prefixes/prefix/subTLVs/subTLVs/prefix_sid/sid (list)
@@ -174,6 +185,8 @@ class prefix_sid(PybindBase):
 to an IGP prefix. An IGP-Prefix Segment is global (unless explicitly
 advertised otherwise) within the SR/IGP domain.
     """
+    if self.__sid is None:
+        self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__sid
       
   def _set_sid(self, v, load=False):
@@ -188,6 +201,9 @@ advertised otherwise) within the SR/IGP domain.
 to an IGP prefix. An IGP-Prefix Segment is global (unless explicitly
 advertised otherwise) within the SR/IGP domain.
     """
+    if self.__sid is None:
+        self.__sid = YANGDynClass(base=YANGListType(False,sid.sid, yang_name="sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__internal_route_preference = None
+    self.__external_route_preference = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'route-preference', u'state']
 
+  def _initialized_external_route_preference(self):
+    return self.__external_route_preference is not None
+
   def _get_external_route_preference(self):
     """
     Getter method for external_route_preference, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/route_preference/state/external_route_preference (uint8)
 
     YANG Description: Administrative Distance(preference) for external ISIS routes.
     """
+    if self.__external_route_preference is None:
+        self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__external_route_preference
       
   def _set_external_route_preference(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: Administrative Distance(preference) for external ISIS routes.
     """
+    if self.__external_route_preference is None:
+        self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,12 +115,17 @@ class state(PybindBase):
     self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_internal_route_preference(self):
+    return self.__internal_route_preference is not None
+
   def _get_internal_route_preference(self):
     """
     Getter method for internal_route_preference, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/route_preference/state/internal_route_preference (uint8)
 
     YANG Description: Administrative Distance(preference) for internal ISIS routes.
     """
+    if self.__internal_route_preference is None:
+        self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__internal_route_preference
       
   def _set_internal_route_preference(self, v, load=False):
@@ -125,6 +138,9 @@ class state(PybindBase):
 
     YANG Description: Administrative Distance(preference) for internal ISIS routes.
     """
+    if self.__internal_route_preference is None:
+        self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -170,8 +186,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__internal_route_preference = None
+    self.__external_route_preference = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -200,12 +216,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'route-preference', u'state']
 
+  def _initialized_external_route_preference(self):
+    return self.__external_route_preference is not None
+
   def _get_external_route_preference(self):
     """
     Getter method for external_route_preference, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/route_preference/state/external_route_preference (uint8)
 
     YANG Description: Administrative Distance(preference) for external ISIS routes.
     """
+    if self.__external_route_preference is None:
+        self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__external_route_preference
       
   def _set_external_route_preference(self, v, load=False):
@@ -218,6 +239,9 @@ class state(PybindBase):
 
     YANG Description: Administrative Distance(preference) for external ISIS routes.
     """
+    if self.__external_route_preference is None:
+        self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +261,17 @@ class state(PybindBase):
     self.__external_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="external-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_internal_route_preference(self):
+    return self.__internal_route_preference is not None
+
   def _get_internal_route_preference(self):
     """
     Getter method for internal_route_preference, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/route_preference/state/internal_route_preference (uint8)
 
     YANG Description: Administrative Distance(preference) for internal ISIS routes.
     """
+    if self.__internal_route_preference is None:
+        self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__internal_route_preference
       
   def _set_internal_route_preference(self, v, load=False):
@@ -255,6 +284,9 @@ class state(PybindBase):
 
     YANG Description: Administrative Distance(preference) for internal ISIS routes.
     """
+    if self.__internal_route_preference is None:
+        self.__internal_route_preference = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..max']}), is_leaf=True, yang_name="internal-route-preference", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

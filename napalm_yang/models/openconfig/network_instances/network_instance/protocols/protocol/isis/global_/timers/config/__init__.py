@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__lsp_lifetime_interval = None
+    self.__lsp_refresh_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'config']
 
+  def _initialized_lsp_lifetime_interval(self):
+    return self.__lsp_lifetime_interval is not None
+
   def _get_lsp_lifetime_interval(self):
     """
     Getter method for lsp_lifetime_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config/lsp_lifetime_interval (uint16)
@@ -77,6 +80,8 @@ class config(PybindBase):
     YANG Description: Time interval in seconds that specifies how long an LSP remains in
 LSDB without being refreshed.
     """
+    if self.__lsp_lifetime_interval is None:
+        self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_lifetime_interval
       
   def _set_lsp_lifetime_interval(self, v, load=False):
@@ -90,6 +95,9 @@ LSDB without being refreshed.
     YANG Description: Time interval in seconds that specifies how long an LSP remains in
 LSDB without being refreshed.
     """
+    if self.__lsp_lifetime_interval is None:
+        self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ LSDB without being refreshed.
     self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_lsp_refresh_interval(self):
+    return self.__lsp_refresh_interval is not None
+
   def _get_lsp_refresh_interval(self):
     """
     Getter method for lsp_refresh_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config/lsp_refresh_interval (uint16)
@@ -116,6 +127,8 @@ LSDB without being refreshed.
     YANG Description: Time interval in seconds that specifies how often route topology
 that a device originates is transmitted in LSPs.
     """
+    if self.__lsp_refresh_interval is None:
+        self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_refresh_interval
       
   def _set_lsp_refresh_interval(self, v, load=False):
@@ -129,6 +142,9 @@ that a device originates is transmitted in LSPs.
     YANG Description: Time interval in seconds that specifies how often route topology
 that a device originates is transmitted in LSPs.
     """
+    if self.__lsp_refresh_interval is None:
+        self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__lsp_lifetime_interval = None
+    self.__lsp_refresh_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'config']
 
+  def _initialized_lsp_lifetime_interval(self):
+    return self.__lsp_lifetime_interval is not None
+
   def _get_lsp_lifetime_interval(self):
     """
     Getter method for lsp_lifetime_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config/lsp_lifetime_interval (uint16)
@@ -211,6 +230,8 @@ class config(PybindBase):
     YANG Description: Time interval in seconds that specifies how long an LSP remains in
 LSDB without being refreshed.
     """
+    if self.__lsp_lifetime_interval is None:
+        self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_lifetime_interval
       
   def _set_lsp_lifetime_interval(self, v, load=False):
@@ -224,6 +245,9 @@ LSDB without being refreshed.
     YANG Description: Time interval in seconds that specifies how long an LSP remains in
 LSDB without being refreshed.
     """
+    if self.__lsp_lifetime_interval is None:
+        self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +267,9 @@ LSDB without being refreshed.
     self.__lsp_lifetime_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1200), is_leaf=True, yang_name="lsp-lifetime-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_lsp_refresh_interval(self):
+    return self.__lsp_refresh_interval is not None
+
   def _get_lsp_refresh_interval(self):
     """
     Getter method for lsp_refresh_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/config/lsp_refresh_interval (uint16)
@@ -250,6 +277,8 @@ LSDB without being refreshed.
     YANG Description: Time interval in seconds that specifies how often route topology
 that a device originates is transmitted in LSPs.
     """
+    if self.__lsp_refresh_interval is None:
+        self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_refresh_interval
       
   def _set_lsp_refresh_interval(self, v, load=False):
@@ -263,6 +292,9 @@ that a device originates is transmitted in LSPs.
     YANG Description: Time interval in seconds that specifies how often route topology
 that a device originates is transmitted in LSPs.
     """
+    if self.__lsp_refresh_interval is None:
+        self.__lsp_refresh_interval = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-refresh-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

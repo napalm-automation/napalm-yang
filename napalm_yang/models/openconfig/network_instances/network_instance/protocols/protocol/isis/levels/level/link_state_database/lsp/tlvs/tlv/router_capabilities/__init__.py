@@ -41,7 +41,7 @@ class router_capabilities(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__router_capability = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class router_capabilities(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities']
 
+  def _initialized_router_capability(self):
+    return self.__router_capability is not None
+
   def _get_router_capability(self):
     """
     Getter method for router_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability (list)
 
     YANG Description: This list describes IS Router capabilities.
     """
+    if self.__router_capability is None:
+        self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__router_capability
       
   def _set_router_capability(self, v, load=False):
@@ -88,6 +93,9 @@ class router_capabilities(PybindBase):
 
     YANG Description: This list describes IS Router capabilities.
     """
+    if self.__router_capability is None:
+        self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class router_capabilities(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__router_capability = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class router_capabilities(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities']
 
+  def _initialized_router_capability(self):
+    return self.__router_capability is not None
+
   def _get_router_capability(self):
     """
     Getter method for router_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability (list)
 
     YANG Description: This list describes IS Router capabilities.
     """
+    if self.__router_capability is None:
+        self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__router_capability
       
   def _set_router_capability(self, v, load=False):
@@ -180,6 +193,9 @@ class router_capabilities(PybindBase):
 
     YANG Description: This list describes IS Router capabilities.
     """
+    if self.__router_capability is None:
+        self.__router_capability = YANGDynClass(base=YANGListType(False,router_capability.router_capability, yang_name="router-capability", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="router-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

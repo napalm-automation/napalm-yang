@@ -41,8 +41,8 @@ mechanisms for the BGP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__erroneous_update_messages = None
+    self.__treat_as_withdraw = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ mechanisms for the BGP neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'error-handling', u'state']
 
+  def _initialized_treat_as_withdraw(self):
+    return self.__treat_as_withdraw is not None
+
   def _get_treat_as_withdraw(self):
     """
     Getter method for treat_as_withdraw, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling/state/treat_as_withdraw (boolean)
@@ -79,6 +82,8 @@ mechanisms for the BGP neighbor
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__treat_as_withdraw
       
   def _set_treat_as_withdraw(self, v, load=False):
@@ -93,6 +98,9 @@ withdrawn - avoiding session reset
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ withdrawn - avoiding session reset
     self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_erroneous_update_messages(self):
+    return self.__erroneous_update_messages is not None
+
   def _get_erroneous_update_messages(self):
     """
     Getter method for erroneous_update_messages, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling/state/erroneous_update_messages (uint32)
@@ -120,6 +131,8 @@ withdrawn - avoiding session reset
 treat-as-withdraw mechanism has been applied based
 on erroneous message contents
     """
+    if self.__erroneous_update_messages is None:
+        self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__erroneous_update_messages
       
   def _set_erroneous_update_messages(self, v, load=False):
@@ -134,6 +147,9 @@ on erroneous message contents
 treat-as-withdraw mechanism has been applied based
 on erroneous message contents
     """
+    if self.__erroneous_update_messages is None:
+        self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ mechanisms for the BGP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__erroneous_update_messages = None
+    self.__treat_as_withdraw = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ mechanisms for the BGP neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'error-handling', u'state']
 
+  def _initialized_treat_as_withdraw(self):
+    return self.__treat_as_withdraw is not None
+
   def _get_treat_as_withdraw(self):
     """
     Getter method for treat_as_withdraw, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling/state/treat_as_withdraw (boolean)
@@ -218,6 +237,8 @@ mechanisms for the BGP neighbor
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__treat_as_withdraw
       
   def _set_treat_as_withdraw(self, v, load=False):
@@ -232,6 +253,9 @@ withdrawn - avoiding session reset
 NLRI can be extracted are reated as though the NLRI is
 withdrawn - avoiding session reset
     """
+    if self.__treat_as_withdraw is None:
+        self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ withdrawn - avoiding session reset
     self.__treat_as_withdraw = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="treat-as-withdraw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_erroneous_update_messages(self):
+    return self.__erroneous_update_messages is not None
+
   def _get_erroneous_update_messages(self):
     """
     Getter method for erroneous_update_messages, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling/state/erroneous_update_messages (uint32)
@@ -259,6 +286,8 @@ withdrawn - avoiding session reset
 treat-as-withdraw mechanism has been applied based
 on erroneous message contents
     """
+    if self.__erroneous_update_messages is None:
+        self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__erroneous_update_messages
       
   def _set_erroneous_update_messages(self, v, load=False):
@@ -273,6 +302,9 @@ on erroneous message contents
 treat-as-withdraw mechanism has been applied based
 on erroneous message contents
     """
+    if self.__erroneous_update_messages is None:
+        self.__erroneous_update_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="erroneous-update-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

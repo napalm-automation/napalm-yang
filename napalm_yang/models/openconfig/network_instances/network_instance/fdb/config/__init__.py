@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__mac_aging_time = None
+    self.__maximum_entries = None
+    self.__mac_learning = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'config']
 
+  def _initialized_mac_learning(self):
+    return self.__mac_learning is not None
+
   def _get_mac_learning(self):
     """
     Getter method for mac_learning, mapped from YANG variable /network_instances/network_instance/fdb/config/mac_learning (boolean)
@@ -79,6 +82,8 @@ class config(PybindBase):
 the network instance, such that MAC addresses are learned
 from ingress frames and added to the FDB.
     """
+    if self.__mac_learning is None:
+        self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__mac_learning
       
   def _set_mac_learning(self, v, load=False):
@@ -93,6 +98,9 @@ from ingress frames and added to the FDB.
 the network instance, such that MAC addresses are learned
 from ingress frames and added to the FDB.
     """
+    if self.__mac_learning is None:
+        self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ from ingress frames and added to the FDB.
     self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_mac_aging_time(self):
+    return self.__mac_aging_time is not None
+
   def _get_mac_aging_time(self):
     """
     Getter method for mac_aging_time, mapped from YANG variable /network_instances/network_instance/fdb/config/mac_aging_time (uint16)
@@ -119,6 +130,8 @@ from ingress frames and added to the FDB.
     YANG Description: The number of seconds of inactivity after which the entry
 in the local FDB is timed out.
     """
+    if self.__mac_aging_time is None:
+        self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__mac_aging_time
       
   def _set_mac_aging_time(self, v, load=False):
@@ -132,6 +145,9 @@ in the local FDB is timed out.
     YANG Description: The number of seconds of inactivity after which the entry
 in the local FDB is timed out.
     """
+    if self.__mac_aging_time is None:
+        self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -151,6 +167,9 @@ in the local FDB is timed out.
     self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_maximum_entries(self):
+    return self.__maximum_entries is not None
+
   def _get_maximum_entries(self):
     """
     Getter method for maximum_entries, mapped from YANG variable /network_instances/network_instance/fdb/config/maximum_entries (uint16)
@@ -158,6 +177,8 @@ in the local FDB is timed out.
     YANG Description: The maximum number of MAC address entries that should be
 accepted into the FDB
     """
+    if self.__maximum_entries is None:
+        self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__maximum_entries
       
   def _set_maximum_entries(self, v, load=False):
@@ -171,6 +192,9 @@ accepted into the FDB
     YANG Description: The maximum number of MAC address entries that should be
 accepted into the FDB
     """
+    if self.__maximum_entries is None:
+        self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__mac_aging_time = None
+    self.__maximum_entries = None
+    self.__mac_learning = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'fdb', u'config']
 
+  def _initialized_mac_learning(self):
+    return self.__mac_learning is not None
+
   def _get_mac_learning(self):
     """
     Getter method for mac_learning, mapped from YANG variable /network_instances/network_instance/fdb/config/mac_learning (boolean)
@@ -256,6 +283,8 @@ class config(PybindBase):
 the network instance, such that MAC addresses are learned
 from ingress frames and added to the FDB.
     """
+    if self.__mac_learning is None:
+        self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__mac_learning
       
   def _set_mac_learning(self, v, load=False):
@@ -270,6 +299,9 @@ from ingress frames and added to the FDB.
 the network instance, such that MAC addresses are learned
 from ingress frames and added to the FDB.
     """
+    if self.__mac_learning is None:
+        self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -289,6 +321,9 @@ from ingress frames and added to the FDB.
     self.__mac_learning = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="mac-learning", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_mac_aging_time(self):
+    return self.__mac_aging_time is not None
+
   def _get_mac_aging_time(self):
     """
     Getter method for mac_aging_time, mapped from YANG variable /network_instances/network_instance/fdb/config/mac_aging_time (uint16)
@@ -296,6 +331,8 @@ from ingress frames and added to the FDB.
     YANG Description: The number of seconds of inactivity after which the entry
 in the local FDB is timed out.
     """
+    if self.__mac_aging_time is None:
+        self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__mac_aging_time
       
   def _set_mac_aging_time(self, v, load=False):
@@ -309,6 +346,9 @@ in the local FDB is timed out.
     YANG Description: The number of seconds of inactivity after which the entry
 in the local FDB is timed out.
     """
+    if self.__mac_aging_time is None:
+        self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -328,6 +368,9 @@ in the local FDB is timed out.
     self.__mac_aging_time = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="mac-aging-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_maximum_entries(self):
+    return self.__maximum_entries is not None
+
   def _get_maximum_entries(self):
     """
     Getter method for maximum_entries, mapped from YANG variable /network_instances/network_instance/fdb/config/maximum_entries (uint16)
@@ -335,6 +378,8 @@ in the local FDB is timed out.
     YANG Description: The maximum number of MAC address entries that should be
 accepted into the FDB
     """
+    if self.__maximum_entries is None:
+        self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__maximum_entries
       
   def _set_maximum_entries(self, v, load=False):
@@ -348,6 +393,9 @@ accepted into the FDB
     YANG Description: The maximum number of MAC address entries that should be
 accepted into the FDB
     """
+    if self.__maximum_entries is None:
+        self.__maximum_entries = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="maximum-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,12 +41,12 @@ options
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__enable_aigp = None
+    self.__ignore_next_hop_igp_metric = None
+    self.__always_compare_med = None
+    self.__external_compare_router_id = None
+    self.__ignore_as_path_length = None
+    self.__advertise_inactive_routes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ options
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'route-selection-options', u'config']
 
+  def _initialized_always_compare_med(self):
+    return self.__always_compare_med is not None
+
   def _get_always_compare_med(self):
     """
     Getter method for always_compare_med, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/always_compare_med (boolean)
@@ -84,6 +87,8 @@ different ASes when selecting the best route.  The
 default behavior is to only compare MEDs for paths
 received from the same AS.
     """
+    if self.__always_compare_med is None:
+        self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__always_compare_med
       
   def _set_always_compare_med(self, v, load=False):
@@ -99,6 +104,9 @@ different ASes when selecting the best route.  The
 default behavior is to only compare MEDs for paths
 received from the same AS.
     """
+    if self.__always_compare_med is None:
+        self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -118,6 +126,9 @@ received from the same AS.
     self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_ignore_as_path_length(self):
+    return self.__ignore_as_path_length is not None
+
   def _get_ignore_as_path_length(self):
     """
     Getter method for ignore_as_path_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/ignore_as_path_length (boolean)
@@ -126,6 +137,8 @@ received from the same AS.
 The default is to use the AS path length and prefer paths
 with shorter length.
     """
+    if self.__ignore_as_path_length is None:
+        self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_as_path_length
       
   def _set_ignore_as_path_length(self, v, load=False):
@@ -140,6 +153,9 @@ with shorter length.
 The default is to use the AS path length and prefer paths
 with shorter length.
     """
+    if self.__ignore_as_path_length is None:
+        self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -159,6 +175,9 @@ with shorter length.
     self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_external_compare_router_id(self):
+    return self.__external_compare_router_id is not None
+
   def _get_external_compare_router_id(self):
     """
     Getter method for external_compare_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/external_compare_router_id (boolean)
@@ -167,6 +186,8 @@ with shorter length.
 BGP peers, use the router-id as a criterion to select
 the active path.
     """
+    if self.__external_compare_router_id is None:
+        self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__external_compare_router_id
       
   def _set_external_compare_router_id(self, v, load=False):
@@ -181,6 +202,9 @@ the active path.
 BGP peers, use the router-id as a criterion to select
 the active path.
     """
+    if self.__external_compare_router_id is None:
+        self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,6 +224,9 @@ the active path.
     self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_advertise_inactive_routes(self):
+    return self.__advertise_inactive_routes is not None
+
   def _get_advertise_inactive_routes(self):
     """
     Getter method for advertise_inactive_routes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/advertise_inactive_routes (boolean)
@@ -207,6 +234,8 @@ the active path.
     YANG Description: Advertise inactive routes to external peers.  The
 default is to only advertise active routes.
     """
+    if self.__advertise_inactive_routes is None:
+        self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__advertise_inactive_routes
       
   def _set_advertise_inactive_routes(self, v, load=False):
@@ -220,6 +249,9 @@ default is to only advertise active routes.
     YANG Description: Advertise inactive routes to external peers.  The
 default is to only advertise active routes.
     """
+    if self.__advertise_inactive_routes is None:
+        self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,6 +271,9 @@ default is to only advertise active routes.
     self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_enable_aigp(self):
+    return self.__enable_aigp is not None
+
   def _get_enable_aigp(self):
     """
     Getter method for enable_aigp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/enable_aigp (boolean)
@@ -246,6 +281,8 @@ default is to only advertise active routes.
     YANG Description: Flag to enable sending / receiving accumulated IGP
 attribute in routing updates
     """
+    if self.__enable_aigp is None:
+        self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enable_aigp
       
   def _set_enable_aigp(self, v, load=False):
@@ -259,6 +296,9 @@ attribute in routing updates
     YANG Description: Flag to enable sending / receiving accumulated IGP
 attribute in routing updates
     """
+    if self.__enable_aigp is None:
+        self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -278,6 +318,9 @@ attribute in routing updates
     self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_ignore_next_hop_igp_metric(self):
+    return self.__ignore_next_hop_igp_metric is not None
+
   def _get_ignore_next_hop_igp_metric(self):
     """
     Getter method for ignore_next_hop_igp_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/ignore_next_hop_igp_metric (boolean)
@@ -286,6 +329,8 @@ attribute in routing updates
 BGP best-path. The default is to select the route for
 which the metric to the next-hop is lowest
     """
+    if self.__ignore_next_hop_igp_metric is None:
+        self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_next_hop_igp_metric
       
   def _set_ignore_next_hop_igp_metric(self, v, load=False):
@@ -300,6 +345,9 @@ which the metric to the next-hop is lowest
 BGP best-path. The default is to select the route for
 which the metric to the next-hop is lowest
     """
+    if self.__ignore_next_hop_igp_metric is None:
+        self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -350,12 +398,12 @@ options
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__enable_aigp = None
+    self.__ignore_next_hop_igp_metric = None
+    self.__always_compare_med = None
+    self.__external_compare_router_id = None
+    self.__ignore_as_path_length = None
+    self.__advertise_inactive_routes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -384,6 +432,9 @@ options
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'route-selection-options', u'config']
 
+  def _initialized_always_compare_med(self):
+    return self.__always_compare_med is not None
+
   def _get_always_compare_med(self):
     """
     Getter method for always_compare_med, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/always_compare_med (boolean)
@@ -393,6 +444,8 @@ different ASes when selecting the best route.  The
 default behavior is to only compare MEDs for paths
 received from the same AS.
     """
+    if self.__always_compare_med is None:
+        self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__always_compare_med
       
   def _set_always_compare_med(self, v, load=False):
@@ -408,6 +461,9 @@ different ASes when selecting the best route.  The
 default behavior is to only compare MEDs for paths
 received from the same AS.
     """
+    if self.__always_compare_med is None:
+        self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -427,6 +483,9 @@ received from the same AS.
     self.__always_compare_med = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="always-compare-med", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_ignore_as_path_length(self):
+    return self.__ignore_as_path_length is not None
+
   def _get_ignore_as_path_length(self):
     """
     Getter method for ignore_as_path_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/ignore_as_path_length (boolean)
@@ -435,6 +494,8 @@ received from the same AS.
 The default is to use the AS path length and prefer paths
 with shorter length.
     """
+    if self.__ignore_as_path_length is None:
+        self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_as_path_length
       
   def _set_ignore_as_path_length(self, v, load=False):
@@ -449,6 +510,9 @@ with shorter length.
 The default is to use the AS path length and prefer paths
 with shorter length.
     """
+    if self.__ignore_as_path_length is None:
+        self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -468,6 +532,9 @@ with shorter length.
     self.__ignore_as_path_length = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-as-path-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_external_compare_router_id(self):
+    return self.__external_compare_router_id is not None
+
   def _get_external_compare_router_id(self):
     """
     Getter method for external_compare_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/external_compare_router_id (boolean)
@@ -476,6 +543,8 @@ with shorter length.
 BGP peers, use the router-id as a criterion to select
 the active path.
     """
+    if self.__external_compare_router_id is None:
+        self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__external_compare_router_id
       
   def _set_external_compare_router_id(self, v, load=False):
@@ -490,6 +559,9 @@ the active path.
 BGP peers, use the router-id as a criterion to select
 the active path.
     """
+    if self.__external_compare_router_id is None:
+        self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -509,6 +581,9 @@ the active path.
     self.__external_compare_router_id = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="external-compare-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_advertise_inactive_routes(self):
+    return self.__advertise_inactive_routes is not None
+
   def _get_advertise_inactive_routes(self):
     """
     Getter method for advertise_inactive_routes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/advertise_inactive_routes (boolean)
@@ -516,6 +591,8 @@ the active path.
     YANG Description: Advertise inactive routes to external peers.  The
 default is to only advertise active routes.
     """
+    if self.__advertise_inactive_routes is None:
+        self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__advertise_inactive_routes
       
   def _set_advertise_inactive_routes(self, v, load=False):
@@ -529,6 +606,9 @@ default is to only advertise active routes.
     YANG Description: Advertise inactive routes to external peers.  The
 default is to only advertise active routes.
     """
+    if self.__advertise_inactive_routes is None:
+        self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -548,6 +628,9 @@ default is to only advertise active routes.
     self.__advertise_inactive_routes = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-inactive-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_enable_aigp(self):
+    return self.__enable_aigp is not None
+
   def _get_enable_aigp(self):
     """
     Getter method for enable_aigp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/enable_aigp (boolean)
@@ -555,6 +638,8 @@ default is to only advertise active routes.
     YANG Description: Flag to enable sending / receiving accumulated IGP
 attribute in routing updates
     """
+    if self.__enable_aigp is None:
+        self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enable_aigp
       
   def _set_enable_aigp(self, v, load=False):
@@ -568,6 +653,9 @@ attribute in routing updates
     YANG Description: Flag to enable sending / receiving accumulated IGP
 attribute in routing updates
     """
+    if self.__enable_aigp is None:
+        self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -587,6 +675,9 @@ attribute in routing updates
     self.__enable_aigp = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable-aigp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_ignore_next_hop_igp_metric(self):
+    return self.__ignore_next_hop_igp_metric is not None
+
   def _get_ignore_next_hop_igp_metric(self):
     """
     Getter method for ignore_next_hop_igp_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/route_selection_options/config/ignore_next_hop_igp_metric (boolean)
@@ -595,6 +686,8 @@ attribute in routing updates
 BGP best-path. The default is to select the route for
 which the metric to the next-hop is lowest
     """
+    if self.__ignore_next_hop_igp_metric is None:
+        self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_next_hop_igp_metric
       
   def _set_ignore_next_hop_igp_metric(self, v, load=False):
@@ -609,6 +702,9 @@ which the metric to the next-hop is lowest
 BGP best-path. The default is to select the route for
 which the metric to the next-hop is lowest
     """
+    if self.__ignore_next_hop_igp_metric is None:
+        self.__ignore_next_hop_igp_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-next-hop-igp-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

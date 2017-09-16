@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
+    self.__remote_router_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links', u'virtual-link', u'config']
 
+  def _initialized_remote_router_id(self):
+    return self.__remote_router_id is not None
+
   def _get_remote_router_id(self):
     """
     Getter method for remote_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/config/remote_router_id (inet:ipv4-address-no-zone)
@@ -76,6 +79,8 @@ class config(PybindBase):
     YANG Description: The router ID of the device which terminates the remote end
 of the virtual link
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
     return self.__remote_router_id
       
   def _set_remote_router_id(self, v, load=False):
@@ -89,6 +94,9 @@ of the virtual link
     YANG Description: The router ID of the device which terminates the remote end
 of the virtual link
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
+    self.__remote_router_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,6 +170,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links', u'virtual-link', u'config']
 
+  def _initialized_remote_router_id(self):
+    return self.__remote_router_id is not None
+
   def _get_remote_router_id(self):
     """
     Getter method for remote_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link/config/remote_router_id (inet:ipv4-address-no-zone)
@@ -169,6 +180,8 @@ class config(PybindBase):
     YANG Description: The router ID of the device which terminates the remote end
 of the virtual link
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
     return self.__remote_router_id
       
   def _set_remote_router_id(self, v, load=False):
@@ -182,6 +195,9 @@ of the virtual link
     YANG Description: The router ID of the device which terminates the remote end
 of the virtual link
     """
+    if self.__remote_router_id is None:
+        self.__remote_router_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="remote-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

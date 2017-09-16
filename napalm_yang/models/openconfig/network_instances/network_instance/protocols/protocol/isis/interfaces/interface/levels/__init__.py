@@ -42,7 +42,7 @@ state information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__level = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ state information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels']
 
+  def _initialized_level(self):
+    return self.__level is not None
+
   def _get_level(self):
     """
     Getter method for level, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level (list)
@@ -78,6 +81,8 @@ state information.
     YANG Description: Configuration and operational state parameters related to a
 particular level on an IS-IS enabled interface.
     """
+    if self.__level is None:
+        self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__level
       
   def _set_level(self, v, load=False):
@@ -91,6 +96,9 @@ particular level on an IS-IS enabled interface.
     YANG Description: Configuration and operational state parameters related to a
 particular level on an IS-IS enabled interface.
     """
+    if self.__level is None:
+        self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ state information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__level = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ state information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels']
 
+  def _initialized_level(self):
+    return self.__level is not None
+
   def _get_level(self):
     """
     Getter method for level, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level (list)
@@ -173,6 +184,8 @@ state information.
     YANG Description: Configuration and operational state parameters related to a
 particular level on an IS-IS enabled interface.
     """
+    if self.__level is None:
+        self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__level
       
   def _set_level(self, v, load=False):
@@ -186,6 +199,9 @@ particular level on an IS-IS enabled interface.
     YANG Description: Configuration and operational state parameters related to a
 particular level on an IS-IS enabled interface.
     """
+    if self.__level is None:
+        self.__level = YANGDynClass(base=YANGListType("level_number",level.level, yang_name="level", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='level-number', extensions=None), is_container='list', yang_name="level", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

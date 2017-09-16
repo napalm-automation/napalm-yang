@@ -64,31 +64,31 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__max_link_bandwidth = None
+    self.__lan_adjacency_sid = None
+    self.__utilized_bandwidth = None
+    self.__link_protection_type = None
+    self.__unreserved_bandwidth = None
+    self.__ipv4_interface_address = None
+    self.__link_delay_variation = None
+    self.__link_attributes = None
+    self.__adjacency_sid = None
+    self.__state = None
+    self.__ipv4_neighbor_address = None
+    self.__bandwidth_constraints = None
+    self.__admin_group = None
+    self.__ipv6_interface_address = None
+    self.__link_delay = None
+    self.__te_default_metric = None
+    self.__unconstrained_lsp = None
+    self.__available_bandwidth = None
+    self.__subtlv_type = None
+    self.__residual_bandwidth = None
+    self.__extended_admin_group = None
+    self.__min_max_link_delay = None
+    self.__max_reservable_link_bandwidth = None
+    self.__ipv6_neighbor_address = None
+    self.__link_loss = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -117,6 +117,9 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs', u'subTLVs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/subtlv_type (leafref)
@@ -124,6 +127,8 @@ class subTLVs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -137,6 +142,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -161,12 +169,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/state (container)
 
     YANG Description: State parameters of IS neighbor state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -179,6 +192,9 @@ the LSDB
 
     YANG Description: State parameters of IS neighbor state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -198,12 +214,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/admin_group (container)
 
     YANG Description: This container defines sub-TLV 3.
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -216,6 +237,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 3.
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -235,12 +259,17 @@ the LSDB
     self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_interface_address(self):
+    return self.__ipv4_interface_address is not None
+
   def _get_ipv4_interface_address(self):
     """
     Getter method for ipv4_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv4_interface_address (container)
 
     YANG Description: This container defines sub-TLV 6.
     """
+    if self.__ipv4_interface_address is None:
+        self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_interface_address
       
   def _set_ipv4_interface_address(self, v, load=False):
@@ -253,6 +282,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 6.
     """
+    if self.__ipv4_interface_address is None:
+        self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -272,12 +304,17 @@ the LSDB
     self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_neighbor_address(self):
+    return self.__ipv4_neighbor_address is not None
+
   def _get_ipv4_neighbor_address(self):
     """
     Getter method for ipv4_neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv4_neighbor_address (container)
 
     YANG Description: This container defines sub-TLV 8.
     """
+    if self.__ipv4_neighbor_address is None:
+        self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_neighbor_address
       
   def _set_ipv4_neighbor_address(self, v, load=False):
@@ -290,6 +327,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 8.
     """
+    if self.__ipv4_neighbor_address is None:
+        self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -309,12 +349,17 @@ the LSDB
     self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_max_link_bandwidth(self):
+    return self.__max_link_bandwidth is not None
+
   def _get_max_link_bandwidth(self):
     """
     Getter method for max_link_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/max_link_bandwidth (container)
 
     YANG Description: This container defines sub-TLV 9.
     """
+    if self.__max_link_bandwidth is None:
+        self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__max_link_bandwidth
       
   def _set_max_link_bandwidth(self, v, load=False):
@@ -327,6 +372,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 9.
     """
+    if self.__max_link_bandwidth is None:
+        self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -346,12 +394,17 @@ the LSDB
     self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_max_reservable_link_bandwidth(self):
+    return self.__max_reservable_link_bandwidth is not None
+
   def _get_max_reservable_link_bandwidth(self):
     """
     Getter method for max_reservable_link_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/max_reservable_link_bandwidth (container)
 
     YANG Description: This container defines sub-TLV 10.
     """
+    if self.__max_reservable_link_bandwidth is None:
+        self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__max_reservable_link_bandwidth
       
   def _set_max_reservable_link_bandwidth(self, v, load=False):
@@ -364,6 +417,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 10.
     """
+    if self.__max_reservable_link_bandwidth is None:
+        self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -383,6 +439,9 @@ the LSDB
     self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unreserved_bandwidth (container)
@@ -390,6 +449,8 @@ the LSDB
     YANG Description: This container defines unreserved-bandwidth. The units are bytes
 per second.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -403,6 +464,9 @@ per second.
     YANG Description: This container defines unreserved-bandwidth. The units are bytes
 per second.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -422,12 +486,17 @@ per second.
     self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_interface_address(self):
+    return self.__ipv6_interface_address is not None
+
   def _get_ipv6_interface_address(self):
     """
     Getter method for ipv6_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv6_interface_address (container)
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_interface_address is None:
+        self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_interface_address
       
   def _set_ipv6_interface_address(self, v, load=False):
@@ -440,6 +509,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_interface_address is None:
+        self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -459,12 +531,17 @@ per second.
     self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_neighbor_address(self):
+    return self.__ipv6_neighbor_address is not None
+
   def _get_ipv6_neighbor_address(self):
     """
     Getter method for ipv6_neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv6_neighbor_address (container)
 
     YANG Description: This container defines sub-TLV 13.
     """
+    if self.__ipv6_neighbor_address is None:
+        self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_neighbor_address
       
   def _set_ipv6_neighbor_address(self, v, load=False):
@@ -477,6 +554,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 13.
     """
+    if self.__ipv6_neighbor_address is None:
+        self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -496,12 +576,17 @@ per second.
     self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_admin_group(self):
+    return self.__extended_admin_group is not None
+
   def _get_extended_admin_group(self):
     """
     Getter method for extended_admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/extended_admin_group (container)
 
     YANG Description: This container defines sub-TLV 14.
     """
+    if self.__extended_admin_group is None:
+        self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_admin_group
       
   def _set_extended_admin_group(self, v, load=False):
@@ -514,6 +599,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 14.
     """
+    if self.__extended_admin_group is None:
+        self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -533,12 +621,17 @@ per second.
     self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_te_default_metric(self):
+    return self.__te_default_metric is not None
+
   def _get_te_default_metric(self):
     """
     Getter method for te_default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/te_default_metric (container)
 
     YANG Description: This container defines sub-TLV 18.
     """
+    if self.__te_default_metric is None:
+        self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__te_default_metric
       
   def _set_te_default_metric(self, v, load=False):
@@ -551,6 +644,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 18.
     """
+    if self.__te_default_metric is None:
+        self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -570,12 +666,17 @@ per second.
     self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_attributes(self):
+    return self.__link_attributes is not None
+
   def _get_link_attributes(self):
     """
     Getter method for link_attributes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_attributes (container)
 
     YANG Description: This container defines link-attributes.
     """
+    if self.__link_attributes is None:
+        self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_attributes
       
   def _set_link_attributes(self, v, load=False):
@@ -588,6 +689,9 @@ per second.
 
     YANG Description: This container defines link-attributes.
     """
+    if self.__link_attributes is None:
+        self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -607,6 +711,9 @@ per second.
     self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_protection_type(self):
+    return self.__link_protection_type is not None
+
   def _get_link_protection_type(self):
     """
     Getter method for link_protection_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_protection_type (container)
@@ -614,6 +721,8 @@ per second.
     YANG Description: ISIS LSDB parameters relating to the type of link protection
 offered.
     """
+    if self.__link_protection_type is None:
+        self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_protection_type
       
   def _set_link_protection_type(self, v, load=False):
@@ -627,6 +736,9 @@ offered.
     YANG Description: ISIS LSDB parameters relating to the type of link protection
 offered.
     """
+    if self.__link_protection_type is None:
+        self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -646,6 +758,9 @@ offered.
     self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_bandwidth_constraints(self):
+    return self.__bandwidth_constraints is not None
+
   def _get_bandwidth_constraints(self):
     """
     Getter method for bandwidth_constraints, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/bandwidth_constraints (container)
@@ -655,6 +770,8 @@ existing Maximum Reservable link bandwidth parameter is retained,
 but its semantics is generalized and interpreted as the aggregate
 bandwidth constraint across all Class-Types
     """
+    if self.__bandwidth_constraints is None:
+        self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__bandwidth_constraints
       
   def _set_bandwidth_constraints(self, v, load=False):
@@ -670,6 +787,9 @@ existing Maximum Reservable link bandwidth parameter is retained,
 but its semantics is generalized and interpreted as the aggregate
 bandwidth constraint across all Class-Types
     """
+    if self.__bandwidth_constraints is None:
+        self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -689,12 +809,17 @@ bandwidth constraint across all Class-Types
     self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unconstrained_lsp(self):
+    return self.__unconstrained_lsp is not None
+
   def _get_unconstrained_lsp(self):
     """
     Getter method for unconstrained_lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unconstrained_lsp (container)
 
     YANG Description: This container defines sub-TLV 23.
     """
+    if self.__unconstrained_lsp is None:
+        self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unconstrained_lsp
       
   def _set_unconstrained_lsp(self, v, load=False):
@@ -707,6 +832,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines sub-TLV 23.
     """
+    if self.__unconstrained_lsp is None:
+        self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -726,12 +854,17 @@ bandwidth constraint across all Class-Types
     self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/adjacency_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -744,6 +877,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -763,12 +899,17 @@ bandwidth constraint across all Class-Types
     self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_lan_adjacency_sid(self):
+    return self.__lan_adjacency_sid is not None
+
   def _get_lan_adjacency_sid(self):
     """
     Getter method for lan_adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/lan_adjacency_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__lan_adjacency_sid is None:
+        self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__lan_adjacency_sid
       
   def _set_lan_adjacency_sid(self, v, load=False):
@@ -781,6 +922,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__lan_adjacency_sid is None:
+        self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -800,12 +944,17 @@ bandwidth constraint across all Class-Types
     self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_delay(self):
+    return self.__link_delay is not None
+
   def _get_link_delay(self):
     """
     Getter method for link_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_delay (container)
 
     YANG Description: This container defines unidirectional link delay.
     """
+    if self.__link_delay is None:
+        self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_delay
       
   def _set_link_delay(self, v, load=False):
@@ -818,6 +967,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link delay.
     """
+    if self.__link_delay is None:
+        self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -837,12 +989,17 @@ bandwidth constraint across all Class-Types
     self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_min_max_link_delay(self):
+    return self.__min_max_link_delay is not None
+
   def _get_min_max_link_delay(self):
     """
     Getter method for min_max_link_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/min_max_link_delay (container)
 
     YANG Description: This container defines min/max link delay.
     """
+    if self.__min_max_link_delay is None:
+        self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__min_max_link_delay
       
   def _set_min_max_link_delay(self, v, load=False):
@@ -855,6 +1012,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines min/max link delay.
     """
+    if self.__min_max_link_delay is None:
+        self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -874,12 +1034,17 @@ bandwidth constraint across all Class-Types
     self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_delay_variation(self):
+    return self.__link_delay_variation is not None
+
   def _get_link_delay_variation(self):
     """
     Getter method for link_delay_variation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_delay_variation (container)
 
     YANG Description: This container defines unidirectional link delay variation.
     """
+    if self.__link_delay_variation is None:
+        self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_delay_variation
       
   def _set_link_delay_variation(self, v, load=False):
@@ -892,6 +1057,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link delay variation.
     """
+    if self.__link_delay_variation is None:
+        self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -911,12 +1079,17 @@ bandwidth constraint across all Class-Types
     self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_loss(self):
+    return self.__link_loss is not None
+
   def _get_link_loss(self):
     """
     Getter method for link_loss, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_loss (container)
 
     YANG Description: This container defines unidirectional link loss delay.
     """
+    if self.__link_loss is None:
+        self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_loss
       
   def _set_link_loss(self, v, load=False):
@@ -929,6 +1102,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link loss delay.
     """
+    if self.__link_loss is None:
+        self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -948,12 +1124,17 @@ bandwidth constraint across all Class-Types
     self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_residual_bandwidth(self):
+    return self.__residual_bandwidth is not None
+
   def _get_residual_bandwidth(self):
     """
     Getter method for residual_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/residual_bandwidth (container)
 
     YANG Description: This container defines unidirectional residual bandwidth.
     """
+    if self.__residual_bandwidth is None:
+        self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__residual_bandwidth
       
   def _set_residual_bandwidth(self, v, load=False):
@@ -966,6 +1147,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional residual bandwidth.
     """
+    if self.__residual_bandwidth is None:
+        self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -985,12 +1169,17 @@ bandwidth constraint across all Class-Types
     self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_available_bandwidth(self):
+    return self.__available_bandwidth is not None
+
   def _get_available_bandwidth(self):
     """
     Getter method for available_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/available_bandwidth (container)
 
     YANG Description: This container defines unidirectional lavailable bandwidth.
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__available_bandwidth
       
   def _set_available_bandwidth(self, v, load=False):
@@ -1003,6 +1192,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional lavailable bandwidth.
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1022,12 +1214,17 @@ bandwidth constraint across all Class-Types
     self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_utilized_bandwidth(self):
+    return self.__utilized_bandwidth is not None
+
   def _get_utilized_bandwidth(self):
     """
     Getter method for utilized_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/utilized_bandwidth (container)
 
     YANG Description: This container defines unidirectional utilized bandwidth.
     """
+    if self.__utilized_bandwidth is None:
+        self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__utilized_bandwidth
       
   def _set_utilized_bandwidth(self, v, load=False):
@@ -1040,6 +1237,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional utilized bandwidth.
     """
+    if self.__utilized_bandwidth is None:
+        self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1132,31 +1332,31 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__max_link_bandwidth = None
+    self.__lan_adjacency_sid = None
+    self.__utilized_bandwidth = None
+    self.__link_protection_type = None
+    self.__unreserved_bandwidth = None
+    self.__ipv4_interface_address = None
+    self.__link_delay_variation = None
+    self.__link_attributes = None
+    self.__adjacency_sid = None
+    self.__state = None
+    self.__ipv4_neighbor_address = None
+    self.__bandwidth_constraints = None
+    self.__admin_group = None
+    self.__ipv6_interface_address = None
+    self.__link_delay = None
+    self.__te_default_metric = None
+    self.__unconstrained_lsp = None
+    self.__available_bandwidth = None
+    self.__subtlv_type = None
+    self.__residual_bandwidth = None
+    self.__extended_admin_group = None
+    self.__min_max_link_delay = None
+    self.__max_reservable_link_bandwidth = None
+    self.__ipv6_neighbor_address = None
+    self.__link_loss = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -1185,6 +1385,9 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs', u'subTLVs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/subtlv_type (leafref)
@@ -1192,6 +1395,8 @@ class subTLVs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -1205,6 +1410,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -1229,12 +1437,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/state (container)
 
     YANG Description: State parameters of IS neighbor state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -1247,6 +1460,9 @@ the LSDB
 
     YANG Description: State parameters of IS neighbor state
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1266,12 +1482,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/admin_group (container)
 
     YANG Description: This container defines sub-TLV 3.
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -1284,6 +1505,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 3.
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1303,12 +1527,17 @@ the LSDB
     self.__admin_group = YANGDynClass(base=admin_group.admin_group, is_container='container', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_interface_address(self):
+    return self.__ipv4_interface_address is not None
+
   def _get_ipv4_interface_address(self):
     """
     Getter method for ipv4_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv4_interface_address (container)
 
     YANG Description: This container defines sub-TLV 6.
     """
+    if self.__ipv4_interface_address is None:
+        self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_interface_address
       
   def _set_ipv4_interface_address(self, v, load=False):
@@ -1321,6 +1550,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 6.
     """
+    if self.__ipv4_interface_address is None:
+        self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1340,12 +1572,17 @@ the LSDB
     self.__ipv4_interface_address = YANGDynClass(base=ipv4_interface_address.ipv4_interface_address, is_container='container', yang_name="ipv4-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_neighbor_address(self):
+    return self.__ipv4_neighbor_address is not None
+
   def _get_ipv4_neighbor_address(self):
     """
     Getter method for ipv4_neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv4_neighbor_address (container)
 
     YANG Description: This container defines sub-TLV 8.
     """
+    if self.__ipv4_neighbor_address is None:
+        self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_neighbor_address
       
   def _set_ipv4_neighbor_address(self, v, load=False):
@@ -1358,6 +1595,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 8.
     """
+    if self.__ipv4_neighbor_address is None:
+        self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1377,12 +1617,17 @@ the LSDB
     self.__ipv4_neighbor_address = YANGDynClass(base=ipv4_neighbor_address.ipv4_neighbor_address, is_container='container', yang_name="ipv4-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_max_link_bandwidth(self):
+    return self.__max_link_bandwidth is not None
+
   def _get_max_link_bandwidth(self):
     """
     Getter method for max_link_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/max_link_bandwidth (container)
 
     YANG Description: This container defines sub-TLV 9.
     """
+    if self.__max_link_bandwidth is None:
+        self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__max_link_bandwidth
       
   def _set_max_link_bandwidth(self, v, load=False):
@@ -1395,6 +1640,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 9.
     """
+    if self.__max_link_bandwidth is None:
+        self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1414,12 +1662,17 @@ the LSDB
     self.__max_link_bandwidth = YANGDynClass(base=max_link_bandwidth.max_link_bandwidth, is_container='container', yang_name="max-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_max_reservable_link_bandwidth(self):
+    return self.__max_reservable_link_bandwidth is not None
+
   def _get_max_reservable_link_bandwidth(self):
     """
     Getter method for max_reservable_link_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/max_reservable_link_bandwidth (container)
 
     YANG Description: This container defines sub-TLV 10.
     """
+    if self.__max_reservable_link_bandwidth is None:
+        self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__max_reservable_link_bandwidth
       
   def _set_max_reservable_link_bandwidth(self, v, load=False):
@@ -1432,6 +1685,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 10.
     """
+    if self.__max_reservable_link_bandwidth is None:
+        self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1451,6 +1707,9 @@ the LSDB
     self.__max_reservable_link_bandwidth = YANGDynClass(base=max_reservable_link_bandwidth.max_reservable_link_bandwidth, is_container='container', yang_name="max-reservable-link-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unreserved_bandwidth (container)
@@ -1458,6 +1717,8 @@ the LSDB
     YANG Description: This container defines unreserved-bandwidth. The units are bytes
 per second.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -1471,6 +1732,9 @@ per second.
     YANG Description: This container defines unreserved-bandwidth. The units are bytes
 per second.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1490,12 +1754,17 @@ per second.
     self.__unreserved_bandwidth = YANGDynClass(base=unreserved_bandwidth.unreserved_bandwidth, is_container='container', yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_interface_address(self):
+    return self.__ipv6_interface_address is not None
+
   def _get_ipv6_interface_address(self):
     """
     Getter method for ipv6_interface_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv6_interface_address (container)
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_interface_address is None:
+        self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_interface_address
       
   def _set_ipv6_interface_address(self, v, load=False):
@@ -1508,6 +1777,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_interface_address is None:
+        self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1527,12 +1799,17 @@ per second.
     self.__ipv6_interface_address = YANGDynClass(base=ipv6_interface_address.ipv6_interface_address, is_container='container', yang_name="ipv6-interface-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_neighbor_address(self):
+    return self.__ipv6_neighbor_address is not None
+
   def _get_ipv6_neighbor_address(self):
     """
     Getter method for ipv6_neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/ipv6_neighbor_address (container)
 
     YANG Description: This container defines sub-TLV 13.
     """
+    if self.__ipv6_neighbor_address is None:
+        self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_neighbor_address
       
   def _set_ipv6_neighbor_address(self, v, load=False):
@@ -1545,6 +1822,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 13.
     """
+    if self.__ipv6_neighbor_address is None:
+        self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1564,12 +1844,17 @@ per second.
     self.__ipv6_neighbor_address = YANGDynClass(base=ipv6_neighbor_address.ipv6_neighbor_address, is_container='container', yang_name="ipv6-neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_admin_group(self):
+    return self.__extended_admin_group is not None
+
   def _get_extended_admin_group(self):
     """
     Getter method for extended_admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/extended_admin_group (container)
 
     YANG Description: This container defines sub-TLV 14.
     """
+    if self.__extended_admin_group is None:
+        self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_admin_group
       
   def _set_extended_admin_group(self, v, load=False):
@@ -1582,6 +1867,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 14.
     """
+    if self.__extended_admin_group is None:
+        self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1601,12 +1889,17 @@ per second.
     self.__extended_admin_group = YANGDynClass(base=extended_admin_group.extended_admin_group, is_container='container', yang_name="extended-admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_te_default_metric(self):
+    return self.__te_default_metric is not None
+
   def _get_te_default_metric(self):
     """
     Getter method for te_default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/te_default_metric (container)
 
     YANG Description: This container defines sub-TLV 18.
     """
+    if self.__te_default_metric is None:
+        self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__te_default_metric
       
   def _set_te_default_metric(self, v, load=False):
@@ -1619,6 +1912,9 @@ per second.
 
     YANG Description: This container defines sub-TLV 18.
     """
+    if self.__te_default_metric is None:
+        self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1638,12 +1934,17 @@ per second.
     self.__te_default_metric = YANGDynClass(base=te_default_metric.te_default_metric, is_container='container', yang_name="te-default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_attributes(self):
+    return self.__link_attributes is not None
+
   def _get_link_attributes(self):
     """
     Getter method for link_attributes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_attributes (container)
 
     YANG Description: This container defines link-attributes.
     """
+    if self.__link_attributes is None:
+        self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_attributes
       
   def _set_link_attributes(self, v, load=False):
@@ -1656,6 +1957,9 @@ per second.
 
     YANG Description: This container defines link-attributes.
     """
+    if self.__link_attributes is None:
+        self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1675,6 +1979,9 @@ per second.
     self.__link_attributes = YANGDynClass(base=link_attributes.link_attributes, is_container='container', yang_name="link-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_protection_type(self):
+    return self.__link_protection_type is not None
+
   def _get_link_protection_type(self):
     """
     Getter method for link_protection_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_protection_type (container)
@@ -1682,6 +1989,8 @@ per second.
     YANG Description: ISIS LSDB parameters relating to the type of link protection
 offered.
     """
+    if self.__link_protection_type is None:
+        self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_protection_type
       
   def _set_link_protection_type(self, v, load=False):
@@ -1695,6 +2004,9 @@ offered.
     YANG Description: ISIS LSDB parameters relating to the type of link protection
 offered.
     """
+    if self.__link_protection_type is None:
+        self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1714,6 +2026,9 @@ offered.
     self.__link_protection_type = YANGDynClass(base=link_protection_type.link_protection_type, is_container='container', yang_name="link-protection-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_bandwidth_constraints(self):
+    return self.__bandwidth_constraints is not None
+
   def _get_bandwidth_constraints(self):
     """
     Getter method for bandwidth_constraints, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/bandwidth_constraints (container)
@@ -1723,6 +2038,8 @@ existing Maximum Reservable link bandwidth parameter is retained,
 but its semantics is generalized and interpreted as the aggregate
 bandwidth constraint across all Class-Types
     """
+    if self.__bandwidth_constraints is None:
+        self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__bandwidth_constraints
       
   def _set_bandwidth_constraints(self, v, load=False):
@@ -1738,6 +2055,9 @@ existing Maximum Reservable link bandwidth parameter is retained,
 but its semantics is generalized and interpreted as the aggregate
 bandwidth constraint across all Class-Types
     """
+    if self.__bandwidth_constraints is None:
+        self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1757,12 +2077,17 @@ bandwidth constraint across all Class-Types
     self.__bandwidth_constraints = YANGDynClass(base=bandwidth_constraints.bandwidth_constraints, is_container='container', yang_name="bandwidth-constraints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unconstrained_lsp(self):
+    return self.__unconstrained_lsp is not None
+
   def _get_unconstrained_lsp(self):
     """
     Getter method for unconstrained_lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unconstrained_lsp (container)
 
     YANG Description: This container defines sub-TLV 23.
     """
+    if self.__unconstrained_lsp is None:
+        self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unconstrained_lsp
       
   def _set_unconstrained_lsp(self, v, load=False):
@@ -1775,6 +2100,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines sub-TLV 23.
     """
+    if self.__unconstrained_lsp is None:
+        self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1794,12 +2122,17 @@ bandwidth constraint across all Class-Types
     self.__unconstrained_lsp = YANGDynClass(base=unconstrained_lsp.unconstrained_lsp, is_container='container', yang_name="unconstrained-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/adjacency_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -1812,6 +2145,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1831,12 +2167,17 @@ bandwidth constraint across all Class-Types
     self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_lan_adjacency_sid(self):
+    return self.__lan_adjacency_sid is not None
+
   def _get_lan_adjacency_sid(self):
     """
     Getter method for lan_adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/lan_adjacency_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__lan_adjacency_sid is None:
+        self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__lan_adjacency_sid
       
   def _set_lan_adjacency_sid(self, v, load=False):
@@ -1849,6 +2190,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__lan_adjacency_sid is None:
+        self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1868,12 +2212,17 @@ bandwidth constraint across all Class-Types
     self.__lan_adjacency_sid = YANGDynClass(base=lan_adjacency_sid.lan_adjacency_sid, is_container='container', yang_name="lan-adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_delay(self):
+    return self.__link_delay is not None
+
   def _get_link_delay(self):
     """
     Getter method for link_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_delay (container)
 
     YANG Description: This container defines unidirectional link delay.
     """
+    if self.__link_delay is None:
+        self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_delay
       
   def _set_link_delay(self, v, load=False):
@@ -1886,6 +2235,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link delay.
     """
+    if self.__link_delay is None:
+        self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1905,12 +2257,17 @@ bandwidth constraint across all Class-Types
     self.__link_delay = YANGDynClass(base=link_delay.link_delay, is_container='container', yang_name="link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_min_max_link_delay(self):
+    return self.__min_max_link_delay is not None
+
   def _get_min_max_link_delay(self):
     """
     Getter method for min_max_link_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/min_max_link_delay (container)
 
     YANG Description: This container defines min/max link delay.
     """
+    if self.__min_max_link_delay is None:
+        self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__min_max_link_delay
       
   def _set_min_max_link_delay(self, v, load=False):
@@ -1923,6 +2280,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines min/max link delay.
     """
+    if self.__min_max_link_delay is None:
+        self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1942,12 +2302,17 @@ bandwidth constraint across all Class-Types
     self.__min_max_link_delay = YANGDynClass(base=min_max_link_delay.min_max_link_delay, is_container='container', yang_name="min-max-link-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_delay_variation(self):
+    return self.__link_delay_variation is not None
+
   def _get_link_delay_variation(self):
     """
     Getter method for link_delay_variation, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_delay_variation (container)
 
     YANG Description: This container defines unidirectional link delay variation.
     """
+    if self.__link_delay_variation is None:
+        self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_delay_variation
       
   def _set_link_delay_variation(self, v, load=False):
@@ -1960,6 +2325,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link delay variation.
     """
+    if self.__link_delay_variation is None:
+        self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1979,12 +2347,17 @@ bandwidth constraint across all Class-Types
     self.__link_delay_variation = YANGDynClass(base=link_delay_variation.link_delay_variation, is_container='container', yang_name="link-delay-variation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_link_loss(self):
+    return self.__link_loss is not None
+
   def _get_link_loss(self):
     """
     Getter method for link_loss, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/link_loss (container)
 
     YANG Description: This container defines unidirectional link loss delay.
     """
+    if self.__link_loss is None:
+        self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__link_loss
       
   def _set_link_loss(self, v, load=False):
@@ -1997,6 +2370,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional link loss delay.
     """
+    if self.__link_loss is None:
+        self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2016,12 +2392,17 @@ bandwidth constraint across all Class-Types
     self.__link_loss = YANGDynClass(base=link_loss.link_loss, is_container='container', yang_name="link-loss", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_residual_bandwidth(self):
+    return self.__residual_bandwidth is not None
+
   def _get_residual_bandwidth(self):
     """
     Getter method for residual_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/residual_bandwidth (container)
 
     YANG Description: This container defines unidirectional residual bandwidth.
     """
+    if self.__residual_bandwidth is None:
+        self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__residual_bandwidth
       
   def _set_residual_bandwidth(self, v, load=False):
@@ -2034,6 +2415,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional residual bandwidth.
     """
+    if self.__residual_bandwidth is None:
+        self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2053,12 +2437,17 @@ bandwidth constraint across all Class-Types
     self.__residual_bandwidth = YANGDynClass(base=residual_bandwidth.residual_bandwidth, is_container='container', yang_name="residual-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_available_bandwidth(self):
+    return self.__available_bandwidth is not None
+
   def _get_available_bandwidth(self):
     """
     Getter method for available_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/available_bandwidth (container)
 
     YANG Description: This container defines unidirectional lavailable bandwidth.
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__available_bandwidth
       
   def _set_available_bandwidth(self, v, load=False):
@@ -2071,6 +2460,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional lavailable bandwidth.
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2090,12 +2482,17 @@ bandwidth constraint across all Class-Types
     self.__available_bandwidth = YANGDynClass(base=available_bandwidth.available_bandwidth, is_container='container', yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_utilized_bandwidth(self):
+    return self.__utilized_bandwidth is not None
+
   def _get_utilized_bandwidth(self):
     """
     Getter method for utilized_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/utilized_bandwidth (container)
 
     YANG Description: This container defines unidirectional utilized bandwidth.
     """
+    if self.__utilized_bandwidth is None:
+        self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__utilized_bandwidth
       
   def _set_utilized_bandwidth(self, v, load=False):
@@ -2108,6 +2505,9 @@ bandwidth constraint across all Class-Types
 
     YANG Description: This container defines unidirectional utilized bandwidth.
     """
+    if self.__utilized_bandwidth is None:
+        self.__utilized_bandwidth = YANGDynClass(base=utilized_bandwidth.utilized_bandwidth, is_container='container', yang_name="utilized-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

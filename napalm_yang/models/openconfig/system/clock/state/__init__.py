@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=False)
+    self.__timezone_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class state(PybindBase):
     else:
       return [u'system', u'clock', u'state']
 
+  def _initialized_timezone_name(self):
+    return self.__timezone_name is not None
+
   def _get_timezone_name(self):
     """
     Getter method for timezone_name, mapped from YANG variable /system/clock/state/timezone_name (timezone-name-type)
@@ -76,6 +79,8 @@ class state(PybindBase):
     YANG Description: The TZ database name to use for the system, such
 as 'Europe/Stockholm'.
     """
+    if self.__timezone_name is None:
+        self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=False)
     return self.__timezone_name
       
   def _set_timezone_name(self, v, load=False):
@@ -89,6 +94,9 @@ as 'Europe/Stockholm'.
     YANG Description: The TZ database name to use for the system, such
 as 'Europe/Stockholm'.
     """
+    if self.__timezone_name is None:
+        self.__timezone_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="timezone-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='timezone-name-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

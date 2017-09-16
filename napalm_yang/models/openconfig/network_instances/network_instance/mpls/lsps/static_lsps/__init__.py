@@ -42,7 +42,7 @@ signaling
     self._path_helper = False
 
     self._extmethods = False
-    self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__static_lsp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ signaling
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'static-lsps']
 
+  def _initialized_static_lsp(self):
+    return self.__static_lsp is not None
+
   def _get_static_lsp(self):
     """
     Getter method for static_lsp, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp (list)
 
     YANG Description: list of defined static LSPs
     """
+    if self.__static_lsp is None:
+        self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__static_lsp
       
   def _set_static_lsp(self, v, load=False):
@@ -89,6 +94,9 @@ signaling
 
     YANG Description: list of defined static LSPs
     """
+    if self.__static_lsp is None:
+        self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ signaling
     self._path_helper = False
 
     self._extmethods = False
-    self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__static_lsp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ signaling
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'static-lsps']
 
+  def _initialized_static_lsp(self):
+    return self.__static_lsp is not None
+
   def _get_static_lsp(self):
     """
     Getter method for static_lsp, mapped from YANG variable /network_instances/network_instance/mpls/lsps/static_lsps/static_lsp (list)
 
     YANG Description: list of defined static LSPs
     """
+    if self.__static_lsp is None:
+        self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__static_lsp
       
   def _set_static_lsp(self, v, load=False):
@@ -182,6 +195,9 @@ signaling
 
     YANG Description: list of defined static LSPs
     """
+    if self.__static_lsp is None:
+        self.__static_lsp = YANGDynClass(base=YANGListType("name",static_lsp.static_lsp, yang_name="static-lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="static-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

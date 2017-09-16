@@ -48,15 +48,15 @@ class interface(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__bandwidth_reservations = None
+    self.__authentication = None
+    self.__interface_id = None
+    self.__state = None
+    self.__protection = None
+    self.__config = None
+    self.__hellos = None
+    self.__interface_ref = None
+    self.__subscription = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -85,12 +85,17 @@ class interface(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_id (leafref)
 
     YANG Description: reference to the interface-id data
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -103,6 +108,9 @@ class interface(PybindBase):
 
     YANG Description: reference to the interface-id data
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -127,12 +135,17 @@ class interface(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/config (container)
 
     YANG Description: Configuration of per-interface RSVP parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -145,6 +158,9 @@ class interface(PybindBase):
 
     YANG Description: Configuration of per-interface RSVP parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,12 +180,17 @@ class interface(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/state (container)
 
     YANG Description: Per-interface RSVP protocol and state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -182,6 +203,9 @@ class interface(PybindBase):
 
     YANG Description: Per-interface RSVP protocol and state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -201,12 +225,17 @@ class interface(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -219,6 +248,9 @@ class interface(PybindBase):
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -238,12 +270,17 @@ class interface(PybindBase):
     self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_bandwidth_reservations(self):
+    return self.__bandwidth_reservations is not None
+
   def _get_bandwidth_reservations(self):
     """
     Getter method for bandwidth_reservations, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations (container)
 
     YANG Description: Enclosing container for bandwidth reservation
     """
+    if self.__bandwidth_reservations is None:
+        self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__bandwidth_reservations
       
   def _set_bandwidth_reservations(self, v, load=False):
@@ -256,6 +293,9 @@ class interface(PybindBase):
 
     YANG Description: Enclosing container for bandwidth reservation
     """
+    if self.__bandwidth_reservations is None:
+        self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -275,12 +315,17 @@ class interface(PybindBase):
     self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hellos(self):
+    return self.__hellos is not None
+
   def _get_hellos(self):
     """
     Getter method for hellos, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/hellos (container)
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hellos
       
   def _set_hellos(self, v, load=False):
@@ -293,6 +338,9 @@ class interface(PybindBase):
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -312,6 +360,9 @@ class interface(PybindBase):
     self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_authentication(self):
+    return self.__authentication is not None
+
   def _get_authentication(self):
     """
     Getter method for authentication, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/authentication (container)
@@ -319,6 +370,8 @@ class interface(PybindBase):
     YANG Description: Configuration and state parameters relating to RSVP
 authentication as per RFC2747
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__authentication
       
   def _set_authentication(self, v, load=False):
@@ -332,6 +385,9 @@ authentication as per RFC2747
     YANG Description: Configuration and state parameters relating to RSVP
 authentication as per RFC2747
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -351,6 +407,9 @@ authentication as per RFC2747
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_subscription(self):
+    return self.__subscription is not None
+
   def _get_subscription(self):
     """
     Getter method for subscription, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/subscription (container)
@@ -358,6 +417,8 @@ authentication as per RFC2747
     YANG Description: Bandwidth percentage reservable by RSVP
 on an interface
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__subscription
       
   def _set_subscription(self, v, load=False):
@@ -371,6 +432,9 @@ on an interface
     YANG Description: Bandwidth percentage reservable by RSVP
 on an interface
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -390,12 +454,17 @@ on an interface
     self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_protection(self):
+    return self.__protection is not None
+
   def _get_protection(self):
     """
     Getter method for protection, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection (container)
 
     YANG Description: link-protection (NHOP) related configuration
     """
+    if self.__protection is None:
+        self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__protection
       
   def _set_protection(self, v, load=False):
@@ -408,6 +477,9 @@ on an interface
 
     YANG Description: link-protection (NHOP) related configuration
     """
+    if self.__protection is None:
+        self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -468,15 +540,15 @@ class interface(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__bandwidth_reservations = None
+    self.__authentication = None
+    self.__interface_id = None
+    self.__state = None
+    self.__protection = None
+    self.__config = None
+    self.__hellos = None
+    self.__interface_ref = None
+    self.__subscription = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -505,12 +577,17 @@ class interface(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_id (leafref)
 
     YANG Description: reference to the interface-id data
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -523,6 +600,9 @@ class interface(PybindBase):
 
     YANG Description: reference to the interface-id data
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -547,12 +627,17 @@ class interface(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/config (container)
 
     YANG Description: Configuration of per-interface RSVP parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -565,6 +650,9 @@ class interface(PybindBase):
 
     YANG Description: Configuration of per-interface RSVP parameters
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -584,12 +672,17 @@ class interface(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/state (container)
 
     YANG Description: Per-interface RSVP protocol and state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -602,6 +695,9 @@ class interface(PybindBase):
 
     YANG Description: Per-interface RSVP protocol and state information
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -621,12 +717,17 @@ class interface(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -639,6 +740,9 @@ class interface(PybindBase):
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -658,12 +762,17 @@ class interface(PybindBase):
     self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_bandwidth_reservations(self):
+    return self.__bandwidth_reservations is not None
+
   def _get_bandwidth_reservations(self):
     """
     Getter method for bandwidth_reservations, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations (container)
 
     YANG Description: Enclosing container for bandwidth reservation
     """
+    if self.__bandwidth_reservations is None:
+        self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__bandwidth_reservations
       
   def _set_bandwidth_reservations(self, v, load=False):
@@ -676,6 +785,9 @@ class interface(PybindBase):
 
     YANG Description: Enclosing container for bandwidth reservation
     """
+    if self.__bandwidth_reservations is None:
+        self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -695,12 +807,17 @@ class interface(PybindBase):
     self.__bandwidth_reservations = YANGDynClass(base=bandwidth_reservations.bandwidth_reservations, is_container='container', yang_name="bandwidth-reservations", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hellos(self):
+    return self.__hellos is not None
+
   def _get_hellos(self):
     """
     Getter method for hellos, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/hellos (container)
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hellos
       
   def _set_hellos(self, v, load=False):
@@ -713,6 +830,9 @@ class interface(PybindBase):
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -732,6 +852,9 @@ class interface(PybindBase):
     self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_authentication(self):
+    return self.__authentication is not None
+
   def _get_authentication(self):
     """
     Getter method for authentication, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/authentication (container)
@@ -739,6 +862,8 @@ class interface(PybindBase):
     YANG Description: Configuration and state parameters relating to RSVP
 authentication as per RFC2747
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__authentication
       
   def _set_authentication(self, v, load=False):
@@ -752,6 +877,9 @@ authentication as per RFC2747
     YANG Description: Configuration and state parameters relating to RSVP
 authentication as per RFC2747
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -771,6 +899,9 @@ authentication as per RFC2747
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_subscription(self):
+    return self.__subscription is not None
+
   def _get_subscription(self):
     """
     Getter method for subscription, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/subscription (container)
@@ -778,6 +909,8 @@ authentication as per RFC2747
     YANG Description: Bandwidth percentage reservable by RSVP
 on an interface
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__subscription
       
   def _set_subscription(self, v, load=False):
@@ -791,6 +924,9 @@ on an interface
     YANG Description: Bandwidth percentage reservable by RSVP
 on an interface
     """
+    if self.__subscription is None:
+        self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -810,12 +946,17 @@ on an interface
     self.__subscription = YANGDynClass(base=subscription.subscription, is_container='container', yang_name="subscription", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_protection(self):
+    return self.__protection is not None
+
   def _get_protection(self):
     """
     Getter method for protection, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/protection (container)
 
     YANG Description: link-protection (NHOP) related configuration
     """
+    if self.__protection is None:
+        self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__protection
       
   def _set_protection(self, v, load=False):
@@ -828,6 +969,9 @@ on an interface
 
     YANG Description: link-protection (NHOP) related configuration
     """
+    if self.__protection is None:
+        self.__protection = YANGDynClass(base=protection.protection, is_container='container', yang_name="protection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

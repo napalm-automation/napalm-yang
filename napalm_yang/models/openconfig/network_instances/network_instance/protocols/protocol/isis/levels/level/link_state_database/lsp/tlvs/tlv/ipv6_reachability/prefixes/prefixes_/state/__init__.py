@@ -40,11 +40,11 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
-    self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
-    self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__ipv6_prefix = None
+    self.__s_bit = None
+    self.__up_down = None
+    self.__metric = None
+    self.__x_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv6-reachability', u'prefixes', u'prefixes', u'state']
 
+  def _initialized_up_down(self):
+    return self.__up_down is not None
+
   def _get_up_down(self):
     """
     Getter method for up_down, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/up_down (boolean)
@@ -83,6 +86,8 @@ has traveled down the hierarchy. Prefixes that have the up/down bit
 set may only be advertised down the hierarchy, i.e., to lower levels.
 When a prefix is first injected into IS-IS, the bit is UNSET.
     """
+    if self.__up_down is None:
+        self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__up_down
       
   def _set_up_down(self, v, load=False):
@@ -99,6 +104,9 @@ has traveled down the hierarchy. Prefixes that have the up/down bit
 set may only be advertised down the hierarchy, i.e., to lower levels.
 When a prefix is first injected into IS-IS, the bit is UNSET.
     """
+    if self.__up_down is None:
+        self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -118,6 +126,9 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_x_bit(self):
+    return self.__x_bit is not None
+
   def _get_x_bit(self):
     """
     Getter method for x_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/x_bit (boolean)
@@ -125,6 +136,8 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     YANG Description: The external bit. Set when the prefix was distributed into IS-IS from
 another routing protocol.
     """
+    if self.__x_bit is None:
+        self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__x_bit
       
   def _set_x_bit(self, v, load=False):
@@ -138,6 +151,9 @@ another routing protocol.
     YANG Description: The external bit. Set when the prefix was distributed into IS-IS from
 another routing protocol.
     """
+    if self.__x_bit is None:
+        self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ another routing protocol.
     self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_s_bit(self):
+    return self.__s_bit is not None
+
   def _get_s_bit(self):
     """
     Getter method for s_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/s_bit (boolean)
@@ -165,6 +184,8 @@ another routing protocol.
 present. Otherwise, the bit is set and the octet following the prefix
 will contain the length of the Sub-TLV portion of the structure.
     """
+    if self.__s_bit is None:
+        self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__s_bit
       
   def _set_s_bit(self, v, load=False):
@@ -179,6 +200,9 @@ will contain the length of the Sub-TLV portion of the structure.
 present. Otherwise, the bit is set and the octet following the prefix
 will contain the length of the Sub-TLV portion of the structure.
     """
+    if self.__s_bit is None:
+        self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -198,12 +222,17 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_ipv6_prefix(self):
+    return self.__ipv6_prefix is not None
+
   def _get_ipv6_prefix(self):
     """
     Getter method for ipv6_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/ipv6_prefix (inet:ipv6-prefix)
 
     YANG Description: IPv6 prefix contained within extended reachability TLVs.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
     return self.__ipv6_prefix
       
   def _set_ipv6_prefix(self, v, load=False):
@@ -216,6 +245,9 @@ will contain the length of the Sub-TLV portion of the structure.
 
     YANG Description: IPv6 prefix contained within extended reachability TLVs.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -235,12 +267,17 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/metric (oc-isis-types:wide-metric)
 
     YANG Description: ISIS metric value.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -253,6 +290,9 @@ will contain the length of the Sub-TLV portion of the structure.
 
     YANG Description: ISIS metric value.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -301,11 +341,11 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
-    self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
-    self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__ipv6_prefix = None
+    self.__s_bit = None
+    self.__up_down = None
+    self.__metric = None
+    self.__x_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -334,6 +374,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv6-reachability', u'prefixes', u'prefixes', u'state']
 
+  def _initialized_up_down(self):
+    return self.__up_down is not None
+
   def _get_up_down(self):
     """
     Getter method for up_down, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/up_down (boolean)
@@ -344,6 +387,8 @@ has traveled down the hierarchy. Prefixes that have the up/down bit
 set may only be advertised down the hierarchy, i.e., to lower levels.
 When a prefix is first injected into IS-IS, the bit is UNSET.
     """
+    if self.__up_down is None:
+        self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__up_down
       
   def _set_up_down(self, v, load=False):
@@ -360,6 +405,9 @@ has traveled down the hierarchy. Prefixes that have the up/down bit
 set may only be advertised down the hierarchy, i.e., to lower levels.
 When a prefix is first injected into IS-IS, the bit is UNSET.
     """
+    if self.__up_down is None:
+        self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -379,6 +427,9 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_x_bit(self):
+    return self.__x_bit is not None
+
   def _get_x_bit(self):
     """
     Getter method for x_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/x_bit (boolean)
@@ -386,6 +437,8 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     YANG Description: The external bit. Set when the prefix was distributed into IS-IS from
 another routing protocol.
     """
+    if self.__x_bit is None:
+        self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__x_bit
       
   def _set_x_bit(self, v, load=False):
@@ -399,6 +452,9 @@ another routing protocol.
     YANG Description: The external bit. Set when the prefix was distributed into IS-IS from
 another routing protocol.
     """
+    if self.__x_bit is None:
+        self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -418,6 +474,9 @@ another routing protocol.
     self.__x_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="x-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_s_bit(self):
+    return self.__s_bit is not None
+
   def _get_s_bit(self):
     """
     Getter method for s_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/s_bit (boolean)
@@ -426,6 +485,8 @@ another routing protocol.
 present. Otherwise, the bit is set and the octet following the prefix
 will contain the length of the Sub-TLV portion of the structure.
     """
+    if self.__s_bit is None:
+        self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__s_bit
       
   def _set_s_bit(self, v, load=False):
@@ -440,6 +501,9 @@ will contain the length of the Sub-TLV portion of the structure.
 present. Otherwise, the bit is set and the octet following the prefix
 will contain the length of the Sub-TLV portion of the structure.
     """
+    if self.__s_bit is None:
+        self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -459,12 +523,17 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_ipv6_prefix(self):
+    return self.__ipv6_prefix is not None
+
   def _get_ipv6_prefix(self):
     """
     Getter method for ipv6_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/ipv6_prefix (inet:ipv6-prefix)
 
     YANG Description: IPv6 prefix contained within extended reachability TLVs.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
     return self.__ipv6_prefix
       
   def _set_ipv6_prefix(self, v, load=False):
@@ -477,6 +546,9 @@ will contain the length of the Sub-TLV portion of the structure.
 
     YANG Description: IPv6 prefix contained within extended reachability TLVs.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -496,12 +568,17 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=False)
 
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/state/metric (oc-isis-types:wide-metric)
 
     YANG Description: ISIS metric value.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -514,6 +591,9 @@ will contain the length of the Sub-TLV portion of the structure.
 
     YANG Description: ISIS metric value.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

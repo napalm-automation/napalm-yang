@@ -47,13 +47,13 @@ criteria are specified within a single
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ip = None
+    self.__state = None
+    self.__sequence_id = None
+    self.__l2 = None
+    self.__action = None
+    self.__config = None
+    self.__transport = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -82,12 +82,17 @@ criteria are specified within a single
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule']
 
+  def _initialized_sequence_id(self):
+    return self.__sequence_id is not None
+
   def _get_sequence_id(self):
     """
     Getter method for sequence_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/sequence_id (leafref)
 
     YANG Description: A unique sequence identifier for the match rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__sequence_id
       
   def _set_sequence_id(self, v, load=False):
@@ -100,6 +105,9 @@ criteria are specified within a single
 
     YANG Description: A unique sequence identifier for the match rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -124,6 +132,9 @@ criteria are specified within a single
     self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/config (container)
@@ -131,6 +142,8 @@ criteria are specified within a single
     YANG Description: Configuration parameters relating to the match
 rule.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -144,6 +157,9 @@ rule.
     YANG Description: Configuration parameters relating to the match
 rule.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -163,6 +179,9 @@ rule.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state (container)
@@ -170,6 +189,8 @@ rule.
     YANG Description: Operational state parameters relating to the match
 rule.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -183,6 +204,9 @@ rule.
     YANG Description: Operational state parameters relating to the match
 rule.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,12 +226,17 @@ rule.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2(self):
+    return self.__l2 is not None
+
   def _get_l2(self):
     """
     Getter method for l2, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2 (container)
 
     YANG Description: Ethernet header fields
     """
+    if self.__l2 is None:
+        self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2
       
   def _set_l2(self, v, load=False):
@@ -220,6 +249,9 @@ rule.
 
     YANG Description: Ethernet header fields
     """
+    if self.__l2 is None:
+        self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,12 +271,17 @@ rule.
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
 
     YANG Description: Top level container
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -257,6 +294,9 @@ rule.
 
     YANG Description: Top level container
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,12 +316,17 @@ rule.
     self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport (container)
 
     YANG Description: Transport fields container
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -294,6 +339,9 @@ rule.
 
     YANG Description: Transport fields container
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -313,6 +361,9 @@ rule.
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_action(self):
+    return self.__action is not None
+
   def _get_action(self):
     """
     Getter method for action, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action (container)
@@ -320,6 +371,8 @@ rule.
     YANG Description: The forwarding policy action to be applied for
 packets matching the rule.
     """
+    if self.__action is None:
+        self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__action
       
   def _set_action(self, v, load=False):
@@ -333,6 +386,9 @@ packets matching the rule.
     YANG Description: The forwarding policy action to be applied for
 packets matching the rule.
     """
+    if self.__action is None:
+        self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -390,13 +446,13 @@ criteria are specified within a single
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ip = None
+    self.__state = None
+    self.__sequence_id = None
+    self.__l2 = None
+    self.__action = None
+    self.__config = None
+    self.__transport = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -425,12 +481,17 @@ criteria are specified within a single
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule']
 
+  def _initialized_sequence_id(self):
+    return self.__sequence_id is not None
+
   def _get_sequence_id(self):
     """
     Getter method for sequence_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/sequence_id (leafref)
 
     YANG Description: A unique sequence identifier for the match rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__sequence_id
       
   def _set_sequence_id(self, v, load=False):
@@ -443,6 +504,9 @@ criteria are specified within a single
 
     YANG Description: A unique sequence identifier for the match rule.
     """
+    if self.__sequence_id is None:
+        self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -467,6 +531,9 @@ criteria are specified within a single
     self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/config (container)
@@ -474,6 +541,8 @@ criteria are specified within a single
     YANG Description: Configuration parameters relating to the match
 rule.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -487,6 +556,9 @@ rule.
     YANG Description: Configuration parameters relating to the match
 rule.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -506,6 +578,9 @@ rule.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/state (container)
@@ -513,6 +588,8 @@ rule.
     YANG Description: Operational state parameters relating to the match
 rule.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -526,6 +603,9 @@ rule.
     YANG Description: Operational state parameters relating to the match
 rule.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -545,12 +625,17 @@ rule.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2(self):
+    return self.__l2 is not None
+
   def _get_l2(self):
     """
     Getter method for l2, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2 (container)
 
     YANG Description: Ethernet header fields
     """
+    if self.__l2 is None:
+        self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2
       
   def _set_l2(self, v, load=False):
@@ -563,6 +648,9 @@ rule.
 
     YANG Description: Ethernet header fields
     """
+    if self.__l2 is None:
+        self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -582,12 +670,17 @@ rule.
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
 
     YANG Description: Top level container
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -600,6 +693,9 @@ rule.
 
     YANG Description: Top level container
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -619,12 +715,17 @@ rule.
     self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport (container)
 
     YANG Description: Transport fields container
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -637,6 +738,9 @@ rule.
 
     YANG Description: Transport fields container
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -656,6 +760,9 @@ rule.
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_action(self):
+    return self.__action is not None
+
   def _get_action(self):
     """
     Getter method for action, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action (container)
@@ -663,6 +770,8 @@ rule.
     YANG Description: The forwarding policy action to be applied for
 packets matching the rule.
     """
+    if self.__action is None:
+        self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__action
       
   def _set_action(self, v, load=False):
@@ -676,6 +785,9 @@ packets matching the rule.
     YANG Description: The forwarding policy action to be applied for
 packets matching the rule.
     """
+    if self.__action is None:
+        self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

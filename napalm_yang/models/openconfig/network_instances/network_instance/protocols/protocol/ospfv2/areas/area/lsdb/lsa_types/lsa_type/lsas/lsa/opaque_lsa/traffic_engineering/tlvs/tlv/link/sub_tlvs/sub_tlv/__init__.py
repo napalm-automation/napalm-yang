@@ -45,10 +45,10 @@ LSA's sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__unreserved_bandwidths = None
+    self.__state = None
+    self.__unknown_subtlv = None
+    self.__administrative_groups = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,12 +77,17 @@ LSA's sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state (container)
 
     YANG Description: State parameters of the Link Sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -95,6 +100,9 @@ LSA's sub-TLV
 
     YANG Description: State parameters of the Link Sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ LSA's sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_subtlv(self):
+    return self.__unknown_subtlv is not None
+
   def _get_unknown_subtlv(self):
     """
     Getter method for unknown_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unknown_subtlv (container)
@@ -123,6 +134,8 @@ are defined to be the set of SubTLVs that are not modelled
 by the OpenConfig schema, or are unknown to the local system
 such that it cannot decode their value.
     """
+    if self.__unknown_subtlv is None:
+        self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_subtlv
       
   def _set_unknown_subtlv(self, v, load=False):
@@ -138,6 +151,9 @@ are defined to be the set of SubTLVs that are not modelled
 by the OpenConfig schema, or are unknown to the local system
 such that it cannot decode their value.
     """
+    if self.__unknown_subtlv is None:
+        self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ such that it cannot decode their value.
     self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unreserved_bandwidths(self):
+    return self.__unreserved_bandwidths is not None
+
   def _get_unreserved_bandwidths(self):
     """
     Getter method for unreserved_bandwidths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths (container)
@@ -166,6 +185,8 @@ Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes unreserved
 bandwidth
     """
+    if self.__unreserved_bandwidths is None:
+        self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unreserved_bandwidths
       
   def _set_unreserved_bandwidths(self, v, load=False):
@@ -181,6 +202,9 @@ Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes unreserved
 bandwidth
     """
+    if self.__unreserved_bandwidths is None:
+        self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,6 +224,9 @@ bandwidth
     self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_administrative_groups(self):
+    return self.__administrative_groups is not None
+
   def _get_administrative_groups(self):
     """
     Getter method for administrative_groups, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups (container)
@@ -209,6 +236,8 @@ Traffic Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes administrative
 groups
     """
+    if self.__administrative_groups is None:
+        self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__administrative_groups
       
   def _set_administrative_groups(self, v, load=False):
@@ -224,6 +253,9 @@ Traffic Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes administrative
 groups
     """
+    if self.__administrative_groups is None:
+        self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,10 +308,10 @@ LSA's sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__unreserved_bandwidths = None
+    self.__state = None
+    self.__unknown_subtlv = None
+    self.__administrative_groups = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -308,12 +340,17 @@ LSA's sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/state (container)
 
     YANG Description: State parameters of the Link Sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -326,6 +363,9 @@ LSA's sub-TLV
 
     YANG Description: State parameters of the Link Sub-TLV
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -345,6 +385,9 @@ LSA's sub-TLV
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_subtlv(self):
+    return self.__unknown_subtlv is not None
+
   def _get_unknown_subtlv(self):
     """
     Getter method for unknown_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unknown_subtlv (container)
@@ -354,6 +397,8 @@ are defined to be the set of SubTLVs that are not modelled
 by the OpenConfig schema, or are unknown to the local system
 such that it cannot decode their value.
     """
+    if self.__unknown_subtlv is None:
+        self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_subtlv
       
   def _set_unknown_subtlv(self, v, load=False):
@@ -369,6 +414,9 @@ are defined to be the set of SubTLVs that are not modelled
 by the OpenConfig schema, or are unknown to the local system
 such that it cannot decode their value.
     """
+    if self.__unknown_subtlv is None:
+        self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -388,6 +436,9 @@ such that it cannot decode their value.
     self.__unknown_subtlv = YANGDynClass(base=unknown_subtlv.unknown_subtlv, is_container='container', yang_name="unknown-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unreserved_bandwidths(self):
+    return self.__unreserved_bandwidths is not None
+
   def _get_unreserved_bandwidths(self):
     """
     Getter method for unreserved_bandwidths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths (container)
@@ -397,6 +448,8 @@ Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes unreserved
 bandwidth
     """
+    if self.__unreserved_bandwidths is None:
+        self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unreserved_bandwidths
       
   def _set_unreserved_bandwidths(self, v, load=False):
@@ -412,6 +465,9 @@ Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes unreserved
 bandwidth
     """
+    if self.__unreserved_bandwidths is None:
+        self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -431,6 +487,9 @@ bandwidth
     self.__unreserved_bandwidths = YANGDynClass(base=unreserved_bandwidths.unreserved_bandwidths, is_container='container', yang_name="unreserved-bandwidths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_administrative_groups(self):
+    return self.__administrative_groups is not None
+
   def _get_administrative_groups(self):
     """
     Getter method for administrative_groups, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups (container)
@@ -440,6 +499,8 @@ Traffic Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes administrative
 groups
     """
+    if self.__administrative_groups is None:
+        self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__administrative_groups
       
   def _set_administrative_groups(self, v, load=False):
@@ -455,6 +516,9 @@ Traffic Engineering LSA - utilised when the sub-TLV type
 indicates that the sub-TLV describes administrative
 groups
     """
+    if self.__administrative_groups is None:
+        self.__administrative_groups = YANGDynClass(base=administrative_groups.administrative_groups, is_container='container', yang_name="administrative-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -44,10 +44,10 @@ class dns(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__host_entries = YANGDynClass(base=host_entries.host_entries, is_container='container', yang_name="host-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__state = None
+    self.__host_entries = None
+    self.__config = None
+    self.__servers = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class dns(PybindBase):
     else:
       return [u'system', u'dns']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/dns/config (container)
 
     YANG Description: Configuration data for the DNS resolver
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -94,6 +99,9 @@ class dns(PybindBase):
 
     YANG Description: Configuration data for the DNS resolver
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ class dns(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/dns/state (container)
 
     YANG Description: Operational state data for the DNS resolver
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -131,6 +144,9 @@ class dns(PybindBase):
 
     YANG Description: Operational state data for the DNS resolver
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,12 +166,17 @@ class dns(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_servers(self):
+    return self.__servers is not None
+
   def _get_servers(self):
     """
     Getter method for servers, mapped from YANG variable /system/dns/servers (container)
 
     YANG Description: Enclosing container for DNS resolver list
     """
+    if self.__servers is None:
+        self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__servers
       
   def _set_servers(self, v, load=False):
@@ -168,6 +189,9 @@ class dns(PybindBase):
 
     YANG Description: Enclosing container for DNS resolver list
     """
+    if self.__servers is None:
+        self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ class dns(PybindBase):
     self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_host_entries(self):
+    return self.__host_entries is not None
+
   def _get_host_entries(self):
     """
     Getter method for host_entries, mapped from YANG variable /system/dns/host_entries (container)
 
     YANG Description: Enclosing container for list of static host entries
     """
+    if self.__host_entries is None:
+        self.__host_entries = YANGDynClass(base=host_entries.host_entries, is_container='container', yang_name="host-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__host_entries
       
   def _set_host_entries(self, v, load=False):
@@ -205,6 +234,9 @@ class dns(PybindBase):
 
     YANG Description: Enclosing container for list of static host entries
     """
+    if self.__host_entries is None:
+        self.__host_entries = YANGDynClass(base=host_entries.host_entries, is_container='container', yang_name="host-entries", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

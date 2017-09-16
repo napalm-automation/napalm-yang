@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
+    self.__cost = None
+    self.__name = None
+    self.__value = None
+    self.__flooding_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs', u'srlg', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/name (string)
 
     YANG Description: SRLG group identifier
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -90,6 +95,9 @@ class config(PybindBase):
 
     YANG Description: SRLG group identifier
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_value(self):
+    return self.__value is not None
+
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/value (uint32)
 
     YANG Description: group ID for the SRLG
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__value
       
   def _set_value(self, v, load=False):
@@ -127,6 +140,9 @@ class config(PybindBase):
 
     YANG Description: group ID for the SRLG
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,6 +162,9 @@ class config(PybindBase):
     self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_cost(self):
+    return self.__cost is not None
+
   def _get_cost(self):
     """
     Getter method for cost, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/cost (uint32)
@@ -153,6 +172,8 @@ class config(PybindBase):
     YANG Description: The cost of the SRLG to the computation
 algorithm
     """
+    if self.__cost is None:
+        self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__cost
       
   def _set_cost(self, v, load=False):
@@ -166,6 +187,9 @@ algorithm
     YANG Description: The cost of the SRLG to the computation
 algorithm
     """
+    if self.__cost is None:
+        self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -185,6 +209,9 @@ algorithm
     self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_flooding_type(self):
+    return self.__flooding_type is not None
+
   def _get_flooding_type(self):
     """
     Getter method for flooding_type, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/flooding_type (mpls-srlg-flooding-type)
@@ -192,6 +219,8 @@ algorithm
     YANG Description: The type of SRLG, either flooded in the IGP or
 statically configured
     """
+    if self.__flooding_type is None:
+        self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
     return self.__flooding_type
       
   def _set_flooding_type(self, v, load=False):
@@ -205,6 +234,9 @@ statically configured
     YANG Description: The type of SRLG, either flooded in the IGP or
 statically configured
     """
+    if self.__flooding_type is None:
+        self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -252,10 +284,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
+    self.__cost = None
+    self.__name = None
+    self.__value = None
+    self.__flooding_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -284,12 +316,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'srlgs', u'srlg', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/name (string)
 
     YANG Description: SRLG group identifier
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -302,6 +339,9 @@ class config(PybindBase):
 
     YANG Description: SRLG group identifier
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -321,12 +361,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_value(self):
+    return self.__value is not None
+
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/value (uint32)
 
     YANG Description: group ID for the SRLG
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__value
       
   def _set_value(self, v, load=False):
@@ -339,6 +384,9 @@ class config(PybindBase):
 
     YANG Description: group ID for the SRLG
     """
+    if self.__value is None:
+        self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -358,6 +406,9 @@ class config(PybindBase):
     self.__value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_cost(self):
+    return self.__cost is not None
+
   def _get_cost(self):
     """
     Getter method for cost, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/cost (uint32)
@@ -365,6 +416,8 @@ class config(PybindBase):
     YANG Description: The cost of the SRLG to the computation
 algorithm
     """
+    if self.__cost is None:
+        self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__cost
       
   def _set_cost(self, v, load=False):
@@ -378,6 +431,9 @@ algorithm
     YANG Description: The cost of the SRLG to the computation
 algorithm
     """
+    if self.__cost is None:
+        self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -397,6 +453,9 @@ algorithm
     self.__cost = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="cost", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
 
 
+  def _initialized_flooding_type(self):
+    return self.__flooding_type is not None
+
   def _get_flooding_type(self):
     """
     Getter method for flooding_type, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/srlgs/srlg/config/flooding_type (mpls-srlg-flooding-type)
@@ -404,6 +463,8 @@ algorithm
     YANG Description: The type of SRLG, either flooded in the IGP or
 statically configured
     """
+    if self.__flooding_type is None:
+        self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
     return self.__flooding_type
       
   def _set_flooding_type(self, v, load=False):
@@ -417,6 +478,9 @@ statically configured
     YANG Description: The type of SRLG, either flooded in the IGP or
 statically configured
     """
+    if self.__flooding_type is None:
+        self.__flooding_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FLOODED_SRLG': {}, u'STATIC_SRLG': {}},), default=unicode("FLOODED_SRLG"), is_leaf=True, yang_name="flooding-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='mpls-srlg-flooding-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__passive = None
+    self.__priority = None
+    self.__level_number = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'config']
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/level_number (oc-isis-types:level-number)
 
     YANG Description: ISIS level number(level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -90,6 +95,9 @@ class config(PybindBase):
 
     YANG Description: ISIS level number(level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class config(PybindBase):
     self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/passive (boolean)
 
     YANG Description: ISIS passive interface admin enable/disable function.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -127,6 +140,9 @@ class config(PybindBase):
 
     YANG Description: ISIS passive interface admin enable/disable function.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,12 +162,17 @@ class config(PybindBase):
     self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/priority (uint8)
 
     YANG Description: ISIS neighbor priority(LAN hello PDU only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -164,6 +185,9 @@ class config(PybindBase):
 
     YANG Description: ISIS neighbor priority(LAN hello PDU only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -183,6 +207,9 @@ class config(PybindBase):
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/enabled (boolean)
@@ -190,6 +217,8 @@ class config(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -203,6 +232,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,10 +282,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__passive = None
+    self.__priority = None
+    self.__level_number = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -282,12 +314,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'config']
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/level_number (oc-isis-types:level-number)
 
     YANG Description: ISIS level number(level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -300,6 +337,9 @@ class config(PybindBase):
 
     YANG Description: ISIS level number(level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,12 +359,17 @@ class config(PybindBase):
     self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/passive (boolean)
 
     YANG Description: ISIS passive interface admin enable/disable function.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -337,6 +382,9 @@ class config(PybindBase):
 
     YANG Description: ISIS passive interface admin enable/disable function.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,12 +404,17 @@ class config(PybindBase):
     self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/priority (uint8)
 
     YANG Description: ISIS neighbor priority(LAN hello PDU only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -374,6 +427,9 @@ class config(PybindBase):
 
     YANG Description: ISIS neighbor priority(LAN hello PDU only).
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -393,6 +449,9 @@ class config(PybindBase):
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0 .. 127']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/config/enabled (boolean)
@@ -400,6 +459,8 @@ class config(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -413,6 +474,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

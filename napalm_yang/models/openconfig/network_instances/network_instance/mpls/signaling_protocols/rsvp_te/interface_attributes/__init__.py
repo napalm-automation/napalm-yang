@@ -41,7 +41,7 @@ class interface_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__interface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class interface_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes']
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface (list)
 
     YANG Description: list of per-interface RSVP configurations
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -88,6 +93,9 @@ class interface_attributes(PybindBase):
 
     YANG Description: list of per-interface RSVP configurations
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class interface_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__interface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class interface_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes']
 
+  def _initialized_interface(self):
+    return self.__interface is not None
+
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface (list)
 
     YANG Description: list of per-interface RSVP configurations
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__interface
       
   def _set_interface(self, v, load=False):
@@ -180,6 +193,9 @@ class interface_attributes(PybindBase):
 
     YANG Description: list of per-interface RSVP configurations
     """
+    if self.__interface is None:
+        self.__interface = YANGDynClass(base=YANGListType("interface_id",interface.interface, yang_name="interface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='interface-id', extensions=None), is_container='list', yang_name="interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

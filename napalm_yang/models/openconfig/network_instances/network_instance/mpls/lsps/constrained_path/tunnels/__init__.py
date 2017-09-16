@@ -41,7 +41,7 @@ class tunnels(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__tunnel = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class tunnels(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels']
 
+  def _initialized_tunnel(self):
+    return self.__tunnel is not None
+
   def _get_tunnel(self):
     """
     Getter method for tunnel, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel (list)
@@ -80,6 +83,8 @@ Where the signaling protocol utilised for an LSP allows a mid-point
 or tail device to be aware of the LSP (e.g., RSVP-TE), then the
 associated sessions are maintained per protocol
     """
+    if self.__tunnel is None:
+        self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__tunnel
       
   def _set_tunnel(self, v, load=False):
@@ -96,6 +101,9 @@ Where the signaling protocol utilised for an LSP allows a mid-point
 or tail device to be aware of the LSP (e.g., RSVP-TE), then the
 associated sessions are maintained per protocol
     """
+    if self.__tunnel is None:
+        self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -141,7 +149,7 @@ class tunnels(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__tunnel = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -170,6 +178,9 @@ class tunnels(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels']
 
+  def _initialized_tunnel(self):
+    return self.__tunnel is not None
+
   def _get_tunnel(self):
     """
     Getter method for tunnel, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel (list)
@@ -180,6 +191,8 @@ Where the signaling protocol utilised for an LSP allows a mid-point
 or tail device to be aware of the LSP (e.g., RSVP-TE), then the
 associated sessions are maintained per protocol
     """
+    if self.__tunnel is None:
+        self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__tunnel
       
   def _set_tunnel(self, v, load=False):
@@ -196,6 +209,9 @@ Where the signaling protocol utilised for an LSP allows a mid-point
 or tail device to be aware of the LSP (e.g., RSVP-TE), then the
 associated sessions are maintained per protocol
     """
+    if self.__tunnel is None:
+        self.__tunnel = YANGDynClass(base=YANGListType("name",tunnel.tunnel, yang_name="tunnel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="tunnel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

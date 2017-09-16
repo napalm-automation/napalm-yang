@@ -42,7 +42,7 @@ OSPFv2 area.
     self._path_helper = False
 
     self._extmethods = False
-    self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__area = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ OSPFv2 area.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas']
 
+  def _initialized_area(self):
+    return self.__area is not None
+
   def _get_area(self):
     """
     Getter method for area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area (list)
 
     YANG Description: The OSPFv2 areas within which the local system exists
     """
+    if self.__area is None:
+        self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__area
       
   def _set_area(self, v, load=False):
@@ -89,6 +94,9 @@ OSPFv2 area.
 
     YANG Description: The OSPFv2 areas within which the local system exists
     """
+    if self.__area is None:
+        self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ OSPFv2 area.
     self._path_helper = False
 
     self._extmethods = False
-    self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__area = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ OSPFv2 area.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas']
 
+  def _initialized_area(self):
+    return self.__area is not None
+
   def _get_area(self):
     """
     Getter method for area, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area (list)
 
     YANG Description: The OSPFv2 areas within which the local system exists
     """
+    if self.__area is None:
+        self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__area
       
   def _set_area(self, v, load=False):
@@ -182,6 +195,9 @@ OSPFv2 area.
 
     YANG Description: The OSPFv2 areas within which the local system exists
     """
+    if self.__area is None:
+        self.__area = YANGDynClass(base=YANGListType("identifier",area.area, yang_name="area", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier', extensions=None), is_container='list', yang_name="area", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

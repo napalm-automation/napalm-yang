@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
-    self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__level_number = None
+    self.__enabled = None
+    self.__metric_style = None
+    self.__authentication_check = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/enabled (boolean)
@@ -79,6 +82,8 @@ class state(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -92,6 +97,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/level_number (oc-isis-types:level-number)
 
     YANG Description: ISIS level number (level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -129,6 +142,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: ISIS level number (level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,12 +164,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
 
 
+  def _initialized_metric_style(self):
+    return self.__metric_style is not None
+
   def _get_metric_style(self):
     """
     Getter method for metric_style, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/metric_style (oc-isis-types:metric-style)
 
     YANG Description: ISIS metric style types(narrow, wide).
     """
+    if self.__metric_style is None:
+        self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
     return self.__metric_style
       
   def _set_metric_style(self, v, load=False):
@@ -166,6 +187,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: ISIS metric style types(narrow, wide).
     """
+    if self.__metric_style is None:
+        self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -185,6 +209,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
 
 
+  def _initialized_authentication_check(self):
+    return self.__authentication_check is not None
+
   def _get_authentication_check(self):
     """
     Getter method for authentication_check, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/authentication_check (boolean)
@@ -192,6 +219,8 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__authentication_check
       
   def _set_authentication_check(self, v, load=False):
@@ -205,6 +234,9 @@ in authentication-type or authentication-key.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -252,10 +284,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
-    self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__level_number = None
+    self.__enabled = None
+    self.__metric_style = None
+    self.__authentication_check = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -284,6 +316,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/enabled (boolean)
@@ -291,6 +326,8 @@ class state(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -304,6 +341,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -323,12 +363,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_level_number(self):
+    return self.__level_number is not None
+
   def _get_level_number(self):
     """
     Getter method for level_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/level_number (oc-isis-types:level-number)
 
     YANG Description: ISIS level number (level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
     return self.__level_number
       
   def _set_level_number(self, v, load=False):
@@ -341,6 +386,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: ISIS level number (level-1, level-2).
     """
+    if self.__level_number is None:
+        self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -360,12 +408,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__level_number = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="level-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
 
 
+  def _initialized_metric_style(self):
+    return self.__metric_style is not None
+
   def _get_metric_style(self):
     """
     Getter method for metric_style, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/metric_style (oc-isis-types:metric-style)
 
     YANG Description: ISIS metric style types(narrow, wide).
     """
+    if self.__metric_style is None:
+        self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
     return self.__metric_style
       
   def _set_metric_style(self, v, load=False):
@@ -378,6 +431,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: ISIS metric style types(narrow, wide).
     """
+    if self.__metric_style is None:
+        self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -397,6 +453,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__metric_style = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NARROW_METRIC': {}, u'WIDE_METRIC': {}},), is_leaf=True, yang_name="metric-style", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:metric-style', is_config=False)
 
 
+  def _initialized_authentication_check(self):
+    return self.__authentication_check is not None
+
   def _get_authentication_check(self):
     """
     Getter method for authentication_check, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/state/authentication_check (boolean)
@@ -404,6 +463,8 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__authentication_check
       
   def _set_authentication_check(self, v, load=False):
@@ -417,6 +478,9 @@ in authentication-type or authentication-key.
     YANG Description: When set to true, reject all ISIS protocol PDUs that either have a mismatch
 in authentication-type or authentication-key.
     """
+    if self.__authentication_check is None:
+        self.__authentication_check = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="authentication-check", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

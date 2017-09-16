@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
-    self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__router_id = None
+    self.__total_paths = None
+    self.__as_ = None
+    self.__total_prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'state']
 
+  def _initialized_as_(self):
+    return self.__as_ is not None
+
   def _get_as_(self):
     """
     Getter method for as_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/as (oc-inet:as-number)
@@ -79,6 +82,8 @@ class state(PybindBase):
     YANG Description: Local autonomous system number of the router.  Uses
 the 32-bit as-number type from the model in RFC 6991.
     """
+    if self.__as_ is None:
+        self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__as_
       
   def _set_as_(self, v, load=False):
@@ -92,6 +97,9 @@ the 32-bit as-number type from the model in RFC 6991.
     YANG Description: Local autonomous system number of the router.  Uses
 the 32-bit as-number type from the model in RFC 6991.
     """
+    if self.__as_ is None:
+        self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ the 32-bit as-number type from the model in RFC 6991.
     self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/router_id (oc-yang:dotted-quad)
@@ -118,6 +129,8 @@ the 32-bit as-number type from the model in RFC 6991.
     YANG Description: Router id of the router - an unsigned 32-bit integer
 expressed in dotted quad notation.
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -131,6 +144,9 @@ expressed in dotted quad notation.
     YANG Description: Router id of the router - an unsigned 32-bit integer
 expressed in dotted quad notation.
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,12 +166,17 @@ expressed in dotted quad notation.
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
 
 
+  def _initialized_total_paths(self):
+    return self.__total_paths is not None
+
   def _get_total_paths(self):
     """
     Getter method for total_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/total_paths (uint32)
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_paths
       
   def _set_total_paths(self, v, load=False):
@@ -168,6 +189,9 @@ expressed in dotted quad notation.
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ expressed in dotted quad notation.
     self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_total_prefixes(self):
+    return self.__total_prefixes is not None
+
   def _get_total_prefixes(self):
     """
     Getter method for total_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/total_prefixes (uint32)
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_prefixes
       
   def _set_total_prefixes(self, v, load=False):
@@ -205,6 +234,9 @@ expressed in dotted quad notation.
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -252,10 +284,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
-    self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__router_id = None
+    self.__total_paths = None
+    self.__as_ = None
+    self.__total_prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -284,6 +316,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'state']
 
+  def _initialized_as_(self):
+    return self.__as_ is not None
+
   def _get_as_(self):
     """
     Getter method for as_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/as (oc-inet:as-number)
@@ -291,6 +326,8 @@ class state(PybindBase):
     YANG Description: Local autonomous system number of the router.  Uses
 the 32-bit as-number type from the model in RFC 6991.
     """
+    if self.__as_ is None:
+        self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__as_
       
   def _set_as_(self, v, load=False):
@@ -304,6 +341,9 @@ the 32-bit as-number type from the model in RFC 6991.
     YANG Description: Local autonomous system number of the router.  Uses
 the 32-bit as-number type from the model in RFC 6991.
     """
+    if self.__as_ is None:
+        self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -323,6 +363,9 @@ the 32-bit as-number type from the model in RFC 6991.
     self.__as_ = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/router_id (oc-yang:dotted-quad)
@@ -330,6 +373,8 @@ the 32-bit as-number type from the model in RFC 6991.
     YANG Description: Router id of the router - an unsigned 32-bit integer
 expressed in dotted quad notation.
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -343,6 +388,9 @@ expressed in dotted quad notation.
     YANG Description: Router id of the router - an unsigned 32-bit integer
 expressed in dotted quad notation.
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,12 +410,17 @@ expressed in dotted quad notation.
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:dotted-quad', is_config=False)
 
 
+  def _initialized_total_paths(self):
+    return self.__total_paths is not None
+
   def _get_total_paths(self):
     """
     Getter method for total_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/total_paths (uint32)
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_paths
       
   def _set_total_paths(self, v, load=False):
@@ -380,6 +433,9 @@ expressed in dotted quad notation.
 
     YANG Description: Total number of BGP paths within the context
     """
+    if self.__total_paths is None:
+        self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,12 +455,17 @@ expressed in dotted quad notation.
     self.__total_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_total_prefixes(self):
+    return self.__total_prefixes is not None
+
   def _get_total_prefixes(self):
     """
     Getter method for total_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/state/total_prefixes (uint32)
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__total_prefixes
       
   def _set_total_prefixes(self, v, load=False):
@@ -417,6 +478,9 @@ expressed in dotted quad notation.
 
     YANG Description: Total number of BGP prefixes received within the context
     """
+    if self.__total_prefixes is None:
+        self.__total_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="total-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

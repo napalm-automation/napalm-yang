@@ -41,7 +41,7 @@ in the RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__administrative_tags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ in the RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'node-administrative-tags', u'state']
 
+  def _initialized_administrative_tags(self):
+    return self.__administrative_tags is not None
+
   def _get_administrative_tags(self):
     """
     Getter method for administrative_tags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/node_administrative_tags/state/administrative_tags (uint32)
@@ -78,6 +81,8 @@ in the RI LSA
 the network operator. The meaning of these tags is opaque to OSPF
 - and their interpretation is per-domain specific
     """
+    if self.__administrative_tags is None:
+        self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__administrative_tags
       
   def _set_administrative_tags(self, v, load=False):
@@ -92,6 +97,9 @@ the network operator. The meaning of these tags is opaque to OSPF
 the network operator. The meaning of these tags is opaque to OSPF
 - and their interpretation is per-domain specific
     """
+    if self.__administrative_tags is None:
+        self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ in the RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__administrative_tags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ in the RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'node-administrative-tags', u'state']
 
+  def _initialized_administrative_tags(self):
+    return self.__administrative_tags is not None
+
   def _get_administrative_tags(self):
     """
     Getter method for administrative_tags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/node_administrative_tags/state/administrative_tags (uint32)
@@ -174,6 +185,8 @@ in the RI LSA
 the network operator. The meaning of these tags is opaque to OSPF
 - and their interpretation is per-domain specific
     """
+    if self.__administrative_tags is None:
+        self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__administrative_tags
       
   def _set_administrative_tags(self, v, load=False):
@@ -188,6 +201,9 @@ the network operator. The meaning of these tags is opaque to OSPF
 the network operator. The meaning of these tags is opaque to OSPF
 - and their interpretation is per-domain specific
     """
+    if self.__administrative_tags is None:
+        self.__administrative_tags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

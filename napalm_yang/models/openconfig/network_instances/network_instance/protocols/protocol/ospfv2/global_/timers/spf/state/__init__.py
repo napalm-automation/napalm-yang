@@ -41,9 +41,9 @@ OSPFv2 SPF timers
     self._path_helper = False
 
     self._extmethods = False
-    self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__initial_delay = None
+    self.__maximum_delay = None
+    self.__timer_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ OSPFv2 SPF timers
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers', u'spf', u'state']
 
+  def _initialized_initial_delay(self):
+    return self.__initial_delay is not None
+
   def _get_initial_delay(self):
     """
     Getter method for initial_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/initial_delay (uint32)
@@ -80,6 +83,8 @@ OSPFv2 SPF timers
 in topology being detected and the first run of the SPF
 algorithm.
     """
+    if self.__initial_delay is None:
+        self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__initial_delay
       
   def _set_initial_delay(self, v, load=False):
@@ -94,6 +99,9 @@ algorithm.
 in topology being detected and the first run of the SPF
 algorithm.
     """
+    if self.__initial_delay is None:
+        self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ algorithm.
     self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_maximum_delay(self):
+    return self.__maximum_delay is not None
+
   def _get_maximum_delay(self):
     """
     Getter method for maximum_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/maximum_delay (uint32)
@@ -122,6 +133,8 @@ a topology change being detected and the SPF algorithm
 running. This value is used for implementations that support
 increasing the wait time between SPF runs.
     """
+    if self.__maximum_delay is None:
+        self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__maximum_delay
       
   def _set_maximum_delay(self, v, load=False):
@@ -137,6 +150,9 @@ a topology change being detected and the SPF algorithm
 running. This value is used for implementations that support
 increasing the wait time between SPF runs.
     """
+    if self.__maximum_delay is None:
+        self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ increasing the wait time between SPF runs.
     self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_timer_type(self):
+    return self.__timer_type is not None
+
   def _get_timer_type(self):
     """
     Getter method for timer_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/timer_type (enumeration)
 
     YANG Description: The timer mode that is utilised by the implementation.
     """
+    if self.__timer_type is None:
+        self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__timer_type
       
   def _set_timer_type(self, v, load=False):
@@ -174,6 +195,9 @@ increasing the wait time between SPF runs.
 
     YANG Description: The timer mode that is utilised by the implementation.
     """
+    if self.__timer_type is None:
+        self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -221,9 +245,9 @@ OSPFv2 SPF timers
     self._path_helper = False
 
     self._extmethods = False
-    self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__initial_delay = None
+    self.__maximum_delay = None
+    self.__timer_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -252,6 +276,9 @@ OSPFv2 SPF timers
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'timers', u'spf', u'state']
 
+  def _initialized_initial_delay(self):
+    return self.__initial_delay is not None
+
   def _get_initial_delay(self):
     """
     Getter method for initial_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/initial_delay (uint32)
@@ -260,6 +287,8 @@ OSPFv2 SPF timers
 in topology being detected and the first run of the SPF
 algorithm.
     """
+    if self.__initial_delay is None:
+        self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__initial_delay
       
   def _set_initial_delay(self, v, load=False):
@@ -274,6 +303,9 @@ algorithm.
 in topology being detected and the first run of the SPF
 algorithm.
     """
+    if self.__initial_delay is None:
+        self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -293,6 +325,9 @@ algorithm.
     self.__initial_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="initial-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_maximum_delay(self):
+    return self.__maximum_delay is not None
+
   def _get_maximum_delay(self):
     """
     Getter method for maximum_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/maximum_delay (uint32)
@@ -302,6 +337,8 @@ a topology change being detected and the SPF algorithm
 running. This value is used for implementations that support
 increasing the wait time between SPF runs.
     """
+    if self.__maximum_delay is None:
+        self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__maximum_delay
       
   def _set_maximum_delay(self, v, load=False):
@@ -317,6 +354,9 @@ a topology change being detected and the SPF algorithm
 running. This value is used for implementations that support
 increasing the wait time between SPF runs.
     """
+    if self.__maximum_delay is None:
+        self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -336,12 +376,17 @@ increasing the wait time between SPF runs.
     self.__maximum_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="maximum-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_timer_type(self):
+    return self.__timer_type is not None
+
   def _get_timer_type(self):
     """
     Getter method for timer_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/timers/spf/state/timer_type (enumeration)
 
     YANG Description: The timer mode that is utilised by the implementation.
     """
+    if self.__timer_type is None:
+        self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__timer_type
       
   def _set_timer_type(self, v, load=False):
@@ -354,6 +399,9 @@ increasing the wait time between SPF runs.
 
     YANG Description: The timer mode that is utilised by the implementation.
     """
+    if self.__timer_type is None:
+        self.__timer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'EXPONENTIAL_BACKOFF': {}, u'LINEAR_BACKOFF': {}},), is_leaf=True, yang_name="timer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

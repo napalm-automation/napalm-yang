@@ -41,10 +41,10 @@ timers.
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
-    self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__lsp_second_wait_interval = None
+    self.__lsp_first_wait_interval = None
+    self.__adaptive_timer = None
+    self.__lsp_max_wait_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ timers.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'lsp-generation', u'state']
 
+  def _initialized_lsp_max_wait_interval(self):
+    return self.__lsp_max_wait_interval is not None
+
   def _get_lsp_max_wait_interval(self):
     """
     Getter method for lsp_max_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_max_wait_interval (uint64)
@@ -80,6 +83,8 @@ timers.
     YANG Description: Time interval in milliseconds that specifies max interval between
 two consecutive occurrences of an LSP being generated.
     """
+    if self.__lsp_max_wait_interval is None:
+        self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_max_wait_interval
       
   def _set_lsp_max_wait_interval(self, v, load=False):
@@ -93,6 +98,9 @@ two consecutive occurrences of an LSP being generated.
     YANG Description: Time interval in milliseconds that specifies max interval between
 two consecutive occurrences of an LSP being generated.
     """
+    if self.__lsp_max_wait_interval is None:
+        self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ two consecutive occurrences of an LSP being generated.
     self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_lsp_first_wait_interval(self):
+    return self.__lsp_first_wait_interval is not None
+
   def _get_lsp_first_wait_interval(self):
     """
     Getter method for lsp_first_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_first_wait_interval (uint64)
@@ -119,6 +130,8 @@ two consecutive occurrences of an LSP being generated.
     YANG Description: Time interval in milliseconds that specifies the first LSP generation
 delay.
     """
+    if self.__lsp_first_wait_interval is None:
+        self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_first_wait_interval
       
   def _set_lsp_first_wait_interval(self, v, load=False):
@@ -132,6 +145,9 @@ delay.
     YANG Description: Time interval in milliseconds that specifies the first LSP generation
 delay.
     """
+    if self.__lsp_first_wait_interval is None:
+        self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -151,6 +167,9 @@ delay.
     self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_lsp_second_wait_interval(self):
+    return self.__lsp_second_wait_interval is not None
+
   def _get_lsp_second_wait_interval(self):
     """
     Getter method for lsp_second_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_second_wait_interval (uint64)
@@ -158,6 +177,8 @@ delay.
     YANG Description: Time interval in milliseconds that specifies the millisecond LSP
 generation delay.
     """
+    if self.__lsp_second_wait_interval is None:
+        self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_second_wait_interval
       
   def _set_lsp_second_wait_interval(self, v, load=False):
@@ -171,6 +192,9 @@ generation delay.
     YANG Description: Time interval in milliseconds that specifies the millisecond LSP
 generation delay.
     """
+    if self.__lsp_second_wait_interval is None:
+        self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -190,12 +214,17 @@ generation delay.
     self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_adaptive_timer(self):
+    return self.__adaptive_timer is not None
+
   def _get_adaptive_timer(self):
     """
     Getter method for adaptive_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/adaptive_timer (oc-isis-types:adaptive-timer-type)
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
     return self.__adaptive_timer
       
   def _set_adaptive_timer(self, v, load=False):
@@ -208,6 +237,9 @@ generation delay.
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -256,10 +288,10 @@ timers.
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
-    self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__lsp_second_wait_interval = None
+    self.__lsp_first_wait_interval = None
+    self.__adaptive_timer = None
+    self.__lsp_max_wait_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -288,6 +320,9 @@ timers.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'lsp-generation', u'state']
 
+  def _initialized_lsp_max_wait_interval(self):
+    return self.__lsp_max_wait_interval is not None
+
   def _get_lsp_max_wait_interval(self):
     """
     Getter method for lsp_max_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_max_wait_interval (uint64)
@@ -295,6 +330,8 @@ timers.
     YANG Description: Time interval in milliseconds that specifies max interval between
 two consecutive occurrences of an LSP being generated.
     """
+    if self.__lsp_max_wait_interval is None:
+        self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_max_wait_interval
       
   def _set_lsp_max_wait_interval(self, v, load=False):
@@ -308,6 +345,9 @@ two consecutive occurrences of an LSP being generated.
     YANG Description: Time interval in milliseconds that specifies max interval between
 two consecutive occurrences of an LSP being generated.
     """
+    if self.__lsp_max_wait_interval is None:
+        self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -327,6 +367,9 @@ two consecutive occurrences of an LSP being generated.
     self.__lsp_max_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-max-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_lsp_first_wait_interval(self):
+    return self.__lsp_first_wait_interval is not None
+
   def _get_lsp_first_wait_interval(self):
     """
     Getter method for lsp_first_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_first_wait_interval (uint64)
@@ -334,6 +377,8 @@ two consecutive occurrences of an LSP being generated.
     YANG Description: Time interval in milliseconds that specifies the first LSP generation
 delay.
     """
+    if self.__lsp_first_wait_interval is None:
+        self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_first_wait_interval
       
   def _set_lsp_first_wait_interval(self, v, load=False):
@@ -347,6 +392,9 @@ delay.
     YANG Description: Time interval in milliseconds that specifies the first LSP generation
 delay.
     """
+    if self.__lsp_first_wait_interval is None:
+        self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -366,6 +414,9 @@ delay.
     self.__lsp_first_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-first-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_lsp_second_wait_interval(self):
+    return self.__lsp_second_wait_interval is not None
+
   def _get_lsp_second_wait_interval(self):
     """
     Getter method for lsp_second_wait_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/lsp_second_wait_interval (uint64)
@@ -373,6 +424,8 @@ delay.
     YANG Description: Time interval in milliseconds that specifies the millisecond LSP
 generation delay.
     """
+    if self.__lsp_second_wait_interval is None:
+        self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__lsp_second_wait_interval
       
   def _set_lsp_second_wait_interval(self, v, load=False):
@@ -386,6 +439,9 @@ generation delay.
     YANG Description: Time interval in milliseconds that specifies the millisecond LSP
 generation delay.
     """
+    if self.__lsp_second_wait_interval is None:
+        self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -405,12 +461,17 @@ generation delay.
     self.__lsp_second_wait_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="lsp-second-wait-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_adaptive_timer(self):
+    return self.__adaptive_timer is not None
+
   def _get_adaptive_timer(self):
     """
     Getter method for adaptive_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/lsp_generation/state/adaptive_timer (oc-isis-types:adaptive-timer-type)
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
     return self.__adaptive_timer
       
   def _set_adaptive_timer(self, v, load=False):
@@ -423,6 +484,9 @@ generation delay.
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

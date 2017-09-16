@@ -42,8 +42,8 @@ class inter_level_propagation_policies(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__level1_to_level2 = None
+    self.__level2_to_level1 = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class inter_level_propagation_policies(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'inter-level-propagation-policies']
 
+  def _initialized_level1_to_level2(self):
+    return self.__level1_to_level2 is not None
+
   def _get_level1_to_level2(self):
     """
     Getter method for level1_to_level2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level1_to_level2 (container)
@@ -79,6 +82,8 @@ class inter_level_propagation_policies(PybindBase):
     YANG Description: Policies relating to prefixes to be propagated from
 Level 1 to Level 2.
     """
+    if self.__level1_to_level2 is None:
+        self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__level1_to_level2
       
   def _set_level1_to_level2(self, v, load=False):
@@ -92,6 +97,9 @@ Level 1 to Level 2.
     YANG Description: Policies relating to prefixes to be propagated from
 Level 1 to Level 2.
     """
+    if self.__level1_to_level2 is None:
+        self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ Level 1 to Level 2.
     self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_level2_to_level1(self):
+    return self.__level2_to_level1 is not None
+
   def _get_level2_to_level1(self):
     """
     Getter method for level2_to_level1, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1 (container)
@@ -118,6 +129,8 @@ Level 1 to Level 2.
     YANG Description: Policies relating to prefixes to be propagated from
 Level2 to Level 1.
     """
+    if self.__level2_to_level1 is None:
+        self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__level2_to_level1
       
   def _set_level2_to_level1(self, v, load=False):
@@ -131,6 +144,9 @@ Level2 to Level 1.
     YANG Description: Policies relating to prefixes to be propagated from
 Level2 to Level 1.
     """
+    if self.__level2_to_level1 is None:
+        self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ class inter_level_propagation_policies(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__level1_to_level2 = None
+    self.__level2_to_level1 = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ class inter_level_propagation_policies(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'inter-level-propagation-policies']
 
+  def _initialized_level1_to_level2(self):
+    return self.__level1_to_level2 is not None
+
   def _get_level1_to_level2(self):
     """
     Getter method for level1_to_level2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level1_to_level2 (container)
@@ -215,6 +234,8 @@ class inter_level_propagation_policies(PybindBase):
     YANG Description: Policies relating to prefixes to be propagated from
 Level 1 to Level 2.
     """
+    if self.__level1_to_level2 is None:
+        self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__level1_to_level2
       
   def _set_level1_to_level2(self, v, load=False):
@@ -228,6 +249,9 @@ Level 1 to Level 2.
     YANG Description: Policies relating to prefixes to be propagated from
 Level 1 to Level 2.
     """
+    if self.__level1_to_level2 is None:
+        self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ Level 1 to Level 2.
     self.__level1_to_level2 = YANGDynClass(base=level1_to_level2.level1_to_level2, is_container='container', yang_name="level1-to-level2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_level2_to_level1(self):
+    return self.__level2_to_level1 is not None
+
   def _get_level2_to_level1(self):
     """
     Getter method for level2_to_level1, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1 (container)
@@ -254,6 +281,8 @@ Level 1 to Level 2.
     YANG Description: Policies relating to prefixes to be propagated from
 Level2 to Level 1.
     """
+    if self.__level2_to_level1 is None:
+        self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__level2_to_level1
       
   def _set_level2_to_level1(self, v, load=False):
@@ -267,6 +296,9 @@ Level2 to Level 1.
     YANG Description: Policies relating to prefixes to be propagated from
 Level2 to Level 1.
     """
+    if self.__level2_to_level1 is None:
+        self.__level2_to_level1 = YANGDynClass(base=level2_to_level1.level2_to_level1, is_container='container', yang_name="level2-to-level1", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

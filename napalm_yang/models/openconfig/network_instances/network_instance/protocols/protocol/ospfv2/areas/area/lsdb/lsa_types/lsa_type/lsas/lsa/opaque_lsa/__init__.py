@@ -47,13 +47,13 @@ class opaque_lsa(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__grace_lsa = None
+    self.__extended_prefix = None
+    self.__extended_link = None
+    self.__traffic_engineering = None
+    self.__state = None
+    self.__router_information = None
+    self.__unknown_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -82,12 +82,17 @@ class opaque_lsa(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state (container)
 
     YANG Description: State parameters for the opaque LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -100,6 +105,9 @@ class opaque_lsa(PybindBase):
 
     YANG Description: State parameters for the opaque LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -119,12 +127,17 @@ class opaque_lsa(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_traffic_engineering(self):
+    return self.__traffic_engineering is not None
+
   def _get_traffic_engineering(self):
     """
     Getter method for traffic_engineering, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering (container)
 
     YANG Description: Contents of the Traffic Engineering Opaque LSA
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__traffic_engineering
       
   def _set_traffic_engineering(self, v, load=False):
@@ -137,6 +150,9 @@ class opaque_lsa(PybindBase):
 
     YANG Description: Contents of the Traffic Engineering Opaque LSA
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,6 +172,9 @@ class opaque_lsa(PybindBase):
     self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_grace_lsa(self):
+    return self.__grace_lsa is not None
+
   def _get_grace_lsa(self):
     """
     Getter method for grace_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa (container)
@@ -163,6 +182,8 @@ class opaque_lsa(PybindBase):
     YANG Description: The Grace LSA is utilised when a remote system is undergoing
 graceful restart
     """
+    if self.__grace_lsa is None:
+        self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__grace_lsa
       
   def _set_grace_lsa(self, v, load=False):
@@ -176,6 +197,9 @@ graceful restart
     YANG Description: The Grace LSA is utilised when a remote system is undergoing
 graceful restart
     """
+    if self.__grace_lsa is None:
+        self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,6 +219,9 @@ graceful restart
     self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_information(self):
+    return self.__router_information is not None
+
   def _get_router_information(self):
     """
     Getter method for router_information, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information (container)
@@ -202,6 +229,8 @@ graceful restart
     YANG Description: The router information LSA is utilised to advertise capabilities
 of a system to other systems who receive the LSA
     """
+    if self.__router_information is None:
+        self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_information
       
   def _set_router_information(self, v, load=False):
@@ -215,6 +244,9 @@ of a system to other systems who receive the LSA
     YANG Description: The router information LSA is utilised to advertise capabilities
 of a system to other systems who receive the LSA
     """
+    if self.__router_information is None:
+        self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -234,6 +266,9 @@ of a system to other systems who receive the LSA
     self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_prefix(self):
+    return self.__extended_prefix is not None
+
   def _get_extended_prefix(self):
     """
     Getter method for extended_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix (container)
@@ -241,6 +276,8 @@ of a system to other systems who receive the LSA
     YANG Description: An OSPFv2 Extended Prefix Opaque LSA, used to encapsulate
 TLV attributes associated with a prefix advertised in OSPF.
     """
+    if self.__extended_prefix is None:
+        self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_prefix
       
   def _set_extended_prefix(self, v, load=False):
@@ -254,6 +291,9 @@ TLV attributes associated with a prefix advertised in OSPF.
     YANG Description: An OSPFv2 Extended Prefix Opaque LSA, used to encapsulate
 TLV attributes associated with a prefix advertised in OSPF.
     """
+    if self.__extended_prefix is None:
+        self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -273,6 +313,9 @@ TLV attributes associated with a prefix advertised in OSPF.
     self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_link(self):
+    return self.__extended_link is not None
+
   def _get_extended_link(self):
     """
     Getter method for extended_link, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link (container)
@@ -280,6 +323,8 @@ TLV attributes associated with a prefix advertised in OSPF.
     YANG Description: The OSPFv2 Extended Link Opaque LSA, used to encapsulate TLV
 attributes associated with a link advertised in OSPF.
     """
+    if self.__extended_link is None:
+        self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_link
       
   def _set_extended_link(self, v, load=False):
@@ -293,6 +338,9 @@ attributes associated with a link advertised in OSPF.
     YANG Description: The OSPFv2 Extended Link Opaque LSA, used to encapsulate TLV
 attributes associated with a link advertised in OSPF.
     """
+    if self.__extended_link is None:
+        self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -312,6 +360,9 @@ attributes associated with a link advertised in OSPF.
     self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/unknown_tlv (container)
@@ -321,6 +372,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -336,6 +389,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -393,13 +449,13 @@ class opaque_lsa(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__grace_lsa = None
+    self.__extended_prefix = None
+    self.__extended_link = None
+    self.__traffic_engineering = None
+    self.__state = None
+    self.__router_information = None
+    self.__unknown_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -428,12 +484,17 @@ class opaque_lsa(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/state (container)
 
     YANG Description: State parameters for the opaque LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -446,6 +507,9 @@ class opaque_lsa(PybindBase):
 
     YANG Description: State parameters for the opaque LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -465,12 +529,17 @@ class opaque_lsa(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_traffic_engineering(self):
+    return self.__traffic_engineering is not None
+
   def _get_traffic_engineering(self):
     """
     Getter method for traffic_engineering, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering (container)
 
     YANG Description: Contents of the Traffic Engineering Opaque LSA
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__traffic_engineering
       
   def _set_traffic_engineering(self, v, load=False):
@@ -483,6 +552,9 @@ class opaque_lsa(PybindBase):
 
     YANG Description: Contents of the Traffic Engineering Opaque LSA
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -502,6 +574,9 @@ class opaque_lsa(PybindBase):
     self.__traffic_engineering = YANGDynClass(base=traffic_engineering.traffic_engineering, is_container='container', yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_grace_lsa(self):
+    return self.__grace_lsa is not None
+
   def _get_grace_lsa(self):
     """
     Getter method for grace_lsa, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/grace_lsa (container)
@@ -509,6 +584,8 @@ class opaque_lsa(PybindBase):
     YANG Description: The Grace LSA is utilised when a remote system is undergoing
 graceful restart
     """
+    if self.__grace_lsa is None:
+        self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__grace_lsa
       
   def _set_grace_lsa(self, v, load=False):
@@ -522,6 +599,9 @@ graceful restart
     YANG Description: The Grace LSA is utilised when a remote system is undergoing
 graceful restart
     """
+    if self.__grace_lsa is None:
+        self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -541,6 +621,9 @@ graceful restart
     self.__grace_lsa = YANGDynClass(base=grace_lsa.grace_lsa, is_container='container', yang_name="grace-lsa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_information(self):
+    return self.__router_information is not None
+
   def _get_router_information(self):
     """
     Getter method for router_information, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information (container)
@@ -548,6 +631,8 @@ graceful restart
     YANG Description: The router information LSA is utilised to advertise capabilities
 of a system to other systems who receive the LSA
     """
+    if self.__router_information is None:
+        self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_information
       
   def _set_router_information(self, v, load=False):
@@ -561,6 +646,9 @@ of a system to other systems who receive the LSA
     YANG Description: The router information LSA is utilised to advertise capabilities
 of a system to other systems who receive the LSA
     """
+    if self.__router_information is None:
+        self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -580,6 +668,9 @@ of a system to other systems who receive the LSA
     self.__router_information = YANGDynClass(base=router_information.router_information, is_container='container', yang_name="router-information", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_prefix(self):
+    return self.__extended_prefix is not None
+
   def _get_extended_prefix(self):
     """
     Getter method for extended_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix (container)
@@ -587,6 +678,8 @@ of a system to other systems who receive the LSA
     YANG Description: An OSPFv2 Extended Prefix Opaque LSA, used to encapsulate
 TLV attributes associated with a prefix advertised in OSPF.
     """
+    if self.__extended_prefix is None:
+        self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_prefix
       
   def _set_extended_prefix(self, v, load=False):
@@ -600,6 +693,9 @@ TLV attributes associated with a prefix advertised in OSPF.
     YANG Description: An OSPFv2 Extended Prefix Opaque LSA, used to encapsulate
 TLV attributes associated with a prefix advertised in OSPF.
     """
+    if self.__extended_prefix is None:
+        self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -619,6 +715,9 @@ TLV attributes associated with a prefix advertised in OSPF.
     self.__extended_prefix = YANGDynClass(base=extended_prefix.extended_prefix, is_container='container', yang_name="extended-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_link(self):
+    return self.__extended_link is not None
+
   def _get_extended_link(self):
     """
     Getter method for extended_link, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link (container)
@@ -626,6 +725,8 @@ TLV attributes associated with a prefix advertised in OSPF.
     YANG Description: The OSPFv2 Extended Link Opaque LSA, used to encapsulate TLV
 attributes associated with a link advertised in OSPF.
     """
+    if self.__extended_link is None:
+        self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_link
       
   def _set_extended_link(self, v, load=False):
@@ -639,6 +740,9 @@ attributes associated with a link advertised in OSPF.
     YANG Description: The OSPFv2 Extended Link Opaque LSA, used to encapsulate TLV
 attributes associated with a link advertised in OSPF.
     """
+    if self.__extended_link is None:
+        self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -658,6 +762,9 @@ attributes associated with a link advertised in OSPF.
     self.__extended_link = YANGDynClass(base=extended_link.extended_link, is_container='container', yang_name="extended-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/unknown_tlv (container)
@@ -667,6 +774,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -682,6 +791,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

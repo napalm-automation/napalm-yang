@@ -42,7 +42,7 @@ to the device
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__neighbor = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ to the device
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'neighbors']
 
+  def _initialized_neighbor(self):
+    return self.__neighbor is not None
+
   def _get_neighbor(self):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor (list)
 
     YANG Description: List of RSVP neighbors of the local system
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__neighbor
       
   def _set_neighbor(self, v, load=False):
@@ -89,6 +94,9 @@ to the device
 
     YANG Description: List of RSVP neighbors of the local system
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ to the device
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__neighbor = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ to the device
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'neighbors']
 
+  def _initialized_neighbor(self):
+    return self.__neighbor is not None
+
   def _get_neighbor(self):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor (list)
 
     YANG Description: List of RSVP neighbors of the local system
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__neighbor
       
   def _set_neighbor(self, v, load=False):
@@ -182,6 +195,9 @@ to the device
 
     YANG Description: List of RSVP neighbors of the local system
     """
+    if self.__neighbor is None:
+        self.__neighbor = YANGDynClass(base=YANGListType("address",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,7 +41,7 @@ class p2p_primary_path(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__p2p_primary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class p2p_primary_path(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path']
 
+  def _initialized_p2p_primary_path(self):
+    return self.__p2p_primary_path is not None
+
   def _get_p2p_primary_path(self):
     """
     Getter method for p2p_primary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path (list)
 
     YANG Description: List of p2p primary paths for a tunnel
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__p2p_primary_path
       
   def _set_p2p_primary_path(self, v, load=False):
@@ -88,6 +93,9 @@ class p2p_primary_path(PybindBase):
 
     YANG Description: List of p2p primary paths for a tunnel
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class p2p_primary_path(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__p2p_primary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class p2p_primary_path(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path']
 
+  def _initialized_p2p_primary_path(self):
+    return self.__p2p_primary_path is not None
+
   def _get_p2p_primary_path(self):
     """
     Getter method for p2p_primary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path (list)
 
     YANG Description: List of p2p primary paths for a tunnel
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__p2p_primary_path
       
   def _set_p2p_primary_path(self, v, load=False):
@@ -180,6 +193,9 @@ class p2p_primary_path(PybindBase):
 
     YANG Description: List of p2p primary paths for a tunnel
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=YANGListType("name",p2p_primary_path_.p2p_primary_path, yang_name="p2p-primary-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

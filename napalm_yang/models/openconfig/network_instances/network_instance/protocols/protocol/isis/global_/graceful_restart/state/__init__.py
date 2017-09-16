@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__enabled = None
+    self.__helper_only = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart/state/enabled (boolean)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -90,6 +95,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart/state/helper_only (boolean)
@@ -118,6 +129,8 @@ this leaf is set, the local system does not utilise the IS-IS
 graceful restart procedures during its own restart, but supports
 retaining forwarding information during a remote speaker's restart.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -133,6 +146,9 @@ this leaf is set, the local system does not utilise the IS-IS
 graceful restart procedures during its own restart, but supports
 retaining forwarding information during a remote speaker's restart.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__enabled = None
+    self.__helper_only = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart/state/enabled (boolean)
@@ -215,6 +234,8 @@ class state(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -228,6 +249,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart/state/helper_only (boolean)
@@ -256,6 +283,8 @@ this leaf is set, the local system does not utilise the IS-IS
 graceful restart procedures during its own restart, but supports
 retaining forwarding information during a remote speaker's restart.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -271,6 +300,9 @@ this leaf is set, the local system does not utilise the IS-IS
 graceful restart procedures during its own restart, but supports
 retaining forwarding information during a remote speaker's restart.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

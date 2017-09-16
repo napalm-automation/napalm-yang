@@ -41,8 +41,8 @@ sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__sid_type = None
+    self.__sid_value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'sid-label-binding', u'state']
 
+  def _initialized_sid_type(self):
+    return self.__sid_type is not None
+
   def _get_sid_type(self):
     """
     Getter method for sid_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state/sid_type (oc-ospf-types:sr-sid-type)
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__sid_type
       
   def _set_sid_type(self, v, load=False):
@@ -89,6 +94,9 @@ sub-TLV
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ sub-TLV
     self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state/sid_value (uint32)
@@ -115,6 +126,8 @@ sub-TLV
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -128,6 +141,9 @@ this binding is indicated by the type leaf.
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__sid_type = None
+    self.__sid_value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,12 +220,17 @@ sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'sid-label-binding', u'state']
 
+  def _initialized_sid_type(self):
+    return self.__sid_type is not None
+
   def _get_sid_type(self):
     """
     Getter method for sid_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state/sid_type (oc-ospf-types:sr-sid-type)
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__sid_type
       
   def _set_sid_type(self, v, load=False):
@@ -222,6 +243,9 @@ sub-TLV
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -241,6 +265,9 @@ sub-TLV
     self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/sid_label_binding/state/sid_value (uint32)
@@ -248,6 +275,8 @@ sub-TLV
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -261,6 +290,9 @@ this binding is indicated by the type leaf.
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

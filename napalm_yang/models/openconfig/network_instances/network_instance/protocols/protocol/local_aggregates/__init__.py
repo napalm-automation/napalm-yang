@@ -42,7 +42,7 @@ routes
     self._path_helper = False
 
     self._extmethods = False
-    self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aggregate = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ routes
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'local-aggregates']
 
+  def _initialized_aggregate(self):
+    return self.__aggregate is not None
+
   def _get_aggregate(self):
     """
     Getter method for aggregate, mapped from YANG variable /network_instances/network_instance/protocols/protocol/local_aggregates/aggregate (list)
 
     YANG Description: List of aggregates
     """
+    if self.__aggregate is None:
+        self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aggregate
       
   def _set_aggregate(self, v, load=False):
@@ -89,6 +94,9 @@ routes
 
     YANG Description: List of aggregates
     """
+    if self.__aggregate is None:
+        self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ routes
     self._path_helper = False
 
     self._extmethods = False
-    self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aggregate = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ routes
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'local-aggregates']
 
+  def _initialized_aggregate(self):
+    return self.__aggregate is not None
+
   def _get_aggregate(self):
     """
     Getter method for aggregate, mapped from YANG variable /network_instances/network_instance/protocols/protocol/local_aggregates/aggregate (list)
 
     YANG Description: List of aggregates
     """
+    if self.__aggregate is None:
+        self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aggregate
       
   def _set_aggregate(self, v, load=False):
@@ -182,6 +195,9 @@ routes
 
     YANG Description: List of aggregates
     """
+    if self.__aggregate is None:
+        self.__aggregate = YANGDynClass(base=YANGListType("prefix",aggregate.aggregate, yang_name="aggregate", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="aggregate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

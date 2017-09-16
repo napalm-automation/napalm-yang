@@ -40,12 +40,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__sid_type = None
+    self.__multi_topology_identifier = None
+    self.__weight = None
+    self.__group = None
+    self.__sid_value = None
+    self.__backup = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-link', u'tlvs', u'tlv', u'adjacency-sid', u'state']
 
+  def _initialized_backup(self):
+    return self.__backup is not None
+
   def _get_backup(self):
     """
     Getter method for backup, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/backup (boolean)
@@ -81,6 +84,8 @@ class state(PybindBase):
     YANG Description: When this flag is set, it indicates that the adjacency SID refers to
 an adjacency which is eligible for protection
     """
+    if self.__backup is None:
+        self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__backup
       
   def _set_backup(self, v, load=False):
@@ -94,6 +99,9 @@ an adjacency which is eligible for protection
     YANG Description: When this flag is set, it indicates that the adjacency SID refers to
 an adjacency which is eligible for protection
     """
+    if self.__backup is None:
+        self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ an adjacency which is eligible for protection
     self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_group(self):
+    return self.__group is not None
+
   def _get_group(self):
     """
     Getter method for group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/group (boolean)
@@ -120,6 +131,8 @@ an adjacency which is eligible for protection
     YANG Description: When this flag is set it indicates that the adjacency SID refers to
 a group of adjacencies that have a common value
     """
+    if self.__group is None:
+        self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__group
       
   def _set_group(self, v, load=False):
@@ -133,6 +146,9 @@ a group of adjacencies that have a common value
     YANG Description: When this flag is set it indicates that the adjacency SID refers to
 a group of adjacencies that have a common value
     """
+    if self.__group is None:
+        self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ a group of adjacencies that have a common value
     self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_sid_type(self):
+    return self.__sid_type is not None
+
   def _get_sid_type(self):
     """
     Getter method for sid_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/sid_type (oc-ospf-types:sr-sid-type)
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__sid_type
       
   def _set_sid_type(self, v, load=False):
@@ -170,6 +191,9 @@ a group of adjacencies that have a common value
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,6 +213,9 @@ a group of adjacencies that have a common value
     self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/sid_value (uint32)
@@ -196,6 +223,8 @@ a group of adjacencies that have a common value
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -209,6 +238,9 @@ this binding is indicated by the type leaf.
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -228,12 +260,17 @@ this binding is indicated by the type leaf.
     self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/weight (uint8)
 
     YANG Description: The weight of the Adjacency SID when used for load-balancing
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -246,6 +283,9 @@ this binding is indicated by the type leaf.
 
     YANG Description: The weight of the Adjacency SID when used for load-balancing
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -265,6 +305,9 @@ this binding is indicated by the type leaf.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/multi_topology_identifier (uint8)
@@ -272,6 +315,8 @@ this binding is indicated by the type leaf.
     YANG Description: The multi-topology identifier with which the adjacency SID is
 associated
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -285,6 +330,9 @@ associated
     YANG Description: The multi-topology identifier with which the adjacency SID is
 associated
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -334,12 +382,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__sid_type = None
+    self.__multi_topology_identifier = None
+    self.__weight = None
+    self.__group = None
+    self.__sid_value = None
+    self.__backup = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -368,6 +416,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-link', u'tlvs', u'tlv', u'adjacency-sid', u'state']
 
+  def _initialized_backup(self):
+    return self.__backup is not None
+
   def _get_backup(self):
     """
     Getter method for backup, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/backup (boolean)
@@ -375,6 +426,8 @@ class state(PybindBase):
     YANG Description: When this flag is set, it indicates that the adjacency SID refers to
 an adjacency which is eligible for protection
     """
+    if self.__backup is None:
+        self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__backup
       
   def _set_backup(self, v, load=False):
@@ -388,6 +441,9 @@ an adjacency which is eligible for protection
     YANG Description: When this flag is set, it indicates that the adjacency SID refers to
 an adjacency which is eligible for protection
     """
+    if self.__backup is None:
+        self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -407,6 +463,9 @@ an adjacency which is eligible for protection
     self.__backup = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="backup", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_group(self):
+    return self.__group is not None
+
   def _get_group(self):
     """
     Getter method for group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/group (boolean)
@@ -414,6 +473,8 @@ an adjacency which is eligible for protection
     YANG Description: When this flag is set it indicates that the adjacency SID refers to
 a group of adjacencies that have a common value
     """
+    if self.__group is None:
+        self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__group
       
   def _set_group(self, v, load=False):
@@ -427,6 +488,9 @@ a group of adjacencies that have a common value
     YANG Description: When this flag is set it indicates that the adjacency SID refers to
 a group of adjacencies that have a common value
     """
+    if self.__group is None:
+        self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -446,12 +510,17 @@ a group of adjacencies that have a common value
     self.__group = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_sid_type(self):
+    return self.__sid_type is not None
+
   def _get_sid_type(self):
     """
     Getter method for sid_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/sid_type (oc-ospf-types:sr-sid-type)
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
     return self.__sid_type
       
   def _set_sid_type(self, v, load=False):
@@ -464,6 +533,9 @@ a group of adjacencies that have a common value
 
     YANG Description: The type of the value contained within the sub-TLV
     """
+    if self.__sid_type is None:
+        self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -483,6 +555,9 @@ a group of adjacencies that have a common value
     self.__sid_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SID': {}, u'LABEL': {}},), is_leaf=True, yang_name="sid-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:sr-sid-type', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/sid_value (uint32)
@@ -490,6 +565,8 @@ a group of adjacencies that have a common value
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -503,6 +580,9 @@ this binding is indicated by the type leaf.
     YANG Description: The value of the binding included within the sub-TLV. The type of
 this binding is indicated by the type leaf.
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -522,12 +602,17 @@ this binding is indicated by the type leaf.
     self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/weight (uint8)
 
     YANG Description: The weight of the Adjacency SID when used for load-balancing
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -540,6 +625,9 @@ this binding is indicated by the type leaf.
 
     YANG Description: The weight of the Adjacency SID when used for load-balancing
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -559,6 +647,9 @@ this binding is indicated by the type leaf.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid/state/multi_topology_identifier (uint8)
@@ -566,6 +657,8 @@ this binding is indicated by the type leaf.
     YANG Description: The multi-topology identifier with which the adjacency SID is
 associated
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -579,6 +672,9 @@ associated
     YANG Description: The multi-topology identifier with which the adjacency SID is
 associated
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

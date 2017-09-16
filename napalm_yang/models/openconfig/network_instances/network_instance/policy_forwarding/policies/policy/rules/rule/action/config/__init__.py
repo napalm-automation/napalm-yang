@@ -41,11 +41,11 @@ rule's action.
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
-    self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__network_instance = None
+    self.__discard = None
+    self.__path_selection_group = None
+    self.__next_hop = None
+    self.__decapsulate_gre = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ rule's action.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'action', u'config']
 
+  def _initialized_discard(self):
+    return self.__discard is not None
+
   def _get_discard(self):
     """
     Getter method for discard, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/discard (boolean)
@@ -81,6 +84,8 @@ rule's action.
     YANG Description: When this leaf is set to true, the local system should drop
 packets that match the rule.
     """
+    if self.__discard is None:
+        self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__discard
       
   def _set_discard(self, v, load=False):
@@ -94,6 +99,9 @@ packets that match the rule.
     YANG Description: When this leaf is set to true, the local system should drop
 packets that match the rule.
     """
+    if self.__discard is None:
+        self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ packets that match the rule.
     self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_decapsulate_gre(self):
+    return self.__decapsulate_gre is not None
+
   def _get_decapsulate_gre(self):
     """
     Getter method for decapsulate_gre, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/decapsulate_gre (boolean)
@@ -124,6 +135,8 @@ encapsulated packet according to the relevant lookup (e.g., if
 the encapsulated packet is IP, the packet should be routed
 according to the IP destination).
     """
+    if self.__decapsulate_gre is None:
+        self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__decapsulate_gre
       
   def _set_decapsulate_gre(self, v, load=False):
@@ -141,6 +154,9 @@ encapsulated packet according to the relevant lookup (e.g., if
 the encapsulated packet is IP, the packet should be routed
 according to the IP destination).
     """
+    if self.__decapsulate_gre is None:
+        self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -160,6 +176,9 @@ according to the IP destination).
     self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_network_instance(self):
+    return self.__network_instance is not None
+
   def _get_network_instance(self):
     """
     Getter method for network_instance, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/network_instance (leafref)
@@ -173,6 +192,8 @@ sub-topologies from a single ingress access interface, or
 different send and receive contexts for a particular
 interface (sometimes referred to as half-duplex VRF).
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__network_instance
       
   def _set_network_instance(self, v, load=False):
@@ -192,6 +213,9 @@ sub-topologies from a single ingress access interface, or
 different send and receive contexts for a particular
 interface (sometimes referred to as half-duplex VRF).
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -211,6 +235,9 @@ interface (sometimes referred to as half-duplex VRF).
     self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_path_selection_group(self):
+    return self.__path_selection_group is not None
+
   def _get_path_selection_group(self):
     """
     Getter method for path_selection_group, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/path_selection_group (leafref)
@@ -222,6 +249,8 @@ referenced path-selection-group. The next-hop of the packet
 within the routing context should be used to determine between
 multiple paths that are specified within the group.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__path_selection_group
       
   def _set_path_selection_group(self, v, load=False):
@@ -239,6 +268,9 @@ referenced path-selection-group. The next-hop of the packet
 within the routing context should be used to determine between
 multiple paths that are specified within the group.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -258,6 +290,9 @@ multiple paths that are specified within the group.
     self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/next_hop (inet:ip-address-no-zone)
@@ -267,6 +302,8 @@ packets matching the match criteria for the forwarding rule
 should be forwarded to the next-hop IP address, bypassing any
 lookup on the local system.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -282,6 +319,9 @@ packets matching the match criteria for the forwarding rule
 should be forwarded to the next-hop IP address, bypassing any
 lookup on the local system.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -331,11 +371,11 @@ rule's action.
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
-    self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__network_instance = None
+    self.__discard = None
+    self.__path_selection_group = None
+    self.__next_hop = None
+    self.__decapsulate_gre = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -364,6 +404,9 @@ rule's action.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'action', u'config']
 
+  def _initialized_discard(self):
+    return self.__discard is not None
+
   def _get_discard(self):
     """
     Getter method for discard, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/discard (boolean)
@@ -371,6 +414,8 @@ rule's action.
     YANG Description: When this leaf is set to true, the local system should drop
 packets that match the rule.
     """
+    if self.__discard is None:
+        self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__discard
       
   def _set_discard(self, v, load=False):
@@ -384,6 +429,9 @@ packets that match the rule.
     YANG Description: When this leaf is set to true, the local system should drop
 packets that match the rule.
     """
+    if self.__discard is None:
+        self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -403,6 +451,9 @@ packets that match the rule.
     self.__discard = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="discard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_decapsulate_gre(self):
+    return self.__decapsulate_gre is not None
+
   def _get_decapsulate_gre(self):
     """
     Getter method for decapsulate_gre, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/decapsulate_gre (boolean)
@@ -414,6 +465,8 @@ encapsulated packet according to the relevant lookup (e.g., if
 the encapsulated packet is IP, the packet should be routed
 according to the IP destination).
     """
+    if self.__decapsulate_gre is None:
+        self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__decapsulate_gre
       
   def _set_decapsulate_gre(self, v, load=False):
@@ -431,6 +484,9 @@ encapsulated packet according to the relevant lookup (e.g., if
 the encapsulated packet is IP, the packet should be routed
 according to the IP destination).
     """
+    if self.__decapsulate_gre is None:
+        self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -450,6 +506,9 @@ according to the IP destination).
     self.__decapsulate_gre = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="decapsulate-gre", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_network_instance(self):
+    return self.__network_instance is not None
+
   def _get_network_instance(self):
     """
     Getter method for network_instance, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/network_instance (leafref)
@@ -463,6 +522,8 @@ sub-topologies from a single ingress access interface, or
 different send and receive contexts for a particular
 interface (sometimes referred to as half-duplex VRF).
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__network_instance
       
   def _set_network_instance(self, v, load=False):
@@ -482,6 +543,9 @@ sub-topologies from a single ingress access interface, or
 different send and receive contexts for a particular
 interface (sometimes referred to as half-duplex VRF).
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -501,6 +565,9 @@ interface (sometimes referred to as half-duplex VRF).
     self.__network_instance = YANGDynClass(base=unicode, is_leaf=True, yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_path_selection_group(self):
+    return self.__path_selection_group is not None
+
   def _get_path_selection_group(self):
     """
     Getter method for path_selection_group, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/path_selection_group (leafref)
@@ -512,6 +579,8 @@ referenced path-selection-group. The next-hop of the packet
 within the routing context should be used to determine between
 multiple paths that are specified within the group.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__path_selection_group
       
   def _set_path_selection_group(self, v, load=False):
@@ -529,6 +598,9 @@ referenced path-selection-group. The next-hop of the packet
 within the routing context should be used to determine between
 multiple paths that are specified within the group.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -548,6 +620,9 @@ multiple paths that are specified within the group.
     self.__path_selection_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_next_hop(self):
+    return self.__next_hop is not None
+
   def _get_next_hop(self):
     """
     Getter method for next_hop, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/action/config/next_hop (inet:ip-address-no-zone)
@@ -557,6 +632,8 @@ packets matching the match criteria for the forwarding rule
 should be forwarded to the next-hop IP address, bypassing any
 lookup on the local system.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
     return self.__next_hop
       
   def _set_next_hop(self, v, load=False):
@@ -572,6 +649,9 @@ packets matching the match criteria for the forwarding rule
 should be forwarded to the next-hop IP address, bypassing any
 lookup on the local system.
     """
+    if self.__next_hop is None:
+        self.__next_hop = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="next-hop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

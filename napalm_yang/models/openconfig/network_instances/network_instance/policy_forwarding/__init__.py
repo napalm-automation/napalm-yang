@@ -44,9 +44,9 @@ a network instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interfaces = None
+    self.__path_selection_groups = None
+    self.__policies = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ a network instance.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding']
 
+  def _initialized_policies(self):
+    return self.__policies is not None
+
   def _get_policies(self):
     """
     Getter method for policies, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies (container)
@@ -82,6 +85,8 @@ a network instance.
     YANG Description: Forwarding policies defined to enact policy-based forwarding
 on the local system.
     """
+    if self.__policies is None:
+        self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__policies
       
   def _set_policies(self, v, load=False):
@@ -95,6 +100,9 @@ on the local system.
     YANG Description: Forwarding policies defined to enact policy-based forwarding
 on the local system.
     """
+    if self.__policies is None:
+        self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ on the local system.
     self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interfaces(self):
+    return self.__interfaces is not None
+
   def _get_interfaces(self):
     """
     Getter method for interfaces, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces (container)
@@ -121,6 +132,8 @@ on the local system.
     YANG Description: Configuration and operational state relating policy
 forwarding on interfaces.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interfaces
       
   def _set_interfaces(self, v, load=False):
@@ -134,6 +147,9 @@ forwarding on interfaces.
     YANG Description: Configuration and operational state relating policy
 forwarding on interfaces.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ forwarding on interfaces.
     self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_path_selection_groups(self):
+    return self.__path_selection_groups is not None
+
   def _get_path_selection_groups(self):
     """
     Getter method for path_selection_groups, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups (container)
@@ -160,6 +179,8 @@ forwarding on interfaces.
     YANG Description: Surrounding container for the path selection groups defined
 within the policy forwarding model.
     """
+    if self.__path_selection_groups is None:
+        self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__path_selection_groups
       
   def _set_path_selection_groups(self, v, load=False):
@@ -173,6 +194,9 @@ within the policy forwarding model.
     YANG Description: Surrounding container for the path selection groups defined
 within the policy forwarding model.
     """
+    if self.__path_selection_groups is None:
+        self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -223,9 +247,9 @@ a network instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interfaces = None
+    self.__path_selection_groups = None
+    self.__policies = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -254,6 +278,9 @@ a network instance.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding']
 
+  def _initialized_policies(self):
+    return self.__policies is not None
+
   def _get_policies(self):
     """
     Getter method for policies, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies (container)
@@ -261,6 +288,8 @@ a network instance.
     YANG Description: Forwarding policies defined to enact policy-based forwarding
 on the local system.
     """
+    if self.__policies is None:
+        self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__policies
       
   def _set_policies(self, v, load=False):
@@ -274,6 +303,9 @@ on the local system.
     YANG Description: Forwarding policies defined to enact policy-based forwarding
 on the local system.
     """
+    if self.__policies is None:
+        self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -293,6 +325,9 @@ on the local system.
     self.__policies = YANGDynClass(base=policies.policies, is_container='container', yang_name="policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interfaces(self):
+    return self.__interfaces is not None
+
   def _get_interfaces(self):
     """
     Getter method for interfaces, mapped from YANG variable /network_instances/network_instance/policy_forwarding/interfaces (container)
@@ -300,6 +335,8 @@ on the local system.
     YANG Description: Configuration and operational state relating policy
 forwarding on interfaces.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interfaces
       
   def _set_interfaces(self, v, load=False):
@@ -313,6 +350,9 @@ forwarding on interfaces.
     YANG Description: Configuration and operational state relating policy
 forwarding on interfaces.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -332,6 +372,9 @@ forwarding on interfaces.
     self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_path_selection_groups(self):
+    return self.__path_selection_groups is not None
+
   def _get_path_selection_groups(self):
     """
     Getter method for path_selection_groups, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups (container)
@@ -339,6 +382,8 @@ forwarding on interfaces.
     YANG Description: Surrounding container for the path selection groups defined
 within the policy forwarding model.
     """
+    if self.__path_selection_groups is None:
+        self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__path_selection_groups
       
   def _set_path_selection_groups(self, v, load=False):
@@ -352,6 +397,9 @@ within the policy forwarding model.
     YANG Description: Surrounding container for the path selection groups defined
 within the policy forwarding model.
     """
+    if self.__path_selection_groups is None:
+        self.__path_selection_groups = YANGDynClass(base=path_selection_groups.path_selection_groups, is_container='container', yang_name="path-selection-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

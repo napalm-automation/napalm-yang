@@ -48,10 +48,10 @@ all configuration and state parameters are common
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__endpoints = None
+    self.__config = None
+    self.__connection_point_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -80,6 +80,9 @@ all configuration and state parameters are common
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point']
 
+  def _initialized_connection_point_id(self):
+    return self.__connection_point_id is not None
+
   def _get_connection_point_id(self):
     """
     Getter method for connection_point_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/connection_point_id (leafref)
@@ -87,6 +90,8 @@ all configuration and state parameters are common
     YANG Description: A locally significant reference for the
 connection-point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__connection_point_id
       
   def _set_connection_point_id(self, v, load=False):
@@ -100,6 +105,9 @@ connection-point
     YANG Description: A locally significant reference for the
 connection-point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -124,6 +132,9 @@ connection-point
     self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/config (container)
@@ -131,6 +142,8 @@ connection-point
     YANG Description: Configuration parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -144,6 +157,9 @@ network instance connection point
     YANG Description: Configuration parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -163,6 +179,9 @@ network instance connection point
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/state (container)
@@ -170,6 +189,8 @@ network instance connection point
     YANG Description: Operational state parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -183,6 +204,9 @@ network instance connection point
     YANG Description: Operational state parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,6 +226,9 @@ network instance connection point
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_endpoints(self):
+    return self.__endpoints is not None
+
   def _get_endpoints(self):
     """
     Getter method for endpoints, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints (container)
@@ -209,6 +236,8 @@ network instance connection point
     YANG Description: The set of endpoints which are grouped within the
 connection point
     """
+    if self.__endpoints is None:
+        self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__endpoints
       
   def _set_endpoints(self, v, load=False):
@@ -222,6 +251,9 @@ connection point
     YANG Description: The set of endpoints which are grouped within the
 connection point
     """
+    if self.__endpoints is None:
+        self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -277,10 +309,10 @@ all configuration and state parameters are common
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__endpoints = None
+    self.__config = None
+    self.__connection_point_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -309,6 +341,9 @@ all configuration and state parameters are common
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point']
 
+  def _initialized_connection_point_id(self):
+    return self.__connection_point_id is not None
+
   def _get_connection_point_id(self):
     """
     Getter method for connection_point_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/connection_point_id (leafref)
@@ -316,6 +351,8 @@ all configuration and state parameters are common
     YANG Description: A locally significant reference for the
 connection-point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__connection_point_id
       
   def _set_connection_point_id(self, v, load=False):
@@ -329,6 +366,9 @@ connection-point
     YANG Description: A locally significant reference for the
 connection-point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -353,6 +393,9 @@ connection-point
     self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/config (container)
@@ -360,6 +403,8 @@ connection-point
     YANG Description: Configuration parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -373,6 +418,9 @@ network instance connection point
     YANG Description: Configuration parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -392,6 +440,9 @@ network instance connection point
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/state (container)
@@ -399,6 +450,8 @@ network instance connection point
     YANG Description: Operational state parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -412,6 +465,9 @@ network instance connection point
     YANG Description: Operational state parameters relating to a Layer 2
 network instance connection point
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -431,6 +487,9 @@ network instance connection point
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_endpoints(self):
+    return self.__endpoints is not None
+
   def _get_endpoints(self):
     """
     Getter method for endpoints, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints (container)
@@ -438,6 +497,8 @@ network instance connection point
     YANG Description: The set of endpoints which are grouped within the
 connection point
     """
+    if self.__endpoints is None:
+        self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__endpoints
       
   def _set_endpoints(self, v, load=False):
@@ -451,6 +512,9 @@ connection point
     YANG Description: The set of endpoints which are grouped within the
 connection point
     """
+    if self.__endpoints is None:
+        self.__endpoints = YANGDynClass(base=endpoints.endpoints, is_container='container', yang_name="endpoints", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

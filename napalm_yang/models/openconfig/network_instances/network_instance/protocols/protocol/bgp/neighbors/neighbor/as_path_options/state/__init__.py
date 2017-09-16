@@ -41,8 +41,8 @@ mechanisms for the BGP peer or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__allow_own_as = None
+    self.__replace_peer_as = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ mechanisms for the BGP peer or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'as-path-options', u'state']
 
+  def _initialized_allow_own_as(self):
+    return self.__allow_own_as is not None
+
   def _get_allow_own_as(self):
     """
     Getter method for allow_own_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options/state/allow_own_as (uint8)
@@ -78,6 +81,8 @@ mechanisms for the BGP peer or group
     YANG Description: Specify the number of occurrences of the local BGP speaker's
 AS that can occur within the AS_PATH before it is rejected.
     """
+    if self.__allow_own_as is None:
+        self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__allow_own_as
       
   def _set_allow_own_as(self, v, load=False):
@@ -91,6 +96,9 @@ AS that can occur within the AS_PATH before it is rejected.
     YANG Description: Specify the number of occurrences of the local BGP speaker's
 AS that can occur within the AS_PATH before it is rejected.
     """
+    if self.__allow_own_as is None:
+        self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ AS that can occur within the AS_PATH before it is rejected.
     self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_replace_peer_as(self):
+    return self.__replace_peer_as is not None
+
   def _get_replace_peer_as(self):
     """
     Getter method for replace_peer_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options/state/replace_peer_as (boolean)
@@ -117,6 +128,8 @@ AS that can occur within the AS_PATH before it is rejected.
     YANG Description: Replace occurrences of the peer's AS in the AS_PATH
 with the local autonomous system number
     """
+    if self.__replace_peer_as is None:
+        self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__replace_peer_as
       
   def _set_replace_peer_as(self, v, load=False):
@@ -130,6 +143,9 @@ with the local autonomous system number
     YANG Description: Replace occurrences of the peer's AS in the AS_PATH
 with the local autonomous system number
     """
+    if self.__replace_peer_as is None:
+        self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ mechanisms for the BGP peer or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__allow_own_as = None
+    self.__replace_peer_as = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ mechanisms for the BGP peer or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'as-path-options', u'state']
 
+  def _initialized_allow_own_as(self):
+    return self.__allow_own_as is not None
+
   def _get_allow_own_as(self):
     """
     Getter method for allow_own_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options/state/allow_own_as (uint8)
@@ -213,6 +232,8 @@ mechanisms for the BGP peer or group
     YANG Description: Specify the number of occurrences of the local BGP speaker's
 AS that can occur within the AS_PATH before it is rejected.
     """
+    if self.__allow_own_as is None:
+        self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__allow_own_as
       
   def _set_allow_own_as(self, v, load=False):
@@ -226,6 +247,9 @@ AS that can occur within the AS_PATH before it is rejected.
     YANG Description: Specify the number of occurrences of the local BGP speaker's
 AS that can occur within the AS_PATH before it is rejected.
     """
+    if self.__allow_own_as is None:
+        self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ AS that can occur within the AS_PATH before it is rejected.
     self.__allow_own_as = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="allow-own-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_replace_peer_as(self):
+    return self.__replace_peer_as is not None
+
   def _get_replace_peer_as(self):
     """
     Getter method for replace_peer_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options/state/replace_peer_as (boolean)
@@ -252,6 +279,8 @@ AS that can occur within the AS_PATH before it is rejected.
     YANG Description: Replace occurrences of the peer's AS in the AS_PATH
 with the local autonomous system number
     """
+    if self.__replace_peer_as is None:
+        self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__replace_peer_as
       
   def _set_replace_peer_as(self, v, load=False):
@@ -265,6 +294,9 @@ with the local autonomous system number
     YANG Description: Replace occurrences of the peer's AS in the AS_PATH
 with the local autonomous system number
     """
+    if self.__replace_peer_as is None:
+        self.__replace_peer_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="replace-peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

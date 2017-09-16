@@ -41,12 +41,12 @@ RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__point_to_point_over_lan = None
+    self.__experimental_te = None
+    self.__traffic_engineering = None
+    self.__stub_router = None
+    self.__graceful_restart_helper = None
+    self.__graceful_restart_capable = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'informational-capabilities', u'state']
 
+  def _initialized_graceful_restart_capable(self):
+    return self.__graceful_restart_capable is not None
+
   def _get_graceful_restart_capable(self):
     """
     Getter method for graceful_restart_capable, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/graceful_restart_capable (boolean)
@@ -82,6 +85,8 @@ RI LSA
     YANG Description: When this leaf is set to true, the advertising system is capable of
 OSPF graceful restart.
     """
+    if self.__graceful_restart_capable is None:
+        self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__graceful_restart_capable
       
   def _set_graceful_restart_capable(self, v, load=False):
@@ -95,6 +100,9 @@ OSPF graceful restart.
     YANG Description: When this leaf is set to true, the advertising system is capable of
 OSPF graceful restart.
     """
+    if self.__graceful_restart_capable is None:
+        self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ OSPF graceful restart.
     self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_graceful_restart_helper(self):
+    return self.__graceful_restart_helper is not None
+
   def _get_graceful_restart_helper(self):
     """
     Getter method for graceful_restart_helper, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/graceful_restart_helper (boolean)
@@ -121,6 +132,8 @@ OSPF graceful restart.
     YANG Description: When this leaf is set to true, the advertising system is capable of
 being a helper for OSPF graceful restart
     """
+    if self.__graceful_restart_helper is None:
+        self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__graceful_restart_helper
       
   def _set_graceful_restart_helper(self, v, load=False):
@@ -134,6 +147,9 @@ being a helper for OSPF graceful restart
     YANG Description: When this leaf is set to true, the advertising system is capable of
 being a helper for OSPF graceful restart
     """
+    if self.__graceful_restart_helper is None:
+        self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ being a helper for OSPF graceful restart
     self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_stub_router(self):
+    return self.__stub_router is not None
+
   def _get_stub_router(self):
     """
     Getter method for stub_router, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/stub_router (boolean)
@@ -160,6 +179,8 @@ being a helper for OSPF graceful restart
     YANG Description: When this leaf is set to true, the advertising system is able to
 advertise its status as a stub router
     """
+    if self.__stub_router is None:
+        self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__stub_router
       
   def _set_stub_router(self, v, load=False):
@@ -173,6 +194,9 @@ advertise its status as a stub router
     YANG Description: When this leaf is set to true, the advertising system is able to
 advertise its status as a stub router
     """
+    if self.__stub_router is None:
+        self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -192,6 +216,9 @@ advertise its status as a stub router
     self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_traffic_engineering(self):
+    return self.__traffic_engineering is not None
+
   def _get_traffic_engineering(self):
     """
     Getter method for traffic_engineering, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/traffic_engineering (boolean)
@@ -199,6 +226,8 @@ advertise its status as a stub router
     YANG Description: When this leaf is set to true, the advertising system supports OSPFv2
 traffic engineering capabilities
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__traffic_engineering
       
   def _set_traffic_engineering(self, v, load=False):
@@ -212,6 +241,9 @@ traffic engineering capabilities
     YANG Description: When this leaf is set to true, the advertising system supports OSPFv2
 traffic engineering capabilities
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -231,6 +263,9 @@ traffic engineering capabilities
     self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_point_to_point_over_lan(self):
+    return self.__point_to_point_over_lan is not None
+
   def _get_point_to_point_over_lan(self):
     """
     Getter method for point_to_point_over_lan, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/point_to_point_over_lan (boolean)
@@ -238,6 +273,8 @@ traffic engineering capabilities
     YANG Description: When this leaf is set to true, the advertising system supports treating
 LAN adjacencies as though they were point to point
     """
+    if self.__point_to_point_over_lan is None:
+        self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__point_to_point_over_lan
       
   def _set_point_to_point_over_lan(self, v, load=False):
@@ -251,6 +288,9 @@ LAN adjacencies as though they were point to point
     YANG Description: When this leaf is set to true, the advertising system supports treating
 LAN adjacencies as though they were point to point
     """
+    if self.__point_to_point_over_lan is None:
+        self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -270,6 +310,9 @@ LAN adjacencies as though they were point to point
     self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_experimental_te(self):
+    return self.__experimental_te is not None
+
   def _get_experimental_te(self):
     """
     Getter method for experimental_te, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/experimental_te (boolean)
@@ -277,6 +320,8 @@ LAN adjacencies as though they were point to point
     YANG Description: When this leaf is set to ture, the advertising system supports the
 experimental extensions to OSPF for TE described in RFC4973
     """
+    if self.__experimental_te is None:
+        self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__experimental_te
       
   def _set_experimental_te(self, v, load=False):
@@ -290,6 +335,9 @@ experimental extensions to OSPF for TE described in RFC4973
     YANG Description: When this leaf is set to ture, the advertising system supports the
 experimental extensions to OSPF for TE described in RFC4973
     """
+    if self.__experimental_te is None:
+        self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -340,12 +388,12 @@ RI LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__point_to_point_over_lan = None
+    self.__experimental_te = None
+    self.__traffic_engineering = None
+    self.__stub_router = None
+    self.__graceful_restart_helper = None
+    self.__graceful_restart_capable = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -374,6 +422,9 @@ RI LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv', u'informational-capabilities', u'state']
 
+  def _initialized_graceful_restart_capable(self):
+    return self.__graceful_restart_capable is not None
+
   def _get_graceful_restart_capable(self):
     """
     Getter method for graceful_restart_capable, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/graceful_restart_capable (boolean)
@@ -381,6 +432,8 @@ RI LSA
     YANG Description: When this leaf is set to true, the advertising system is capable of
 OSPF graceful restart.
     """
+    if self.__graceful_restart_capable is None:
+        self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__graceful_restart_capable
       
   def _set_graceful_restart_capable(self, v, load=False):
@@ -394,6 +447,9 @@ OSPF graceful restart.
     YANG Description: When this leaf is set to true, the advertising system is capable of
 OSPF graceful restart.
     """
+    if self.__graceful_restart_capable is None:
+        self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -413,6 +469,9 @@ OSPF graceful restart.
     self.__graceful_restart_capable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-capable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_graceful_restart_helper(self):
+    return self.__graceful_restart_helper is not None
+
   def _get_graceful_restart_helper(self):
     """
     Getter method for graceful_restart_helper, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/graceful_restart_helper (boolean)
@@ -420,6 +479,8 @@ OSPF graceful restart.
     YANG Description: When this leaf is set to true, the advertising system is capable of
 being a helper for OSPF graceful restart
     """
+    if self.__graceful_restart_helper is None:
+        self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__graceful_restart_helper
       
   def _set_graceful_restart_helper(self, v, load=False):
@@ -433,6 +494,9 @@ being a helper for OSPF graceful restart
     YANG Description: When this leaf is set to true, the advertising system is capable of
 being a helper for OSPF graceful restart
     """
+    if self.__graceful_restart_helper is None:
+        self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -452,6 +516,9 @@ being a helper for OSPF graceful restart
     self.__graceful_restart_helper = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="graceful-restart-helper", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_stub_router(self):
+    return self.__stub_router is not None
+
   def _get_stub_router(self):
     """
     Getter method for stub_router, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/stub_router (boolean)
@@ -459,6 +526,8 @@ being a helper for OSPF graceful restart
     YANG Description: When this leaf is set to true, the advertising system is able to
 advertise its status as a stub router
     """
+    if self.__stub_router is None:
+        self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__stub_router
       
   def _set_stub_router(self, v, load=False):
@@ -472,6 +541,9 @@ advertise its status as a stub router
     YANG Description: When this leaf is set to true, the advertising system is able to
 advertise its status as a stub router
     """
+    if self.__stub_router is None:
+        self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -491,6 +563,9 @@ advertise its status as a stub router
     self.__stub_router = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="stub-router", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_traffic_engineering(self):
+    return self.__traffic_engineering is not None
+
   def _get_traffic_engineering(self):
     """
     Getter method for traffic_engineering, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/traffic_engineering (boolean)
@@ -498,6 +573,8 @@ advertise its status as a stub router
     YANG Description: When this leaf is set to true, the advertising system supports OSPFv2
 traffic engineering capabilities
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__traffic_engineering
       
   def _set_traffic_engineering(self, v, load=False):
@@ -511,6 +588,9 @@ traffic engineering capabilities
     YANG Description: When this leaf is set to true, the advertising system supports OSPFv2
 traffic engineering capabilities
     """
+    if self.__traffic_engineering is None:
+        self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -530,6 +610,9 @@ traffic engineering capabilities
     self.__traffic_engineering = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="traffic-engineering", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_point_to_point_over_lan(self):
+    return self.__point_to_point_over_lan is not None
+
   def _get_point_to_point_over_lan(self):
     """
     Getter method for point_to_point_over_lan, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/point_to_point_over_lan (boolean)
@@ -537,6 +620,8 @@ traffic engineering capabilities
     YANG Description: When this leaf is set to true, the advertising system supports treating
 LAN adjacencies as though they were point to point
     """
+    if self.__point_to_point_over_lan is None:
+        self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__point_to_point_over_lan
       
   def _set_point_to_point_over_lan(self, v, load=False):
@@ -550,6 +635,9 @@ LAN adjacencies as though they were point to point
     YANG Description: When this leaf is set to true, the advertising system supports treating
 LAN adjacencies as though they were point to point
     """
+    if self.__point_to_point_over_lan is None:
+        self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -569,6 +657,9 @@ LAN adjacencies as though they were point to point
     self.__point_to_point_over_lan = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="point-to-point-over-lan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_experimental_te(self):
+    return self.__experimental_te is not None
+
   def _get_experimental_te(self):
     """
     Getter method for experimental_te, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities/state/experimental_te (boolean)
@@ -576,6 +667,8 @@ LAN adjacencies as though they were point to point
     YANG Description: When this leaf is set to ture, the advertising system supports the
 experimental extensions to OSPF for TE described in RFC4973
     """
+    if self.__experimental_te is None:
+        self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__experimental_te
       
   def _set_experimental_te(self, v, load=False):
@@ -589,6 +682,9 @@ experimental extensions to OSPF for TE described in RFC4973
     YANG Description: When this leaf is set to ture, the advertising system supports the
 experimental extensions to OSPF for TE described in RFC4973
     """
+    if self.__experimental_te is None:
+        self.__experimental_te = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="experimental-te", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

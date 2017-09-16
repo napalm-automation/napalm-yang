@@ -41,9 +41,9 @@ endpoint
     self._path_helper = False
 
     self._extmethods = False
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__type = None
+    self.__precedence = None
+    self.__endpoint_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ endpoint
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints', u'endpoint', u'config']
 
+  def _initialized_endpoint_id(self):
+    return self.__endpoint_id is not None
+
   def _get_endpoint_id(self):
     """
     Getter method for endpoint_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/endpoint_id (string)
 
     YANG Description: An identifier for the endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__endpoint_id
       
   def _set_endpoint_id(self, v, load=False):
@@ -90,6 +95,9 @@ endpoint
 
     YANG Description: An identifier for the endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ endpoint
     self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_precedence(self):
+    return self.__precedence is not None
+
   def _get_precedence(self):
     """
     Getter method for precedence, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/precedence (uint16)
@@ -117,6 +128,8 @@ endpoint
 viable endpoint will be utilised as the active endpoint
 within a connection
     """
+    if self.__precedence is None:
+        self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__precedence
       
   def _set_precedence(self, v, load=False):
@@ -131,6 +144,9 @@ within a connection
 viable endpoint will be utilised as the active endpoint
 within a connection
     """
+    if self.__precedence is None:
+        self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ within a connection
     self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/type (identityref)
@@ -157,6 +176,8 @@ within a connection
     YANG Description: The type of endpoint that is referred to by the current
 endpoint
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -170,6 +191,9 @@ endpoint
     YANG Description: The type of endpoint that is referred to by the current
 endpoint
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ endpoint
     self._path_helper = False
 
     self._extmethods = False
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__type = None
+    self.__precedence = None
+    self.__endpoint_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,12 +272,17 @@ endpoint
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints', u'endpoint', u'config']
 
+  def _initialized_endpoint_id(self):
+    return self.__endpoint_id is not None
+
   def _get_endpoint_id(self):
     """
     Getter method for endpoint_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/endpoint_id (string)
 
     YANG Description: An identifier for the endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__endpoint_id
       
   def _set_endpoint_id(self, v, load=False):
@@ -266,6 +295,9 @@ endpoint
 
     YANG Description: An identifier for the endpoint
     """
+    if self.__endpoint_id is None:
+        self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -285,6 +317,9 @@ endpoint
     self.__endpoint_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="endpoint-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_precedence(self):
+    return self.__precedence is not None
+
   def _get_precedence(self):
     """
     Getter method for precedence, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/precedence (uint16)
@@ -293,6 +328,8 @@ endpoint
 viable endpoint will be utilised as the active endpoint
 within a connection
     """
+    if self.__precedence is None:
+        self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__precedence
       
   def _set_precedence(self, v, load=False):
@@ -307,6 +344,9 @@ within a connection
 viable endpoint will be utilised as the active endpoint
 within a connection
     """
+    if self.__precedence is None:
+        self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ within a connection
     self.__precedence = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="precedence", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint/config/type (identityref)
@@ -333,6 +376,8 @@ within a connection
     YANG Description: The type of endpoint that is referred to by the current
 endpoint
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -346,6 +391,9 @@ endpoint
     YANG Description: The type of endpoint that is referred to by the current
 endpoint
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:REMOTE': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    self.__type = None
+    self.__name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class config(PybindBase):
     else:
       return [u'system', u'aaa', u'server-groups', u'server-group', u'config']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /system/aaa/server_groups/server_group/config/name (string)
 
     YANG Description: Name for the server group
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -88,6 +93,9 @@ class config(PybindBase):
 
     YANG Description: Name for the server group
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,6 +115,9 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /system/aaa/server_groups/server_group/config/type (identityref)
@@ -114,6 +125,8 @@ class config(PybindBase):
     YANG Description: AAA server type -- all servers in the group must be of this
 type
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=True)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -127,6 +140,9 @@ type
     YANG Description: AAA server type -- all servers in the group must be of this
 type
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:TACACS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}, u'oc-aaa:RADIUS': {'@namespace': u'http://openconfig.net/yang/aaa', '@module': u'openconfig-aaa'}},), is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

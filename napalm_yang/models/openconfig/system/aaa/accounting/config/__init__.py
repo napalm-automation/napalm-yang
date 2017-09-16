@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__accounting_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="accounting-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
+    self.__accounting_method = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'system', u'aaa', u'accounting', u'config']
 
+  def _initialized_accounting_method(self):
+    return self.__accounting_method is not None
+
   def _get_accounting_method(self):
     """
     Getter method for accounting_method, mapped from YANG variable /system/aaa/accounting/config/accounting_method (union)
@@ -79,6 +82,8 @@ accounting data, which may be specified as the group of
 all TACACS+/RADIUS servers, a defined server group, or
 the local system.
     """
+    if self.__accounting_method is None:
+        self.__accounting_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="accounting-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
     return self.__accounting_method
       
   def _set_accounting_method(self, v, load=False):
@@ -95,6 +100,9 @@ accounting data, which may be specified as the group of
 all TACACS+/RADIUS servers, a defined server group, or
 the local system.
     """
+    if self.__accounting_method is None:
+        self.__accounting_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="accounting-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

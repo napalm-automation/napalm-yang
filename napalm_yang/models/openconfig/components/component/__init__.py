@@ -45,12 +45,12 @@ class component(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
-    self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
-    self.__transceiver = YANGDynClass(base=transceiver.transceiver, is_container='container', yang_name="transceiver", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
-    self.__properties = YANGDynClass(base=properties.properties, is_container='container', yang_name="properties", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__name = None
+    self.__subcomponents = None
+    self.__transceiver = None
+    self.__state = None
+    self.__config = None
+    self.__properties = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,12 +79,17 @@ class component(PybindBase):
     else:
       return [u'components', u'component']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /components/component/name (leafref)
 
     YANG Description: References the component name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -97,6 +102,9 @@ class component(PybindBase):
 
     YANG Description: References the component name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -121,12 +129,17 @@ class component(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /components/component/config (container)
 
     YANG Description: Configuration data for each component
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -139,6 +152,9 @@ class component(PybindBase):
 
     YANG Description: Configuration data for each component
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,12 +174,17 @@ class component(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /components/component/state (container)
 
     YANG Description: Operational state data for each component
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -176,6 +197,9 @@ class component(PybindBase):
 
     YANG Description: Operational state data for each component
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,12 +219,17 @@ class component(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
 
+  def _initialized_properties(self):
+    return self.__properties is not None
+
   def _get_properties(self):
     """
     Getter method for properties, mapped from YANG variable /components/component/properties (container)
 
     YANG Description: Enclosing container 
     """
+    if self.__properties is None:
+        self.__properties = YANGDynClass(base=properties.properties, is_container='container', yang_name="properties", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     return self.__properties
       
   def _set_properties(self, v, load=False):
@@ -213,6 +242,9 @@ class component(PybindBase):
 
     YANG Description: Enclosing container 
     """
+    if self.__properties is None:
+        self.__properties = YANGDynClass(base=properties.properties, is_container='container', yang_name="properties", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -232,12 +264,17 @@ class component(PybindBase):
     self.__properties = YANGDynClass(base=properties.properties, is_container='container', yang_name="properties", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
 
+  def _initialized_subcomponents(self):
+    return self.__subcomponents is not None
+
   def _get_subcomponents(self):
     """
     Getter method for subcomponents, mapped from YANG variable /components/component/subcomponents (container)
 
     YANG Description: Enclosing container for subcomponent references
     """
+    if self.__subcomponents is None:
+        self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     return self.__subcomponents
       
   def _set_subcomponents(self, v, load=False):
@@ -250,6 +287,9 @@ class component(PybindBase):
 
     YANG Description: Enclosing container for subcomponent references
     """
+    if self.__subcomponents is None:
+        self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -269,12 +309,17 @@ class component(PybindBase):
     self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
 
+  def _initialized_transceiver(self):
+    return self.__transceiver is not None
+
   def _get_transceiver(self):
     """
     Getter method for transceiver, mapped from YANG variable /components/component/transceiver (container)
 
     YANG Description: Top-level container for client port transceiver data
     """
+    if self.__transceiver is None:
+        self.__transceiver = YANGDynClass(base=transceiver.transceiver, is_container='container', yang_name="transceiver", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
     return self.__transceiver
       
   def _set_transceiver(self, v, load=False):
@@ -287,6 +332,9 @@ class component(PybindBase):
 
     YANG Description: Top-level container for client port transceiver data
     """
+    if self.__transceiver is None:
+        self.__transceiver = YANGDynClass(base=transceiver.transceiver, is_container='container', yang_name="transceiver", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

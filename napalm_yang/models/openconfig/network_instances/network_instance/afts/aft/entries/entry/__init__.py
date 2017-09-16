@@ -44,11 +44,11 @@ class entry(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__index = None
+    self.__state = None
+    self.__next_hops = None
+    self.__config = None
+    self.__match = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ class entry(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/index (leafref)
@@ -84,6 +87,8 @@ class entry(PybindBase):
     YANG Description: A pointer to the index of the AFT entry within the
 network instance
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -97,6 +102,9 @@ network instance
     YANG Description: A pointer to the index of the AFT entry within the
 network instance
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -121,6 +129,9 @@ network instance
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/config (container)
@@ -128,6 +139,8 @@ network instance
     YANG Description: Configuration parameters relating to the forwarding
 entry
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -141,6 +154,9 @@ entry
     YANG Description: Configuration parameters relating to the forwarding
 entry
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -160,6 +176,9 @@ entry
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state (container)
@@ -167,6 +186,8 @@ entry
     YANG Description: Operational state parameters relating to the forwarding
 entry
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -180,6 +201,9 @@ entry
     YANG Description: Operational state parameters relating to the forwarding
 entry
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -199,12 +223,17 @@ entry
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_match(self):
+    return self.__match is not None
+
   def _get_match(self):
     """
     Getter method for match, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match (container)
 
     YANG Description: Match criteria for the AFT entry
     """
+    if self.__match is None:
+        self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__match
       
   def _set_match(self, v, load=False):
@@ -217,6 +246,9 @@ entry
 
     YANG Description: Match criteria for the AFT entry
     """
+    if self.__match is None:
+        self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -236,6 +268,9 @@ entry
     self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_next_hops(self):
+    return self.__next_hops is not None
+
   def _get_next_hops(self):
     """
     Getter method for next_hops, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops (container)
@@ -243,6 +278,8 @@ entry
     YANG Description: Enclosing container for the list of next-hops associated
 with the forwarding entry
     """
+    if self.__next_hops is None:
+        self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__next_hops
       
   def _set_next_hops(self, v, load=False):
@@ -256,6 +293,9 @@ with the forwarding entry
     YANG Description: Enclosing container for the list of next-hops associated
 with the forwarding entry
     """
+    if self.__next_hops is None:
+        self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -308,11 +348,11 @@ class entry(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__index = None
+    self.__state = None
+    self.__next_hops = None
+    self.__config = None
+    self.__match = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -341,6 +381,9 @@ class entry(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/index (leafref)
@@ -348,6 +391,8 @@ class entry(PybindBase):
     YANG Description: A pointer to the index of the AFT entry within the
 network instance
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -361,6 +406,9 @@ network instance
     YANG Description: A pointer to the index of the AFT entry within the
 network instance
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -385,6 +433,9 @@ network instance
     self.__index = YANGDynClass(base=unicode, is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/config (container)
@@ -392,6 +443,8 @@ network instance
     YANG Description: Configuration parameters relating to the forwarding
 entry
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -405,6 +458,9 @@ entry
     YANG Description: Configuration parameters relating to the forwarding
 entry
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -424,6 +480,9 @@ entry
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/state (container)
@@ -431,6 +490,8 @@ entry
     YANG Description: Operational state parameters relating to the forwarding
 entry
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -444,6 +505,9 @@ entry
     YANG Description: Operational state parameters relating to the forwarding
 entry
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -463,12 +527,17 @@ entry
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_match(self):
+    return self.__match is not None
+
   def _get_match(self):
     """
     Getter method for match, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match (container)
 
     YANG Description: Match criteria for the AFT entry
     """
+    if self.__match is None:
+        self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__match
       
   def _set_match(self, v, load=False):
@@ -481,6 +550,9 @@ entry
 
     YANG Description: Match criteria for the AFT entry
     """
+    if self.__match is None:
+        self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -500,6 +572,9 @@ entry
     self.__match = YANGDynClass(base=match.match, is_container='container', yang_name="match", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_next_hops(self):
+    return self.__next_hops is not None
+
   def _get_next_hops(self):
     """
     Getter method for next_hops, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops (container)
@@ -507,6 +582,8 @@ entry
     YANG Description: Enclosing container for the list of next-hops associated
 with the forwarding entry
     """
+    if self.__next_hops is None:
+        self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__next_hops
       
   def _set_next_hops(self, v, load=False):
@@ -520,6 +597,9 @@ with the forwarding entry
     YANG Description: Enclosing container for the list of next-hops associated
 with the forwarding entry
     """
+    if self.__next_hops is None:
+        self.__next_hops = YANGDynClass(base=next_hops.next_hops, is_container='container', yang_name="next-hops", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

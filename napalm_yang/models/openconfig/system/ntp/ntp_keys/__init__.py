@@ -41,7 +41,7 @@ class ntp_keys(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ntp_key = YANGDynClass(base=YANGListType("key_id",ntp_key.ntp_key, yang_name="ntp-key", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='key-id', extensions=None), is_container='list', yang_name="ntp-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__ntp_key = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class ntp_keys(PybindBase):
     else:
       return [u'system', u'ntp', u'ntp-keys']
 
+  def _initialized_ntp_key(self):
+    return self.__ntp_key is not None
+
   def _get_ntp_key(self):
     """
     Getter method for ntp_key, mapped from YANG variable /system/ntp/ntp_keys/ntp_key (list)
 
     YANG Description: List of NTP authentication keys
     """
+    if self.__ntp_key is None:
+        self.__ntp_key = YANGDynClass(base=YANGListType("key_id",ntp_key.ntp_key, yang_name="ntp-key", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='key-id', extensions=None), is_container='list', yang_name="ntp-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__ntp_key
       
   def _set_ntp_key(self, v, load=False):
@@ -88,6 +93,9 @@ class ntp_keys(PybindBase):
 
     YANG Description: List of NTP authentication keys
     """
+    if self.__ntp_key is None:
+        self.__ntp_key = YANGDynClass(base=YANGListType("key_id",ntp_key.ntp_key, yang_name="ntp-key", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='key-id', extensions=None), is_container='list', yang_name="ntp-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

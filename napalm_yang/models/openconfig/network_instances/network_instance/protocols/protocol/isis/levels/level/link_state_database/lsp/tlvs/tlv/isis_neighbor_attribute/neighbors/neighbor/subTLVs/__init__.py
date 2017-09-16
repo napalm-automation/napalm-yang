@@ -41,7 +41,7 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__subTLVs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs']
 
+  def _initialized_subTLVs(self):
+    return self.__subTLVs is not None
+
   def _get_subTLVs(self):
     """
     Getter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs (list)
 
     YANG Description: List of subTLV types in the LSDB for the specified TLV.
     """
+    if self.__subTLVs is None:
+        self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__subTLVs
       
   def _set_subTLVs(self, v, load=False):
@@ -88,6 +93,9 @@ class subTLVs(PybindBase):
 
     YANG Description: List of subTLV types in the LSDB for the specified TLV.
     """
+    if self.__subTLVs is None:
+        self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__subTLVs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs']
 
+  def _initialized_subTLVs(self):
+    return self.__subTLVs is not None
+
   def _get_subTLVs(self):
     """
     Getter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs (list)
 
     YANG Description: List of subTLV types in the LSDB for the specified TLV.
     """
+    if self.__subTLVs is None:
+        self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__subTLVs
       
   def _set_subTLVs(self, v, load=False):
@@ -180,6 +193,9 @@ class subTLVs(PybindBase):
 
     YANG Description: List of subTLV types in the LSDB for the specified TLV.
     """
+    if self.__subTLVs is None:
+        self.__subTLVs = YANGDynClass(base=YANGListType("subtlv_type",subTLVs_.subTLVs, yang_name="subTLVs", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='subtlv-type', extensions=None), is_container='list', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -52,17 +52,17 @@ operational state data
     self._path_helper = False
 
     self._extmethods = False
-    self.__processes = YANGDynClass(base=processes.processes, is_container='container', yang_name="processes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__logging = YANGDynClass(base=logging.logging, is_container='container', yang_name="logging", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__clock = YANGDynClass(base=clock.clock, is_container='container', yang_name="clock", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__ntp = YANGDynClass(base=ntp.ntp, is_container='container', yang_name="ntp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__telnet_server = YANGDynClass(base=telnet_server.telnet_server, is_container='container', yang_name="telnet-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__dns = YANGDynClass(base=dns.dns, is_container='container', yang_name="dns", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__memory = YANGDynClass(base=memory.memory, is_container='container', yang_name="memory", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__aaa = YANGDynClass(base=aaa.aaa, is_container='container', yang_name="aaa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__ssh_server = YANGDynClass(base=ssh_server.ssh_server, is_container='container', yang_name="ssh-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__processes = None
+    self.__logging = None
+    self.__clock = None
+    self.__ntp = None
+    self.__telnet_server = None
+    self.__state = None
+    self.__dns = None
+    self.__memory = None
+    self.__aaa = None
+    self.__config = None
+    self.__ssh_server = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -91,12 +91,17 @@ operational state data
     else:
       return [u'system']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/config (container)
 
     YANG Description: Global configuration data for the system
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -109,6 +114,9 @@ operational state data
 
     YANG Description: Global configuration data for the system
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -128,12 +136,17 @@ operational state data
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/state (container)
 
     YANG Description: Global operational state data for the system
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -146,6 +159,9 @@ operational state data
 
     YANG Description: Global operational state data for the system
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -165,12 +181,17 @@ operational state data
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_clock(self):
+    return self.__clock is not None
+
   def _get_clock(self):
     """
     Getter method for clock, mapped from YANG variable /system/clock (container)
 
     YANG Description: Top-level container for clock configuration data
     """
+    if self.__clock is None:
+        self.__clock = YANGDynClass(base=clock.clock, is_container='container', yang_name="clock", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__clock
       
   def _set_clock(self, v, load=False):
@@ -183,6 +204,9 @@ operational state data
 
     YANG Description: Top-level container for clock configuration data
     """
+    if self.__clock is None:
+        self.__clock = YANGDynClass(base=clock.clock, is_container='container', yang_name="clock", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -202,12 +226,17 @@ operational state data
     self.__clock = YANGDynClass(base=clock.clock, is_container='container', yang_name="clock", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_dns(self):
+    return self.__dns is not None
+
   def _get_dns(self):
     """
     Getter method for dns, mapped from YANG variable /system/dns (container)
 
     YANG Description: Enclosing container for DNS resolver data
     """
+    if self.__dns is None:
+        self.__dns = YANGDynClass(base=dns.dns, is_container='container', yang_name="dns", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__dns
       
   def _set_dns(self, v, load=False):
@@ -220,6 +249,9 @@ operational state data
 
     YANG Description: Enclosing container for DNS resolver data
     """
+    if self.__dns is None:
+        self.__dns = YANGDynClass(base=dns.dns, is_container='container', yang_name="dns", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,12 +271,17 @@ operational state data
     self.__dns = YANGDynClass(base=dns.dns, is_container='container', yang_name="dns", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_ntp(self):
+    return self.__ntp is not None
+
   def _get_ntp(self):
     """
     Getter method for ntp, mapped from YANG variable /system/ntp (container)
 
     YANG Description: Top-level container for NTP configuration and state
     """
+    if self.__ntp is None:
+        self.__ntp = YANGDynClass(base=ntp.ntp, is_container='container', yang_name="ntp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__ntp
       
   def _set_ntp(self, v, load=False):
@@ -257,6 +294,9 @@ operational state data
 
     YANG Description: Top-level container for NTP configuration and state
     """
+    if self.__ntp is None:
+        self.__ntp = YANGDynClass(base=ntp.ntp, is_container='container', yang_name="ntp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,12 +316,17 @@ operational state data
     self.__ntp = YANGDynClass(base=ntp.ntp, is_container='container', yang_name="ntp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_ssh_server(self):
+    return self.__ssh_server is not None
+
   def _get_ssh_server(self):
     """
     Getter method for ssh_server, mapped from YANG variable /system/ssh_server (container)
 
     YANG Description: Top-level container for ssh server
     """
+    if self.__ssh_server is None:
+        self.__ssh_server = YANGDynClass(base=ssh_server.ssh_server, is_container='container', yang_name="ssh-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__ssh_server
       
   def _set_ssh_server(self, v, load=False):
@@ -294,6 +339,9 @@ operational state data
 
     YANG Description: Top-level container for ssh server
     """
+    if self.__ssh_server is None:
+        self.__ssh_server = YANGDynClass(base=ssh_server.ssh_server, is_container='container', yang_name="ssh-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -313,12 +361,17 @@ operational state data
     self.__ssh_server = YANGDynClass(base=ssh_server.ssh_server, is_container='container', yang_name="ssh-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_telnet_server(self):
+    return self.__telnet_server is not None
+
   def _get_telnet_server(self):
     """
     Getter method for telnet_server, mapped from YANG variable /system/telnet_server (container)
 
     YANG Description: Top-level container for telnet terminal servers
     """
+    if self.__telnet_server is None:
+        self.__telnet_server = YANGDynClass(base=telnet_server.telnet_server, is_container='container', yang_name="telnet-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__telnet_server
       
   def _set_telnet_server(self, v, load=False):
@@ -331,6 +384,9 @@ operational state data
 
     YANG Description: Top-level container for telnet terminal servers
     """
+    if self.__telnet_server is None:
+        self.__telnet_server = YANGDynClass(base=telnet_server.telnet_server, is_container='container', yang_name="telnet-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -350,12 +406,17 @@ operational state data
     self.__telnet_server = YANGDynClass(base=telnet_server.telnet_server, is_container='container', yang_name="telnet-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_logging(self):
+    return self.__logging is not None
+
   def _get_logging(self):
     """
     Getter method for logging, mapped from YANG variable /system/logging (container)
 
     YANG Description: Top-level container for data related to logging / syslog
     """
+    if self.__logging is None:
+        self.__logging = YANGDynClass(base=logging.logging, is_container='container', yang_name="logging", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__logging
       
   def _set_logging(self, v, load=False):
@@ -368,6 +429,9 @@ operational state data
 
     YANG Description: Top-level container for data related to logging / syslog
     """
+    if self.__logging is None:
+        self.__logging = YANGDynClass(base=logging.logging, is_container='container', yang_name="logging", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -387,12 +451,17 @@ operational state data
     self.__logging = YANGDynClass(base=logging.logging, is_container='container', yang_name="logging", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_aaa(self):
+    return self.__aaa is not None
+
   def _get_aaa(self):
     """
     Getter method for aaa, mapped from YANG variable /system/aaa (container)
 
     YANG Description: Top-level container for AAA services
     """
+    if self.__aaa is None:
+        self.__aaa = YANGDynClass(base=aaa.aaa, is_container='container', yang_name="aaa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__aaa
       
   def _set_aaa(self, v, load=False):
@@ -405,6 +474,9 @@ operational state data
 
     YANG Description: Top-level container for AAA services
     """
+    if self.__aaa is None:
+        self.__aaa = YANGDynClass(base=aaa.aaa, is_container='container', yang_name="aaa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -424,12 +496,17 @@ operational state data
     self.__aaa = YANGDynClass(base=aaa.aaa, is_container='container', yang_name="aaa", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_memory(self):
+    return self.__memory is not None
+
   def _get_memory(self):
     """
     Getter method for memory, mapped from YANG variable /system/memory (container)
 
     YANG Description: Top-level container for system memory data
     """
+    if self.__memory is None:
+        self.__memory = YANGDynClass(base=memory.memory, is_container='container', yang_name="memory", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__memory
       
   def _set_memory(self, v, load=False):
@@ -442,6 +519,9 @@ operational state data
 
     YANG Description: Top-level container for system memory data
     """
+    if self.__memory is None:
+        self.__memory = YANGDynClass(base=memory.memory, is_container='container', yang_name="memory", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -461,12 +541,17 @@ operational state data
     self.__memory = YANGDynClass(base=memory.memory, is_container='container', yang_name="memory", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_processes(self):
+    return self.__processes is not None
+
   def _get_processes(self):
     """
     Getter method for processes, mapped from YANG variable /system/processes (container)
 
     YANG Description: Parameters related to all monitored processes
     """
+    if self.__processes is None:
+        self.__processes = YANGDynClass(base=processes.processes, is_container='container', yang_name="processes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__processes
       
   def _set_processes(self, v, load=False):
@@ -479,6 +564,9 @@ operational state data
 
     YANG Description: Parameters related to all monitored processes
     """
+    if self.__processes is None:
+        self.__processes = YANGDynClass(base=processes.processes, is_container='container', yang_name="processes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

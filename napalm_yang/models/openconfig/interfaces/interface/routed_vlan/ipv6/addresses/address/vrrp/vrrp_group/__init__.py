@@ -43,10 +43,10 @@ class vrrp_group(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__virtual_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
-    self.__interface_tracking = YANGDynClass(base=interface_tracking.interface_tracking, is_container='container', yang_name="interface-tracking", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__virtual_router_id = None
+    self.__interface_tracking = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ class vrrp_group(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv6', u'addresses', u'address', u'vrrp', u'vrrp-group']
 
+  def _initialized_virtual_router_id(self):
+    return self.__virtual_router_id is not None
+
   def _get_virtual_router_id(self):
     """
     Getter method for virtual_router_id, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp/vrrp_group/virtual_router_id (leafref)
@@ -82,6 +85,8 @@ class vrrp_group(PybindBase):
     YANG Description: References the configured virtual router id for this
 VRRP group
     """
+    if self.__virtual_router_id is None:
+        self.__virtual_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
     return self.__virtual_router_id
       
   def _set_virtual_router_id(self, v, load=False):
@@ -95,6 +100,9 @@ VRRP group
     YANG Description: References the configured virtual router id for this
 VRRP group
     """
+    if self.__virtual_router_id is None:
+        self.__virtual_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -119,12 +127,17 @@ VRRP group
     self.__virtual_router_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="virtual-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp/vrrp_group/config (container)
 
     YANG Description: Configuration data for the VRRP group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -137,6 +150,9 @@ VRRP group
 
     YANG Description: Configuration data for the VRRP group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ VRRP group
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp/vrrp_group/state (container)
 
     YANG Description: Operational state data for the VRRP group
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -174,6 +195,9 @@ VRRP group
 
     YANG Description: Operational state data for the VRRP group
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ VRRP group
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_tracking(self):
+    return self.__interface_tracking is not None
+
   def _get_interface_tracking(self):
     """
     Getter method for interface_tracking, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/vrrp/vrrp_group/interface_tracking (container)
 
     YANG Description: Top-level container for VRRP interface tracking
     """
+    if self.__interface_tracking is None:
+        self.__interface_tracking = YANGDynClass(base=interface_tracking.interface_tracking, is_container='container', yang_name="interface-tracking", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__interface_tracking
       
   def _set_interface_tracking(self, v, load=False):
@@ -211,6 +240,9 @@ VRRP group
 
     YANG Description: Top-level container for VRRP interface tracking
     """
+    if self.__interface_tracking is None:
+        self.__interface_tracking = YANGDynClass(base=interface_tracking.interface_tracking, is_container='container', yang_name="interface-tracking", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

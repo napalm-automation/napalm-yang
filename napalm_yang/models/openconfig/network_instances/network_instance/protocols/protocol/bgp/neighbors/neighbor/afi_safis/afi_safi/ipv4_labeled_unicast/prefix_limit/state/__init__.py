@@ -41,10 +41,10 @@ AFI-SAFI
     self._path_helper = False
 
     self._extmethods = False
-    self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__shutdown_threshold_pct = None
+    self.__max_prefixes = None
+    self.__restart_timer = None
+    self.__prevent_teardown = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ AFI-SAFI
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'ipv4-labeled-unicast', u'prefix-limit', u'state']
 
+  def _initialized_max_prefixes(self):
+    return self.__max_prefixes is not None
+
   def _get_max_prefixes(self):
     """
     Getter method for max_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/max_prefixes (uint32)
@@ -80,6 +83,8 @@ AFI-SAFI
     YANG Description: Maximum number of prefixes that will be accepted
 from the neighbour
     """
+    if self.__max_prefixes is None:
+        self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__max_prefixes
       
   def _set_max_prefixes(self, v, load=False):
@@ -93,6 +98,9 @@ from the neighbour
     YANG Description: Maximum number of prefixes that will be accepted
 from the neighbour
     """
+    if self.__max_prefixes is None:
+        self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ from the neighbour
     self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_prevent_teardown(self):
+    return self.__prevent_teardown is not None
+
   def _get_prevent_teardown(self):
     """
     Getter method for prevent_teardown, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/prevent_teardown (boolean)
@@ -122,6 +133,8 @@ warning. The default of this leaf is false, such
 that when it is not specified, the session is torn
 down.
     """
+    if self.__prevent_teardown is None:
+        self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__prevent_teardown
       
   def _set_prevent_teardown(self, v, load=False):
@@ -138,6 +151,9 @@ warning. The default of this leaf is false, such
 that when it is not specified, the session is torn
 down.
     """
+    if self.__prevent_teardown is None:
+        self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ down.
     self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_shutdown_threshold_pct(self):
+    return self.__shutdown_threshold_pct is not None
+
   def _get_shutdown_threshold_pct(self):
     """
     Getter method for shutdown_threshold_pct, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/shutdown_threshold_pct (oc-types:percentage)
@@ -166,6 +185,8 @@ from a neighbour before generation of warning messages
 or log entries. Expressed as a percentage of
 max-prefixes
     """
+    if self.__shutdown_threshold_pct is None:
+        self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__shutdown_threshold_pct
       
   def _set_shutdown_threshold_pct(self, v, load=False):
@@ -181,6 +202,9 @@ from a neighbour before generation of warning messages
 or log entries. Expressed as a percentage of
 max-prefixes
     """
+    if self.__shutdown_threshold_pct is None:
+        self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,6 +224,9 @@ max-prefixes
     self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_restart_timer(self):
+    return self.__restart_timer is not None
+
   def _get_restart_timer(self):
     """
     Getter method for restart_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/restart_timer (decimal64)
@@ -208,6 +235,8 @@ max-prefixes
 is re-established after being torn down due to exceeding
 the max-prefix limit.
     """
+    if self.__restart_timer is None:
+        self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__restart_timer
       
   def _set_restart_timer(self, v, load=False):
@@ -222,6 +251,9 @@ the max-prefix limit.
 is re-established after being torn down due to exceeding
 the max-prefix limit.
     """
+    if self.__restart_timer is None:
+        self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -270,10 +302,10 @@ AFI-SAFI
     self._path_helper = False
 
     self._extmethods = False
-    self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__shutdown_threshold_pct = None
+    self.__max_prefixes = None
+    self.__restart_timer = None
+    self.__prevent_teardown = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -302,6 +334,9 @@ AFI-SAFI
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'afi-safis', u'afi-safi', u'ipv4-labeled-unicast', u'prefix-limit', u'state']
 
+  def _initialized_max_prefixes(self):
+    return self.__max_prefixes is not None
+
   def _get_max_prefixes(self):
     """
     Getter method for max_prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/max_prefixes (uint32)
@@ -309,6 +344,8 @@ AFI-SAFI
     YANG Description: Maximum number of prefixes that will be accepted
 from the neighbour
     """
+    if self.__max_prefixes is None:
+        self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__max_prefixes
       
   def _set_max_prefixes(self, v, load=False):
@@ -322,6 +359,9 @@ from the neighbour
     YANG Description: Maximum number of prefixes that will be accepted
 from the neighbour
     """
+    if self.__max_prefixes is None:
+        self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -341,6 +381,9 @@ from the neighbour
     self.__max_prefixes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_prevent_teardown(self):
+    return self.__prevent_teardown is not None
+
   def _get_prevent_teardown(self):
     """
     Getter method for prevent_teardown, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/prevent_teardown (boolean)
@@ -351,6 +394,8 @@ warning. The default of this leaf is false, such
 that when it is not specified, the session is torn
 down.
     """
+    if self.__prevent_teardown is None:
+        self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__prevent_teardown
       
   def _set_prevent_teardown(self, v, load=False):
@@ -367,6 +412,9 @@ warning. The default of this leaf is false, such
 that when it is not specified, the session is torn
 down.
     """
+    if self.__prevent_teardown is None:
+        self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -386,6 +434,9 @@ down.
     self.__prevent_teardown = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="prevent-teardown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_shutdown_threshold_pct(self):
+    return self.__shutdown_threshold_pct is not None
+
   def _get_shutdown_threshold_pct(self):
     """
     Getter method for shutdown_threshold_pct, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/shutdown_threshold_pct (oc-types:percentage)
@@ -395,6 +446,8 @@ from a neighbour before generation of warning messages
 or log entries. Expressed as a percentage of
 max-prefixes
     """
+    if self.__shutdown_threshold_pct is None:
+        self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__shutdown_threshold_pct
       
   def _set_shutdown_threshold_pct(self, v, load=False):
@@ -410,6 +463,9 @@ from a neighbour before generation of warning messages
 or log entries. Expressed as a percentage of
 max-prefixes
     """
+    if self.__shutdown_threshold_pct is None:
+        self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -429,6 +485,9 @@ max-prefixes
     self.__shutdown_threshold_pct = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="shutdown-threshold-pct", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_restart_timer(self):
+    return self.__restart_timer is not None
+
   def _get_restart_timer(self):
     """
     Getter method for restart_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis/afi_safi/ipv4_labeled_unicast/prefix_limit/state/restart_timer (decimal64)
@@ -437,6 +496,8 @@ max-prefixes
 is re-established after being torn down due to exceeding
 the max-prefix limit.
     """
+    if self.__restart_timer is None:
+        self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__restart_timer
       
   def _set_restart_timer(self, v, load=False):
@@ -451,6 +512,9 @@ the max-prefix limit.
 is re-established after being torn down due to exceeding
 the max-prefix limit.
     """
+    if self.__restart_timer is None:
+        self.__restart_timer = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="restart-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

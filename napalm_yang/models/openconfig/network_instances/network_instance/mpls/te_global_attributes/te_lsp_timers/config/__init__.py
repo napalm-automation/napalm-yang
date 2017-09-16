@@ -41,9 +41,9 @@ to timers for TE LSPs
     self._path_helper = False
 
     self._extmethods = False
-    self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__cleanup_delay = None
+    self.__reoptimize_timer = None
+    self.__install_delay = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ to timers for TE LSPs
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'te-lsp-timers', u'config']
 
+  def _initialized_install_delay(self):
+    return self.__install_delay is not None
+
   def _get_install_delay(self):
     """
     Getter method for install_delay, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/install_delay (uint16)
@@ -79,6 +82,8 @@ to timers for TE LSPs
     YANG Description: delay the use of newly installed te lsp for a
 specified amount of time.
     """
+    if self.__install_delay is None:
+        self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__install_delay
       
   def _set_install_delay(self, v, load=False):
@@ -92,6 +97,9 @@ specified amount of time.
     YANG Description: delay the use of newly installed te lsp for a
 specified amount of time.
     """
+    if self.__install_delay is None:
+        self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ specified amount of time.
     self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_cleanup_delay(self):
+    return self.__cleanup_delay is not None
+
   def _get_cleanup_delay(self):
     """
     Getter method for cleanup_delay, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/cleanup_delay (uint16)
@@ -118,6 +129,8 @@ specified amount of time.
     YANG Description: delay the removal of old te lsp for a specified
 amount of time
     """
+    if self.__cleanup_delay is None:
+        self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__cleanup_delay
       
   def _set_cleanup_delay(self, v, load=False):
@@ -131,6 +144,9 @@ amount of time
     YANG Description: delay the removal of old te lsp for a specified
 amount of time
     """
+    if self.__cleanup_delay is None:
+        self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ amount of time
     self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_reoptimize_timer(self):
+    return self.__reoptimize_timer is not None
+
   def _get_reoptimize_timer(self):
     """
     Getter method for reoptimize_timer, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/reoptimize_timer (uint16)
@@ -157,6 +176,8 @@ amount of time
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__reoptimize_timer
       
   def _set_reoptimize_timer(self, v, load=False):
@@ -170,6 +191,9 @@ a traffic engineered LSP
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ to timers for TE LSPs
     self._path_helper = False
 
     self._extmethods = False
-    self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
-    self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__cleanup_delay = None
+    self.__reoptimize_timer = None
+    self.__install_delay = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ to timers for TE LSPs
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'te-lsp-timers', u'config']
 
+  def _initialized_install_delay(self):
+    return self.__install_delay is not None
+
   def _get_install_delay(self):
     """
     Getter method for install_delay, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/install_delay (uint16)
@@ -255,6 +282,8 @@ to timers for TE LSPs
     YANG Description: delay the use of newly installed te lsp for a
 specified amount of time.
     """
+    if self.__install_delay is None:
+        self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__install_delay
       
   def _set_install_delay(self, v, load=False):
@@ -268,6 +297,9 @@ specified amount of time.
     YANG Description: delay the use of newly installed te lsp for a
 specified amount of time.
     """
+    if self.__install_delay is None:
+        self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ specified amount of time.
     self.__install_delay = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..3600']}), is_leaf=True, yang_name="install-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_cleanup_delay(self):
+    return self.__cleanup_delay is not None
+
   def _get_cleanup_delay(self):
     """
     Getter method for cleanup_delay, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/cleanup_delay (uint16)
@@ -294,6 +329,8 @@ specified amount of time.
     YANG Description: delay the removal of old te lsp for a specified
 amount of time
     """
+    if self.__cleanup_delay is None:
+        self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__cleanup_delay
       
   def _set_cleanup_delay(self, v, load=False):
@@ -307,6 +344,9 @@ amount of time
     YANG Description: delay the removal of old te lsp for a specified
 amount of time
     """
+    if self.__cleanup_delay is None:
+        self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ amount of time
     self.__cleanup_delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="cleanup-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
 
 
+  def _initialized_reoptimize_timer(self):
+    return self.__reoptimize_timer is not None
+
   def _get_reoptimize_timer(self):
     """
     Getter method for reoptimize_timer, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/te_lsp_timers/config/reoptimize_timer (uint16)
@@ -333,6 +376,8 @@ amount of time
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__reoptimize_timer
       
   def _set_reoptimize_timer(self, v, load=False):
@@ -346,6 +391,9 @@ a traffic engineered LSP
     YANG Description: frequency of reoptimization of
 a traffic engineered LSP
     """
+    if self.__reoptimize_timer is None:
+        self.__reoptimize_timer = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="reoptimize-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

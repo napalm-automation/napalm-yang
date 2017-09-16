@@ -41,8 +41,8 @@ groups being described for the link
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__bit_index = None
+    self.__set_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ groups being described for the link
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups', u'admin-group', u'state']
 
+  def _initialized_bit_index(self):
+    return self.__bit_index is not None
+
   def _get_bit_index(self):
     """
     Getter method for bit_index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state/bit_index (uint8)
@@ -78,6 +81,8 @@ groups being described for the link
     YANG Description: The index of the bit within the 32-bit administrative group field
 of the Administrative Group sub-TLV of the Traffic Engineering LSA
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__bit_index
       
   def _set_bit_index(self, v, load=False):
@@ -91,6 +96,9 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
     YANG Description: The index of the bit within the 32-bit administrative group field
 of the Administrative Group sub-TLV of the Traffic Engineering LSA
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
     self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_set_(self):
+    return self.__set_ is not None
+
   def _get_set_(self):
     """
     Getter method for set_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state/set (boolean)
 
     YANG Description: Whether the bit is set within the administrative group field
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__set_
       
   def _set_set_(self, v, load=False):
@@ -128,6 +141,9 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
 
     YANG Description: Whether the bit is set within the administrative group field
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ groups being described for the link
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__bit_index = None
+    self.__set_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,6 +220,9 @@ groups being described for the link
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups', u'admin-group', u'state']
 
+  def _initialized_bit_index(self):
+    return self.__bit_index is not None
+
   def _get_bit_index(self):
     """
     Getter method for bit_index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state/bit_index (uint8)
@@ -211,6 +230,8 @@ groups being described for the link
     YANG Description: The index of the bit within the 32-bit administrative group field
 of the Administrative Group sub-TLV of the Traffic Engineering LSA
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__bit_index
       
   def _set_bit_index(self, v, load=False):
@@ -224,6 +245,9 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
     YANG Description: The index of the bit within the 32-bit administrative group field
 of the Administrative Group sub-TLV of the Traffic Engineering LSA
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
     self.__bit_index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..31']}), is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_set_(self):
+    return self.__set_ is not None
+
   def _get_set_(self):
     """
     Getter method for set_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state/set (boolean)
 
     YANG Description: Whether the bit is set within the administrative group field
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__set_
       
   def _set_set_(self, v, load=False):
@@ -261,6 +290,9 @@ of the Administrative Group sub-TLV of the Traffic Engineering LSA
 
     YANG Description: Whether the bit is set within the administrative group field
     """
+    if self.__set_ is None:
+        self.__set_ = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
+    self.__identifier = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'config']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/config/identifier (oc-ospf-types:ospf-area-identifier)
@@ -76,6 +79,8 @@ class config(PybindBase):
     YANG Description: An identifier for the OSPFv2 area - described as either a
 32-bit unsigned integer, or a dotted-quad
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -89,6 +94,9 @@ class config(PybindBase):
     YANG Description: An identifier for the OSPFv2 area - described as either a
 32-bit unsigned integer, or a dotted-quad
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
+    self.__identifier = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,6 +170,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'config']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/config/identifier (oc-ospf-types:ospf-area-identifier)
@@ -169,6 +180,8 @@ class config(PybindBase):
     YANG Description: An identifier for the OSPFv2 area - described as either a
 32-bit unsigned integer, or a dotted-quad
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -182,6 +195,9 @@ class config(PybindBase):
     YANG Description: An identifier for the OSPFv2 area - described as either a
 32-bit unsigned integer, or a dotted-quad
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=[RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}),], is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-ospf-types:ospf-area-identifier', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

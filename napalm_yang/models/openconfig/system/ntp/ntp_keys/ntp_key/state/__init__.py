@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__key_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-sys:NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}, u'NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}},), is_leaf=True, yang_name="key-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
-    self.__key_id = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="key-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
-    self.__key_value = YANGDynClass(base=unicode, is_leaf=True, yang_name="key-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
+    self.__key_type = None
+    self.__key_id = None
+    self.__key_value = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class state(PybindBase):
     else:
       return [u'system', u'ntp', u'ntp-keys', u'ntp-key', u'state']
 
+  def _initialized_key_id(self):
+    return self.__key_id is not None
+
   def _get_key_id(self):
     """
     Getter method for key_id, mapped from YANG variable /system/ntp/ntp_keys/ntp_key/state/key_id (uint16)
@@ -79,6 +82,8 @@ class state(PybindBase):
 designate a secret key.  The client and server must use
 the same key id.
     """
+    if self.__key_id is None:
+        self.__key_id = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="key-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
     return self.__key_id
       
   def _set_key_id(self, v, load=False):
@@ -93,6 +98,9 @@ the same key id.
 designate a secret key.  The client and server must use
 the same key id.
     """
+    if self.__key_id is None:
+        self.__key_id = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="key-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,12 +120,17 @@ the same key id.
     self.__key_id = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="key-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
 
 
+  def _initialized_key_type(self):
+    return self.__key_type is not None
+
   def _get_key_type(self):
     """
     Getter method for key_type, mapped from YANG variable /system/ntp/ntp_keys/ntp_key/state/key_type (identityref)
 
     YANG Description: Encryption type used for the NTP authentication key
     """
+    if self.__key_type is None:
+        self.__key_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-sys:NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}, u'NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}},), is_leaf=True, yang_name="key-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
     return self.__key_type
       
   def _set_key_type(self, v, load=False):
@@ -130,6 +143,9 @@ the same key id.
 
     YANG Description: Encryption type used for the NTP authentication key
     """
+    if self.__key_type is None:
+        self.__key_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-sys:NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}, u'NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}},), is_leaf=True, yang_name="key-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,12 +165,17 @@ the same key id.
     self.__key_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-sys:NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}, u'NTP_AUTH_MD5': {'@namespace': u'http://openconfig.net/yang/system', '@module': u'openconfig-system'}},), is_leaf=True, yang_name="key-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
 
 
+  def _initialized_key_value(self):
+    return self.__key_value is not None
+
   def _get_key_value(self):
     """
     Getter method for key_value, mapped from YANG variable /system/ntp/ntp_keys/ntp_key/state/key_value (string)
 
     YANG Description: NTP authentication key value
     """
+    if self.__key_value is None:
+        self.__key_value = YANGDynClass(base=unicode, is_leaf=True, yang_name="key-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
     return self.__key_value
       
   def _set_key_value(self, v, load=False):
@@ -167,6 +188,9 @@ the same key id.
 
     YANG Description: NTP authentication key value
     """
+    if self.__key_value is None:
+        self.__key_value = YANGDynClass(base=unicode, is_leaf=True, yang_name="key-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

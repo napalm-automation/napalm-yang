@@ -41,9 +41,9 @@ IGP instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__srgb = None
+    self.__enabled = None
+    self.__srlb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ IGP instance.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'segment-routing', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/enabled (boolean)
@@ -79,6 +82,8 @@ IGP instance.
     YANG Description: When this leaf is set to true, the segment routing extensions are
 utilised within the IGP.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -92,6 +97,9 @@ utilised within the IGP.
     YANG Description: When this leaf is set to true, the segment routing extensions are
 utilised within the IGP.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ utilised within the IGP.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_srgb(self):
+    return self.__srgb is not None
+
   def _get_srgb(self):
     """
     Getter method for srgb, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/srgb (leafref)
@@ -118,6 +129,8 @@ utilised within the IGP.
     YANG Description: A reference to the Segment Routing Global Block (SRGB) that is
 to be used by this IGP instance.
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__srgb
       
   def _set_srgb(self, v, load=False):
@@ -131,6 +144,9 @@ to be used by this IGP instance.
     YANG Description: A reference to the Segment Routing Global Block (SRGB) that is
 to be used by this IGP instance.
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ to be used by this IGP instance.
     self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_srlb(self):
+    return self.__srlb is not None
+
   def _get_srlb(self):
     """
     Getter method for srlb, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/srlb (leafref)
@@ -157,6 +176,8 @@ to be used by this IGP instance.
     YANG Description: A reference to the Segment Routing Local Block (SRLB) that is to
 be advertised by the IGP instance.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__srlb
       
   def _set_srlb(self, v, load=False):
@@ -170,6 +191,9 @@ be advertised by the IGP instance.
     YANG Description: A reference to the Segment Routing Local Block (SRLB) that is to
 be advertised by the IGP instance.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ IGP instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__srgb = None
+    self.__enabled = None
+    self.__srlb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ IGP instance.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'segment-routing', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/enabled (boolean)
@@ -255,6 +282,8 @@ IGP instance.
     YANG Description: When this leaf is set to true, the segment routing extensions are
 utilised within the IGP.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -268,6 +297,9 @@ utilised within the IGP.
     YANG Description: When this leaf is set to true, the segment routing extensions are
 utilised within the IGP.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ utilised within the IGP.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_srgb(self):
+    return self.__srgb is not None
+
   def _get_srgb(self):
     """
     Getter method for srgb, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/srgb (leafref)
@@ -294,6 +329,8 @@ utilised within the IGP.
     YANG Description: A reference to the Segment Routing Global Block (SRGB) that is
 to be used by this IGP instance.
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__srgb
       
   def _set_srgb(self, v, load=False):
@@ -307,6 +344,9 @@ to be used by this IGP instance.
     YANG Description: A reference to the Segment Routing Global Block (SRGB) that is
 to be used by this IGP instance.
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ to be used by this IGP instance.
     self.__srgb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_srlb(self):
+    return self.__srlb is not None
+
   def _get_srlb(self):
     """
     Getter method for srlb, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing/state/srlb (leafref)
@@ -333,6 +376,8 @@ to be used by this IGP instance.
     YANG Description: A reference to the Segment Routing Local Block (SRLB) that is to
 be advertised by the IGP instance.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__srlb
       
   def _set_srlb(self, v, load=False):
@@ -346,6 +391,9 @@ be advertised by the IGP instance.
     YANG Description: A reference to the Segment Routing Local Block (SRLB) that is to
 be advertised by the IGP instance.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=unicode, is_leaf=True, yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

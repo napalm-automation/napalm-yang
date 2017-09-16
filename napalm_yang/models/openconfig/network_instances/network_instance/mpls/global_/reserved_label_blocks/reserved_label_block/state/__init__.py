@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    self.__lower_bound = None
+    self.__local_id = None
+    self.__upper_bound = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'reserved-label-blocks', u'reserved-label-block', u'state']
 
+  def _initialized_local_id(self):
+    return self.__local_id is not None
+
   def _get_local_id(self):
     """
     Getter method for local_id, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/local_id (string)
 
     YANG Description: A local identifier for the global label block allocation.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__local_id
       
   def _set_local_id(self, v, load=False):
@@ -89,6 +94,9 @@ class state(PybindBase):
 
     YANG Description: A local identifier for the global label block allocation.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ class state(PybindBase):
     self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_lower_bound(self):
+    return self.__lower_bound is not None
+
   def _get_lower_bound(self):
     """
     Getter method for lower_bound, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/lower_bound (oc-mplst:mpls-label)
@@ -115,6 +126,8 @@ class state(PybindBase):
     YANG Description: Lower bound of the global label block. The block is defined to include
 this label.
     """
+    if self.__lower_bound is None:
+        self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__lower_bound
       
   def _set_lower_bound(self, v, load=False):
@@ -128,6 +141,9 @@ this label.
     YANG Description: Lower bound of the global label block. The block is defined to include
 this label.
     """
+    if self.__lower_bound is None:
+        self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,6 +163,9 @@ this label.
     self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_upper_bound(self):
+    return self.__upper_bound is not None
+
   def _get_upper_bound(self):
     """
     Getter method for upper_bound, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/upper_bound (oc-mplst:mpls-label)
@@ -154,6 +173,8 @@ this label.
     YANG Description: Upper bound for the global label block. The block is defined to include
 this label.
     """
+    if self.__upper_bound is None:
+        self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__upper_bound
       
   def _set_upper_bound(self, v, load=False):
@@ -167,6 +188,9 @@ this label.
     YANG Description: Upper bound for the global label block. The block is defined to include
 this label.
     """
+    if self.__upper_bound is None:
+        self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -213,9 +237,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    self.__lower_bound = None
+    self.__local_id = None
+    self.__upper_bound = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -244,12 +268,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'reserved-label-blocks', u'reserved-label-block', u'state']
 
+  def _initialized_local_id(self):
+    return self.__local_id is not None
+
   def _get_local_id(self):
     """
     Getter method for local_id, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/local_id (string)
 
     YANG Description: A local identifier for the global label block allocation.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__local_id
       
   def _set_local_id(self, v, load=False):
@@ -262,6 +291,9 @@ class state(PybindBase):
 
     YANG Description: A local identifier for the global label block allocation.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -281,6 +313,9 @@ class state(PybindBase):
     self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_lower_bound(self):
+    return self.__lower_bound is not None
+
   def _get_lower_bound(self):
     """
     Getter method for lower_bound, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/lower_bound (oc-mplst:mpls-label)
@@ -288,6 +323,8 @@ class state(PybindBase):
     YANG Description: Lower bound of the global label block. The block is defined to include
 this label.
     """
+    if self.__lower_bound is None:
+        self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__lower_bound
       
   def _set_lower_bound(self, v, load=False):
@@ -301,6 +338,9 @@ this label.
     YANG Description: Lower bound of the global label block. The block is defined to include
 this label.
     """
+    if self.__lower_bound is None:
+        self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -320,6 +360,9 @@ this label.
     self.__lower_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="lower-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_upper_bound(self):
+    return self.__upper_bound is not None
+
   def _get_upper_bound(self):
     """
     Getter method for upper_bound, mapped from YANG variable /network_instances/network_instance/mpls/global/reserved_label_blocks/reserved_label_block/state/upper_bound (oc-mplst:mpls-label)
@@ -327,6 +370,8 @@ this label.
     YANG Description: Upper bound for the global label block. The block is defined to include
 this label.
     """
+    if self.__upper_bound is None:
+        self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__upper_bound
       
   def _set_upper_bound(self, v, load=False):
@@ -340,6 +385,9 @@ this label.
     YANG Description: Upper bound for the global label block. The block is defined to include
 this label.
     """
+    if self.__upper_bound is None:
+        self.__upper_bound = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="upper-bound", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

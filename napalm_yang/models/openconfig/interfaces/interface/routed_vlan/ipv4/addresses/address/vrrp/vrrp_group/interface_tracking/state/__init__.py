@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority_decrement = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="priority-decrement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=False)
-    self.__track_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="track-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=False)
+    self.__priority_decrement = None
+    self.__track_interface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv4', u'addresses', u'address', u'vrrp', u'vrrp-group', u'interface-tracking', u'state']
 
+  def _initialized_track_interface(self):
+    return self.__track_interface is not None
+
   def _get_track_interface(self):
     """
     Getter method for track_interface, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/addresses/address/vrrp/vrrp_group/interface_tracking/state/track_interface (leafref)
@@ -80,6 +83,8 @@ priority state of the VRRP group, and potentially
 change the mastership if the tracked interface going
 down lowers the priority sufficiently
     """
+    if self.__track_interface is None:
+        self.__track_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="track-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=False)
     return self.__track_interface
       
   def _set_track_interface(self, v, load=False):
@@ -96,6 +101,9 @@ priority state of the VRRP group, and potentially
 change the mastership if the tracked interface going
 down lowers the priority sufficiently
     """
+    if self.__track_interface is None:
+        self.__track_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="track-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ down lowers the priority sufficiently
     self.__track_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="track-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=False)
 
 
+  def _initialized_priority_decrement(self):
+    return self.__priority_decrement is not None
+
   def _get_priority_decrement(self):
     """
     Getter method for priority_decrement, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/addresses/address/vrrp/vrrp_group/interface_tracking/state/priority_decrement (uint8)
@@ -122,6 +133,8 @@ down lowers the priority sufficiently
     YANG Description: Set the value to subtract from priority when
 the tracked interface goes down
     """
+    if self.__priority_decrement is None:
+        self.__priority_decrement = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="priority-decrement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=False)
     return self.__priority_decrement
       
   def _set_priority_decrement(self, v, load=False):
@@ -135,6 +148,9 @@ the tracked interface goes down
     YANG Description: Set the value to subtract from priority when
 the tracked interface goes down
     """
+    if self.__priority_decrement is None:
+        self.__priority_decrement = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(0), is_leaf=True, yang_name="priority-decrement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

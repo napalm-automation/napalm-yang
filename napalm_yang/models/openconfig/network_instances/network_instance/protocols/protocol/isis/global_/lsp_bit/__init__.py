@@ -42,8 +42,8 @@ class lsp_bit(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__attached_bit = None
+    self.__overload_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class lsp_bit(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit']
 
+  def _initialized_overload_bit(self):
+    return self.__overload_bit is not None
+
   def _get_overload_bit(self):
     """
     Getter method for overload_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit (container)
 
     YANG Description: This container defines Overload Bit configuration.
     """
+    if self.__overload_bit is None:
+        self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__overload_bit
       
   def _set_overload_bit(self, v, load=False):
@@ -90,6 +95,9 @@ class lsp_bit(PybindBase):
 
     YANG Description: This container defines Overload Bit configuration.
     """
+    if self.__overload_bit is None:
+        self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class lsp_bit(PybindBase):
     self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_attached_bit(self):
+    return self.__attached_bit is not None
+
   def _get_attached_bit(self):
     """
     Getter method for attached_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit (container)
 
     YANG Description: This container defines Attached Bit.
     """
+    if self.__attached_bit is None:
+        self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__attached_bit
       
   def _set_attached_bit(self, v, load=False):
@@ -127,6 +140,9 @@ class lsp_bit(PybindBase):
 
     YANG Description: This container defines Attached Bit.
     """
+    if self.__attached_bit is None:
+        self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -174,8 +190,8 @@ class lsp_bit(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__attached_bit = None
+    self.__overload_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -204,12 +220,17 @@ class lsp_bit(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit']
 
+  def _initialized_overload_bit(self):
+    return self.__overload_bit is not None
+
   def _get_overload_bit(self):
     """
     Getter method for overload_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit (container)
 
     YANG Description: This container defines Overload Bit configuration.
     """
+    if self.__overload_bit is None:
+        self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__overload_bit
       
   def _set_overload_bit(self, v, load=False):
@@ -222,6 +243,9 @@ class lsp_bit(PybindBase):
 
     YANG Description: This container defines Overload Bit configuration.
     """
+    if self.__overload_bit is None:
+        self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -241,12 +265,17 @@ class lsp_bit(PybindBase):
     self.__overload_bit = YANGDynClass(base=overload_bit.overload_bit, is_container='container', yang_name="overload-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_attached_bit(self):
+    return self.__attached_bit is not None
+
   def _get_attached_bit(self):
     """
     Getter method for attached_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit (container)
 
     YANG Description: This container defines Attached Bit.
     """
+    if self.__attached_bit is None:
+        self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__attached_bit
       
   def _set_attached_bit(self, v, load=False):
@@ -259,6 +288,9 @@ class lsp_bit(PybindBase):
 
     YANG Description: This container defines Attached Bit.
     """
+    if self.__attached_bit is None:
+        self.__attached_bit = YANGDynClass(base=attached_bit.attached_bit, is_container='container', yang_name="attached-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

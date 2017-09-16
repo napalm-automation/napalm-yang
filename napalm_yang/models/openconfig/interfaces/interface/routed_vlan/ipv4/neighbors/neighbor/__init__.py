@@ -46,9 +46,9 @@ ARP Cache.
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__ip = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,12 +77,17 @@ ARP Cache.
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv4', u'neighbors', u'neighbor']
 
+  def _initialized_ip(self):
+    return self.__ip is not None
+
   def _get_ip(self):
     """
     Getter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/neighbors/neighbor/ip (leafref)
 
     YANG Description: References the configured IP address
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
     return self.__ip
       
   def _set_ip(self, v, load=False):
@@ -95,6 +100,9 @@ ARP Cache.
 
     YANG Description: References the configured IP address
     """
+    if self.__ip is None:
+        self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -119,6 +127,9 @@ ARP Cache.
     self.__ip = YANGDynClass(base=unicode, is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/neighbors/neighbor/config (container)
@@ -126,6 +137,8 @@ ARP Cache.
     YANG Description: Configuration data for each configured IPv4
 address on the interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -139,6 +152,9 @@ address on the interface
     YANG Description: Configuration data for each configured IPv4
 address on the interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,6 +174,9 @@ address on the interface
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/neighbors/neighbor/state (container)
@@ -165,6 +184,8 @@ address on the interface
     YANG Description: Operational state data for each IPv4 address
 configured on the interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -178,6 +199,9 @@ configured on the interface
     YANG Description: Operational state data for each IPv4 address
 configured on the interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

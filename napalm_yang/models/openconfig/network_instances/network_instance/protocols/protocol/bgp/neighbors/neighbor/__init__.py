@@ -55,21 +55,21 @@ uniquely identified by peer IPv[46] address
     self._path_helper = False
 
     self._extmethods = False
-    self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__route_reflector = None
+    self.__graceful_restart = None
+    self.__ebgp_multihop = None
+    self.__use_multiple_paths = None
+    self.__config = None
+    self.__as_path_options = None
+    self.__state = None
+    self.__timers = None
+    self.__apply_policy = None
+    self.__afi_safis = None
+    self.__add_paths = None
+    self.__logging_options = None
+    self.__error_handling = None
+    self.__transport = None
+    self.__neighbor_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -98,6 +98,9 @@ uniquely identified by peer IPv[46] address
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor']
 
+  def _initialized_neighbor_address(self):
+    return self.__neighbor_address is not None
+
   def _get_neighbor_address(self):
     """
     Getter method for neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/neighbor_address (leafref)
@@ -105,6 +108,8 @@ uniquely identified by peer IPv[46] address
     YANG Description: Reference to the address of the BGP neighbor used as
 a key in the neighbor list
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__neighbor_address
       
   def _set_neighbor_address(self, v, load=False):
@@ -118,6 +123,9 @@ a key in the neighbor list
     YANG Description: Reference to the address of the BGP neighbor used as
 a key in the neighbor list
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -142,6 +150,9 @@ a key in the neighbor list
     self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/config (container)
@@ -149,6 +160,8 @@ a key in the neighbor list
     YANG Description: Configuration parameters relating to the BGP neighbor or
 group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -162,6 +175,9 @@ group
     YANG Description: Configuration parameters relating to the BGP neighbor or
 group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -181,12 +197,17 @@ group
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state (container)
 
     YANG Description: State information relating to the BGP neighbor
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -199,6 +220,9 @@ group
 
     YANG Description: State information relating to the BGP neighbor
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -218,12 +242,17 @@ group
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/timers (container)
 
     YANG Description: Timers related to a BGP neighbor
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -236,6 +265,9 @@ group
 
     YANG Description: Timers related to a BGP neighbor
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -255,12 +287,17 @@ group
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/transport (container)
 
     YANG Description: Transport session parameters for the BGP neighbor
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -273,6 +310,9 @@ group
 
     YANG Description: Transport session parameters for the BGP neighbor
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -292,6 +332,9 @@ group
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_error_handling(self):
+    return self.__error_handling is not None
+
   def _get_error_handling(self):
     """
     Getter method for error_handling, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling (container)
@@ -299,6 +342,8 @@ group
     YANG Description: Error handling parameters used for the BGP neighbor or
 group
     """
+    if self.__error_handling is None:
+        self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__error_handling
       
   def _set_error_handling(self, v, load=False):
@@ -312,6 +357,9 @@ group
     YANG Description: Error handling parameters used for the BGP neighbor or
 group
     """
+    if self.__error_handling is None:
+        self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -331,12 +379,17 @@ group
     self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart (container)
 
     YANG Description: Parameters relating the graceful restart mechanism for BGP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -349,6 +402,9 @@ group
 
     YANG Description: Parameters relating the graceful restart mechanism for BGP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -368,6 +424,9 @@ group
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_logging_options(self):
+    return self.__logging_options is not None
+
   def _get_logging_options(self):
     """
     Getter method for logging_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/logging_options (container)
@@ -375,6 +434,8 @@ group
     YANG Description: Logging options for events related to the BGP neighbor or
 group
     """
+    if self.__logging_options is None:
+        self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__logging_options
       
   def _set_logging_options(self, v, load=False):
@@ -388,6 +449,9 @@ group
     YANG Description: Logging options for events related to the BGP neighbor or
 group
     """
+    if self.__logging_options is None:
+        self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -407,12 +471,17 @@ group
     self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ebgp_multihop(self):
+    return self.__ebgp_multihop is not None
+
   def _get_ebgp_multihop(self):
     """
     Getter method for ebgp_multihop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/ebgp_multihop (container)
 
     YANG Description: eBGP multi-hop parameters for the BGPgroup
     """
+    if self.__ebgp_multihop is None:
+        self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ebgp_multihop
       
   def _set_ebgp_multihop(self, v, load=False):
@@ -425,6 +494,9 @@ group
 
     YANG Description: eBGP multi-hop parameters for the BGPgroup
     """
+    if self.__ebgp_multihop is None:
+        self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -444,12 +516,17 @@ group
     self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_route_reflector(self):
+    return self.__route_reflector is not None
+
   def _get_route_reflector(self):
     """
     Getter method for route_reflector, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/route_reflector (container)
 
     YANG Description: Route reflector parameters for the BGPgroup
     """
+    if self.__route_reflector is None:
+        self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__route_reflector
       
   def _set_route_reflector(self, v, load=False):
@@ -462,6 +539,9 @@ group
 
     YANG Description: Route reflector parameters for the BGPgroup
     """
+    if self.__route_reflector is None:
+        self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -481,6 +561,9 @@ group
     self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_as_path_options(self):
+    return self.__as_path_options is not None
+
   def _get_as_path_options(self):
     """
     Getter method for as_path_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options (container)
@@ -488,6 +571,8 @@ group
     YANG Description: AS_PATH manipulation parameters for the BGP neighbor or
 group
     """
+    if self.__as_path_options is None:
+        self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__as_path_options
       
   def _set_as_path_options(self, v, load=False):
@@ -501,6 +586,9 @@ group
     YANG Description: AS_PATH manipulation parameters for the BGP neighbor or
 group
     """
+    if self.__as_path_options is None:
+        self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -520,6 +608,9 @@ group
     self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_add_paths(self):
+    return self.__add_paths is not None
+
   def _get_add_paths(self):
     """
     Getter method for add_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/add_paths (container)
@@ -527,6 +618,8 @@ group
     YANG Description: Parameters relating to the advertisement and receipt of
 multiple paths for a single NLRI (add-paths)
     """
+    if self.__add_paths is None:
+        self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__add_paths
       
   def _set_add_paths(self, v, load=False):
@@ -540,6 +633,9 @@ multiple paths for a single NLRI (add-paths)
     YANG Description: Parameters relating to the advertisement and receipt of
 multiple paths for a single NLRI (add-paths)
     """
+    if self.__add_paths is None:
+        self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -559,6 +655,9 @@ multiple paths for a single NLRI (add-paths)
     self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_use_multiple_paths(self):
+    return self.__use_multiple_paths is not None
+
   def _get_use_multiple_paths(self):
     """
     Getter method for use_multiple_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/use_multiple_paths (container)
@@ -566,6 +665,8 @@ multiple paths for a single NLRI (add-paths)
     YANG Description: Parameters related to the use of multiple-paths for the same
 NLRI when they are received only from this neighbor
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__use_multiple_paths
       
   def _set_use_multiple_paths(self, v, load=False):
@@ -579,6 +680,9 @@ NLRI when they are received only from this neighbor
     YANG Description: Parameters related to the use of multiple-paths for the same
 NLRI when they are received only from this neighbor
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -598,6 +702,9 @@ NLRI when they are received only from this neighbor
     self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/apply_policy (container)
@@ -607,6 +714,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -622,6 +731,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -641,6 +753,9 @@ depending on the context.
     self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safis(self):
+    return self.__afi_safis is not None
+
   def _get_afi_safis(self):
     """
     Getter method for afi_safis, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis (container)
@@ -648,6 +763,8 @@ depending on the context.
     YANG Description: Per-address-family configuration parameters associated with
 the neighbor
     """
+    if self.__afi_safis is None:
+        self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safis
       
   def _set_afi_safis(self, v, load=False):
@@ -661,6 +778,9 @@ the neighbor
     YANG Description: Per-address-family configuration parameters associated with
 the neighbor
     """
+    if self.__afi_safis is None:
+        self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -734,21 +854,21 @@ uniquely identified by peer IPv[46] address
     self._path_helper = False
 
     self._extmethods = False
-    self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__route_reflector = None
+    self.__graceful_restart = None
+    self.__ebgp_multihop = None
+    self.__use_multiple_paths = None
+    self.__config = None
+    self.__as_path_options = None
+    self.__state = None
+    self.__timers = None
+    self.__apply_policy = None
+    self.__afi_safis = None
+    self.__add_paths = None
+    self.__logging_options = None
+    self.__error_handling = None
+    self.__transport = None
+    self.__neighbor_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -777,6 +897,9 @@ uniquely identified by peer IPv[46] address
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor']
 
+  def _initialized_neighbor_address(self):
+    return self.__neighbor_address is not None
+
   def _get_neighbor_address(self):
     """
     Getter method for neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/neighbor_address (leafref)
@@ -784,6 +907,8 @@ uniquely identified by peer IPv[46] address
     YANG Description: Reference to the address of the BGP neighbor used as
 a key in the neighbor list
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__neighbor_address
       
   def _set_neighbor_address(self, v, load=False):
@@ -797,6 +922,9 @@ a key in the neighbor list
     YANG Description: Reference to the address of the BGP neighbor used as
 a key in the neighbor list
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -821,6 +949,9 @@ a key in the neighbor list
     self.__neighbor_address = YANGDynClass(base=unicode, is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/config (container)
@@ -828,6 +959,8 @@ a key in the neighbor list
     YANG Description: Configuration parameters relating to the BGP neighbor or
 group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -841,6 +974,9 @@ group
     YANG Description: Configuration parameters relating to the BGP neighbor or
 group
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -860,12 +996,17 @@ group
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state (container)
 
     YANG Description: State information relating to the BGP neighbor
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -878,6 +1019,9 @@ group
 
     YANG Description: State information relating to the BGP neighbor
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -897,12 +1041,17 @@ group
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/timers (container)
 
     YANG Description: Timers related to a BGP neighbor
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -915,6 +1064,9 @@ group
 
     YANG Description: Timers related to a BGP neighbor
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -934,12 +1086,17 @@ group
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/transport (container)
 
     YANG Description: Transport session parameters for the BGP neighbor
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -952,6 +1109,9 @@ group
 
     YANG Description: Transport session parameters for the BGP neighbor
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -971,6 +1131,9 @@ group
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_error_handling(self):
+    return self.__error_handling is not None
+
   def _get_error_handling(self):
     """
     Getter method for error_handling, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/error_handling (container)
@@ -978,6 +1141,8 @@ group
     YANG Description: Error handling parameters used for the BGP neighbor or
 group
     """
+    if self.__error_handling is None:
+        self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__error_handling
       
   def _set_error_handling(self, v, load=False):
@@ -991,6 +1156,9 @@ group
     YANG Description: Error handling parameters used for the BGP neighbor or
 group
     """
+    if self.__error_handling is None:
+        self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1010,12 +1178,17 @@ group
     self.__error_handling = YANGDynClass(base=error_handling.error_handling, is_container='container', yang_name="error-handling", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart (container)
 
     YANG Description: Parameters relating the graceful restart mechanism for BGP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -1028,6 +1201,9 @@ group
 
     YANG Description: Parameters relating the graceful restart mechanism for BGP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1047,6 +1223,9 @@ group
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_logging_options(self):
+    return self.__logging_options is not None
+
   def _get_logging_options(self):
     """
     Getter method for logging_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/logging_options (container)
@@ -1054,6 +1233,8 @@ group
     YANG Description: Logging options for events related to the BGP neighbor or
 group
     """
+    if self.__logging_options is None:
+        self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__logging_options
       
   def _set_logging_options(self, v, load=False):
@@ -1067,6 +1248,9 @@ group
     YANG Description: Logging options for events related to the BGP neighbor or
 group
     """
+    if self.__logging_options is None:
+        self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1086,12 +1270,17 @@ group
     self.__logging_options = YANGDynClass(base=logging_options.logging_options, is_container='container', yang_name="logging-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ebgp_multihop(self):
+    return self.__ebgp_multihop is not None
+
   def _get_ebgp_multihop(self):
     """
     Getter method for ebgp_multihop, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/ebgp_multihop (container)
 
     YANG Description: eBGP multi-hop parameters for the BGPgroup
     """
+    if self.__ebgp_multihop is None:
+        self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ebgp_multihop
       
   def _set_ebgp_multihop(self, v, load=False):
@@ -1104,6 +1293,9 @@ group
 
     YANG Description: eBGP multi-hop parameters for the BGPgroup
     """
+    if self.__ebgp_multihop is None:
+        self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1123,12 +1315,17 @@ group
     self.__ebgp_multihop = YANGDynClass(base=ebgp_multihop.ebgp_multihop, is_container='container', yang_name="ebgp-multihop", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_route_reflector(self):
+    return self.__route_reflector is not None
+
   def _get_route_reflector(self):
     """
     Getter method for route_reflector, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/route_reflector (container)
 
     YANG Description: Route reflector parameters for the BGPgroup
     """
+    if self.__route_reflector is None:
+        self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__route_reflector
       
   def _set_route_reflector(self, v, load=False):
@@ -1141,6 +1338,9 @@ group
 
     YANG Description: Route reflector parameters for the BGPgroup
     """
+    if self.__route_reflector is None:
+        self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1160,6 +1360,9 @@ group
     self.__route_reflector = YANGDynClass(base=route_reflector.route_reflector, is_container='container', yang_name="route-reflector", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_as_path_options(self):
+    return self.__as_path_options is not None
+
   def _get_as_path_options(self):
     """
     Getter method for as_path_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/as_path_options (container)
@@ -1167,6 +1370,8 @@ group
     YANG Description: AS_PATH manipulation parameters for the BGP neighbor or
 group
     """
+    if self.__as_path_options is None:
+        self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__as_path_options
       
   def _set_as_path_options(self, v, load=False):
@@ -1180,6 +1385,9 @@ group
     YANG Description: AS_PATH manipulation parameters for the BGP neighbor or
 group
     """
+    if self.__as_path_options is None:
+        self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1199,6 +1407,9 @@ group
     self.__as_path_options = YANGDynClass(base=as_path_options.as_path_options, is_container='container', yang_name="as-path-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_add_paths(self):
+    return self.__add_paths is not None
+
   def _get_add_paths(self):
     """
     Getter method for add_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/add_paths (container)
@@ -1206,6 +1417,8 @@ group
     YANG Description: Parameters relating to the advertisement and receipt of
 multiple paths for a single NLRI (add-paths)
     """
+    if self.__add_paths is None:
+        self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__add_paths
       
   def _set_add_paths(self, v, load=False):
@@ -1219,6 +1432,9 @@ multiple paths for a single NLRI (add-paths)
     YANG Description: Parameters relating to the advertisement and receipt of
 multiple paths for a single NLRI (add-paths)
     """
+    if self.__add_paths is None:
+        self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1238,6 +1454,9 @@ multiple paths for a single NLRI (add-paths)
     self.__add_paths = YANGDynClass(base=add_paths.add_paths, is_container='container', yang_name="add-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_use_multiple_paths(self):
+    return self.__use_multiple_paths is not None
+
   def _get_use_multiple_paths(self):
     """
     Getter method for use_multiple_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/use_multiple_paths (container)
@@ -1245,6 +1464,8 @@ multiple paths for a single NLRI (add-paths)
     YANG Description: Parameters related to the use of multiple-paths for the same
 NLRI when they are received only from this neighbor
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__use_multiple_paths
       
   def _set_use_multiple_paths(self, v, load=False):
@@ -1258,6 +1479,9 @@ NLRI when they are received only from this neighbor
     YANG Description: Parameters related to the use of multiple-paths for the same
 NLRI when they are received only from this neighbor
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1277,6 +1501,9 @@ NLRI when they are received only from this neighbor
     self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/apply_policy (container)
@@ -1286,6 +1513,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -1301,6 +1530,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1320,6 +1552,9 @@ depending on the context.
     self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safis(self):
+    return self.__afi_safis is not None
+
   def _get_afi_safis(self):
     """
     Getter method for afi_safis, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/afi_safis (container)
@@ -1327,6 +1562,8 @@ depending on the context.
     YANG Description: Per-address-family configuration parameters associated with
 the neighbor
     """
+    if self.__afi_safis is None:
+        self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safis
       
   def _set_afi_safis(self, v, load=False):
@@ -1340,6 +1577,9 @@ the neighbor
     YANG Description: Per-address-family configuration parameters associated with
 the neighbor
     """
+    if self.__afi_safis is None:
+        self.__afi_safis = YANGDynClass(base=afi_safis.afi_safis, is_container='container', yang_name="afi-safis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

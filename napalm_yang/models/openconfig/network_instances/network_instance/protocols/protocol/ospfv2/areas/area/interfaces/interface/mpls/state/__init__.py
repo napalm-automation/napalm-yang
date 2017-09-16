@@ -41,7 +41,7 @@ MPLS for the interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__traffic_engineering_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ MPLS for the interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'mpls', u'state']
 
+  def _initialized_traffic_engineering_metric(self):
+    return self.__traffic_engineering_metric is not None
+
   def _get_traffic_engineering_metric(self):
     """
     Getter method for traffic_engineering_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/state/traffic_engineering_metric (uint32)
@@ -77,6 +80,8 @@ MPLS for the interface
     YANG Description: A link metric that should only be considered for traffic
 engineering purposes.
     """
+    if self.__traffic_engineering_metric is None:
+        self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__traffic_engineering_metric
       
   def _set_traffic_engineering_metric(self, v, load=False):
@@ -90,6 +95,9 @@ engineering purposes.
     YANG Description: A link metric that should only be considered for traffic
 engineering purposes.
     """
+    if self.__traffic_engineering_metric is None:
+        self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ MPLS for the interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__traffic_engineering_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ MPLS for the interface
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'mpls', u'state']
 
+  def _initialized_traffic_engineering_metric(self):
+    return self.__traffic_engineering_metric is not None
+
   def _get_traffic_engineering_metric(self):
     """
     Getter method for traffic_engineering_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/state/traffic_engineering_metric (uint32)
@@ -171,6 +182,8 @@ MPLS for the interface
     YANG Description: A link metric that should only be considered for traffic
 engineering purposes.
     """
+    if self.__traffic_engineering_metric is None:
+        self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__traffic_engineering_metric
       
   def _set_traffic_engineering_metric(self, v, load=False):
@@ -184,6 +197,9 @@ engineering purposes.
     YANG Description: A link metric that should only be considered for traffic
 engineering purposes.
     """
+    if self.__traffic_engineering_metric is None:
+        self.__traffic_engineering_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="traffic-engineering-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

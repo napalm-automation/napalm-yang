@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
-    self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__status = None
+    self.__name = None
+    self.__vlan_id = None
+    self.__tpid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'vlans', u'vlan', u'config']
 
+  def _initialized_vlan_id(self):
+    return self.__vlan_id is not None
+
   def _get_vlan_id(self):
     """
     Getter method for vlan_id, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/vlan_id (oc-vlan-types:vlan-id)
 
     YANG Description: Interface VLAN id.
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
     return self.__vlan_id
       
   def _set_vlan_id(self, v, load=False):
@@ -90,6 +95,9 @@ class config(PybindBase):
 
     YANG Description: Interface VLAN id.
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class config(PybindBase):
     self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/name (string)
 
     YANG Description: Interface VLAN name.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -127,6 +140,9 @@ class config(PybindBase):
 
     YANG Description: Interface VLAN name.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,12 +162,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_status(self):
+    return self.__status is not None
+
   def _get_status(self):
     """
     Getter method for status, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/status (enumeration)
 
     YANG Description: Admin state of the VLAN
     """
+    if self.__status is None:
+        self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__status
       
   def _set_status(self, v, load=False):
@@ -164,6 +185,9 @@ class config(PybindBase):
 
     YANG Description: Admin state of the VLAN
     """
+    if self.__status is None:
+        self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -183,6 +207,9 @@ class config(PybindBase):
     self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
 
 
+  def _initialized_tpid(self):
+    return self.__tpid is not None
+
   def _get_tpid(self):
     """
     Getter method for tpid, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/tpid (identityref)
@@ -190,6 +217,8 @@ class config(PybindBase):
     YANG Description: Optionally set the tag protocol identifier field (TPID) that
 is accepted on the VLAN
     """
+    if self.__tpid is None:
+        self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__tpid
       
   def _set_tpid(self, v, load=False):
@@ -203,6 +232,9 @@ is accepted on the VLAN
     YANG Description: Optionally set the tag protocol identifier field (TPID) that
 is accepted on the VLAN
     """
+    if self.__tpid is None:
+        self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,10 +282,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
-    self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    self.__status = None
+    self.__name = None
+    self.__vlan_id = None
+    self.__tpid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -282,12 +314,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'vlans', u'vlan', u'config']
 
+  def _initialized_vlan_id(self):
+    return self.__vlan_id is not None
+
   def _get_vlan_id(self):
     """
     Getter method for vlan_id, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/vlan_id (oc-vlan-types:vlan-id)
 
     YANG Description: Interface VLAN id.
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
     return self.__vlan_id
       
   def _set_vlan_id(self, v, load=False):
@@ -300,6 +337,9 @@ class config(PybindBase):
 
     YANG Description: Interface VLAN id.
     """
+    if self.__vlan_id is None:
+        self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,12 +359,17 @@ class config(PybindBase):
     self.__vlan_id = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="vlan-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-vlan-types:vlan-id', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/name (string)
 
     YANG Description: Interface VLAN name.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -337,6 +382,9 @@ class config(PybindBase):
 
     YANG Description: Interface VLAN name.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,12 +404,17 @@ class config(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_status(self):
+    return self.__status is not None
+
   def _get_status(self):
     """
     Getter method for status, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/status (enumeration)
 
     YANG Description: Admin state of the VLAN
     """
+    if self.__status is None:
+        self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__status
       
   def _set_status(self, v, load=False):
@@ -374,6 +427,9 @@ class config(PybindBase):
 
     YANG Description: Admin state of the VLAN
     """
+    if self.__status is None:
+        self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -393,6 +449,9 @@ class config(PybindBase):
     self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACTIVE': {}, u'SUSPENDED': {}},), default=unicode("ACTIVE"), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
 
 
+  def _initialized_tpid(self):
+    return self.__tpid is not None
+
   def _get_tpid(self):
     """
     Getter method for tpid, mapped from YANG variable /network_instances/network_instance/vlans/vlan/config/tpid (identityref)
@@ -400,6 +459,8 @@ class config(PybindBase):
     YANG Description: Optionally set the tag protocol identifier field (TPID) that
 is accepted on the VLAN
     """
+    if self.__tpid is None:
+        self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__tpid
       
   def _set_tpid(self, v, load=False):
@@ -413,6 +474,9 @@ is accepted on the VLAN
     YANG Description: Optionally set the tag protocol identifier field (TPID) that
 is accepted on the VLAN
     """
+    if self.__tpid is None:
+        self.__tpid = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-vlan-types:TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0X9200': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x8A88': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'TPID_0x8100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}, u'oc-vlan-types:TPID_0x9100': {'@namespace': u'http://openconfig.net/yang/vlan-types', '@module': u'openconfig-vlan-types'}},), default=unicode("oc-vlan-types:TPID_0x8100"), is_leaf=True, yang_name="tpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

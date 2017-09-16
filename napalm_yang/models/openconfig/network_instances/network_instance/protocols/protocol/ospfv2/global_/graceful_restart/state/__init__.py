@@ -41,8 +41,8 @@ restart
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__enabled = None
+    self.__helper_only = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ restart
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart/state/enabled (boolean)
@@ -80,6 +83,8 @@ is enabled on the local system. In this case, the system will
 use Grace-LSAs to signal that it is restarting to its
 neighbors.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -95,6 +100,9 @@ is enabled on the local system. In this case, the system will
 use Grace-LSAs to signal that it is restarting to its
 neighbors.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ neighbors.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart/state/helper_only (boolean)
@@ -124,6 +135,8 @@ indicate that it is restarting, but will accept Grace-LSAs
 from remote systems, and suppress withdrawl of adjacencies
 of the system for the grace period specified
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -140,6 +153,9 @@ indicate that it is restarting, but will accept Grace-LSAs
 from remote systems, and suppress withdrawl of adjacencies
 of the system for the grace period specified
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -186,8 +202,8 @@ restart
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__enabled = None
+    self.__helper_only = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -216,6 +232,9 @@ restart
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart/state/enabled (boolean)
@@ -225,6 +244,8 @@ is enabled on the local system. In this case, the system will
 use Grace-LSAs to signal that it is restarting to its
 neighbors.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -240,6 +261,9 @@ is enabled on the local system. In this case, the system will
 use Grace-LSAs to signal that it is restarting to its
 neighbors.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -259,6 +283,9 @@ neighbors.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/graceful_restart/state/helper_only (boolean)
@@ -269,6 +296,8 @@ indicate that it is restarting, but will accept Grace-LSAs
 from remote systems, and suppress withdrawl of adjacencies
 of the system for the grace period specified
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -285,6 +314,9 @@ indicate that it is restarting, but will accept Grace-LSAs
 from remote systems, and suppress withdrawl of adjacencies
 of the system for the grace period specified
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

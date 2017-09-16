@@ -41,15 +41,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__part_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="part-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__serial_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="serial-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__mfg_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="mfg-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__version = YANGDynClass(base=unicode, is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__temperature = YANGDynClass(base=temperature.temperature, is_container='container', yang_name="temperature", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=False)
-    self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-opt-types:OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}, u'oc-platform-types:TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}},),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-platform-types:OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=False)
-    self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    self.__description = None
+    self.__part_no = None
+    self.__serial_no = None
+    self.__mfg_name = None
+    self.__version = None
+    self.__temperature = None
+    self.__type = None
+    self.__id = None
+    self.__name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,6 +78,9 @@ class state(PybindBase):
     else:
       return [u'components', u'component', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /components/component/state/name (string)
@@ -85,6 +88,8 @@ class state(PybindBase):
     YANG Description: Device name for the component -- this will not be a
 configurable parameter on many implementations
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -98,6 +103,9 @@ configurable parameter on many implementations
     YANG Description: Device name for the component -- this will not be a
 configurable parameter on many implementations
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -117,12 +125,17 @@ configurable parameter on many implementations
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /components/component/state/type (union)
 
     YANG Description: Type of component as identified by the system
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-opt-types:OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}, u'oc-platform-types:TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}},),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-platform-types:OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -135,6 +148,9 @@ configurable parameter on many implementations
 
     YANG Description: Type of component as identified by the system
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-opt-types:OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}, u'oc-platform-types:TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}},),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-platform-types:OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ configurable parameter on many implementations
     self.__type = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CPU': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:PORT': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:FAN': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-opt-types:OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}, u'oc-platform-types:TRANSCEIVER': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'LINECARD': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'SENSOR': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:MODULE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'oc-platform-types:BACKPLANE': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'CHASSIS': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'POWER_SUPPLY': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPTICAL_CHANNEL': {'@namespace': u'http://openconfig.net/yang/transport-types', '@module': u'openconfig-transport-types'}},),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-platform-types:OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}, u'OPERATING_SYSTEM': {'@namespace': u'http://openconfig.net/yang/platform-types', '@module': u'openconfig-platform-types'}},),], is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='union', is_config=False)
 
 
+  def _initialized_id(self):
+    return self.__id is not None
+
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /components/component/state/id (string)
@@ -161,6 +180,8 @@ configurable parameter on many implementations
     YANG Description: Unique identifier assigned by the system for the
 component
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__id
       
   def _set_id(self, v, load=False):
@@ -174,6 +195,9 @@ component
     YANG Description: Unique identifier assigned by the system for the
 component
     """
+    if self.__id is None:
+        self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ component
     self.__id = YANGDynClass(base=unicode, is_leaf=True, yang_name="id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /components/component/state/description (string)
 
     YANG Description: System-supplied description of the component
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -211,6 +240,9 @@ component
 
     YANG Description: System-supplied description of the component
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -230,6 +262,9 @@ component
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_mfg_name(self):
+    return self.__mfg_name is not None
+
   def _get_mfg_name(self):
     """
     Getter method for mfg_name, mapped from YANG variable /components/component/state/mfg_name (string)
@@ -239,6 +274,8 @@ component.  This data is particularly useful when a
 component manufacturer is different than the overall
 device vendor.
     """
+    if self.__mfg_name is None:
+        self.__mfg_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="mfg-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__mfg_name
       
   def _set_mfg_name(self, v, load=False):
@@ -254,6 +291,9 @@ component.  This data is particularly useful when a
 component manufacturer is different than the overall
 device vendor.
     """
+    if self.__mfg_name is None:
+        self.__mfg_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="mfg-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -273,6 +313,9 @@ device vendor.
     self.__mfg_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="mfg-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_version(self):
+    return self.__version is not None
+
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /components/component/state/version (string)
@@ -280,6 +323,8 @@ device vendor.
     YANG Description: System-defined version string for a hardware, firmware,
 or software component.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=unicode, is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__version
       
   def _set_version(self, v, load=False):
@@ -293,6 +338,9 @@ or software component.
     YANG Description: System-defined version string for a hardware, firmware,
 or software component.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=unicode, is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -312,12 +360,17 @@ or software component.
     self.__version = YANGDynClass(base=unicode, is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_serial_no(self):
+    return self.__serial_no is not None
+
   def _get_serial_no(self):
     """
     Getter method for serial_no, mapped from YANG variable /components/component/state/serial_no (string)
 
     YANG Description: System-assigned serial number of the component.
     """
+    if self.__serial_no is None:
+        self.__serial_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="serial-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__serial_no
       
   def _set_serial_no(self, v, load=False):
@@ -330,6 +383,9 @@ or software component.
 
     YANG Description: System-assigned serial number of the component.
     """
+    if self.__serial_no is None:
+        self.__serial_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="serial-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -349,6 +405,9 @@ or software component.
     self.__serial_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="serial-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_part_no(self):
+    return self.__part_no is not None
+
   def _get_part_no(self):
     """
     Getter method for part_no, mapped from YANG variable /components/component/state/part_no (string)
@@ -357,6 +416,8 @@ or software component.
 be present in particular if the component is also an FRU
 (field replacable unit)
     """
+    if self.__part_no is None:
+        self.__part_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="part-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
     return self.__part_no
       
   def _set_part_no(self, v, load=False):
@@ -371,6 +432,9 @@ be present in particular if the component is also an FRU
 be present in particular if the component is also an FRU
 (field replacable unit)
     """
+    if self.__part_no is None:
+        self.__part_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="part-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -390,6 +454,9 @@ be present in particular if the component is also an FRU
     self.__part_no = YANGDynClass(base=unicode, is_leaf=True, yang_name="part-no", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='string', is_config=False)
 
 
+  def _initialized_temperature(self):
+    return self.__temperature is not None
+
   def _get_temperature(self):
     """
     Getter method for temperature, mapped from YANG variable /components/component/state/temperature (container)
@@ -399,6 +466,8 @@ the instantaneous, average, minimum, and maximum statistics. If
 avg/min/max statistics are not supported, the target is expected
 to just supply the instant value
     """
+    if self.__temperature is None:
+        self.__temperature = YANGDynClass(base=temperature.temperature, is_container='container', yang_name="temperature", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=False)
     return self.__temperature
       
   def _set_temperature(self, v, load=False):
@@ -414,6 +483,9 @@ the instantaneous, average, minimum, and maximum statistics. If
 avg/min/max statistics are not supported, the target is expected
 to just supply the instant value
     """
+    if self.__temperature is None:
+        self.__temperature = YANGDynClass(base=temperature.temperature, is_container='container', yang_name="temperature", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

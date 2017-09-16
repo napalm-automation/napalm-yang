@@ -40,11 +40,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
-    self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__passive = None
+    self.__circuit_type = None
+    self.__hello_padding = None
+    self.__enabled = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/enabled (boolean)
@@ -80,6 +83,8 @@ class config(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -93,6 +98,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,12 +120,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Interface for which ISIS configuration is to be applied.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -130,6 +143,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: Interface for which ISIS configuration is to be applied.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/passive (boolean)
@@ -157,6 +176,8 @@ defined is enabled, when set to false it is explicitly disabled.
 such that it is not eligible to establish adjacencies with other
 systems, but is advertised into the IS-IS topology.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -171,6 +192,9 @@ systems, but is advertised into the IS-IS topology.
 such that it is not eligible to establish adjacencies with other
 systems, but is advertised into the IS-IS topology.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -190,12 +214,17 @@ systems, but is advertised into the IS-IS topology.
     self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hello_padding(self):
+    return self.__hello_padding is not None
+
   def _get_hello_padding(self):
     """
     Getter method for hello_padding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/hello_padding (oc-isis-types:hello-padding-type)
 
     YANG Description: This leaf controls padding type for IS-IS Hello PDUs.
     """
+    if self.__hello_padding is None:
+        self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
     return self.__hello_padding
       
   def _set_hello_padding(self, v, load=False):
@@ -208,6 +237,9 @@ systems, but is advertised into the IS-IS topology.
 
     YANG Description: This leaf controls padding type for IS-IS Hello PDUs.
     """
+    if self.__hello_padding is None:
+        self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -227,12 +259,17 @@ systems, but is advertised into the IS-IS topology.
     self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
 
 
+  def _initialized_circuit_type(self):
+    return self.__circuit_type is not None
+
   def _get_circuit_type(self):
     """
     Getter method for circuit_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/circuit_type (oc-isis-types:circuit-type)
 
     YANG Description: ISIS circuit type (p2p, broadcast).
     """
+    if self.__circuit_type is None:
+        self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
     return self.__circuit_type
       
   def _set_circuit_type(self, v, load=False):
@@ -245,6 +282,9 @@ systems, but is advertised into the IS-IS topology.
 
     YANG Description: ISIS circuit type (p2p, broadcast).
     """
+    if self.__circuit_type is None:
+        self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -293,11 +333,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
-    self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__passive = None
+    self.__circuit_type = None
+    self.__hello_padding = None
+    self.__enabled = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -326,6 +366,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/enabled (boolean)
@@ -333,6 +376,8 @@ class config(PybindBase):
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -346,6 +391,9 @@ defined is enabled, when set to false it is explicitly disabled.
     YANG Description: When set to true, the functionality within which this leaf is
 defined is enabled, when set to false it is explicitly disabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -365,12 +413,17 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Interface for which ISIS configuration is to be applied.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -383,6 +436,9 @@ defined is enabled, when set to false it is explicitly disabled.
 
     YANG Description: Interface for which ISIS configuration is to be applied.
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -402,6 +458,9 @@ defined is enabled, when set to false it is explicitly disabled.
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_passive(self):
+    return self.__passive is not None
+
   def _get_passive(self):
     """
     Getter method for passive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/passive (boolean)
@@ -410,6 +469,8 @@ defined is enabled, when set to false it is explicitly disabled.
 such that it is not eligible to establish adjacencies with other
 systems, but is advertised into the IS-IS topology.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__passive
       
   def _set_passive(self, v, load=False):
@@ -424,6 +485,9 @@ systems, but is advertised into the IS-IS topology.
 such that it is not eligible to establish adjacencies with other
 systems, but is advertised into the IS-IS topology.
     """
+    if self.__passive is None:
+        self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -443,12 +507,17 @@ systems, but is advertised into the IS-IS topology.
     self.__passive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="passive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hello_padding(self):
+    return self.__hello_padding is not None
+
   def _get_hello_padding(self):
     """
     Getter method for hello_padding, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/hello_padding (oc-isis-types:hello-padding-type)
 
     YANG Description: This leaf controls padding type for IS-IS Hello PDUs.
     """
+    if self.__hello_padding is None:
+        self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
     return self.__hello_padding
       
   def _set_hello_padding(self, v, load=False):
@@ -461,6 +530,9 @@ systems, but is advertised into the IS-IS topology.
 
     YANG Description: This leaf controls padding type for IS-IS Hello PDUs.
     """
+    if self.__hello_padding is None:
+        self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -480,12 +552,17 @@ systems, but is advertised into the IS-IS topology.
     self.__hello_padding = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'STRICT': {}, u'ADAPTIVE': {}, u'LOOSE': {}, u'DISABLE': {}},), is_leaf=True, yang_name="hello-padding", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:hello-padding-type', is_config=True)
 
 
+  def _initialized_circuit_type(self):
+    return self.__circuit_type is not None
+
   def _get_circuit_type(self):
     """
     Getter method for circuit_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/config/circuit_type (oc-isis-types:circuit-type)
 
     YANG Description: ISIS circuit type (p2p, broadcast).
     """
+    if self.__circuit_type is None:
+        self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
     return self.__circuit_type
       
   def _set_circuit_type(self, v, load=False):
@@ -498,6 +575,9 @@ systems, but is advertised into the IS-IS topology.
 
     YANG Description: ISIS circuit type (p2p, broadcast).
     """
+    if self.__circuit_type is None:
+        self.__circuit_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BROADCAST': {}, u'POINT_TO_POINT': {}},), is_leaf=True, yang_name="circuit-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:circuit-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,7 +41,7 @@ class addresses(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__address = YANGDynClass(base=YANGListType("ip",address.address, yang_name="address", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    self.__address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class addresses(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'ipv4', u'addresses']
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/addresses/address (list)
 
     YANG Description: The list of configured IPv4 addresses on the interface.
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=YANGListType("ip",address.address, yang_name="address", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -88,6 +93,9 @@ class addresses(PybindBase):
 
     YANG Description: The list of configured IPv4 addresses on the interface.
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=YANGListType("ip",address.address, yang_name="address", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='ip', extensions=None), is_container='list', yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

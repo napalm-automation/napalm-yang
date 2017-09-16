@@ -41,11 +41,11 @@ tables
     self._path_helper = False
 
     self._extmethods = False
-    self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
-    self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__src_protocol = None
+    self.__default_import_policy = None
+    self.__dst_protocol = None
+    self.__address_family = None
+    self.__import_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ tables
     else:
       return [u'network-instances', u'network-instance', u'table-connections', u'table-connection', u'state']
 
+  def _initialized_src_protocol(self):
+    return self.__src_protocol is not None
+
   def _get_src_protocol(self):
     """
     Getter method for src_protocol, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/src_protocol (leafref)
 
     YANG Description: The source protocol for the table connection
     """
+    if self.__src_protocol is None:
+        self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__src_protocol
       
   def _set_src_protocol(self, v, load=False):
@@ -92,6 +97,9 @@ tables
 
     YANG Description: The source protocol for the table connection
     """
+    if self.__src_protocol is None:
+        self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ tables
     self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/address_family (leafref)
@@ -120,6 +131,8 @@ must be defined for the source protocol. The target
 address family is implicitly defined by the address family
 specified for the source protocol.
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -135,6 +148,9 @@ must be defined for the source protocol. The target
 address family is implicitly defined by the address family
 specified for the source protocol.
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ specified for the source protocol.
     self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_dst_protocol(self):
+    return self.__dst_protocol is not None
+
   def _get_dst_protocol(self):
     """
     Getter method for dst_protocol, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/dst_protocol (leafref)
 
     YANG Description: The destination protocol for the table connection
     """
+    if self.__dst_protocol is None:
+        self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__dst_protocol
       
   def _set_dst_protocol(self, v, load=False):
@@ -172,6 +193,9 @@ specified for the source protocol.
 
     YANG Description: The destination protocol for the table connection
     """
+    if self.__dst_protocol is None:
+        self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,6 +215,9 @@ specified for the source protocol.
     self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_import_policy(self):
+    return self.__import_policy is not None
+
   def _get_import_policy(self):
     """
     Getter method for import_policy, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/import_policy (leafref)
@@ -200,6 +227,8 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__import_policy
       
   def _set_import_policy(self, v, load=False):
@@ -215,6 +244,9 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -234,6 +266,9 @@ etc.
     self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_default_import_policy(self):
+    return self.__default_import_policy is not None
+
   def _get_default_import_policy(self):
     """
     Getter method for default_import_policy, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/default_import_policy (default-policy-type)
@@ -241,6 +276,8 @@ etc.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
     return self.__default_import_policy
       
   def _set_default_import_policy(self, v, load=False):
@@ -254,6 +291,9 @@ in the import policy chain is satisfied.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -303,11 +343,11 @@ tables
     self._path_helper = False
 
     self._extmethods = False
-    self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
-    self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__src_protocol = None
+    self.__default_import_policy = None
+    self.__dst_protocol = None
+    self.__address_family = None
+    self.__import_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -336,12 +376,17 @@ tables
     else:
       return [u'network-instances', u'network-instance', u'table-connections', u'table-connection', u'state']
 
+  def _initialized_src_protocol(self):
+    return self.__src_protocol is not None
+
   def _get_src_protocol(self):
     """
     Getter method for src_protocol, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/src_protocol (leafref)
 
     YANG Description: The source protocol for the table connection
     """
+    if self.__src_protocol is None:
+        self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__src_protocol
       
   def _set_src_protocol(self, v, load=False):
@@ -354,6 +399,9 @@ tables
 
     YANG Description: The source protocol for the table connection
     """
+    if self.__src_protocol is None:
+        self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -373,6 +421,9 @@ tables
     self.__src_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="src-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/address_family (leafref)
@@ -382,6 +433,8 @@ must be defined for the source protocol. The target
 address family is implicitly defined by the address family
 specified for the source protocol.
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -397,6 +450,9 @@ must be defined for the source protocol. The target
 address family is implicitly defined by the address family
 specified for the source protocol.
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -416,12 +472,17 @@ specified for the source protocol.
     self.__address_family = YANGDynClass(base=unicode, is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_dst_protocol(self):
+    return self.__dst_protocol is not None
+
   def _get_dst_protocol(self):
     """
     Getter method for dst_protocol, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/dst_protocol (leafref)
 
     YANG Description: The destination protocol for the table connection
     """
+    if self.__dst_protocol is None:
+        self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__dst_protocol
       
   def _set_dst_protocol(self, v, load=False):
@@ -434,6 +495,9 @@ specified for the source protocol.
 
     YANG Description: The destination protocol for the table connection
     """
+    if self.__dst_protocol is None:
+        self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -453,6 +517,9 @@ specified for the source protocol.
     self.__dst_protocol = YANGDynClass(base=unicode, is_leaf=True, yang_name="dst-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_import_policy(self):
+    return self.__import_policy is not None
+
   def _get_import_policy(self):
     """
     Getter method for import_policy, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/import_policy (leafref)
@@ -462,6 +529,8 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__import_policy
       
   def _set_import_policy(self, v, load=False):
@@ -477,6 +546,9 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -496,6 +568,9 @@ etc.
     self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_default_import_policy(self):
+    return self.__default_import_policy is not None
+
   def _get_default_import_policy(self):
     """
     Getter method for default_import_policy, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection/state/default_import_policy (default-policy-type)
@@ -503,6 +578,8 @@ etc.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
     return self.__default_import_policy
       
   def _set_default_import_policy(self, v, load=False):
@@ -516,6 +593,9 @@ in the import policy chain is satisfied.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

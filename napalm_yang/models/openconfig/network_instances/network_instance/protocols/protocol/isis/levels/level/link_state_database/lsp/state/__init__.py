@@ -40,16 +40,16 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
-    self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__remaining_lifetime = None
+    self.__pdu_type = None
+    self.__version2 = None
+    self.__checksum = None
+    self.__pdu_length = None
+    self.__id_length = None
+    self.__version = None
+    self.__maximum_area_addresses = None
+    self.__lsp_id = None
+    self.__sequence_number = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,12 +78,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'state']
 
+  def _initialized_lsp_id(self):
+    return self.__lsp_id is not None
+
   def _get_lsp_id(self):
     """
     Getter method for lsp_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/lsp_id (oc-isis-types:lsp-id)
 
     YANG Description: LSP ID of the LSP.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
     return self.__lsp_id
       
   def _set_lsp_id(self, v, load=False):
@@ -96,6 +101,9 @@ class state(PybindBase):
 
     YANG Description: LSP ID of the LSP.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ class state(PybindBase):
     self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
 
 
+  def _initialized_maximum_area_addresses(self):
+    return self.__maximum_area_addresses is not None
+
   def _get_maximum_area_addresses(self):
     """
     Getter method for maximum_area_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/maximum_area_addresses (uint8)
@@ -123,6 +134,8 @@ class state(PybindBase):
 IS only supports three area addresses (by default). Any number
 inclusive of 1 and 254 indicates the number of areas allowed.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__maximum_area_addresses
       
   def _set_maximum_area_addresses(self, v, load=False):
@@ -137,6 +150,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 IS only supports three area addresses (by default). Any number
 inclusive of 1 and 254 indicates the number of areas allowed.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_version(self):
+    return self.__version is not None
+
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/version (uint8)
 
     YANG Description: PDU version. This is set to 1.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__version
       
   def _set_version(self, v, load=False):
@@ -174,6 +195,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 
     YANG Description: PDU version. This is set to 1.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_version2(self):
+    return self.__version2 is not None
+
   def _get_version2(self):
     """
     Getter method for version2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/version2 (uint8)
 
     YANG Description: PDU version2. This is set to 1
     """
+    if self.__version2 is None:
+        self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__version2
       
   def _set_version2(self, v, load=False):
@@ -211,6 +240,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 
     YANG Description: PDU version2. This is set to 1
     """
+    if self.__version2 is None:
+        self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -230,6 +262,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_id_length(self):
+    return self.__id_length is not None
+
   def _get_id_length(self):
     """
     Getter method for id_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/id_length (uint8)
@@ -237,6 +272,8 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     YANG Description: Length of the ID field of NSAP addresses and NETs used in this
 routing domain.
     """
+    if self.__id_length is None:
+        self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__id_length
       
   def _set_id_length(self, v, load=False):
@@ -250,6 +287,9 @@ routing domain.
     YANG Description: Length of the ID field of NSAP addresses and NETs used in this
 routing domain.
     """
+    if self.__id_length is None:
+        self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -269,12 +309,17 @@ routing domain.
     self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_pdu_type(self):
+    return self.__pdu_type is not None
+
   def _get_pdu_type(self):
     """
     Getter method for pdu_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/pdu_type (enumeration)
 
     YANG Description: Link State PDU type.
     """
+    if self.__pdu_type is None:
+        self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__pdu_type
       
   def _set_pdu_type(self, v, load=False):
@@ -287,6 +332,9 @@ routing domain.
 
     YANG Description: Link State PDU type.
     """
+    if self.__pdu_type is None:
+        self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -306,12 +354,17 @@ routing domain.
     self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_remaining_lifetime(self):
+    return self.__remaining_lifetime is not None
+
   def _get_remaining_lifetime(self):
     """
     Getter method for remaining_lifetime, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/remaining_lifetime (uint16)
 
     YANG Description: Remaining lifetime in seconds before the LSP expiration.
     """
+    if self.__remaining_lifetime is None:
+        self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__remaining_lifetime
       
   def _set_remaining_lifetime(self, v, load=False):
@@ -324,6 +377,9 @@ routing domain.
 
     YANG Description: Remaining lifetime in seconds before the LSP expiration.
     """
+    if self.__remaining_lifetime is None:
+        self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -343,12 +399,17 @@ routing domain.
     self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_sequence_number(self):
+    return self.__sequence_number is not None
+
   def _get_sequence_number(self):
     """
     Getter method for sequence_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/sequence_number (uint32)
 
     YANG Description: Sequence number of the LSP.
     """
+    if self.__sequence_number is None:
+        self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sequence_number
       
   def _set_sequence_number(self, v, load=False):
@@ -361,6 +422,9 @@ routing domain.
 
     YANG Description: Sequence number of the LSP.
     """
+    if self.__sequence_number is None:
+        self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -380,12 +444,17 @@ routing domain.
     self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_checksum(self):
+    return self.__checksum is not None
+
   def _get_checksum(self):
     """
     Getter method for checksum, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/checksum (uint16)
 
     YANG Description: Checksum of the LSP.
     """
+    if self.__checksum is None:
+        self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__checksum
       
   def _set_checksum(self, v, load=False):
@@ -398,6 +467,9 @@ routing domain.
 
     YANG Description: Checksum of the LSP.
     """
+    if self.__checksum is None:
+        self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -417,12 +489,17 @@ routing domain.
     self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_pdu_length(self):
+    return self.__pdu_length is not None
+
   def _get_pdu_length(self):
     """
     Getter method for pdu_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/pdu_length (uint16)
 
     YANG Description: Total length of the LSP.
     """
+    if self.__pdu_length is None:
+        self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__pdu_length
       
   def _set_pdu_length(self, v, load=False):
@@ -435,6 +512,9 @@ routing domain.
 
     YANG Description: Total length of the LSP.
     """
+    if self.__pdu_length is None:
+        self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -488,16 +568,16 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
-    self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__remaining_lifetime = None
+    self.__pdu_type = None
+    self.__version2 = None
+    self.__checksum = None
+    self.__pdu_length = None
+    self.__id_length = None
+    self.__version = None
+    self.__maximum_area_addresses = None
+    self.__lsp_id = None
+    self.__sequence_number = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -526,12 +606,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'state']
 
+  def _initialized_lsp_id(self):
+    return self.__lsp_id is not None
+
   def _get_lsp_id(self):
     """
     Getter method for lsp_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/lsp_id (oc-isis-types:lsp-id)
 
     YANG Description: LSP ID of the LSP.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
     return self.__lsp_id
       
   def _set_lsp_id(self, v, load=False):
@@ -544,6 +629,9 @@ class state(PybindBase):
 
     YANG Description: LSP ID of the LSP.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -563,6 +651,9 @@ class state(PybindBase):
     self.__lsp_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9A-Fa-f]{4}\\.[0-9][0-9]-[0-9][0-9]'}), is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:lsp-id', is_config=False)
 
 
+  def _initialized_maximum_area_addresses(self):
+    return self.__maximum_area_addresses is not None
+
   def _get_maximum_area_addresses(self):
     """
     Getter method for maximum_area_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/maximum_area_addresses (uint8)
@@ -571,6 +662,8 @@ class state(PybindBase):
 IS only supports three area addresses (by default). Any number
 inclusive of 1 and 254 indicates the number of areas allowed.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__maximum_area_addresses
       
   def _set_maximum_area_addresses(self, v, load=False):
@@ -585,6 +678,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 IS only supports three area addresses (by default). Any number
 inclusive of 1 and 254 indicates the number of areas allowed.
     """
+    if self.__maximum_area_addresses is None:
+        self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -604,12 +700,17 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__maximum_area_addresses = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="maximum-area-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_version(self):
+    return self.__version is not None
+
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/version (uint8)
 
     YANG Description: PDU version. This is set to 1.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__version
       
   def _set_version(self, v, load=False):
@@ -622,6 +723,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 
     YANG Description: PDU version. This is set to 1.
     """
+    if self.__version is None:
+        self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -641,12 +745,17 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__version = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_version2(self):
+    return self.__version2 is not None
+
   def _get_version2(self):
     """
     Getter method for version2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/version2 (uint8)
 
     YANG Description: PDU version2. This is set to 1
     """
+    if self.__version2 is None:
+        self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__version2
       
   def _set_version2(self, v, load=False):
@@ -659,6 +768,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
 
     YANG Description: PDU version2. This is set to 1
     """
+    if self.__version2 is None:
+        self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -678,6 +790,9 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     self.__version2 = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8)(1), is_leaf=True, yang_name="version2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_id_length(self):
+    return self.__id_length is not None
+
   def _get_id_length(self):
     """
     Getter method for id_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/id_length (uint8)
@@ -685,6 +800,8 @@ inclusive of 1 and 254 indicates the number of areas allowed.
     YANG Description: Length of the ID field of NSAP addresses and NETs used in this
 routing domain.
     """
+    if self.__id_length is None:
+        self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__id_length
       
   def _set_id_length(self, v, load=False):
@@ -698,6 +815,9 @@ routing domain.
     YANG Description: Length of the ID field of NSAP addresses and NETs used in this
 routing domain.
     """
+    if self.__id_length is None:
+        self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -717,12 +837,17 @@ routing domain.
     self.__id_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="id-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_pdu_type(self):
+    return self.__pdu_type is not None
+
   def _get_pdu_type(self):
     """
     Getter method for pdu_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/pdu_type (enumeration)
 
     YANG Description: Link State PDU type.
     """
+    if self.__pdu_type is None:
+        self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__pdu_type
       
   def _set_pdu_type(self, v, load=False):
@@ -735,6 +860,9 @@ routing domain.
 
     YANG Description: Link State PDU type.
     """
+    if self.__pdu_type is None:
+        self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -754,12 +882,17 @@ routing domain.
     self.__pdu_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LEVEL_1': {}, u'LEVEL_2': {}},), is_leaf=True, yang_name="pdu-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_remaining_lifetime(self):
+    return self.__remaining_lifetime is not None
+
   def _get_remaining_lifetime(self):
     """
     Getter method for remaining_lifetime, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/remaining_lifetime (uint16)
 
     YANG Description: Remaining lifetime in seconds before the LSP expiration.
     """
+    if self.__remaining_lifetime is None:
+        self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__remaining_lifetime
       
   def _set_remaining_lifetime(self, v, load=False):
@@ -772,6 +905,9 @@ routing domain.
 
     YANG Description: Remaining lifetime in seconds before the LSP expiration.
     """
+    if self.__remaining_lifetime is None:
+        self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -791,12 +927,17 @@ routing domain.
     self.__remaining_lifetime = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="remaining-lifetime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_sequence_number(self):
+    return self.__sequence_number is not None
+
   def _get_sequence_number(self):
     """
     Getter method for sequence_number, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/sequence_number (uint32)
 
     YANG Description: Sequence number of the LSP.
     """
+    if self.__sequence_number is None:
+        self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sequence_number
       
   def _set_sequence_number(self, v, load=False):
@@ -809,6 +950,9 @@ routing domain.
 
     YANG Description: Sequence number of the LSP.
     """
+    if self.__sequence_number is None:
+        self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -828,12 +972,17 @@ routing domain.
     self.__sequence_number = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sequence-number", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_checksum(self):
+    return self.__checksum is not None
+
   def _get_checksum(self):
     """
     Getter method for checksum, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/checksum (uint16)
 
     YANG Description: Checksum of the LSP.
     """
+    if self.__checksum is None:
+        self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__checksum
       
   def _set_checksum(self, v, load=False):
@@ -846,6 +995,9 @@ routing domain.
 
     YANG Description: Checksum of the LSP.
     """
+    if self.__checksum is None:
+        self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -865,12 +1017,17 @@ routing domain.
     self.__checksum = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="checksum", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_pdu_length(self):
+    return self.__pdu_length is not None
+
   def _get_pdu_length(self):
     """
     Getter method for pdu_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state/pdu_length (uint16)
 
     YANG Description: Total length of the LSP.
     """
+    if self.__pdu_length is None:
+        self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__pdu_length
       
   def _set_pdu_length(self, v, load=False):
@@ -883,6 +1040,9 @@ routing domain.
 
     YANG Description: Total length of the LSP.
     """
+    if self.__pdu_length is None:
+        self.__pdu_length = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="pdu-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

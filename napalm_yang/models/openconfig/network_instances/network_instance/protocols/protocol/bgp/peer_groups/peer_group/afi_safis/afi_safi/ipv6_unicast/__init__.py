@@ -43,9 +43,9 @@ class ipv6_unicast(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__prefix_limit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class ipv6_unicast(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'ipv6-unicast']
 
+  def _initialized_prefix_limit(self):
+    return self.__prefix_limit is not None
+
   def _get_prefix_limit(self):
     """
     Getter method for prefix_limit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/prefix_limit (container)
@@ -81,6 +84,8 @@ class ipv6_unicast(PybindBase):
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_limit
       
   def _set_prefix_limit(self, v, load=False):
@@ -94,6 +99,9 @@ accepted from a peer
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ accepted from a peer
     self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/config (container)
@@ -120,6 +131,8 @@ accepted from a peer
     YANG Description: Configuration parameters for common IPv4 and IPv6 unicast
 AFI-SAFI options
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -133,6 +146,9 @@ AFI-SAFI options
     YANG Description: Configuration parameters for common IPv4 and IPv6 unicast
 AFI-SAFI options
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ AFI-SAFI options
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/state (container)
@@ -159,6 +178,8 @@ AFI-SAFI options
     YANG Description: State information for common IPv4 and IPv6 unicast
 parameters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -172,6 +193,9 @@ parameters
     YANG Description: State information for common IPv4 and IPv6 unicast
 parameters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -221,9 +245,9 @@ class ipv6_unicast(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__config = None
+    self.__state = None
+    self.__prefix_limit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -252,6 +276,9 @@ class ipv6_unicast(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'ipv6-unicast']
 
+  def _initialized_prefix_limit(self):
+    return self.__prefix_limit is not None
+
   def _get_prefix_limit(self):
     """
     Getter method for prefix_limit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/prefix_limit (container)
@@ -259,6 +286,8 @@ class ipv6_unicast(PybindBase):
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_limit
       
   def _set_prefix_limit(self, v, load=False):
@@ -272,6 +301,9 @@ accepted from a peer
     YANG Description: Configure the maximum number of prefixes that will be
 accepted from a peer
     """
+    if self.__prefix_limit is None:
+        self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -291,6 +323,9 @@ accepted from a peer
     self.__prefix_limit = YANGDynClass(base=prefix_limit.prefix_limit, is_container='container', yang_name="prefix-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/config (container)
@@ -298,6 +333,8 @@ accepted from a peer
     YANG Description: Configuration parameters for common IPv4 and IPv6 unicast
 AFI-SAFI options
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -311,6 +348,9 @@ AFI-SAFI options
     YANG Description: Configuration parameters for common IPv4 and IPv6 unicast
 AFI-SAFI options
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,6 +370,9 @@ AFI-SAFI options
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast/state (container)
@@ -337,6 +380,8 @@ AFI-SAFI options
     YANG Description: State information for common IPv4 and IPv6 unicast
 parameters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -350,6 +395,9 @@ parameters
     YANG Description: State information for common IPv4 and IPv6 unicast
 parameters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

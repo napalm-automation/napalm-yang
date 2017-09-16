@@ -42,7 +42,7 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__table = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'tables']
 
+  def _initialized_table(self):
+    return self.__table is not None
+
   def _get_table(self):
     """
     Getter method for table, mapped from YANG variable /network_instances/network_instance/tables/table (list)
@@ -94,6 +97,8 @@ i.e., when a BGP instance is created with IPv4 and IPv6
 address families enabled, the protocol=BGP,
 address-family=IPv4 table is created by the system.
     """
+    if self.__table is None:
+        self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__table
       
   def _set_table(self, v, load=False):
@@ -123,6 +128,9 @@ i.e., when a BGP instance is created with IPv4 and IPv6
 address families enabled, the protocol=BGP,
 address-family=IPv4 table is created by the system.
     """
+    if self.__table is None:
+        self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -169,7 +177,7 @@ instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__table = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -198,6 +206,9 @@ instance
     else:
       return [u'network-instances', u'network-instance', u'tables']
 
+  def _initialized_table(self):
+    return self.__table is not None
+
   def _get_table(self):
     """
     Getter method for table, mapped from YANG variable /network_instances/network_instance/tables/table (list)
@@ -221,6 +232,8 @@ i.e., when a BGP instance is created with IPv4 and IPv6
 address families enabled, the protocol=BGP,
 address-family=IPv4 table is created by the system.
     """
+    if self.__table is None:
+        self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__table
       
   def _set_table(self, v, load=False):
@@ -250,6 +263,9 @@ i.e., when a BGP instance is created with IPv4 and IPv6
 address families enabled, the protocol=BGP,
 address-family=IPv4 table is created by the system.
     """
+    if self.__table is None:
+        self.__table = YANGDynClass(base=YANGListType("protocol address_family",table.table, yang_name="table", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='protocol address-family', extensions=None), is_container='list', yang_name="table", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

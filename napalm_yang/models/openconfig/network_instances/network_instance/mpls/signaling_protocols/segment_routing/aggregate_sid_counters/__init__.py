@@ -41,7 +41,7 @@ class aggregate_sid_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aggregate_sid_counter = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class aggregate_sid_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'aggregate-sid-counters']
 
+  def _initialized_aggregate_sid_counter(self):
+    return self.__aggregate_sid_counter is not None
+
   def _get_aggregate_sid_counter(self):
     """
     Getter method for aggregate_sid_counter, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter (list)
@@ -78,6 +81,8 @@ class aggregate_sid_counters(PybindBase):
 system corresponding to traffic received or forwarded with a
 particular SID
     """
+    if self.__aggregate_sid_counter is None:
+        self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aggregate_sid_counter
       
   def _set_aggregate_sid_counter(self, v, load=False):
@@ -92,6 +97,9 @@ particular SID
 system corresponding to traffic received or forwarded with a
 particular SID
     """
+    if self.__aggregate_sid_counter is None:
+        self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ class aggregate_sid_counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aggregate_sid_counter = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ class aggregate_sid_counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'aggregate-sid-counters']
 
+  def _initialized_aggregate_sid_counter(self):
+    return self.__aggregate_sid_counter is not None
+
   def _get_aggregate_sid_counter(self):
     """
     Getter method for aggregate_sid_counter, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter (list)
@@ -174,6 +185,8 @@ class aggregate_sid_counters(PybindBase):
 system corresponding to traffic received or forwarded with a
 particular SID
     """
+    if self.__aggregate_sid_counter is None:
+        self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aggregate_sid_counter
       
   def _set_aggregate_sid_counter(self, v, load=False):
@@ -188,6 +201,9 @@ particular SID
 system corresponding to traffic received or forwarded with a
 particular SID
     """
+    if self.__aggregate_sid_counter is None:
+        self.__aggregate_sid_counter = YANGDynClass(base=YANGListType("mpls_label",aggregate_sid_counter.aggregate_sid_counter, yang_name="aggregate-sid-counter", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mpls-label', extensions=None), is_container='list', yang_name="aggregate-sid-counter", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,14 +41,14 @@ AFT entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
-    self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
-    self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
-    self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
-    self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
-    self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
+    self.__ip_prefix = None
+    self.__ip_protocol = None
+    self.__mpls_tc = None
+    self.__l4_src_port = None
+    self.__mpls_label = None
+    self.__mac_address = None
+    self.__l4_dst_port = None
+    self.__ip_dscp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ AFT entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'match', u'state']
 
+  def _initialized_ip_prefix(self):
+    return self.__ip_prefix is not None
+
   def _get_ip_prefix(self):
     """
     Getter method for ip_prefix, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_prefix (inet:ip-prefix)
@@ -84,6 +87,8 @@ AFT entry
     YANG Description: The IP prefix that the forwarding entry matches. Used for
 Layer 3 forwarding entries.
     """
+    if self.__ip_prefix is None:
+        self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
     return self.__ip_prefix
       
   def _set_ip_prefix(self, v, load=False):
@@ -97,6 +102,9 @@ Layer 3 forwarding entries.
     YANG Description: The IP prefix that the forwarding entry matches. Used for
 Layer 3 forwarding entries.
     """
+    if self.__ip_prefix is None:
+        self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ Layer 3 forwarding entries.
     self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
 
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mac_address (yang:mac-address)
@@ -123,6 +134,8 @@ Layer 3 forwarding entries.
     YANG Description: The MAC address that the forwarding entry matches. Used for
 Layer 2 forwarding entries, e.g., within a VSI instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -136,6 +149,9 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
     YANG Description: The MAC address that the forwarding entry matches. Used for
 Layer 2 forwarding entries, e.g., within a VSI instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mpls_label (oc-mplst:mpls-label)
@@ -163,6 +182,8 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
 MPLS forwarding entries, whereby the local device acts as an
 LSR.
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -177,6 +198,9 @@ LSR.
 MPLS forwarding entries, whereby the local device acts as an
 LSR.
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ LSR.
     self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_mpls_tc(self):
+    return self.__mpls_tc is not None
+
   def _get_mpls_tc(self):
     """
     Getter method for mpls_tc, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mpls_tc (uint8)
@@ -204,6 +231,8 @@ LSR.
 the MPLS experimental bits) that are to be matched by the AFT
 entry.
     """
+    if self.__mpls_tc is None:
+        self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__mpls_tc
       
   def _set_mpls_tc(self, v, load=False):
@@ -218,6 +247,9 @@ entry.
 the MPLS experimental bits) that are to be matched by the AFT
 entry.
     """
+    if self.__mpls_tc is None:
+        self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,6 +269,9 @@ entry.
     self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_ip_dscp(self):
+    return self.__ip_dscp is not None
+
   def _get_ip_dscp(self):
     """
     Getter method for ip_dscp, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_dscp (inet:dscp)
@@ -246,6 +281,8 @@ be matched for the forwarding entry. The value is specified in
 cases where specific class-based forwarding based on IP is
 implemented by the device.
     """
+    if self.__ip_dscp is None:
+        self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
     return self.__ip_dscp
       
   def _set_ip_dscp(self, v, load=False):
@@ -261,6 +298,9 @@ be matched for the forwarding entry. The value is specified in
 cases where specific class-based forwarding based on IP is
 implemented by the device.
     """
+    if self.__ip_dscp is None:
+        self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -280,6 +320,9 @@ implemented by the device.
     self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
 
 
+  def _initialized_ip_protocol(self):
+    return self.__ip_protocol is not None
+
   def _get_ip_protocol(self):
     """
     Getter method for ip_protocol, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_protocol (oc-pkt-match-types:ip-protocol-type)
@@ -289,6 +332,8 @@ next-header field of an IPv6 packet which is to be matched by
 the AFT entry. This field is utilised where forwarding is
 performed based on L4 information.
     """
+    if self.__ip_protocol is None:
+        self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
     return self.__ip_protocol
       
   def _set_ip_protocol(self, v, load=False):
@@ -304,6 +349,9 @@ next-header field of an IPv6 packet which is to be matched by
 the AFT entry. This field is utilised where forwarding is
 performed based on L4 information.
     """
+    if self.__ip_protocol is None:
+        self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -323,6 +371,9 @@ performed based on L4 information.
     self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
 
 
+  def _initialized_l4_src_port(self):
+    return self.__l4_src_port is not None
+
   def _get_l4_src_port(self):
     """
     Getter method for l4_src_port, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/l4_src_port (inet:port-number)
@@ -330,6 +381,8 @@ performed based on L4 information.
     YANG Description: The value of the source port field of the transport header
 that is to be matched by the AFT entry.
     """
+    if self.__l4_src_port is None:
+        self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
     return self.__l4_src_port
       
   def _set_l4_src_port(self, v, load=False):
@@ -343,6 +396,9 @@ that is to be matched by the AFT entry.
     YANG Description: The value of the source port field of the transport header
 that is to be matched by the AFT entry.
     """
+    if self.__l4_src_port is None:
+        self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,6 +418,9 @@ that is to be matched by the AFT entry.
     self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
 
 
+  def _initialized_l4_dst_port(self):
+    return self.__l4_dst_port is not None
+
   def _get_l4_dst_port(self):
     """
     Getter method for l4_dst_port, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/l4_dst_port (inet:port-number)
@@ -369,6 +428,8 @@ that is to be matched by the AFT entry.
     YANG Description: The value of the destination port field of the transport
 header that is to be matched by the AFT entry.
     """
+    if self.__l4_dst_port is None:
+        self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
     return self.__l4_dst_port
       
   def _set_l4_dst_port(self, v, load=False):
@@ -382,6 +443,9 @@ header that is to be matched by the AFT entry.
     YANG Description: The value of the destination port field of the transport
 header that is to be matched by the AFT entry.
     """
+    if self.__l4_dst_port is None:
+        self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -434,14 +498,14 @@ AFT entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
-    self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
-    self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
-    self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
-    self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
-    self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
+    self.__ip_prefix = None
+    self.__ip_protocol = None
+    self.__mpls_tc = None
+    self.__l4_src_port = None
+    self.__mpls_label = None
+    self.__mac_address = None
+    self.__l4_dst_port = None
+    self.__ip_dscp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -470,6 +534,9 @@ AFT entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'match', u'state']
 
+  def _initialized_ip_prefix(self):
+    return self.__ip_prefix is not None
+
   def _get_ip_prefix(self):
     """
     Getter method for ip_prefix, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_prefix (inet:ip-prefix)
@@ -477,6 +544,8 @@ AFT entry
     YANG Description: The IP prefix that the forwarding entry matches. Used for
 Layer 3 forwarding entries.
     """
+    if self.__ip_prefix is None:
+        self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
     return self.__ip_prefix
       
   def _set_ip_prefix(self, v, load=False):
@@ -490,6 +559,9 @@ Layer 3 forwarding entries.
     YANG Description: The IP prefix that the forwarding entry matches. Used for
 Layer 3 forwarding entries.
     """
+    if self.__ip_prefix is None:
+        self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -509,6 +581,9 @@ Layer 3 forwarding entries.
     self.__ip_prefix = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}),], is_leaf=True, yang_name="ip-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-prefix', is_config=False)
 
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mac_address (yang:mac-address)
@@ -516,6 +591,8 @@ Layer 3 forwarding entries.
     YANG Description: The MAC address that the forwarding entry matches. Used for
 Layer 2 forwarding entries, e.g., within a VSI instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -529,6 +606,9 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
     YANG Description: The MAC address that the forwarding entry matches. Used for
 Layer 2 forwarding entries, e.g., within a VSI instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -548,6 +628,9 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mpls_label (oc-mplst:mpls-label)
@@ -556,6 +639,8 @@ Layer 2 forwarding entries, e.g., within a VSI instance.
 MPLS forwarding entries, whereby the local device acts as an
 LSR.
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -570,6 +655,9 @@ LSR.
 MPLS forwarding entries, whereby the local device acts as an
 LSR.
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -589,6 +677,9 @@ LSR.
     self.__mpls_label = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),], is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_mpls_tc(self):
+    return self.__mpls_tc is not None
+
   def _get_mpls_tc(self):
     """
     Getter method for mpls_tc, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/mpls_tc (uint8)
@@ -597,6 +688,8 @@ LSR.
 the MPLS experimental bits) that are to be matched by the AFT
 entry.
     """
+    if self.__mpls_tc is None:
+        self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__mpls_tc
       
   def _set_mpls_tc(self, v, load=False):
@@ -611,6 +704,9 @@ entry.
 the MPLS experimental bits) that are to be matched by the AFT
 entry.
     """
+    if self.__mpls_tc is None:
+        self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -630,6 +726,9 @@ entry.
     self.__mpls_tc = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="mpls-tc", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_ip_dscp(self):
+    return self.__ip_dscp is not None
+
   def _get_ip_dscp(self):
     """
     Getter method for ip_dscp, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_dscp (inet:dscp)
@@ -639,6 +738,8 @@ be matched for the forwarding entry. The value is specified in
 cases where specific class-based forwarding based on IP is
 implemented by the device.
     """
+    if self.__ip_dscp is None:
+        self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
     return self.__ip_dscp
       
   def _set_ip_dscp(self, v, load=False):
@@ -654,6 +755,9 @@ be matched for the forwarding entry. The value is specified in
 cases where specific class-based forwarding based on IP is
 implemented by the device.
     """
+    if self.__ip_dscp is None:
+        self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -673,6 +777,9 @@ implemented by the device.
     self.__ip_dscp = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..63']}), is_leaf=True, yang_name="ip-dscp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:dscp', is_config=False)
 
 
+  def _initialized_ip_protocol(self):
+    return self.__ip_protocol is not None
+
   def _get_ip_protocol(self):
     """
     Getter method for ip_protocol, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/ip_protocol (oc-pkt-match-types:ip-protocol-type)
@@ -682,6 +789,8 @@ next-header field of an IPv6 packet which is to be matched by
 the AFT entry. This field is utilised where forwarding is
 performed based on L4 information.
     """
+    if self.__ip_protocol is None:
+        self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
     return self.__ip_protocol
       
   def _set_ip_protocol(self, v, load=False):
@@ -697,6 +806,9 @@ next-header field of an IPv6 packet which is to be matched by
 the AFT entry. This field is utilised where forwarding is
 performed based on L4 information.
     """
+    if self.__ip_protocol is None:
+        self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -716,6 +828,9 @@ performed based on L4 information.
     self.__ip_protocol = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..254']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_L2TP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_AUTH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_TCP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_GRE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_RSVP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_PIM': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_UDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:IP_IGMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'IP_ICMP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ip-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ip-protocol-type', is_config=False)
 
 
+  def _initialized_l4_src_port(self):
+    return self.__l4_src_port is not None
+
   def _get_l4_src_port(self):
     """
     Getter method for l4_src_port, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/l4_src_port (inet:port-number)
@@ -723,6 +838,8 @@ performed based on L4 information.
     YANG Description: The value of the source port field of the transport header
 that is to be matched by the AFT entry.
     """
+    if self.__l4_src_port is None:
+        self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
     return self.__l4_src_port
       
   def _set_l4_src_port(self, v, load=False):
@@ -736,6 +853,9 @@ that is to be matched by the AFT entry.
     YANG Description: The value of the source port field of the transport header
 that is to be matched by the AFT entry.
     """
+    if self.__l4_src_port is None:
+        self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -755,6 +875,9 @@ that is to be matched by the AFT entry.
     self.__l4_src_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-src-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
 
 
+  def _initialized_l4_dst_port(self):
+    return self.__l4_dst_port is not None
+
   def _get_l4_dst_port(self):
     """
     Getter method for l4_dst_port, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/match/state/l4_dst_port (inet:port-number)
@@ -762,6 +885,8 @@ that is to be matched by the AFT entry.
     YANG Description: The value of the destination port field of the transport
 header that is to be matched by the AFT entry.
     """
+    if self.__l4_dst_port is None:
+        self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
     return self.__l4_dst_port
       
   def _set_l4_dst_port(self, v, load=False):
@@ -775,6 +900,9 @@ header that is to be matched by the AFT entry.
     YANG Description: The value of the destination port field of the transport
 header that is to be matched by the AFT entry.
     """
+    if self.__l4_dst_port is None:
+        self.__l4_dst_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), is_leaf=True, yang_name="l4-dst-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

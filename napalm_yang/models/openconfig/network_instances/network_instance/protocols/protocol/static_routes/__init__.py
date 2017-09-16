@@ -41,7 +41,7 @@ class static_routes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__static = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class static_routes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'static-routes']
 
+  def _initialized_static(self):
+    return self.__static is not None
+
   def _get_static(self):
     """
     Getter method for static, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static (list)
 
     YANG Description: List of locally configured static routes
     """
+    if self.__static is None:
+        self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__static
       
   def _set_static(self, v, load=False):
@@ -88,6 +93,9 @@ class static_routes(PybindBase):
 
     YANG Description: List of locally configured static routes
     """
+    if self.__static is None:
+        self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class static_routes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__static = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class static_routes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'static-routes']
 
+  def _initialized_static(self):
+    return self.__static is not None
+
   def _get_static(self):
     """
     Getter method for static, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes/static (list)
 
     YANG Description: List of locally configured static routes
     """
+    if self.__static is None:
+        self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__static
       
   def _set_static(self, v, load=False):
@@ -180,6 +193,9 @@ class static_routes(PybindBase):
 
     YANG Description: List of locally configured static routes
     """
+    if self.__static is None:
+        self.__static = YANGDynClass(base=YANGListType("prefix",static.static, yang_name="static", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="static", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

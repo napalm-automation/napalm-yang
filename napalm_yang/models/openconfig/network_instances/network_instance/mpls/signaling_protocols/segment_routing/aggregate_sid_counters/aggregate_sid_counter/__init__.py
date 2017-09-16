@@ -43,8 +43,8 @@ particular SID
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__mpls_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ particular SID
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'aggregate-sid-counters', u'aggregate-sid-counter']
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter/mpls_label (leafref)
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -91,6 +96,9 @@ particular SID
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -115,12 +123,17 @@ particular SID
     self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter/state (container)
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -133,6 +146,9 @@ particular SID
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -181,8 +197,8 @@ particular SID
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__mpls_label = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -211,12 +227,17 @@ particular SID
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'aggregate-sid-counters', u'aggregate-sid-counter']
 
+  def _initialized_mpls_label(self):
+    return self.__mpls_label is not None
+
   def _get_mpls_label(self):
     """
     Getter method for mpls_label, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter/mpls_label (leafref)
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__mpls_label
       
   def _set_mpls_label(self, v, load=False):
@@ -229,6 +250,9 @@ particular SID
 
     YANG Description: The MPLS label representing the segment identifier
     """
+    if self.__mpls_label is None:
+        self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -253,12 +277,17 @@ particular SID
     self.__mpls_label = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters/aggregate_sid_counter/state (container)
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -271,6 +300,9 @@ particular SID
 
     YANG Description: State parameters for per-SID statistics
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

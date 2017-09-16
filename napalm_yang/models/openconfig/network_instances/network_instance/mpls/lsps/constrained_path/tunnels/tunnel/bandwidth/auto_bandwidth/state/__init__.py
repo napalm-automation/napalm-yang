@@ -41,11 +41,11 @@ auto-bandwidth on the tunnel.
     self._path_helper = False
 
     self._extmethods = False
-    self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__min_bw = None
+    self.__adjust_interval = None
+    self.__max_bw = None
+    self.__enabled = None
+    self.__adjust_threshold = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ auto-bandwidth on the tunnel.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/enabled (boolean)
@@ -81,6 +84,8 @@ auto-bandwidth on the tunnel.
     YANG Description: enables mpls auto-bandwidth on the
 lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -94,6 +99,9 @@ lsp
     YANG Description: enables mpls auto-bandwidth on the
 lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ lsp
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_min_bw(self):
+    return self.__min_bw is not None
+
   def _get_min_bw(self):
     """
     Getter method for min_bw, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/min_bw (oc-mplst:bandwidth-kbps)
@@ -120,6 +131,8 @@ lsp
     YANG Description: set the minimum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__min_bw is None:
+        self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__min_bw
       
   def _set_min_bw(self, v, load=False):
@@ -133,6 +146,9 @@ auto-bandwidth LSP
     YANG Description: set the minimum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__min_bw is None:
+        self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ auto-bandwidth LSP
     self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_max_bw(self):
+    return self.__max_bw is not None
+
   def _get_max_bw(self):
     """
     Getter method for max_bw, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/max_bw (oc-mplst:bandwidth-kbps)
@@ -159,6 +178,8 @@ auto-bandwidth LSP
     YANG Description: set the maximum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__max_bw is None:
+        self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__max_bw
       
   def _set_max_bw(self, v, load=False):
@@ -172,6 +193,9 @@ auto-bandwidth LSP
     YANG Description: set the maximum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__max_bw is None:
+        self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,6 +215,9 @@ auto-bandwidth LSP
     self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_adjust_interval(self):
+    return self.__adjust_interval is not None
+
   def _get_adjust_interval(self):
     """
     Getter method for adjust_interval, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/adjust_interval (uint32)
@@ -198,6 +225,8 @@ auto-bandwidth LSP
     YANG Description: time in seconds between adjustments to
 LSP bandwidth
     """
+    if self.__adjust_interval is None:
+        self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__adjust_interval
       
   def _set_adjust_interval(self, v, load=False):
@@ -211,6 +240,9 @@ LSP bandwidth
     YANG Description: time in seconds between adjustments to
 LSP bandwidth
     """
+    if self.__adjust_interval is None:
+        self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -230,6 +262,9 @@ LSP bandwidth
     self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_adjust_threshold(self):
+    return self.__adjust_threshold is not None
+
   def _get_adjust_threshold(self):
     """
     Getter method for adjust_threshold, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/adjust_threshold (oc-types:percentage)
@@ -240,6 +275,8 @@ allocation -- if the difference is greater than the
 specified percentage, auto-bandwidth adjustment is
 triggered
     """
+    if self.__adjust_threshold is None:
+        self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__adjust_threshold
       
   def _set_adjust_threshold(self, v, load=False):
@@ -256,6 +293,9 @@ allocation -- if the difference is greater than the
 specified percentage, auto-bandwidth adjustment is
 triggered
     """
+    if self.__adjust_threshold is None:
+        self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -305,11 +345,11 @@ auto-bandwidth on the tunnel.
     self._path_helper = False
 
     self._extmethods = False
-    self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__min_bw = None
+    self.__adjust_interval = None
+    self.__max_bw = None
+    self.__enabled = None
+    self.__adjust_threshold = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -338,6 +378,9 @@ auto-bandwidth on the tunnel.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/enabled (boolean)
@@ -345,6 +388,8 @@ auto-bandwidth on the tunnel.
     YANG Description: enables mpls auto-bandwidth on the
 lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -358,6 +403,9 @@ lsp
     YANG Description: enables mpls auto-bandwidth on the
 lsp
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -377,6 +425,9 @@ lsp
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_min_bw(self):
+    return self.__min_bw is not None
+
   def _get_min_bw(self):
     """
     Getter method for min_bw, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/min_bw (oc-mplst:bandwidth-kbps)
@@ -384,6 +435,8 @@ lsp
     YANG Description: set the minimum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__min_bw is None:
+        self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__min_bw
       
   def _set_min_bw(self, v, load=False):
@@ -397,6 +450,9 @@ auto-bandwidth LSP
     YANG Description: set the minimum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__min_bw is None:
+        self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -416,6 +472,9 @@ auto-bandwidth LSP
     self.__min_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="min-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_max_bw(self):
+    return self.__max_bw is not None
+
   def _get_max_bw(self):
     """
     Getter method for max_bw, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/max_bw (oc-mplst:bandwidth-kbps)
@@ -423,6 +482,8 @@ auto-bandwidth LSP
     YANG Description: set the maximum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__max_bw is None:
+        self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
     return self.__max_bw
       
   def _set_max_bw(self, v, load=False):
@@ -436,6 +497,9 @@ auto-bandwidth LSP
     YANG Description: set the maximum bandwidth in Kbps for an
 auto-bandwidth LSP
     """
+    if self.__max_bw is None:
+        self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -455,6 +519,9 @@ auto-bandwidth LSP
     self.__max_bw = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="max-bw", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-kbps', is_config=False)
 
 
+  def _initialized_adjust_interval(self):
+    return self.__adjust_interval is not None
+
   def _get_adjust_interval(self):
     """
     Getter method for adjust_interval, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/adjust_interval (uint32)
@@ -462,6 +529,8 @@ auto-bandwidth LSP
     YANG Description: time in seconds between adjustments to
 LSP bandwidth
     """
+    if self.__adjust_interval is None:
+        self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__adjust_interval
       
   def _set_adjust_interval(self, v, load=False):
@@ -475,6 +544,9 @@ LSP bandwidth
     YANG Description: time in seconds between adjustments to
 LSP bandwidth
     """
+    if self.__adjust_interval is None:
+        self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -494,6 +566,9 @@ LSP bandwidth
     self.__adjust_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="adjust-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_adjust_threshold(self):
+    return self.__adjust_threshold is not None
+
   def _get_adjust_threshold(self):
     """
     Getter method for adjust_threshold, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state/adjust_threshold (oc-types:percentage)
@@ -504,6 +579,8 @@ allocation -- if the difference is greater than the
 specified percentage, auto-bandwidth adjustment is
 triggered
     """
+    if self.__adjust_threshold is None:
+        self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__adjust_threshold
       
   def _set_adjust_threshold(self, v, load=False):
@@ -520,6 +597,9 @@ allocation -- if the difference is greater than the
 specified percentage, auto-bandwidth adjustment is
 triggered
     """
+    if self.__adjust_threshold is None:
+        self.__adjust_threshold = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="adjust-threshold", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

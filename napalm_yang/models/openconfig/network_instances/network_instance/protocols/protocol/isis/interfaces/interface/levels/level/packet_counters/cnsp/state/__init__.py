@@ -40,11 +40,11 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__retransmit = None
+    self.__received = None
+    self.__processed = None
+    self.__sent = None
+    self.__dropped = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'packet-counters', u'cnsp', u'state']
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/received (yang:counter32)
 
     YANG Description: The number of the specified type of PDU received on the interface.
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -91,6 +96,9 @@ class state(PybindBase):
 
     YANG Description: The number of the specified type of PDU received on the interface.
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ class state(PybindBase):
     self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_processed(self):
+    return self.__processed is not None
+
   def _get_processed(self):
     """
     Getter method for processed, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/processed (yang:counter32)
@@ -117,6 +128,8 @@ class state(PybindBase):
     YANG Description: The number of the specified type of PDU received on the interface
 that have been processed by the local system.
     """
+    if self.__processed is None:
+        self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__processed
       
   def _set_processed(self, v, load=False):
@@ -130,6 +143,9 @@ that have been processed by the local system.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been processed by the local system.
     """
+    if self.__processed is None:
+        self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ that have been processed by the local system.
     self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_dropped(self):
+    return self.__dropped is not None
+
   def _get_dropped(self):
     """
     Getter method for dropped, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/dropped (yang:counter32)
@@ -156,6 +175,8 @@ that have been processed by the local system.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been dropped.
     """
+    if self.__dropped is None:
+        self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__dropped
       
   def _set_dropped(self, v, load=False):
@@ -169,6 +190,9 @@ that have been dropped.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been dropped.
     """
+    if self.__dropped is None:
+        self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -188,6 +212,9 @@ that have been dropped.
     self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_sent(self):
+    return self.__sent is not None
+
   def _get_sent(self):
     """
     Getter method for sent, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/sent (yang:counter32)
@@ -195,6 +222,8 @@ that have been dropped.
     YANG Description: The number of the specified type of PDU that have been sent by the
 local system on the interface.
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__sent
       
   def _set_sent(self, v, load=False):
@@ -208,6 +237,9 @@ local system on the interface.
     YANG Description: The number of the specified type of PDU that have been sent by the
 local system on the interface.
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -227,6 +259,9 @@ local system on the interface.
     self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_retransmit(self):
+    return self.__retransmit is not None
+
   def _get_retransmit(self):
     """
     Getter method for retransmit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/retransmit (yang:counter32)
@@ -234,6 +269,8 @@ local system on the interface.
     YANG Description: The number of the specified type of PDU that that have been
 retransmitted by the local system on the interface.
     """
+    if self.__retransmit is None:
+        self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__retransmit
       
   def _set_retransmit(self, v, load=False):
@@ -247,6 +284,9 @@ retransmitted by the local system on the interface.
     YANG Description: The number of the specified type of PDU that that have been
 retransmitted by the local system on the interface.
     """
+    if self.__retransmit is None:
+        self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -295,11 +335,11 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__retransmit = None
+    self.__received = None
+    self.__processed = None
+    self.__sent = None
+    self.__dropped = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -328,12 +368,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'packet-counters', u'cnsp', u'state']
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/received (yang:counter32)
 
     YANG Description: The number of the specified type of PDU received on the interface.
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -346,6 +391,9 @@ class state(PybindBase):
 
     YANG Description: The number of the specified type of PDU received on the interface.
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -365,6 +413,9 @@ class state(PybindBase):
     self.__received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_processed(self):
+    return self.__processed is not None
+
   def _get_processed(self):
     """
     Getter method for processed, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/processed (yang:counter32)
@@ -372,6 +423,8 @@ class state(PybindBase):
     YANG Description: The number of the specified type of PDU received on the interface
 that have been processed by the local system.
     """
+    if self.__processed is None:
+        self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__processed
       
   def _set_processed(self, v, load=False):
@@ -385,6 +438,9 @@ that have been processed by the local system.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been processed by the local system.
     """
+    if self.__processed is None:
+        self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -404,6 +460,9 @@ that have been processed by the local system.
     self.__processed = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="processed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_dropped(self):
+    return self.__dropped is not None
+
   def _get_dropped(self):
     """
     Getter method for dropped, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/dropped (yang:counter32)
@@ -411,6 +470,8 @@ that have been processed by the local system.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been dropped.
     """
+    if self.__dropped is None:
+        self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__dropped
       
   def _set_dropped(self, v, load=False):
@@ -424,6 +485,9 @@ that have been dropped.
     YANG Description: The number of the specified type of PDU received on the interface
 that have been dropped.
     """
+    if self.__dropped is None:
+        self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -443,6 +507,9 @@ that have been dropped.
     self.__dropped = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="dropped", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_sent(self):
+    return self.__sent is not None
+
   def _get_sent(self):
     """
     Getter method for sent, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/sent (yang:counter32)
@@ -450,6 +517,8 @@ that have been dropped.
     YANG Description: The number of the specified type of PDU that have been sent by the
 local system on the interface.
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__sent
       
   def _set_sent(self, v, load=False):
@@ -463,6 +532,9 @@ local system on the interface.
     YANG Description: The number of the specified type of PDU that have been sent by the
 local system on the interface.
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -482,6 +554,9 @@ local system on the interface.
     self.__sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_retransmit(self):
+    return self.__retransmit is not None
+
   def _get_retransmit(self):
     """
     Getter method for retransmit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp/state/retransmit (yang:counter32)
@@ -489,6 +564,8 @@ local system on the interface.
     YANG Description: The number of the specified type of PDU that that have been
 retransmitted by the local system on the interface.
     """
+    if self.__retransmit is None:
+        self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__retransmit
       
   def _set_retransmit(self, v, load=False):
@@ -502,6 +579,9 @@ retransmitted by the local system on the interface.
     YANG Description: The number of the specified type of PDU that that have been
 retransmitted by the local system on the interface.
     """
+    if self.__retransmit is None:
+        self.__retransmit = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="retransmit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -43,10 +43,10 @@ class remote_server(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__host = YANGDynClass(base=unicode, is_leaf=True, yang_name="host", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__host = None
+    self.__config = None
+    self.__state = None
+    self.__selectors = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,12 +75,17 @@ class remote_server(PybindBase):
     else:
       return [u'system', u'logging', u'remote-servers', u'remote-server']
 
+  def _initialized_host(self):
+    return self.__host is not None
+
   def _get_host(self):
     """
     Getter method for host, mapped from YANG variable /system/logging/remote_servers/remote_server/host (leafref)
 
     YANG Description: Reference to the host list key
     """
+    if self.__host is None:
+        self.__host = YANGDynClass(base=unicode, is_leaf=True, yang_name="host", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
     return self.__host
       
   def _set_host(self, v, load=False):
@@ -93,6 +98,9 @@ class remote_server(PybindBase):
 
     YANG Description: Reference to the host list key
     """
+    if self.__host is None:
+        self.__host = YANGDynClass(base=unicode, is_leaf=True, yang_name="host", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,12 +125,17 @@ class remote_server(PybindBase):
     self.__host = YANGDynClass(base=unicode, is_leaf=True, yang_name="host", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/logging/remote_servers/remote_server/config (container)
 
     YANG Description: Configuration data for remote log servers
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -135,6 +148,9 @@ class remote_server(PybindBase):
 
     YANG Description: Configuration data for remote log servers
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ class remote_server(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/logging/remote_servers/remote_server/state (container)
 
     YANG Description: Operational state data for remote log servers
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -172,6 +193,9 @@ class remote_server(PybindBase):
 
     YANG Description: Operational state data for remote log servers
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,12 +215,17 @@ class remote_server(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_selectors(self):
+    return self.__selectors is not None
+
   def _get_selectors(self):
     """
     Getter method for selectors, mapped from YANG variable /system/logging/remote_servers/remote_server/selectors (container)
 
     YANG Description: Enclosing container 
     """
+    if self.__selectors is None:
+        self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__selectors
       
   def _set_selectors(self, v, load=False):
@@ -209,6 +238,9 @@ class remote_server(PybindBase):
 
     YANG Description: Enclosing container 
     """
+    if self.__selectors is None:
+        self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

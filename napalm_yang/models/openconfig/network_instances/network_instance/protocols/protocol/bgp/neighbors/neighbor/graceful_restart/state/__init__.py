@@ -40,14 +40,14 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__stale_routes_time = None
+    self.__enabled = None
+    self.__peer_restart_time = None
+    self.__restart_time = None
+    self.__mode = None
+    self.__local_restarting = None
+    self.__helper_only = None
+    self.__peer_restarting = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/enabled (boolean)
 
     YANG Description: Enable or disable the graceful-restart capability.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -94,6 +99,9 @@ class state(PybindBase):
 
     YANG Description: Enable or disable the graceful-restart capability.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ class state(PybindBase):
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_time(self):
+    return self.__restart_time is not None
+
   def _get_restart_time(self):
     """
     Getter method for restart_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/restart_time (uint16)
@@ -123,6 +134,8 @@ restart BGP capability.  This is a 12-bit value, referred to
 as Restart Time in RFC4724.  Per RFC4724, the suggested
 default value is <= the hold-time value.
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__restart_time
       
   def _set_restart_time(self, v, load=False):
@@ -139,6 +152,9 @@ restart BGP capability.  This is a 12-bit value, referred to
 as Restart Time in RFC4724.  Per RFC4724, the suggested
 default value is <= the hold-time value.
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -158,6 +174,9 @@ default value is <= the hold-time value.
     self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_stale_routes_time(self):
+    return self.__stale_routes_time is not None
+
   def _get_stale_routes_time(self):
     """
     Getter method for stale_routes_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/stale_routes_time (decimal64)
@@ -170,6 +189,8 @@ no EOR is received, then when this timer expires stale paths
 will be purged. This timer is referred to as the
 Selection_Deferral_Timer in RFC4724
     """
+    if self.__stale_routes_time is None:
+        self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__stale_routes_time
       
   def _set_stale_routes_time(self, v, load=False):
@@ -188,6 +209,9 @@ no EOR is received, then when this timer expires stale paths
 will be purged. This timer is referred to as the
 Selection_Deferral_Timer in RFC4724
     """
+    if self.__stale_routes_time is None:
+        self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -207,6 +231,9 @@ Selection_Deferral_Timer in RFC4724
     self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/helper_only (boolean)
@@ -216,6 +243,8 @@ leaf is set, the local system does not retain forwarding
 its own state during a restart, but supports procedures
 for the receiving speaker, as defined in RFC4724.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -231,6 +260,9 @@ leaf is set, the local system does not retain forwarding
 its own state during a restart, but supports procedures
 for the receiving speaker, as defined in RFC4724.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,6 +282,9 @@ for the receiving speaker, as defined in RFC4724.
     self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_peer_restart_time(self):
+    return self.__peer_restart_time is not None
+
   def _get_peer_restart_time(self):
     """
     Getter method for peer_restart_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/peer_restart_time (uint16)
@@ -258,6 +293,8 @@ for the receiving speaker, as defined in RFC4724.
 the peer expects a restart of a BGP session to
 take
     """
+    if self.__peer_restart_time is None:
+        self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__peer_restart_time
       
   def _set_peer_restart_time(self, v, load=False):
@@ -272,6 +309,9 @@ take
 the peer expects a restart of a BGP session to
 take
     """
+    if self.__peer_restart_time is None:
+        self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -291,6 +331,9 @@ take
     self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_peer_restarting(self):
+    return self.__peer_restarting is not None
+
   def _get_peer_restarting(self):
     """
     Getter method for peer_restarting, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/peer_restarting (boolean)
@@ -299,6 +342,8 @@ take
 in the process of restarting, and hence received routes are
 currently stale
     """
+    if self.__peer_restarting is None:
+        self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__peer_restarting
       
   def _set_peer_restarting(self, v, load=False):
@@ -313,6 +358,9 @@ currently stale
 in the process of restarting, and hence received routes are
 currently stale
     """
+    if self.__peer_restarting is None:
+        self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -332,6 +380,9 @@ currently stale
     self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_local_restarting(self):
+    return self.__local_restarting is not None
+
   def _get_local_restarting(self):
     """
     Getter method for local_restarting, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/local_restarting (boolean)
@@ -341,6 +392,8 @@ restarting. The flag is unset after all NLRI have been
 advertised to the peer, and the End-of-RIB (EOR) marker has
 been unset
     """
+    if self.__local_restarting is None:
+        self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__local_restarting
       
   def _set_local_restarting(self, v, load=False):
@@ -356,6 +409,9 @@ restarting. The flag is unset after all NLRI have been
 advertised to the peer, and the End-of-RIB (EOR) marker has
 been unset
     """
+    if self.__local_restarting is None:
+        self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -375,6 +431,9 @@ been unset
     self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mode(self):
+    return self.__mode is not None
+
   def _get_mode(self):
     """
     Getter method for mode, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/mode (enumeration)
@@ -382,6 +441,8 @@ been unset
     YANG Description: Ths leaf indicates the mode of operation of BGP graceful
 restart with the peer
     """
+    if self.__mode is None:
+        self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__mode
       
   def _set_mode(self, v, load=False):
@@ -395,6 +456,9 @@ restart with the peer
     YANG Description: Ths leaf indicates the mode of operation of BGP graceful
 restart with the peer
     """
+    if self.__mode is None:
+        self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -446,14 +510,14 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__stale_routes_time = None
+    self.__enabled = None
+    self.__peer_restart_time = None
+    self.__restart_time = None
+    self.__mode = None
+    self.__local_restarting = None
+    self.__helper_only = None
+    self.__peer_restarting = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -482,12 +546,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'graceful-restart', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/enabled (boolean)
 
     YANG Description: Enable or disable the graceful-restart capability.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -500,6 +569,9 @@ class state(PybindBase):
 
     YANG Description: Enable or disable the graceful-restart capability.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -519,6 +591,9 @@ class state(PybindBase):
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_restart_time(self):
+    return self.__restart_time is not None
+
   def _get_restart_time(self):
     """
     Getter method for restart_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/restart_time (uint16)
@@ -529,6 +604,8 @@ restart BGP capability.  This is a 12-bit value, referred to
 as Restart Time in RFC4724.  Per RFC4724, the suggested
 default value is <= the hold-time value.
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__restart_time
       
   def _set_restart_time(self, v, load=False):
@@ -545,6 +622,9 @@ restart BGP capability.  This is a 12-bit value, referred to
 as Restart Time in RFC4724.  Per RFC4724, the suggested
 default value is <= the hold-time value.
     """
+    if self.__restart_time is None:
+        self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -564,6 +644,9 @@ default value is <= the hold-time value.
     self.__restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_stale_routes_time(self):
+    return self.__stale_routes_time is not None
+
   def _get_stale_routes_time(self):
     """
     Getter method for stale_routes_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/stale_routes_time (decimal64)
@@ -576,6 +659,8 @@ no EOR is received, then when this timer expires stale paths
 will be purged. This timer is referred to as the
 Selection_Deferral_Timer in RFC4724
     """
+    if self.__stale_routes_time is None:
+        self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__stale_routes_time
       
   def _set_stale_routes_time(self, v, load=False):
@@ -594,6 +679,9 @@ no EOR is received, then when this timer expires stale paths
 will be purged. This timer is referred to as the
 Selection_Deferral_Timer in RFC4724
     """
+    if self.__stale_routes_time is None:
+        self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -613,6 +701,9 @@ Selection_Deferral_Timer in RFC4724
     self.__stale_routes_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="stale-routes-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_helper_only(self):
+    return self.__helper_only is not None
+
   def _get_helper_only(self):
     """
     Getter method for helper_only, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/helper_only (boolean)
@@ -622,6 +713,8 @@ leaf is set, the local system does not retain forwarding
 its own state during a restart, but supports procedures
 for the receiving speaker, as defined in RFC4724.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__helper_only
       
   def _set_helper_only(self, v, load=False):
@@ -637,6 +730,9 @@ leaf is set, the local system does not retain forwarding
 its own state during a restart, but supports procedures
 for the receiving speaker, as defined in RFC4724.
     """
+    if self.__helper_only is None:
+        self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -656,6 +752,9 @@ for the receiving speaker, as defined in RFC4724.
     self.__helper_only = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="helper-only", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_peer_restart_time(self):
+    return self.__peer_restart_time is not None
+
   def _get_peer_restart_time(self):
     """
     Getter method for peer_restart_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/peer_restart_time (uint16)
@@ -664,6 +763,8 @@ for the receiving speaker, as defined in RFC4724.
 the peer expects a restart of a BGP session to
 take
     """
+    if self.__peer_restart_time is None:
+        self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__peer_restart_time
       
   def _set_peer_restart_time(self, v, load=False):
@@ -678,6 +779,9 @@ take
 the peer expects a restart of a BGP session to
 take
     """
+    if self.__peer_restart_time is None:
+        self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -697,6 +801,9 @@ take
     self.__peer_restart_time = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..4096']}), is_leaf=True, yang_name="peer-restart-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_peer_restarting(self):
+    return self.__peer_restarting is not None
+
   def _get_peer_restarting(self):
     """
     Getter method for peer_restarting, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/peer_restarting (boolean)
@@ -705,6 +812,8 @@ take
 in the process of restarting, and hence received routes are
 currently stale
     """
+    if self.__peer_restarting is None:
+        self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__peer_restarting
       
   def _set_peer_restarting(self, v, load=False):
@@ -719,6 +828,9 @@ currently stale
 in the process of restarting, and hence received routes are
 currently stale
     """
+    if self.__peer_restarting is None:
+        self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -738,6 +850,9 @@ currently stale
     self.__peer_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="peer-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_local_restarting(self):
+    return self.__local_restarting is not None
+
   def _get_local_restarting(self):
     """
     Getter method for local_restarting, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/local_restarting (boolean)
@@ -747,6 +862,8 @@ restarting. The flag is unset after all NLRI have been
 advertised to the peer, and the End-of-RIB (EOR) marker has
 been unset
     """
+    if self.__local_restarting is None:
+        self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__local_restarting
       
   def _set_local_restarting(self, v, load=False):
@@ -762,6 +879,9 @@ restarting. The flag is unset after all NLRI have been
 advertised to the peer, and the End-of-RIB (EOR) marker has
 been unset
     """
+    if self.__local_restarting is None:
+        self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -781,6 +901,9 @@ been unset
     self.__local_restarting = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="local-restarting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mode(self):
+    return self.__mode is not None
+
   def _get_mode(self):
     """
     Getter method for mode, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/graceful_restart/state/mode (enumeration)
@@ -788,6 +911,8 @@ been unset
     YANG Description: Ths leaf indicates the mode of operation of BGP graceful
 restart with the peer
     """
+    if self.__mode is None:
+        self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__mode
       
   def _set_mode(self, v, load=False):
@@ -801,6 +926,9 @@ restart with the peer
     YANG Description: Ths leaf indicates the mode of operation of BGP graceful
 restart with the peer
     """
+    if self.__mode is None:
+        self.__mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'REMOTE_HELPER': {}, u'BILATERAL': {}, u'HELPER_ONLY': {}},), is_leaf=True, yang_name="mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

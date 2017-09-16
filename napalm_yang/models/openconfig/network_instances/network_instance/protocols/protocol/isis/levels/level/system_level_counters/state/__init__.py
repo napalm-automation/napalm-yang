@@ -40,19 +40,19 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__own_lsp_purges = None
+    self.__auth_fails = None
+    self.__database_overloads = None
+    self.__corrupted_lsps = None
+    self.__id_len_mismatch = None
+    self.__exceed_max_seq_nums = None
+    self.__lsp_errors = None
+    self.__manual_address_drop_from_areas = None
+    self.__spf_runs = None
+    self.__auth_type_fails = None
+    self.__seq_num_skips = None
+    self.__part_changes = None
+    self.__max_area_address_mismatches = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -81,6 +81,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'system-level-counters', u'state']
 
+  def _initialized_corrupted_lsps(self):
+    return self.__corrupted_lsps is not None
+
   def _get_corrupted_lsps(self):
     """
     Getter method for corrupted_lsps, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/corrupted_lsps (yang:counter32)
@@ -90,6 +93,8 @@ wire with a bad checksum are silently dropped and not counted. LSPs
 received from the wire with parse errors are counted by lsp-errors. MIB
 Entry: SysCorrLSPs.
     """
+    if self.__corrupted_lsps is None:
+        self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__corrupted_lsps
       
   def _set_corrupted_lsps(self, v, load=False):
@@ -105,6 +110,9 @@ wire with a bad checksum are silently dropped and not counted. LSPs
 received from the wire with parse errors are counted by lsp-errors. MIB
 Entry: SysCorrLSPs.
     """
+    if self.__corrupted_lsps is None:
+        self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -124,6 +132,9 @@ Entry: SysCorrLSPs.
     self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_database_overloads(self):
+    return self.__database_overloads is not None
+
   def _get_database_overloads(self):
     """
     Getter method for database_overloads, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/database_overloads (yang:counter32)
@@ -132,6 +143,8 @@ Entry: SysCorrLSPs.
 overloaded.
 MIB entry: SysLSPL(Level)DbaseOloads.
     """
+    if self.__database_overloads is None:
+        self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__database_overloads
       
   def _set_database_overloads(self, v, load=False):
@@ -146,6 +159,9 @@ MIB entry: SysLSPL(Level)DbaseOloads.
 overloaded.
 MIB entry: SysLSPL(Level)DbaseOloads.
     """
+    if self.__database_overloads is None:
+        self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -165,6 +181,9 @@ MIB entry: SysLSPL(Level)DbaseOloads.
     self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_manual_address_drop_from_areas(self):
+    return self.__manual_address_drop_from_areas is not None
+
   def _get_manual_address_drop_from_areas(self):
     """
     Getter method for manual_address_drop_from_areas, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/manual_address_drop_from_areas (yang:counter32)
@@ -172,6 +191,8 @@ MIB entry: SysLSPL(Level)DbaseOloads.
     YANG Description: Number of times a manual address has been dropped from area.
 MIB Entry: SysManAddrDropFromAreas.
     """
+    if self.__manual_address_drop_from_areas is None:
+        self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__manual_address_drop_from_areas
       
   def _set_manual_address_drop_from_areas(self, v, load=False):
@@ -185,6 +206,9 @@ MIB Entry: SysManAddrDropFromAreas.
     YANG Description: Number of times a manual address has been dropped from area.
 MIB Entry: SysManAddrDropFromAreas.
     """
+    if self.__manual_address_drop_from_areas is None:
+        self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -204,6 +228,9 @@ MIB Entry: SysManAddrDropFromAreas.
     self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_exceed_max_seq_nums(self):
+    return self.__exceed_max_seq_nums is not None
+
   def _get_exceed_max_seq_nums(self):
     """
     Getter method for exceed_max_seq_nums, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/exceed_max_seq_nums (yang:counter32)
@@ -211,6 +238,8 @@ MIB Entry: SysManAddrDropFromAreas.
     YANG Description: The number of times the system has attempted to exceed the maximum
 sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     """
+    if self.__exceed_max_seq_nums is None:
+        self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__exceed_max_seq_nums
       
   def _set_exceed_max_seq_nums(self, v, load=False):
@@ -224,6 +253,9 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     YANG Description: The number of times the system has attempted to exceed the maximum
 sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     """
+    if self.__exceed_max_seq_nums is None:
+        self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,6 +275,9 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_seq_num_skips(self):
+    return self.__seq_num_skips is not None
+
   def _get_seq_num_skips(self):
     """
     Getter method for seq_num_skips, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/seq_num_skips (yang:counter32)
@@ -250,6 +285,8 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     YANG Description: Number of times a sequence number skip has occurred. MIB Entry:
 SysSeqNumSkips.
     """
+    if self.__seq_num_skips is None:
+        self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__seq_num_skips
       
   def _set_seq_num_skips(self, v, load=False):
@@ -263,6 +300,9 @@ SysSeqNumSkips.
     YANG Description: Number of times a sequence number skip has occurred. MIB Entry:
 SysSeqNumSkips.
     """
+    if self.__seq_num_skips is None:
+        self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -282,6 +322,9 @@ SysSeqNumSkips.
     self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_own_lsp_purges(self):
+    return self.__own_lsp_purges is not None
+
   def _get_own_lsp_purges(self):
     """
     Getter method for own_lsp_purges, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/own_lsp_purges (yang:counter32)
@@ -290,6 +333,8 @@ SysSeqNumSkips.
 own LSP is received from some other node.
 MIB Entry: isisSysOwnLSPPurges.
     """
+    if self.__own_lsp_purges is None:
+        self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__own_lsp_purges
       
   def _set_own_lsp_purges(self, v, load=False):
@@ -304,6 +349,9 @@ MIB Entry: isisSysOwnLSPPurges.
 own LSP is received from some other node.
 MIB Entry: isisSysOwnLSPPurges.
     """
+    if self.__own_lsp_purges is None:
+        self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -323,6 +371,9 @@ MIB Entry: isisSysOwnLSPPurges.
     self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_id_len_mismatch(self):
+    return self.__id_len_mismatch is not None
+
   def _get_id_len_mismatch(self):
     """
     Getter method for id_len_mismatch, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/id_len_mismatch (yang:counter32)
@@ -331,6 +382,8 @@ MIB Entry: isisSysOwnLSPPurges.
 length from that of the receiving system. MIB Entry:
 isisSysIDFieldLenMismatches.
     """
+    if self.__id_len_mismatch is None:
+        self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__id_len_mismatch
       
   def _set_id_len_mismatch(self, v, load=False):
@@ -345,6 +398,9 @@ isisSysIDFieldLenMismatches.
 length from that of the receiving system. MIB Entry:
 isisSysIDFieldLenMismatches.
     """
+    if self.__id_len_mismatch is None:
+        self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -364,12 +420,17 @@ isisSysIDFieldLenMismatches.
     self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_part_changes(self):
+    return self.__part_changes is not None
+
   def _get_part_changes(self):
     """
     Getter method for part_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/part_changes (yang:counter32)
 
     YANG Description: The number of partition changes detected. MIB Entry: SysPartChanges.
     """
+    if self.__part_changes is None:
+        self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__part_changes
       
   def _set_part_changes(self, v, load=False):
@@ -382,6 +443,9 @@ isisSysIDFieldLenMismatches.
 
     YANG Description: The number of partition changes detected. MIB Entry: SysPartChanges.
     """
+    if self.__part_changes is None:
+        self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -401,6 +465,9 @@ isisSysIDFieldLenMismatches.
     self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_max_area_address_mismatches(self):
+    return self.__max_area_address_mismatches is not None
+
   def _get_max_area_address_mismatches(self):
     """
     Getter method for max_area_address_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/max_area_address_mismatches (yang:counter32)
@@ -409,6 +476,8 @@ isisSysIDFieldLenMismatches.
 MaximumAreaAddresses from that of the receiving system. MIB Entry:
 SysMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__max_area_address_mismatches
       
   def _set_max_area_address_mismatches(self, v, load=False):
@@ -423,6 +492,9 @@ SysMaxAreaAddrMismatches.
 MaximumAreaAddresses from that of the receiving system. MIB Entry:
 SysMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -442,6 +514,9 @@ SysMaxAreaAddrMismatches.
     self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_fails(self):
+    return self.__auth_fails is not None
+
   def _get_auth_fails(self):
     """
     Getter method for auth_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/auth_fails (yang:counter32)
@@ -449,6 +524,8 @@ SysMaxAreaAddrMismatches.
     YANG Description: The number of authentication key failures.
 MIB Entry: SysAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_fails
       
   def _set_auth_fails(self, v, load=False):
@@ -462,6 +539,9 @@ MIB Entry: SysAuthFails.
     YANG Description: The number of authentication key failures.
 MIB Entry: SysAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -481,12 +561,17 @@ MIB Entry: SysAuthFails.
     self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_spf_runs(self):
+    return self.__spf_runs is not None
+
   def _get_spf_runs(self):
     """
     Getter method for spf_runs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/spf_runs (yang:counter32)
 
     YANG Description: The number of times SPF was ran at this level.
     """
+    if self.__spf_runs is None:
+        self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__spf_runs
       
   def _set_spf_runs(self, v, load=False):
@@ -499,6 +584,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of times SPF was ran at this level.
     """
+    if self.__spf_runs is None:
+        self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -518,12 +606,17 @@ MIB Entry: SysAuthFails.
     self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_type_fails(self):
+    return self.__auth_type_fails is not None
+
   def _get_auth_type_fails(self):
     """
     Getter method for auth_type_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/auth_type_fails (yang:counter32)
 
     YANG Description: The number of authentication type mismatches.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_type_fails
       
   def _set_auth_type_fails(self, v, load=False):
@@ -536,6 +629,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of authentication type mismatches.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -555,12 +651,17 @@ MIB Entry: SysAuthFails.
     self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_lsp_errors(self):
+    return self.__lsp_errors is not None
+
   def _get_lsp_errors(self):
     """
     Getter method for lsp_errors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/lsp_errors (yang:counter32)
 
     YANG Description: The number of received LSPs with errors.
     """
+    if self.__lsp_errors is None:
+        self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__lsp_errors
       
   def _set_lsp_errors(self, v, load=False):
@@ -573,6 +674,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of received LSPs with errors.
     """
+    if self.__lsp_errors is None:
+        self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -629,19 +733,19 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
-    self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    self.__own_lsp_purges = None
+    self.__auth_fails = None
+    self.__database_overloads = None
+    self.__corrupted_lsps = None
+    self.__id_len_mismatch = None
+    self.__exceed_max_seq_nums = None
+    self.__lsp_errors = None
+    self.__manual_address_drop_from_areas = None
+    self.__spf_runs = None
+    self.__auth_type_fails = None
+    self.__seq_num_skips = None
+    self.__part_changes = None
+    self.__max_area_address_mismatches = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -670,6 +774,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'system-level-counters', u'state']
 
+  def _initialized_corrupted_lsps(self):
+    return self.__corrupted_lsps is not None
+
   def _get_corrupted_lsps(self):
     """
     Getter method for corrupted_lsps, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/corrupted_lsps (yang:counter32)
@@ -679,6 +786,8 @@ wire with a bad checksum are silently dropped and not counted. LSPs
 received from the wire with parse errors are counted by lsp-errors. MIB
 Entry: SysCorrLSPs.
     """
+    if self.__corrupted_lsps is None:
+        self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__corrupted_lsps
       
   def _set_corrupted_lsps(self, v, load=False):
@@ -694,6 +803,9 @@ wire with a bad checksum are silently dropped and not counted. LSPs
 received from the wire with parse errors are counted by lsp-errors. MIB
 Entry: SysCorrLSPs.
     """
+    if self.__corrupted_lsps is None:
+        self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -713,6 +825,9 @@ Entry: SysCorrLSPs.
     self.__corrupted_lsps = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="corrupted-lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_database_overloads(self):
+    return self.__database_overloads is not None
+
   def _get_database_overloads(self):
     """
     Getter method for database_overloads, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/database_overloads (yang:counter32)
@@ -721,6 +836,8 @@ Entry: SysCorrLSPs.
 overloaded.
 MIB entry: SysLSPL(Level)DbaseOloads.
     """
+    if self.__database_overloads is None:
+        self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__database_overloads
       
   def _set_database_overloads(self, v, load=False):
@@ -735,6 +852,9 @@ MIB entry: SysLSPL(Level)DbaseOloads.
 overloaded.
 MIB entry: SysLSPL(Level)DbaseOloads.
     """
+    if self.__database_overloads is None:
+        self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -754,6 +874,9 @@ MIB entry: SysLSPL(Level)DbaseOloads.
     self.__database_overloads = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="database-overloads", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_manual_address_drop_from_areas(self):
+    return self.__manual_address_drop_from_areas is not None
+
   def _get_manual_address_drop_from_areas(self):
     """
     Getter method for manual_address_drop_from_areas, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/manual_address_drop_from_areas (yang:counter32)
@@ -761,6 +884,8 @@ MIB entry: SysLSPL(Level)DbaseOloads.
     YANG Description: Number of times a manual address has been dropped from area.
 MIB Entry: SysManAddrDropFromAreas.
     """
+    if self.__manual_address_drop_from_areas is None:
+        self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__manual_address_drop_from_areas
       
   def _set_manual_address_drop_from_areas(self, v, load=False):
@@ -774,6 +899,9 @@ MIB Entry: SysManAddrDropFromAreas.
     YANG Description: Number of times a manual address has been dropped from area.
 MIB Entry: SysManAddrDropFromAreas.
     """
+    if self.__manual_address_drop_from_areas is None:
+        self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -793,6 +921,9 @@ MIB Entry: SysManAddrDropFromAreas.
     self.__manual_address_drop_from_areas = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="manual-address-drop-from-areas", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_exceed_max_seq_nums(self):
+    return self.__exceed_max_seq_nums is not None
+
   def _get_exceed_max_seq_nums(self):
     """
     Getter method for exceed_max_seq_nums, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/exceed_max_seq_nums (yang:counter32)
@@ -800,6 +931,8 @@ MIB Entry: SysManAddrDropFromAreas.
     YANG Description: The number of times the system has attempted to exceed the maximum
 sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     """
+    if self.__exceed_max_seq_nums is None:
+        self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__exceed_max_seq_nums
       
   def _set_exceed_max_seq_nums(self, v, load=False):
@@ -813,6 +946,9 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     YANG Description: The number of times the system has attempted to exceed the maximum
 sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     """
+    if self.__exceed_max_seq_nums is None:
+        self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -832,6 +968,9 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     self.__exceed_max_seq_nums = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="exceed-max-seq-nums", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_seq_num_skips(self):
+    return self.__seq_num_skips is not None
+
   def _get_seq_num_skips(self):
     """
     Getter method for seq_num_skips, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/seq_num_skips (yang:counter32)
@@ -839,6 +978,8 @@ sequence number. MIB Entry: SysAttmptToExMaxSeqNums.
     YANG Description: Number of times a sequence number skip has occurred. MIB Entry:
 SysSeqNumSkips.
     """
+    if self.__seq_num_skips is None:
+        self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__seq_num_skips
       
   def _set_seq_num_skips(self, v, load=False):
@@ -852,6 +993,9 @@ SysSeqNumSkips.
     YANG Description: Number of times a sequence number skip has occurred. MIB Entry:
 SysSeqNumSkips.
     """
+    if self.__seq_num_skips is None:
+        self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -871,6 +1015,9 @@ SysSeqNumSkips.
     self.__seq_num_skips = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="seq-num-skips", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_own_lsp_purges(self):
+    return self.__own_lsp_purges is not None
+
   def _get_own_lsp_purges(self):
     """
     Getter method for own_lsp_purges, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/own_lsp_purges (yang:counter32)
@@ -879,6 +1026,8 @@ SysSeqNumSkips.
 own LSP is received from some other node.
 MIB Entry: isisSysOwnLSPPurges.
     """
+    if self.__own_lsp_purges is None:
+        self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__own_lsp_purges
       
   def _set_own_lsp_purges(self, v, load=False):
@@ -893,6 +1042,9 @@ MIB Entry: isisSysOwnLSPPurges.
 own LSP is received from some other node.
 MIB Entry: isisSysOwnLSPPurges.
     """
+    if self.__own_lsp_purges is None:
+        self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -912,6 +1064,9 @@ MIB Entry: isisSysOwnLSPPurges.
     self.__own_lsp_purges = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="own-lsp-purges", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_id_len_mismatch(self):
+    return self.__id_len_mismatch is not None
+
   def _get_id_len_mismatch(self):
     """
     Getter method for id_len_mismatch, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/id_len_mismatch (yang:counter32)
@@ -920,6 +1075,8 @@ MIB Entry: isisSysOwnLSPPurges.
 length from that of the receiving system. MIB Entry:
 isisSysIDFieldLenMismatches.
     """
+    if self.__id_len_mismatch is None:
+        self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__id_len_mismatch
       
   def _set_id_len_mismatch(self, v, load=False):
@@ -934,6 +1091,9 @@ isisSysIDFieldLenMismatches.
 length from that of the receiving system. MIB Entry:
 isisSysIDFieldLenMismatches.
     """
+    if self.__id_len_mismatch is None:
+        self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -953,12 +1113,17 @@ isisSysIDFieldLenMismatches.
     self.__id_len_mismatch = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="id-len-mismatch", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_part_changes(self):
+    return self.__part_changes is not None
+
   def _get_part_changes(self):
     """
     Getter method for part_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/part_changes (yang:counter32)
 
     YANG Description: The number of partition changes detected. MIB Entry: SysPartChanges.
     """
+    if self.__part_changes is None:
+        self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__part_changes
       
   def _set_part_changes(self, v, load=False):
@@ -971,6 +1136,9 @@ isisSysIDFieldLenMismatches.
 
     YANG Description: The number of partition changes detected. MIB Entry: SysPartChanges.
     """
+    if self.__part_changes is None:
+        self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -990,6 +1158,9 @@ isisSysIDFieldLenMismatches.
     self.__part_changes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="part-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_max_area_address_mismatches(self):
+    return self.__max_area_address_mismatches is not None
+
   def _get_max_area_address_mismatches(self):
     """
     Getter method for max_area_address_mismatches, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/max_area_address_mismatches (yang:counter32)
@@ -998,6 +1169,8 @@ isisSysIDFieldLenMismatches.
 MaximumAreaAddresses from that of the receiving system. MIB Entry:
 SysMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__max_area_address_mismatches
       
   def _set_max_area_address_mismatches(self, v, load=False):
@@ -1012,6 +1185,9 @@ SysMaxAreaAddrMismatches.
 MaximumAreaAddresses from that of the receiving system. MIB Entry:
 SysMaxAreaAddrMismatches.
     """
+    if self.__max_area_address_mismatches is None:
+        self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1031,6 +1207,9 @@ SysMaxAreaAddrMismatches.
     self.__max_area_address_mismatches = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="max-area-address-mismatches", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_fails(self):
+    return self.__auth_fails is not None
+
   def _get_auth_fails(self):
     """
     Getter method for auth_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/auth_fails (yang:counter32)
@@ -1038,6 +1217,8 @@ SysMaxAreaAddrMismatches.
     YANG Description: The number of authentication key failures.
 MIB Entry: SysAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_fails
       
   def _set_auth_fails(self, v, load=False):
@@ -1051,6 +1232,9 @@ MIB Entry: SysAuthFails.
     YANG Description: The number of authentication key failures.
 MIB Entry: SysAuthFails.
     """
+    if self.__auth_fails is None:
+        self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1070,12 +1254,17 @@ MIB Entry: SysAuthFails.
     self.__auth_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_spf_runs(self):
+    return self.__spf_runs is not None
+
   def _get_spf_runs(self):
     """
     Getter method for spf_runs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/spf_runs (yang:counter32)
 
     YANG Description: The number of times SPF was ran at this level.
     """
+    if self.__spf_runs is None:
+        self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__spf_runs
       
   def _set_spf_runs(self, v, load=False):
@@ -1088,6 +1277,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of times SPF was ran at this level.
     """
+    if self.__spf_runs is None:
+        self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1107,12 +1299,17 @@ MIB Entry: SysAuthFails.
     self.__spf_runs = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="spf-runs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_auth_type_fails(self):
+    return self.__auth_type_fails is not None
+
   def _get_auth_type_fails(self):
     """
     Getter method for auth_type_fails, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/auth_type_fails (yang:counter32)
 
     YANG Description: The number of authentication type mismatches.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__auth_type_fails
       
   def _set_auth_type_fails(self, v, load=False):
@@ -1125,6 +1322,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of authentication type mismatches.
     """
+    if self.__auth_type_fails is None:
+        self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1144,12 +1344,17 @@ MIB Entry: SysAuthFails.
     self.__auth_type_fails = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="auth-type-fails", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_lsp_errors(self):
+    return self.__lsp_errors is not None
+
   def _get_lsp_errors(self):
     """
     Getter method for lsp_errors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/system_level_counters/state/lsp_errors (yang:counter32)
 
     YANG Description: The number of received LSPs with errors.
     """
+    if self.__lsp_errors is None:
+        self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
     return self.__lsp_errors
       
   def _set_lsp_errors(self, v, load=False):
@@ -1162,6 +1367,9 @@ MIB Entry: SysAuthFails.
 
     YANG Description: The number of received LSPs with errors.
     """
+    if self.__lsp_errors is None:
+        self.__lsp_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="lsp-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

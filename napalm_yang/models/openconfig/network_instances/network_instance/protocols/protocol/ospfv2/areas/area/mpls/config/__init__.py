@@ -41,7 +41,7 @@ OSPFv2
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__traffic_engineering_enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ OSPFv2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'mpls', u'config']
 
+  def _initialized_traffic_engineering_enabled(self):
+    return self.__traffic_engineering_enabled is not None
+
   def _get_traffic_engineering_enabled(self):
     """
     Getter method for traffic_engineering_enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/mpls/config/traffic_engineering_enabled (boolean)
@@ -77,6 +80,8 @@ OSPFv2
     YANG Description: Specifies whether traffic engineering extensions should be
 advertised within the area
     """
+    if self.__traffic_engineering_enabled is None:
+        self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__traffic_engineering_enabled
       
   def _set_traffic_engineering_enabled(self, v, load=False):
@@ -90,6 +95,9 @@ advertised within the area
     YANG Description: Specifies whether traffic engineering extensions should be
 advertised within the area
     """
+    if self.__traffic_engineering_enabled is None:
+        self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ OSPFv2
     self._path_helper = False
 
     self._extmethods = False
-    self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__traffic_engineering_enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ OSPFv2
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'mpls', u'config']
 
+  def _initialized_traffic_engineering_enabled(self):
+    return self.__traffic_engineering_enabled is not None
+
   def _get_traffic_engineering_enabled(self):
     """
     Getter method for traffic_engineering_enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/mpls/config/traffic_engineering_enabled (boolean)
@@ -171,6 +182,8 @@ OSPFv2
     YANG Description: Specifies whether traffic engineering extensions should be
 advertised within the area
     """
+    if self.__traffic_engineering_enabled is None:
+        self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__traffic_engineering_enabled
       
   def _set_traffic_engineering_enabled(self, v, load=False):
@@ -184,6 +197,9 @@ advertised within the area
     YANG Description: Specifies whether traffic engineering extensions should be
 advertised within the area
     """
+    if self.__traffic_engineering_enabled is None:
+        self.__traffic_engineering_enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="traffic-engineering-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -42,7 +42,7 @@ TOS values
     self._path_helper = False
 
     self._extmethods = False
-    self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__type_of_service = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ TOS values
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'summary-lsa', u'types-of-service']
 
+  def _initialized_type_of_service(self):
+    return self.__type_of_service is not None
+
   def _get_type_of_service(self):
     """
     Getter method for type_of_service, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/summary_lsa/types_of_service/type_of_service (list)
 
     YANG Description: Per-type of service parameters for the LSA
     """
+    if self.__type_of_service is None:
+        self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__type_of_service
       
   def _set_type_of_service(self, v, load=False):
@@ -89,6 +94,9 @@ TOS values
 
     YANG Description: Per-type of service parameters for the LSA
     """
+    if self.__type_of_service is None:
+        self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ TOS values
     self._path_helper = False
 
     self._extmethods = False
-    self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__type_of_service = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ TOS values
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'summary-lsa', u'types-of-service']
 
+  def _initialized_type_of_service(self):
+    return self.__type_of_service is not None
+
   def _get_type_of_service(self):
     """
     Getter method for type_of_service, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/summary_lsa/types_of_service/type_of_service (list)
 
     YANG Description: Per-type of service parameters for the LSA
     """
+    if self.__type_of_service is None:
+        self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__type_of_service
       
   def _set_type_of_service(self, v, load=False):
@@ -182,6 +195,9 @@ TOS values
 
     YANG Description: Per-type of service parameters for the LSA
     """
+    if self.__type_of_service is None:
+        self.__type_of_service = YANGDynClass(base=YANGListType("tos",type_of_service.type_of_service, yang_name="type-of-service", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='tos', extensions=None), is_container='list', yang_name="type-of-service", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

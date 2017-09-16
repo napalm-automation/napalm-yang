@@ -42,7 +42,7 @@ associated with the VLAN.
     self._path_helper = False
 
     self._extmethods = False
-    self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=False)
+    self.__interface_ref = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ associated with the VLAN.
     else:
       return [u'vlans', u'vlan', u'members', u'member']
 
+  def _initialized_interface_ref(self):
+    return self.__interface_ref is not None
+
   def _get_interface_ref(self):
     """
     Getter method for interface_ref, mapped from YANG variable /vlans/vlan/members/member/interface_ref (container)
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=False)
     return self.__interface_ref
       
   def _set_interface_ref(self, v, load=False):
@@ -89,6 +94,9 @@ associated with the VLAN.
 
     YANG Description: Reference to an interface or subinterface
     """
+    if self.__interface_ref is None:
+        self.__interface_ref = YANGDynClass(base=interface_ref.interface_ref, is_container='container', yang_name="interface-ref", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

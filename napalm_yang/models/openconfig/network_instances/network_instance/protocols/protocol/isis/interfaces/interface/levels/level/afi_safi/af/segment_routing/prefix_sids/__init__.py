@@ -43,7 +43,7 @@ interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__prefix_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'prefix-sids']
 
+  def _initialized_prefix_sid(self):
+    return self.__prefix_sid is not None
+
   def _get_prefix_sid(self):
     """
     Getter method for prefix_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid (list)
@@ -81,6 +84,8 @@ allocated to it. The value of the SID is specified by the SID ID,
 as an absolute value. If the absolute value falls within the SRGB,
 the Global flag should be advertised by the system.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__prefix_sid
       
   def _set_prefix_sid(self, v, load=False):
@@ -96,6 +101,9 @@ allocated to it. The value of the SID is specified by the SID ID,
 as an absolute value. If the absolute value falls within the SRGB,
 the Global flag should be advertised by the system.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -143,7 +151,7 @@ interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__prefix_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -172,6 +180,9 @@ interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'prefix-sids']
 
+  def _initialized_prefix_sid(self):
+    return self.__prefix_sid is not None
+
   def _get_prefix_sid(self):
     """
     Getter method for prefix_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids/prefix_sid (list)
@@ -181,6 +192,8 @@ allocated to it. The value of the SID is specified by the SID ID,
 as an absolute value. If the absolute value falls within the SRGB,
 the Global flag should be advertised by the system.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__prefix_sid
       
   def _set_prefix_sid(self, v, load=False):
@@ -196,6 +209,9 @@ allocated to it. The value of the SID is specified by the SID ID,
 as an absolute value. If the absolute value falls within the SRGB,
 the Global flag should be advertised by the system.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=YANGListType("prefix",prefix_sid.prefix_sid, yang_name="prefix-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix', extensions=None), is_container='list', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

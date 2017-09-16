@@ -42,7 +42,7 @@ in the LSDB for the specified area
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__lsa_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ in the LSDB for the specified area
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types']
 
+  def _initialized_lsa_type(self):
+    return self.__lsa_type is not None
+
   def _get_lsa_type(self):
     """
     Getter method for lsa_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type (list)
@@ -78,6 +81,8 @@ in the LSDB for the specified area
     YANG Description: List of LSA types in the LSDB for the specified
 area
     """
+    if self.__lsa_type is None:
+        self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__lsa_type
       
   def _set_lsa_type(self, v, load=False):
@@ -91,6 +96,9 @@ area
     YANG Description: List of LSA types in the LSDB for the specified
 area
     """
+    if self.__lsa_type is None:
+        self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ in the LSDB for the specified area
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__lsa_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ in the LSDB for the specified area
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types']
 
+  def _initialized_lsa_type(self):
+    return self.__lsa_type is not None
+
   def _get_lsa_type(self):
     """
     Getter method for lsa_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type (list)
@@ -173,6 +184,8 @@ in the LSDB for the specified area
     YANG Description: List of LSA types in the LSDB for the specified
 area
     """
+    if self.__lsa_type is None:
+        self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__lsa_type
       
   def _set_lsa_type(self, v, load=False):
@@ -186,6 +199,9 @@ area
     YANG Description: List of LSA types in the LSDB for the specified
 area
     """
+    if self.__lsa_type is None:
+        self.__lsa_type = YANGDynClass(base=YANGListType("type",lsa_type.lsa_type, yang_name="lsa-type", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="lsa-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

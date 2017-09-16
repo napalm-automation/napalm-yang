@@ -41,7 +41,7 @@ class sessions(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__session = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class sessions(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions']
 
+  def _initialized_session(self):
+    return self.__session is not None
+
   def _get_session(self):
     """
     Getter method for session, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session (list)
 
     YANG Description: List of RSVP sessions
     """
+    if self.__session is None:
+        self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__session
       
   def _set_session(self, v, load=False):
@@ -88,6 +93,9 @@ class sessions(PybindBase):
 
     YANG Description: List of RSVP sessions
     """
+    if self.__session is None:
+        self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class sessions(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__session = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class sessions(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'sessions']
 
+  def _initialized_session(self):
+    return self.__session is not None
+
   def _get_session(self):
     """
     Getter method for session, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions/session (list)
 
     YANG Description: List of RSVP sessions
     """
+    if self.__session is None:
+        self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__session
       
   def _set_session(self, v, load=False):
@@ -180,6 +193,9 @@ class sessions(PybindBase):
 
     YANG Description: List of RSVP sessions
     """
+    if self.__session is None:
+        self.__session = YANGDynClass(base=YANGListType("local_index",session.session, yang_name="session", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-index', extensions=None), is_container='list', yang_name="session", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

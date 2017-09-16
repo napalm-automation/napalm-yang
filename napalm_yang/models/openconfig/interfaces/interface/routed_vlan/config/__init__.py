@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__vlan = YANGDynClass(base=[RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16),unicode,], is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=True)
+    self.__vlan = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'interfaces', u'interface', u'routed-vlan', u'config']
 
+  def _initialized_vlan(self):
+    return self.__vlan is not None
+
   def _get_vlan(self):
     """
     Getter method for vlan, mapped from YANG variable /interfaces/interface/routed_vlan/config/vlan (union)
@@ -78,6 +81,8 @@ provides routing services -- similar to a switch virtual
 interface (SVI), or integrated routing and bridging interface
 (IRB) in some implementations.
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=[RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16),unicode,], is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=True)
     return self.__vlan
       
   def _set_vlan(self, v, load=False):
@@ -93,6 +98,9 @@ provides routing services -- similar to a switch virtual
 interface (SVI), or integrated routing and bridging interface
 (IRB) in some implementations.
     """
+    if self.__vlan is None:
+        self.__vlan = YANGDynClass(base=[RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16),unicode,], is_leaf=True, yang_name="vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

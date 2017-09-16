@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ipv4_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv4-address', is_config=True)
-    self.__alias = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="alias", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
-    self.__ipv6_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv6-address', is_config=True)
-    self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    self.__ipv4_address = None
+    self.__alias = None
+    self.__ipv6_address = None
+    self.__hostname = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class config(PybindBase):
     else:
       return [u'system', u'dns', u'host-entries', u'host-entry', u'config']
 
+  def _initialized_hostname(self):
+    return self.__hostname is not None
+
   def _get_hostname(self):
     """
     Getter method for hostname, mapped from YANG variable /system/dns/host_entries/host_entry/config/hostname (string)
 
     YANG Description: Hostname for the static DNS entry
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__hostname
       
   def _set_hostname(self, v, load=False):
@@ -90,6 +95,9 @@ class config(PybindBase):
 
     YANG Description: Hostname for the static DNS entry
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ class config(PybindBase):
     self.__hostname = YANGDynClass(base=unicode, is_leaf=True, yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
+  def _initialized_alias(self):
+    return self.__alias is not None
+
   def _get_alias(self):
     """
     Getter method for alias, mapped from YANG variable /system/dns/host_entries/host_entry/config/alias (string)
 
     YANG Description: Additional aliases for the hostname
     """
+    if self.__alias is None:
+        self.__alias = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="alias", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__alias
       
   def _set_alias(self, v, load=False):
@@ -127,6 +140,9 @@ class config(PybindBase):
 
     YANG Description: Additional aliases for the hostname
     """
+    if self.__alias is None:
+        self.__alias = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="alias", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -146,12 +162,17 @@ class config(PybindBase):
     self.__alias = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="alias", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
+  def _initialized_ipv4_address(self):
+    return self.__ipv4_address is not None
+
   def _get_ipv4_address(self):
     """
     Getter method for ipv4_address, mapped from YANG variable /system/dns/host_entries/host_entry/config/ipv4_address (inet:ipv4-address)
 
     YANG Description: List of IPv4 addressses for the host entry
     """
+    if self.__ipv4_address is None:
+        self.__ipv4_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv4-address', is_config=True)
     return self.__ipv4_address
       
   def _set_ipv4_address(self, v, load=False):
@@ -164,6 +185,9 @@ class config(PybindBase):
 
     YANG Description: List of IPv4 addressses for the host entry
     """
+    if self.__ipv4_address is None:
+        self.__ipv4_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv4-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -183,12 +207,17 @@ class config(PybindBase):
     self.__ipv4_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv4-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv4-address', is_config=True)
 
 
+  def _initialized_ipv6_address(self):
+    return self.__ipv6_address is not None
+
   def _get_ipv6_address(self):
     """
     Getter method for ipv6_address, mapped from YANG variable /system/dns/host_entries/host_entry/config/ipv6_address (inet:ipv6-address)
 
     YANG Description: List of IPv6 addresses for the host entry
     """
+    if self.__ipv6_address is None:
+        self.__ipv6_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv6-address', is_config=True)
     return self.__ipv6_address
       
   def _set_ipv6_address(self, v, load=False):
@@ -201,6 +230,9 @@ class config(PybindBase):
 
     YANG Description: List of IPv6 addresses for the host entry
     """
+    if self.__ipv6_address is None:
+        self.__ipv6_address = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'})), is_leaf=False, yang_name="ipv6-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ipv6-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

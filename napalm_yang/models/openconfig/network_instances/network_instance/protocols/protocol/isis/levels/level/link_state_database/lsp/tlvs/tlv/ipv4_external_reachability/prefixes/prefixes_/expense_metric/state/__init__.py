@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
+    self.__metric = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-external-reachability', u'prefixes', u'prefixes', u'expense-metric', u'state']
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/expense_metric/state/metric (oc-isis-types:narrow-metric)
@@ -79,6 +82,8 @@ of utilising the associated circuit. It is an optional metric, which
 if assigned to a circuit shall have a positive integral value1).
 Higher values indicate a larger monetary expense.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -94,6 +99,9 @@ of utilising the associated circuit. It is an optional metric, which
 if assigned to a circuit shall have a positive integral value1).
 Higher values indicate a larger monetary expense.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ Higher values indicate a larger monetary expense.
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/expense_metric/state/flags (isis-metric-flags)
 
     YANG Description: ISIS Expense Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -131,6 +144,9 @@ Higher values indicate a larger monetary expense.
 
     YANG Description: ISIS Expense Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
+    self.__metric = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-external-reachability', u'prefixes', u'prefixes', u'expense-metric', u'state']
 
+  def _initialized_metric(self):
+    return self.__metric is not None
+
   def _get_metric(self):
     """
     Getter method for metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/expense_metric/state/metric (oc-isis-types:narrow-metric)
@@ -215,6 +234,8 @@ of utilising the associated circuit. It is an optional metric, which
 if assigned to a circuit shall have a positive integral value1).
 Higher values indicate a larger monetary expense.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
     return self.__metric
       
   def _set_metric(self, v, load=False):
@@ -230,6 +251,9 @@ of utilising the associated circuit. It is an optional metric, which
 if assigned to a circuit shall have a positive integral value1).
 Higher values indicate a larger monetary expense.
     """
+    if self.__metric is None:
+        self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,12 +273,17 @@ Higher values indicate a larger monetary expense.
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..63']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:narrow-metric', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability/prefixes/prefixes/expense_metric/state/flags (isis-metric-flags)
 
     YANG Description: ISIS Expense Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -267,6 +296,9 @@ Higher values indicate a larger monetary expense.
 
     YANG Description: ISIS Expense Metric Flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'UNSUPPORTED': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='isis-metric-flags', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

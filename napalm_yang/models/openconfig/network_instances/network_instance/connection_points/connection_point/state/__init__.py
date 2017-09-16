@@ -41,7 +41,7 @@ network instance connection point
     self._path_helper = False
 
     self._extmethods = False
-    self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__connection_point_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ network instance connection point
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'state']
 
+  def _initialized_connection_point_id(self):
+    return self.__connection_point_id is not None
+
   def _get_connection_point_id(self):
     """
     Getter method for connection_point_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/state/connection_point_id (string)
 
     YANG Description: An identifier for a connection point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__connection_point_id
       
   def _set_connection_point_id(self, v, load=False):
@@ -88,6 +93,9 @@ network instance connection point
 
     YANG Description: An identifier for a connection point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ network instance connection point
     self._path_helper = False
 
     self._extmethods = False
-    self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    self.__connection_point_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ network instance connection point
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'state']
 
+  def _initialized_connection_point_id(self):
+    return self.__connection_point_id is not None
+
   def _get_connection_point_id(self):
     """
     Getter method for connection_point_id, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/state/connection_point_id (string)
 
     YANG Description: An identifier for a connection point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__connection_point_id
       
   def _set_connection_point_id(self, v, load=False):
@@ -180,6 +193,9 @@ network instance connection point
 
     YANG Description: An identifier for a connection point
     """
+    if self.__connection_point_id is None:
+        self.__connection_point_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="connection-point-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

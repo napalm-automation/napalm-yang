@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__maximum_paths = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'use-multiple-paths', u'ibgp', u'state']
 
+  def _initialized_maximum_paths(self):
+    return self.__maximum_paths is not None
+
   def _get_maximum_paths(self):
     """
     Getter method for maximum_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ibgp/state/maximum_paths (uint32)
@@ -76,6 +79,8 @@ class state(PybindBase):
     YANG Description: Maximum number of parallel paths to consider when using
 iBGP multipath. The default is to use a single path
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__maximum_paths
       
   def _set_maximum_paths(self, v, load=False):
@@ -89,6 +94,9 @@ iBGP multipath. The default is to use a single path
     YANG Description: Maximum number of parallel paths to consider when using
 iBGP multipath. The default is to use a single path
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    self.__maximum_paths = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,6 +170,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'use-multiple-paths', u'ibgp', u'state']
 
+  def _initialized_maximum_paths(self):
+    return self.__maximum_paths is not None
+
   def _get_maximum_paths(self):
     """
     Getter method for maximum_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ibgp/state/maximum_paths (uint32)
@@ -169,6 +180,8 @@ class state(PybindBase):
     YANG Description: Maximum number of parallel paths to consider when using
 iBGP multipath. The default is to use a single path
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__maximum_paths
       
   def _set_maximum_paths(self, v, load=False):
@@ -182,6 +195,9 @@ iBGP multipath. The default is to use a single path
     YANG Description: Maximum number of parallel paths to consider when using
 iBGP multipath. The default is to use a single path
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

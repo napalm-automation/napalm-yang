@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__set_bit_on_boot = None
+    self.__advertise_high_metric = None
+    self.__set_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'config']
 
+  def _initialized_set_bit(self):
+    return self.__set_bit is not None
+
   def _get_set_bit(self):
     """
     Getter method for set_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/set_bit (boolean)
 
     YANG Description: When set to true, IS-IS overload bit is set.
     """
+    if self.__set_bit is None:
+        self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_bit
       
   def _set_set_bit(self, v, load=False):
@@ -89,6 +94,9 @@ class config(PybindBase):
 
     YANG Description: When set to true, IS-IS overload bit is set.
     """
+    if self.__set_bit is None:
+        self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,12 +116,17 @@ class config(PybindBase):
     self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_set_bit_on_boot(self):
+    return self.__set_bit_on_boot is not None
+
   def _get_set_bit_on_boot(self):
     """
     Getter method for set_bit_on_boot, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/set_bit_on_boot (boolean)
 
     YANG Description: When set to true, the IS-IS overload bit is set on system boot.
     """
+    if self.__set_bit_on_boot is None:
+        self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_bit_on_boot
       
   def _set_set_bit_on_boot(self, v, load=False):
@@ -126,6 +139,9 @@ class config(PybindBase):
 
     YANG Description: When set to true, the IS-IS overload bit is set on system boot.
     """
+    if self.__set_bit_on_boot is None:
+        self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -145,6 +161,9 @@ class config(PybindBase):
     self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_advertise_high_metric(self):
+    return self.__advertise_high_metric is not None
+
   def _get_advertise_high_metric(self):
     """
     Getter method for advertise_high_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/advertise_high_metric (boolean)
@@ -155,6 +174,8 @@ value is based on the metric style - if wide metrics are utilised
 the metric is advertised as 16777214, otherwise they are advertised
 with a value of 63.
     """
+    if self.__advertise_high_metric is None:
+        self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__advertise_high_metric
       
   def _set_advertise_high_metric(self, v, load=False):
@@ -171,6 +192,9 @@ value is based on the metric style - if wide metrics are utilised
 the metric is advertised as 16777214, otherwise they are advertised
 with a value of 63.
     """
+    if self.__advertise_high_metric is None:
+        self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__set_bit_on_boot = None
+    self.__advertise_high_metric = None
+    self.__set_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,12 +272,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'config']
 
+  def _initialized_set_bit(self):
+    return self.__set_bit is not None
+
   def _get_set_bit(self):
     """
     Getter method for set_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/set_bit (boolean)
 
     YANG Description: When set to true, IS-IS overload bit is set.
     """
+    if self.__set_bit is None:
+        self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_bit
       
   def _set_set_bit(self, v, load=False):
@@ -266,6 +295,9 @@ class config(PybindBase):
 
     YANG Description: When set to true, IS-IS overload bit is set.
     """
+    if self.__set_bit is None:
+        self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -285,12 +317,17 @@ class config(PybindBase):
     self.__set_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_set_bit_on_boot(self):
+    return self.__set_bit_on_boot is not None
+
   def _get_set_bit_on_boot(self):
     """
     Getter method for set_bit_on_boot, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/set_bit_on_boot (boolean)
 
     YANG Description: When set to true, the IS-IS overload bit is set on system boot.
     """
+    if self.__set_bit_on_boot is None:
+        self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__set_bit_on_boot
       
   def _set_set_bit_on_boot(self, v, load=False):
@@ -303,6 +340,9 @@ class config(PybindBase):
 
     YANG Description: When set to true, the IS-IS overload bit is set on system boot.
     """
+    if self.__set_bit_on_boot is None:
+        self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -322,6 +362,9 @@ class config(PybindBase):
     self.__set_bit_on_boot = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="set-bit-on-boot", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_advertise_high_metric(self):
+    return self.__advertise_high_metric is not None
+
   def _get_advertise_high_metric(self):
     """
     Getter method for advertise_high_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/config/advertise_high_metric (boolean)
@@ -332,6 +375,8 @@ value is based on the metric style - if wide metrics are utilised
 the metric is advertised as 16777214, otherwise they are advertised
 with a value of 63.
     """
+    if self.__advertise_high_metric is None:
+        self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__advertise_high_metric
       
   def _set_advertise_high_metric(self, v, load=False):
@@ -348,6 +393,9 @@ value is based on the metric style - if wide metrics are utilised
 the metric is advertised as 16777214, otherwise they are advertised
 with a value of 63.
     """
+    if self.__advertise_high_metric is None:
+        self.__advertise_high_metric = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="advertise-high-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

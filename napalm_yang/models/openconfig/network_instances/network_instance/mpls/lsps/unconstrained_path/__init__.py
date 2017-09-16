@@ -42,7 +42,7 @@ traffic-engineered, or non constrained-path
     self._path_helper = False
 
     self._extmethods = False
-    self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__path_setup_protocol = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ traffic-engineered, or non constrained-path
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'unconstrained-path']
 
+  def _initialized_path_setup_protocol(self):
+    return self.__path_setup_protocol is not None
+
   def _get_path_setup_protocol(self):
     """
     Getter method for path_setup_protocol, mapped from YANG variable /network_instances/network_instance/mpls/lsps/unconstrained_path/path_setup_protocol (container)
@@ -78,6 +81,8 @@ traffic-engineered, or non constrained-path
     YANG Description: select and configure the signaling method for
  the LSP
     """
+    if self.__path_setup_protocol is None:
+        self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__path_setup_protocol
       
   def _set_path_setup_protocol(self, v, load=False):
@@ -91,6 +96,9 @@ traffic-engineered, or non constrained-path
     YANG Description: select and configure the signaling method for
  the LSP
     """
+    if self.__path_setup_protocol is None:
+        self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ traffic-engineered, or non constrained-path
     self._path_helper = False
 
     self._extmethods = False
-    self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__path_setup_protocol = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ traffic-engineered, or non constrained-path
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'unconstrained-path']
 
+  def _initialized_path_setup_protocol(self):
+    return self.__path_setup_protocol is not None
+
   def _get_path_setup_protocol(self):
     """
     Getter method for path_setup_protocol, mapped from YANG variable /network_instances/network_instance/mpls/lsps/unconstrained_path/path_setup_protocol (container)
@@ -173,6 +184,8 @@ traffic-engineered, or non constrained-path
     YANG Description: select and configure the signaling method for
  the LSP
     """
+    if self.__path_setup_protocol is None:
+        self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__path_setup_protocol
       
   def _set_path_setup_protocol(self, v, load=False):
@@ -186,6 +199,9 @@ traffic-engineered, or non constrained-path
     YANG Description: select and configure the signaling method for
  the LSP
     """
+    if self.__path_setup_protocol is None:
+        self.__path_setup_protocol = YANGDynClass(base=path_setup_protocol.path_setup_protocol, is_container='container', yang_name="path-setup-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

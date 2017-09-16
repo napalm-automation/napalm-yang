@@ -40,12 +40,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__down_thresholds = None
+    self.__delta_percentage = None
+    self.__threshold_specification = None
+    self.__threshold_type = None
+    self.__up_down_thresholds = None
+    self.__up_thresholds = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-interface-attributes', u'interface', u'igp-flooding-bandwidth', u'state']
 
+  def _initialized_threshold_type(self):
+    return self.__threshold_type is not None
+
   def _get_threshold_type(self):
     """
     Getter method for threshold_type, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/threshold_type (enumeration)
@@ -88,6 +91,8 @@ reserved bandwidth when the reserved bandwidth changes such
 that it crosses, or becomes equal to one of the threshold
 values
     """
+    if self.__threshold_type is None:
+        self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__threshold_type
       
   def _set_threshold_type(self, v, load=False):
@@ -108,6 +113,9 @@ reserved bandwidth when the reserved bandwidth changes such
 that it crosses, or becomes equal to one of the threshold
 values
     """
+    if self.__threshold_type is None:
+        self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -127,6 +135,9 @@ values
     self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_delta_percentage(self):
+    return self.__delta_percentage is not None
+
   def _get_delta_percentage(self):
     """
     Getter method for delta_percentage, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/delta_percentage (oc-types:percentage)
@@ -135,6 +146,8 @@ values
 considered as the delta that results in an IGP update
 being flooded
     """
+    if self.__delta_percentage is None:
+        self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__delta_percentage
       
   def _set_delta_percentage(self, v, load=False):
@@ -149,6 +162,9 @@ being flooded
 considered as the delta that results in an IGP update
 being flooded
     """
+    if self.__delta_percentage is None:
+        self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -168,6 +184,9 @@ being flooded
     self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_threshold_specification(self):
+    return self.__threshold_specification is not None
+
   def _get_threshold_specification(self):
     """
     Getter method for threshold_specification, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/threshold_specification (enumeration)
@@ -181,6 +200,8 @@ values) should be used for both increasing and decreasing
 values, where SEPARATE-UP-DOWN specifies that the increasing
 and decreasing values will be separately specified
     """
+    if self.__threshold_specification is None:
+        self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__threshold_specification
       
   def _set_threshold_specification(self, v, load=False):
@@ -200,6 +221,9 @@ values) should be used for both increasing and decreasing
 values, where SEPARATE-UP-DOWN specifies that the increasing
 and decreasing values will be separately specified
     """
+    if self.__threshold_specification is None:
+        self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -219,6 +243,9 @@ and decreasing values will be separately specified
     self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_up_thresholds(self):
+    return self.__up_thresholds is not None
+
   def _get_up_thresholds(self):
     """
     Getter method for up_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/up_thresholds (oc-types:percentage)
@@ -227,6 +254,8 @@ and decreasing values will be separately specified
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is increasing.
     """
+    if self.__up_thresholds is None:
+        self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__up_thresholds
       
   def _set_up_thresholds(self, v, load=False):
@@ -241,6 +270,9 @@ triggered when the bandwidth is increasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is increasing.
     """
+    if self.__up_thresholds is None:
+        self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -260,6 +292,9 @@ triggered when the bandwidth is increasing.
     self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_down_thresholds(self):
+    return self.__down_thresholds is not None
+
   def _get_down_thresholds(self):
     """
     Getter method for down_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/down_thresholds (oc-types:percentage)
@@ -268,6 +303,8 @@ triggered when the bandwidth is increasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is decreasing.
     """
+    if self.__down_thresholds is None:
+        self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__down_thresholds
       
   def _set_down_thresholds(self, v, load=False):
@@ -282,6 +319,9 @@ triggered when the bandwidth is decreasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is decreasing.
     """
+    if self.__down_thresholds is None:
+        self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -301,6 +341,9 @@ triggered when the bandwidth is decreasing.
     self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_up_down_thresholds(self):
+    return self.__up_down_thresholds is not None
+
   def _get_up_down_thresholds(self):
     """
     Getter method for up_down_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/up_down_thresholds (oc-types:percentage)
@@ -310,6 +353,8 @@ reservable bandwidth of the interface) at which bandwidth
 updates are flooded - used both when the bandwidth is
 increasing and decreasing
     """
+    if self.__up_down_thresholds is None:
+        self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__up_down_thresholds
       
   def _set_up_down_thresholds(self, v, load=False):
@@ -325,6 +370,9 @@ reservable bandwidth of the interface) at which bandwidth
 updates are flooded - used both when the bandwidth is
 increasing and decreasing
     """
+    if self.__up_down_thresholds is None:
+        self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,12 +422,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
-    self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    self.__down_thresholds = None
+    self.__delta_percentage = None
+    self.__threshold_specification = None
+    self.__threshold_type = None
+    self.__up_down_thresholds = None
+    self.__up_thresholds = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -408,6 +456,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-interface-attributes', u'interface', u'igp-flooding-bandwidth', u'state']
 
+  def _initialized_threshold_type(self):
+    return self.__threshold_type is not None
+
   def _get_threshold_type(self):
     """
     Getter method for threshold_type, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/threshold_type (enumeration)
@@ -422,6 +473,8 @@ reserved bandwidth when the reserved bandwidth changes such
 that it crosses, or becomes equal to one of the threshold
 values
     """
+    if self.__threshold_type is None:
+        self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__threshold_type
       
   def _set_threshold_type(self, v, load=False):
@@ -442,6 +495,9 @@ reserved bandwidth when the reserved bandwidth changes such
 that it crosses, or becomes equal to one of the threshold
 values
     """
+    if self.__threshold_type is None:
+        self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -461,6 +517,9 @@ values
     self.__threshold_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'THRESHOLD_CROSSED': {}, u'DELTA': {}},), is_leaf=True, yang_name="threshold-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_delta_percentage(self):
+    return self.__delta_percentage is not None
+
   def _get_delta_percentage(self):
     """
     Getter method for delta_percentage, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/delta_percentage (oc-types:percentage)
@@ -469,6 +528,8 @@ values
 considered as the delta that results in an IGP update
 being flooded
     """
+    if self.__delta_percentage is None:
+        self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__delta_percentage
       
   def _set_delta_percentage(self, v, load=False):
@@ -483,6 +544,9 @@ being flooded
 considered as the delta that results in an IGP update
 being flooded
     """
+    if self.__delta_percentage is None:
+        self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -502,6 +566,9 @@ being flooded
     self.__delta_percentage = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="delta-percentage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_threshold_specification(self):
+    return self.__threshold_specification is not None
+
   def _get_threshold_specification(self):
     """
     Getter method for threshold_specification, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/threshold_specification (enumeration)
@@ -515,6 +582,8 @@ values) should be used for both increasing and decreasing
 values, where SEPARATE-UP-DOWN specifies that the increasing
 and decreasing values will be separately specified
     """
+    if self.__threshold_specification is None:
+        self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__threshold_specification
       
   def _set_threshold_specification(self, v, load=False):
@@ -534,6 +603,9 @@ values) should be used for both increasing and decreasing
 values, where SEPARATE-UP-DOWN specifies that the increasing
 and decreasing values will be separately specified
     """
+    if self.__threshold_specification is None:
+        self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -553,6 +625,9 @@ and decreasing values will be separately specified
     self.__threshold_specification = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'SEPARATE_UP_DOWN': {}, u'MIRRORED_UP_DOWN': {}},), is_leaf=True, yang_name="threshold-specification", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_up_thresholds(self):
+    return self.__up_thresholds is not None
+
   def _get_up_thresholds(self):
     """
     Getter method for up_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/up_thresholds (oc-types:percentage)
@@ -561,6 +636,8 @@ and decreasing values will be separately specified
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is increasing.
     """
+    if self.__up_thresholds is None:
+        self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__up_thresholds
       
   def _set_up_thresholds(self, v, load=False):
@@ -575,6 +652,9 @@ triggered when the bandwidth is increasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is increasing.
     """
+    if self.__up_thresholds is None:
+        self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -594,6 +674,9 @@ triggered when the bandwidth is increasing.
     self.__up_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_down_thresholds(self):
+    return self.__down_thresholds is not None
+
   def _get_down_thresholds(self):
     """
     Getter method for down_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/down_thresholds (oc-types:percentage)
@@ -602,6 +685,8 @@ triggered when the bandwidth is increasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is decreasing.
     """
+    if self.__down_thresholds is None:
+        self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__down_thresholds
       
   def _set_down_thresholds(self, v, load=False):
@@ -616,6 +701,9 @@ triggered when the bandwidth is decreasing.
 reservable bandwidth) at which bandwidth updates are to be
 triggered when the bandwidth is decreasing.
     """
+    if self.__down_thresholds is None:
+        self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -635,6 +723,9 @@ triggered when the bandwidth is decreasing.
     self.__down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_up_down_thresholds(self):
+    return self.__up_down_thresholds is not None
+
   def _get_up_down_thresholds(self):
     """
     Getter method for up_down_thresholds, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes/interface/igp_flooding_bandwidth/state/up_down_thresholds (oc-types:percentage)
@@ -644,6 +735,8 @@ reservable bandwidth of the interface) at which bandwidth
 updates are flooded - used both when the bandwidth is
 increasing and decreasing
     """
+    if self.__up_down_thresholds is None:
+        self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
     return self.__up_down_thresholds
       
   def _set_up_down_thresholds(self, v, load=False):
@@ -659,6 +752,9 @@ reservable bandwidth of the interface) at which bandwidth
 updates are flooded - used both when the bandwidth is
 increasing and decreasing
     """
+    if self.__up_down_thresholds is None:
+        self.__up_down_thresholds = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']})), is_leaf=False, yang_name="up-down-thresholds", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

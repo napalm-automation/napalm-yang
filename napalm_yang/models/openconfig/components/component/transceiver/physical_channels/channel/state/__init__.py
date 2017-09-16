@@ -43,14 +43,14 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tx_laser = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="tx-laser", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='boolean', is_config=False)
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='uint16', is_config=False)
-    self.__laser_bias_current = YANGDynClass(base=laser_bias_current.laser_bias_current, is_container='container', yang_name="laser-bias-current", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='string', is_config=False)
-    self.__output_power = YANGDynClass(base=output_power.output_power, is_container='container', yang_name="output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
-    self.__target_output_power = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="target-output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
-    self.__output_frequency = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="output-frequency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-opt-types:frequency-type', is_config=False)
-    self.__input_power = YANGDynClass(base=input_power.input_power, is_container='container', yang_name="input-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
+    self.__tx_laser = None
+    self.__index = None
+    self.__laser_bias_current = None
+    self.__description = None
+    self.__output_power = None
+    self.__target_output_power = None
+    self.__output_frequency = None
+    self.__input_power = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,6 +79,9 @@ class state(PybindBase):
     else:
       return [u'components', u'component', u'transceiver', u'physical-channels', u'channel', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/index (uint16)
@@ -86,6 +89,8 @@ class state(PybindBase):
     YANG Description: Index of the physical channnel or lane within a physical
 client port
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='uint16', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -99,6 +104,9 @@ client port
     YANG Description: Index of the physical channnel or lane within a physical
 client port
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -118,12 +126,17 @@ client port
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='uint16', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/description (string)
 
     YANG Description: Text description for the client physical channel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -136,6 +149,9 @@ client port
 
     YANG Description: Text description for the client physical channel
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ client port
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='string', is_config=False)
 
 
+  def _initialized_tx_laser(self):
+    return self.__tx_laser is not None
+
   def _get_tx_laser(self):
     """
     Getter method for tx_laser, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/tx_laser (boolean)
@@ -162,6 +181,8 @@ client port
     YANG Description: Enable (true) or disable (false) the transmit label for the
 channel
     """
+    if self.__tx_laser is None:
+        self.__tx_laser = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="tx-laser", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='boolean', is_config=False)
     return self.__tx_laser
       
   def _set_tx_laser(self, v, load=False):
@@ -175,6 +196,9 @@ channel
     YANG Description: Enable (true) or disable (false) the transmit label for the
 channel
     """
+    if self.__tx_laser is None:
+        self.__tx_laser = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="tx-laser", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -194,6 +218,9 @@ channel
     self.__tx_laser = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="tx-laser", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='boolean', is_config=False)
 
 
+  def _initialized_target_output_power(self):
+    return self.__target_output_power is not None
+
   def _get_target_output_power(self):
     """
     Getter method for target_output_power, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/target_output_power (decimal64)
@@ -201,6 +228,8 @@ channel
     YANG Description: Target output optical power level of the optical channel,
 expressed in increments of 0.01 dBm (decibel-milliwats)
     """
+    if self.__target_output_power is None:
+        self.__target_output_power = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="target-output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     return self.__target_output_power
       
   def _set_target_output_power(self, v, load=False):
@@ -214,6 +243,9 @@ expressed in increments of 0.01 dBm (decibel-milliwats)
     YANG Description: Target output optical power level of the optical channel,
 expressed in increments of 0.01 dBm (decibel-milliwats)
     """
+    if self.__target_output_power is None:
+        self.__target_output_power = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="target-output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -233,6 +265,9 @@ expressed in increments of 0.01 dBm (decibel-milliwats)
     self.__target_output_power = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="target-output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_output_frequency(self):
+    return self.__output_frequency is not None
+
   def _get_output_frequency(self):
     """
     Getter method for output_frequency, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/output_frequency (oc-opt-types:frequency-type)
@@ -242,6 +277,8 @@ expressed in increments of 0.01 dBm (decibel-milliwats)
 195,000,000 MHz in this model). This attribute is not
 configurable on most client ports.
     """
+    if self.__output_frequency is None:
+        self.__output_frequency = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="output-frequency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-opt-types:frequency-type', is_config=False)
     return self.__output_frequency
       
   def _set_output_frequency(self, v, load=False):
@@ -257,6 +294,9 @@ configurable on most client ports.
 195,000,000 MHz in this model). This attribute is not
 configurable on most client ports.
     """
+    if self.__output_frequency is None:
+        self.__output_frequency = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="output-frequency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-opt-types:frequency-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -276,6 +316,9 @@ configurable on most client ports.
     self.__output_frequency = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="output-frequency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-opt-types:frequency-type', is_config=False)
 
 
+  def _initialized_output_power(self):
+    return self.__output_power is not None
+
   def _get_output_power(self):
     """
     Getter method for output_power, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/output_power (container)
@@ -288,6 +331,8 @@ maximum statistics. If avg/min/max statistics are not
 supported, the target is expected to just supply the
 instant value
     """
+    if self.__output_power is None:
+        self.__output_power = YANGDynClass(base=output_power.output_power, is_container='container', yang_name="output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
     return self.__output_power
       
   def _set_output_power(self, v, load=False):
@@ -306,6 +351,9 @@ maximum statistics. If avg/min/max statistics are not
 supported, the target is expected to just supply the
 instant value
     """
+    if self.__output_power is None:
+        self.__output_power = YANGDynClass(base=output_power.output_power, is_container='container', yang_name="output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -325,6 +373,9 @@ instant value
     self.__output_power = YANGDynClass(base=output_power.output_power, is_container='container', yang_name="output-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
 
 
+  def _initialized_input_power(self):
+    return self.__input_power is not None
+
   def _get_input_power(self):
     """
     Getter method for input_power, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/input_power (container)
@@ -337,6 +388,8 @@ maximum statistics. If avg/min/max statistics are not
 supported, the target is expected to just supply the
 instant value
     """
+    if self.__input_power is None:
+        self.__input_power = YANGDynClass(base=input_power.input_power, is_container='container', yang_name="input-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
     return self.__input_power
       
   def _set_input_power(self, v, load=False):
@@ -355,6 +408,9 @@ maximum statistics. If avg/min/max statistics are not
 supported, the target is expected to just supply the
 instant value
     """
+    if self.__input_power is None:
+        self.__input_power = YANGDynClass(base=input_power.input_power, is_container='container', yang_name="input-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,6 +430,9 @@ instant value
     self.__input_power = YANGDynClass(base=input_power.input_power, is_container='container', yang_name="input-power", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
 
 
+  def _initialized_laser_bias_current(self):
+    return self.__laser_bias_current is not None
+
   def _get_laser_bias_current(self):
     """
     Getter method for laser_bias_current, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/laser_bias_current (container)
@@ -385,6 +444,8 @@ instantaneous, average, minimum, and maximum statistics.
 If avg/min/max statistics are not supported, the target is
 expected to just supply the instant value
     """
+    if self.__laser_bias_current is None:
+        self.__laser_bias_current = YANGDynClass(base=laser_bias_current.laser_bias_current, is_container='container', yang_name="laser-bias-current", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
     return self.__laser_bias_current
       
   def _set_laser_bias_current(self, v, load=False):
@@ -402,6 +463,9 @@ instantaneous, average, minimum, and maximum statistics.
 If avg/min/max statistics are not supported, the target is
 expected to just supply the instant value
     """
+    if self.__laser_bias_current is None:
+        self.__laser_bias_current = YANGDynClass(base=laser_bias_current.laser_bias_current, is_container='container', yang_name="laser-bias-current", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

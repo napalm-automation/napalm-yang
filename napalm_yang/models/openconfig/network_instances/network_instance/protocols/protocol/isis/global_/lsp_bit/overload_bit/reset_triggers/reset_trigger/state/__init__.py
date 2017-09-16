@@ -41,8 +41,8 @@ triggers.
     self._path_helper = False
 
     self._extmethods = False
-    self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__delay = None
+    self.__reset_trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ triggers.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'reset-triggers', u'reset-trigger', u'state']
 
+  def _initialized_reset_trigger(self):
+    return self.__reset_trigger is not None
+
   def _get_reset_trigger(self):
     """
     Getter method for reset_trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger/state/reset_trigger (identityref)
@@ -79,6 +82,8 @@ triggers.
 system should reset the bit (i.e., clear the overload bit) upon
 the specified trigger.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__reset_trigger
       
   def _set_reset_trigger(self, v, load=False):
@@ -93,6 +98,9 @@ the specified trigger.
 system should reset the bit (i.e., clear the overload bit) upon
 the specified trigger.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ the specified trigger.
     self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_delay(self):
+    return self.__delay is not None
+
   def _get_delay(self):
     """
     Getter method for delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger/state/delay (uint16)
@@ -120,6 +131,8 @@ the specified trigger.
 the overload bit for the specified number of seconds after the
 trigger occurs.
     """
+    if self.__delay is None:
+        self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__delay
       
   def _set_delay(self, v, load=False):
@@ -134,6 +147,9 @@ trigger occurs.
 the overload bit for the specified number of seconds after the
 trigger occurs.
     """
+    if self.__delay is None:
+        self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ triggers.
     self._path_helper = False
 
     self._extmethods = False
-    self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__delay = None
+    self.__reset_trigger = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ triggers.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'overload-bit', u'reset-triggers', u'reset-trigger', u'state']
 
+  def _initialized_reset_trigger(self):
+    return self.__reset_trigger is not None
+
   def _get_reset_trigger(self):
     """
     Getter method for reset_trigger, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger/state/reset_trigger (identityref)
@@ -218,6 +237,8 @@ triggers.
 system should reset the bit (i.e., clear the overload bit) upon
 the specified trigger.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__reset_trigger
       
   def _set_reset_trigger(self, v, load=False):
@@ -232,6 +253,9 @@ the specified trigger.
 system should reset the bit (i.e., clear the overload bit) upon
 the specified trigger.
     """
+    if self.__reset_trigger is None:
+        self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ the specified trigger.
     self.__reset_trigger = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_BGP': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'WAIT_FOR_SYSTEM': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="reset-trigger", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_delay(self):
+    return self.__delay is not None
+
   def _get_delay(self):
     """
     Getter method for delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/overload_bit/reset_triggers/reset_trigger/state/delay (uint16)
@@ -259,6 +286,8 @@ the specified trigger.
 the overload bit for the specified number of seconds after the
 trigger occurs.
     """
+    if self.__delay is None:
+        self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__delay
       
   def _set_delay(self, v, load=False):
@@ -273,6 +302,9 @@ trigger occurs.
 the overload bit for the specified number of seconds after the
 trigger occurs.
     """
+    if self.__delay is None:
+        self.__delay = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

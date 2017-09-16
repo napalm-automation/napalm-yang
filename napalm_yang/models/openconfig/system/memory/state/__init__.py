@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__reserved = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
-    self.__physical = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="physical", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    self.__reserved = None
+    self.__physical = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class state(PybindBase):
     else:
       return [u'system', u'memory', u'state']
 
+  def _initialized_physical(self):
+    return self.__physical is not None
+
   def _get_physical(self):
     """
     Getter method for physical, mapped from YANG variable /system/memory/state/physical (uint64)
@@ -77,6 +80,8 @@ class state(PybindBase):
     YANG Description: Reports the total physical memory available on the
 system.
     """
+    if self.__physical is None:
+        self.__physical = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="physical", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__physical
       
   def _set_physical(self, v, load=False):
@@ -90,6 +95,9 @@ system.
     YANG Description: Reports the total physical memory available on the
 system.
     """
+    if self.__physical is None:
+        self.__physical = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="physical", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,12 +117,17 @@ system.
     self.__physical = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="physical", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_reserved(self):
+    return self.__reserved is not None
+
   def _get_reserved(self):
     """
     Getter method for reserved, mapped from YANG variable /system/memory/state/reserved (uint64)
 
     YANG Description: Memory reserved for system use
     """
+    if self.__reserved is None:
+        self.__reserved = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__reserved
       
   def _set_reserved(self, v, load=False):
@@ -127,6 +140,9 @@ system.
 
     YANG Description: Memory reserved for system use
     """
+    if self.__reserved is None:
+        self.__reserved = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

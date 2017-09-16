@@ -46,11 +46,11 @@ data
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsps = None
+    self.__signaling_protocols = None
+    self.__te_global_attributes = None
+    self.__te_interface_attributes = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,6 +79,9 @@ data
     else:
       return [u'network-instances', u'network-instance', u'mpls']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/mpls/global (container)
@@ -87,6 +90,8 @@ data
 type of LSP and signaling protocol - label ranges,
 entropy label supportmay be added here
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -101,6 +106,9 @@ entropy label supportmay be added here
 type of LSP and signaling protocol - label ranges,
 entropy label supportmay be added here
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -120,12 +128,17 @@ entropy label supportmay be added here
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_global_attributes(self):
+    return self.__te_global_attributes is not None
+
   def _get_te_global_attributes(self):
     """
     Getter method for te_global_attributes, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes (container)
 
     YANG Description: traffic-engineering global attributes
     """
+    if self.__te_global_attributes is None:
+        self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_global_attributes
       
   def _set_te_global_attributes(self, v, load=False):
@@ -138,6 +151,9 @@ entropy label supportmay be added here
 
     YANG Description: traffic-engineering global attributes
     """
+    if self.__te_global_attributes is None:
+        self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ entropy label supportmay be added here
     self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_interface_attributes(self):
+    return self.__te_interface_attributes is not None
+
   def _get_te_interface_attributes(self):
     """
     Getter method for te_interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes (container)
@@ -164,6 +183,8 @@ entropy label supportmay be added here
     YANG Description: traffic engineering attributes specific
 for interfaces
     """
+    if self.__te_interface_attributes is None:
+        self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_interface_attributes
       
   def _set_te_interface_attributes(self, v, load=False):
@@ -177,6 +198,9 @@ for interfaces
     YANG Description: traffic engineering attributes specific
 for interfaces
     """
+    if self.__te_interface_attributes is None:
+        self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,12 +220,17 @@ for interfaces
     self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_signaling_protocols(self):
+    return self.__signaling_protocols is not None
+
   def _get_signaling_protocols(self):
     """
     Getter method for signaling_protocols, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols (container)
 
     YANG Description: top-level signaling protocol configuration
     """
+    if self.__signaling_protocols is None:
+        self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__signaling_protocols
       
   def _set_signaling_protocols(self, v, load=False):
@@ -214,6 +243,9 @@ for interfaces
 
     YANG Description: top-level signaling protocol configuration
     """
+    if self.__signaling_protocols is None:
+        self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -233,12 +265,17 @@ for interfaces
     self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsps(self):
+    return self.__lsps is not None
+
   def _get_lsps(self):
     """
     Getter method for lsps, mapped from YANG variable /network_instances/network_instance/mpls/lsps (container)
 
     YANG Description: LSP definitions and configuration
     """
+    if self.__lsps is None:
+        self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsps
       
   def _set_lsps(self, v, load=False):
@@ -251,6 +288,9 @@ for interfaces
 
     YANG Description: LSP definitions and configuration
     """
+    if self.__lsps is None:
+        self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -305,11 +345,11 @@ data
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__lsps = None
+    self.__signaling_protocols = None
+    self.__te_global_attributes = None
+    self.__te_interface_attributes = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -338,6 +378,9 @@ data
     else:
       return [u'network-instances', u'network-instance', u'mpls']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/mpls/global (container)
@@ -346,6 +389,8 @@ data
 type of LSP and signaling protocol - label ranges,
 entropy label supportmay be added here
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -360,6 +405,9 @@ entropy label supportmay be added here
 type of LSP and signaling protocol - label ranges,
 entropy label supportmay be added here
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -379,12 +427,17 @@ entropy label supportmay be added here
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_global_attributes(self):
+    return self.__te_global_attributes is not None
+
   def _get_te_global_attributes(self):
     """
     Getter method for te_global_attributes, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes (container)
 
     YANG Description: traffic-engineering global attributes
     """
+    if self.__te_global_attributes is None:
+        self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_global_attributes
       
   def _set_te_global_attributes(self, v, load=False):
@@ -397,6 +450,9 @@ entropy label supportmay be added here
 
     YANG Description: traffic-engineering global attributes
     """
+    if self.__te_global_attributes is None:
+        self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -416,6 +472,9 @@ entropy label supportmay be added here
     self.__te_global_attributes = YANGDynClass(base=te_global_attributes.te_global_attributes, is_container='container', yang_name="te-global-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_te_interface_attributes(self):
+    return self.__te_interface_attributes is not None
+
   def _get_te_interface_attributes(self):
     """
     Getter method for te_interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/te_interface_attributes (container)
@@ -423,6 +482,8 @@ entropy label supportmay be added here
     YANG Description: traffic engineering attributes specific
 for interfaces
     """
+    if self.__te_interface_attributes is None:
+        self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__te_interface_attributes
       
   def _set_te_interface_attributes(self, v, load=False):
@@ -436,6 +497,9 @@ for interfaces
     YANG Description: traffic engineering attributes specific
 for interfaces
     """
+    if self.__te_interface_attributes is None:
+        self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -455,12 +519,17 @@ for interfaces
     self.__te_interface_attributes = YANGDynClass(base=te_interface_attributes.te_interface_attributes, is_container='container', yang_name="te-interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_signaling_protocols(self):
+    return self.__signaling_protocols is not None
+
   def _get_signaling_protocols(self):
     """
     Getter method for signaling_protocols, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols (container)
 
     YANG Description: top-level signaling protocol configuration
     """
+    if self.__signaling_protocols is None:
+        self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__signaling_protocols
       
   def _set_signaling_protocols(self, v, load=False):
@@ -473,6 +542,9 @@ for interfaces
 
     YANG Description: top-level signaling protocol configuration
     """
+    if self.__signaling_protocols is None:
+        self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -492,12 +564,17 @@ for interfaces
     self.__signaling_protocols = YANGDynClass(base=signaling_protocols.signaling_protocols, is_container='container', yang_name="signaling-protocols", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsps(self):
+    return self.__lsps is not None
+
   def _get_lsps(self):
     """
     Getter method for lsps, mapped from YANG variable /network_instances/network_instance/mpls/lsps (container)
 
     YANG Description: LSP definitions and configuration
     """
+    if self.__lsps is None:
+        self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsps
       
   def _set_lsps(self, v, load=False):
@@ -510,6 +587,9 @@ for interfaces
 
     YANG Description: LSP definitions and configuration
     """
+    if self.__lsps is None:
+        self.__lsps = YANGDynClass(base=lsps.lsps, is_container='container', yang_name="lsps", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

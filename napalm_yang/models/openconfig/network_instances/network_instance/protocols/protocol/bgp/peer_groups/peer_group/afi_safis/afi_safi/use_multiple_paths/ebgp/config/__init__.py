@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__maximum_paths = None
+    self.__allow_multiple_as = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'use-multiple-paths', u'ebgp', u'config']
 
+  def _initialized_allow_multiple_as(self):
+    return self.__allow_multiple_as is not None
+
   def _get_allow_multiple_as(self):
     """
     Getter method for allow_multiple_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ebgp/config/allow_multiple_as (boolean)
@@ -78,6 +81,8 @@ class config(PybindBase):
 ASes.  The default is to only consider multiple paths from
 the same neighbouring AS.
     """
+    if self.__allow_multiple_as is None:
+        self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__allow_multiple_as
       
   def _set_allow_multiple_as(self, v, load=False):
@@ -92,6 +97,9 @@ the same neighbouring AS.
 ASes.  The default is to only consider multiple paths from
 the same neighbouring AS.
     """
+    if self.__allow_multiple_as is None:
+        self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ the same neighbouring AS.
     self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_maximum_paths(self):
+    return self.__maximum_paths is not None
+
   def _get_maximum_paths(self):
     """
     Getter method for maximum_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ebgp/config/maximum_paths (uint32)
@@ -118,6 +129,8 @@ the same neighbouring AS.
     YANG Description: Maximum number of parallel paths to consider when using
 BGP multipath. The default is use a single path.
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__maximum_paths
       
   def _set_maximum_paths(self, v, load=False):
@@ -131,6 +144,9 @@ BGP multipath. The default is use a single path.
     YANG Description: Maximum number of parallel paths to consider when using
 BGP multipath. The default is use a single path.
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__maximum_paths = None
+    self.__allow_multiple_as = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi', u'use-multiple-paths', u'ebgp', u'config']
 
+  def _initialized_allow_multiple_as(self):
+    return self.__allow_multiple_as is not None
+
   def _get_allow_multiple_as(self):
     """
     Getter method for allow_multiple_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ebgp/config/allow_multiple_as (boolean)
@@ -214,6 +233,8 @@ class config(PybindBase):
 ASes.  The default is to only consider multiple paths from
 the same neighbouring AS.
     """
+    if self.__allow_multiple_as is None:
+        self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__allow_multiple_as
       
   def _set_allow_multiple_as(self, v, load=False):
@@ -228,6 +249,9 @@ the same neighbouring AS.
 ASes.  The default is to only consider multiple paths from
 the same neighbouring AS.
     """
+    if self.__allow_multiple_as is None:
+        self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ the same neighbouring AS.
     self.__allow_multiple_as = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="allow-multiple-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_maximum_paths(self):
+    return self.__maximum_paths is not None
+
   def _get_maximum_paths(self):
     """
     Getter method for maximum_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths/ebgp/config/maximum_paths (uint32)
@@ -254,6 +281,8 @@ the same neighbouring AS.
     YANG Description: Maximum number of parallel paths to consider when using
 BGP multipath. The default is use a single path.
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__maximum_paths
       
   def _set_maximum_paths(self, v, load=False):
@@ -267,6 +296,9 @@ BGP multipath. The default is use a single path.
     YANG Description: Maximum number of parallel paths to consider when using
 BGP multipath. The default is use a single path.
     """
+    if self.__maximum_paths is None:
+        self.__maximum_paths = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="maximum-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -43,9 +43,9 @@ for mpls affinities/admin-groups
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__admin_group_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ for mpls affinities/admin-groups
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups', u'admin-group']
 
+  def _initialized_admin_group_name(self):
+    return self.__admin_group_name is not None
+
   def _get_admin_group_name(self):
     """
     Getter method for admin_group_name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/admin_group_name (leafref)
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__admin_group_name
       
   def _set_admin_group_name(self, v, load=False):
@@ -92,6 +97,9 @@ for mpls affinities/admin-groups
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -116,12 +124,17 @@ for mpls affinities/admin-groups
     self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/config (container)
 
     YANG Description: Configurable items for admin-groups
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -134,6 +147,9 @@ for mpls affinities/admin-groups
 
     YANG Description: Configurable items for admin-groups
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,12 +169,17 @@ for mpls affinities/admin-groups
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state (container)
 
     YANG Description: Operational state for admin-groups
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -171,6 +192,9 @@ for mpls affinities/admin-groups
 
     YANG Description: Operational state for admin-groups
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -220,9 +244,9 @@ for mpls affinities/admin-groups
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__admin_group_name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -251,12 +275,17 @@ for mpls affinities/admin-groups
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'te-global-attributes', u'mpls-admin-groups', u'admin-group']
 
+  def _initialized_admin_group_name(self):
+    return self.__admin_group_name is not None
+
   def _get_admin_group_name(self):
     """
     Getter method for admin_group_name, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/admin_group_name (leafref)
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__admin_group_name
       
   def _set_admin_group_name(self, v, load=False):
@@ -269,6 +298,9 @@ for mpls affinities/admin-groups
 
     YANG Description: name for mpls admin-group
     """
+    if self.__admin_group_name is None:
+        self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -293,12 +325,17 @@ for mpls affinities/admin-groups
     self.__admin_group_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-group-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/config (container)
 
     YANG Description: Configurable items for admin-groups
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -311,6 +348,9 @@ for mpls affinities/admin-groups
 
     YANG Description: Configurable items for admin-groups
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,12 +370,17 @@ for mpls affinities/admin-groups
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/te_global_attributes/mpls_admin_groups/admin_group/state (container)
 
     YANG Description: Operational state for admin-groups
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -348,6 +393,9 @@ for mpls affinities/admin-groups
 
     YANG Description: Operational state for admin-groups
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -43,8 +43,8 @@ neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__received = None
+    self.__sent = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'messages']
 
+  def _initialized_sent(self):
+    return self.__sent is not None
+
   def _get_sent(self):
     """
     Getter method for sent, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent (container)
 
     YANG Description: Counters relating to BGP messages sent to the neighbor
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sent
       
   def _set_sent(self, v, load=False):
@@ -91,6 +96,9 @@ neighbor
 
     YANG Description: Counters relating to BGP messages sent to the neighbor
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ neighbor
     self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/received (container)
 
     YANG Description: Counters for BGP messages received from the neighbor
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -128,6 +141,9 @@ neighbor
 
     YANG Description: Counters for BGP messages received from the neighbor
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__received = None
+    self.__sent = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,12 +222,17 @@ neighbor
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state', u'messages']
 
+  def _initialized_sent(self):
+    return self.__sent is not None
+
   def _get_sent(self):
     """
     Getter method for sent, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/sent (container)
 
     YANG Description: Counters relating to BGP messages sent to the neighbor
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__sent
       
   def _set_sent(self, v, load=False):
@@ -224,6 +245,9 @@ neighbor
 
     YANG Description: Counters relating to BGP messages sent to the neighbor
     """
+    if self.__sent is None:
+        self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ neighbor
     self.__sent = YANGDynClass(base=sent.sent, is_container='container', yang_name="sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_received(self):
+    return self.__received is not None
+
   def _get_received(self):
     """
     Getter method for received, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages/received (container)
 
     YANG Description: Counters for BGP messages received from the neighbor
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__received
       
   def _set_received(self, v, load=False):
@@ -261,6 +290,9 @@ neighbor
 
     YANG Description: Counters for BGP messages received from the neighbor
     """
+    if self.__received is None:
+        self.__received = YANGDynClass(base=received.received, is_container='container', yang_name="received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

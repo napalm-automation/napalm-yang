@@ -42,7 +42,7 @@ by the OSPF instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__inter_area_propagation_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ by the OSPF instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'inter-area-propagation-policies']
 
+  def _initialized_inter_area_propagation_policy(self):
+    return self.__inter_area_propagation_policy is not None
+
   def _get_inter_area_propagation_policy(self):
     """
     Getter method for inter_area_propagation_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy (list)
@@ -79,6 +82,8 @@ by the OSPF instance
 propagated from the source (src) area to the destination (dst)
 area according to the policy specified
     """
+    if self.__inter_area_propagation_policy is None:
+        self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__inter_area_propagation_policy
       
   def _set_inter_area_propagation_policy(self, v, load=False):
@@ -93,6 +98,9 @@ area according to the policy specified
 propagated from the source (src) area to the destination (dst)
 area according to the policy specified
     """
+    if self.__inter_area_propagation_policy is None:
+        self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -139,7 +147,7 @@ by the OSPF instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__inter_area_propagation_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -168,6 +176,9 @@ by the OSPF instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'inter-area-propagation-policies']
 
+  def _initialized_inter_area_propagation_policy(self):
+    return self.__inter_area_propagation_policy is not None
+
   def _get_inter_area_propagation_policy(self):
     """
     Getter method for inter_area_propagation_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/inter_area_propagation_policies/inter_area_propagation_policy (list)
@@ -176,6 +187,8 @@ by the OSPF instance
 propagated from the source (src) area to the destination (dst)
 area according to the policy specified
     """
+    if self.__inter_area_propagation_policy is None:
+        self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__inter_area_propagation_policy
       
   def _set_inter_area_propagation_policy(self, v, load=False):
@@ -190,6 +203,9 @@ area according to the policy specified
 propagated from the source (src) area to the destination (dst)
 area according to the policy specified
     """
+    if self.__inter_area_propagation_policy is None:
+        self.__inter_area_propagation_policy = YANGDynClass(base=YANGListType("src_area dst_area",inter_area_propagation_policy.inter_area_propagation_policy, yang_name="inter-area-propagation-policy", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-area dst-area', extensions=None), is_container='list', yang_name="inter-area-propagation-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

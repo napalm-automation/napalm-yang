@@ -41,15 +41,15 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=False)
-    self.__oper_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DORMANT': {'value': 5}, u'LOWER_LAYER_DOWN': {'value': 7}, u'UNKNOWN': {'value': 4}, u'TESTING': {'value': 3}, u'UP': {'value': 1}, u'DOWN': {'value': 2}, u'NOT_PRESENT': {'value': 6}},), is_leaf=True, yang_name="oper-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
-    self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'TESTING': {}, u'UP': {}},), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
-    self.__ifindex = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="ifindex", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
-    self.__counters = YANGDynClass(base=counters.counters, is_container='container', yang_name="counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=False)
-    self.__last_change = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="last-change", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:timeticks', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
+    self.__index = None
+    self.__name = None
+    self.__enabled = None
+    self.__oper_status = None
+    self.__admin_status = None
+    self.__ifindex = None
+    self.__counters = None
+    self.__last_change = None
+    self.__description = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,6 +78,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/index (uint32)
@@ -87,6 +90,8 @@ On systems with no support for subinterfaces, or not using
 subinterfaces, this value should default to 0, i.e., the
 default subinterface.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -102,6 +107,9 @@ On systems with no support for subinterfaces, or not using
 subinterfaces, this value should default to 0, i.e., the
 default subinterface.
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -120,6 +128,9 @@ default subinterface.
   def _unset_index(self):
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
 
+
+  def _initialized_name(self):
+    return self.__name is not None
 
   def _get_name(self):
     """
@@ -160,6 +171,8 @@ When a configured user-controlled interface is created by
 the system, it is instantiated with the same name in the
 /interfaces/interface[name]/state list.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -205,6 +218,9 @@ When a configured user-controlled interface is created by
 the system, it is instantiated with the same name in the
 /interfaces/interface[name]/state list.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -223,6 +239,9 @@ the system, it is instantiated with the same name in the
   def _unset_name(self):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
 
+
+  def _initialized_description(self):
+    return self.__description is not None
 
   def _get_description(self):
     """
@@ -257,6 +276,8 @@ If the device does not support ':startup', ifAlias MUST
 be mapped to the 'description' leaf in the 'running'
 datastore.
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -296,6 +317,9 @@ If the device does not support ':startup', ifAlias MUST
 be mapped to the 'description' leaf in the 'running'
 datastore.
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -315,6 +339,9 @@ datastore.
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/enabled (boolean)
@@ -333,6 +360,8 @@ Changes in this leaf in the 'running' datastore are
 reflected in ifAdminStatus, but if ifAdminStatus is
 changed over SNMP, this leaf is not affected.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -357,6 +386,9 @@ Changes in this leaf in the 'running' datastore are
 reflected in ifAdminStatus, but if ifAdminStatus is
 changed over SNMP, this leaf is not affected.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -376,6 +408,9 @@ changed over SNMP, this leaf is not affected.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=False)
 
 
+  def _initialized_ifindex(self):
+    return self.__ifindex is not None
+
   def _get_ifindex(self):
     """
     Getter method for ifindex, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/ifindex (uint32)
@@ -383,6 +418,8 @@ changed over SNMP, this leaf is not affected.
     YANG Description: System assigned number for each interface.  Corresponds to
 ifIndex object in SNMP Interface MIB
     """
+    if self.__ifindex is None:
+        self.__ifindex = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="ifindex", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
     return self.__ifindex
       
   def _set_ifindex(self, v, load=False):
@@ -396,6 +433,9 @@ ifIndex object in SNMP Interface MIB
     YANG Description: System assigned number for each interface.  Corresponds to
 ifIndex object in SNMP Interface MIB
     """
+    if self.__ifindex is None:
+        self.__ifindex = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="ifindex", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -415,6 +455,9 @@ ifIndex object in SNMP Interface MIB
     self.__ifindex = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="ifindex", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=False)
 
 
+  def _initialized_admin_status(self):
+    return self.__admin_status is not None
+
   def _get_admin_status(self):
     """
     Getter method for admin_status, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/admin_status (enumeration)
@@ -426,6 +469,8 @@ has the same read semantics as ifAdminStatus.  Here, it
 reflects the administrative state as set by enabling or
 disabling the interface.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'TESTING': {}, u'UP': {}},), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
     return self.__admin_status
       
   def _set_admin_status(self, v, load=False):
@@ -443,6 +488,9 @@ has the same read semantics as ifAdminStatus.  Here, it
 reflects the administrative state as set by enabling or
 disabling the interface.
     """
+    if self.__admin_status is None:
+        self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'TESTING': {}, u'UP': {}},), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -462,6 +510,9 @@ disabling the interface.
     self.__admin_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'TESTING': {}, u'UP': {}},), is_leaf=True, yang_name="admin-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_oper_status(self):
+    return self.__oper_status is not None
+
   def _get_oper_status(self):
     """
     Getter method for oper_status, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/oper_status (enumeration)
@@ -472,6 +523,8 @@ The current operational state of the interface.
 
 This leaf has the same semantics as ifOperStatus.
     """
+    if self.__oper_status is None:
+        self.__oper_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DORMANT': {'value': 5}, u'LOWER_LAYER_DOWN': {'value': 7}, u'UNKNOWN': {'value': 4}, u'TESTING': {'value': 3}, u'UP': {'value': 1}, u'DOWN': {'value': 2}, u'NOT_PRESENT': {'value': 6}},), is_leaf=True, yang_name="oper-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
     return self.__oper_status
       
   def _set_oper_status(self, v, load=False):
@@ -488,6 +541,9 @@ The current operational state of the interface.
 
 This leaf has the same semantics as ifOperStatus.
     """
+    if self.__oper_status is None:
+        self.__oper_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DORMANT': {'value': 5}, u'LOWER_LAYER_DOWN': {'value': 7}, u'UNKNOWN': {'value': 4}, u'TESTING': {'value': 3}, u'UP': {'value': 1}, u'DOWN': {'value': 2}, u'NOT_PRESENT': {'value': 6}},), is_leaf=True, yang_name="oper-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -507,6 +563,9 @@ This leaf has the same semantics as ifOperStatus.
     self.__oper_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DORMANT': {'value': 5}, u'LOWER_LAYER_DOWN': {'value': 7}, u'UNKNOWN': {'value': 4}, u'TESTING': {'value': 3}, u'UP': {'value': 1}, u'DOWN': {'value': 2}, u'NOT_PRESENT': {'value': 6}},), is_leaf=True, yang_name="oper-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_last_change(self):
+    return self.__last_change is not None
+
   def _get_last_change(self):
     """
     Getter method for last_change, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/last_change (yang:timeticks)
@@ -515,6 +574,8 @@ This leaf has the same semantics as ifOperStatus.
 (e.g., up-to-down transition).   This corresponds to the
 ifLastChange object in the standard interface MIB.
     """
+    if self.__last_change is None:
+        self.__last_change = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="last-change", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:timeticks', is_config=False)
     return self.__last_change
       
   def _set_last_change(self, v, load=False):
@@ -529,6 +590,9 @@ ifLastChange object in the standard interface MIB.
 (e.g., up-to-down transition).   This corresponds to the
 ifLastChange object in the standard interface MIB.
     """
+    if self.__last_change is None:
+        self.__last_change = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="last-change", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:timeticks', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -548,12 +612,17 @@ ifLastChange object in the standard interface MIB.
     self.__last_change = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="last-change", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:timeticks', is_config=False)
 
 
+  def _initialized_counters(self):
+    return self.__counters is not None
+
   def _get_counters(self):
     """
     Getter method for counters, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/state/counters (container)
 
     YANG Description: A collection of interface-related statistics objects.
     """
+    if self.__counters is None:
+        self.__counters = YANGDynClass(base=counters.counters, is_container='container', yang_name="counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=False)
     return self.__counters
       
   def _set_counters(self, v, load=False):
@@ -566,6 +635,9 @@ ifLastChange object in the standard interface MIB.
 
     YANG Description: A collection of interface-related statistics objects.
     """
+    if self.__counters is None:
+        self.__counters = YANGDynClass(base=counters.counters, is_container='container', yang_name="counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

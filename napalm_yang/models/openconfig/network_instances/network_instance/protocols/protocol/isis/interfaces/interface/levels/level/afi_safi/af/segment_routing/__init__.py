@@ -43,8 +43,8 @@ routing for an interface within the IGP.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__adjacency_sids = None
+    self.__prefix_sids = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ routing for an interface within the IGP.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing']
 
+  def _initialized_prefix_sids(self):
+    return self.__prefix_sids is not None
+
   def _get_prefix_sids(self):
     """
     Getter method for prefix_sids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids (container)
@@ -81,6 +84,8 @@ routing for an interface within the IGP.
 the advertisement of a segment routing IGP-Prefix SID for this
 interface.
     """
+    if self.__prefix_sids is None:
+        self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_sids
       
   def _set_prefix_sids(self, v, load=False):
@@ -95,6 +100,9 @@ interface.
 the advertisement of a segment routing IGP-Prefix SID for this
 interface.
     """
+    if self.__prefix_sids is None:
+        self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ interface.
     self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_adjacency_sids(self):
+    return self.__adjacency_sids is not None
+
   def _get_adjacency_sids(self):
     """
     Getter method for adjacency_sids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/adjacency_sids (container)
@@ -122,6 +133,8 @@ interface.
 the advertisement of a segment routing adjacency SID for this
 interface.
     """
+    if self.__adjacency_sids is None:
+        self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__adjacency_sids
       
   def _set_adjacency_sids(self, v, load=False):
@@ -136,6 +149,9 @@ interface.
 the advertisement of a segment routing adjacency SID for this
 interface.
     """
+    if self.__adjacency_sids is None:
+        self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -184,8 +200,8 @@ routing for an interface within the IGP.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__adjacency_sids = None
+    self.__prefix_sids = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -214,6 +230,9 @@ routing for an interface within the IGP.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing']
 
+  def _initialized_prefix_sids(self):
+    return self.__prefix_sids is not None
+
   def _get_prefix_sids(self):
     """
     Getter method for prefix_sids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/prefix_sids (container)
@@ -222,6 +241,8 @@ routing for an interface within the IGP.
 the advertisement of a segment routing IGP-Prefix SID for this
 interface.
     """
+    if self.__prefix_sids is None:
+        self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__prefix_sids
       
   def _set_prefix_sids(self, v, load=False):
@@ -236,6 +257,9 @@ interface.
 the advertisement of a segment routing IGP-Prefix SID for this
 interface.
     """
+    if self.__prefix_sids is None:
+        self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -255,6 +279,9 @@ interface.
     self.__prefix_sids = YANGDynClass(base=prefix_sids.prefix_sids, is_container='container', yang_name="prefix-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_adjacency_sids(self):
+    return self.__adjacency_sids is not None
+
   def _get_adjacency_sids(self):
     """
     Getter method for adjacency_sids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/adjacency_sids (container)
@@ -263,6 +290,8 @@ interface.
 the advertisement of a segment routing adjacency SID for this
 interface.
     """
+    if self.__adjacency_sids is None:
+        self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__adjacency_sids
       
   def _set_adjacency_sids(self, v, load=False):
@@ -277,6 +306,9 @@ interface.
 the advertisement of a segment routing adjacency SID for this
 interface.
     """
+    if self.__adjacency_sids is None:
+        self.__adjacency_sids = YANGDynClass(base=adjacency_sids.adjacency_sids, is_container='container', yang_name="adjacency-sids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

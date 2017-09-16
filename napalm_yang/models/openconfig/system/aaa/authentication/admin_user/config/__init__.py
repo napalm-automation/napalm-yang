@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
-    self.__admin_password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
+    self.__admin_password = None
+    self.__admin_password_encrypted = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'system', u'aaa', u'authentication', u'admin-user', u'config']
 
+  def _initialized_admin_password(self):
+    return self.__admin_password is not None
+
   def _get_admin_password(self):
     """
     Getter method for admin_password, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password (string)
@@ -78,6 +81,8 @@ class config(PybindBase):
 The system should encrypt and only store the password as an
 encrypted value.
     """
+    if self.__admin_password is None:
+        self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
     return self.__admin_password
       
   def _set_admin_password(self, v, load=False):
@@ -92,6 +97,9 @@ encrypted value.
 The system should encrypt and only store the password as an
 encrypted value.
     """
+    if self.__admin_password is None:
+        self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ encrypted value.
     self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
+  def _initialized_admin_password_encrypted(self):
+    return self.__admin_password_encrypted is not None
+
   def _get_admin_password_encrypted(self):
     """
     Getter method for admin_password_encrypted, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password_encrypted (oc-aaa-types:crypt-password-type)
@@ -119,6 +130,8 @@ encrypted value.
 using the notation described in the definition of the
 crypt-password-type.
     """
+    if self.__admin_password_encrypted is None:
+        self.__admin_password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
     return self.__admin_password_encrypted
       
   def _set_admin_password_encrypted(self, v, load=False):
@@ -133,6 +146,9 @@ crypt-password-type.
 using the notation described in the definition of the
 crypt-password-type.
     """
+    if self.__admin_password_encrypted is None:
+        self.__admin_password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

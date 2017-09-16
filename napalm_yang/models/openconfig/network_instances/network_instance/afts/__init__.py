@@ -48,7 +48,7 @@ forwarding entry.
     self._path_helper = False
 
     self._extmethods = False
-    self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aft = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ forwarding entry.
     else:
       return [u'network-instances', u'network-instance', u'afts']
 
+  def _initialized_aft(self):
+    return self.__aft is not None
+
   def _get_aft(self):
     """
     Getter method for aft, mapped from YANG variable /network_instances/network_instance/afts/aft (list)
@@ -84,6 +87,8 @@ forwarding entry.
     YANG Description: An individual abstract forwarding table associated with a
 an address family wtihin the network instance.
     """
+    if self.__aft is None:
+        self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aft
       
   def _set_aft(self, v, load=False):
@@ -97,6 +102,9 @@ an address family wtihin the network instance.
     YANG Description: An individual abstract forwarding table associated with a
 an address family wtihin the network instance.
     """
+    if self.__aft is None:
+        self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,7 +157,7 @@ forwarding entry.
     self._path_helper = False
 
     self._extmethods = False
-    self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__aft = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -178,6 +186,9 @@ forwarding entry.
     else:
       return [u'network-instances', u'network-instance', u'afts']
 
+  def _initialized_aft(self):
+    return self.__aft is not None
+
   def _get_aft(self):
     """
     Getter method for aft, mapped from YANG variable /network_instances/network_instance/afts/aft (list)
@@ -185,6 +196,8 @@ forwarding entry.
     YANG Description: An individual abstract forwarding table associated with a
 an address family wtihin the network instance.
     """
+    if self.__aft is None:
+        self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__aft
       
   def _set_aft(self, v, load=False):
@@ -198,6 +211,9 @@ an address family wtihin the network instance.
     YANG Description: An individual abstract forwarding table associated with a
 an address family wtihin the network instance.
     """
+    if self.__aft is None:
+        self.__aft = YANGDynClass(base=YANGListType("address_family",aft.aft, yang_name="aft", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='address-family', extensions=None), is_container='list', yang_name="aft", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

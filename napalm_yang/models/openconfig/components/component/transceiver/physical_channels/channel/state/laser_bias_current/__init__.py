@@ -45,10 +45,10 @@ expected to just supply the instant value
     self._path_helper = False
 
     self._extmethods = False
-    self.__avg = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="avg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
-    self.__instant = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="instant", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
-    self.__max_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
-    self.__min_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="min", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    self.__avg = None
+    self.__instant = None
+    self.__max_ = None
+    self.__min_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,12 +77,17 @@ expected to just supply the instant value
     else:
       return [u'components', u'component', u'transceiver', u'physical-channels', u'channel', u'state', u'laser-bias-current']
 
+  def _initialized_instant(self):
+    return self.__instant is not None
+
   def _get_instant(self):
     """
     Getter method for instant, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/laser_bias_current/instant (decimal64)
 
     YANG Description: The instantaneous value of the statistic.
     """
+    if self.__instant is None:
+        self.__instant = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="instant", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     return self.__instant
       
   def _set_instant(self, v, load=False):
@@ -95,6 +100,9 @@ expected to just supply the instant value
 
     YANG Description: The instantaneous value of the statistic.
     """
+    if self.__instant is None:
+        self.__instant = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="instant", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ expected to just supply the instant value
     self.__instant = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="instant", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_avg(self):
+    return self.__avg is not None
+
   def _get_avg(self):
     """
     Getter method for avg, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/laser_bias_current/avg (decimal64)
@@ -121,6 +132,8 @@ expected to just supply the instant value
     YANG Description: The arithmetic mean value of the statistic over the
 sampling period.
     """
+    if self.__avg is None:
+        self.__avg = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="avg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     return self.__avg
       
   def _set_avg(self, v, load=False):
@@ -134,6 +147,9 @@ sampling period.
     YANG Description: The arithmetic mean value of the statistic over the
 sampling period.
     """
+    if self.__avg is None:
+        self.__avg = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="avg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ sampling period.
     self.__avg = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="avg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_min_(self):
+    return self.__min_ is not None
+
   def _get_min_(self):
     """
     Getter method for min_, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/laser_bias_current/min (decimal64)
@@ -160,6 +179,8 @@ sampling period.
     YANG Description: The minimum value of the statistic over the sampling
 period
     """
+    if self.__min_ is None:
+        self.__min_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="min", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     return self.__min_
       
   def _set_min_(self, v, load=False):
@@ -173,6 +194,9 @@ period
     YANG Description: The minimum value of the statistic over the sampling
 period
     """
+    if self.__min_ is None:
+        self.__min_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="min", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -192,6 +216,9 @@ period
     self.__min_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="min", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_max_(self):
+    return self.__max_ is not None
+
   def _get_max_(self):
     """
     Getter method for max_, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/laser_bias_current/max (decimal64)
@@ -199,6 +226,8 @@ period
     YANG Description: The maximum value of the statistic over the sampling
 period
     """
+    if self.__max_ is None:
+        self.__max_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     return self.__max_
       
   def _set_max_(self, v, load=False):
@@ -212,6 +241,9 @@ period
     YANG Description: The maximum value of the statistic over the sampling
 period
     """
+    if self.__max_ is None:
+        self.__max_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

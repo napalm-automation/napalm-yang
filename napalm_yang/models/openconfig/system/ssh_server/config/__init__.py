@@ -40,11 +40,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__protocol_version = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'V1': {}, u'V2': {}, u'V1_V2': {}},), default=unicode("V2"), is_leaf=True, yang_name="protocol-version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=True)
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
-    self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
-    self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
-    self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
+    self.__protocol_version = None
+    self.__enable = None
+    self.__rate_limit = None
+    self.__session_limit = None
+    self.__timeout = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class config(PybindBase):
     else:
       return [u'system', u'ssh-server', u'config']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /system/ssh_server/config/enable (boolean)
@@ -80,6 +83,8 @@ class config(PybindBase):
     YANG Description: Enables the ssh server.  The ssh server is enabled by
 default.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -93,6 +98,9 @@ default.
     YANG Description: Enables the ssh server.  The ssh server is enabled by
 default.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,12 +120,17 @@ default.
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=True)
 
 
+  def _initialized_protocol_version(self):
+    return self.__protocol_version is not None
+
   def _get_protocol_version(self):
     """
     Getter method for protocol_version, mapped from YANG variable /system/ssh_server/config/protocol_version (enumeration)
 
     YANG Description: Set the protocol version for SSH connections to the system
     """
+    if self.__protocol_version is None:
+        self.__protocol_version = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'V1': {}, u'V2': {}, u'V1_V2': {}},), default=unicode("V2"), is_leaf=True, yang_name="protocol-version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=True)
     return self.__protocol_version
       
   def _set_protocol_version(self, v, load=False):
@@ -130,6 +143,9 @@ default.
 
     YANG Description: Set the protocol version for SSH connections to the system
     """
+    if self.__protocol_version is None:
+        self.__protocol_version = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'V1': {}, u'V2': {}, u'V1_V2': {}},), default=unicode("V2"), is_leaf=True, yang_name="protocol-version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ default.
     self.__protocol_version = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'V1': {}, u'V2': {}, u'V1_V2': {}},), default=unicode("V2"), is_leaf=True, yang_name="protocol-version", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='enumeration', is_config=True)
 
 
+  def _initialized_timeout(self):
+    return self.__timeout is not None
+
   def _get_timeout(self):
     """
     Getter method for timeout, mapped from YANG variable /system/ssh_server/config/timeout (uint16)
@@ -156,6 +175,8 @@ default.
     YANG Description: Set the idle timeout in seconds on terminal connections to
 the system for the protocol.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
     return self.__timeout
       
   def _set_timeout(self, v, load=False):
@@ -169,6 +190,9 @@ the system for the protocol.
     YANG Description: Set the idle timeout in seconds on terminal connections to
 the system for the protocol.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -188,6 +212,9 @@ the system for the protocol.
     self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
 
 
+  def _initialized_rate_limit(self):
+    return self.__rate_limit is not None
+
   def _get_rate_limit(self):
     """
     Getter method for rate_limit, mapped from YANG variable /system/ssh_server/config/rate_limit (uint16)
@@ -195,6 +222,8 @@ the system for the protocol.
     YANG Description: Set a limit on the number of connection attempts per
 minute to the system for the protocol.
     """
+    if self.__rate_limit is None:
+        self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
     return self.__rate_limit
       
   def _set_rate_limit(self, v, load=False):
@@ -208,6 +237,9 @@ minute to the system for the protocol.
     YANG Description: Set a limit on the number of connection attempts per
 minute to the system for the protocol.
     """
+    if self.__rate_limit is None:
+        self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -227,6 +259,9 @@ minute to the system for the protocol.
     self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
 
 
+  def _initialized_session_limit(self):
+    return self.__session_limit is not None
+
   def _get_session_limit(self):
     """
     Getter method for session_limit, mapped from YANG variable /system/ssh_server/config/session_limit (uint16)
@@ -235,6 +270,8 @@ minute to the system for the protocol.
 sessions to the system for the protocol (e.g., ssh,
 telnet, ...) 
     """
+    if self.__session_limit is None:
+        self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
     return self.__session_limit
       
   def _set_session_limit(self, v, load=False):
@@ -249,6 +286,9 @@ telnet, ...)
 sessions to the system for the protocol (e.g., ssh,
 telnet, ...) 
     """
+    if self.__session_limit is None:
+        self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

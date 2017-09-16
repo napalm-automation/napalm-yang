@@ -41,14 +41,14 @@ extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__multi_topology_identifier = None
+    self.__algorithm = None
+    self.__no_php = None
+    self.__sid_value_type = None
+    self.__sid_scope = None
+    self.__explicit_null = None
+    self.__sid_value = None
+    self.__mapping_server = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,6 +77,9 @@ extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'prefix-sid', u'state']
 
+  def _initialized_no_php(self):
+    return self.__no_php is not None
+
   def _get_no_php(self):
     """
     Getter method for no_php, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/no_php (boolean)
@@ -84,6 +87,8 @@ extended prefix LSA
     YANG Description: If this leaf is set the advertising system has indicated that the
 prefix SID must not be popped before delivering packets to it
     """
+    if self.__no_php is None:
+        self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__no_php
       
   def _set_no_php(self, v, load=False):
@@ -97,6 +102,9 @@ prefix SID must not be popped before delivering packets to it
     YANG Description: If this leaf is set the advertising system has indicated that the
 prefix SID must not be popped before delivering packets to it
     """
+    if self.__no_php is None:
+        self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,6 +124,9 @@ prefix SID must not be popped before delivering packets to it
     self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mapping_server(self):
+    return self.__mapping_server is not None
+
   def _get_mapping_server(self):
     """
     Getter method for mapping_server, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/mapping_server (boolean)
@@ -123,6 +134,8 @@ prefix SID must not be popped before delivering packets to it
     YANG Description: If this leaf is set the SID was advertised by a Segment Routing
 mapping server
     """
+    if self.__mapping_server is None:
+        self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__mapping_server
       
   def _set_mapping_server(self, v, load=False):
@@ -136,6 +149,9 @@ mapping server
     YANG Description: If this leaf is set the SID was advertised by a Segment Routing
 mapping server
     """
+    if self.__mapping_server is None:
+        self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ mapping server
     self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_explicit_null(self):
+    return self.__explicit_null is not None
+
   def _get_explicit_null(self):
     """
     Getter method for explicit_null, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/explicit_null (boolean)
@@ -163,6 +182,8 @@ mapping server
 prefix SID value should be replaced with the explicit null label
 value
     """
+    if self.__explicit_null is None:
+        self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__explicit_null
       
   def _set_explicit_null(self, v, load=False):
@@ -177,6 +198,9 @@ value
 prefix SID value should be replaced with the explicit null label
 value
     """
+    if self.__explicit_null is None:
+        self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ value
     self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_sid_value_type(self):
+    return self.__sid_value_type is not None
+
   def _get_sid_value_type(self):
     """
     Getter method for sid_value_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_value_type (enumeration)
@@ -205,6 +232,8 @@ sub-TLV - in particular, whether the value is an index or an
 absolute value. This value corresponds with the V-flag of the Prefix
 SID sub-TLV
     """
+    if self.__sid_value_type is None:
+        self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_value_type
       
   def _set_sid_value_type(self, v, load=False):
@@ -220,6 +249,9 @@ sub-TLV - in particular, whether the value is an index or an
 absolute value. This value corresponds with the V-flag of the Prefix
 SID sub-TLV
     """
+    if self.__sid_value_type is None:
+        self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,6 +271,9 @@ SID sub-TLV
     self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_sid_scope(self):
+    return self.__sid_scope is not None
+
   def _get_sid_scope(self):
     """
     Getter method for sid_scope, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_scope (enumeration)
@@ -247,6 +282,8 @@ SID sub-TLV
 sub-TLV. The scope of the SID is independent of whether the SID
 contained is an index, or an absolute value
     """
+    if self.__sid_scope is None:
+        self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_scope
       
   def _set_sid_scope(self, v, load=False):
@@ -261,6 +298,9 @@ contained is an index, or an absolute value
 sub-TLV. The scope of the SID is independent of whether the SID
 contained is an index, or an absolute value
     """
+    if self.__sid_scope is None:
+        self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -280,6 +320,9 @@ contained is an index, or an absolute value
     self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/multi_topology_identifier (uint8)
@@ -287,6 +330,8 @@ contained is an index, or an absolute value
     YANG Description: The identifier for the topology to which the Prefix SID relates. The
 value of this leaf is a MT-ID as defined in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -300,6 +345,9 @@ value of this leaf is a MT-ID as defined in RFC4915
     YANG Description: The identifier for the topology to which the Prefix SID relates. The
 value of this leaf is a MT-ID as defined in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,12 +367,17 @@ value of this leaf is a MT-ID as defined in RFC4915
     self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_algorithm(self):
+    return self.__algorithm is not None
+
   def _get_algorithm(self):
     """
     Getter method for algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/algorithm (uint8)
 
     YANG Description: The algorithm that computes the path associated with the Prefix SID
     """
+    if self.__algorithm is None:
+        self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__algorithm
       
   def _set_algorithm(self, v, load=False):
@@ -337,6 +390,9 @@ value of this leaf is a MT-ID as defined in RFC4915
 
     YANG Description: The algorithm that computes the path associated with the Prefix SID
     """
+    if self.__algorithm is None:
+        self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,6 +412,9 @@ value of this leaf is a MT-ID as defined in RFC4915
     self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_value (uint32)
@@ -365,6 +424,8 @@ upon the type of SID, and its scope. The value contained is either a
 32-bit value indicating the index of the SID, or a 24-bit label where
 the 20 right-most bits are used for encoding the label value
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -380,6 +441,9 @@ upon the type of SID, and its scope. The value contained is either a
 32-bit value indicating the index of the SID, or a 24-bit label where
 the 20 right-most bits are used for encoding the label value
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -432,14 +496,14 @@ extended prefix LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__multi_topology_identifier = None
+    self.__algorithm = None
+    self.__no_php = None
+    self.__sid_value_type = None
+    self.__sid_scope = None
+    self.__explicit_null = None
+    self.__sid_value = None
+    self.__mapping_server = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -468,6 +532,9 @@ extended prefix LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'prefix-sid', u'state']
 
+  def _initialized_no_php(self):
+    return self.__no_php is not None
+
   def _get_no_php(self):
     """
     Getter method for no_php, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/no_php (boolean)
@@ -475,6 +542,8 @@ extended prefix LSA
     YANG Description: If this leaf is set the advertising system has indicated that the
 prefix SID must not be popped before delivering packets to it
     """
+    if self.__no_php is None:
+        self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__no_php
       
   def _set_no_php(self, v, load=False):
@@ -488,6 +557,9 @@ prefix SID must not be popped before delivering packets to it
     YANG Description: If this leaf is set the advertising system has indicated that the
 prefix SID must not be popped before delivering packets to it
     """
+    if self.__no_php is None:
+        self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -507,6 +579,9 @@ prefix SID must not be popped before delivering packets to it
     self.__no_php = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="no-php", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mapping_server(self):
+    return self.__mapping_server is not None
+
   def _get_mapping_server(self):
     """
     Getter method for mapping_server, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/mapping_server (boolean)
@@ -514,6 +589,8 @@ prefix SID must not be popped before delivering packets to it
     YANG Description: If this leaf is set the SID was advertised by a Segment Routing
 mapping server
     """
+    if self.__mapping_server is None:
+        self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__mapping_server
       
   def _set_mapping_server(self, v, load=False):
@@ -527,6 +604,9 @@ mapping server
     YANG Description: If this leaf is set the SID was advertised by a Segment Routing
 mapping server
     """
+    if self.__mapping_server is None:
+        self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -546,6 +626,9 @@ mapping server
     self.__mapping_server = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mapping-server", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_explicit_null(self):
+    return self.__explicit_null is not None
+
   def _get_explicit_null(self):
     """
     Getter method for explicit_null, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/explicit_null (boolean)
@@ -554,6 +637,8 @@ mapping server
 prefix SID value should be replaced with the explicit null label
 value
     """
+    if self.__explicit_null is None:
+        self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__explicit_null
       
   def _set_explicit_null(self, v, load=False):
@@ -568,6 +653,9 @@ value
 prefix SID value should be replaced with the explicit null label
 value
     """
+    if self.__explicit_null is None:
+        self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -587,6 +675,9 @@ value
     self.__explicit_null = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="explicit-null", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_sid_value_type(self):
+    return self.__sid_value_type is not None
+
   def _get_sid_value_type(self):
     """
     Getter method for sid_value_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_value_type (enumeration)
@@ -596,6 +687,8 @@ sub-TLV - in particular, whether the value is an index or an
 absolute value. This value corresponds with the V-flag of the Prefix
 SID sub-TLV
     """
+    if self.__sid_value_type is None:
+        self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_value_type
       
   def _set_sid_value_type(self, v, load=False):
@@ -611,6 +704,9 @@ sub-TLV - in particular, whether the value is an index or an
 absolute value. This value corresponds with the V-flag of the Prefix
 SID sub-TLV
     """
+    if self.__sid_value_type is None:
+        self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -630,6 +726,9 @@ SID sub-TLV
     self.__sid_value_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INDEX': {}, u'ABSOLUTE': {}},), is_leaf=True, yang_name="sid-value-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_sid_scope(self):
+    return self.__sid_scope is not None
+
   def _get_sid_scope(self):
     """
     Getter method for sid_scope, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_scope (enumeration)
@@ -638,6 +737,8 @@ SID sub-TLV
 sub-TLV. The scope of the SID is independent of whether the SID
 contained is an index, or an absolute value
     """
+    if self.__sid_scope is None:
+        self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_scope
       
   def _set_sid_scope(self, v, load=False):
@@ -652,6 +753,9 @@ contained is an index, or an absolute value
 sub-TLV. The scope of the SID is independent of whether the SID
 contained is an index, or an absolute value
     """
+    if self.__sid_scope is None:
+        self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -671,6 +775,9 @@ contained is an index, or an absolute value
     self.__sid_scope = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GLOBAL': {}, u'LOCAL': {}},), is_leaf=True, yang_name="sid-scope", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_multi_topology_identifier(self):
+    return self.__multi_topology_identifier is not None
+
   def _get_multi_topology_identifier(self):
     """
     Getter method for multi_topology_identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/multi_topology_identifier (uint8)
@@ -678,6 +785,8 @@ contained is an index, or an absolute value
     YANG Description: The identifier for the topology to which the Prefix SID relates. The
 value of this leaf is a MT-ID as defined in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multi_topology_identifier
       
   def _set_multi_topology_identifier(self, v, load=False):
@@ -691,6 +800,9 @@ value of this leaf is a MT-ID as defined in RFC4915
     YANG Description: The identifier for the topology to which the Prefix SID relates. The
 value of this leaf is a MT-ID as defined in RFC4915
     """
+    if self.__multi_topology_identifier is None:
+        self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -710,12 +822,17 @@ value of this leaf is a MT-ID as defined in RFC4915
     self.__multi_topology_identifier = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multi-topology-identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_algorithm(self):
+    return self.__algorithm is not None
+
   def _get_algorithm(self):
     """
     Getter method for algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/algorithm (uint8)
 
     YANG Description: The algorithm that computes the path associated with the Prefix SID
     """
+    if self.__algorithm is None:
+        self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__algorithm
       
   def _set_algorithm(self, v, load=False):
@@ -728,6 +845,9 @@ value of this leaf is a MT-ID as defined in RFC4915
 
     YANG Description: The algorithm that computes the path associated with the Prefix SID
     """
+    if self.__algorithm is None:
+        self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -747,6 +867,9 @@ value of this leaf is a MT-ID as defined in RFC4915
     self.__algorithm = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_sid_value(self):
+    return self.__sid_value is not None
+
   def _get_sid_value(self):
     """
     Getter method for sid_value, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/prefix_sid/state/sid_value (uint32)
@@ -756,6 +879,8 @@ upon the type of SID, and its scope. The value contained is either a
 32-bit value indicating the index of the SID, or a 24-bit label where
 the 20 right-most bits are used for encoding the label value
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__sid_value
       
   def _set_sid_value(self, v, load=False):
@@ -771,6 +896,9 @@ upon the type of SID, and its scope. The value contained is either a
 32-bit value indicating the index of the SID, or a 24-bit label where
 the 20 right-most bits are used for encoding the label value
     """
+    if self.__sid_value is None:
+        self.__sid_value = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="sid-value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

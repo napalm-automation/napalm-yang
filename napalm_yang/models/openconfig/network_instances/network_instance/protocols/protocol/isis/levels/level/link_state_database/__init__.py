@@ -41,7 +41,7 @@ class link_state_database(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__lsp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class link_state_database(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database']
 
+  def _initialized_lsp(self):
+    return self.__lsp is not None
+
   def _get_lsp(self):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp (list)
 
     YANG Description: This list describes LSPs in LSDB.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__lsp
       
   def _set_lsp(self, v, load=False):
@@ -88,6 +93,9 @@ class link_state_database(PybindBase):
 
     YANG Description: This list describes LSPs in LSDB.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class link_state_database(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__lsp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class link_state_database(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database']
 
+  def _initialized_lsp(self):
+    return self.__lsp is not None
+
   def _get_lsp(self):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp (list)
 
     YANG Description: This list describes LSPs in LSDB.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__lsp
       
   def _set_lsp(self, v, load=False):
@@ -180,6 +193,9 @@ class link_state_database(PybindBase):
 
     YANG Description: This list describes LSPs in LSDB.
     """
+    if self.__lsp is None:
+        self.__lsp = YANGDynClass(base=YANGListType("lsp_id",lsp.lsp, yang_name="lsp", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='lsp-id', extensions=None), is_container='list', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

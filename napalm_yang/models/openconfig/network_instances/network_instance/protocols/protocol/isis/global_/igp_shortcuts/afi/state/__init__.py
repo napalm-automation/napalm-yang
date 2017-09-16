@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__afi_name = None
+    self.__nh_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'igp-shortcuts', u'afi', u'state']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state/afi_name (identityref)
 
     YANG Description: Address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: Address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,6 +115,9 @@ class state(PybindBase):
     self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_nh_type(self):
+    return self.__nh_type is not None
+
   def _get_nh_type(self):
     """
     Getter method for nh_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state/nh_type (identityref)
@@ -114,6 +125,8 @@ class state(PybindBase):
     YANG Description: Tunnel NH Type(RSVP,SR). When present it implies
 that nh-type shortcut is enabled for a specified AFI.
     """
+    if self.__nh_type is None:
+        self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__nh_type
       
   def _set_nh_type(self, v, load=False):
@@ -127,6 +140,9 @@ that nh-type shortcut is enabled for a specified AFI.
     YANG Description: Tunnel NH Type(RSVP,SR). When present it implies
 that nh-type shortcut is enabled for a specified AFI.
     """
+    if self.__nh_type is None:
+        self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -172,8 +188,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    self.__afi_name = None
+    self.__nh_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -202,12 +218,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'igp-shortcuts', u'afi', u'state']
 
+  def _initialized_afi_name(self):
+    return self.__afi_name is not None
+
   def _get_afi_name(self):
     """
     Getter method for afi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state/afi_name (identityref)
 
     YANG Description: Address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__afi_name
       
   def _set_afi_name(self, v, load=False):
@@ -220,6 +241,9 @@ class state(PybindBase):
 
     YANG Description: Address-family type.
     """
+    if self.__afi_name is None:
+        self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -239,6 +263,9 @@ class state(PybindBase):
     self.__afi_name = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-isis-types:IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV4': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'oc-isis-types:IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}, u'IPV6': {'@namespace': u'http://openconfig.net/yang/isis-types', '@module': u'openconfig-isis-types'}},), is_leaf=True, yang_name="afi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_nh_type(self):
+    return self.__nh_type is not None
+
   def _get_nh_type(self):
     """
     Getter method for nh_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts/afi/state/nh_type (identityref)
@@ -246,6 +273,8 @@ class state(PybindBase):
     YANG Description: Tunnel NH Type(RSVP,SR). When present it implies
 that nh-type shortcut is enabled for a specified AFI.
     """
+    if self.__nh_type is None:
+        self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__nh_type
       
   def _set_nh_type(self, v, load=False):
@@ -259,6 +288,9 @@ that nh-type shortcut is enabled for a specified AFI.
     YANG Description: Tunnel NH Type(RSVP,SR). When present it implies
 that nh-type shortcut is enabled for a specified AFI.
     """
+    if self.__nh_type is None:
+        self.__nh_type = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-mpls-t:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-types:PATH_SETUP_LDP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mpls-t:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_SR': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}, u'oc-mplst:PATH_SETUP_RSVP': {'@namespace': u'http://openconfig.net/yang/mpls-types', '@module': u'openconfig-mpls-types'}},)), is_leaf=False, yang_name="nh-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

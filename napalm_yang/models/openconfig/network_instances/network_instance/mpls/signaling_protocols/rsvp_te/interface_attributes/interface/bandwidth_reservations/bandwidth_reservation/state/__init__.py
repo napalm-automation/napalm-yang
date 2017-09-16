@@ -41,11 +41,11 @@ bandwidth reservation at a certain priority
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
+    self.__priority = None
+    self.__reserved_bandwidth = None
+    self.__highwater_mark = None
+    self.__available_bandwidth = None
+    self.__active_reservations_count = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ bandwidth reservation at a certain priority
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'bandwidth-reservations', u'bandwidth-reservation', u'state']
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/priority (union)
 
     YANG Description: RSVP priority level for LSPs traversing the interface
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -92,6 +97,9 @@ bandwidth reservation at a certain priority
 
     YANG Description: RSVP priority level for LSPs traversing the interface
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ bandwidth reservation at a certain priority
     self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_available_bandwidth(self):
+    return self.__available_bandwidth is not None
+
   def _get_available_bandwidth(self):
     """
     Getter method for available_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/available_bandwidth (oc-mplst:bandwidth-mbps)
@@ -119,6 +130,8 @@ bandwidth reservation at a certain priority
 or for the entire interface when the priority is set to
 ALL
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__available_bandwidth
       
   def _set_available_bandwidth(self, v, load=False):
@@ -133,6 +146,9 @@ ALL
 or for the entire interface when the priority is set to
 ALL
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ ALL
     self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
 
 
+  def _initialized_reserved_bandwidth(self):
+    return self.__reserved_bandwidth is not None
+
   def _get_reserved_bandwidth(self):
     """
     Getter method for reserved_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/reserved_bandwidth (oc-mplst:bandwidth-mbps)
@@ -160,6 +179,8 @@ ALL
 or the sum of all priority levels when the keyword is set
 to ALL
     """
+    if self.__reserved_bandwidth is None:
+        self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__reserved_bandwidth
       
   def _set_reserved_bandwidth(self, v, load=False):
@@ -174,6 +195,9 @@ to ALL
 or the sum of all priority levels when the keyword is set
 to ALL
     """
+    if self.__reserved_bandwidth is None:
+        self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,6 +217,9 @@ to ALL
     self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
 
 
+  def _initialized_active_reservations_count(self):
+    return self.__active_reservations_count is not None
+
   def _get_active_reservations_count(self):
     """
     Getter method for active_reservations_count, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/active_reservations_count (yang:gauge64)
@@ -201,6 +228,8 @@ to ALL
 priority, or the sum of all reservations when the priority
 level is set to ALL
     """
+    if self.__active_reservations_count is None:
+        self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
     return self.__active_reservations_count
       
   def _set_active_reservations_count(self, v, load=False):
@@ -215,6 +244,9 @@ level is set to ALL
 priority, or the sum of all reservations when the priority
 level is set to ALL
     """
+    if self.__active_reservations_count is None:
+        self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -234,6 +266,9 @@ level is set to ALL
     self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
 
 
+  def _initialized_highwater_mark(self):
+    return self.__highwater_mark is not None
+
   def _get_highwater_mark(self):
     """
     Getter method for highwater_mark, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/highwater_mark (oc-mplst:bandwidth-mbps)
@@ -242,6 +277,8 @@ level is set to ALL
 priority, or across all priorities in the case that the
 priority level is set to ALL
     """
+    if self.__highwater_mark is None:
+        self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__highwater_mark
       
   def _set_highwater_mark(self, v, load=False):
@@ -256,6 +293,9 @@ priority level is set to ALL
 priority, or across all priorities in the case that the
 priority level is set to ALL
     """
+    if self.__highwater_mark is None:
+        self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -305,11 +345,11 @@ bandwidth reservation at a certain priority
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
-    self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
+    self.__priority = None
+    self.__reserved_bandwidth = None
+    self.__highwater_mark = None
+    self.__available_bandwidth = None
+    self.__active_reservations_count = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -338,12 +378,17 @@ bandwidth reservation at a certain priority
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'bandwidth-reservations', u'bandwidth-reservation', u'state']
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/priority (union)
 
     YANG Description: RSVP priority level for LSPs traversing the interface
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -356,6 +401,9 @@ bandwidth reservation at a certain priority
 
     YANG Description: RSVP priority level for LSPs traversing the interface
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -375,6 +423,9 @@ bandwidth reservation at a certain priority
     self.__priority = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ALL': {}},),], is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
 
+  def _initialized_available_bandwidth(self):
+    return self.__available_bandwidth is not None
+
   def _get_available_bandwidth(self):
     """
     Getter method for available_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/available_bandwidth (oc-mplst:bandwidth-mbps)
@@ -383,6 +434,8 @@ bandwidth reservation at a certain priority
 or for the entire interface when the priority is set to
 ALL
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__available_bandwidth
       
   def _set_available_bandwidth(self, v, load=False):
@@ -397,6 +450,9 @@ ALL
 or for the entire interface when the priority is set to
 ALL
     """
+    if self.__available_bandwidth is None:
+        self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -416,6 +472,9 @@ ALL
     self.__available_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="available-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
 
 
+  def _initialized_reserved_bandwidth(self):
+    return self.__reserved_bandwidth is not None
+
   def _get_reserved_bandwidth(self):
     """
     Getter method for reserved_bandwidth, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/reserved_bandwidth (oc-mplst:bandwidth-mbps)
@@ -424,6 +483,8 @@ ALL
 or the sum of all priority levels when the keyword is set
 to ALL
     """
+    if self.__reserved_bandwidth is None:
+        self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__reserved_bandwidth
       
   def _set_reserved_bandwidth(self, v, load=False):
@@ -438,6 +499,9 @@ to ALL
 or the sum of all priority levels when the keyword is set
 to ALL
     """
+    if self.__reserved_bandwidth is None:
+        self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -457,6 +521,9 @@ to ALL
     self.__reserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
 
 
+  def _initialized_active_reservations_count(self):
+    return self.__active_reservations_count is not None
+
   def _get_active_reservations_count(self):
     """
     Getter method for active_reservations_count, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/active_reservations_count (yang:gauge64)
@@ -465,6 +532,8 @@ to ALL
 priority, or the sum of all reservations when the priority
 level is set to ALL
     """
+    if self.__active_reservations_count is None:
+        self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
     return self.__active_reservations_count
       
   def _set_active_reservations_count(self, v, load=False):
@@ -479,6 +548,9 @@ level is set to ALL
 priority, or the sum of all reservations when the priority
 level is set to ALL
     """
+    if self.__active_reservations_count is None:
+        self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -498,6 +570,9 @@ level is set to ALL
     self.__active_reservations_count = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="active-reservations-count", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:gauge64', is_config=False)
 
 
+  def _initialized_highwater_mark(self):
+    return self.__highwater_mark is not None
+
   def _get_highwater_mark(self):
     """
     Getter method for highwater_mark, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation/state/highwater_mark (oc-mplst:bandwidth-mbps)
@@ -506,6 +581,8 @@ level is set to ALL
 priority, or across all priorities in the case that the
 priority level is set to ALL
     """
+    if self.__highwater_mark is None:
+        self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
     return self.__highwater_mark
       
   def _set_highwater_mark(self, v, load=False):
@@ -520,6 +597,9 @@ priority level is set to ALL
 priority, or across all priorities in the case that the
 priority level is set to ALL
     """
+    if self.__highwater_mark is None:
+        self.__highwater_mark = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="highwater-mark", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:bandwidth-mbps', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

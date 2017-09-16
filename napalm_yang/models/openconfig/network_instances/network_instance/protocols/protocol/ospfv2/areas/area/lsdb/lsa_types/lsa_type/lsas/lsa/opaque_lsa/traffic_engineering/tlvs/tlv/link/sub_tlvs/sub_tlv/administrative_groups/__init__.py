@@ -44,7 +44,7 @@ groups
     self._path_helper = False
 
     self._extmethods = False
-    self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__admin_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ groups
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups']
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group (list)
@@ -80,6 +83,8 @@ groups
     YANG Description: The administrative group described within the
 sub-TLV
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -93,6 +98,9 @@ sub-TLV
     YANG Description: The administrative group described within the
 sub-TLV
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -141,7 +149,7 @@ groups
     self._path_helper = False
 
     self._extmethods = False
-    self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__admin_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -170,6 +178,9 @@ groups
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups']
 
+  def _initialized_admin_group(self):
+    return self.__admin_group is not None
+
   def _get_admin_group(self):
     """
     Getter method for admin_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group (list)
@@ -177,6 +188,8 @@ groups
     YANG Description: The administrative group described within the
 sub-TLV
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__admin_group
       
   def _set_admin_group(self, v, load=False):
@@ -190,6 +203,9 @@ sub-TLV
     YANG Description: The administrative group described within the
 sub-TLV
     """
+    if self.__admin_group is None:
+        self.__admin_group = YANGDynClass(base=YANGListType("bit_index",admin_group.admin_group, yang_name="admin-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='bit-index', extensions=None), is_container='list', yang_name="admin-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,10 +40,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
-    self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
+    self.__mpls_label_block = None
+    self.__local_id = None
+    self.__dataplane_type = None
+    self.__ipv6_prefix = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srlbs', u'srlb', u'config']
 
+  def _initialized_local_id(self):
+    return self.__local_id is not None
+
   def _get_local_id(self):
     """
     Getter method for local_id, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/local_id (string)
@@ -80,6 +83,8 @@ class config(PybindBase):
 The identifier is used when referencing the SRLB within other
 contexts.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__local_id
       
   def _set_local_id(self, v, load=False):
@@ -94,6 +99,9 @@ contexts.
 The identifier is used when referencing the SRLB within other
 contexts.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ contexts.
     self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_dataplane_type(self):
+    return self.__dataplane_type is not None
+
   def _get_dataplane_type(self):
     """
     Getter method for dataplane_type, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/dataplane_type (sr-dataplane-type)
@@ -121,6 +132,8 @@ contexts.
 When MPLS is specified, the local block corresponds to a block of MPLS
 labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     """
+    if self.__dataplane_type is None:
+        self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
     return self.__dataplane_type
       
   def _set_dataplane_type(self, v, load=False):
@@ -135,6 +148,9 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
 When MPLS is specified, the local block corresponds to a block of MPLS
 labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     """
+    if self.__dataplane_type is None:
+        self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
 
 
+  def _initialized_mpls_label_block(self):
+    return self.__mpls_label_block is not None
+
   def _get_mpls_label_block(self):
     """
     Getter method for mpls_label_block, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/mpls_label_block (leafref)
@@ -161,6 +180,8 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     YANG Description: A reference to the MPLS label block that is used to contain the
 SIDs of the SRLB.
     """
+    if self.__mpls_label_block is None:
+        self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__mpls_label_block
       
   def _set_mpls_label_block(self, v, load=False):
@@ -174,6 +195,9 @@ SIDs of the SRLB.
     YANG Description: A reference to the MPLS label block that is used to contain the
 SIDs of the SRLB.
     """
+    if self.__mpls_label_block is None:
+        self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ SIDs of the SRLB.
     self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_ipv6_prefix(self):
+    return self.__ipv6_prefix is not None
+
   def _get_ipv6_prefix(self):
     """
     Getter method for ipv6_prefix, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/ipv6_prefix (inet:ipv6-prefix)
 
     YANG Description: The IPv6 prefix that is used for the SRLB.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
     return self.__ipv6_prefix
       
   def _set_ipv6_prefix(self, v, load=False):
@@ -211,6 +240,9 @@ SIDs of the SRLB.
 
     YANG Description: The IPv6 prefix that is used for the SRLB.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -258,10 +290,10 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
-    self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
-    self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
+    self.__mpls_label_block = None
+    self.__local_id = None
+    self.__dataplane_type = None
+    self.__ipv6_prefix = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -290,6 +322,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srlbs', u'srlb', u'config']
 
+  def _initialized_local_id(self):
+    return self.__local_id is not None
+
   def _get_local_id(self):
     """
     Getter method for local_id, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/local_id (string)
@@ -298,6 +333,8 @@ class config(PybindBase):
 The identifier is used when referencing the SRLB within other
 contexts.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__local_id
       
   def _set_local_id(self, v, load=False):
@@ -312,6 +349,9 @@ contexts.
 The identifier is used when referencing the SRLB within other
 contexts.
     """
+    if self.__local_id is None:
+        self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -331,6 +371,9 @@ contexts.
     self.__local_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="local-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_dataplane_type(self):
+    return self.__dataplane_type is not None
+
   def _get_dataplane_type(self):
     """
     Getter method for dataplane_type, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/dataplane_type (sr-dataplane-type)
@@ -339,6 +382,8 @@ contexts.
 When MPLS is specified, the local block corresponds to a block of MPLS
 labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     """
+    if self.__dataplane_type is None:
+        self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
     return self.__dataplane_type
       
   def _set_dataplane_type(self, v, load=False):
@@ -353,6 +398,9 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
 When MPLS is specified, the local block corresponds to a block of MPLS
 labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     """
+    if self.__dataplane_type is None:
+        self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -372,6 +420,9 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     self.__dataplane_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MPLS': {}, u'IPV6': {}},), is_leaf=True, yang_name="dataplane-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='sr-dataplane-type', is_config=True)
 
 
+  def _initialized_mpls_label_block(self):
+    return self.__mpls_label_block is not None
+
   def _get_mpls_label_block(self):
     """
     Getter method for mpls_label_block, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/mpls_label_block (leafref)
@@ -379,6 +430,8 @@ labels; when IPv6 is specified it corresponds to an IPv6 prefix.
     YANG Description: A reference to the MPLS label block that is used to contain the
 SIDs of the SRLB.
     """
+    if self.__mpls_label_block is None:
+        self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__mpls_label_block
       
   def _set_mpls_label_block(self, v, load=False):
@@ -392,6 +445,9 @@ SIDs of the SRLB.
     YANG Description: A reference to the MPLS label block that is used to contain the
 SIDs of the SRLB.
     """
+    if self.__mpls_label_block is None:
+        self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -411,12 +467,17 @@ SIDs of the SRLB.
     self.__mpls_label_block = YANGDynClass(base=unicode, is_leaf=True, yang_name="mpls-label-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_ipv6_prefix(self):
+    return self.__ipv6_prefix is not None
+
   def _get_ipv6_prefix(self):
     """
     Getter method for ipv6_prefix, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb/config/ipv6_prefix (inet:ipv6-prefix)
 
     YANG Description: The IPv6 prefix that is used for the SRLB.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
     return self.__ipv6_prefix
       
   def _set_ipv6_prefix(self, v, load=False):
@@ -429,6 +490,9 @@ SIDs of the SRLB.
 
     YANG Description: The IPv6 prefix that is used for the SRLB.
     """
+    if self.__ipv6_prefix is None:
+        self.__ipv6_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))'}), is_leaf=True, yang_name="ipv6-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv6-prefix', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

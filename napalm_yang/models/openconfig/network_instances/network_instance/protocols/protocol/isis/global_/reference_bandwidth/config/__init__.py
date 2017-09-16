@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__reference_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'reference-bandwidth', u'config']
 
+  def _initialized_reference_bandwidth(self):
+    return self.__reference_bandwidth is not None
+
   def _get_reference_bandwidth(self):
     """
     Getter method for reference_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/reference_bandwidth/config/reference_bandwidth (uint32)
 
     YANG Description: ISIS Reference Bandwidth value
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__reference_bandwidth
       
   def _set_reference_bandwidth(self, v, load=False):
@@ -87,6 +92,9 @@ class config(PybindBase):
 
     YANG Description: ISIS Reference Bandwidth value
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    self.__reference_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'reference-bandwidth', u'config']
 
+  def _initialized_reference_bandwidth(self):
+    return self.__reference_bandwidth is not None
+
   def _get_reference_bandwidth(self):
     """
     Getter method for reference_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/reference_bandwidth/config/reference_bandwidth (uint32)
 
     YANG Description: ISIS Reference Bandwidth value
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__reference_bandwidth
       
   def _set_reference_bandwidth(self, v, load=False):
@@ -178,6 +191,9 @@ class config(PybindBase):
 
     YANG Description: ISIS Reference Bandwidth value
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

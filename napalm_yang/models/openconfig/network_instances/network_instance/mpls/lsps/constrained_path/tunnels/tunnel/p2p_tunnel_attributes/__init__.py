@@ -44,10 +44,10 @@ class p2p_tunnel_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__state = None
+    self.__p2p_secondary_paths = None
+    self.__config = None
+    self.__p2p_primary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class p2p_tunnel_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/config (container)
 
     YANG Description: Configuration parameters for P2P LSPs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -94,6 +99,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Configuration parameters for P2P LSPs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/state (container)
 
     YANG Description: State parameters for P2P LSPs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -131,6 +144,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: State parameters for P2P LSPs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,12 +166,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_p2p_primary_path(self):
+    return self.__p2p_primary_path is not None
+
   def _get_p2p_primary_path(self):
     """
     Getter method for p2p_primary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path (container)
 
     YANG Description: Primary paths associated with the LSP
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__p2p_primary_path
       
   def _set_p2p_primary_path(self, v, load=False):
@@ -168,6 +189,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Primary paths associated with the LSP
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_p2p_secondary_paths(self):
+    return self.__p2p_secondary_paths is not None
+
   def _get_p2p_secondary_paths(self):
     """
     Getter method for p2p_secondary_paths, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_secondary_paths (container)
 
     YANG Description: Secondary paths for the LSP
     """
+    if self.__p2p_secondary_paths is None:
+        self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__p2p_secondary_paths
       
   def _set_p2p_secondary_paths(self, v, load=False):
@@ -205,6 +234,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Secondary paths for the LSP
     """
+    if self.__p2p_secondary_paths is None:
+        self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -256,10 +288,10 @@ class p2p_tunnel_attributes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__state = None
+    self.__p2p_secondary_paths = None
+    self.__config = None
+    self.__p2p_primary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -288,12 +320,17 @@ class p2p_tunnel_attributes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/config (container)
 
     YANG Description: Configuration parameters for P2P LSPs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -306,6 +343,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Configuration parameters for P2P LSPs
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -325,12 +365,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/state (container)
 
     YANG Description: State parameters for P2P LSPs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -343,6 +388,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: State parameters for P2P LSPs
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,12 +410,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_p2p_primary_path(self):
+    return self.__p2p_primary_path is not None
+
   def _get_p2p_primary_path(self):
     """
     Getter method for p2p_primary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path (container)
 
     YANG Description: Primary paths associated with the LSP
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__p2p_primary_path
       
   def _set_p2p_primary_path(self, v, load=False):
@@ -380,6 +433,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Primary paths associated with the LSP
     """
+    if self.__p2p_primary_path is None:
+        self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,12 +455,17 @@ class p2p_tunnel_attributes(PybindBase):
     self.__p2p_primary_path = YANGDynClass(base=p2p_primary_path.p2p_primary_path, is_container='container', yang_name="p2p-primary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_p2p_secondary_paths(self):
+    return self.__p2p_secondary_paths is not None
+
   def _get_p2p_secondary_paths(self):
     """
     Getter method for p2p_secondary_paths, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_secondary_paths (container)
 
     YANG Description: Secondary paths for the LSP
     """
+    if self.__p2p_secondary_paths is None:
+        self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__p2p_secondary_paths
       
   def _set_p2p_secondary_paths(self, v, load=False):
@@ -417,6 +478,9 @@ class p2p_tunnel_attributes(PybindBase):
 
     YANG Description: Secondary paths for the LSP
     """
+    if self.__p2p_secondary_paths is None:
+        self.__p2p_secondary_paths = YANGDynClass(base=p2p_secondary_paths.p2p_secondary_paths, is_container='container', yang_name="p2p-secondary-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

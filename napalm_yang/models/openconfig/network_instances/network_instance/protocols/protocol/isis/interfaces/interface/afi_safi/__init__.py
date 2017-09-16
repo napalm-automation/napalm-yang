@@ -42,7 +42,7 @@ and state information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__af = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ and state information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'afi-safi']
 
+  def _initialized_af(self):
+    return self.__af is not None
+
   def _get_af(self):
     """
     Getter method for af, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/afi_safi/af (list)
 
     YANG Description: Address-family/Subsequent Address-family list.
     """
+    if self.__af is None:
+        self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__af
       
   def _set_af(self, v, load=False):
@@ -89,6 +94,9 @@ and state information.
 
     YANG Description: Address-family/Subsequent Address-family list.
     """
+    if self.__af is None:
+        self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ and state information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__af = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ and state information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'afi-safi']
 
+  def _initialized_af(self):
+    return self.__af is not None
+
   def _get_af(self):
     """
     Getter method for af, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/afi_safi/af (list)
 
     YANG Description: Address-family/Subsequent Address-family list.
     """
+    if self.__af is None:
+        self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__af
       
   def _set_af(self, v, load=False):
@@ -182,6 +195,9 @@ and state information.
 
     YANG Description: Address-family/Subsequent Address-family list.
     """
+    if self.__af is None:
+        self.__af = YANGDynClass(base=YANGListType("afi_name safi_name",af.af, yang_name="af", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='afi-name safi-name', extensions=None), is_container='list', yang_name="af", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

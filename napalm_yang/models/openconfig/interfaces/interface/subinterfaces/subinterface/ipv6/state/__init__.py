@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__dup_addr_detect_transmits = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="dup-addr-detect-transmits", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
-    self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1280..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
+    self.__dup_addr_detect_transmits = None
+    self.__enabled = None
+    self.__mtu = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class state(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv6', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/state/enabled (boolean)
@@ -82,6 +85,8 @@ interface.  When IPv6 is enabled, this interface is
 connected to an IPv6 stack, and the interface can send
 and receive IPv6 packets.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -99,6 +104,9 @@ interface.  When IPv6 is enabled, this interface is
 connected to an IPv6 stack, and the interface can send
 and receive IPv6 packets.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -118,6 +126,9 @@ and receive IPv6 packets.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=False)
 
 
+  def _initialized_mtu(self):
+    return self.__mtu is not None
+
   def _get_mtu(self):
     """
     Getter method for mtu, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/state/mtu (uint32)
@@ -133,6 +144,8 @@ depending on the interface's type.
 If this leaf is not configured, the operationally used MTU
 depends on the interface's type.
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1280..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
     return self.__mtu
       
   def _set_mtu(self, v, load=False):
@@ -154,6 +167,9 @@ depending on the interface's type.
 If this leaf is not configured, the operationally used MTU
 depends on the interface's type.
     """
+    if self.__mtu is None:
+        self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1280..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -173,6 +189,9 @@ depends on the interface's type.
     self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1280..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
 
 
+  def _initialized_dup_addr_detect_transmits(self):
+    return self.__dup_addr_detect_transmits is not None
+
   def _get_dup_addr_detect_transmits(self):
     """
     Getter method for dup_addr_detect_transmits, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/state/dup_addr_detect_transmits (uint32)
@@ -186,6 +205,8 @@ Duplicate Address Detection is not performed on
 tentative addresses.  A value of one indicates a single
 transmission with no follow-up retransmissions.
     """
+    if self.__dup_addr_detect_transmits is None:
+        self.__dup_addr_detect_transmits = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="dup-addr-detect-transmits", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
     return self.__dup_addr_detect_transmits
       
   def _set_dup_addr_detect_transmits(self, v, load=False):
@@ -205,6 +226,9 @@ Duplicate Address Detection is not performed on
 tentative addresses.  A value of one indicates a single
 transmission with no follow-up retransmissions.
     """
+    if self.__dup_addr_detect_transmits is None:
+        self.__dup_addr_detect_transmits = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="dup-addr-detect-transmits", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

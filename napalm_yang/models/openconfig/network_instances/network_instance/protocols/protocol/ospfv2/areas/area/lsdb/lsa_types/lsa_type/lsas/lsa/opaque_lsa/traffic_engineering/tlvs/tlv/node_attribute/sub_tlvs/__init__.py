@@ -42,7 +42,7 @@ Engineering LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__sub_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ Engineering LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'node-attribute', u'sub-tlvs']
 
+  def _initialized_sub_tlv(self):
+    return self.__sub_tlv is not None
+
   def _get_sub_tlv(self):
     """
     Getter method for sub_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/node_attribute/sub_tlvs/sub_tlv (list)
@@ -78,6 +81,8 @@ Engineering LSA
     YANG Description: List of the Sub-TLVs contained within the Node Attribute
 TLV
     """
+    if self.__sub_tlv is None:
+        self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__sub_tlv
       
   def _set_sub_tlv(self, v, load=False):
@@ -91,6 +96,9 @@ TLV
     YANG Description: List of the Sub-TLVs contained within the Node Attribute
 TLV
     """
+    if self.__sub_tlv is None:
+        self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ Engineering LSA
     self._path_helper = False
 
     self._extmethods = False
-    self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__sub_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ Engineering LSA
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'node-attribute', u'sub-tlvs']
 
+  def _initialized_sub_tlv(self):
+    return self.__sub_tlv is not None
+
   def _get_sub_tlv(self):
     """
     Getter method for sub_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/node_attribute/sub_tlvs/sub_tlv (list)
@@ -173,6 +184,8 @@ Engineering LSA
     YANG Description: List of the Sub-TLVs contained within the Node Attribute
 TLV
     """
+    if self.__sub_tlv is None:
+        self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__sub_tlv
       
   def _set_sub_tlv(self, v, load=False):
@@ -186,6 +199,9 @@ TLV
     YANG Description: List of the Sub-TLVs contained within the Node Attribute
 TLV
     """
+    if self.__sub_tlv is None:
+        self.__sub_tlv = YANGDynClass(base=YANGListType(False,sub_tlv.sub_tlv, yang_name="sub-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="sub-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

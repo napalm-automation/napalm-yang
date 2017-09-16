@@ -41,15 +41,15 @@ next-hop entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
-    self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
-    self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
-    self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    self.__index = None
+    self.__weight = None
+    self.__popped_mpls_label_stack = None
+    self.__encapsulate_header = None
+    self.__decapsulate_header = None
+    self.__mac_address = None
+    self.__ip_address = None
+    self.__origin_protocol = None
+    self.__pushed_mpls_label_stack = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,12 +78,17 @@ next-hop entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops', u'next-hop', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/index (uint64)
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -96,6 +101,9 @@ next-hop entry
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ next-hop entry
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/weight (uint32)
@@ -126,6 +137,8 @@ specified are assumed to be active next-hops and therefore
 eligible (and selected) to be installed in the FIB, and hence
 used for packet forwarding.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -143,6 +156,9 @@ specified are assumed to be active next-hops and therefore
 eligible (and selected) to be installed in the FIB, and hence
 used for packet forwarding.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -162,12 +178,17 @@ used for packet forwarding.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_ip_address(self):
+    return self.__ip_address is not None
+
   def _get_ip_address(self):
     """
     Getter method for ip_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/ip_address (inet:ip-address-no-zone)
 
     YANG Description: The IP address of the next-hop system.
     """
+    if self.__ip_address is None:
+        self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
     return self.__ip_address
       
   def _set_ip_address(self, v, load=False):
@@ -180,6 +201,9 @@ used for packet forwarding.
 
     YANG Description: The IP address of the next-hop system.
     """
+    if self.__ip_address is None:
+        self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -199,6 +223,9 @@ used for packet forwarding.
     self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
 
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/mac_address (yang:mac-address)
@@ -206,6 +233,8 @@ used for packet forwarding.
     YANG Description: The MAC address of the next-hop if resolved by the local
 network instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -219,6 +248,9 @@ network instance.
     YANG Description: The MAC address of the next-hop if resolved by the local
 network instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -238,6 +270,9 @@ network instance.
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_popped_mpls_label_stack(self):
+    return self.__popped_mpls_label_stack is not None
+
   def _get_popped_mpls_label_stack(self):
     """
     Getter method for popped_mpls_label_stack, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/popped_mpls_label_stack (oc-mplst:mpls-label)
@@ -255,6 +290,8 @@ labels, the outer-most being 500, and the second of which is
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__popped_mpls_label_stack is None:
+        self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__popped_mpls_label_stack
       
   def _set_popped_mpls_label_stack(self, v, load=False):
@@ -278,6 +315,9 @@ labels, the outer-most being 500, and the second of which is
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__popped_mpls_label_stack is None:
+        self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -296,6 +336,9 @@ popped-mpls-label-stack and pushed-mpls-label-stack nodes.
   def _unset_popped_mpls_label_stack(self):
     self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
+
+  def _initialized_pushed_mpls_label_stack(self):
+    return self.__pushed_mpls_label_stack is not None
 
   def _get_pushed_mpls_label_stack(self):
     """
@@ -317,6 +360,8 @@ system re-ordering of leaves is permitted by the system.
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__pushed_mpls_label_stack is None:
+        self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__pushed_mpls_label_stack
       
   def _set_pushed_mpls_label_stack(self, v, load=False):
@@ -343,6 +388,9 @@ system re-ordering of leaves is permitted by the system.
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__pushed_mpls_label_stack is None:
+        self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -362,6 +410,9 @@ popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_decapsulate_header(self):
+    return self.__decapsulate_header is not None
+
   def _get_decapsulate_header(self):
     """
     Getter method for decapsulate_header, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/decapsulate_header (oc-aftt:encapsulation-header-type)
@@ -374,6 +425,8 @@ forwarding lookup is performed on the packet encapsulated
 within the header, matched within the relevant AFT within the
 specified network-instance.
     """
+    if self.__decapsulate_header is None:
+        self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
     return self.__decapsulate_header
       
   def _set_decapsulate_header(self, v, load=False):
@@ -392,6 +445,9 @@ forwarding lookup is performed on the packet encapsulated
 within the header, matched within the relevant AFT within the
 specified network-instance.
     """
+    if self.__decapsulate_header is None:
+        self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -411,6 +467,9 @@ specified network-instance.
     self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
 
 
+  def _initialized_encapsulate_header(self):
+    return self.__encapsulate_header is not None
+
   def _get_encapsulate_header(self):
     """
     Getter method for encapsulate_header, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/encapsulate_header (oc-aftt:encapsulation-header-type)
@@ -419,6 +478,8 @@ specified network-instance.
 system performs an encapsulation of the packet - adding the
 specified header type.
     """
+    if self.__encapsulate_header is None:
+        self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
     return self.__encapsulate_header
       
   def _set_encapsulate_header(self, v, load=False):
@@ -433,6 +494,9 @@ specified header type.
 system performs an encapsulation of the packet - adding the
 specified header type.
     """
+    if self.__encapsulate_header is None:
+        self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -452,12 +516,17 @@ specified header type.
     self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
 
 
+  def _initialized_origin_protocol(self):
+    return self.__origin_protocol is not None
+
   def _get_origin_protocol(self):
     """
     Getter method for origin_protocol, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/origin_protocol (identityref)
 
     YANG Description: The protocol from which the AFT entry was learned.
     """
+    if self.__origin_protocol is None:
+        self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__origin_protocol
       
   def _set_origin_protocol(self, v, load=False):
@@ -470,6 +539,9 @@ specified header type.
 
     YANG Description: The protocol from which the AFT entry was learned.
     """
+    if self.__origin_protocol is None:
+        self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -523,15 +595,15 @@ next-hop entry
     self._path_helper = False
 
     self._extmethods = False
-    self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
-    self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
-    self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
-    self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
-    self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    self.__index = None
+    self.__weight = None
+    self.__popped_mpls_label_stack = None
+    self.__encapsulate_header = None
+    self.__decapsulate_header = None
+    self.__mac_address = None
+    self.__ip_address = None
+    self.__origin_protocol = None
+    self.__pushed_mpls_label_stack = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -560,12 +632,17 @@ next-hop entry
     else:
       return [u'network-instances', u'network-instance', u'afts', u'aft', u'entries', u'entry', u'next-hops', u'next-hop', u'state']
 
+  def _initialized_index(self):
+    return self.__index is not None
+
   def _get_index(self):
     """
     Getter method for index, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/index (uint64)
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__index
       
   def _set_index(self, v, load=False):
@@ -578,6 +655,9 @@ next-hop entry
 
     YANG Description: A unique entry for the next-hop
     """
+    if self.__index is None:
+        self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -597,6 +677,9 @@ next-hop entry
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_weight(self):
+    return self.__weight is not None
+
   def _get_weight(self):
     """
     Getter method for weight, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/weight (uint32)
@@ -608,6 +691,8 @@ specified are assumed to be active next-hops and therefore
 eligible (and selected) to be installed in the FIB, and hence
 used for packet forwarding.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__weight
       
   def _set_weight(self, v, load=False):
@@ -625,6 +710,9 @@ specified are assumed to be active next-hops and therefore
 eligible (and selected) to be installed in the FIB, and hence
 used for packet forwarding.
     """
+    if self.__weight is None:
+        self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -644,12 +732,17 @@ used for packet forwarding.
     self.__weight = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="weight", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_ip_address(self):
+    return self.__ip_address is not None
+
   def _get_ip_address(self):
     """
     Getter method for ip_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/ip_address (inet:ip-address-no-zone)
 
     YANG Description: The IP address of the next-hop system.
     """
+    if self.__ip_address is None:
+        self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
     return self.__ip_address
       
   def _set_ip_address(self, v, load=False):
@@ -662,6 +755,9 @@ used for packet forwarding.
 
     YANG Description: The IP address of the next-hop system.
     """
+    if self.__ip_address is None:
+        self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -681,6 +777,9 @@ used for packet forwarding.
     self.__ip_address = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}),RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}),], is_leaf=True, yang_name="ip-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address-no-zone', is_config=False)
 
 
+  def _initialized_mac_address(self):
+    return self.__mac_address is not None
+
   def _get_mac_address(self):
     """
     Getter method for mac_address, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/mac_address (yang:mac-address)
@@ -688,6 +787,8 @@ used for packet forwarding.
     YANG Description: The MAC address of the next-hop if resolved by the local
 network instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
     return self.__mac_address
       
   def _set_mac_address(self, v, load=False):
@@ -701,6 +802,9 @@ network instance.
     YANG Description: The MAC address of the next-hop if resolved by the local
 network instance.
     """
+    if self.__mac_address is None:
+        self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -720,6 +824,9 @@ network instance.
     self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=False)
 
 
+  def _initialized_popped_mpls_label_stack(self):
+    return self.__popped_mpls_label_stack is not None
+
   def _get_popped_mpls_label_stack(self):
     """
     Getter method for popped_mpls_label_stack, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/popped_mpls_label_stack (oc-mplst:mpls-label)
@@ -737,6 +844,8 @@ labels, the outer-most being 500, and the second of which is
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__popped_mpls_label_stack is None:
+        self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__popped_mpls_label_stack
       
   def _set_popped_mpls_label_stack(self, v, load=False):
@@ -760,6 +869,9 @@ labels, the outer-most being 500, and the second of which is
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__popped_mpls_label_stack is None:
+        self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -778,6 +890,9 @@ popped-mpls-label-stack and pushed-mpls-label-stack nodes.
   def _unset_popped_mpls_label_stack(self):
     self.__popped_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="popped-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
+
+  def _initialized_pushed_mpls_label_stack(self):
+    return self.__pushed_mpls_label_stack is not None
 
   def _get_pushed_mpls_label_stack(self):
     """
@@ -799,6 +914,8 @@ system re-ordering of leaves is permitted by the system.
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__pushed_mpls_label_stack is None:
+        self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
     return self.__pushed_mpls_label_stack
       
   def _set_pushed_mpls_label_stack(self, v, load=False):
@@ -825,6 +942,9 @@ system re-ordering of leaves is permitted by the system.
 A swap operation is reflected by entries in the
 popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     """
+    if self.__pushed_mpls_label_stack is None:
+        self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -844,6 +964,9 @@ popped-mpls-label-stack and pushed-mpls-label-stack nodes.
     self.__pushed_mpls_label_stack = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'16..1048575']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NO_LABEL': {}, u'IPV6_EXPLICIT_NULL': {'value': 2}, u'ENTROPY_LABEL_INDICATOR': {'value': 7}, u'IPV4_EXPLICIT_NULL': {'value': 0}, u'ROUTER_ALERT': {'value': 1}, u'IMPLICIT_NULL': {'value': 3}},),]), is_leaf=False, yang_name="pushed-mpls-label-stack", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-mplst:mpls-label', is_config=False)
 
 
+  def _initialized_decapsulate_header(self):
+    return self.__decapsulate_header is not None
+
   def _get_decapsulate_header(self):
     """
     Getter method for decapsulate_header, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/decapsulate_header (oc-aftt:encapsulation-header-type)
@@ -856,6 +979,8 @@ forwarding lookup is performed on the packet encapsulated
 within the header, matched within the relevant AFT within the
 specified network-instance.
     """
+    if self.__decapsulate_header is None:
+        self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
     return self.__decapsulate_header
       
   def _set_decapsulate_header(self, v, load=False):
@@ -874,6 +999,9 @@ forwarding lookup is performed on the packet encapsulated
 within the header, matched within the relevant AFT within the
 specified network-instance.
     """
+    if self.__decapsulate_header is None:
+        self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -893,6 +1021,9 @@ specified network-instance.
     self.__decapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="decapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
 
 
+  def _initialized_encapsulate_header(self):
+    return self.__encapsulate_header is not None
+
   def _get_encapsulate_header(self):
     """
     Getter method for encapsulate_header, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/encapsulate_header (oc-aftt:encapsulation-header-type)
@@ -901,6 +1032,8 @@ specified network-instance.
 system performs an encapsulation of the packet - adding the
 specified header type.
     """
+    if self.__encapsulate_header is None:
+        self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
     return self.__encapsulate_header
       
   def _set_encapsulate_header(self, v, load=False):
@@ -915,6 +1048,9 @@ specified header type.
 system performs an encapsulation of the packet - adding the
 specified header type.
     """
+    if self.__encapsulate_header is None:
+        self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -934,12 +1070,17 @@ specified header type.
     self.__encapsulate_header = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'GRE': {}, u'MPLS': {}, u'IPV4': {}, u'IPV6': {}},), is_leaf=True, yang_name="encapsulate-header", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-aftt:encapsulation-header-type', is_config=False)
 
 
+  def _initialized_origin_protocol(self):
+    return self.__origin_protocol is not None
+
   def _get_origin_protocol(self):
     """
     Getter method for origin_protocol, mapped from YANG variable /network_instances/network_instance/afts/aft/entries/entry/next_hops/next_hop/state/origin_protocol (identityref)
 
     YANG Description: The protocol from which the AFT entry was learned.
     """
+    if self.__origin_protocol is None:
+        self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__origin_protocol
       
   def _set_origin_protocol(self, v, load=False):
@@ -952,6 +1093,9 @@ specified header type.
 
     YANG Description: The protocol from which the AFT entry was learned.
     """
+    if self.__origin_protocol is None:
+        self.__origin_protocol = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="origin-protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

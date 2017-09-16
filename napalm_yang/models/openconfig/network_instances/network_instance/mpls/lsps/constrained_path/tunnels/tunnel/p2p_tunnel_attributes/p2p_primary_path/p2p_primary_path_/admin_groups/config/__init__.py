@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__include_all_group = None
+    self.__include_any_group = None
+    self.__exclude_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'admin-groups', u'config']
 
+  def _initialized_exclude_group(self):
+    return self.__exclude_group is not None
+
   def _get_exclude_group(self):
     """
     Getter method for exclude_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/exclude_group (leafref)
@@ -78,6 +81,8 @@ class config(PybindBase):
     YANG Description: list of references to named admin-groups to exclude in
 path calculation.
     """
+    if self.__exclude_group is None:
+        self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__exclude_group
       
   def _set_exclude_group(self, v, load=False):
@@ -91,6 +96,9 @@ path calculation.
     YANG Description: list of references to named admin-groups to exclude in
 path calculation.
     """
+    if self.__exclude_group is None:
+        self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ path calculation.
     self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_include_all_group(self):
+    return self.__include_all_group is not None
+
   def _get_include_all_group(self):
     """
     Getter method for include_all_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/include_all_group (leafref)
@@ -117,6 +128,8 @@ path calculation.
     YANG Description: list of references to named admin-groups of which all must
 be included
     """
+    if self.__include_all_group is None:
+        self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__include_all_group
       
   def _set_include_all_group(self, v, load=False):
@@ -130,6 +143,9 @@ be included
     YANG Description: list of references to named admin-groups of which all must
 be included
     """
+    if self.__include_all_group is None:
+        self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ be included
     self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_include_any_group(self):
+    return self.__include_any_group is not None
+
   def _get_include_any_group(self):
     """
     Getter method for include_any_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/include_any_group (leafref)
@@ -156,6 +175,8 @@ be included
     YANG Description: list of references to named admin-groups of which one must
 be included
     """
+    if self.__include_any_group is None:
+        self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__include_any_group
       
   def _set_include_any_group(self, v, load=False):
@@ -169,6 +190,9 @@ be included
     YANG Description: list of references to named admin-groups of which one must
 be included
     """
+    if self.__include_any_group is None:
+        self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    self.__include_all_group = None
+    self.__include_any_group = None
+    self.__exclude_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,6 +270,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'admin-groups', u'config']
 
+  def _initialized_exclude_group(self):
+    return self.__exclude_group is not None
+
   def _get_exclude_group(self):
     """
     Getter method for exclude_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/exclude_group (leafref)
@@ -253,6 +280,8 @@ class config(PybindBase):
     YANG Description: list of references to named admin-groups to exclude in
 path calculation.
     """
+    if self.__exclude_group is None:
+        self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__exclude_group
       
   def _set_exclude_group(self, v, load=False):
@@ -266,6 +295,9 @@ path calculation.
     YANG Description: list of references to named admin-groups to exclude in
 path calculation.
     """
+    if self.__exclude_group is None:
+        self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -285,6 +317,9 @@ path calculation.
     self.__exclude_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="exclude-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_include_all_group(self):
+    return self.__include_all_group is not None
+
   def _get_include_all_group(self):
     """
     Getter method for include_all_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/include_all_group (leafref)
@@ -292,6 +327,8 @@ path calculation.
     YANG Description: list of references to named admin-groups of which all must
 be included
     """
+    if self.__include_all_group is None:
+        self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__include_all_group
       
   def _set_include_all_group(self, v, load=False):
@@ -305,6 +342,9 @@ be included
     YANG Description: list of references to named admin-groups of which all must
 be included
     """
+    if self.__include_all_group is None:
+        self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -324,6 +364,9 @@ be included
     self.__include_all_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-all-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_include_any_group(self):
+    return self.__include_any_group is not None
+
   def _get_include_any_group(self):
     """
     Getter method for include_any_group, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/admin_groups/config/include_any_group (leafref)
@@ -331,6 +374,8 @@ be included
     YANG Description: list of references to named admin-groups of which one must
 be included
     """
+    if self.__include_any_group is None:
+        self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__include_any_group
       
   def _set_include_any_group(self, v, load=False):
@@ -344,6 +389,9 @@ be included
     YANG Description: list of references to named admin-groups of which one must
 be included
     """
+    if self.__include_any_group is None:
+        self.__include_any_group = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="include-any-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

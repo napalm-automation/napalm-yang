@@ -42,7 +42,7 @@ forwarded according to the policy action.
     self._path_helper = False
 
     self._extmethods = False
-    self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__rule = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ forwarded according to the policy action.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules']
 
+  def _initialized_rule(self):
+    return self.__rule is not None
+
   def _get_rule(self):
     """
     Getter method for rule, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule (list)
@@ -78,6 +81,8 @@ forwarded according to the policy action.
     YANG Description: A match rule for the policy. In the case that multiple
 criteria are specified within a single 
     """
+    if self.__rule is None:
+        self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__rule
       
   def _set_rule(self, v, load=False):
@@ -91,6 +96,9 @@ criteria are specified within a single
     YANG Description: A match rule for the policy. In the case that multiple
 criteria are specified within a single 
     """
+    if self.__rule is None:
+        self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ forwarded according to the policy action.
     self._path_helper = False
 
     self._extmethods = False
-    self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__rule = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ forwarded according to the policy action.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules']
 
+  def _initialized_rule(self):
+    return self.__rule is not None
+
   def _get_rule(self):
     """
     Getter method for rule, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule (list)
@@ -173,6 +184,8 @@ forwarded according to the policy action.
     YANG Description: A match rule for the policy. In the case that multiple
 criteria are specified within a single 
     """
+    if self.__rule is None:
+        self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__rule
       
   def _set_rule(self, v, load=False):
@@ -186,6 +199,9 @@ criteria are specified within a single
     YANG Description: A match rule for the policy. In the case that multiple
 criteria are specified within a single 
     """
+    if self.__rule is None:
+        self.__rule = YANGDynClass(base=YANGListType("sequence_id",rule.rule, yang_name="rule", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='sequence-id', extensions=None), is_container='list', yang_name="rule", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

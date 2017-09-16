@@ -42,8 +42,8 @@ sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__bit_index = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups', u'admin-group']
 
+  def _initialized_bit_index(self):
+    return self.__bit_index is not None
+
   def _get_bit_index(self):
     """
     Getter method for bit_index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/bit_index (leafref)
 
     YANG Description: A reference to the bit index being described
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__bit_index
       
   def _set_bit_index(self, v, load=False):
@@ -90,6 +95,9 @@ sub-TLV
 
     YANG Description: A reference to the bit index being described
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -114,6 +122,9 @@ sub-TLV
     self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state (container)
@@ -121,6 +132,8 @@ sub-TLV
     YANG Description: State parameters relating to the administrative
 groups being described for the link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -134,6 +147,9 @@ groups being described for the link
     YANG Description: State parameters relating to the administrative
 groups being described for the link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -181,8 +197,8 @@ sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__bit_index = None
+    self.__state = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -211,12 +227,17 @@ sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'administrative-groups', u'admin-group']
 
+  def _initialized_bit_index(self):
+    return self.__bit_index is not None
+
   def _get_bit_index(self):
     """
     Getter method for bit_index, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/bit_index (leafref)
 
     YANG Description: A reference to the bit index being described
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__bit_index
       
   def _set_bit_index(self, v, load=False):
@@ -229,6 +250,9 @@ sub-TLV
 
     YANG Description: A reference to the bit index being described
     """
+    if self.__bit_index is None:
+        self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -253,6 +277,9 @@ sub-TLV
     self.__bit_index = YANGDynClass(base=unicode, is_leaf=True, yang_name="bit-index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/administrative_groups/admin_group/state (container)
@@ -260,6 +287,8 @@ sub-TLV
     YANG Description: State parameters relating to the administrative
 groups being described for the link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -273,6 +302,9 @@ groups being described for the link
     YANG Description: State parameters relating to the administrative
 groups being described for the link
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,8 +41,8 @@ distance
     self._path_helper = False
 
     self._extmethods = False
-    self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    self.__external_route_distance = None
+    self.__internal_route_distance = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ distance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'default-route-distance', u'config']
 
+  def _initialized_external_route_distance(self):
+    return self.__external_route_distance is not None
+
   def _get_external_route_distance(self):
     """
     Getter method for external_route_distance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/default_route_distance/config/external_route_distance (uint8)
@@ -78,6 +81,8 @@ distance
     YANG Description: Administrative distance for routes learned from external
 BGP (eBGP).
     """
+    if self.__external_route_distance is None:
+        self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__external_route_distance
       
   def _set_external_route_distance(self, v, load=False):
@@ -91,6 +96,9 @@ BGP (eBGP).
     YANG Description: Administrative distance for routes learned from external
 BGP (eBGP).
     """
+    if self.__external_route_distance is None:
+        self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ BGP (eBGP).
     self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_internal_route_distance(self):
+    return self.__internal_route_distance is not None
+
   def _get_internal_route_distance(self):
     """
     Getter method for internal_route_distance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/default_route_distance/config/internal_route_distance (uint8)
@@ -117,6 +128,8 @@ BGP (eBGP).
     YANG Description: Administrative distance for routes learned from internal
 BGP (iBGP).
     """
+    if self.__internal_route_distance is None:
+        self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__internal_route_distance
       
   def _set_internal_route_distance(self, v, load=False):
@@ -130,6 +143,9 @@ BGP (iBGP).
     YANG Description: Administrative distance for routes learned from internal
 BGP (iBGP).
     """
+    if self.__internal_route_distance is None:
+        self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ distance
     self._path_helper = False
 
     self._extmethods = False
-    self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
-    self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    self.__external_route_distance = None
+    self.__internal_route_distance = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,6 +222,9 @@ distance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'default-route-distance', u'config']
 
+  def _initialized_external_route_distance(self):
+    return self.__external_route_distance is not None
+
   def _get_external_route_distance(self):
     """
     Getter method for external_route_distance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/default_route_distance/config/external_route_distance (uint8)
@@ -213,6 +232,8 @@ distance
     YANG Description: Administrative distance for routes learned from external
 BGP (eBGP).
     """
+    if self.__external_route_distance is None:
+        self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__external_route_distance
       
   def _set_external_route_distance(self, v, load=False):
@@ -226,6 +247,9 @@ BGP (eBGP).
     YANG Description: Administrative distance for routes learned from external
 BGP (eBGP).
     """
+    if self.__external_route_distance is None:
+        self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ BGP (eBGP).
     self.__external_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="external-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
 
 
+  def _initialized_internal_route_distance(self):
+    return self.__internal_route_distance is not None
+
   def _get_internal_route_distance(self):
     """
     Getter method for internal_route_distance, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/default_route_distance/config/internal_route_distance (uint8)
@@ -252,6 +279,8 @@ BGP (eBGP).
     YANG Description: Administrative distance for routes learned from internal
 BGP (iBGP).
     """
+    if self.__internal_route_distance is None:
+        self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
     return self.__internal_route_distance
       
   def _set_internal_route_distance(self, v, load=False):
@@ -265,6 +294,9 @@ BGP (iBGP).
     YANG Description: Administrative distance for routes learned from internal
 BGP (iBGP).
     """
+    if self.__internal_route_distance is None:
+        self.__internal_route_distance = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..255']}), is_leaf=True, yang_name="internal-route-distance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

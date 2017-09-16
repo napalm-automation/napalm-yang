@@ -42,7 +42,7 @@ between tables
     self._path_helper = False
 
     self._extmethods = False
-    self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__table_connection = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ between tables
     else:
       return [u'network-instances', u'network-instance', u'table-connections']
 
+  def _initialized_table_connection(self):
+    return self.__table_connection is not None
+
   def _get_table_connection(self):
     """
     Getter method for table_connection, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection (list)
@@ -84,6 +87,8 @@ table implies that routes that match the policy specified
 for the connection are available for the destination
 protocol to advertise, or match within its policies.
     """
+    if self.__table_connection is None:
+        self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__table_connection
       
   def _set_table_connection(self, v, load=False):
@@ -103,6 +108,9 @@ table implies that routes that match the policy specified
 for the connection are available for the destination
 protocol to advertise, or match within its policies.
     """
+    if self.__table_connection is None:
+        self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,7 +157,7 @@ between tables
     self._path_helper = False
 
     self._extmethods = False
-    self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__table_connection = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -178,6 +186,9 @@ between tables
     else:
       return [u'network-instances', u'network-instance', u'table-connections']
 
+  def _initialized_table_connection(self):
+    return self.__table_connection is not None
+
   def _get_table_connection(self):
     """
     Getter method for table_connection, mapped from YANG variable /network_instances/network_instance/table_connections/table_connection (list)
@@ -191,6 +202,8 @@ table implies that routes that match the policy specified
 for the connection are available for the destination
 protocol to advertise, or match within its policies.
     """
+    if self.__table_connection is None:
+        self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__table_connection
       
   def _set_table_connection(self, v, load=False):
@@ -210,6 +223,9 @@ table implies that routes that match the policy specified
 for the connection are available for the destination
 protocol to advertise, or match within its policies.
     """
+    if self.__table_connection is None:
+        self.__table_connection = YANGDynClass(base=YANGListType("src_protocol dst_protocol address_family",table_connection.table_connection, yang_name="table-connection", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='src-protocol dst-protocol address-family', extensions=None), is_container='list', yang_name="table-connection", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

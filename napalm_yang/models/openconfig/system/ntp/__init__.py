@@ -44,10 +44,10 @@ class ntp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__ntp_keys = YANGDynClass(base=ntp_keys.ntp_keys, is_container='container', yang_name="ntp-keys", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__ntp_keys = None
+    self.__state = None
+    self.__config = None
+    self.__servers = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class ntp(PybindBase):
     else:
       return [u'system', u'ntp']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/ntp/config (container)
 
     YANG Description: Configuration data for NTP client.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -94,6 +99,9 @@ class ntp(PybindBase):
 
     YANG Description: Configuration data for NTP client.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,12 +121,17 @@ class ntp(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/ntp/state (container)
 
     YANG Description: Operational state data for NTP services.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -131,6 +144,9 @@ class ntp(PybindBase):
 
     YANG Description: Operational state data for NTP services.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,12 +166,17 @@ class ntp(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_ntp_keys(self):
+    return self.__ntp_keys is not None
+
   def _get_ntp_keys(self):
     """
     Getter method for ntp_keys, mapped from YANG variable /system/ntp/ntp_keys (container)
 
     YANG Description: Enclosing container for list of NTP authentication keys
     """
+    if self.__ntp_keys is None:
+        self.__ntp_keys = YANGDynClass(base=ntp_keys.ntp_keys, is_container='container', yang_name="ntp-keys", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__ntp_keys
       
   def _set_ntp_keys(self, v, load=False):
@@ -168,6 +189,9 @@ class ntp(PybindBase):
 
     YANG Description: Enclosing container for list of NTP authentication keys
     """
+    if self.__ntp_keys is None:
+        self.__ntp_keys = YANGDynClass(base=ntp_keys.ntp_keys, is_container='container', yang_name="ntp-keys", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ class ntp(PybindBase):
     self.__ntp_keys = YANGDynClass(base=ntp_keys.ntp_keys, is_container='container', yang_name="ntp-keys", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_servers(self):
+    return self.__servers is not None
+
   def _get_servers(self):
     """
     Getter method for servers, mapped from YANG variable /system/ntp/servers (container)
 
     YANG Description: Enclosing container for the list of NTP servers
     """
+    if self.__servers is None:
+        self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__servers
       
   def _set_servers(self, v, load=False):
@@ -205,6 +234,9 @@ class ntp(PybindBase):
 
     YANG Description: Enclosing container for the list of NTP servers
     """
+    if self.__servers is None:
+        self.__servers = YANGDynClass(base=servers.servers, is_container='container', yang_name="servers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

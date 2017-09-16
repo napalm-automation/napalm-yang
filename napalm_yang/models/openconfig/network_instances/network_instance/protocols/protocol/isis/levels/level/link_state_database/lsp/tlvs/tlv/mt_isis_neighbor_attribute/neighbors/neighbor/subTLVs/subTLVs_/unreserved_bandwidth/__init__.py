@@ -42,7 +42,7 @@ per second.
     self._path_helper = False
 
     self._extmethods = False
-    self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__setup_priority = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ per second.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs', u'subTLVs', u'unreserved-bandwidth']
 
+  def _initialized_setup_priority(self):
+    return self.__setup_priority is not None
+
   def _get_setup_priority(self):
     """
     Getter method for setup_priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unreserved_bandwidth/setup_priority (list)
 
     YANG Description: Setup priority(0 through 7) for unreserved bandwidth.
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__setup_priority
       
   def _set_setup_priority(self, v, load=False):
@@ -89,6 +94,9 @@ per second.
 
     YANG Description: Setup priority(0 through 7) for unreserved bandwidth.
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ per second.
     self._path_helper = False
 
     self._extmethods = False
-    self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__setup_priority = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ per second.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-isis-neighbor-attribute', u'neighbors', u'neighbor', u'subTLVs', u'subTLVs', u'unreserved-bandwidth']
 
+  def _initialized_setup_priority(self):
+    return self.__setup_priority is not None
+
   def _get_setup_priority(self):
     """
     Getter method for setup_priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute/neighbors/neighbor/subTLVs/subTLVs/unreserved_bandwidth/setup_priority (list)
 
     YANG Description: Setup priority(0 through 7) for unreserved bandwidth.
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__setup_priority
       
   def _set_setup_priority(self, v, load=False):
@@ -182,6 +195,9 @@ per second.
 
     YANG Description: Setup priority(0 through 7) for unreserved bandwidth.
     """
+    if self.__setup_priority is None:
+        self.__setup_priority = YANGDynClass(base=YANGListType(False,setup_priority.setup_priority, yang_name="setup-priority", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="setup-priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

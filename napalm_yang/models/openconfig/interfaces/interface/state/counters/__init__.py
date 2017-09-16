@@ -40,20 +40,20 @@ class counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__out_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__last_clear = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="last-clear", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:date-and-time', is_config=False)
-    self.__out_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__out_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__in_unknown_protos = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="in-unknown-protos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter32', is_config=False)
-    self.__out_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__out_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
-    self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    self.__in_octets = None
+    self.__in_discards = None
+    self.__out_errors = None
+    self.__last_clear = None
+    self.__out_broadcast_pkts = None
+    self.__in_broadcast_pkts = None
+    self.__in_errors = None
+    self.__out_unicast_pkts = None
+    self.__in_multicast_pkts = None
+    self.__in_unicast_pkts = None
+    self.__in_unknown_protos = None
+    self.__out_discards = None
+    self.__out_multicast_pkts = None
+    self.__out_octets = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -82,6 +82,9 @@ class counters(PybindBase):
     else:
       return [u'interfaces', u'interface', u'state', u'counters']
 
+  def _initialized_in_octets(self):
+    return self.__in_octets is not None
+
   def _get_in_octets(self):
     """
     Getter method for in_octets, mapped from YANG variable /interfaces/interface/state/counters/in_octets (yang:counter64)
@@ -96,6 +99,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_octets
       
   def _set_in_octets(self, v, load=False):
@@ -116,6 +121,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_octets is None:
+        self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,6 +143,9 @@ other times as indicated by the value of
     self.__in_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_unicast_pkts(self):
+    return self.__in_unicast_pkts is not None
+
   def _get_in_unicast_pkts(self):
     """
     Getter method for in_unicast_pkts, mapped from YANG variable /interfaces/interface/state/counters/in_unicast_pkts (yang:counter64)
@@ -150,6 +161,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_unicast_pkts is None:
+        self.__in_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_unicast_pkts
       
   def _set_in_unicast_pkts(self, v, load=False):
@@ -171,6 +184,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_unicast_pkts is None:
+        self.__in_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -190,6 +206,9 @@ other times as indicated by the value of
     self.__in_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_broadcast_pkts(self):
+    return self.__in_broadcast_pkts is not None
+
   def _get_in_broadcast_pkts(self):
     """
     Getter method for in_broadcast_pkts, mapped from YANG variable /interfaces/interface/state/counters/in_broadcast_pkts (yang:counter64)
@@ -205,6 +224,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_broadcast_pkts is None:
+        self.__in_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_broadcast_pkts
       
   def _set_in_broadcast_pkts(self, v, load=False):
@@ -226,6 +247,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_broadcast_pkts is None:
+        self.__in_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ other times as indicated by the value of
     self.__in_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_multicast_pkts(self):
+    return self.__in_multicast_pkts is not None
+
   def _get_in_multicast_pkts(self):
     """
     Getter method for in_multicast_pkts, mapped from YANG variable /interfaces/interface/state/counters/in_multicast_pkts (yang:counter64)
@@ -262,6 +289,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_multicast_pkts is None:
+        self.__in_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_multicast_pkts
       
   def _set_in_multicast_pkts(self, v, load=False):
@@ -285,6 +314,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_multicast_pkts is None:
+        self.__in_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -304,6 +336,9 @@ other times as indicated by the value of
     self.__in_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_discards(self):
+    return self.__in_discards is not None
+
   def _get_in_discards(self):
     """
     Getter method for in_discards, mapped from YANG variable /interfaces/interface/state/counters/in_discards (yang:counter64)
@@ -322,6 +357,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_discards is None:
+        self.__in_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_discards
       
   def _set_in_discards(self, v, load=False):
@@ -346,6 +383,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_discards is None:
+        self.__in_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -364,6 +404,9 @@ other times as indicated by the value of
   def _unset_in_discards(self):
     self.__in_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
+
+  def _initialized_in_errors(self):
+    return self.__in_errors is not None
 
   def _get_in_errors(self):
     """
@@ -385,6 +428,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_errors is None:
+        self.__in_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__in_errors
       
   def _set_in_errors(self, v, load=False):
@@ -411,6 +456,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_errors is None:
+        self.__in_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -429,6 +477,9 @@ other times as indicated by the value of
   def _unset_in_errors(self):
     self.__in_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
+
+  def _initialized_in_unknown_protos(self):
+    return self.__in_unknown_protos is not None
 
   def _get_in_unknown_protos(self):
     """
@@ -452,6 +503,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_unknown_protos is None:
+        self.__in_unknown_protos = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="in-unknown-protos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter32', is_config=False)
     return self.__in_unknown_protos
       
   def _set_in_unknown_protos(self, v, load=False):
@@ -480,6 +533,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__in_unknown_protos is None:
+        self.__in_unknown_protos = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="in-unknown-protos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -499,6 +555,9 @@ other times as indicated by the value of
     self.__in_unknown_protos = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="in-unknown-protos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter32', is_config=False)
 
 
+  def _initialized_out_octets(self):
+    return self.__out_octets is not None
+
   def _get_out_octets(self):
     """
     Getter method for out_octets, mapped from YANG variable /interfaces/interface/state/counters/out_octets (yang:counter64)
@@ -514,6 +573,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_octets
       
   def _set_out_octets(self, v, load=False):
@@ -535,6 +596,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_octets is None:
+        self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -554,6 +618,9 @@ other times as indicated by the value of
     self.__out_octets = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-octets", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_unicast_pkts(self):
+    return self.__out_unicast_pkts is not None
+
   def _get_out_unicast_pkts(self):
     """
     Getter method for out_unicast_pkts, mapped from YANG variable /interfaces/interface/state/counters/out_unicast_pkts (yang:counter64)
@@ -570,6 +637,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_unicast_pkts is None:
+        self.__out_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_unicast_pkts
       
   def _set_out_unicast_pkts(self, v, load=False):
@@ -592,6 +661,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_unicast_pkts is None:
+        self.__out_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -611,6 +683,9 @@ other times as indicated by the value of
     self.__out_unicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-unicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_broadcast_pkts(self):
+    return self.__out_broadcast_pkts is not None
+
   def _get_out_broadcast_pkts(self):
     """
     Getter method for out_broadcast_pkts, mapped from YANG variable /interfaces/interface/state/counters/out_broadcast_pkts (yang:counter64)
@@ -627,6 +702,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_broadcast_pkts is None:
+        self.__out_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_broadcast_pkts
       
   def _set_out_broadcast_pkts(self, v, load=False):
@@ -649,6 +726,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_broadcast_pkts is None:
+        self.__out_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -667,6 +747,9 @@ other times as indicated by the value of
   def _unset_out_broadcast_pkts(self):
     self.__out_broadcast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-broadcast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
+
+  def _initialized_out_multicast_pkts(self):
+    return self.__out_multicast_pkts is not None
 
   def _get_out_multicast_pkts(self):
     """
@@ -687,6 +770,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_multicast_pkts is None:
+        self.__out_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_multicast_pkts
       
   def _set_out_multicast_pkts(self, v, load=False):
@@ -712,6 +797,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_multicast_pkts is None:
+        self.__out_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -731,6 +819,9 @@ other times as indicated by the value of
     self.__out_multicast_pkts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-multicast-pkts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_discards(self):
+    return self.__out_discards is not None
+
   def _get_out_discards(self):
     """
     Getter method for out_discards, mapped from YANG variable /interfaces/interface/state/counters/out_discards (yang:counter64)
@@ -749,6 +840,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_discards is None:
+        self.__out_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_discards
       
   def _set_out_discards(self, v, load=False):
@@ -773,6 +866,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_discards is None:
+        self.__out_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -792,6 +888,9 @@ other times as indicated by the value of
     self.__out_discards = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-discards", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_errors(self):
+    return self.__out_errors is not None
+
   def _get_out_errors(self):
     """
     Getter method for out_errors, mapped from YANG variable /interfaces/interface/state/counters/out_errors (yang:counter64)
@@ -810,6 +909,8 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_errors is None:
+        self.__out_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
     return self.__out_errors
       
   def _set_out_errors(self, v, load=False):
@@ -834,6 +935,9 @@ at re-initialization of the management system, and at
 other times as indicated by the value of
 'discontinuity-time'.
     """
+    if self.__out_errors is None:
+        self.__out_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -853,6 +957,9 @@ other times as indicated by the value of
     self.__out_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_last_clear(self):
+    return self.__last_clear is not None
+
   def _get_last_clear(self):
     """
     Getter method for last_clear, mapped from YANG variable /interfaces/interface/state/counters/last_clear (yang:date-and-time)
@@ -860,6 +967,8 @@ other times as indicated by the value of
     YANG Description: Indicates the last time the interface counters were
 cleared.
     """
+    if self.__last_clear is None:
+        self.__last_clear = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="last-clear", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:date-and-time', is_config=False)
     return self.__last_clear
       
   def _set_last_clear(self, v, load=False):
@@ -873,6 +982,9 @@ cleared.
     YANG Description: Indicates the last time the interface counters were
 cleared.
     """
+    if self.__last_clear is None:
+        self.__last_clear = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[\\+\\-]\\d{2}:\\d{2})'}), is_leaf=True, yang_name="last-clear", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='yang:date-and-time', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

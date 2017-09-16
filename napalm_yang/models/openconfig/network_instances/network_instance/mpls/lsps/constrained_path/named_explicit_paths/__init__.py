@@ -41,7 +41,7 @@ class named_explicit_paths(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__named_explicit_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class named_explicit_paths(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths']
 
+  def _initialized_named_explicit_path(self):
+    return self.__named_explicit_path is not None
+
   def _get_named_explicit_path(self):
     """
     Getter method for named_explicit_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path (list)
 
     YANG Description: A list of explicit paths
     """
+    if self.__named_explicit_path is None:
+        self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__named_explicit_path
       
   def _set_named_explicit_path(self, v, load=False):
@@ -88,6 +93,9 @@ class named_explicit_paths(PybindBase):
 
     YANG Description: A list of explicit paths
     """
+    if self.__named_explicit_path is None:
+        self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class named_explicit_paths(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__named_explicit_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class named_explicit_paths(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths']
 
+  def _initialized_named_explicit_path(self):
+    return self.__named_explicit_path is not None
+
   def _get_named_explicit_path(self):
     """
     Getter method for named_explicit_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path (list)
 
     YANG Description: A list of explicit paths
     """
+    if self.__named_explicit_path is None:
+        self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__named_explicit_path
       
   def _set_named_explicit_path(self, v, load=False):
@@ -180,6 +193,9 @@ class named_explicit_paths(PybindBase):
 
     YANG Description: A list of explicit paths
     """
+    if self.__named_explicit_path is None:
+        self.__named_explicit_path = YANGDynClass(base=YANGListType("name",named_explicit_path.named_explicit_path, yang_name="named-explicit-path", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="named-explicit-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

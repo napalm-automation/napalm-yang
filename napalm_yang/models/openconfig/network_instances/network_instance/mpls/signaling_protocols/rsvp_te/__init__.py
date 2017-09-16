@@ -44,10 +44,10 @@ class rsvp_te(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__interface_attributes = None
+    self.__global_ = None
+    self.__sessions = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class rsvp_te(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te']
 
+  def _initialized_sessions(self):
+    return self.__sessions is not None
+
   def _get_sessions(self):
     """
     Getter method for sessions, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions (container)
 
     YANG Description: Enclosing container for sessions
     """
+    if self.__sessions is None:
+        self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__sessions
       
   def _set_sessions(self, v, load=False):
@@ -94,6 +99,9 @@ class rsvp_te(PybindBase):
 
     YANG Description: Enclosing container for sessions
     """
+    if self.__sessions is None:
+        self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ class rsvp_te(PybindBase):
     self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors (container)
@@ -120,6 +131,8 @@ class rsvp_te(PybindBase):
     YANG Description: Configuration and state for RSVP neighbors connecting
 to the device
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -133,6 +146,9 @@ to the device
     YANG Description: Configuration and state for RSVP neighbors connecting
 to the device
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ to the device
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global (container)
 
     YANG Description: Platform wide RSVP configuration and state
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -170,6 +191,9 @@ to the device
 
     YANG Description: Platform wide RSVP configuration and state
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,12 +213,17 @@ to the device
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_attributes(self):
+    return self.__interface_attributes is not None
+
   def _get_interface_attributes(self):
     """
     Getter method for interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes (container)
 
     YANG Description: Attributes relating to RSVP-TE enabled interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_attributes
       
   def _set_interface_attributes(self, v, load=False):
@@ -207,6 +236,9 @@ to the device
 
     YANG Description: Attributes relating to RSVP-TE enabled interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -258,10 +290,10 @@ class rsvp_te(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__interface_attributes = None
+    self.__global_ = None
+    self.__sessions = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -290,12 +322,17 @@ class rsvp_te(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te']
 
+  def _initialized_sessions(self):
+    return self.__sessions is not None
+
   def _get_sessions(self):
     """
     Getter method for sessions, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/sessions (container)
 
     YANG Description: Enclosing container for sessions
     """
+    if self.__sessions is None:
+        self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__sessions
       
   def _set_sessions(self, v, load=False):
@@ -308,6 +345,9 @@ class rsvp_te(PybindBase):
 
     YANG Description: Enclosing container for sessions
     """
+    if self.__sessions is None:
+        self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -327,6 +367,9 @@ class rsvp_te(PybindBase):
     self.__sessions = YANGDynClass(base=sessions.sessions, is_container='container', yang_name="sessions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors (container)
@@ -334,6 +377,8 @@ class rsvp_te(PybindBase):
     YANG Description: Configuration and state for RSVP neighbors connecting
 to the device
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -347,6 +392,9 @@ to the device
     YANG Description: Configuration and state for RSVP neighbors connecting
 to the device
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -366,12 +414,17 @@ to the device
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global (container)
 
     YANG Description: Platform wide RSVP configuration and state
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -384,6 +437,9 @@ to the device
 
     YANG Description: Platform wide RSVP configuration and state
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -403,12 +459,17 @@ to the device
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interface_attributes(self):
+    return self.__interface_attributes is not None
+
   def _get_interface_attributes(self):
     """
     Getter method for interface_attributes, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes (container)
 
     YANG Description: Attributes relating to RSVP-TE enabled interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interface_attributes
       
   def _set_interface_attributes(self, v, load=False):
@@ -421,6 +482,9 @@ to the device
 
     YANG Description: Attributes relating to RSVP-TE enabled interfaces
     """
+    if self.__interface_attributes is None:
+        self.__interface_attributes = YANGDynClass(base=interface_attributes.interface_attributes, is_container='container', yang_name="interface-attributes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

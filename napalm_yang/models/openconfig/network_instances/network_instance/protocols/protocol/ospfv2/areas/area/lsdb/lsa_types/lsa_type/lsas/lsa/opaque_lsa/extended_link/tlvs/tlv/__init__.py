@@ -43,9 +43,9 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__unknown_tlv = None
+    self.__adjacency_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-link', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/state (container)
@@ -81,6 +84,8 @@ class tlv(PybindBase):
     YANG Description: State parameters relating to the sub-TLV of the extended link
 LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -94,6 +99,9 @@ LSA
     YANG Description: State parameters relating to the sub-TLV of the extended link
 LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ LSA
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/unknown_tlv (container)
@@ -122,6 +133,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -137,6 +150,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,6 +172,9 @@ local system such that it cannot decode their value.
     self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid (container)
@@ -163,6 +182,8 @@ local system such that it cannot decode their value.
     YANG Description: Parameters relating to an Adjacency SID sub-TLV of the
 extended link LSA
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -176,6 +197,9 @@ extended link LSA
     YANG Description: Parameters relating to an Adjacency SID sub-TLV of the
 extended link LSA
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -225,9 +249,9 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__state = None
+    self.__unknown_tlv = None
+    self.__adjacency_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -256,6 +280,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-link', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/state (container)
@@ -263,6 +290,8 @@ class tlv(PybindBase):
     YANG Description: State parameters relating to the sub-TLV of the extended link
 LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -276,6 +305,9 @@ LSA
     YANG Description: State parameters relating to the sub-TLV of the extended link
 LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -295,6 +327,9 @@ LSA
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/unknown_tlv (container)
@@ -304,6 +339,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -319,6 +356,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -338,6 +378,9 @@ local system such that it cannot decode their value.
     self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_link/tlvs/tlv/adjacency_sid (container)
@@ -345,6 +388,8 @@ local system such that it cannot decode their value.
     YANG Description: Parameters relating to an Adjacency SID sub-TLV of the
 extended link LSA
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -358,6 +403,9 @@ extended link LSA
     YANG Description: Parameters relating to an Adjacency SID sub-TLV of the
 extended link LSA
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=adjacency_sid.adjacency_sid, is_container='container', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

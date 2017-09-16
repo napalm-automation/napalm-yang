@@ -54,19 +54,19 @@ information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__inter_level_propagation_policies = None
+    self.__graceful_restart = None
+    self.__mpls = None
+    self.__afi_safi = None
+    self.__reference_bandwidth = None
+    self.__state = None
+    self.__timers = None
+    self.__transport = None
+    self.__igp_shortcuts = None
+    self.__nsr = None
+    self.__segment_routing = None
+    self.__config = None
+    self.__lsp_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -95,12 +95,17 @@ information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/config (container)
 
     YANG Description: This container defines ISIS global configuration router.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -113,6 +118,9 @@ information.
 
     YANG Description: This container defines ISIS global configuration router.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -132,12 +140,17 @@ information.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state (container)
 
     YANG Description: This container defines state for ISIS global router.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -150,6 +163,9 @@ information.
 
     YANG Description: This container defines state for ISIS global router.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -169,12 +185,17 @@ information.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsp_bit(self):
+    return self.__lsp_bit is not None
+
   def _get_lsp_bit(self):
     """
     Getter method for lsp_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit (container)
 
     YANG Description: This container defines ISIS LSP Operational Bits.
     """
+    if self.__lsp_bit is None:
+        self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp_bit
       
   def _set_lsp_bit(self, v, load=False):
@@ -187,6 +208,9 @@ information.
 
     YANG Description: This container defines ISIS LSP Operational Bits.
     """
+    if self.__lsp_bit is None:
+        self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -206,12 +230,17 @@ information.
     self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_reference_bandwidth(self):
+    return self.__reference_bandwidth is not None
+
   def _get_reference_bandwidth(self):
     """
     Getter method for reference_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/reference_bandwidth (container)
 
     YANG Description: This container defines ISIS Reference Bandwidth.
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__reference_bandwidth
       
   def _set_reference_bandwidth(self, v, load=False):
@@ -224,6 +253,9 @@ information.
 
     YANG Description: This container defines ISIS Reference Bandwidth.
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +275,17 @@ information.
     self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_nsr(self):
+    return self.__nsr is not None
+
   def _get_nsr(self):
     """
     Getter method for nsr, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/nsr (container)
 
     YANG Description: This container defines ISIS Non-Stop Routing.
     """
+    if self.__nsr is None:
+        self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__nsr
       
   def _set_nsr(self, v, load=False):
@@ -261,6 +298,9 @@ information.
 
     YANG Description: This container defines ISIS Non-Stop Routing.
     """
+    if self.__nsr is None:
+        self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -280,12 +320,17 @@ information.
     self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart (container)
 
     YANG Description: This container defines ISIS Graceful Restart.
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -298,6 +343,9 @@ information.
 
     YANG Description: This container defines ISIS Graceful Restart.
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -317,12 +365,17 @@ information.
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers (container)
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -335,6 +388,9 @@ information.
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -354,12 +410,17 @@ information.
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/transport (container)
 
     YANG Description: This container defines ISIS transport.
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -372,6 +433,9 @@ information.
 
     YANG Description: This container defines ISIS transport.
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -391,6 +455,9 @@ information.
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/mpls (container)
@@ -398,6 +465,8 @@ information.
     YANG Description: Configuration and operational state relating to MPLS-related
 features in IS-IS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -411,6 +480,9 @@ features in IS-IS
     YANG Description: Configuration and operational state relating to MPLS-related
 features in IS-IS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -430,6 +502,9 @@ features in IS-IS
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_igp_shortcuts(self):
+    return self.__igp_shortcuts is not None
+
   def _get_igp_shortcuts(self):
     """
     Getter method for igp_shortcuts, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts (container)
@@ -437,6 +512,8 @@ features in IS-IS
     YANG Description: This container defines IGP shortcuts configuration and state
 information.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__igp_shortcuts
       
   def _set_igp_shortcuts(self, v, load=False):
@@ -450,6 +527,9 @@ information.
     YANG Description: This container defines IGP shortcuts configuration and state
 information.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -469,6 +549,9 @@ information.
     self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/afi_safi (container)
@@ -476,6 +559,8 @@ information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -489,6 +574,9 @@ and state information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -508,12 +596,17 @@ and state information.
     self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing (container)
 
     YANG Description: Configuration and operational state relating to segment routing.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -526,6 +619,9 @@ and state information.
 
     YANG Description: Configuration and operational state relating to segment routing.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -545,12 +641,17 @@ and state information.
     self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_inter_level_propagation_policies(self):
+    return self.__inter_level_propagation_policies is not None
+
   def _get_inter_level_propagation_policies(self):
     """
     Getter method for inter_level_propagation_policies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies (container)
 
     YANG Description: Policies to propagate prefixes between IS-IS levels.
     """
+    if self.__inter_level_propagation_policies is None:
+        self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__inter_level_propagation_policies
       
   def _set_inter_level_propagation_policies(self, v, load=False):
@@ -563,6 +664,9 @@ and state information.
 
     YANG Description: Policies to propagate prefixes between IS-IS levels.
     """
+    if self.__inter_level_propagation_policies is None:
+        self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -633,19 +737,19 @@ information.
     self._path_helper = False
 
     self._extmethods = False
-    self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__inter_level_propagation_policies = None
+    self.__graceful_restart = None
+    self.__mpls = None
+    self.__afi_safi = None
+    self.__reference_bandwidth = None
+    self.__state = None
+    self.__timers = None
+    self.__transport = None
+    self.__igp_shortcuts = None
+    self.__nsr = None
+    self.__segment_routing = None
+    self.__config = None
+    self.__lsp_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -674,12 +778,17 @@ information.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/config (container)
 
     YANG Description: This container defines ISIS global configuration router.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -692,6 +801,9 @@ information.
 
     YANG Description: This container defines ISIS global configuration router.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -711,12 +823,17 @@ information.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/state (container)
 
     YANG Description: This container defines state for ISIS global router.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -729,6 +846,9 @@ information.
 
     YANG Description: This container defines state for ISIS global router.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -748,12 +868,17 @@ information.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_lsp_bit(self):
+    return self.__lsp_bit is not None
+
   def _get_lsp_bit(self):
     """
     Getter method for lsp_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit (container)
 
     YANG Description: This container defines ISIS LSP Operational Bits.
     """
+    if self.__lsp_bit is None:
+        self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__lsp_bit
       
   def _set_lsp_bit(self, v, load=False):
@@ -766,6 +891,9 @@ information.
 
     YANG Description: This container defines ISIS LSP Operational Bits.
     """
+    if self.__lsp_bit is None:
+        self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -785,12 +913,17 @@ information.
     self.__lsp_bit = YANGDynClass(base=lsp_bit.lsp_bit, is_container='container', yang_name="lsp-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_reference_bandwidth(self):
+    return self.__reference_bandwidth is not None
+
   def _get_reference_bandwidth(self):
     """
     Getter method for reference_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/reference_bandwidth (container)
 
     YANG Description: This container defines ISIS Reference Bandwidth.
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__reference_bandwidth
       
   def _set_reference_bandwidth(self, v, load=False):
@@ -803,6 +936,9 @@ information.
 
     YANG Description: This container defines ISIS Reference Bandwidth.
     """
+    if self.__reference_bandwidth is None:
+        self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -822,12 +958,17 @@ information.
     self.__reference_bandwidth = YANGDynClass(base=reference_bandwidth.reference_bandwidth, is_container='container', yang_name="reference-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_nsr(self):
+    return self.__nsr is not None
+
   def _get_nsr(self):
     """
     Getter method for nsr, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/nsr (container)
 
     YANG Description: This container defines ISIS Non-Stop Routing.
     """
+    if self.__nsr is None:
+        self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__nsr
       
   def _set_nsr(self, v, load=False):
@@ -840,6 +981,9 @@ information.
 
     YANG Description: This container defines ISIS Non-Stop Routing.
     """
+    if self.__nsr is None:
+        self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -859,12 +1003,17 @@ information.
     self.__nsr = YANGDynClass(base=nsr.nsr, is_container='container', yang_name="nsr", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/graceful_restart (container)
 
     YANG Description: This container defines ISIS Graceful Restart.
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -877,6 +1026,9 @@ information.
 
     YANG Description: This container defines ISIS Graceful Restart.
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -896,12 +1048,17 @@ information.
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_timers(self):
+    return self.__timers is not None
+
   def _get_timers(self):
     """
     Getter method for timers, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers (container)
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__timers
       
   def _set_timers(self, v, load=False):
@@ -914,6 +1071,9 @@ information.
 
     YANG Description: This container defines ISIS timers.
     """
+    if self.__timers is None:
+        self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -933,12 +1093,17 @@ information.
     self.__timers = YANGDynClass(base=timers.timers, is_container='container', yang_name="timers", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_transport(self):
+    return self.__transport is not None
+
   def _get_transport(self):
     """
     Getter method for transport, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/transport (container)
 
     YANG Description: This container defines ISIS transport.
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__transport
       
   def _set_transport(self, v, load=False):
@@ -951,6 +1116,9 @@ information.
 
     YANG Description: This container defines ISIS transport.
     """
+    if self.__transport is None:
+        self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -970,6 +1138,9 @@ information.
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_mpls(self):
+    return self.__mpls is not None
+
   def _get_mpls(self):
     """
     Getter method for mpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/mpls (container)
@@ -977,6 +1148,8 @@ information.
     YANG Description: Configuration and operational state relating to MPLS-related
 features in IS-IS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__mpls
       
   def _set_mpls(self, v, load=False):
@@ -990,6 +1163,9 @@ features in IS-IS
     YANG Description: Configuration and operational state relating to MPLS-related
 features in IS-IS
     """
+    if self.__mpls is None:
+        self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1009,6 +1185,9 @@ features in IS-IS
     self.__mpls = YANGDynClass(base=mpls.mpls, is_container='container', yang_name="mpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_igp_shortcuts(self):
+    return self.__igp_shortcuts is not None
+
   def _get_igp_shortcuts(self):
     """
     Getter method for igp_shortcuts, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/igp_shortcuts (container)
@@ -1016,6 +1195,8 @@ features in IS-IS
     YANG Description: This container defines IGP shortcuts configuration and state
 information.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__igp_shortcuts
       
   def _set_igp_shortcuts(self, v, load=False):
@@ -1029,6 +1210,9 @@ information.
     YANG Description: This container defines IGP shortcuts configuration and state
 information.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1048,6 +1232,9 @@ information.
     self.__igp_shortcuts = YANGDynClass(base=igp_shortcuts.igp_shortcuts, is_container='container', yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_afi_safi(self):
+    return self.__afi_safi is not None
+
   def _get_afi_safi(self):
     """
     Getter method for afi_safi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/afi_safi (container)
@@ -1055,6 +1242,8 @@ information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__afi_safi
       
   def _set_afi_safi(self, v, load=False):
@@ -1068,6 +1257,9 @@ and state information.
     YANG Description: This container defines address-family specific configuration
 and state information.
     """
+    if self.__afi_safi is None:
+        self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1087,12 +1279,17 @@ and state information.
     self.__afi_safi = YANGDynClass(base=afi_safi.afi_safi, is_container='container', yang_name="afi-safi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_segment_routing(self):
+    return self.__segment_routing is not None
+
   def _get_segment_routing(self):
     """
     Getter method for segment_routing, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/segment_routing (container)
 
     YANG Description: Configuration and operational state relating to segment routing.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__segment_routing
       
   def _set_segment_routing(self, v, load=False):
@@ -1105,6 +1302,9 @@ and state information.
 
     YANG Description: Configuration and operational state relating to segment routing.
     """
+    if self.__segment_routing is None:
+        self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1124,12 +1324,17 @@ and state information.
     self.__segment_routing = YANGDynClass(base=segment_routing.segment_routing, is_container='container', yang_name="segment-routing", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_inter_level_propagation_policies(self):
+    return self.__inter_level_propagation_policies is not None
+
   def _get_inter_level_propagation_policies(self):
     """
     Getter method for inter_level_propagation_policies, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies (container)
 
     YANG Description: Policies to propagate prefixes between IS-IS levels.
     """
+    if self.__inter_level_propagation_policies is None:
+        self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__inter_level_propagation_policies
       
   def _set_inter_level_propagation_policies(self, v, load=False):
@@ -1142,6 +1347,9 @@ and state information.
 
     YANG Description: Policies to propagate prefixes between IS-IS levels.
     """
+    if self.__inter_level_propagation_policies is None:
+        self.__inter_level_propagation_policies = YANGDynClass(base=inter_level_propagation_policies.inter_level_propagation_policies, is_container='container', yang_name="inter-level-propagation-policies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

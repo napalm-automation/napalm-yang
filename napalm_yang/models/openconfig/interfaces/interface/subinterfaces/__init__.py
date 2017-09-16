@@ -42,7 +42,7 @@ with a physical interface
     self._path_helper = False
 
     self._extmethods = False
-    self.__subinterface = YANGDynClass(base=YANGListType("index",subinterface.subinterface, yang_name="subinterface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='list', is_config=True)
+    self.__subinterface = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ with a physical interface
     else:
       return [u'interfaces', u'interface', u'subinterfaces']
 
+  def _initialized_subinterface(self):
+    return self.__subinterface is not None
+
   def _get_subinterface(self):
     """
     Getter method for subinterface, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface (list)
@@ -78,6 +81,8 @@ with a physical interface
     YANG Description: The list of subinterfaces (logical interfaces) associated
 with a physical interface
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=YANGListType("index",subinterface.subinterface, yang_name="subinterface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='list', is_config=True)
     return self.__subinterface
       
   def _set_subinterface(self, v, load=False):
@@ -91,6 +96,9 @@ with a physical interface
     YANG Description: The list of subinterfaces (logical interfaces) associated
 with a physical interface
     """
+    if self.__subinterface is None:
+        self.__subinterface = YANGDynClass(base=YANGListType("index",subinterface.subinterface, yang_name="subinterface", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="subinterface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

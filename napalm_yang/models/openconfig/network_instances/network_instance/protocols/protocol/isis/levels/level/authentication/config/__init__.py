@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__csnp_authentication = None
+    self.__lsp_authentication = None
+    self.__psnp_authentication = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'authentication', u'config']
 
+  def _initialized_csnp_authentication(self):
+    return self.__csnp_authentication is not None
+
   def _get_csnp_authentication(self):
     """
     Getter method for csnp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/csnp_authentication (boolean)
 
     YANG Description: Enable or disable for IS-IS CSNPs.
     """
+    if self.__csnp_authentication is None:
+        self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__csnp_authentication
       
   def _set_csnp_authentication(self, v, load=False):
@@ -89,6 +94,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable for IS-IS CSNPs.
     """
+    if self.__csnp_authentication is None:
+        self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,12 +116,17 @@ class config(PybindBase):
     self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_psnp_authentication(self):
+    return self.__psnp_authentication is not None
+
   def _get_psnp_authentication(self):
     """
     Getter method for psnp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/psnp_authentication (boolean)
 
     YANG Description: Enable or disable authentication for IS-IS PSNPs.
     """
+    if self.__psnp_authentication is None:
+        self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__psnp_authentication
       
   def _set_psnp_authentication(self, v, load=False):
@@ -126,6 +139,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable authentication for IS-IS PSNPs.
     """
+    if self.__psnp_authentication is None:
+        self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -145,12 +161,17 @@ class config(PybindBase):
     self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_lsp_authentication(self):
+    return self.__lsp_authentication is not None
+
   def _get_lsp_authentication(self):
     """
     Getter method for lsp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/lsp_authentication (boolean)
 
     YANG Description: Enable or disable authentication for IS-IS LSPs.
     """
+    if self.__lsp_authentication is None:
+        self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__lsp_authentication
       
   def _set_lsp_authentication(self, v, load=False):
@@ -163,6 +184,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable authentication for IS-IS LSPs.
     """
+    if self.__lsp_authentication is None:
+        self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -209,9 +233,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__csnp_authentication = None
+    self.__lsp_authentication = None
+    self.__psnp_authentication = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -240,12 +264,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'authentication', u'config']
 
+  def _initialized_csnp_authentication(self):
+    return self.__csnp_authentication is not None
+
   def _get_csnp_authentication(self):
     """
     Getter method for csnp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/csnp_authentication (boolean)
 
     YANG Description: Enable or disable for IS-IS CSNPs.
     """
+    if self.__csnp_authentication is None:
+        self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__csnp_authentication
       
   def _set_csnp_authentication(self, v, load=False):
@@ -258,6 +287,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable for IS-IS CSNPs.
     """
+    if self.__csnp_authentication is None:
+        self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -277,12 +309,17 @@ class config(PybindBase):
     self.__csnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="csnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_psnp_authentication(self):
+    return self.__psnp_authentication is not None
+
   def _get_psnp_authentication(self):
     """
     Getter method for psnp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/psnp_authentication (boolean)
 
     YANG Description: Enable or disable authentication for IS-IS PSNPs.
     """
+    if self.__psnp_authentication is None:
+        self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__psnp_authentication
       
   def _set_psnp_authentication(self, v, load=False):
@@ -295,6 +332,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable authentication for IS-IS PSNPs.
     """
+    if self.__psnp_authentication is None:
+        self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -314,12 +354,17 @@ class config(PybindBase):
     self.__psnp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="psnp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_lsp_authentication(self):
+    return self.__lsp_authentication is not None
+
   def _get_lsp_authentication(self):
     """
     Getter method for lsp_authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/authentication/config/lsp_authentication (boolean)
 
     YANG Description: Enable or disable authentication for IS-IS LSPs.
     """
+    if self.__lsp_authentication is None:
+        self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__lsp_authentication
       
   def _set_lsp_authentication(self, v, load=False):
@@ -332,6 +377,9 @@ class config(PybindBase):
 
     YANG Description: Enable or disable authentication for IS-IS LSPs.
     """
+    if self.__lsp_authentication is None:
+        self.__lsp_authentication = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="lsp-authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

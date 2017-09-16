@@ -41,7 +41,7 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class prefixes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-internal-reachability', u'prefixes']
 
+  def _initialized_prefixes(self):
+    return self.__prefixes is not None
+
   def _get_prefixes(self):
     """
     Getter method for prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes (list)
 
     YANG Description: IPv4 prefixes and internal reachability attributes.
     """
+    if self.__prefixes is None:
+        self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__prefixes
       
   def _set_prefixes(self, v, load=False):
@@ -88,6 +93,9 @@ class prefixes(PybindBase):
 
     YANG Description: IPv4 prefixes and internal reachability attributes.
     """
+    if self.__prefixes is None:
+        self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefixes = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class prefixes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-internal-reachability', u'prefixes']
 
+  def _initialized_prefixes(self):
+    return self.__prefixes is not None
+
   def _get_prefixes(self):
     """
     Getter method for prefixes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes (list)
 
     YANG Description: IPv4 prefixes and internal reachability attributes.
     """
+    if self.__prefixes is None:
+        self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__prefixes
       
   def _set_prefixes(self, v, load=False):
@@ -180,6 +193,9 @@ class prefixes(PybindBase):
 
     YANG Description: IPv4 prefixes and internal reachability attributes.
     """
+    if self.__prefixes is None:
+        self.__prefixes = YANGDynClass(base=YANGListType(False,prefixes_.prefixes, yang_name="prefixes", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefixes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

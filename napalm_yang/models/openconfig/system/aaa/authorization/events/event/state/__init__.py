@@ -40,7 +40,7 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
+    self.__event_type = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class state(PybindBase):
     else:
       return [u'system', u'aaa', u'authorization', u'events', u'event', u'state']
 
+  def _initialized_event_type(self):
+    return self.__event_type is not None
+
   def _get_event_type(self):
     """
     Getter method for event_type, mapped from YANG variable /system/aaa/authorization/events/event/state/event_type (identityref)
@@ -76,6 +79,8 @@ class state(PybindBase):
     YANG Description: The type of event to record at the AAA authorization
 server
     """
+    if self.__event_type is None:
+        self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
     return self.__event_type
       
   def _set_event_type(self, v, load=False):
@@ -89,6 +94,9 @@ server
     YANG Description: The type of event to record at the AAA authorization
 server
     """
+    if self.__event_type is None:
+        self.__event_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={},), is_leaf=True, yang_name="event-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

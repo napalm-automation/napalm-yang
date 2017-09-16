@@ -47,14 +47,14 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tag64 = None
+    self.__ipv6_source_router_id = None
+    self.__state = None
+    self.__tag = None
+    self.__flags = None
+    self.__subtlv_type = None
+    self.__prefix_sid = None
+    self.__ipv4_source_router_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -83,6 +83,9 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv6-reachability', u'prefixes', u'prefixes', u'subTLVs', u'subTLVs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/subtlv_type (leafref)
@@ -90,6 +93,8 @@ class subTLVs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -103,6 +108,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -127,12 +135,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/state (container)
 
     YANG Description: State parameters for a prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -145,6 +158,9 @@ the LSDB
 
     YANG Description: State parameters for a prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -164,12 +180,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tag(self):
+    return self.__tag is not None
+
   def _get_tag(self):
     """
     Getter method for tag, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/tag (container)
 
     YANG Description: This container defines sub-TLV 1.
     """
+    if self.__tag is None:
+        self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tag
       
   def _set_tag(self, v, load=False):
@@ -182,6 +203,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 1.
     """
+    if self.__tag is None:
+        self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -201,12 +225,17 @@ the LSDB
     self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tag64(self):
+    return self.__tag64 is not None
+
   def _get_tag64(self):
     """
     Getter method for tag64, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/tag64 (container)
 
     YANG Description: This container defines sub-TLV 2.
     """
+    if self.__tag64 is None:
+        self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tag64
       
   def _set_tag64(self, v, load=False):
@@ -219,6 +248,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 2.
     """
+    if self.__tag64 is None:
+        self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -238,12 +270,17 @@ the LSDB
     self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/flags (container)
 
     YANG Description: This container defines sub-TLV 4.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -256,6 +293,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 4.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -275,12 +315,17 @@ the LSDB
     self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_source_router_id(self):
+    return self.__ipv4_source_router_id is not None
+
   def _get_ipv4_source_router_id(self):
     """
     Getter method for ipv4_source_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/ipv4_source_router_id (container)
 
     YANG Description: This container defines sub-TLV 11.
     """
+    if self.__ipv4_source_router_id is None:
+        self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_source_router_id
       
   def _set_ipv4_source_router_id(self, v, load=False):
@@ -293,6 +338,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 11.
     """
+    if self.__ipv4_source_router_id is None:
+        self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -312,12 +360,17 @@ the LSDB
     self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_source_router_id(self):
+    return self.__ipv6_source_router_id is not None
+
   def _get_ipv6_source_router_id(self):
     """
     Getter method for ipv6_source_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/ipv6_source_router_id (container)
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_source_router_id is None:
+        self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_source_router_id
       
   def _set_ipv6_source_router_id(self, v, load=False):
@@ -330,6 +383,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_source_router_id is None:
+        self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -349,12 +405,17 @@ the LSDB
     self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_prefix_sid(self):
+    return self.__prefix_sid is not None
+
   def _get_prefix_sid(self):
     """
     Getter method for prefix_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/prefix_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__prefix_sid
       
   def _set_prefix_sid(self, v, load=False):
@@ -367,6 +428,9 @@ the LSDB
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -425,14 +489,14 @@ class subTLVs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__tag64 = None
+    self.__ipv6_source_router_id = None
+    self.__state = None
+    self.__tag = None
+    self.__flags = None
+    self.__subtlv_type = None
+    self.__prefix_sid = None
+    self.__ipv4_source_router_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -461,6 +525,9 @@ class subTLVs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv6-reachability', u'prefixes', u'prefixes', u'subTLVs', u'subTLVs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/subtlv_type (leafref)
@@ -468,6 +535,8 @@ class subTLVs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -481,6 +550,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -505,12 +577,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/state (container)
 
     YANG Description: State parameters for a prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -523,6 +600,9 @@ the LSDB
 
     YANG Description: State parameters for a prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -542,12 +622,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tag(self):
+    return self.__tag is not None
+
   def _get_tag(self):
     """
     Getter method for tag, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/tag (container)
 
     YANG Description: This container defines sub-TLV 1.
     """
+    if self.__tag is None:
+        self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tag
       
   def _set_tag(self, v, load=False):
@@ -560,6 +645,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 1.
     """
+    if self.__tag is None:
+        self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -579,12 +667,17 @@ the LSDB
     self.__tag = YANGDynClass(base=tag.tag, is_container='container', yang_name="tag", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tag64(self):
+    return self.__tag64 is not None
+
   def _get_tag64(self):
     """
     Getter method for tag64, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/tag64 (container)
 
     YANG Description: This container defines sub-TLV 2.
     """
+    if self.__tag64 is None:
+        self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tag64
       
   def _set_tag64(self, v, load=False):
@@ -597,6 +690,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 2.
     """
+    if self.__tag64 is None:
+        self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -616,12 +712,17 @@ the LSDB
     self.__tag64 = YANGDynClass(base=tag64.tag64, is_container='container', yang_name="tag64", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/flags (container)
 
     YANG Description: This container defines sub-TLV 4.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -634,6 +735,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 4.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -653,12 +757,17 @@ the LSDB
     self.__flags = YANGDynClass(base=flags.flags, is_container='container', yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_source_router_id(self):
+    return self.__ipv4_source_router_id is not None
+
   def _get_ipv4_source_router_id(self):
     """
     Getter method for ipv4_source_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/ipv4_source_router_id (container)
 
     YANG Description: This container defines sub-TLV 11.
     """
+    if self.__ipv4_source_router_id is None:
+        self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_source_router_id
       
   def _set_ipv4_source_router_id(self, v, load=False):
@@ -671,6 +780,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 11.
     """
+    if self.__ipv4_source_router_id is None:
+        self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -690,12 +802,17 @@ the LSDB
     self.__ipv4_source_router_id = YANGDynClass(base=ipv4_source_router_id.ipv4_source_router_id, is_container='container', yang_name="ipv4-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_source_router_id(self):
+    return self.__ipv6_source_router_id is not None
+
   def _get_ipv6_source_router_id(self):
     """
     Getter method for ipv6_source_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/ipv6_source_router_id (container)
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_source_router_id is None:
+        self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_source_router_id
       
   def _set_ipv6_source_router_id(self, v, load=False):
@@ -708,6 +825,9 @@ the LSDB
 
     YANG Description: This container defines sub-TLV 12.
     """
+    if self.__ipv6_source_router_id is None:
+        self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -727,12 +847,17 @@ the LSDB
     self.__ipv6_source_router_id = YANGDynClass(base=ipv6_source_router_id.ipv6_source_router_id, is_container='container', yang_name="ipv6-source-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_prefix_sid(self):
+    return self.__prefix_sid is not None
+
   def _get_prefix_sid(self):
     """
     Getter method for prefix_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability/prefixes/prefixes/subTLVs/subTLVs/prefix_sid (container)
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__prefix_sid
       
   def _set_prefix_sid(self, v, load=False):
@@ -745,6 +870,9 @@ the LSDB
 
     YANG Description: This container defines segment routing extensions for prefixes.
     """
+    if self.__prefix_sid is None:
+        self.__prefix_sid = YANGDynClass(base=prefix_sid.prefix_sid, is_container='container', yang_name="prefix-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

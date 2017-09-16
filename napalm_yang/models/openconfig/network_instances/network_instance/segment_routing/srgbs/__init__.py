@@ -42,7 +42,7 @@ SRGBs defined for the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srgb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ SRGBs defined for the system.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srgbs']
 
+  def _initialized_srgb(self):
+    return self.__srgb is not None
+
   def _get_srgb(self):
     """
     Getter method for srgb, mapped from YANG variable /network_instances/network_instance/segment_routing/srgbs/srgb (list)
@@ -78,6 +81,8 @@ SRGBs defined for the system.
     YANG Description: A single definition of an SRGB which may comprise of multiple
 sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srgb
       
   def _set_srgb(self, v, load=False):
@@ -91,6 +96,9 @@ sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     YANG Description: A single definition of an SRGB which may comprise of multiple
 sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ SRGBs defined for the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srgb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ SRGBs defined for the system.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srgbs']
 
+  def _initialized_srgb(self):
+    return self.__srgb is not None
+
   def _get_srgb(self):
     """
     Getter method for srgb, mapped from YANG variable /network_instances/network_instance/segment_routing/srgbs/srgb (list)
@@ -173,6 +184,8 @@ SRGBs defined for the system.
     YANG Description: A single definition of an SRGB which may comprise of multiple
 sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srgb
       
   def _set_srgb(self, v, load=False):
@@ -186,6 +199,9 @@ sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     YANG Description: A single definition of an SRGB which may comprise of multiple
 sets of dataplane addresses (IPv6 addresses, or MPLS labels).
     """
+    if self.__srgb is None:
+        self.__srgb = YANGDynClass(base=YANGListType("local_id",srgb.srgb, yang_name="srgb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srgb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

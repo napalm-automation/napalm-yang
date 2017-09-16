@@ -41,7 +41,7 @@ class physical_channels(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__channel = YANGDynClass(base=YANGListType("index",channel.channel, yang_name="channel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="channel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='list', is_config=True)
+    self.__channel = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class physical_channels(PybindBase):
     else:
       return [u'components', u'component', u'transceiver', u'physical-channels']
 
+  def _initialized_channel(self):
+    return self.__channel is not None
+
   def _get_channel(self):
     """
     Getter method for channel, mapped from YANG variable /components/component/transceiver/physical_channels/channel (list)
@@ -78,6 +81,8 @@ class physical_channels(PybindBase):
 client port.  A physical port with a single channel would
 have a single zero-indexed element
     """
+    if self.__channel is None:
+        self.__channel = YANGDynClass(base=YANGListType("index",channel.channel, yang_name="channel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="channel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='list', is_config=True)
     return self.__channel
       
   def _set_channel(self, v, load=False):
@@ -92,6 +97,9 @@ have a single zero-indexed element
 client port.  A physical port with a single channel would
 have a single zero-indexed element
     """
+    if self.__channel is None:
+        self.__channel = YANGDynClass(base=YANGListType("index",channel.channel, yang_name="channel", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='index', extensions=None), is_container='list', yang_name="channel", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

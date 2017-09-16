@@ -42,7 +42,7 @@ links from the source area to a remote router
     self._path_helper = False
 
     self._extmethods = False
-    self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__virtual_link = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ links from the source area to a remote router
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links']
 
+  def _initialized_virtual_link(self):
+    return self.__virtual_link is not None
+
   def _get_virtual_link(self):
     """
     Getter method for virtual_link, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link (list)
@@ -78,6 +81,8 @@ links from the source area to a remote router
     YANG Description: Configuration and state parameters relating to a
 virtual link
     """
+    if self.__virtual_link is None:
+        self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__virtual_link
       
   def _set_virtual_link(self, v, load=False):
@@ -91,6 +96,9 @@ virtual link
     YANG Description: Configuration and state parameters relating to a
 virtual link
     """
+    if self.__virtual_link is None:
+        self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -137,7 +145,7 @@ links from the source area to a remote router
     self._path_helper = False
 
     self._extmethods = False
-    self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__virtual_link = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,6 +174,9 @@ links from the source area to a remote router
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'virtual-links']
 
+  def _initialized_virtual_link(self):
+    return self.__virtual_link is not None
+
   def _get_virtual_link(self):
     """
     Getter method for virtual_link, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/virtual_links/virtual_link (list)
@@ -173,6 +184,8 @@ links from the source area to a remote router
     YANG Description: Configuration and state parameters relating to a
 virtual link
     """
+    if self.__virtual_link is None:
+        self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__virtual_link
       
   def _set_virtual_link(self, v, load=False):
@@ -186,6 +199,9 @@ virtual link
     YANG Description: Configuration and state parameters relating to a
 virtual link
     """
+    if self.__virtual_link is None:
+        self.__virtual_link = YANGDynClass(base=YANGListType("remote_router_id",virtual_link.virtual_link, yang_name="virtual-link", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='remote-router-id', extensions=None), is_container='list', yang_name="virtual-link", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

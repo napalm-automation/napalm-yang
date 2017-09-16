@@ -41,8 +41,8 @@ group.
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__mpls_lsp = None
+    self.__group_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ group.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'path-selection-groups', u'path-selection-group', u'config']
 
+  def _initialized_group_id(self):
+    return self.__group_id is not None
+
   def _get_group_id(self):
     """
     Getter method for group_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group/config/group_id (string)
 
     YANG Description: A unique name for the path-selection-group
     """
+    if self.__group_id is None:
+        self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__group_id
       
   def _set_group_id(self, v, load=False):
@@ -89,6 +94,9 @@ group.
 
     YANG Description: A unique name for the path-selection-group
     """
+    if self.__group_id is None:
+        self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ group.
     self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_mpls_lsp(self):
+    return self.__mpls_lsp is not None
+
   def _get_mpls_lsp(self):
     """
     Getter method for mpls_lsp, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group/config/mpls_lsp (leafref)
@@ -118,6 +129,8 @@ select between the LSPs within the path-selection-group, the
 system should determine which LSP provides the best path to
 the next-hop for the routed packet.
     """
+    if self.__mpls_lsp is None:
+        self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__mpls_lsp
       
   def _set_mpls_lsp(self, v, load=False):
@@ -134,6 +147,9 @@ select between the LSPs within the path-selection-group, the
 system should determine which LSP provides the best path to
 the next-hop for the routed packet.
     """
+    if self.__mpls_lsp is None:
+        self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ group.
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__mpls_lsp = None
+    self.__group_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,12 +226,17 @@ group.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'path-selection-groups', u'path-selection-group', u'config']
 
+  def _initialized_group_id(self):
+    return self.__group_id is not None
+
   def _get_group_id(self):
     """
     Getter method for group_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group/config/group_id (string)
 
     YANG Description: A unique name for the path-selection-group
     """
+    if self.__group_id is None:
+        self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__group_id
       
   def _set_group_id(self, v, load=False):
@@ -228,6 +249,9 @@ group.
 
     YANG Description: A unique name for the path-selection-group
     """
+    if self.__group_id is None:
+        self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -247,6 +271,9 @@ group.
     self.__group_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="group-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_mpls_lsp(self):
+    return self.__mpls_lsp is not None
+
   def _get_mpls_lsp(self):
     """
     Getter method for mpls_lsp, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group/config/mpls_lsp (leafref)
@@ -257,6 +284,8 @@ select between the LSPs within the path-selection-group, the
 system should determine which LSP provides the best path to
 the next-hop for the routed packet.
     """
+    if self.__mpls_lsp is None:
+        self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__mpls_lsp
       
   def _set_mpls_lsp(self, v, load=False):
@@ -273,6 +302,9 @@ select between the LSPs within the path-selection-group, the
 system should determine which LSP provides the best path to
 the next-hop for the routed packet.
     """
+    if self.__mpls_lsp is None:
+        self.__mpls_lsp = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="mpls-lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

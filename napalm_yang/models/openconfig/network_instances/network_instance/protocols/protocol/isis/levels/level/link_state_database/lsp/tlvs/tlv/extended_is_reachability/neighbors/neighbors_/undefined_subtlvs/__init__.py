@@ -41,7 +41,7 @@ class undefined_subtlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__undefined_subtlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class undefined_subtlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'extended-is-reachability', u'neighbors', u'neighbors', u'undefined-subtlvs']
 
+  def _initialized_undefined_subtlv(self):
+    return self.__undefined_subtlv is not None
+
   def _get_undefined_subtlv(self):
     """
     Getter method for undefined_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/undefined_subtlvs/undefined_subtlv (list)
@@ -77,6 +80,8 @@ class undefined_subtlvs(PybindBase):
     YANG Description: Sub-TLVs that are not defined in the model or not recognised by
 system.
     """
+    if self.__undefined_subtlv is None:
+        self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__undefined_subtlv
       
   def _set_undefined_subtlv(self, v, load=False):
@@ -90,6 +95,9 @@ system.
     YANG Description: Sub-TLVs that are not defined in the model or not recognised by
 system.
     """
+    if self.__undefined_subtlv is None:
+        self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class undefined_subtlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__undefined_subtlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class undefined_subtlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'extended-is-reachability', u'neighbors', u'neighbors', u'undefined-subtlvs']
 
+  def _initialized_undefined_subtlv(self):
+    return self.__undefined_subtlv is not None
+
   def _get_undefined_subtlv(self):
     """
     Getter method for undefined_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability/neighbors/neighbors/undefined_subtlvs/undefined_subtlv (list)
@@ -171,6 +182,8 @@ class undefined_subtlvs(PybindBase):
     YANG Description: Sub-TLVs that are not defined in the model or not recognised by
 system.
     """
+    if self.__undefined_subtlv is None:
+        self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__undefined_subtlv
       
   def _set_undefined_subtlv(self, v, load=False):
@@ -184,6 +197,9 @@ system.
     YANG Description: Sub-TLVs that are not defined in the model or not recognised by
 system.
     """
+    if self.__undefined_subtlv is None:
+        self.__undefined_subtlv = YANGDynClass(base=YANGListType("type",undefined_subtlv.undefined_subtlv, yang_name="undefined-subtlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-subtlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -41,7 +41,7 @@ methods
     self._path_helper = False
 
     self._extmethods = False
-    self.__authorization_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="authorization-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
+    self.__authorization_method = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ methods
     else:
       return [u'system', u'aaa', u'authorization', u'config']
 
+  def _initialized_authorization_method(self):
+    return self.__authorization_method is not None
+
   def _get_authorization_method(self):
     """
     Getter method for authorization_method, mapped from YANG variable /system/aaa/authorization/config/authorization_method (union)
@@ -81,6 +84,8 @@ as the set of all TACACS or RADIUS servers, or the name of
 a defined AAA server group.  The system must validate
 that the named server group exists.
     """
+    if self.__authorization_method is None:
+        self.__authorization_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="authorization-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
     return self.__authorization_method
       
   def _set_authorization_method(self, v, load=False):
@@ -98,6 +103,9 @@ as the set of all TACACS or RADIUS servers, or the name of
 a defined AAA server group.  The system must validate
 that the named server group exists.
     """
+    if self.__authorization_method is None:
+        self.__authorization_method = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:RADIUS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'LOCAL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'TACACS_ALL': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),unicode,]), is_leaf=False, yang_name="authorization-method", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

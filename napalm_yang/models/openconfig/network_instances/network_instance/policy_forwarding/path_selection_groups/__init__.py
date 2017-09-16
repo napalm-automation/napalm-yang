@@ -42,7 +42,7 @@ within the policy forwarding model.
     self._path_helper = False
 
     self._extmethods = False
-    self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__path_selection_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ within the policy forwarding model.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'path-selection-groups']
 
+  def _initialized_path_selection_group(self):
+    return self.__path_selection_group is not None
+
   def _get_path_selection_group(self):
     """
     Getter method for path_selection_group, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group (list)
@@ -88,6 +91,8 @@ corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
 destination MAC address.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__path_selection_group
       
   def _set_path_selection_group(self, v, load=False):
@@ -111,6 +116,9 @@ corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
 destination MAC address.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,7 +165,7 @@ within the policy forwarding model.
     self._path_helper = False
 
     self._extmethods = False
-    self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__path_selection_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -186,6 +194,9 @@ within the policy forwarding model.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'path-selection-groups']
 
+  def _initialized_path_selection_group(self):
+    return self.__path_selection_group is not None
+
   def _get_path_selection_group(self):
     """
     Getter method for path_selection_group, mapped from YANG variable /network_instances/network_instance/policy_forwarding/path_selection_groups/path_selection_group (list)
@@ -203,6 +214,8 @@ corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
 destination MAC address.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__path_selection_group
       
   def _set_path_selection_group(self, v, load=False):
@@ -226,6 +239,9 @@ corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
 destination MAC address.
     """
+    if self.__path_selection_group is None:
+        self.__path_selection_group = YANGDynClass(base=YANGListType("group_id",path_selection_group.path_selection_group, yang_name="path-selection-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='group-id', extensions=None), is_container='list', yang_name="path-selection-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

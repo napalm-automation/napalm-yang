@@ -42,8 +42,8 @@ referenced MPLS EXP.
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__exp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ referenced MPLS EXP.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes', u'forwarding-class']
 
+  def _initialized_exp(self):
+    return self.__exp is not None
+
   def _get_exp(self):
     """
     Getter method for exp, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/exp (leafref)
@@ -79,6 +82,8 @@ referenced MPLS EXP.
     YANG Description: Reference to the value of the EXP bits of the segment
 identifier.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__exp
       
   def _set_exp(self, v, load=False):
@@ -92,6 +97,9 @@ identifier.
     YANG Description: Reference to the value of the EXP bits of the segment
 identifier.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -116,6 +124,9 @@ identifier.
     self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state (container)
@@ -123,6 +134,8 @@ identifier.
     YANG Description: Per-SID, per forwarding class counters for Segment Routing
 with the MPLS dataplane
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -136,6 +149,9 @@ with the MPLS dataplane
     YANG Description: Per-SID, per forwarding class counters for Segment Routing
 with the MPLS dataplane
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -183,8 +199,8 @@ referenced MPLS EXP.
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__state = None
+    self.__exp = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -213,6 +229,9 @@ referenced MPLS EXP.
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing', u'interfaces', u'interface', u'sid-counters', u'sid-counter', u'forwarding-classes', u'forwarding-class']
 
+  def _initialized_exp(self):
+    return self.__exp is not None
+
   def _get_exp(self):
     """
     Getter method for exp, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/exp (leafref)
@@ -220,6 +239,8 @@ referenced MPLS EXP.
     YANG Description: Reference to the value of the EXP bits of the segment
 identifier.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__exp
       
   def _set_exp(self, v, load=False):
@@ -233,6 +254,9 @@ identifier.
     YANG Description: Reference to the value of the EXP bits of the segment
 identifier.
     """
+    if self.__exp is None:
+        self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -257,6 +281,9 @@ identifier.
     self.__exp = YANGDynClass(base=unicode, is_leaf=True, yang_name="exp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces/interface/sid_counters/sid_counter/forwarding_classes/forwarding_class/state (container)
@@ -264,6 +291,8 @@ identifier.
     YANG Description: Per-SID, per forwarding class counters for Segment Routing
 with the MPLS dataplane
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -277,6 +306,9 @@ with the MPLS dataplane
     YANG Description: Per-SID, per forwarding class counters for Segment Routing
 with the MPLS dataplane
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

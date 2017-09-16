@@ -41,9 +41,9 @@ secondary path
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__priority = None
+    self.__active = None
+    self.__secondary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ secondary path
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'candidate-secondary-paths', u'candidate-secondary-path', u'state']
 
+  def _initialized_secondary_path(self):
+    return self.__secondary_path is not None
+
   def _get_secondary_path(self):
     """
     Getter method for secondary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/secondary_path (leafref)
@@ -79,6 +82,8 @@ secondary path
     YANG Description: A reference to the secondary path that should be utilised
 when the containing primary path option is in use
     """
+    if self.__secondary_path is None:
+        self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__secondary_path
       
   def _set_secondary_path(self, v, load=False):
@@ -92,6 +97,9 @@ when the containing primary path option is in use
     YANG Description: A reference to the secondary path that should be utilised
 when the containing primary path option is in use
     """
+    if self.__secondary_path is None:
+        self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ when the containing primary path option is in use
     self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/priority (uint16)
@@ -119,6 +130,8 @@ when the containing primary path option is in use
 priority options are less preferable - such that a secondary
 path reference with a priority of 0 is the most preferred
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -133,6 +146,9 @@ path reference with a priority of 0 is the most preferred
 priority options are less preferable - such that a secondary
 path reference with a priority of 0 is the most preferred
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ path reference with a priority of 0 is the most preferred
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_active(self):
+    return self.__active is not None
+
   def _get_active(self):
     """
     Getter method for active, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/active (boolean)
@@ -159,6 +178,8 @@ path reference with a priority of 0 is the most preferred
     YANG Description: Indicates the current active path option that has
 been selected of the candidate secondary paths
     """
+    if self.__active is None:
+        self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__active
       
   def _set_active(self, v, load=False):
@@ -172,6 +193,9 @@ been selected of the candidate secondary paths
     YANG Description: Indicates the current active path option that has
 been selected of the candidate secondary paths
     """
+    if self.__active is None:
+        self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -219,9 +243,9 @@ secondary path
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
-    self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__priority = None
+    self.__active = None
+    self.__secondary_path = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -250,6 +274,9 @@ secondary path
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'p2p-tunnel-attributes', u'p2p-primary-path', u'p2p-primary-path', u'candidate-secondary-paths', u'candidate-secondary-path', u'state']
 
+  def _initialized_secondary_path(self):
+    return self.__secondary_path is not None
+
   def _get_secondary_path(self):
     """
     Getter method for secondary_path, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/secondary_path (leafref)
@@ -257,6 +284,8 @@ secondary path
     YANG Description: A reference to the secondary path that should be utilised
 when the containing primary path option is in use
     """
+    if self.__secondary_path is None:
+        self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__secondary_path
       
   def _set_secondary_path(self, v, load=False):
@@ -270,6 +299,9 @@ when the containing primary path option is in use
     YANG Description: A reference to the secondary path that should be utilised
 when the containing primary path option is in use
     """
+    if self.__secondary_path is None:
+        self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -289,6 +321,9 @@ when the containing primary path option is in use
     self.__secondary_path = YANGDynClass(base=unicode, is_leaf=True, yang_name="secondary-path", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/priority (uint16)
@@ -297,6 +332,8 @@ when the containing primary path option is in use
 priority options are less preferable - such that a secondary
 path reference with a priority of 0 is the most preferred
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -311,6 +348,9 @@ path reference with a priority of 0 is the most preferred
 priority options are less preferable - such that a secondary
 path reference with a priority of 0 is the most preferred
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,6 +370,9 @@ path reference with a priority of 0 is the most preferred
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
 
 
+  def _initialized_active(self):
+    return self.__active is not None
+
   def _get_active(self):
     """
     Getter method for active, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/p2p_tunnel_attributes/p2p_primary_path/p2p_primary_path/candidate_secondary_paths/candidate_secondary_path/state/active (boolean)
@@ -337,6 +380,8 @@ path reference with a priority of 0 is the most preferred
     YANG Description: Indicates the current active path option that has
 been selected of the candidate secondary paths
     """
+    if self.__active is None:
+        self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__active
       
   def _set_active(self, v, load=False):
@@ -350,6 +395,9 @@ been selected of the candidate secondary paths
     YANG Description: Indicates the current active path option that has
 been selected of the candidate secondary paths
     """
+    if self.__active is None:
+        self.__active = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="active", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

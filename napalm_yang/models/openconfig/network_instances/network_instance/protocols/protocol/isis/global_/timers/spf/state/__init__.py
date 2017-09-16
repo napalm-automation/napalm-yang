@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
-    self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__spf_hold_interval = None
+    self.__spf_first_interval = None
+    self.__adaptive_timer = None
+    self.__spf_second_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,12 +72,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'spf', u'state']
 
+  def _initialized_spf_hold_interval(self):
+    return self.__spf_hold_interval is not None
+
   def _get_spf_hold_interval(self):
     """
     Getter method for spf_hold_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_hold_interval (uint64)
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_hold_interval
       
   def _set_spf_hold_interval(self, v, load=False):
@@ -90,6 +95,9 @@ class state(PybindBase):
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -109,6 +117,9 @@ class state(PybindBase):
     self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_spf_first_interval(self):
+    return self.__spf_first_interval is not None
+
   def _get_spf_first_interval(self):
     """
     Getter method for spf_first_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_first_interval (uint64)
@@ -116,6 +127,8 @@ class state(PybindBase):
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_first_interval
       
   def _set_spf_first_interval(self, v, load=False):
@@ -129,6 +142,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,6 +164,9 @@ detection of topology change and when the SPF algorithm runs.
     self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_spf_second_interval(self):
+    return self.__spf_second_interval is not None
+
   def _get_spf_second_interval(self):
     """
     Getter method for spf_second_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_second_interval (uint64)
@@ -155,6 +174,8 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_second_interval
       
   def _set_spf_second_interval(self, v, load=False):
@@ -168,6 +189,9 @@ SPF calculation.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -187,12 +211,17 @@ SPF calculation.
     self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_adaptive_timer(self):
+    return self.__adaptive_timer is not None
+
   def _get_adaptive_timer(self):
     """
     Getter method for adaptive_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/adaptive_timer (oc-isis-types:adaptive-timer-type)
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
     return self.__adaptive_timer
       
   def _set_adaptive_timer(self, v, load=False):
@@ -205,6 +234,9 @@ SPF calculation.
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -252,10 +284,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
-    self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
-    self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    self.__spf_hold_interval = None
+    self.__spf_first_interval = None
+    self.__adaptive_timer = None
+    self.__spf_second_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -284,12 +316,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'spf', u'state']
 
+  def _initialized_spf_hold_interval(self):
+    return self.__spf_hold_interval is not None
+
   def _get_spf_hold_interval(self):
     """
     Getter method for spf_hold_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_hold_interval (uint64)
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_hold_interval
       
   def _set_spf_hold_interval(self, v, load=False):
@@ -302,6 +339,9 @@ class state(PybindBase):
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -321,6 +361,9 @@ class state(PybindBase):
     self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_spf_first_interval(self):
+    return self.__spf_first_interval is not None
+
   def _get_spf_first_interval(self):
     """
     Getter method for spf_first_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_first_interval (uint64)
@@ -328,6 +371,8 @@ class state(PybindBase):
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_first_interval
       
   def _set_spf_first_interval(self, v, load=False):
@@ -341,6 +386,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -360,6 +408,9 @@ detection of topology change and when the SPF algorithm runs.
     self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_spf_second_interval(self):
+    return self.__spf_second_interval is not None
+
   def _get_spf_second_interval(self):
     """
     Getter method for spf_second_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/spf_second_interval (uint64)
@@ -367,6 +418,8 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
     return self.__spf_second_interval
       
   def _set_spf_second_interval(self, v, load=False):
@@ -380,6 +433,9 @@ SPF calculation.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -399,12 +455,17 @@ SPF calculation.
     self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=False)
 
 
+  def _initialized_adaptive_timer(self):
+    return self.__adaptive_timer is not None
+
   def _get_adaptive_timer(self):
     """
     Getter method for adaptive_timer, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/state/adaptive_timer (oc-isis-types:adaptive-timer-type)
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
     return self.__adaptive_timer
       
   def _set_adaptive_timer(self, v, load=False):
@@ -417,6 +478,9 @@ SPF calculation.
 
     YANG Description: ISIS adaptive timer types (linear, exponential).
     """
+    if self.__adaptive_timer is None:
+        self.__adaptive_timer = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINEAR': {}, u'EXPONENTIAL': {}},), is_leaf=True, yang_name="adaptive-timer", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:adaptive-timer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

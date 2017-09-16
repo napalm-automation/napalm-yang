@@ -41,7 +41,7 @@ class subcomponents(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subcomponent = YANGDynClass(base=YANGListType("name",subcomponent.subcomponent, yang_name="subcomponent", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="subcomponent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    self.__subcomponent = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class subcomponents(PybindBase):
     else:
       return [u'components', u'component', u'subcomponents']
 
+  def _initialized_subcomponent(self):
+    return self.__subcomponent is not None
+
   def _get_subcomponent(self):
     """
     Getter method for subcomponent, mapped from YANG variable /components/component/subcomponents/subcomponent (list)
 
     YANG Description: List of subcomponent references
     """
+    if self.__subcomponent is None:
+        self.__subcomponent = YANGDynClass(base=YANGListType("name",subcomponent.subcomponent, yang_name="subcomponent", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="subcomponent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
     return self.__subcomponent
       
   def _set_subcomponent(self, v, load=False):
@@ -88,6 +93,9 @@ class subcomponents(PybindBase):
 
     YANG Description: List of subcomponent references
     """
+    if self.__subcomponent is None:
+        self.__subcomponent = YANGDynClass(base=YANGListType("name",subcomponent.subcomponent, yang_name="subcomponent", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="subcomponent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

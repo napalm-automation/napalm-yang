@@ -42,7 +42,7 @@ network-instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__protocol = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ network-instance.
     else:
       return [u'network-instances', u'network-instance', u'protocols']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/protocols/protocol (list)
@@ -79,6 +82,8 @@ network-instance.
 systems may not support more than one instance of
 a particular routing protocol
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -93,6 +98,9 @@ a particular routing protocol
 systems may not support more than one instance of
 a particular routing protocol
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -139,7 +147,7 @@ network-instance.
     self._path_helper = False
 
     self._extmethods = False
-    self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__protocol = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -168,6 +176,9 @@ network-instance.
     else:
       return [u'network-instances', u'network-instance', u'protocols']
 
+  def _initialized_protocol(self):
+    return self.__protocol is not None
+
   def _get_protocol(self):
     """
     Getter method for protocol, mapped from YANG variable /network_instances/network_instance/protocols/protocol (list)
@@ -176,6 +187,8 @@ network-instance.
 systems may not support more than one instance of
 a particular routing protocol
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__protocol
       
   def _set_protocol(self, v, load=False):
@@ -190,6 +203,9 @@ a particular routing protocol
 systems may not support more than one instance of
 a particular routing protocol
     """
+    if self.__protocol is None:
+        self.__protocol = YANGDynClass(base=YANGListType("identifier name",protocol.protocol, yang_name="protocol", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='identifier name', extensions=None), is_container='list', yang_name="protocol", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

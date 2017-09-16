@@ -41,8 +41,8 @@ bandwidth of the link being described
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__priority = None
+    self.__unreserved_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ bandwidth of the link being described
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'unreserved-bandwidths', u'unreserved-bandwidth', u'state']
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth/state/priority (uint8)
 
     YANG Description: The priority level being described
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -89,6 +94,9 @@ bandwidth of the link being described
 
     YANG Description: The priority level being described
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ bandwidth of the link being described
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth/state/unreserved_bandwidth (oc-types:ieeefloat32)
@@ -117,6 +128,8 @@ equal to the priority of the current list entry. The reservable
 bandwidth at priority P is equal to the sum of the reservable
 bandwidth at all levels 0..P.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -132,6 +145,9 @@ equal to the priority of the current list entry. The reservable
 bandwidth at priority P is equal to the sum of the reservable
 bandwidth at all levels 0..P.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ bandwidth of the link being described
     self._path_helper = False
 
     self._extmethods = False
-    self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__priority = None
+    self.__unreserved_bandwidth = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,12 +224,17 @@ bandwidth of the link being described
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'traffic-engineering', u'tlvs', u'tlv', u'link', u'sub-tlvs', u'sub-tlv', u'unreserved-bandwidths', u'unreserved-bandwidth', u'state']
 
+  def _initialized_priority(self):
+    return self.__priority is not None
+
   def _get_priority(self):
     """
     Getter method for priority, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth/state/priority (uint8)
 
     YANG Description: The priority level being described
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__priority
       
   def _set_priority(self, v, load=False):
@@ -226,6 +247,9 @@ bandwidth of the link being described
 
     YANG Description: The priority level being described
     """
+    if self.__priority is None:
+        self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ bandwidth of the link being described
     self.__priority = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..7']}), is_leaf=True, yang_name="priority", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_unreserved_bandwidth(self):
+    return self.__unreserved_bandwidth is not None
+
   def _get_unreserved_bandwidth(self):
     """
     Getter method for unreserved_bandwidth, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/traffic_engineering/tlvs/tlv/link/sub_tlvs/sub_tlv/unreserved_bandwidths/unreserved_bandwidth/state/unreserved_bandwidth (oc-types:ieeefloat32)
@@ -254,6 +281,8 @@ equal to the priority of the current list entry. The reservable
 bandwidth at priority P is equal to the sum of the reservable
 bandwidth at all levels 0..P.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     return self.__unreserved_bandwidth
       
   def _set_unreserved_bandwidth(self, v, load=False):
@@ -269,6 +298,9 @@ equal to the priority of the current list entry. The reservable
 bandwidth at priority P is equal to the sum of the reservable
 bandwidth at all levels 0..P.
     """
+    if self.__unreserved_bandwidth is None:
+        self.__unreserved_bandwidth = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="unreserved-bandwidth", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

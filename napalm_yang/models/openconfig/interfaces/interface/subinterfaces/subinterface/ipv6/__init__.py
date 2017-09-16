@@ -46,12 +46,12 @@ class ipv6(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__autoconf = YANGDynClass(base=autoconf.autoconf, is_container='container', yang_name="autoconf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__unnumbered = None
+    self.__addresses = None
+    self.__state = None
+    self.__autoconf = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -80,12 +80,17 @@ class ipv6(PybindBase):
     else:
       return [u'interfaces', u'interface', u'subinterfaces', u'subinterface', u'ipv6']
 
+  def _initialized_addresses(self):
+    return self.__addresses is not None
+
   def _get_addresses(self):
     """
     Getter method for addresses, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/addresses (container)
 
     YANG Description: Enclosing container for address list
     """
+    if self.__addresses is None:
+        self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__addresses
       
   def _set_addresses(self, v, load=False):
@@ -98,6 +103,9 @@ class ipv6(PybindBase):
 
     YANG Description: Enclosing container for address list
     """
+    if self.__addresses is None:
+        self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -117,12 +125,17 @@ class ipv6(PybindBase):
     self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/neighbors (container)
 
     YANG Description: Enclosing container for list of IPv6 neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -135,6 +148,9 @@ class ipv6(PybindBase):
 
     YANG Description: Enclosing container for list of IPv6 neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ class ipv6(PybindBase):
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_unnumbered(self):
+    return self.__unnumbered is not None
+
   def _get_unnumbered(self):
     """
     Getter method for unnumbered, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/unnumbered (container)
@@ -162,6 +181,8 @@ class ipv6(PybindBase):
 Includes reference the interface that provides the
 address information
     """
+    if self.__unnumbered is None:
+        self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__unnumbered
       
   def _set_unnumbered(self, v, load=False):
@@ -176,6 +197,9 @@ address information
 Includes reference the interface that provides the
 address information
     """
+    if self.__unnumbered is None:
+        self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -195,12 +219,17 @@ address information
     self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/config (container)
 
     YANG Description: Top-level config data for the IPv6 interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -213,6 +242,9 @@ address information
 
     YANG Description: Top-level config data for the IPv6 interface
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -232,12 +264,17 @@ address information
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/state (container)
 
     YANG Description: Top-level operational state data for the IPv6 interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -250,6 +287,9 @@ address information
 
     YANG Description: Top-level operational state data for the IPv6 interface
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -269,12 +309,17 @@ address information
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
+  def _initialized_autoconf(self):
+    return self.__autoconf is not None
+
   def _get_autoconf(self):
     """
     Getter method for autoconf, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv6/autoconf (container)
 
     YANG Description: Top-level container for IPv6 autoconf
     """
+    if self.__autoconf is None:
+        self.__autoconf = YANGDynClass(base=autoconf.autoconf, is_container='container', yang_name="autoconf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
     return self.__autoconf
       
   def _set_autoconf(self, v, load=False):
@@ -287,6 +332,9 @@ address information
 
     YANG Description: Top-level container for IPv6 autoconf
     """
+    if self.__autoconf is None:
+        self.__autoconf = YANGDynClass(base=autoconf.autoconf, is_container='container', yang_name="autoconf", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip-ext', defining_module='openconfig-if-ip-ext', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

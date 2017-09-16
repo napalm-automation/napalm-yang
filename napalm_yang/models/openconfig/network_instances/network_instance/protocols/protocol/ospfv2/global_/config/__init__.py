@@ -40,11 +40,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
-    self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    self.__router_id = None
+    self.__igp_shortcuts = None
+    self.__log_adjacency_changes = None
+    self.__hide_transit_only_networks = None
+    self.__summary_route_cost_mode = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'config']
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/router_id (yang:dotted-quad)
@@ -81,6 +84,8 @@ class config(PybindBase):
 each router running the OSPFv2 protocol. This number should
 be unique within the autonomous system
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -95,6 +100,9 @@ be unique within the autonomous system
 each router running the OSPFv2 protocol. This number should
 be unique within the autonomous system
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ be unique within the autonomous system
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
 
 
+  def _initialized_summary_route_cost_mode(self):
+    return self.__summary_route_cost_mode is not None
+
   def _get_summary_route_cost_mode(self):
     """
     Getter method for summary_route_cost_mode, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/summary_route_cost_mode (enumeration)
@@ -123,6 +134,8 @@ as per the behaviour in the original OSPF specification
 RFC1583, or alternatively whether the revised behaviour
 described in RFC2328 should be utilised
     """
+    if self.__summary_route_cost_mode is None:
+        self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__summary_route_cost_mode
       
   def _set_summary_route_cost_mode(self, v, load=False):
@@ -138,6 +151,9 @@ as per the behaviour in the original OSPF specification
 RFC1583, or alternatively whether the revised behaviour
 described in RFC2328 should be utilised
     """
+    if self.__summary_route_cost_mode is None:
+        self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -157,6 +173,9 @@ described in RFC2328 should be utilised
     self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
 
 
+  def _initialized_igp_shortcuts(self):
+    return self.__igp_shortcuts is not None
+
   def _get_igp_shortcuts(self):
     """
     Getter method for igp_shortcuts, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/igp_shortcuts (boolean)
@@ -165,6 +184,8 @@ described in RFC2328 should be utilised
 a remote system via any LSP to the system that is marked as
 shortcut eligible.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__igp_shortcuts
       
   def _set_igp_shortcuts(self, v, load=False):
@@ -179,6 +200,9 @@ shortcut eligible.
 a remote system via any LSP to the system that is marked as
 shortcut eligible.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -198,6 +222,9 @@ shortcut eligible.
     self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_log_adjacency_changes(self):
+    return self.__log_adjacency_changes is not None
+
   def _get_log_adjacency_changes(self):
     """
     Getter method for log_adjacency_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/log_adjacency_changes (boolean)
@@ -205,6 +232,8 @@ shortcut eligible.
     YANG Description: When this leaf is set to true, a log message will be
 generated when the state of an OSPFv2 neighbour changes.
     """
+    if self.__log_adjacency_changes is None:
+        self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__log_adjacency_changes
       
   def _set_log_adjacency_changes(self, v, load=False):
@@ -218,6 +247,9 @@ generated when the state of an OSPFv2 neighbour changes.
     YANG Description: When this leaf is set to true, a log message will be
 generated when the state of an OSPFv2 neighbour changes.
     """
+    if self.__log_adjacency_changes is None:
+        self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,6 +269,9 @@ generated when the state of an OSPFv2 neighbour changes.
     self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hide_transit_only_networks(self):
+    return self.__hide_transit_only_networks is not None
+
   def _get_hide_transit_only_networks(self):
     """
     Getter method for hide_transit_only_networks, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/hide_transit_only_networks (boolean)
@@ -245,6 +280,8 @@ generated when the state of an OSPFv2 neighbour changes.
 into OSPFv2 that correspond to transit interfaces, as per
 the behaviour discussed in RFC6860.
     """
+    if self.__hide_transit_only_networks is None:
+        self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__hide_transit_only_networks
       
   def _set_hide_transit_only_networks(self, v, load=False):
@@ -259,6 +296,9 @@ the behaviour discussed in RFC6860.
 into OSPFv2 that correspond to transit interfaces, as per
 the behaviour discussed in RFC6860.
     """
+    if self.__hide_transit_only_networks is None:
+        self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -307,11 +347,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
-    self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    self.__router_id = None
+    self.__igp_shortcuts = None
+    self.__log_adjacency_changes = None
+    self.__hide_transit_only_networks = None
+    self.__summary_route_cost_mode = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -340,6 +380,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'global', u'config']
 
+  def _initialized_router_id(self):
+    return self.__router_id is not None
+
   def _get_router_id(self):
     """
     Getter method for router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/router_id (yang:dotted-quad)
@@ -348,6 +391,8 @@ class config(PybindBase):
 each router running the OSPFv2 protocol. This number should
 be unique within the autonomous system
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
     return self.__router_id
       
   def _set_router_id(self, v, load=False):
@@ -362,6 +407,9 @@ be unique within the autonomous system
 each router running the OSPFv2 protocol. This number should
 be unique within the autonomous system
     """
+    if self.__router_id is None:
+        self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -381,6 +429,9 @@ be unique within the autonomous system
     self.__router_id = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])'}), is_leaf=True, yang_name="router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:dotted-quad', is_config=True)
 
 
+  def _initialized_summary_route_cost_mode(self):
+    return self.__summary_route_cost_mode is not None
+
   def _get_summary_route_cost_mode(self):
     """
     Getter method for summary_route_cost_mode, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/summary_route_cost_mode (enumeration)
@@ -390,6 +441,8 @@ as per the behaviour in the original OSPF specification
 RFC1583, or alternatively whether the revised behaviour
 described in RFC2328 should be utilised
     """
+    if self.__summary_route_cost_mode is None:
+        self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
     return self.__summary_route_cost_mode
       
   def _set_summary_route_cost_mode(self, v, load=False):
@@ -405,6 +458,9 @@ as per the behaviour in the original OSPF specification
 RFC1583, or alternatively whether the revised behaviour
 described in RFC2328 should be utilised
     """
+    if self.__summary_route_cost_mode is None:
+        self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -424,6 +480,9 @@ described in RFC2328 should be utilised
     self.__summary_route_cost_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'RFC1583_COMPATIBLE': {}, u'RFC2328_COMPATIBLE': {}},), default=unicode("RFC2328_COMPATIBLE"), is_leaf=True, yang_name="summary-route-cost-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=True)
 
 
+  def _initialized_igp_shortcuts(self):
+    return self.__igp_shortcuts is not None
+
   def _get_igp_shortcuts(self):
     """
     Getter method for igp_shortcuts, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/igp_shortcuts (boolean)
@@ -432,6 +491,8 @@ described in RFC2328 should be utilised
 a remote system via any LSP to the system that is marked as
 shortcut eligible.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__igp_shortcuts
       
   def _set_igp_shortcuts(self, v, load=False):
@@ -446,6 +507,9 @@ shortcut eligible.
 a remote system via any LSP to the system that is marked as
 shortcut eligible.
     """
+    if self.__igp_shortcuts is None:
+        self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -465,6 +529,9 @@ shortcut eligible.
     self.__igp_shortcuts = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="igp-shortcuts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_log_adjacency_changes(self):
+    return self.__log_adjacency_changes is not None
+
   def _get_log_adjacency_changes(self):
     """
     Getter method for log_adjacency_changes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/log_adjacency_changes (boolean)
@@ -472,6 +539,8 @@ shortcut eligible.
     YANG Description: When this leaf is set to true, a log message will be
 generated when the state of an OSPFv2 neighbour changes.
     """
+    if self.__log_adjacency_changes is None:
+        self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__log_adjacency_changes
       
   def _set_log_adjacency_changes(self, v, load=False):
@@ -485,6 +554,9 @@ generated when the state of an OSPFv2 neighbour changes.
     YANG Description: When this leaf is set to true, a log message will be
 generated when the state of an OSPFv2 neighbour changes.
     """
+    if self.__log_adjacency_changes is None:
+        self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -504,6 +576,9 @@ generated when the state of an OSPFv2 neighbour changes.
     self.__log_adjacency_changes = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="log-adjacency-changes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_hide_transit_only_networks(self):
+    return self.__hide_transit_only_networks is not None
+
   def _get_hide_transit_only_networks(self):
     """
     Getter method for hide_transit_only_networks, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/global/config/hide_transit_only_networks (boolean)
@@ -512,6 +587,8 @@ generated when the state of an OSPFv2 neighbour changes.
 into OSPFv2 that correspond to transit interfaces, as per
 the behaviour discussed in RFC6860.
     """
+    if self.__hide_transit_only_networks is None:
+        self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__hide_transit_only_networks
       
   def _set_hide_transit_only_networks(self, v, load=False):
@@ -526,6 +603,9 @@ the behaviour discussed in RFC6860.
 into OSPFv2 that correspond to transit interfaces, as per
 the behaviour discussed in RFC6860.
     """
+    if self.__hide_transit_only_networks is None:
+        self.__hide_transit_only_networks = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="hide-transit-only-networks", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

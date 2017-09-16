@@ -57,23 +57,23 @@ neighbour or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__l3vpn_ipv6_multicast = None
+    self.__ipv6_unicast = None
+    self.__l3vpn_ipv4_multicast = None
+    self.__afi_safi_name = None
+    self.__use_multiple_paths = None
+    self.__ipv6_labeled_unicast = None
+    self.__ipv4_labeled_unicast = None
+    self.__l2vpn_evpn = None
+    self.__state = None
+    self.__apply_policy = None
+    self.__l3vpn_ipv6_unicast = None
+    self.__route_selection_options = None
+    self.__l2vpn_vpls = None
+    self.__ipv4_unicast = None
+    self.__config = None
+    self.__l3vpn_ipv4_unicast = None
+    self.__graceful_restart = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -102,6 +102,9 @@ neighbour or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi']
 
+  def _initialized_afi_safi_name(self):
+    return self.__afi_safi_name is not None
+
   def _get_afi_safi_name(self):
     """
     Getter method for afi_safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/afi_safi_name (leafref)
@@ -109,6 +112,8 @@ neighbour or group
     YANG Description: Reference to the AFI-SAFI name used as a key
 for the AFI-SAFI list
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_safi_name
       
   def _set_afi_safi_name(self, v, load=False):
@@ -122,6 +127,9 @@ for the AFI-SAFI list
     YANG Description: Reference to the AFI-SAFI name used as a key
 for the AFI-SAFI list
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -146,12 +154,17 @@ for the AFI-SAFI list
     self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/config (container)
 
     YANG Description: Configuration parameters for the AFI-SAFI
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -164,6 +177,9 @@ for the AFI-SAFI list
 
     YANG Description: Configuration parameters for the AFI-SAFI
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -183,12 +199,17 @@ for the AFI-SAFI list
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/state (container)
 
     YANG Description: State information relating to the AFI-SAFI
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -201,6 +222,9 @@ for the AFI-SAFI list
 
     YANG Description: State information relating to the AFI-SAFI
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -220,12 +244,17 @@ for the AFI-SAFI list
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/graceful_restart (container)
 
     YANG Description: Parameters relating to BGP graceful-restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -238,6 +267,9 @@ for the AFI-SAFI list
 
     YANG Description: Parameters relating to BGP graceful-restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -257,12 +289,17 @@ for the AFI-SAFI list
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_route_selection_options(self):
+    return self.__route_selection_options is not None
+
   def _get_route_selection_options(self):
     """
     Getter method for route_selection_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/route_selection_options (container)
 
     YANG Description: Parameters relating to options for route selection
     """
+    if self.__route_selection_options is None:
+        self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__route_selection_options
       
   def _set_route_selection_options(self, v, load=False):
@@ -275,6 +312,9 @@ for the AFI-SAFI list
 
     YANG Description: Parameters relating to options for route selection
     """
+    if self.__route_selection_options is None:
+        self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -294,6 +334,9 @@ for the AFI-SAFI list
     self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_use_multiple_paths(self):
+    return self.__use_multiple_paths is not None
+
   def _get_use_multiple_paths(self):
     """
     Getter method for use_multiple_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths (container)
@@ -301,6 +344,8 @@ for the AFI-SAFI list
     YANG Description: Parameters related to the use of multiple paths for the
 same NLRI
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__use_multiple_paths
       
   def _set_use_multiple_paths(self, v, load=False):
@@ -314,6 +359,9 @@ same NLRI
     YANG Description: Parameters related to the use of multiple paths for the
 same NLRI
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -333,6 +381,9 @@ same NLRI
     self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/apply_policy (container)
@@ -342,6 +393,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -357,6 +410,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -376,12 +432,17 @@ depending on the context.
     self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv4_unicast(self):
+    return self.__ipv4_unicast is not None
+
   def _get_ipv4_unicast(self):
     """
     Getter method for ipv4_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv4_unicast (container)
 
     YANG Description: IPv4 unicast configuration options
     """
+    if self.__ipv4_unicast is None:
+        self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv4_unicast
       
   def _set_ipv4_unicast(self, v, load=False):
@@ -394,6 +455,9 @@ depending on the context.
 
     YANG Description: IPv4 unicast configuration options
     """
+    if self.__ipv4_unicast is None:
+        self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -413,12 +477,17 @@ depending on the context.
     self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv6_unicast(self):
+    return self.__ipv6_unicast is not None
+
   def _get_ipv6_unicast(self):
     """
     Getter method for ipv6_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast (container)
 
     YANG Description: IPv6 unicast configuration options
     """
+    if self.__ipv6_unicast is None:
+        self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv6_unicast
       
   def _set_ipv6_unicast(self, v, load=False):
@@ -431,6 +500,9 @@ depending on the context.
 
     YANG Description: IPv6 unicast configuration options
     """
+    if self.__ipv6_unicast is None:
+        self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -450,12 +522,17 @@ depending on the context.
     self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv4_labeled_unicast(self):
+    return self.__ipv4_labeled_unicast is not None
+
   def _get_ipv4_labeled_unicast(self):
     """
     Getter method for ipv4_labeled_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv4_labeled_unicast (container)
 
     YANG Description: IPv4 Labeled Unicast configuration options
     """
+    if self.__ipv4_labeled_unicast is None:
+        self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv4_labeled_unicast
       
   def _set_ipv4_labeled_unicast(self, v, load=False):
@@ -468,6 +545,9 @@ depending on the context.
 
     YANG Description: IPv4 Labeled Unicast configuration options
     """
+    if self.__ipv4_labeled_unicast is None:
+        self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -487,12 +567,17 @@ depending on the context.
     self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv6_labeled_unicast(self):
+    return self.__ipv6_labeled_unicast is not None
+
   def _get_ipv6_labeled_unicast(self):
     """
     Getter method for ipv6_labeled_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_labeled_unicast (container)
 
     YANG Description: IPv6 Labeled Unicast configuration options
     """
+    if self.__ipv6_labeled_unicast is None:
+        self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv6_labeled_unicast
       
   def _set_ipv6_labeled_unicast(self, v, load=False):
@@ -505,6 +590,9 @@ depending on the context.
 
     YANG Description: IPv6 Labeled Unicast configuration options
     """
+    if self.__ipv6_labeled_unicast is None:
+        self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -524,12 +612,17 @@ depending on the context.
     self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv4_unicast(self):
+    return self.__l3vpn_ipv4_unicast is not None
+
   def _get_l3vpn_ipv4_unicast(self):
     """
     Getter method for l3vpn_ipv4_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv4_unicast (container)
 
     YANG Description: Unicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_unicast is None:
+        self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv4_unicast
       
   def _set_l3vpn_ipv4_unicast(self, v, load=False):
@@ -542,6 +635,9 @@ depending on the context.
 
     YANG Description: Unicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_unicast is None:
+        self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -561,12 +657,17 @@ depending on the context.
     self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv6_unicast(self):
+    return self.__l3vpn_ipv6_unicast is not None
+
   def _get_l3vpn_ipv6_unicast(self):
     """
     Getter method for l3vpn_ipv6_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_unicast (container)
 
     YANG Description: Unicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_unicast is None:
+        self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv6_unicast
       
   def _set_l3vpn_ipv6_unicast(self, v, load=False):
@@ -579,6 +680,9 @@ depending on the context.
 
     YANG Description: Unicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_unicast is None:
+        self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -598,12 +702,17 @@ depending on the context.
     self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv4_multicast(self):
+    return self.__l3vpn_ipv4_multicast is not None
+
   def _get_l3vpn_ipv4_multicast(self):
     """
     Getter method for l3vpn_ipv4_multicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv4_multicast (container)
 
     YANG Description: Multicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_multicast is None:
+        self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv4_multicast
       
   def _set_l3vpn_ipv4_multicast(self, v, load=False):
@@ -616,6 +725,9 @@ depending on the context.
 
     YANG Description: Multicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_multicast is None:
+        self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -635,12 +747,17 @@ depending on the context.
     self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv6_multicast(self):
+    return self.__l3vpn_ipv6_multicast is not None
+
   def _get_l3vpn_ipv6_multicast(self):
     """
     Getter method for l3vpn_ipv6_multicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_multicast (container)
 
     YANG Description: Multicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_multicast is None:
+        self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv6_multicast
       
   def _set_l3vpn_ipv6_multicast(self, v, load=False):
@@ -653,6 +770,9 @@ depending on the context.
 
     YANG Description: Multicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_multicast is None:
+        self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -672,12 +792,17 @@ depending on the context.
     self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2vpn_vpls(self):
+    return self.__l2vpn_vpls is not None
+
   def _get_l2vpn_vpls(self):
     """
     Getter method for l2vpn_vpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l2vpn_vpls (container)
 
     YANG Description: BGP-signalled VPLS configuration options
     """
+    if self.__l2vpn_vpls is None:
+        self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2vpn_vpls
       
   def _set_l2vpn_vpls(self, v, load=False):
@@ -690,6 +815,9 @@ depending on the context.
 
     YANG Description: BGP-signalled VPLS configuration options
     """
+    if self.__l2vpn_vpls is None:
+        self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -709,12 +837,17 @@ depending on the context.
     self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2vpn_evpn(self):
+    return self.__l2vpn_evpn is not None
+
   def _get_l2vpn_evpn(self):
     """
     Getter method for l2vpn_evpn, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l2vpn_evpn (container)
 
     YANG Description: BGP EVPN configuration options
     """
+    if self.__l2vpn_evpn is None:
+        self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2vpn_evpn
       
   def _set_l2vpn_evpn(self, v, load=False):
@@ -727,6 +860,9 @@ depending on the context.
 
     YANG Description: BGP EVPN configuration options
     """
+    if self.__l2vpn_evpn is None:
+        self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -804,23 +940,23 @@ neighbour or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__l3vpn_ipv6_multicast = None
+    self.__ipv6_unicast = None
+    self.__l3vpn_ipv4_multicast = None
+    self.__afi_safi_name = None
+    self.__use_multiple_paths = None
+    self.__ipv6_labeled_unicast = None
+    self.__ipv4_labeled_unicast = None
+    self.__l2vpn_evpn = None
+    self.__state = None
+    self.__apply_policy = None
+    self.__l3vpn_ipv6_unicast = None
+    self.__route_selection_options = None
+    self.__l2vpn_vpls = None
+    self.__ipv4_unicast = None
+    self.__config = None
+    self.__l3vpn_ipv4_unicast = None
+    self.__graceful_restart = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -849,6 +985,9 @@ neighbour or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'afi-safis', u'afi-safi']
 
+  def _initialized_afi_safi_name(self):
+    return self.__afi_safi_name is not None
+
   def _get_afi_safi_name(self):
     """
     Getter method for afi_safi_name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/afi_safi_name (leafref)
@@ -856,6 +995,8 @@ neighbour or group
     YANG Description: Reference to the AFI-SAFI name used as a key
 for the AFI-SAFI list
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__afi_safi_name
       
   def _set_afi_safi_name(self, v, load=False):
@@ -869,6 +1010,9 @@ for the AFI-SAFI list
     YANG Description: Reference to the AFI-SAFI name used as a key
 for the AFI-SAFI list
     """
+    if self.__afi_safi_name is None:
+        self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -893,12 +1037,17 @@ for the AFI-SAFI list
     self.__afi_safi_name = YANGDynClass(base=unicode, is_leaf=True, yang_name="afi-safi-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/config (container)
 
     YANG Description: Configuration parameters for the AFI-SAFI
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -911,6 +1060,9 @@ for the AFI-SAFI list
 
     YANG Description: Configuration parameters for the AFI-SAFI
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -930,12 +1082,17 @@ for the AFI-SAFI list
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/state (container)
 
     YANG Description: State information relating to the AFI-SAFI
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -948,6 +1105,9 @@ for the AFI-SAFI list
 
     YANG Description: State information relating to the AFI-SAFI
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -967,12 +1127,17 @@ for the AFI-SAFI list
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/graceful_restart (container)
 
     YANG Description: Parameters relating to BGP graceful-restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -985,6 +1150,9 @@ for the AFI-SAFI list
 
     YANG Description: Parameters relating to BGP graceful-restart
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1004,12 +1172,17 @@ for the AFI-SAFI list
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_route_selection_options(self):
+    return self.__route_selection_options is not None
+
   def _get_route_selection_options(self):
     """
     Getter method for route_selection_options, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/route_selection_options (container)
 
     YANG Description: Parameters relating to options for route selection
     """
+    if self.__route_selection_options is None:
+        self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__route_selection_options
       
   def _set_route_selection_options(self, v, load=False):
@@ -1022,6 +1195,9 @@ for the AFI-SAFI list
 
     YANG Description: Parameters relating to options for route selection
     """
+    if self.__route_selection_options is None:
+        self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1041,6 +1217,9 @@ for the AFI-SAFI list
     self.__route_selection_options = YANGDynClass(base=route_selection_options.route_selection_options, is_container='container', yang_name="route-selection-options", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_use_multiple_paths(self):
+    return self.__use_multiple_paths is not None
+
   def _get_use_multiple_paths(self):
     """
     Getter method for use_multiple_paths, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/use_multiple_paths (container)
@@ -1048,6 +1227,8 @@ for the AFI-SAFI list
     YANG Description: Parameters related to the use of multiple paths for the
 same NLRI
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__use_multiple_paths
       
   def _set_use_multiple_paths(self, v, load=False):
@@ -1061,6 +1242,9 @@ same NLRI
     YANG Description: Parameters related to the use of multiple paths for the
 same NLRI
     """
+    if self.__use_multiple_paths is None:
+        self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1080,6 +1264,9 @@ same NLRI
     self.__use_multiple_paths = YANGDynClass(base=use_multiple_paths.use_multiple_paths, is_container='container', yang_name="use-multiple-paths", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_apply_policy(self):
+    return self.__apply_policy is not None
+
   def _get_apply_policy(self):
     """
     Getter method for apply_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/apply_policy (container)
@@ -1089,6 +1276,8 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__apply_policy
       
   def _set_apply_policy(self, v, load=False):
@@ -1104,6 +1293,9 @@ Import and export policies are with respect to the local
 routing table, i.e., export (send) and import (receive),
 depending on the context.
     """
+    if self.__apply_policy is None:
+        self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1123,12 +1315,17 @@ depending on the context.
     self.__apply_policy = YANGDynClass(base=apply_policy.apply_policy, is_container='container', yang_name="apply-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv4_unicast(self):
+    return self.__ipv4_unicast is not None
+
   def _get_ipv4_unicast(self):
     """
     Getter method for ipv4_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv4_unicast (container)
 
     YANG Description: IPv4 unicast configuration options
     """
+    if self.__ipv4_unicast is None:
+        self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv4_unicast
       
   def _set_ipv4_unicast(self, v, load=False):
@@ -1141,6 +1338,9 @@ depending on the context.
 
     YANG Description: IPv4 unicast configuration options
     """
+    if self.__ipv4_unicast is None:
+        self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1160,12 +1360,17 @@ depending on the context.
     self.__ipv4_unicast = YANGDynClass(base=ipv4_unicast.ipv4_unicast, is_container='container', yang_name="ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv6_unicast(self):
+    return self.__ipv6_unicast is not None
+
   def _get_ipv6_unicast(self):
     """
     Getter method for ipv6_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_unicast (container)
 
     YANG Description: IPv6 unicast configuration options
     """
+    if self.__ipv6_unicast is None:
+        self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv6_unicast
       
   def _set_ipv6_unicast(self, v, load=False):
@@ -1178,6 +1383,9 @@ depending on the context.
 
     YANG Description: IPv6 unicast configuration options
     """
+    if self.__ipv6_unicast is None:
+        self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1197,12 +1405,17 @@ depending on the context.
     self.__ipv6_unicast = YANGDynClass(base=ipv6_unicast.ipv6_unicast, is_container='container', yang_name="ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv4_labeled_unicast(self):
+    return self.__ipv4_labeled_unicast is not None
+
   def _get_ipv4_labeled_unicast(self):
     """
     Getter method for ipv4_labeled_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv4_labeled_unicast (container)
 
     YANG Description: IPv4 Labeled Unicast configuration options
     """
+    if self.__ipv4_labeled_unicast is None:
+        self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv4_labeled_unicast
       
   def _set_ipv4_labeled_unicast(self, v, load=False):
@@ -1215,6 +1428,9 @@ depending on the context.
 
     YANG Description: IPv4 Labeled Unicast configuration options
     """
+    if self.__ipv4_labeled_unicast is None:
+        self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1234,12 +1450,17 @@ depending on the context.
     self.__ipv4_labeled_unicast = YANGDynClass(base=ipv4_labeled_unicast.ipv4_labeled_unicast, is_container='container', yang_name="ipv4-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ipv6_labeled_unicast(self):
+    return self.__ipv6_labeled_unicast is not None
+
   def _get_ipv6_labeled_unicast(self):
     """
     Getter method for ipv6_labeled_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/ipv6_labeled_unicast (container)
 
     YANG Description: IPv6 Labeled Unicast configuration options
     """
+    if self.__ipv6_labeled_unicast is None:
+        self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ipv6_labeled_unicast
       
   def _set_ipv6_labeled_unicast(self, v, load=False):
@@ -1252,6 +1473,9 @@ depending on the context.
 
     YANG Description: IPv6 Labeled Unicast configuration options
     """
+    if self.__ipv6_labeled_unicast is None:
+        self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1271,12 +1495,17 @@ depending on the context.
     self.__ipv6_labeled_unicast = YANGDynClass(base=ipv6_labeled_unicast.ipv6_labeled_unicast, is_container='container', yang_name="ipv6-labeled-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv4_unicast(self):
+    return self.__l3vpn_ipv4_unicast is not None
+
   def _get_l3vpn_ipv4_unicast(self):
     """
     Getter method for l3vpn_ipv4_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv4_unicast (container)
 
     YANG Description: Unicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_unicast is None:
+        self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv4_unicast
       
   def _set_l3vpn_ipv4_unicast(self, v, load=False):
@@ -1289,6 +1518,9 @@ depending on the context.
 
     YANG Description: Unicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_unicast is None:
+        self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1308,12 +1540,17 @@ depending on the context.
     self.__l3vpn_ipv4_unicast = YANGDynClass(base=l3vpn_ipv4_unicast.l3vpn_ipv4_unicast, is_container='container', yang_name="l3vpn-ipv4-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv6_unicast(self):
+    return self.__l3vpn_ipv6_unicast is not None
+
   def _get_l3vpn_ipv6_unicast(self):
     """
     Getter method for l3vpn_ipv6_unicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_unicast (container)
 
     YANG Description: Unicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_unicast is None:
+        self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv6_unicast
       
   def _set_l3vpn_ipv6_unicast(self, v, load=False):
@@ -1326,6 +1563,9 @@ depending on the context.
 
     YANG Description: Unicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_unicast is None:
+        self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1345,12 +1585,17 @@ depending on the context.
     self.__l3vpn_ipv6_unicast = YANGDynClass(base=l3vpn_ipv6_unicast.l3vpn_ipv6_unicast, is_container='container', yang_name="l3vpn-ipv6-unicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv4_multicast(self):
+    return self.__l3vpn_ipv4_multicast is not None
+
   def _get_l3vpn_ipv4_multicast(self):
     """
     Getter method for l3vpn_ipv4_multicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv4_multicast (container)
 
     YANG Description: Multicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_multicast is None:
+        self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv4_multicast
       
   def _set_l3vpn_ipv4_multicast(self, v, load=False):
@@ -1363,6 +1608,9 @@ depending on the context.
 
     YANG Description: Multicast IPv4 L3VPN configuration options
     """
+    if self.__l3vpn_ipv4_multicast is None:
+        self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1382,12 +1630,17 @@ depending on the context.
     self.__l3vpn_ipv4_multicast = YANGDynClass(base=l3vpn_ipv4_multicast.l3vpn_ipv4_multicast, is_container='container', yang_name="l3vpn-ipv4-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l3vpn_ipv6_multicast(self):
+    return self.__l3vpn_ipv6_multicast is not None
+
   def _get_l3vpn_ipv6_multicast(self):
     """
     Getter method for l3vpn_ipv6_multicast, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l3vpn_ipv6_multicast (container)
 
     YANG Description: Multicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_multicast is None:
+        self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l3vpn_ipv6_multicast
       
   def _set_l3vpn_ipv6_multicast(self, v, load=False):
@@ -1400,6 +1653,9 @@ depending on the context.
 
     YANG Description: Multicast IPv6 L3VPN configuration options
     """
+    if self.__l3vpn_ipv6_multicast is None:
+        self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1419,12 +1675,17 @@ depending on the context.
     self.__l3vpn_ipv6_multicast = YANGDynClass(base=l3vpn_ipv6_multicast.l3vpn_ipv6_multicast, is_container='container', yang_name="l3vpn-ipv6-multicast", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2vpn_vpls(self):
+    return self.__l2vpn_vpls is not None
+
   def _get_l2vpn_vpls(self):
     """
     Getter method for l2vpn_vpls, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l2vpn_vpls (container)
 
     YANG Description: BGP-signalled VPLS configuration options
     """
+    if self.__l2vpn_vpls is None:
+        self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2vpn_vpls
       
   def _set_l2vpn_vpls(self, v, load=False):
@@ -1437,6 +1698,9 @@ depending on the context.
 
     YANG Description: BGP-signalled VPLS configuration options
     """
+    if self.__l2vpn_vpls is None:
+        self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1456,12 +1720,17 @@ depending on the context.
     self.__l2vpn_vpls = YANGDynClass(base=l2vpn_vpls.l2vpn_vpls, is_container='container', yang_name="l2vpn-vpls", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_l2vpn_evpn(self):
+    return self.__l2vpn_evpn is not None
+
   def _get_l2vpn_evpn(self):
     """
     Getter method for l2vpn_evpn, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/afi_safis/afi_safi/l2vpn_evpn (container)
 
     YANG Description: BGP EVPN configuration options
     """
+    if self.__l2vpn_evpn is None:
+        self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__l2vpn_evpn
       
   def _set_l2vpn_evpn(self, v, load=False):
@@ -1474,6 +1743,9 @@ depending on the context.
 
     YANG Description: BGP EVPN configuration options
     """
+    if self.__l2vpn_evpn is None:
+        self.__l2vpn_evpn = YANGDynClass(base=l2vpn_evpn.l2vpn_evpn, is_container='container', yang_name="l2vpn-evpn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

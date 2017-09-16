@@ -44,10 +44,10 @@ class aaa(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__accounting = YANGDynClass(base=accounting.accounting, is_container='container', yang_name="accounting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__authorization = YANGDynClass(base=authorization.authorization, is_container='container', yang_name="authorization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__server_groups = YANGDynClass(base=server_groups.server_groups, is_container='container', yang_name="server-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__accounting = None
+    self.__authentication = None
+    self.__authorization = None
+    self.__server_groups = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,12 +76,17 @@ class aaa(PybindBase):
     else:
       return [u'system', u'aaa']
 
+  def _initialized_authentication(self):
+    return self.__authentication is not None
+
   def _get_authentication(self):
     """
     Getter method for authentication, mapped from YANG variable /system/aaa/authentication (container)
 
     YANG Description: Top-level container for global authentication data
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__authentication
       
   def _set_authentication(self, v, load=False):
@@ -94,6 +99,9 @@ class aaa(PybindBase):
 
     YANG Description: Top-level container for global authentication data
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ class aaa(PybindBase):
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_authorization(self):
+    return self.__authorization is not None
+
   def _get_authorization(self):
     """
     Getter method for authorization, mapped from YANG variable /system/aaa/authorization (container)
@@ -120,6 +131,8 @@ class aaa(PybindBase):
     YANG Description: Top-level container for AAA authorization configuration
 and operational state data
     """
+    if self.__authorization is None:
+        self.__authorization = YANGDynClass(base=authorization.authorization, is_container='container', yang_name="authorization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__authorization
       
   def _set_authorization(self, v, load=False):
@@ -133,6 +146,9 @@ and operational state data
     YANG Description: Top-level container for AAA authorization configuration
 and operational state data
     """
+    if self.__authorization is None:
+        self.__authorization = YANGDynClass(base=authorization.authorization, is_container='container', yang_name="authorization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ and operational state data
     self.__authorization = YANGDynClass(base=authorization.authorization, is_container='container', yang_name="authorization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_accounting(self):
+    return self.__accounting is not None
+
   def _get_accounting(self):
     """
     Getter method for accounting, mapped from YANG variable /system/aaa/accounting (container)
 
     YANG Description: Top-level container for AAA accounting
     """
+    if self.__accounting is None:
+        self.__accounting = YANGDynClass(base=accounting.accounting, is_container='container', yang_name="accounting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__accounting
       
   def _set_accounting(self, v, load=False):
@@ -170,6 +191,9 @@ and operational state data
 
     YANG Description: Top-level container for AAA accounting
     """
+    if self.__accounting is None:
+        self.__accounting = YANGDynClass(base=accounting.accounting, is_container='container', yang_name="accounting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,12 +213,17 @@ and operational state data
     self.__accounting = YANGDynClass(base=accounting.accounting, is_container='container', yang_name="accounting", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_server_groups(self):
+    return self.__server_groups is not None
+
   def _get_server_groups(self):
     """
     Getter method for server_groups, mapped from YANG variable /system/aaa/server_groups (container)
 
     YANG Description: Enclosing container for AAA server groups
     """
+    if self.__server_groups is None:
+        self.__server_groups = YANGDynClass(base=server_groups.server_groups, is_container='container', yang_name="server-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__server_groups
       
   def _set_server_groups(self, v, load=False):
@@ -207,6 +236,9 @@ and operational state data
 
     YANG Description: Enclosing container for AAA server groups
     """
+    if self.__server_groups is None:
+        self.__server_groups = YANGDynClass(base=server_groups.server_groups, is_container='container', yang_name="server-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

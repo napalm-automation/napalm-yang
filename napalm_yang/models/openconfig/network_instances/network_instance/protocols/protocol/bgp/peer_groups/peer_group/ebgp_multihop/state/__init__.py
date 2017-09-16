@@ -41,8 +41,8 @@ or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__enabled = None
+    self.__multihop_ttl = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'ebgp-multihop', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/ebgp_multihop/state/enabled (boolean)
@@ -79,6 +82,8 @@ or group
 to be indirectly connected - including cases where the TTL
 can be decremented between the BGP peers
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -93,6 +98,9 @@ can be decremented between the BGP peers
 to be indirectly connected - including cases where the TTL
 can be decremented between the BGP peers
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ can be decremented between the BGP peers
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_multihop_ttl(self):
+    return self.__multihop_ttl is not None
+
   def _get_multihop_ttl(self):
     """
     Getter method for multihop_ttl, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/ebgp_multihop/state/multihop_ttl (uint8)
@@ -119,6 +130,8 @@ can be decremented between the BGP peers
     YANG Description: Time-to-live value to use when packets are sent to the
 referenced group or neighbors and ebgp-multihop is enabled
     """
+    if self.__multihop_ttl is None:
+        self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multihop_ttl
       
   def _set_multihop_ttl(self, v, load=False):
@@ -132,6 +145,9 @@ referenced group or neighbors and ebgp-multihop is enabled
     YANG Description: Time-to-live value to use when packets are sent to the
 referenced group or neighbors and ebgp-multihop is enabled
     """
+    if self.__multihop_ttl is None:
+        self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ or group
     self._path_helper = False
 
     self._extmethods = False
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__enabled = None
+    self.__multihop_ttl = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ or group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'ebgp-multihop', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/ebgp_multihop/state/enabled (boolean)
@@ -216,6 +235,8 @@ or group
 to be indirectly connected - including cases where the TTL
 can be decremented between the BGP peers
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -230,6 +251,9 @@ can be decremented between the BGP peers
 to be indirectly connected - including cases where the TTL
 can be decremented between the BGP peers
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,6 +273,9 @@ can be decremented between the BGP peers
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_multihop_ttl(self):
+    return self.__multihop_ttl is not None
+
   def _get_multihop_ttl(self):
     """
     Getter method for multihop_ttl, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/ebgp_multihop/state/multihop_ttl (uint8)
@@ -256,6 +283,8 @@ can be decremented between the BGP peers
     YANG Description: Time-to-live value to use when packets are sent to the
 referenced group or neighbors and ebgp-multihop is enabled
     """
+    if self.__multihop_ttl is None:
+        self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__multihop_ttl
       
   def _set_multihop_ttl(self, v, load=False):
@@ -269,6 +298,9 @@ referenced group or neighbors and ebgp-multihop is enabled
     YANG Description: Time-to-live value to use when packets are sent to the
 referenced group or neighbors and ebgp-multihop is enabled
     """
+    if self.__multihop_ttl is None:
+        self.__multihop_ttl = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="multihop-ttl", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

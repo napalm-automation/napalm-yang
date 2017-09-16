@@ -41,8 +41,8 @@ of prefixes from IS-IS Level 2 to Level 1.
     self._path_helper = False
 
     self._extmethods = False
-    self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    self.__import_policy = None
+    self.__default_import_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ of prefixes from IS-IS Level 2 to Level 1.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'inter-level-propagation-policies', u'level2-to-level1', u'state']
 
+  def _initialized_import_policy(self):
+    return self.__import_policy is not None
+
   def _get_import_policy(self):
     """
     Getter method for import_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1/state/import_policy (leafref)
@@ -80,6 +83,8 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__import_policy
       
   def _set_import_policy(self, v, load=False):
@@ -95,6 +100,9 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ etc.
     self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_default_import_policy(self):
+    return self.__default_import_policy is not None
+
   def _get_default_import_policy(self):
     """
     Getter method for default_import_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1/state/default_import_policy (default-policy-type)
@@ -121,6 +132,8 @@ etc.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
     return self.__default_import_policy
       
   def _set_default_import_policy(self, v, load=False):
@@ -134,6 +147,9 @@ in the import policy chain is satisfied.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ of prefixes from IS-IS Level 2 to Level 1.
     self._path_helper = False
 
     self._extmethods = False
-    self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    self.__import_policy = None
+    self.__default_import_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ of prefixes from IS-IS Level 2 to Level 1.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'inter-level-propagation-policies', u'level2-to-level1', u'state']
 
+  def _initialized_import_policy(self):
+    return self.__import_policy is not None
+
   def _get_import_policy(self):
     """
     Getter method for import_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1/state/import_policy (leafref)
@@ -219,6 +238,8 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__import_policy
       
   def _set_import_policy(self, v, load=False):
@@ -234,6 +255,9 @@ receiving a routing update in the current context, e.g.,
 for the current peer group, neighbor, address family,
 etc.
     """
+    if self.__import_policy is None:
+        self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -253,6 +277,9 @@ etc.
     self.__import_policy = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_default_import_policy(self):
+    return self.__default_import_policy is not None
+
   def _get_default_import_policy(self):
     """
     Getter method for default_import_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/inter_level_propagation_policies/level2_to_level1/state/default_import_policy (default-policy-type)
@@ -260,6 +287,8 @@ etc.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
     return self.__default_import_policy
       
   def _set_default_import_policy(self, v, load=False):
@@ -273,6 +302,9 @@ in the import policy chain is satisfied.
     YANG Description: explicitly set a default policy if no policy definition
 in the import policy chain is satisfied.
     """
+    if self.__default_import_policy is None:
+        self.__default_import_policy = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCEPT_ROUTE': {}, u'REJECT_ROUTE': {}},), default=unicode("REJECT_ROUTE"), is_leaf=True, yang_name="default-import-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='default-policy-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

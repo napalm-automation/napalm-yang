@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
-    self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__member_as = None
+    self.__identifier = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'confederation', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/enabled (boolean)
@@ -78,6 +81,8 @@ class config(PybindBase):
     YANG Description: When this leaf is set to true it indicates that
 the local-AS is part of a BGP confederation
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -91,6 +96,9 @@ the local-AS is part of a BGP confederation
     YANG Description: When this leaf is set to true it indicates that
 the local-AS is part of a BGP confederation
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ the local-AS is part of a BGP confederation
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/identifier (oc-inet:as-number)
 
     YANG Description: Confederation identifier for the autonomous system.
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -128,6 +141,9 @@ the local-AS is part of a BGP confederation
 
     YANG Description: Confederation identifier for the autonomous system.
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,6 +163,9 @@ the local-AS is part of a BGP confederation
     self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
 
 
+  def _initialized_member_as(self):
+    return self.__member_as is not None
+
   def _get_member_as(self):
     """
     Getter method for member_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/member_as (oc-inet:as-number)
@@ -154,6 +173,8 @@ the local-AS is part of a BGP confederation
     YANG Description: Remote autonomous systems that are to be treated
 as part of the local confederation.
     """
+    if self.__member_as is None:
+        self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
     return self.__member_as
       
   def _set_member_as(self, v, load=False):
@@ -167,6 +188,9 @@ as part of the local confederation.
     YANG Description: Remote autonomous systems that are to be treated
 as part of the local confederation.
     """
+    if self.__member_as is None:
+        self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -213,9 +237,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
-    self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__member_as = None
+    self.__identifier = None
+    self.__enabled = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -244,6 +268,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'global', u'confederation', u'config']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/enabled (boolean)
@@ -251,6 +278,8 @@ class config(PybindBase):
     YANG Description: When this leaf is set to true it indicates that
 the local-AS is part of a BGP confederation
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -264,6 +293,9 @@ the local-AS is part of a BGP confederation
     YANG Description: When this leaf is set to true it indicates that
 the local-AS is part of a BGP confederation
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -283,12 +315,17 @@ the local-AS is part of a BGP confederation
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/identifier (oc-inet:as-number)
 
     YANG Description: Confederation identifier for the autonomous system.
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -301,6 +338,9 @@ the local-AS is part of a BGP confederation
 
     YANG Description: Confederation identifier for the autonomous system.
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -320,6 +360,9 @@ the local-AS is part of a BGP confederation
     self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
 
 
+  def _initialized_member_as(self):
+    return self.__member_as is not None
+
   def _get_member_as(self):
     """
     Getter method for member_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global/confederation/config/member_as (oc-inet:as-number)
@@ -327,6 +370,8 @@ the local-AS is part of a BGP confederation
     YANG Description: Remote autonomous systems that are to be treated
 as part of the local confederation.
     """
+    if self.__member_as is None:
+        self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
     return self.__member_as
       
   def _set_member_as(self, v, load=False):
@@ -340,6 +385,9 @@ as part of the local confederation.
     YANG Description: Remote autonomous systems that are to be treated
 as part of the local confederation.
     """
+    if self.__member_as is None:
+        self.__member_as = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)), is_leaf=False, yang_name="member-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

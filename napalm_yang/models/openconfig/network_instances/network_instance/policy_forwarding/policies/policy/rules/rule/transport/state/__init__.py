@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
-    self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    self.__source_port = None
+    self.__tcp_flags = None
+    self.__destination_port = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'transport', u'state']
 
+  def _initialized_source_port(self):
+    return self.__source_port is not None
+
   def _get_source_port(self):
     """
     Getter method for source_port, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/source_port (oc-pkt-match-types:port-num-range)
 
     YANG Description: Source port or range
     """
+    if self.__source_port is None:
+        self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
     return self.__source_port
       
   def _set_source_port(self, v, load=False):
@@ -89,6 +94,9 @@ class state(PybindBase):
 
     YANG Description: Source port or range
     """
+    if self.__source_port is None:
+        self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,12 +116,17 @@ class state(PybindBase):
     self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
 
 
+  def _initialized_destination_port(self):
+    return self.__destination_port is not None
+
   def _get_destination_port(self):
     """
     Getter method for destination_port, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/destination_port (oc-pkt-match-types:port-num-range)
 
     YANG Description: Destination port or range
     """
+    if self.__destination_port is None:
+        self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
     return self.__destination_port
       
   def _set_destination_port(self, v, load=False):
@@ -126,6 +139,9 @@ class state(PybindBase):
 
     YANG Description: Destination port or range
     """
+    if self.__destination_port is None:
+        self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -145,12 +161,17 @@ class state(PybindBase):
     self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
 
 
+  def _initialized_tcp_flags(self):
+    return self.__tcp_flags is not None
+
   def _get_tcp_flags(self):
     """
     Getter method for tcp_flags, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/tcp_flags (identityref)
 
     YANG Description: List of TCP flags to match
     """
+    if self.__tcp_flags is None:
+        self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__tcp_flags
       
   def _set_tcp_flags(self, v, load=False):
@@ -163,6 +184,9 @@ class state(PybindBase):
 
     YANG Description: List of TCP flags to match
     """
+    if self.__tcp_flags is None:
+        self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -209,9 +233,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
-    self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    self.__source_port = None
+    self.__tcp_flags = None
+    self.__destination_port = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -240,12 +264,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'transport', u'state']
 
+  def _initialized_source_port(self):
+    return self.__source_port is not None
+
   def _get_source_port(self):
     """
     Getter method for source_port, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/source_port (oc-pkt-match-types:port-num-range)
 
     YANG Description: Source port or range
     """
+    if self.__source_port is None:
+        self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
     return self.__source_port
       
   def _set_source_port(self, v, load=False):
@@ -258,6 +287,9 @@ class state(PybindBase):
 
     YANG Description: Source port or range
     """
+    if self.__source_port is None:
+        self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -277,12 +309,17 @@ class state(PybindBase):
     self.__source_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
 
 
+  def _initialized_destination_port(self):
+    return self.__destination_port is not None
+
   def _get_destination_port(self):
     """
     Getter method for destination_port, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/destination_port (oc-pkt-match-types:port-num-range)
 
     YANG Description: Destination port or range
     """
+    if self.__destination_port is None:
+        self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
     return self.__destination_port
       
   def _set_destination_port(self, v, load=False):
@@ -295,6 +332,9 @@ class state(PybindBase):
 
     YANG Description: Destination port or range
     """
+    if self.__destination_port is None:
+        self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -314,12 +354,17 @@ class state(PybindBase):
     self.__destination_port = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)\\.\\.(6[0-5][0-5][0-3][0-5]|[0-5]?[0-9]?[0-9]?[0-9]?[0-9]?)$'}),RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ANY': {}},),], is_leaf=True, yang_name="destination-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:port-num-range', is_config=False)
 
 
+  def _initialized_tcp_flags(self):
+    return self.__tcp_flags is not None
+
   def _get_tcp_flags(self):
     """
     Getter method for tcp_flags, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/transport/state/tcp_flags (identityref)
 
     YANG Description: List of TCP flags to match
     """
+    if self.__tcp_flags is None:
+        self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__tcp_flags
       
   def _set_tcp_flags(self, v, load=False):
@@ -332,6 +377,9 @@ class state(PybindBase):
 
     YANG Description: List of TCP flags to match
     """
+    if self.__tcp_flags is None:
+        self.__tcp_flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_RST': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ECE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_SYN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_CWR': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_URG': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_ACK': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_FIN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'TCP_PSH': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},)), is_leaf=False, yang_name="tcp-flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

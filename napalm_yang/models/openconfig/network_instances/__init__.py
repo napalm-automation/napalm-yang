@@ -42,7 +42,7 @@ configured on the local system
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__network_instance = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ configured on the local system
     else:
       return [u'network-instances']
 
+  def _initialized_network_instance(self):
+    return self.__network_instance is not None
+
   def _get_network_instance(self):
     """
     Getter method for network_instance, mapped from YANG variable /network_instances/network_instance (list)
 
     YANG Description: Network instances configured on the local system
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__network_instance
       
   def _set_network_instance(self, v, load=False):
@@ -89,6 +94,9 @@ configured on the local system
 
     YANG Description: Network instances configured on the local system
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ configured on the local system
     self._path_helper = False
 
     self._extmethods = False
-    self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__network_instance = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ configured on the local system
     else:
       return [u'network-instances']
 
+  def _initialized_network_instance(self):
+    return self.__network_instance is not None
+
   def _get_network_instance(self):
     """
     Getter method for network_instance, mapped from YANG variable /network_instances/network_instance (list)
 
     YANG Description: Network instances configured on the local system
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__network_instance
       
   def _set_network_instance(self, v, load=False):
@@ -182,6 +195,9 @@ configured on the local system
 
     YANG Description: Network instances configured on the local system
     """
+    if self.__network_instance is None:
+        self.__network_instance = YANGDynClass(base=YANGListType("name",network_instance.network_instance, yang_name="network-instance", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="network-instance", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -43,9 +43,9 @@ class bgp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__peer_groups = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,12 +74,17 @@ class bgp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global (container)
 
     YANG Description: Global configuration for the BGP router
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -92,6 +97,9 @@ class bgp(PybindBase):
 
     YANG Description: Global configuration for the BGP router
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,12 +119,17 @@ class bgp(PybindBase):
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors (container)
 
     YANG Description: Configuration for BGP neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -129,6 +142,9 @@ class bgp(PybindBase):
 
     YANG Description: Configuration for BGP neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -148,12 +164,17 @@ class bgp(PybindBase):
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_peer_groups(self):
+    return self.__peer_groups is not None
+
   def _get_peer_groups(self):
     """
     Getter method for peer_groups, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups (container)
 
     YANG Description: Configuration for BGP peer-groups
     """
+    if self.__peer_groups is None:
+        self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__peer_groups
       
   def _set_peer_groups(self, v, load=False):
@@ -166,6 +187,9 @@ class bgp(PybindBase):
 
     YANG Description: Configuration for BGP peer-groups
     """
+    if self.__peer_groups is None:
+        self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ class bgp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__neighbors = None
+    self.__peer_groups = None
+    self.__global_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,12 +270,17 @@ class bgp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp']
 
+  def _initialized_global_(self):
+    return self.__global_ is not None
+
   def _get_global_(self):
     """
     Getter method for global_, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/global (container)
 
     YANG Description: Global configuration for the BGP router
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__global_
       
   def _set_global_(self, v, load=False):
@@ -264,6 +293,9 @@ class bgp(PybindBase):
 
     YANG Description: Global configuration for the BGP router
     """
+    if self.__global_ is None:
+        self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -283,12 +315,17 @@ class bgp(PybindBase):
     self.__global_ = YANGDynClass(base=global_.global_, is_container='container', yang_name="global", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors (container)
 
     YANG Description: Configuration for BGP neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -301,6 +338,9 @@ class bgp(PybindBase):
 
     YANG Description: Configuration for BGP neighbors
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -320,12 +360,17 @@ class bgp(PybindBase):
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_peer_groups(self):
+    return self.__peer_groups is not None
+
   def _get_peer_groups(self):
     """
     Getter method for peer_groups, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups (container)
 
     YANG Description: Configuration for BGP peer-groups
     """
+    if self.__peer_groups is None:
+        self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__peer_groups
       
   def _set_peer_groups(self, v, load=False):
@@ -338,6 +383,9 @@ class bgp(PybindBase):
 
     YANG Description: Configuration for BGP peer-groups
     """
+    if self.__peer_groups is None:
+        self.__peer_groups = YANGDynClass(base=peer_groups.peer_groups, is_container='container', yang_name="peer-groups", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

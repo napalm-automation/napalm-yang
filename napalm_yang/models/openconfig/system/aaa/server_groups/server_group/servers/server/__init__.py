@@ -44,11 +44,11 @@ class server(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__tacacs = YANGDynClass(base=tacacs.tacacs, is_container='container', yang_name="tacacs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__radius = YANGDynClass(base=radius.radius, is_container='container', yang_name="radius", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
-    self.__address = YANGDynClass(base=unicode, is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    self.__tacacs = None
+    self.__state = None
+    self.__radius = None
+    self.__config = None
+    self.__address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -77,12 +77,17 @@ class server(PybindBase):
     else:
       return [u'system', u'aaa', u'server-groups', u'server-group', u'servers', u'server']
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/address (leafref)
 
     YANG Description: Reference to the configured address of the AAA server
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=unicode, is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -95,6 +100,9 @@ class server(PybindBase):
 
     YANG Description: Reference to the configured address of the AAA server
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=unicode, is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -119,12 +127,17 @@ class server(PybindBase):
     self.__address = YANGDynClass(base=unicode, is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/config (container)
 
     YANG Description: Configuration data 
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -137,6 +150,9 @@ class server(PybindBase):
 
     YANG Description: Configuration data 
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ class server(PybindBase):
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state (container)
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -174,6 +195,9 @@ class server(PybindBase):
 
     YANG Description: Operational state data 
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ class server(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_tacacs(self):
+    return self.__tacacs is not None
+
   def _get_tacacs(self):
     """
     Getter method for tacacs, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/tacacs (container)
 
     YANG Description: Top-level container for TACACS+ server data
     """
+    if self.__tacacs is None:
+        self.__tacacs = YANGDynClass(base=tacacs.tacacs, is_container='container', yang_name="tacacs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__tacacs
       
   def _set_tacacs(self, v, load=False):
@@ -211,6 +240,9 @@ class server(PybindBase):
 
     YANG Description: Top-level container for TACACS+ server data
     """
+    if self.__tacacs is None:
+        self.__tacacs = YANGDynClass(base=tacacs.tacacs, is_container='container', yang_name="tacacs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -230,12 +262,17 @@ class server(PybindBase):
     self.__tacacs = YANGDynClass(base=tacacs.tacacs, is_container='container', yang_name="tacacs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
 
 
+  def _initialized_radius(self):
+    return self.__radius is not None
+
   def _get_radius(self):
     """
     Getter method for radius, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius (container)
 
     YANG Description: Top-level container for RADIUS server data
     """
+    if self.__radius is None:
+        self.__radius = YANGDynClass(base=radius.radius, is_container='container', yang_name="radius", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__radius
       
   def _set_radius(self, v, load=False):
@@ -248,6 +285,9 @@ class server(PybindBase):
 
     YANG Description: Top-level container for RADIUS server data
     """
+    if self.__radius is None:
+        self.__radius = YANGDynClass(base=radius.radius, is_container='container', yang_name="radius", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

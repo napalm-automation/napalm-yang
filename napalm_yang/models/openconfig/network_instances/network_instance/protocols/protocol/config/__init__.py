@@ -41,10 +41,10 @@ protocol instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__default_metric = None
+    self.__identifier = None
+    self.__enabled = None
+    self.__name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ protocol instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'config']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/identifier (identityref)
 
     YANG Description: The protocol identifier for the instance
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -91,6 +96,9 @@ protocol instance
 
     YANG Description: The protocol identifier for the instance
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ protocol instance
     self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/name (string)
 
     YANG Description: A unique name for the protocol instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -128,6 +141,9 @@ protocol instance
 
     YANG Description: A unique name for the protocol instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,6 +163,9 @@ protocol instance
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/enabled (boolean)
@@ -154,6 +173,8 @@ protocol instance
     YANG Description: A boolean value indicating whether the local protocol
 instance is enabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -167,6 +188,9 @@ instance is enabled.
     YANG Description: A boolean value indicating whether the local protocol
 instance is enabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -186,6 +210,9 @@ instance is enabled.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/default_metric (uint32)
@@ -199,6 +226,8 @@ Where multiple entries have the same metric value then these
 equal cost paths should be treated according to the specified
 ECMP path selection behaviour for the instance
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -218,6 +247,9 @@ Where multiple entries have the same metric value then these
 equal cost paths should be treated according to the specified
 ECMP path selection behaviour for the instance
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -266,10 +298,10 @@ protocol instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
-    self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__default_metric = None
+    self.__identifier = None
+    self.__enabled = None
+    self.__name = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -298,12 +330,17 @@ protocol instance
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'config']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/identifier (identityref)
 
     YANG Description: The protocol identifier for the instance
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -316,6 +353,9 @@ protocol instance
 
     YANG Description: The protocol identifier for the instance
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -335,12 +375,17 @@ protocol instance
     self.__identifier = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pt:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'ISIS': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'STATIC': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:BGP': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:LOCAL_AGGREGATE': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pt:OSPF': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'OSPF3': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}, u'oc-pol-types:DIRECTLY_CONNECTED': {'@namespace': u'http://openconfig.net/yang/policy-types', '@module': u'openconfig-policy-types'}},), is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/name (string)
 
     YANG Description: A unique name for the protocol instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -353,6 +398,9 @@ protocol instance
 
     YANG Description: A unique name for the protocol instance
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -372,6 +420,9 @@ protocol instance
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/enabled (boolean)
@@ -379,6 +430,8 @@ protocol instance
     YANG Description: A boolean value indicating whether the local protocol
 instance is enabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -392,6 +445,9 @@ instance is enabled.
     YANG Description: A boolean value indicating whether the local protocol
 instance is enabled.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -411,6 +467,9 @@ instance is enabled.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config/default_metric (uint32)
@@ -424,6 +483,8 @@ Where multiple entries have the same metric value then these
 equal cost paths should be treated according to the specified
 ECMP path selection behaviour for the instance
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -443,6 +504,9 @@ Where multiple entries have the same metric value then these
 equal cost paths should be treated according to the specified
 ECMP path selection behaviour for the instance
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

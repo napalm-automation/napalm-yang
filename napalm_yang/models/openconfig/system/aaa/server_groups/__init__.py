@@ -41,7 +41,7 @@ class server_groups(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__server_group = YANGDynClass(base=YANGListType("name",server_group.server_group, yang_name="server-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="server-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    self.__server_group = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class server_groups(PybindBase):
     else:
       return [u'system', u'aaa', u'server-groups']
 
+  def _initialized_server_group(self):
+    return self.__server_group is not None
+
   def _get_server_group(self):
     """
     Getter method for server_group, mapped from YANG variable /system/aaa/server_groups/server_group (list)
@@ -78,6 +81,8 @@ class server_groups(PybindBase):
 must have the same type as indicated by the server
 type.
     """
+    if self.__server_group is None:
+        self.__server_group = YANGDynClass(base=YANGListType("name",server_group.server_group, yang_name="server-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="server-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
     return self.__server_group
       
   def _set_server_group(self, v, load=False):
@@ -92,6 +97,9 @@ type.
 must have the same type as indicated by the server
 type.
     """
+    if self.__server_group is None:
+        self.__server_group = YANGDynClass(base=YANGListType("name",server_group.server_group, yang_name="server-group", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="server-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

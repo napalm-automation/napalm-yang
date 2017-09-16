@@ -40,12 +40,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__node = None
+    self.__address_family = None
+    self.__route_type = None
+    self.__attached = None
+    self.__prefix = None
+    self.__prefix_length = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,6 +74,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'state']
 
+  def _initialized_route_type(self):
+    return self.__route_type is not None
+
   def _get_route_type(self):
     """
     Getter method for route_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/route_type (enumeration)
@@ -82,6 +85,8 @@ class state(PybindBase):
 The information contained in sub-TLVs of the attribute is applicable
 regardless of this value.
     """
+    if self.__route_type is None:
+        self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__route_type
       
   def _set_route_type(self, v, load=False):
@@ -96,6 +101,9 @@ regardless of this value.
 The information contained in sub-TLVs of the attribute is applicable
 regardless of this value.
     """
+    if self.__route_type is None:
+        self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,12 +123,17 @@ regardless of this value.
     self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_prefix_length(self):
+    return self.__prefix_length is not None
+
   def _get_prefix_length(self):
     """
     Getter method for prefix_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/prefix_length (uint8)
 
     YANG Description: The length of the IPv4 prefix contained in the Extended Prefix LSA
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__prefix_length
       
   def _set_prefix_length(self, v, load=False):
@@ -133,6 +146,9 @@ regardless of this value.
 
     YANG Description: The length of the IPv4 prefix contained in the Extended Prefix LSA
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ regardless of this value.
     self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/address_family (enumeration)
@@ -159,6 +178,8 @@ regardless of this value.
     YANG Description: The address family of the prefix contained in the Extended Prefix
 LSA
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -172,6 +193,9 @@ LSA
     YANG Description: The address family of the prefix contained in the Extended Prefix
 LSA
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,6 +215,9 @@ LSA
     self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_attached(self):
+    return self.__attached is not None
+
   def _get_attached(self):
     """
     Getter method for attached, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/attached (boolean)
@@ -199,6 +226,8 @@ LSA
 generated by an ABR for an inter-area prefix. The value corresponds
 to the A-flag of the flags field of the Extended Prefix LSA
     """
+    if self.__attached is None:
+        self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__attached
       
   def _set_attached(self, v, load=False):
@@ -213,6 +242,9 @@ to the A-flag of the flags field of the Extended Prefix LSA
 generated by an ABR for an inter-area prefix. The value corresponds
 to the A-flag of the flags field of the Extended Prefix LSA
     """
+    if self.__attached is None:
+        self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -232,6 +264,9 @@ to the A-flag of the flags field of the Extended Prefix LSA
     self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_node(self):
+    return self.__node is not None
+
   def _get_node(self):
     """
     Getter method for node, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/node (boolean)
@@ -241,6 +276,8 @@ the advertising router. Typically, the prefix within the LSA is
 expected to be globally-reachable prefix associated with a loopback
 interface
     """
+    if self.__node is None:
+        self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__node
       
   def _set_node(self, v, load=False):
@@ -256,6 +293,9 @@ the advertising router. Typically, the prefix within the LSA is
 expected to be globally-reachable prefix associated with a loopback
 interface
     """
+    if self.__node is None:
+        self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -275,12 +315,17 @@ interface
     self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/prefix (inet:ipv4-address-no-zone)
 
     YANG Description: The IPv4 prefix contained within the extended prefix LSA
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -293,6 +338,9 @@ interface
 
     YANG Description: The IPv4 prefix contained within the extended prefix LSA
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -342,12 +390,12 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    self.__node = None
+    self.__address_family = None
+    self.__route_type = None
+    self.__attached = None
+    self.__prefix = None
+    self.__prefix_length = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -376,6 +424,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'state']
 
+  def _initialized_route_type(self):
+    return self.__route_type is not None
+
   def _get_route_type(self):
     """
     Getter method for route_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/route_type (enumeration)
@@ -384,6 +435,8 @@ class state(PybindBase):
 The information contained in sub-TLVs of the attribute is applicable
 regardless of this value.
     """
+    if self.__route_type is None:
+        self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__route_type
       
   def _set_route_type(self, v, load=False):
@@ -398,6 +451,9 @@ regardless of this value.
 The information contained in sub-TLVs of the attribute is applicable
 regardless of this value.
     """
+    if self.__route_type is None:
+        self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -417,12 +473,17 @@ regardless of this value.
     self.__route_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'NSSA_EXTERNAL': {'value': 7}, u'INTER_AREA': {'value': 3}, u'INTRA_AREA': {'value': 1}, u'UNSPECIFIED': {'value': 0}, u'AS_EXTERNAL': {'value': 5}},), is_leaf=True, yang_name="route-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_prefix_length(self):
+    return self.__prefix_length is not None
+
   def _get_prefix_length(self):
     """
     Getter method for prefix_length, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/prefix_length (uint8)
 
     YANG Description: The length of the IPv4 prefix contained in the Extended Prefix LSA
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__prefix_length
       
   def _set_prefix_length(self, v, load=False):
@@ -435,6 +496,9 @@ regardless of this value.
 
     YANG Description: The length of the IPv4 prefix contained in the Extended Prefix LSA
     """
+    if self.__prefix_length is None:
+        self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -454,6 +518,9 @@ regardless of this value.
     self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..32']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_address_family(self):
+    return self.__address_family is not None
+
   def _get_address_family(self):
     """
     Getter method for address_family, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/address_family (enumeration)
@@ -461,6 +528,8 @@ regardless of this value.
     YANG Description: The address family of the prefix contained in the Extended Prefix
 LSA
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__address_family
       
   def _set_address_family(self, v, load=False):
@@ -474,6 +543,9 @@ LSA
     YANG Description: The address family of the prefix contained in the Extended Prefix
 LSA
     """
+    if self.__address_family is None:
+        self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -493,6 +565,9 @@ LSA
     self.__address_family = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'IPV4_UNICAST': {'value': 0}},), is_leaf=True, yang_name="address-family", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_attached(self):
+    return self.__attached is not None
+
   def _get_attached(self):
     """
     Getter method for attached, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/attached (boolean)
@@ -501,6 +576,8 @@ LSA
 generated by an ABR for an inter-area prefix. The value corresponds
 to the A-flag of the flags field of the Extended Prefix LSA
     """
+    if self.__attached is None:
+        self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__attached
       
   def _set_attached(self, v, load=False):
@@ -515,6 +592,9 @@ to the A-flag of the flags field of the Extended Prefix LSA
 generated by an ABR for an inter-area prefix. The value corresponds
 to the A-flag of the flags field of the Extended Prefix LSA
     """
+    if self.__attached is None:
+        self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -534,6 +614,9 @@ to the A-flag of the flags field of the Extended Prefix LSA
     self.__attached = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="attached", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_node(self):
+    return self.__node is not None
+
   def _get_node(self):
     """
     Getter method for node, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/node (boolean)
@@ -543,6 +626,8 @@ the advertising router. Typically, the prefix within the LSA is
 expected to be globally-reachable prefix associated with a loopback
 interface
     """
+    if self.__node is None:
+        self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__node
       
   def _set_node(self, v, load=False):
@@ -558,6 +643,9 @@ the advertising router. Typically, the prefix within the LSA is
 expected to be globally-reachable prefix associated with a loopback
 interface
     """
+    if self.__node is None:
+        self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -577,12 +665,17 @@ interface
     self.__node = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_prefix(self):
+    return self.__prefix is not None
+
   def _get_prefix(self):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/state/prefix (inet:ipv4-address-no-zone)
 
     YANG Description: The IPv4 prefix contained within the extended prefix LSA
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
     return self.__prefix
       
   def _set_prefix(self, v, load=False):
@@ -595,6 +688,9 @@ interface
 
     YANG Description: The IPv4 prefix contained within the extended prefix LSA
     """
+    if self.__prefix is None:
+        self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

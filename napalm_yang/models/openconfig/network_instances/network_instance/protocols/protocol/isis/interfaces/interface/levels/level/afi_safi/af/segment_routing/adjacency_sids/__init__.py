@@ -43,7 +43,7 @@ interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__adjacency_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'adjacency-sids']
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/adjacency_sids/adjacency_sid (list)
@@ -82,6 +85,8 @@ specified indicating the parameters that should be set for the SID.
 Where a SID value is specified that is allocated from the SRGB, the
 global flag must be set by the system.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -98,6 +103,9 @@ specified indicating the parameters that should be set for the SID.
 Where a SID value is specified that is allocated from the SRGB, the
 global flag must be set by the system.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -145,7 +153,7 @@ interface.
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__adjacency_sid = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -174,6 +182,9 @@ interface.
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'afi-safi', u'af', u'segment-routing', u'adjacency-sids']
 
+  def _initialized_adjacency_sid(self):
+    return self.__adjacency_sid is not None
+
   def _get_adjacency_sid(self):
     """
     Getter method for adjacency_sid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/afi_safi/af/segment_routing/adjacency_sids/adjacency_sid (list)
@@ -184,6 +195,8 @@ specified indicating the parameters that should be set for the SID.
 Where a SID value is specified that is allocated from the SRGB, the
 global flag must be set by the system.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__adjacency_sid
       
   def _set_adjacency_sid(self, v, load=False):
@@ -200,6 +213,9 @@ specified indicating the parameters that should be set for the SID.
 Where a SID value is specified that is allocated from the SRGB, the
 global flag must be set by the system.
     """
+    if self.__adjacency_sid is None:
+        self.__adjacency_sid = YANGDynClass(base=YANGListType("neighbor sid_id",adjacency_sid.adjacency_sid, yang_name="adjacency-sid", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='neighbor sid-id', extensions=None), is_container='list', yang_name="adjacency-sid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

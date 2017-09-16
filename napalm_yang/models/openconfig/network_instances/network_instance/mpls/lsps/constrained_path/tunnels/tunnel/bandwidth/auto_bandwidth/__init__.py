@@ -44,10 +44,10 @@ class auto_bandwidth(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__overflow = None
+    self.__underflow = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,6 +76,9 @@ class auto_bandwidth(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/config (container)
@@ -83,6 +86,8 @@ class auto_bandwidth(PybindBase):
     YANG Description: Configuration parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -96,6 +101,9 @@ auto-bandwidth on the tunnel.
     YANG Description: Configuration parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ auto-bandwidth on the tunnel.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state (container)
@@ -122,6 +133,8 @@ auto-bandwidth on the tunnel.
     YANG Description: State parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -135,6 +148,9 @@ auto-bandwidth on the tunnel.
     YANG Description: State parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ auto-bandwidth on the tunnel.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_overflow(self):
+    return self.__overflow is not None
+
   def _get_overflow(self):
     """
     Getter method for overflow, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow (container)
@@ -161,6 +180,8 @@ auto-bandwidth on the tunnel.
     YANG Description: configuration of MPLS overflow bandwidth
 adjustement for the LSP
     """
+    if self.__overflow is None:
+        self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__overflow
       
   def _set_overflow(self, v, load=False):
@@ -174,6 +195,9 @@ adjustement for the LSP
     YANG Description: configuration of MPLS overflow bandwidth
 adjustement for the LSP
     """
+    if self.__overflow is None:
+        self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,6 +217,9 @@ adjustement for the LSP
     self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_underflow(self):
+    return self.__underflow is not None
+
   def _get_underflow(self):
     """
     Getter method for underflow, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/underflow (container)
@@ -200,6 +227,8 @@ adjustement for the LSP
     YANG Description: configuration of MPLS underflow bandwidth
 adjustement for the LSP
     """
+    if self.__underflow is None:
+        self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__underflow
       
   def _set_underflow(self, v, load=False):
@@ -213,6 +242,9 @@ adjustement for the LSP
     YANG Description: configuration of MPLS underflow bandwidth
 adjustement for the LSP
     """
+    if self.__underflow is None:
+        self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -264,10 +296,10 @@ class auto_bandwidth(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__state = None
+    self.__config = None
+    self.__overflow = None
+    self.__underflow = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -296,6 +328,9 @@ class auto_bandwidth(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'tunnels', u'tunnel', u'bandwidth', u'auto-bandwidth']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/config (container)
@@ -303,6 +338,8 @@ class auto_bandwidth(PybindBase):
     YANG Description: Configuration parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -316,6 +353,9 @@ auto-bandwidth on the tunnel.
     YANG Description: Configuration parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -335,6 +375,9 @@ auto-bandwidth on the tunnel.
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/state (container)
@@ -342,6 +385,8 @@ auto-bandwidth on the tunnel.
     YANG Description: State parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -355,6 +400,9 @@ auto-bandwidth on the tunnel.
     YANG Description: State parameters relating to MPLS
 auto-bandwidth on the tunnel.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,6 +422,9 @@ auto-bandwidth on the tunnel.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_overflow(self):
+    return self.__overflow is not None
+
   def _get_overflow(self):
     """
     Getter method for overflow, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/overflow (container)
@@ -381,6 +432,8 @@ auto-bandwidth on the tunnel.
     YANG Description: configuration of MPLS overflow bandwidth
 adjustement for the LSP
     """
+    if self.__overflow is None:
+        self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__overflow
       
   def _set_overflow(self, v, load=False):
@@ -394,6 +447,9 @@ adjustement for the LSP
     YANG Description: configuration of MPLS overflow bandwidth
 adjustement for the LSP
     """
+    if self.__overflow is None:
+        self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -413,6 +469,9 @@ adjustement for the LSP
     self.__overflow = YANGDynClass(base=overflow.overflow, is_container='container', yang_name="overflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_underflow(self):
+    return self.__underflow is not None
+
   def _get_underflow(self):
     """
     Getter method for underflow, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/tunnels/tunnel/bandwidth/auto_bandwidth/underflow (container)
@@ -420,6 +479,8 @@ adjustement for the LSP
     YANG Description: configuration of MPLS underflow bandwidth
 adjustement for the LSP
     """
+    if self.__underflow is None:
+        self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__underflow
       
   def _set_underflow(self, v, load=False):
@@ -433,6 +494,9 @@ adjustement for the LSP
     YANG Description: configuration of MPLS underflow bandwidth
 adjustement for the LSP
     """
+    if self.__underflow is None:
+        self.__underflow = YANGDynClass(base=underflow.underflow, is_container='container', yang_name="underflow", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

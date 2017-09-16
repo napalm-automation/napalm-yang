@@ -40,17 +40,17 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__connection_closes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-closes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__errors_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="errors-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__messages_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__messages_sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
-    self.__connection_opens = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-opens", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__connection_aborts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-aborts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__connection_failures = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-failures", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
-    self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
-    self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
-    self.__connection_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    self.__connection_closes = None
+    self.__errors_received = None
+    self.__messages_received = None
+    self.__messages_sent = None
+    self.__name = None
+    self.__connection_opens = None
+    self.__connection_aborts = None
+    self.__connection_failures = None
+    self.__timeout = None
+    self.__address = None
+    self.__connection_timeouts = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -79,12 +79,17 @@ class state(PybindBase):
     else:
       return [u'system', u'aaa', u'server-groups', u'server-group', u'servers', u'server', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/name (string)
 
     YANG Description: Name assigned to the server
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -97,6 +102,9 @@ class state(PybindBase):
 
     YANG Description: Name assigned to the server
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -116,12 +124,17 @@ class state(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
 
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/address (inet:ip-address)
 
     YANG Description: Address of the authentication server
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -134,6 +147,9 @@ class state(PybindBase):
 
     YANG Description: Address of the authentication server
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ class state(PybindBase):
     self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
 
 
+  def _initialized_timeout(self):
+    return self.__timeout is not None
+
   def _get_timeout(self):
     """
     Getter method for timeout, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/timeout (uint16)
@@ -160,6 +179,8 @@ class state(PybindBase):
     YANG Description: Set the timeout in seconds on responses from the AAA
 server
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
     return self.__timeout
       
   def _set_timeout(self, v, load=False):
@@ -173,6 +194,9 @@ server
     YANG Description: Set the timeout in seconds on responses from the AAA
 server
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -192,6 +216,9 @@ server
     self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
 
 
+  def _initialized_connection_opens(self):
+    return self.__connection_opens is not None
+
   def _get_connection_opens(self):
     """
     Getter method for connection_opens, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/connection_opens (yang:counter64)
@@ -199,6 +226,8 @@ server
     YANG Description: Number of new connection requests sent to the server, e.g.
 socket open
     """
+    if self.__connection_opens is None:
+        self.__connection_opens = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-opens", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__connection_opens
       
   def _set_connection_opens(self, v, load=False):
@@ -212,6 +241,9 @@ socket open
     YANG Description: Number of new connection requests sent to the server, e.g.
 socket open
     """
+    if self.__connection_opens is None:
+        self.__connection_opens = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-opens", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -231,6 +263,9 @@ socket open
     self.__connection_opens = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-opens", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_connection_closes(self):
+    return self.__connection_closes is not None
+
   def _get_connection_closes(self):
     """
     Getter method for connection_closes, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/connection_closes (yang:counter64)
@@ -238,6 +273,8 @@ socket open
     YANG Description: Number of connection close requests sent to the server, e.g.
 socket close
     """
+    if self.__connection_closes is None:
+        self.__connection_closes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-closes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__connection_closes
       
   def _set_connection_closes(self, v, load=False):
@@ -251,6 +288,9 @@ socket close
     YANG Description: Number of connection close requests sent to the server, e.g.
 socket close
     """
+    if self.__connection_closes is None:
+        self.__connection_closes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-closes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -270,6 +310,9 @@ socket close
     self.__connection_closes = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-closes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_connection_aborts(self):
+    return self.__connection_aborts is not None
+
   def _get_connection_aborts(self):
     """
     Getter method for connection_aborts, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/connection_aborts (yang:counter64)
@@ -277,6 +320,8 @@ socket close
     YANG Description: Number of aborted connections to the server.  These do
 not include connections that are close gracefully.
     """
+    if self.__connection_aborts is None:
+        self.__connection_aborts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-aborts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__connection_aborts
       
   def _set_connection_aborts(self, v, load=False):
@@ -290,6 +335,9 @@ not include connections that are close gracefully.
     YANG Description: Number of aborted connections to the server.  These do
 not include connections that are close gracefully.
     """
+    if self.__connection_aborts is None:
+        self.__connection_aborts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-aborts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -309,12 +357,17 @@ not include connections that are close gracefully.
     self.__connection_aborts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-aborts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_connection_failures(self):
+    return self.__connection_failures is not None
+
   def _get_connection_failures(self):
     """
     Getter method for connection_failures, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/connection_failures (yang:counter64)
 
     YANG Description: Number of connection failures to the server
     """
+    if self.__connection_failures is None:
+        self.__connection_failures = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-failures", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__connection_failures
       
   def _set_connection_failures(self, v, load=False):
@@ -327,6 +380,9 @@ not include connections that are close gracefully.
 
     YANG Description: Number of connection failures to the server
     """
+    if self.__connection_failures is None:
+        self.__connection_failures = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-failures", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -346,12 +402,17 @@ not include connections that are close gracefully.
     self.__connection_failures = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-failures", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_connection_timeouts(self):
+    return self.__connection_timeouts is not None
+
   def _get_connection_timeouts(self):
     """
     Getter method for connection_timeouts, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/connection_timeouts (yang:counter64)
 
     YANG Description: Number of connection timeouts to the server
     """
+    if self.__connection_timeouts is None:
+        self.__connection_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__connection_timeouts
       
   def _set_connection_timeouts(self, v, load=False):
@@ -364,6 +425,9 @@ not include connections that are close gracefully.
 
     YANG Description: Number of connection timeouts to the server
     """
+    if self.__connection_timeouts is None:
+        self.__connection_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -383,12 +447,17 @@ not include connections that are close gracefully.
     self.__connection_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="connection-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_messages_sent(self):
+    return self.__messages_sent is not None
+
   def _get_messages_sent(self):
     """
     Getter method for messages_sent, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/messages_sent (yang:counter64)
 
     YANG Description: Number of messages sent to the server
     """
+    if self.__messages_sent is None:
+        self.__messages_sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__messages_sent
       
   def _set_messages_sent(self, v, load=False):
@@ -401,6 +470,9 @@ not include connections that are close gracefully.
 
     YANG Description: Number of messages sent to the server
     """
+    if self.__messages_sent is None:
+        self.__messages_sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -420,12 +492,17 @@ not include connections that are close gracefully.
     self.__messages_sent = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-sent", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_messages_received(self):
+    return self.__messages_received is not None
+
   def _get_messages_received(self):
     """
     Getter method for messages_received, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/messages_received (yang:counter64)
 
     YANG Description: Number of messages received by the server
     """
+    if self.__messages_received is None:
+        self.__messages_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__messages_received
       
   def _set_messages_received(self, v, load=False):
@@ -438,6 +515,9 @@ not include connections that are close gracefully.
 
     YANG Description: Number of messages received by the server
     """
+    if self.__messages_received is None:
+        self.__messages_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -457,12 +537,17 @@ not include connections that are close gracefully.
     self.__messages_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="messages-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_errors_received(self):
+    return self.__errors_received is not None
+
   def _get_errors_received(self):
     """
     Getter method for errors_received, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/state/errors_received (yang:counter64)
 
     YANG Description: Number of error messages received from the server
     """
+    if self.__errors_received is None:
+        self.__errors_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="errors-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
     return self.__errors_received
       
   def _set_errors_received(self, v, load=False):
@@ -475,6 +560,9 @@ not include connections that are close gracefully.
 
     YANG Description: Number of error messages received from the server
     """
+    if self.__errors_received is None:
+        self.__errors_received = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="errors-received", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

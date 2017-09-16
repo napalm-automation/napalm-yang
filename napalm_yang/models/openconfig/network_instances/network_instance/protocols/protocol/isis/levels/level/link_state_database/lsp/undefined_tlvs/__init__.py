@@ -41,7 +41,7 @@ class undefined_tlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__undefined_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class undefined_tlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'undefined-tlvs']
 
+  def _initialized_undefined_tlv(self):
+    return self.__undefined_tlv is not None
+
   def _get_undefined_tlv(self):
     """
     Getter method for undefined_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv (list)
@@ -77,6 +80,8 @@ class undefined_tlvs(PybindBase):
     YANG Description: List of TLVs that are not defined within the model, or are not
 recognised by the system.
     """
+    if self.__undefined_tlv is None:
+        self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__undefined_tlv
       
   def _set_undefined_tlv(self, v, load=False):
@@ -90,6 +95,9 @@ recognised by the system.
     YANG Description: List of TLVs that are not defined within the model, or are not
 recognised by the system.
     """
+    if self.__undefined_tlv is None:
+        self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class undefined_tlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__undefined_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class undefined_tlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'undefined-tlvs']
 
+  def _initialized_undefined_tlv(self):
+    return self.__undefined_tlv is not None
+
   def _get_undefined_tlv(self):
     """
     Getter method for undefined_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv (list)
@@ -171,6 +182,8 @@ class undefined_tlvs(PybindBase):
     YANG Description: List of TLVs that are not defined within the model, or are not
 recognised by the system.
     """
+    if self.__undefined_tlv is None:
+        self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__undefined_tlv
       
   def _set_undefined_tlv(self, v, load=False):
@@ -184,6 +197,9 @@ recognised by the system.
     YANG Description: List of TLVs that are not defined within the model, or are not
 recognised by the system.
     """
+    if self.__undefined_tlv is None:
+        self.__undefined_tlv = YANGDynClass(base=YANGListType("type",undefined_tlv.undefined_tlv, yang_name="undefined-tlv", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='type', extensions=None), is_container='list', yang_name="undefined-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

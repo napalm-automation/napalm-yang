@@ -49,15 +49,15 @@ a particular routing protocol
     self._path_helper = False
 
     self._extmethods = False
-    self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__isis = None
+    self.__name = None
+    self.__static_routes = None
+    self.__ospfv2 = None
+    self.__bgp = None
+    self.__state = None
+    self.__local_aggregates = None
+    self.__identifier = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -86,6 +86,9 @@ a particular routing protocol
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/identifier (leafref)
@@ -93,6 +96,8 @@ a particular routing protocol
     YANG Description: The protocol name for the routing or forwarding
 protocol to be instantiated
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -106,6 +111,9 @@ protocol to be instantiated
     YANG Description: The protocol name for the routing or forwarding
 protocol to be instantiated
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -130,6 +138,9 @@ protocol to be instantiated
     self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/name (leafref)
@@ -138,6 +149,8 @@ protocol to be instantiated
 or forwarding protocol. For some processes this
 leaf may be system defined.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -152,6 +165,9 @@ leaf may be system defined.
 or forwarding protocol. For some processes this
 leaf may be system defined.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -176,6 +192,9 @@ leaf may be system defined.
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config (container)
@@ -183,6 +202,8 @@ leaf may be system defined.
     YANG Description: Configuration parameters relating to the routing
 protocol instance
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -196,6 +217,9 @@ protocol instance
     YANG Description: Configuration parameters relating to the routing
 protocol instance
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,6 +239,9 @@ protocol instance
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/state (container)
@@ -222,6 +249,8 @@ protocol instance
     YANG Description: State parameters relating to the routing protocol
 instance
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -235,6 +264,9 @@ instance
     YANG Description: State parameters relating to the routing protocol
 instance
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -254,12 +286,17 @@ instance
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_static_routes(self):
+    return self.__static_routes is not None
+
   def _get_static_routes(self):
     """
     Getter method for static_routes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes (container)
 
     YANG Description: Enclosing container for the list of static routes
     """
+    if self.__static_routes is None:
+        self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__static_routes
       
   def _set_static_routes(self, v, load=False):
@@ -272,6 +309,9 @@ instance
 
     YANG Description: Enclosing container for the list of static routes
     """
+    if self.__static_routes is None:
+        self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -291,6 +331,9 @@ instance
     self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_local_aggregates(self):
+    return self.__local_aggregates is not None
+
   def _get_local_aggregates(self):
     """
     Getter method for local_aggregates, mapped from YANG variable /network_instances/network_instance/protocols/protocol/local_aggregates (container)
@@ -298,6 +341,8 @@ instance
     YANG Description: Enclosing container for locally-defined aggregate
 routes
     """
+    if self.__local_aggregates is None:
+        self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__local_aggregates
       
   def _set_local_aggregates(self, v, load=False):
@@ -311,6 +356,9 @@ routes
     YANG Description: Enclosing container for locally-defined aggregate
 routes
     """
+    if self.__local_aggregates is None:
+        self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,12 +378,17 @@ routes
     self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_bgp(self):
+    return self.__bgp is not None
+
   def _get_bgp(self):
     """
     Getter method for bgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp (container)
 
     YANG Description: Top-level configuration and state for the BGP router
     """
+    if self.__bgp is None:
+        self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__bgp
       
   def _set_bgp(self, v, load=False):
@@ -348,6 +401,9 @@ routes
 
     YANG Description: Top-level configuration and state for the BGP router
     """
+    if self.__bgp is None:
+        self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -367,6 +423,9 @@ routes
     self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ospfv2(self):
+    return self.__ospfv2 is not None
+
   def _get_ospfv2(self):
     """
     Getter method for ospfv2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2 (container)
@@ -374,6 +433,8 @@ routes
     YANG Description: Top-level configuration and operational state for
 Open Shortest Path First (OSPF) v2
     """
+    if self.__ospfv2 is None:
+        self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ospfv2
       
   def _set_ospfv2(self, v, load=False):
@@ -387,6 +448,9 @@ Open Shortest Path First (OSPF) v2
     YANG Description: Top-level configuration and operational state for
 Open Shortest Path First (OSPF) v2
     """
+    if self.__ospfv2 is None:
+        self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -406,6 +470,9 @@ Open Shortest Path First (OSPF) v2
     self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_isis(self):
+    return self.__isis is not None
+
   def _get_isis(self):
     """
     Getter method for isis, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis (container)
@@ -413,6 +480,8 @@ Open Shortest Path First (OSPF) v2
     YANG Description: This container defines top-level ISIS configuration and state
 information.
     """
+    if self.__isis is None:
+        self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__isis
       
   def _set_isis(self, v, load=False):
@@ -426,6 +495,9 @@ information.
     YANG Description: This container defines top-level ISIS configuration and state
 information.
     """
+    if self.__isis is None:
+        self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -487,15 +559,15 @@ a particular routing protocol
     self._path_helper = False
 
     self._extmethods = False
-    self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__isis = None
+    self.__name = None
+    self.__static_routes = None
+    self.__ospfv2 = None
+    self.__bgp = None
+    self.__state = None
+    self.__local_aggregates = None
+    self.__identifier = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -524,6 +596,9 @@ a particular routing protocol
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol']
 
+  def _initialized_identifier(self):
+    return self.__identifier is not None
+
   def _get_identifier(self):
     """
     Getter method for identifier, mapped from YANG variable /network_instances/network_instance/protocols/protocol/identifier (leafref)
@@ -531,6 +606,8 @@ a particular routing protocol
     YANG Description: The protocol name for the routing or forwarding
 protocol to be instantiated
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__identifier
       
   def _set_identifier(self, v, load=False):
@@ -544,6 +621,9 @@ protocol to be instantiated
     YANG Description: The protocol name for the routing or forwarding
 protocol to be instantiated
     """
+    if self.__identifier is None:
+        self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -568,6 +648,9 @@ protocol to be instantiated
     self.__identifier = YANGDynClass(base=unicode, is_leaf=True, yang_name="identifier", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/protocols/protocol/name (leafref)
@@ -576,6 +659,8 @@ protocol to be instantiated
 or forwarding protocol. For some processes this
 leaf may be system defined.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -590,6 +675,9 @@ leaf may be system defined.
 or forwarding protocol. For some processes this
 leaf may be system defined.
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -614,6 +702,9 @@ leaf may be system defined.
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
 
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /network_instances/network_instance/protocols/protocol/config (container)
@@ -621,6 +712,8 @@ leaf may be system defined.
     YANG Description: Configuration parameters relating to the routing
 protocol instance
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -634,6 +727,9 @@ protocol instance
     YANG Description: Configuration parameters relating to the routing
 protocol instance
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -653,6 +749,9 @@ protocol instance
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/state (container)
@@ -660,6 +759,8 @@ protocol instance
     YANG Description: State parameters relating to the routing protocol
 instance
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -673,6 +774,9 @@ instance
     YANG Description: State parameters relating to the routing protocol
 instance
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -692,12 +796,17 @@ instance
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_static_routes(self):
+    return self.__static_routes is not None
+
   def _get_static_routes(self):
     """
     Getter method for static_routes, mapped from YANG variable /network_instances/network_instance/protocols/protocol/static_routes (container)
 
     YANG Description: Enclosing container for the list of static routes
     """
+    if self.__static_routes is None:
+        self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__static_routes
       
   def _set_static_routes(self, v, load=False):
@@ -710,6 +819,9 @@ instance
 
     YANG Description: Enclosing container for the list of static routes
     """
+    if self.__static_routes is None:
+        self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -729,6 +841,9 @@ instance
     self.__static_routes = YANGDynClass(base=static_routes.static_routes, is_container='container', yang_name="static-routes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_local_aggregates(self):
+    return self.__local_aggregates is not None
+
   def _get_local_aggregates(self):
     """
     Getter method for local_aggregates, mapped from YANG variable /network_instances/network_instance/protocols/protocol/local_aggregates (container)
@@ -736,6 +851,8 @@ instance
     YANG Description: Enclosing container for locally-defined aggregate
 routes
     """
+    if self.__local_aggregates is None:
+        self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__local_aggregates
       
   def _set_local_aggregates(self, v, load=False):
@@ -749,6 +866,9 @@ routes
     YANG Description: Enclosing container for locally-defined aggregate
 routes
     """
+    if self.__local_aggregates is None:
+        self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -768,12 +888,17 @@ routes
     self.__local_aggregates = YANGDynClass(base=local_aggregates.local_aggregates, is_container='container', yang_name="local-aggregates", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_bgp(self):
+    return self.__bgp is not None
+
   def _get_bgp(self):
     """
     Getter method for bgp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp (container)
 
     YANG Description: Top-level configuration and state for the BGP router
     """
+    if self.__bgp is None:
+        self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__bgp
       
   def _set_bgp(self, v, load=False):
@@ -786,6 +911,9 @@ routes
 
     YANG Description: Top-level configuration and state for the BGP router
     """
+    if self.__bgp is None:
+        self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -805,6 +933,9 @@ routes
     self.__bgp = YANGDynClass(base=bgp.bgp, is_container='container', yang_name="bgp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_ospfv2(self):
+    return self.__ospfv2 is not None
+
   def _get_ospfv2(self):
     """
     Getter method for ospfv2, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2 (container)
@@ -812,6 +943,8 @@ routes
     YANG Description: Top-level configuration and operational state for
 Open Shortest Path First (OSPF) v2
     """
+    if self.__ospfv2 is None:
+        self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__ospfv2
       
   def _set_ospfv2(self, v, load=False):
@@ -825,6 +958,9 @@ Open Shortest Path First (OSPF) v2
     YANG Description: Top-level configuration and operational state for
 Open Shortest Path First (OSPF) v2
     """
+    if self.__ospfv2 is None:
+        self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -844,6 +980,9 @@ Open Shortest Path First (OSPF) v2
     self.__ospfv2 = YANGDynClass(base=ospfv2.ospfv2, is_container='container', yang_name="ospfv2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_isis(self):
+    return self.__isis is not None
+
   def _get_isis(self):
     """
     Getter method for isis, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis (container)
@@ -851,6 +990,8 @@ Open Shortest Path First (OSPF) v2
     YANG Description: This container defines top-level ISIS configuration and state
 information.
     """
+    if self.__isis is None:
+        self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__isis
       
   def _set_isis(self, v, load=False):
@@ -864,6 +1005,9 @@ information.
     YANG Description: This container defines top-level ISIS configuration and state
 information.
     """
+    if self.__isis is None:
+        self.__isis = YANGDynClass(base=isis.isis, is_container='container', yang_name="isis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,9 +40,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    self.__spf_hold_interval = None
+    self.__spf_first_interval = None
+    self.__spf_second_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'spf', u'config']
 
+  def _initialized_spf_hold_interval(self):
+    return self.__spf_hold_interval is not None
+
   def _get_spf_hold_interval(self):
     """
     Getter method for spf_hold_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_hold_interval (uint64)
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_hold_interval
       
   def _set_spf_hold_interval(self, v, load=False):
@@ -89,6 +94,9 @@ class config(PybindBase):
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ class config(PybindBase):
     self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_spf_first_interval(self):
+    return self.__spf_first_interval is not None
+
   def _get_spf_first_interval(self):
     """
     Getter method for spf_first_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_first_interval (uint64)
@@ -115,6 +126,8 @@ class config(PybindBase):
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_first_interval
       
   def _set_spf_first_interval(self, v, load=False):
@@ -128,6 +141,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,6 +163,9 @@ detection of topology change and when the SPF algorithm runs.
     self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_spf_second_interval(self):
+    return self.__spf_second_interval is not None
+
   def _get_spf_second_interval(self):
     """
     Getter method for spf_second_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_second_interval (uint64)
@@ -154,6 +173,8 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_second_interval
       
   def _set_spf_second_interval(self, v, load=False):
@@ -167,6 +188,9 @@ SPF calculation.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -213,9 +237,9 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
-    self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    self.__spf_hold_interval = None
+    self.__spf_first_interval = None
+    self.__spf_second_interval = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -244,12 +268,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'timers', u'spf', u'config']
 
+  def _initialized_spf_hold_interval(self):
+    return self.__spf_hold_interval is not None
+
   def _get_spf_hold_interval(self):
     """
     Getter method for spf_hold_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_hold_interval (uint64)
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_hold_interval
       
   def _set_spf_hold_interval(self, v, load=False):
@@ -262,6 +291,9 @@ class config(PybindBase):
 
     YANG Description: SPF Hold Down time interval in milliseconds.
     """
+    if self.__spf_hold_interval is None:
+        self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -281,6 +313,9 @@ class config(PybindBase):
     self.__spf_hold_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), default=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64)(5000), is_leaf=True, yang_name="spf-hold-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_spf_first_interval(self):
+    return self.__spf_first_interval is not None
+
   def _get_spf_first_interval(self):
     """
     Getter method for spf_first_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_first_interval (uint64)
@@ -288,6 +323,8 @@ class config(PybindBase):
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_first_interval
       
   def _set_spf_first_interval(self, v, load=False):
@@ -301,6 +338,9 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the
 detection of topology change and when the SPF algorithm runs.
     """
+    if self.__spf_first_interval is None:
+        self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -320,6 +360,9 @@ detection of topology change and when the SPF algorithm runs.
     self.__spf_first_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-first-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
 
 
+  def _initialized_spf_second_interval(self):
+    return self.__spf_second_interval is not None
+
   def _get_spf_second_interval(self):
     """
     Getter method for spf_second_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/timers/spf/config/spf_second_interval (uint64)
@@ -327,6 +370,8 @@ detection of topology change and when the SPF algorithm runs.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
     return self.__spf_second_interval
       
   def _set_spf_second_interval(self, v, load=False):
@@ -340,6 +385,9 @@ SPF calculation.
     YANG Description: Time interval in milliseconds between the first and second
 SPF calculation.
     """
+    if self.__spf_second_interval is None:
+        self.__spf_second_interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="spf-second-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint64', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

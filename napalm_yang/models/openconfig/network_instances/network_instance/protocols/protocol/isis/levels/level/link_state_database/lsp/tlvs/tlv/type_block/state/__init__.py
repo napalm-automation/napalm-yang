@@ -40,8 +40,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__is_type = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'type-block', u'state']
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block/state/flags (enumeration)
 
     YANG Description: LSP Type-Block flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -88,6 +93,9 @@ class state(PybindBase):
 
     YANG Description: LSP Type-Block flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,12 +115,17 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_is_type(self):
+    return self.__is_type is not None
+
   def _get_is_type(self):
     """
     Getter method for is_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block/state/is_type (oc-isis-types:level-number)
 
     YANG Description: Type of neighboring system.
     """
+    if self.__is_type is None:
+        self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
     return self.__is_type
       
   def _set_is_type(self, v, load=False):
@@ -125,6 +138,9 @@ class state(PybindBase):
 
     YANG Description: Type of neighboring system.
     """
+    if self.__is_type is None:
+        self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -170,8 +186,8 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
-    self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    self.__is_type = None
+    self.__flags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -200,12 +216,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'type-block', u'state']
 
+  def _initialized_flags(self):
+    return self.__flags is not None
+
   def _get_flags(self):
     """
     Getter method for flags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block/state/flags (enumeration)
 
     YANG Description: LSP Type-Block flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__flags
       
   def _set_flags(self, v, load=False):
@@ -218,6 +239,9 @@ class state(PybindBase):
 
     YANG Description: LSP Type-Block flags.
     """
+    if self.__flags is None:
+        self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +261,17 @@ class state(PybindBase):
     self.__flags = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ATTACHED_EXPENSE': {}, u'OVERLOAD': {}, u'ATTACHED_ERROR': {}, u'PARTITION_REPAIR': {}, u'ATTACHED_DELAY': {}, u'ATTACHED_DEFAULT': {}},)), is_leaf=False, yang_name="flags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_is_type(self):
+    return self.__is_type is not None
+
   def _get_is_type(self):
     """
     Getter method for is_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block/state/is_type (oc-isis-types:level-number)
 
     YANG Description: Type of neighboring system.
     """
+    if self.__is_type is None:
+        self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
     return self.__is_type
       
   def _set_is_type(self, v, load=False):
@@ -255,6 +284,9 @@ class state(PybindBase):
 
     YANG Description: Type of neighboring system.
     """
+    if self.__is_type is None:
+        self.__is_type = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'1..2']}), is_leaf=True, yang_name="is-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:level-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

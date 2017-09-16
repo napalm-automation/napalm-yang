@@ -46,12 +46,12 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__segment_routing_algorithm = None
+    self.__informational_capabilities = None
+    self.__state = None
+    self.__unknown_tlv = None
+    self.__segment_routing_sid_label_range = None
+    self.__node_administrative_tags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -80,12 +80,17 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/state (container)
 
     YANG Description: Per-TLV state parameters of the RI LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -98,6 +103,9 @@ class tlv(PybindBase):
 
     YANG Description: Per-TLV state parameters of the RI LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -117,6 +125,9 @@ class tlv(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/unknown_tlv (container)
@@ -126,6 +137,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -141,6 +154,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -160,6 +176,9 @@ local system such that it cannot decode their value.
     self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_informational_capabilities(self):
+    return self.__informational_capabilities is not None
+
   def _get_informational_capabilities(self):
     """
     Getter method for informational_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities (container)
@@ -168,6 +187,8 @@ local system such that it cannot decode their value.
 router within the scope that the opaque RI LSA is being
 advertised
     """
+    if self.__informational_capabilities is None:
+        self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__informational_capabilities
       
   def _set_informational_capabilities(self, v, load=False):
@@ -182,6 +203,9 @@ advertised
 router within the scope that the opaque RI LSA is being
 advertised
     """
+    if self.__informational_capabilities is None:
+        self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -201,6 +225,9 @@ advertised
     self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_node_administrative_tags(self):
+    return self.__node_administrative_tags is not None
+
   def _get_node_administrative_tags(self):
     """
     Getter method for node_administrative_tags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/node_administrative_tags (container)
@@ -208,6 +235,8 @@ advertised
     YANG Description: Per-node administrative tags associated with the local system
 specified by the operator
     """
+    if self.__node_administrative_tags is None:
+        self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__node_administrative_tags
       
   def _set_node_administrative_tags(self, v, load=False):
@@ -221,6 +250,9 @@ specified by the operator
     YANG Description: Per-node administrative tags associated with the local system
 specified by the operator
     """
+    if self.__node_administrative_tags is None:
+        self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -240,12 +272,17 @@ specified by the operator
     self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_algorithm (container)
 
     YANG Description: The algorithms supported for Segment Routing by the local system
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -258,6 +295,9 @@ specified by the operator
 
     YANG Description: The algorithms supported for Segment Routing by the local system
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -277,6 +317,9 @@ specified by the operator
     self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_sid_label_range(self):
+    return self.__segment_routing_sid_label_range is not None
+
   def _get_segment_routing_sid_label_range(self):
     """
     Getter method for segment_routing_sid_label_range, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range (container)
@@ -284,6 +327,8 @@ specified by the operator
     YANG Description: The Segment Identifier (SID) or label ranges that are supported by
 the local system for Segment Routing
     """
+    if self.__segment_routing_sid_label_range is None:
+        self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_sid_label_range
       
   def _set_segment_routing_sid_label_range(self, v, load=False):
@@ -297,6 +342,9 @@ the local system for Segment Routing
     YANG Description: The Segment Identifier (SID) or label ranges that are supported by
 the local system for Segment Routing
     """
+    if self.__segment_routing_sid_label_range is None:
+        self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -352,12 +400,12 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__segment_routing_algorithm = None
+    self.__informational_capabilities = None
+    self.__state = None
+    self.__unknown_tlv = None
+    self.__segment_routing_sid_label_range = None
+    self.__node_administrative_tags = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -386,12 +434,17 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'router-information', u'tlvs', u'tlv']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/state (container)
 
     YANG Description: Per-TLV state parameters of the RI LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -404,6 +457,9 @@ class tlv(PybindBase):
 
     YANG Description: Per-TLV state parameters of the RI LSA
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -423,6 +479,9 @@ class tlv(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_unknown_tlv(self):
+    return self.__unknown_tlv is not None
+
   def _get_unknown_tlv(self):
     """
     Getter method for unknown_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/unknown_tlv (container)
@@ -432,6 +491,8 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__unknown_tlv
       
   def _set_unknown_tlv(self, v, load=False):
@@ -447,6 +508,9 @@ defined to be the set of TLVs that are not modelled
 within the OpenConfig model, or are unknown to the
 local system such that it cannot decode their value.
     """
+    if self.__unknown_tlv is None:
+        self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -466,6 +530,9 @@ local system such that it cannot decode their value.
     self.__unknown_tlv = YANGDynClass(base=unknown_tlv.unknown_tlv, is_container='container', yang_name="unknown-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_informational_capabilities(self):
+    return self.__informational_capabilities is not None
+
   def _get_informational_capabilities(self):
     """
     Getter method for informational_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/informational_capabilities (container)
@@ -474,6 +541,8 @@ local system such that it cannot decode their value.
 router within the scope that the opaque RI LSA is being
 advertised
     """
+    if self.__informational_capabilities is None:
+        self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__informational_capabilities
       
   def _set_informational_capabilities(self, v, load=False):
@@ -488,6 +557,9 @@ advertised
 router within the scope that the opaque RI LSA is being
 advertised
     """
+    if self.__informational_capabilities is None:
+        self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -507,6 +579,9 @@ advertised
     self.__informational_capabilities = YANGDynClass(base=informational_capabilities.informational_capabilities, is_container='container', yang_name="informational-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_node_administrative_tags(self):
+    return self.__node_administrative_tags is not None
+
   def _get_node_administrative_tags(self):
     """
     Getter method for node_administrative_tags, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/node_administrative_tags (container)
@@ -514,6 +589,8 @@ advertised
     YANG Description: Per-node administrative tags associated with the local system
 specified by the operator
     """
+    if self.__node_administrative_tags is None:
+        self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__node_administrative_tags
       
   def _set_node_administrative_tags(self, v, load=False):
@@ -527,6 +604,9 @@ specified by the operator
     YANG Description: Per-node administrative tags associated with the local system
 specified by the operator
     """
+    if self.__node_administrative_tags is None:
+        self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -546,12 +626,17 @@ specified by the operator
     self.__node_administrative_tags = YANGDynClass(base=node_administrative_tags.node_administrative_tags, is_container='container', yang_name="node-administrative-tags", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_algorithm (container)
 
     YANG Description: The algorithms supported for Segment Routing by the local system
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -564,6 +649,9 @@ specified by the operator
 
     YANG Description: The algorithms supported for Segment Routing by the local system
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -583,6 +671,9 @@ specified by the operator
     self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_sid_label_range(self):
+    return self.__segment_routing_sid_label_range is not None
+
   def _get_segment_routing_sid_label_range(self):
     """
     Getter method for segment_routing_sid_label_range, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/router_information/tlvs/tlv/segment_routing_sid_label_range (container)
@@ -590,6 +681,8 @@ specified by the operator
     YANG Description: The Segment Identifier (SID) or label ranges that are supported by
 the local system for Segment Routing
     """
+    if self.__segment_routing_sid_label_range is None:
+        self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_sid_label_range
       
   def _set_segment_routing_sid_label_range(self, v, load=False):
@@ -603,6 +696,9 @@ the local system for Segment Routing
     YANG Description: The Segment Identifier (SID) or label ranges that are supported by
 the local system for Segment Routing
     """
+    if self.__segment_routing_sid_label_range is None:
+        self.__segment_routing_sid_label_range = YANGDynClass(base=segment_routing_sid_label_range.segment_routing_sid_label_range, is_container='container', yang_name="segment-routing-sid-label-range", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,11 +40,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
-    self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    self.__source_mac = None
+    self.__destination_mac = None
+    self.__destination_mac_mask = None
+    self.__ethertype = None
+    self.__source_mac_mask = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'l2', u'config']
 
+  def _initialized_source_mac(self):
+    return self.__source_mac is not None
+
   def _get_source_mac(self):
     """
     Getter method for source_mac, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/source_mac (yang:mac-address)
 
     YANG Description: Source IEEE 802 MAC address.
     """
+    if self.__source_mac is None:
+        self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__source_mac
       
   def _set_source_mac(self, v, load=False):
@@ -91,6 +96,9 @@ class config(PybindBase):
 
     YANG Description: Source IEEE 802 MAC address.
     """
+    if self.__source_mac is None:
+        self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ class config(PybindBase):
     self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_source_mac_mask(self):
+    return self.__source_mac_mask is not None
+
   def _get_source_mac_mask(self):
     """
     Getter method for source_mac_mask, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/source_mac_mask (yang:mac-address)
 
     YANG Description: Source IEEE 802 MAC address mask.
     """
+    if self.__source_mac_mask is None:
+        self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__source_mac_mask
       
   def _set_source_mac_mask(self, v, load=False):
@@ -128,6 +141,9 @@ class config(PybindBase):
 
     YANG Description: Source IEEE 802 MAC address mask.
     """
+    if self.__source_mac_mask is None:
+        self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,12 +163,17 @@ class config(PybindBase):
     self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_destination_mac(self):
+    return self.__destination_mac is not None
+
   def _get_destination_mac(self):
     """
     Getter method for destination_mac, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/destination_mac (yang:mac-address)
 
     YANG Description: Destination IEEE 802 MAC address.
     """
+    if self.__destination_mac is None:
+        self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__destination_mac
       
   def _set_destination_mac(self, v, load=False):
@@ -165,6 +186,9 @@ class config(PybindBase):
 
     YANG Description: Destination IEEE 802 MAC address.
     """
+    if self.__destination_mac is None:
+        self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -184,12 +208,17 @@ class config(PybindBase):
     self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_destination_mac_mask(self):
+    return self.__destination_mac_mask is not None
+
   def _get_destination_mac_mask(self):
     """
     Getter method for destination_mac_mask, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/destination_mac_mask (yang:mac-address)
 
     YANG Description: Destination IEEE 802 MAC address mask.
     """
+    if self.__destination_mac_mask is None:
+        self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__destination_mac_mask
       
   def _set_destination_mac_mask(self, v, load=False):
@@ -202,6 +231,9 @@ class config(PybindBase):
 
     YANG Description: Destination IEEE 802 MAC address mask.
     """
+    if self.__destination_mac_mask is None:
+        self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -221,12 +253,17 @@ class config(PybindBase):
     self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_ethertype(self):
+    return self.__ethertype is not None
+
   def _get_ethertype(self):
     """
     Getter method for ethertype, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/ethertype (oc-pkt-match-types:ethertype-type)
 
     YANG Description: Ethertype field to match in Ethernet packets
     """
+    if self.__ethertype is None:
+        self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
     return self.__ethertype
       
   def _set_ethertype(self, v, load=False):
@@ -239,6 +276,9 @@ class config(PybindBase):
 
     YANG Description: Ethertype field to match in Ethernet packets
     """
+    if self.__ethertype is None:
+        self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,11 +327,11 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
-    self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
-    self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    self.__source_mac = None
+    self.__destination_mac = None
+    self.__destination_mac_mask = None
+    self.__ethertype = None
+    self.__source_mac_mask = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -320,12 +360,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'rules', u'rule', u'l2', u'config']
 
+  def _initialized_source_mac(self):
+    return self.__source_mac is not None
+
   def _get_source_mac(self):
     """
     Getter method for source_mac, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/source_mac (yang:mac-address)
 
     YANG Description: Source IEEE 802 MAC address.
     """
+    if self.__source_mac is None:
+        self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__source_mac
       
   def _set_source_mac(self, v, load=False):
@@ -338,6 +383,9 @@ class config(PybindBase):
 
     YANG Description: Source IEEE 802 MAC address.
     """
+    if self.__source_mac is None:
+        self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -357,12 +405,17 @@ class config(PybindBase):
     self.__source_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_source_mac_mask(self):
+    return self.__source_mac_mask is not None
+
   def _get_source_mac_mask(self):
     """
     Getter method for source_mac_mask, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/source_mac_mask (yang:mac-address)
 
     YANG Description: Source IEEE 802 MAC address mask.
     """
+    if self.__source_mac_mask is None:
+        self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__source_mac_mask
       
   def _set_source_mac_mask(self, v, load=False):
@@ -375,6 +428,9 @@ class config(PybindBase):
 
     YANG Description: Source IEEE 802 MAC address mask.
     """
+    if self.__source_mac_mask is None:
+        self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -394,12 +450,17 @@ class config(PybindBase):
     self.__source_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="source-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_destination_mac(self):
+    return self.__destination_mac is not None
+
   def _get_destination_mac(self):
     """
     Getter method for destination_mac, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/destination_mac (yang:mac-address)
 
     YANG Description: Destination IEEE 802 MAC address.
     """
+    if self.__destination_mac is None:
+        self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__destination_mac
       
   def _set_destination_mac(self, v, load=False):
@@ -412,6 +473,9 @@ class config(PybindBase):
 
     YANG Description: Destination IEEE 802 MAC address.
     """
+    if self.__destination_mac is None:
+        self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -431,12 +495,17 @@ class config(PybindBase):
     self.__destination_mac = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_destination_mac_mask(self):
+    return self.__destination_mac_mask is not None
+
   def _get_destination_mac_mask(self):
     """
     Getter method for destination_mac_mask, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/destination_mac_mask (yang:mac-address)
 
     YANG Description: Destination IEEE 802 MAC address mask.
     """
+    if self.__destination_mac_mask is None:
+        self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
     return self.__destination_mac_mask
       
   def _set_destination_mac_mask(self, v, load=False):
@@ -449,6 +518,9 @@ class config(PybindBase):
 
     YANG Description: Destination IEEE 802 MAC address mask.
     """
+    if self.__destination_mac_mask is None:
+        self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -468,12 +540,17 @@ class config(PybindBase):
     self.__destination_mac_mask = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="destination-mac-mask", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:mac-address', is_config=True)
 
 
+  def _initialized_ethertype(self):
+    return self.__ethertype is not None
+
   def _get_ethertype(self):
     """
     Getter method for ethertype, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/l2/config/ethertype (oc-pkt-match-types:ethertype-type)
 
     YANG Description: Ethertype field to match in Ethernet packets
     """
+    if self.__ethertype is None:
+        self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
     return self.__ethertype
       
   def _set_ethertype(self, v, load=False):
@@ -486,6 +563,9 @@ class config(PybindBase):
 
     YANG Description: Ethertype field to match in Ethernet packets
     """
+    if self.__ethertype is None:
+        self.__ethertype = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..65535']}),RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-pkt-match-types:ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_ARP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_VLAN': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_ROCE': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV6': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_MPLS': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'ETHERTYPE_LLDP': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}, u'oc-pkt-match-types:ETHERTYPE_IPV4': {'@namespace': u'http://openconfig.net/yang/packet-match-types', '@module': u'openconfig-packet-match-types'}},),], is_leaf=True, yang_name="ethertype", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-pkt-match-types:ethertype-type', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

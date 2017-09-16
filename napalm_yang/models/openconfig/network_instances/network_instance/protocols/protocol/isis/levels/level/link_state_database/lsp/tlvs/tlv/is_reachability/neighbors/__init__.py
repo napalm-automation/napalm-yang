@@ -41,7 +41,7 @@ class neighbors(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbors = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class neighbors(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'is-reachability', u'neighbors']
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability/neighbors/neighbors (list)
 
     YANG Description: IS reachability neighbor attributes.
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -88,6 +93,9 @@ class neighbors(PybindBase):
 
     YANG Description: IS reachability neighbor attributes.
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class neighbors(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbors = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class neighbors(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'is-reachability', u'neighbors']
 
+  def _initialized_neighbors(self):
+    return self.__neighbors is not None
+
   def _get_neighbors(self):
     """
     Getter method for neighbors, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability/neighbors/neighbors (list)
 
     YANG Description: IS reachability neighbor attributes.
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__neighbors
       
   def _set_neighbors(self, v, load=False):
@@ -180,6 +193,9 @@ class neighbors(PybindBase):
 
     YANG Description: IS reachability neighbor attributes.
     """
+    if self.__neighbors is None:
+        self.__neighbors = YANGDynClass(base=YANGListType(False,neighbors_.neighbors, yang_name="neighbors", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

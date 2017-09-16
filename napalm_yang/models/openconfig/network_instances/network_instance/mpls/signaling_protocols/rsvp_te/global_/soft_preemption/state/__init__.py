@@ -41,8 +41,8 @@ soft preemption support
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__enable = None
+    self.__soft_preemption_timeout = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ soft preemption support
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'soft-preemption', u'state']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption/state/enable (boolean)
 
     YANG Description: Enables soft preemption on a node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -89,6 +94,9 @@ soft preemption support
 
     YANG Description: Enables soft preemption on a node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -108,6 +116,9 @@ soft preemption support
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_soft_preemption_timeout(self):
+    return self.__soft_preemption_timeout is not None
+
   def _get_soft_preemption_timeout(self):
     """
     Getter method for soft_preemption_timeout, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption/state/soft_preemption_timeout (uint16)
@@ -117,6 +128,8 @@ to hard preemption. The default timeout for
 soft-preemption is 30 seconds - after which
 the local system reverts to hard pre-emption.
     """
+    if self.__soft_preemption_timeout is None:
+        self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__soft_preemption_timeout
       
   def _set_soft_preemption_timeout(self, v, load=False):
@@ -132,6 +145,9 @@ to hard preemption. The default timeout for
 soft-preemption is 30 seconds - after which
 the local system reverts to hard pre-emption.
     """
+    if self.__soft_preemption_timeout is None:
+        self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ soft preemption support
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    self.__enable = None
+    self.__soft_preemption_timeout = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,12 +224,17 @@ soft preemption support
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'soft-preemption', u'state']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption/state/enable (boolean)
 
     YANG Description: Enables soft preemption on a node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -226,6 +247,9 @@ soft preemption support
 
     YANG Description: Enables soft preemption on a node.
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -245,6 +269,9 @@ soft preemption support
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_soft_preemption_timeout(self):
+    return self.__soft_preemption_timeout is not None
+
   def _get_soft_preemption_timeout(self):
     """
     Getter method for soft_preemption_timeout, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption/state/soft_preemption_timeout (uint16)
@@ -254,6 +281,8 @@ to hard preemption. The default timeout for
 soft-preemption is 30 seconds - after which
 the local system reverts to hard pre-emption.
     """
+    if self.__soft_preemption_timeout is None:
+        self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
     return self.__soft_preemption_timeout
       
   def _set_soft_preemption_timeout(self, v, load=False):
@@ -269,6 +298,9 @@ to hard preemption. The default timeout for
 soft-preemption is 30 seconds - after which
 the local system reverts to hard pre-emption.
     """
+    if self.__soft_preemption_timeout is None:
+        self.__soft_preemption_timeout = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..max']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(30), is_leaf=True, yang_name="soft-preemption-timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

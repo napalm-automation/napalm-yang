@@ -40,11 +40,11 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__acct_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1813), is_leaf=True, yang_name="acct-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
-    self.__secret_key = YANGDynClass(base=unicode, is_leaf=True, yang_name="secret-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:routing-password', is_config=False)
-    self.__retransmit_attempts = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="retransmit-attempts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
-    self.__source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
-    self.__auth_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1812), is_leaf=True, yang_name="auth-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
+    self.__acct_port = None
+    self.__secret_key = None
+    self.__retransmit_attempts = None
+    self.__source_address = None
+    self.__auth_port = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ class state(PybindBase):
     else:
       return [u'system', u'aaa', u'server-groups', u'server-group', u'servers', u'server', u'radius', u'state']
 
+  def _initialized_auth_port(self):
+    return self.__auth_port is not None
+
   def _get_auth_port(self):
     """
     Getter method for auth_port, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius/state/auth_port (inet:port-number)
 
     YANG Description: Port number for authentication requests
     """
+    if self.__auth_port is None:
+        self.__auth_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1812), is_leaf=True, yang_name="auth-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
     return self.__auth_port
       
   def _set_auth_port(self, v, load=False):
@@ -91,6 +96,9 @@ class state(PybindBase):
 
     YANG Description: Port number for authentication requests
     """
+    if self.__auth_port is None:
+        self.__auth_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1812), is_leaf=True, yang_name="auth-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ class state(PybindBase):
     self.__auth_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1812), is_leaf=True, yang_name="auth-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
 
 
+  def _initialized_acct_port(self):
+    return self.__acct_port is not None
+
   def _get_acct_port(self):
     """
     Getter method for acct_port, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius/state/acct_port (inet:port-number)
 
     YANG Description: Port number for accounting requests
     """
+    if self.__acct_port is None:
+        self.__acct_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1813), is_leaf=True, yang_name="acct-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
     return self.__acct_port
       
   def _set_acct_port(self, v, load=False):
@@ -128,6 +141,9 @@ class state(PybindBase):
 
     YANG Description: Port number for accounting requests
     """
+    if self.__acct_port is None:
+        self.__acct_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1813), is_leaf=True, yang_name="acct-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,6 +163,9 @@ class state(PybindBase):
     self.__acct_port = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'0..65535']}), default=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16)(1813), is_leaf=True, yang_name="acct-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:port-number', is_config=False)
 
 
+  def _initialized_secret_key(self):
+    return self.__secret_key is not None
+
   def _get_secret_key(self):
     """
     Getter method for secret_key, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius/state/secret_key (oc-types:routing-password)
@@ -154,6 +173,8 @@ class state(PybindBase):
     YANG Description: The unencrypted shared key used between the authentication
 server and the device.
     """
+    if self.__secret_key is None:
+        self.__secret_key = YANGDynClass(base=unicode, is_leaf=True, yang_name="secret-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:routing-password', is_config=False)
     return self.__secret_key
       
   def _set_secret_key(self, v, load=False):
@@ -167,6 +188,9 @@ server and the device.
     YANG Description: The unencrypted shared key used between the authentication
 server and the device.
     """
+    if self.__secret_key is None:
+        self.__secret_key = YANGDynClass(base=unicode, is_leaf=True, yang_name="secret-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:routing-password', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -186,12 +210,17 @@ server and the device.
     self.__secret_key = YANGDynClass(base=unicode, is_leaf=True, yang_name="secret-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:routing-password', is_config=False)
 
 
+  def _initialized_source_address(self):
+    return self.__source_address is not None
+
   def _get_source_address(self):
     """
     Getter method for source_address, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius/state/source_address (inet:ip-address)
 
     YANG Description: Source IP address to use in messages to the TACACS server
     """
+    if self.__source_address is None:
+        self.__source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
     return self.__source_address
       
   def _set_source_address(self, v, load=False):
@@ -204,6 +233,9 @@ server and the device.
 
     YANG Description: Source IP address to use in messages to the TACACS server
     """
+    if self.__source_address is None:
+        self.__source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -223,6 +255,9 @@ server and the device.
     self.__source_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="source-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:ip-address', is_config=False)
 
 
+  def _initialized_retransmit_attempts(self):
+    return self.__retransmit_attempts is not None
+
   def _get_retransmit_attempts(self):
     """
     Getter method for retransmit_attempts, mapped from YANG variable /system/aaa/server_groups/server_group/servers/server/radius/state/retransmit_attempts (uint8)
@@ -230,6 +265,8 @@ server and the device.
     YANG Description: Number of times the system may resend a request to the
 RADIUS server when it is unresponsive
     """
+    if self.__retransmit_attempts is None:
+        self.__retransmit_attempts = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="retransmit-attempts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
     return self.__retransmit_attempts
       
   def _set_retransmit_attempts(self, v, load=False):
@@ -243,6 +280,9 @@ RADIUS server when it is unresponsive
     YANG Description: Number of times the system may resend a request to the
 RADIUS server when it is unresponsive
     """
+    if self.__retransmit_attempts is None:
+        self.__retransmit_attempts = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="retransmit-attempts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

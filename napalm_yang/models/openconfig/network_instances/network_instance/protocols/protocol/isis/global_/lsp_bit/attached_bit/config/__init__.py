@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__suppress_bit = None
+    self.__ignore_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'attached-bit', u'config']
 
+  def _initialized_ignore_bit(self):
+    return self.__ignore_bit is not None
+
   def _get_ignore_bit(self):
     """
     Getter method for ignore_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit/config/ignore_bit (boolean)
@@ -79,6 +82,8 @@ IS-IS, the local system ignores it. In this case the local system
 does not set a default route to the L1L2 router advertising the PDU
 with the attached bit set.
     """
+    if self.__ignore_bit is None:
+        self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_bit
       
   def _set_ignore_bit(self, v, load=False):
@@ -94,6 +99,9 @@ IS-IS, the local system ignores it. In this case the local system
 does not set a default route to the L1L2 router advertising the PDU
 with the attached bit set.
     """
+    if self.__ignore_bit is None:
+        self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ with the attached bit set.
     self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_suppress_bit(self):
+    return self.__suppress_bit is not None
+
   def _get_suppress_bit(self):
     """
     Getter method for suppress_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit/config/suppress_bit (boolean)
@@ -120,6 +131,8 @@ with the attached bit set.
     YANG Description: When set to true, if the local IS acts as a L1L2 router, then the
 attached bit is not advertised in locally generated PDUs.
     """
+    if self.__suppress_bit is None:
+        self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__suppress_bit
       
   def _set_suppress_bit(self, v, load=False):
@@ -133,6 +146,9 @@ attached bit is not advertised in locally generated PDUs.
     YANG Description: When set to true, if the local IS acts as a L1L2 router, then the
 attached bit is not advertised in locally generated PDUs.
     """
+    if self.__suppress_bit is None:
+        self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -178,8 +194,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__suppress_bit = None
+    self.__ignore_bit = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -208,6 +224,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'lsp-bit', u'attached-bit', u'config']
 
+  def _initialized_ignore_bit(self):
+    return self.__ignore_bit is not None
+
   def _get_ignore_bit(self):
     """
     Getter method for ignore_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit/config/ignore_bit (boolean)
@@ -217,6 +236,8 @@ IS-IS, the local system ignores it. In this case the local system
 does not set a default route to the L1L2 router advertising the PDU
 with the attached bit set.
     """
+    if self.__ignore_bit is None:
+        self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__ignore_bit
       
   def _set_ignore_bit(self, v, load=False):
@@ -232,6 +253,9 @@ IS-IS, the local system ignores it. In this case the local system
 does not set a default route to the L1L2 router advertising the PDU
 with the attached bit set.
     """
+    if self.__ignore_bit is None:
+        self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -251,6 +275,9 @@ with the attached bit set.
     self.__ignore_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="ignore-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
 
 
+  def _initialized_suppress_bit(self):
+    return self.__suppress_bit is not None
+
   def _get_suppress_bit(self):
     """
     Getter method for suppress_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/lsp_bit/attached_bit/config/suppress_bit (boolean)
@@ -258,6 +285,8 @@ with the attached bit set.
     YANG Description: When set to true, if the local IS acts as a L1L2 router, then the
 attached bit is not advertised in locally generated PDUs.
     """
+    if self.__suppress_bit is None:
+        self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__suppress_bit
       
   def _set_suppress_bit(self, v, load=False):
@@ -271,6 +300,9 @@ attached bit is not advertised in locally generated PDUs.
     YANG Description: When set to true, if the local IS acts as a L1L2 router, then the
 attached bit is not advertised in locally generated PDUs.
     """
+    if self.__suppress_bit is None:
+        self.__suppress_bit = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="suppress-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

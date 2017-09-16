@@ -42,24 +42,24 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
-    self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
-    self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
-    self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
-    self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
-    self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
+    self.__route_flap_damping = None
+    self.__session_state = None
+    self.__description = None
+    self.__established_transitions = None
+    self.__enabled = None
+    self.__peer_type = None
+    self.__local_as = None
+    self.__send_community = None
+    self.__peer_group = None
+    self.__dynamically_configured = None
+    self.__peer_as = None
+    self.__supported_capabilities = None
+    self.__last_established = None
+    self.__messages = None
+    self.__remove_private_as = None
+    self.__auth_password = None
+    self.__queues = None
+    self.__neighbor_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -88,12 +88,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state']
 
+  def _initialized_peer_group(self):
+    return self.__peer_group is not None
+
   def _get_peer_group(self):
     """
     Getter method for peer_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_group (leafref)
 
     YANG Description: The peer-group with which this neighbor is associated
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__peer_group
       
   def _set_peer_group(self, v, load=False):
@@ -106,6 +111,9 @@ class state(PybindBase):
 
     YANG Description: The peer-group with which this neighbor is associated
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -125,12 +133,17 @@ class state(PybindBase):
     self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_neighbor_address(self):
+    return self.__neighbor_address is not None
+
   def _get_neighbor_address(self):
     """
     Getter method for neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/neighbor_address (oc-inet:ip-address)
 
     YANG Description: Address of the BGP peer, either in IPv4 or IPv6
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
     return self.__neighbor_address
       
   def _set_neighbor_address(self, v, load=False):
@@ -143,6 +156,9 @@ class state(PybindBase):
 
     YANG Description: Address of the BGP peer, either in IPv4 or IPv6
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -162,6 +178,9 @@ class state(PybindBase):
     self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/enabled (boolean)
@@ -174,6 +193,8 @@ the state of the BGP session is ESTABLISHED at the time
 that this leaf is set to false, the BGP session should be
 ceased.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -192,6 +213,9 @@ the state of the BGP session is ESTABLISHED at the time
 that this leaf is set to false, the BGP session should be
 ceased.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -211,12 +235,17 @@ ceased.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_peer_as(self):
+    return self.__peer_as is not None
+
   def _get_peer_as(self):
     """
     Getter method for peer_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_as (oc-inet:as-number)
 
     YANG Description: AS number of the peer.
     """
+    if self.__peer_as is None:
+        self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__peer_as
       
   def _set_peer_as(self, v, load=False):
@@ -229,6 +258,9 @@ ceased.
 
     YANG Description: AS number of the peer.
     """
+    if self.__peer_as is None:
+        self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -248,6 +280,9 @@ ceased.
     self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_local_as(self):
+    return self.__local_as is not None
+
   def _get_local_as(self):
     """
     Getter method for local_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/local_as (oc-inet:as-number)
@@ -257,6 +292,8 @@ when establishing sessions with the remote peer or peer
 group, if this differs from the global BGP router
 autonomous system number.
     """
+    if self.__local_as is None:
+        self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__local_as
       
   def _set_local_as(self, v, load=False):
@@ -272,6 +309,9 @@ when establishing sessions with the remote peer or peer
 group, if this differs from the global BGP router
 autonomous system number.
     """
+    if self.__local_as is None:
+        self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -291,6 +331,9 @@ autonomous system number.
     self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_peer_type(self):
+    return self.__peer_type is not None
+
   def _get_peer_type(self):
     """
     Getter method for peer_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_type (oc-bgp-types:peer-type)
@@ -298,6 +341,8 @@ autonomous system number.
     YANG Description: Explicitly designate the peer or peer group as internal
 (iBGP) or external (eBGP).
     """
+    if self.__peer_type is None:
+        self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
     return self.__peer_type
       
   def _set_peer_type(self, v, load=False):
@@ -311,6 +356,9 @@ autonomous system number.
     YANG Description: Explicitly designate the peer or peer group as internal
 (iBGP) or external (eBGP).
     """
+    if self.__peer_type is None:
+        self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -330,6 +378,9 @@ autonomous system number.
     self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
 
 
+  def _initialized_auth_password(self):
+    return self.__auth_password is not None
+
   def _get_auth_password(self):
     """
     Getter method for auth_password, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/auth_password (oc-types:routing-password)
@@ -337,6 +388,8 @@ autonomous system number.
     YANG Description: Configures an MD5 authentication password for use with
 neighboring devices.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
     return self.__auth_password
       
   def _set_auth_password(self, v, load=False):
@@ -350,6 +403,9 @@ neighboring devices.
     YANG Description: Configures an MD5 authentication password for use with
 neighboring devices.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -369,6 +425,9 @@ neighboring devices.
     self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
 
 
+  def _initialized_remove_private_as(self):
+    return self.__remove_private_as is not None
+
   def _get_remove_private_as(self):
     """
     Getter method for remove_private_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/remove_private_as (oc-bgp-types:remove-private-as-option)
@@ -377,6 +436,8 @@ neighboring devices.
 this leaf is not specified, the AS_PATH attribute should be
 sent to the peer unchanged
     """
+    if self.__remove_private_as is None:
+        self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
     return self.__remove_private_as
       
   def _set_remove_private_as(self, v, load=False):
@@ -391,6 +452,9 @@ sent to the peer unchanged
 this leaf is not specified, the AS_PATH attribute should be
 sent to the peer unchanged
     """
+    if self.__remove_private_as is None:
+        self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -410,12 +474,17 @@ sent to the peer unchanged
     self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
 
 
+  def _initialized_route_flap_damping(self):
+    return self.__route_flap_damping is not None
+
   def _get_route_flap_damping(self):
     """
     Getter method for route_flap_damping, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/route_flap_damping (boolean)
 
     YANG Description: Enable route flap damping.
     """
+    if self.__route_flap_damping is None:
+        self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__route_flap_damping
       
   def _set_route_flap_damping(self, v, load=False):
@@ -428,6 +497,9 @@ sent to the peer unchanged
 
     YANG Description: Enable route flap damping.
     """
+    if self.__route_flap_damping is None:
+        self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -447,6 +519,9 @@ sent to the peer unchanged
     self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_send_community(self):
+    return self.__send_community is not None
+
   def _get_send_community(self):
     """
     Getter method for send_community, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/send_community (oc-bgp-types:community-type)
@@ -455,6 +530,8 @@ sent to the peer unchanged
 neighbor or group. The default is to not send the
 community attribute
     """
+    if self.__send_community is None:
+        self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
     return self.__send_community
       
   def _set_send_community(self, v, load=False):
@@ -469,6 +546,9 @@ community attribute
 neighbor or group. The default is to not send the
 community attribute
     """
+    if self.__send_community is None:
+        self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -488,6 +568,9 @@ community attribute
     self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/description (string)
@@ -495,6 +578,8 @@ community attribute
     YANG Description: An optional textual description (intended primarily for use
 with a peer or group
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -508,6 +593,9 @@ with a peer or group
     YANG Description: An optional textual description (intended primarily for use
 with a peer or group
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -527,12 +615,17 @@ with a peer or group
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_session_state(self):
+    return self.__session_state is not None
+
   def _get_session_state(self):
     """
     Getter method for session_state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/session_state (enumeration)
 
     YANG Description: Operational state of the BGP peer
     """
+    if self.__session_state is None:
+        self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__session_state
       
   def _set_session_state(self, v, load=False):
@@ -545,6 +638,9 @@ with a peer or group
 
     YANG Description: Operational state of the BGP peer
     """
+    if self.__session_state is None:
+        self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -564,6 +660,9 @@ with a peer or group
     self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_last_established(self):
+    return self.__last_established is not None
+
   def _get_last_established(self):
     """
     Getter method for last_established, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/last_established (oc-types:timeticks64)
@@ -578,6 +677,8 @@ difference between this value and the current time in UTC
 (assuming the session is in the ESTABLISHED state, per the
 session-state leaf).
     """
+    if self.__last_established is None:
+        self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
     return self.__last_established
       
   def _set_last_established(self, v, load=False):
@@ -598,6 +699,9 @@ difference between this value and the current time in UTC
 (assuming the session is in the ESTABLISHED state, per the
 session-state leaf).
     """
+    if self.__last_established is None:
+        self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -617,6 +721,9 @@ session-state leaf).
     self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
 
 
+  def _initialized_established_transitions(self):
+    return self.__established_transitions is not None
+
   def _get_established_transitions(self):
     """
     Getter method for established_transitions, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/established_transitions (oc-yang:counter64)
@@ -626,6 +733,8 @@ the neighbor session.  This value is analogous to the
 bgpPeerFsmEstablishedTransitions object from the standard
 BGP-4 MIB
     """
+    if self.__established_transitions is None:
+        self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
     return self.__established_transitions
       
   def _set_established_transitions(self, v, load=False):
@@ -641,6 +750,9 @@ the neighbor session.  This value is analogous to the
 bgpPeerFsmEstablishedTransitions object from the standard
 BGP-4 MIB
     """
+    if self.__established_transitions is None:
+        self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -660,12 +772,17 @@ BGP-4 MIB
     self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
 
 
+  def _initialized_supported_capabilities(self):
+    return self.__supported_capabilities is not None
+
   def _get_supported_capabilities(self):
     """
     Getter method for supported_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/supported_capabilities (identityref)
 
     YANG Description: BGP capabilities negotiated as supported with the peer
     """
+    if self.__supported_capabilities is None:
+        self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__supported_capabilities
       
   def _set_supported_capabilities(self, v, load=False):
@@ -678,6 +795,9 @@ BGP-4 MIB
 
     YANG Description: BGP capabilities negotiated as supported with the peer
     """
+    if self.__supported_capabilities is None:
+        self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -697,6 +817,9 @@ BGP-4 MIB
     self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_messages(self):
+    return self.__messages is not None
+
   def _get_messages(self):
     """
     Getter method for messages, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages (container)
@@ -704,6 +827,8 @@ BGP-4 MIB
     YANG Description: Counters for BGP messages sent and received from the
 neighbor
     """
+    if self.__messages is None:
+        self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__messages
       
   def _set_messages(self, v, load=False):
@@ -717,6 +842,9 @@ neighbor
     YANG Description: Counters for BGP messages sent and received from the
 neighbor
     """
+    if self.__messages is None:
+        self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -736,6 +864,9 @@ neighbor
     self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_queues(self):
+    return self.__queues is not None
+
   def _get_queues(self):
     """
     Getter method for queues, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues (container)
@@ -743,6 +874,8 @@ neighbor
     YANG Description: Counters related to queued messages associated with the
 BGP neighbor
     """
+    if self.__queues is None:
+        self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__queues
       
   def _set_queues(self, v, load=False):
@@ -756,6 +889,9 @@ BGP neighbor
     YANG Description: Counters related to queued messages associated with the
 BGP neighbor
     """
+    if self.__queues is None:
+        self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -775,6 +911,9 @@ BGP neighbor
     self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_dynamically_configured(self):
+    return self.__dynamically_configured is not None
+
   def _get_dynamically_configured(self):
     """
     Getter method for dynamically_configured, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/dynamically_configured (boolean)
@@ -783,6 +922,8 @@ BGP neighbor
 due to an inbound connection request from a specified source prefix
 within a dynamic-neighbor-prefix.
     """
+    if self.__dynamically_configured is None:
+        self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__dynamically_configured
       
   def _set_dynamically_configured(self, v, load=False):
@@ -797,6 +938,9 @@ within a dynamic-neighbor-prefix.
 due to an inbound connection request from a specified source prefix
 within a dynamic-neighbor-prefix.
     """
+    if self.__dynamically_configured is None:
+        self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -860,24 +1004,24 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
-    self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
-    self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
-    self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
-    self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
-    self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
-    self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
-    self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
+    self.__route_flap_damping = None
+    self.__session_state = None
+    self.__description = None
+    self.__established_transitions = None
+    self.__enabled = None
+    self.__peer_type = None
+    self.__local_as = None
+    self.__send_community = None
+    self.__peer_group = None
+    self.__dynamically_configured = None
+    self.__peer_as = None
+    self.__supported_capabilities = None
+    self.__last_established = None
+    self.__messages = None
+    self.__remove_private_as = None
+    self.__auth_password = None
+    self.__queues = None
+    self.__neighbor_address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -906,12 +1050,17 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'neighbors', u'neighbor', u'state']
 
+  def _initialized_peer_group(self):
+    return self.__peer_group is not None
+
   def _get_peer_group(self):
     """
     Getter method for peer_group, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_group (leafref)
 
     YANG Description: The peer-group with which this neighbor is associated
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__peer_group
       
   def _set_peer_group(self, v, load=False):
@@ -924,6 +1073,9 @@ class state(PybindBase):
 
     YANG Description: The peer-group with which this neighbor is associated
     """
+    if self.__peer_group is None:
+        self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -943,12 +1095,17 @@ class state(PybindBase):
     self.__peer_group = YANGDynClass(base=unicode, is_leaf=True, yang_name="peer-group", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_neighbor_address(self):
+    return self.__neighbor_address is not None
+
   def _get_neighbor_address(self):
     """
     Getter method for neighbor_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/neighbor_address (oc-inet:ip-address)
 
     YANG Description: Address of the BGP peer, either in IPv4 or IPv6
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
     return self.__neighbor_address
       
   def _set_neighbor_address(self, v, load=False):
@@ -961,6 +1118,9 @@ class state(PybindBase):
 
     YANG Description: Address of the BGP peer, either in IPv4 or IPv6
     """
+    if self.__neighbor_address is None:
+        self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -980,6 +1140,9 @@ class state(PybindBase):
     self.__neighbor_address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}),], is_leaf=True, yang_name="neighbor-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:ip-address', is_config=False)
 
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/enabled (boolean)
@@ -992,6 +1155,8 @@ the state of the BGP session is ESTABLISHED at the time
 that this leaf is set to false, the BGP session should be
 ceased.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -1010,6 +1175,9 @@ the state of the BGP session is ESTABLISHED at the time
 that this leaf is set to false, the BGP session should be
 ceased.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1029,12 +1197,17 @@ ceased.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_peer_as(self):
+    return self.__peer_as is not None
+
   def _get_peer_as(self):
     """
     Getter method for peer_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_as (oc-inet:as-number)
 
     YANG Description: AS number of the peer.
     """
+    if self.__peer_as is None:
+        self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__peer_as
       
   def _set_peer_as(self, v, load=False):
@@ -1047,6 +1220,9 @@ ceased.
 
     YANG Description: AS number of the peer.
     """
+    if self.__peer_as is None:
+        self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1066,6 +1242,9 @@ ceased.
     self.__peer_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="peer-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_local_as(self):
+    return self.__local_as is not None
+
   def _get_local_as(self):
     """
     Getter method for local_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/local_as (oc-inet:as-number)
@@ -1075,6 +1254,8 @@ when establishing sessions with the remote peer or peer
 group, if this differs from the global BGP router
 autonomous system number.
     """
+    if self.__local_as is None:
+        self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
     return self.__local_as
       
   def _set_local_as(self, v, load=False):
@@ -1090,6 +1271,9 @@ when establishing sessions with the remote peer or peer
 group, if this differs from the global BGP router
 autonomous system number.
     """
+    if self.__local_as is None:
+        self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1109,6 +1293,9 @@ autonomous system number.
     self.__local_as = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="local-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-inet:as-number', is_config=False)
 
 
+  def _initialized_peer_type(self):
+    return self.__peer_type is not None
+
   def _get_peer_type(self):
     """
     Getter method for peer_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/peer_type (oc-bgp-types:peer-type)
@@ -1116,6 +1303,8 @@ autonomous system number.
     YANG Description: Explicitly designate the peer or peer group as internal
 (iBGP) or external (eBGP).
     """
+    if self.__peer_type is None:
+        self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
     return self.__peer_type
       
   def _set_peer_type(self, v, load=False):
@@ -1129,6 +1318,9 @@ autonomous system number.
     YANG Description: Explicitly designate the peer or peer group as internal
 (iBGP) or external (eBGP).
     """
+    if self.__peer_type is None:
+        self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1148,6 +1340,9 @@ autonomous system number.
     self.__peer_type = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INTERNAL': {}, u'EXTERNAL': {}},), is_leaf=True, yang_name="peer-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:peer-type', is_config=False)
 
 
+  def _initialized_auth_password(self):
+    return self.__auth_password is not None
+
   def _get_auth_password(self):
     """
     Getter method for auth_password, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/auth_password (oc-types:routing-password)
@@ -1155,6 +1350,8 @@ autonomous system number.
     YANG Description: Configures an MD5 authentication password for use with
 neighboring devices.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
     return self.__auth_password
       
   def _set_auth_password(self, v, load=False):
@@ -1168,6 +1365,9 @@ neighboring devices.
     YANG Description: Configures an MD5 authentication password for use with
 neighboring devices.
     """
+    if self.__auth_password is None:
+        self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1187,6 +1387,9 @@ neighboring devices.
     self.__auth_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="auth-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:routing-password', is_config=False)
 
 
+  def _initialized_remove_private_as(self):
+    return self.__remove_private_as is not None
+
   def _get_remove_private_as(self):
     """
     Getter method for remove_private_as, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/remove_private_as (oc-bgp-types:remove-private-as-option)
@@ -1195,6 +1398,8 @@ neighboring devices.
 this leaf is not specified, the AS_PATH attribute should be
 sent to the peer unchanged
     """
+    if self.__remove_private_as is None:
+        self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
     return self.__remove_private_as
       
   def _set_remove_private_as(self, v, load=False):
@@ -1209,6 +1414,9 @@ sent to the peer unchanged
 this leaf is not specified, the AS_PATH attribute should be
 sent to the peer unchanged
     """
+    if self.__remove_private_as is None:
+        self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1228,12 +1436,17 @@ sent to the peer unchanged
     self.__remove_private_as = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-bgp-types:PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REMOVE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'PRIVATE_AS_REPLACE_ALL': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},), is_leaf=True, yang_name="remove-private-as", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:remove-private-as-option', is_config=False)
 
 
+  def _initialized_route_flap_damping(self):
+    return self.__route_flap_damping is not None
+
   def _get_route_flap_damping(self):
     """
     Getter method for route_flap_damping, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/route_flap_damping (boolean)
 
     YANG Description: Enable route flap damping.
     """
+    if self.__route_flap_damping is None:
+        self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__route_flap_damping
       
   def _set_route_flap_damping(self, v, load=False):
@@ -1246,6 +1459,9 @@ sent to the peer unchanged
 
     YANG Description: Enable route flap damping.
     """
+    if self.__route_flap_damping is None:
+        self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1265,6 +1481,9 @@ sent to the peer unchanged
     self.__route_flap_damping = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="route-flap-damping", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_send_community(self):
+    return self.__send_community is not None
+
   def _get_send_community(self):
     """
     Getter method for send_community, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/send_community (oc-bgp-types:community-type)
@@ -1273,6 +1492,8 @@ sent to the peer unchanged
 neighbor or group. The default is to not send the
 community attribute
     """
+    if self.__send_community is None:
+        self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
     return self.__send_community
       
   def _set_send_community(self, v, load=False):
@@ -1287,6 +1508,9 @@ community attribute
 neighbor or group. The default is to not send the
 community attribute
     """
+    if self.__send_community is None:
+        self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1306,6 +1530,9 @@ community attribute
     self.__send_community = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'BOTH': {}, u'NONE': {}, u'EXTENDED': {}, u'STANDARD': {}},), default=unicode("NONE"), is_leaf=True, yang_name="send-community", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-bgp-types:community-type', is_config=False)
 
 
+  def _initialized_description(self):
+    return self.__description is not None
+
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/description (string)
@@ -1313,6 +1540,8 @@ community attribute
     YANG Description: An optional textual description (intended primarily for use
 with a peer or group
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__description
       
   def _set_description(self, v, load=False):
@@ -1326,6 +1555,9 @@ with a peer or group
     YANG Description: An optional textual description (intended primarily for use
 with a peer or group
     """
+    if self.__description is None:
+        self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1345,12 +1577,17 @@ with a peer or group
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_session_state(self):
+    return self.__session_state is not None
+
   def _get_session_state(self):
     """
     Getter method for session_state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/session_state (enumeration)
 
     YANG Description: Operational state of the BGP peer
     """
+    if self.__session_state is None:
+        self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__session_state
       
   def _set_session_state(self, v, load=False):
@@ -1363,6 +1600,9 @@ with a peer or group
 
     YANG Description: Operational state of the BGP peer
     """
+    if self.__session_state is None:
+        self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1382,6 +1622,9 @@ with a peer or group
     self.__session_state = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ESTABLISHED': {}, u'OPENCONFIRM': {}, u'OPENSENT': {}, u'IDLE': {}, u'CONNECT': {}, u'ACTIVE': {}},), is_leaf=True, yang_name="session-state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_last_established(self):
+    return self.__last_established is not None
+
   def _get_last_established(self):
     """
     Getter method for last_established, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/last_established (oc-types:timeticks64)
@@ -1396,6 +1639,8 @@ difference between this value and the current time in UTC
 (assuming the session is in the ESTABLISHED state, per the
 session-state leaf).
     """
+    if self.__last_established is None:
+        self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
     return self.__last_established
       
   def _set_last_established(self, v, load=False):
@@ -1416,6 +1661,9 @@ difference between this value and the current time in UTC
 (assuming the session is in the ESTABLISHED state, per the
 session-state leaf).
     """
+    if self.__last_established is None:
+        self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1435,6 +1683,9 @@ session-state leaf).
     self.__last_established = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="last-established", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:timeticks64', is_config=False)
 
 
+  def _initialized_established_transitions(self):
+    return self.__established_transitions is not None
+
   def _get_established_transitions(self):
     """
     Getter method for established_transitions, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/established_transitions (oc-yang:counter64)
@@ -1444,6 +1695,8 @@ the neighbor session.  This value is analogous to the
 bgpPeerFsmEstablishedTransitions object from the standard
 BGP-4 MIB
     """
+    if self.__established_transitions is None:
+        self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
     return self.__established_transitions
       
   def _set_established_transitions(self, v, load=False):
@@ -1459,6 +1712,9 @@ the neighbor session.  This value is analogous to the
 bgpPeerFsmEstablishedTransitions object from the standard
 BGP-4 MIB
     """
+    if self.__established_transitions is None:
+        self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1478,12 +1734,17 @@ BGP-4 MIB
     self.__established_transitions = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="established-transitions", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-yang:counter64', is_config=False)
 
 
+  def _initialized_supported_capabilities(self):
+    return self.__supported_capabilities is not None
+
   def _get_supported_capabilities(self):
     """
     Getter method for supported_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/supported_capabilities (identityref)
 
     YANG Description: BGP capabilities negotiated as supported with the peer
     """
+    if self.__supported_capabilities is None:
+        self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
     return self.__supported_capabilities
       
   def _set_supported_capabilities(self, v, load=False):
@@ -1496,6 +1757,9 @@ BGP-4 MIB
 
     YANG Description: BGP capabilities negotiated as supported with the peer
     """
+    if self.__supported_capabilities is None:
+        self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1515,6 +1779,9 @@ BGP-4 MIB
     self.__supported_capabilities = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:MPBGP': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:GRACEFUL_RESTART': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ASN32': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'ADD_PATHS': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}, u'oc-bgp-types:ROUTE_REFRESH': {'@namespace': u'http://openconfig.net/yang/bgp-types', '@module': u'openconfig-bgp-types'}},)), is_leaf=False, yang_name="supported-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=False)
 
 
+  def _initialized_messages(self):
+    return self.__messages is not None
+
   def _get_messages(self):
     """
     Getter method for messages, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/messages (container)
@@ -1522,6 +1789,8 @@ BGP-4 MIB
     YANG Description: Counters for BGP messages sent and received from the
 neighbor
     """
+    if self.__messages is None:
+        self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__messages
       
   def _set_messages(self, v, load=False):
@@ -1535,6 +1804,9 @@ neighbor
     YANG Description: Counters for BGP messages sent and received from the
 neighbor
     """
+    if self.__messages is None:
+        self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1554,6 +1826,9 @@ neighbor
     self.__messages = YANGDynClass(base=messages.messages, is_container='container', yang_name="messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_queues(self):
+    return self.__queues is not None
+
   def _get_queues(self):
     """
     Getter method for queues, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/queues (container)
@@ -1561,6 +1836,8 @@ neighbor
     YANG Description: Counters related to queued messages associated with the
 BGP neighbor
     """
+    if self.__queues is None:
+        self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__queues
       
   def _set_queues(self, v, load=False):
@@ -1574,6 +1851,9 @@ BGP neighbor
     YANG Description: Counters related to queued messages associated with the
 BGP neighbor
     """
+    if self.__queues is None:
+        self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1593,6 +1873,9 @@ BGP neighbor
     self.__queues = YANGDynClass(base=queues.queues, is_container='container', yang_name="queues", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_dynamically_configured(self):
+    return self.__dynamically_configured is not None
+
   def _get_dynamically_configured(self):
     """
     Getter method for dynamically_configured, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/neighbors/neighbor/state/dynamically_configured (boolean)
@@ -1601,6 +1884,8 @@ BGP neighbor
 due to an inbound connection request from a specified source prefix
 within a dynamic-neighbor-prefix.
     """
+    if self.__dynamically_configured is None:
+        self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__dynamically_configured
       
   def _set_dynamically_configured(self, v, load=False):
@@ -1615,6 +1900,9 @@ within a dynamic-neighbor-prefix.
 due to an inbound connection request from a specified source prefix
 within a dynamic-neighbor-prefix.
     """
+    if self.__dynamically_configured is None:
+        self.__dynamically_configured = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dynamically-configured", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

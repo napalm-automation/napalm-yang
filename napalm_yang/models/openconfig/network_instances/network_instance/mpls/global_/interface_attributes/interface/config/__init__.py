@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__mpls_enabled = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'interface-attributes', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Indentifier for the MPLS interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -88,6 +93,9 @@ class config(PybindBase):
 
     YANG Description: Indentifier for the MPLS interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -107,12 +115,17 @@ class config(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_mpls_enabled(self):
+    return self.__mpls_enabled is not None
+
   def _get_mpls_enabled(self):
     """
     Getter method for mpls_enabled, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes/interface/config/mpls_enabled (boolean)
 
     YANG Description: Enable MPLS forwarding on this interface
     """
+    if self.__mpls_enabled is None:
+        self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__mpls_enabled
       
   def _set_mpls_enabled(self, v, load=False):
@@ -125,6 +138,9 @@ class config(PybindBase):
 
     YANG Description: Enable MPLS forwarding on this interface
     """
+    if self.__mpls_enabled is None:
+        self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -170,8 +186,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
-    self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    self.__mpls_enabled = None
+    self.__interface_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -200,12 +216,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'global', u'interface-attributes', u'interface', u'config']
 
+  def _initialized_interface_id(self):
+    return self.__interface_id is not None
+
   def _get_interface_id(self):
     """
     Getter method for interface_id, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes/interface/config/interface_id (oc-if:interface-id)
 
     YANG Description: Indentifier for the MPLS interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
     return self.__interface_id
       
   def _set_interface_id(self, v, load=False):
@@ -218,6 +239,9 @@ class config(PybindBase):
 
     YANG Description: Indentifier for the MPLS interface
     """
+    if self.__interface_id is None:
+        self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +261,17 @@ class config(PybindBase):
     self.__interface_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="interface-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-if:interface-id', is_config=True)
 
 
+  def _initialized_mpls_enabled(self):
+    return self.__mpls_enabled is not None
+
   def _get_mpls_enabled(self):
     """
     Getter method for mpls_enabled, mapped from YANG variable /network_instances/network_instance/mpls/global/interface_attributes/interface/config/mpls_enabled (boolean)
 
     YANG Description: Enable MPLS forwarding on this interface
     """
+    if self.__mpls_enabled is None:
+        self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__mpls_enabled
       
   def _set_mpls_enabled(self, v, load=False):
@@ -255,6 +284,9 @@ class config(PybindBase):
 
     YANG Description: Enable MPLS forwarding on this interface
     """
+    if self.__mpls_enabled is None:
+        self.__mpls_enabled = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="mpls-enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

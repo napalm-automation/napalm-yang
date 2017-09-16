@@ -43,8 +43,8 @@ parameters
     self._path_helper = False
 
     self._extmethods = False
-    self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interfaces = None
+    self.__aggregate_sid_counters = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ parameters
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing']
 
+  def _initialized_aggregate_sid_counters(self):
+    return self.__aggregate_sid_counters is not None
+
   def _get_aggregate_sid_counters(self):
     """
     Getter method for aggregate_sid_counters, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters (container)
 
     YANG Description: Per-SID counters aggregated across all interfaces on the local system
     """
+    if self.__aggregate_sid_counters is None:
+        self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__aggregate_sid_counters
       
   def _set_aggregate_sid_counters(self, v, load=False):
@@ -91,6 +96,9 @@ parameters
 
     YANG Description: Per-SID counters aggregated across all interfaces on the local system
     """
+    if self.__aggregate_sid_counters is None:
+        self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ parameters
     self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interfaces(self):
+    return self.__interfaces is not None
+
   def _get_interfaces(self):
     """
     Getter method for interfaces, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces (container)
 
     YANG Description: Interface related Segment Routing parameters.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interfaces
       
   def _set_interfaces(self, v, load=False):
@@ -128,6 +141,9 @@ parameters
 
     YANG Description: Interface related Segment Routing parameters.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -176,8 +192,8 @@ parameters
     self._path_helper = False
 
     self._extmethods = False
-    self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__interfaces = None
+    self.__aggregate_sid_counters = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -206,12 +222,17 @@ parameters
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'segment-routing']
 
+  def _initialized_aggregate_sid_counters(self):
+    return self.__aggregate_sid_counters is not None
+
   def _get_aggregate_sid_counters(self):
     """
     Getter method for aggregate_sid_counters, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/aggregate_sid_counters (container)
 
     YANG Description: Per-SID counters aggregated across all interfaces on the local system
     """
+    if self.__aggregate_sid_counters is None:
+        self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__aggregate_sid_counters
       
   def _set_aggregate_sid_counters(self, v, load=False):
@@ -224,6 +245,9 @@ parameters
 
     YANG Description: Per-SID counters aggregated across all interfaces on the local system
     """
+    if self.__aggregate_sid_counters is None:
+        self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ parameters
     self.__aggregate_sid_counters = YANGDynClass(base=aggregate_sid_counters.aggregate_sid_counters, is_container='container', yang_name="aggregate-sid-counters", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_interfaces(self):
+    return self.__interfaces is not None
+
   def _get_interfaces(self):
     """
     Getter method for interfaces, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/segment_routing/interfaces (container)
 
     YANG Description: Interface related Segment Routing parameters.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__interfaces
       
   def _set_interfaces(self, v, load=False):
@@ -261,6 +290,9 @@ parameters
 
     YANG Description: Interface related Segment Routing parameters.
     """
+    if self.__interfaces is None:
+        self.__interfaces = YANGDynClass(base=interfaces.interfaces, is_container='container', yang_name="interfaces", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

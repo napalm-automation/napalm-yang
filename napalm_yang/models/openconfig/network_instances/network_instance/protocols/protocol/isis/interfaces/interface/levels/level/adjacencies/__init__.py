@@ -41,7 +41,7 @@ class adjacencies(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__adjacency = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class adjacencies(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'adjacencies']
 
+  def _initialized_adjacency(self):
+    return self.__adjacency is not None
+
   def _get_adjacency(self):
     """
     Getter method for adjacency, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency (list)
 
     YANG Description: List of the local system's IS-IS adjacencies.
     """
+    if self.__adjacency is None:
+        self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__adjacency
       
   def _set_adjacency(self, v, load=False):
@@ -88,6 +93,9 @@ class adjacencies(PybindBase):
 
     YANG Description: List of the local system's IS-IS adjacencies.
     """
+    if self.__adjacency is None:
+        self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -133,7 +141,7 @@ class adjacencies(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__adjacency = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -162,12 +170,17 @@ class adjacencies(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'levels', u'level', u'adjacencies']
 
+  def _initialized_adjacency(self):
+    return self.__adjacency is not None
+
   def _get_adjacency(self):
     """
     Getter method for adjacency, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/adjacencies/adjacency (list)
 
     YANG Description: List of the local system's IS-IS adjacencies.
     """
+    if self.__adjacency is None:
+        self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__adjacency
       
   def _set_adjacency(self, v, load=False):
@@ -180,6 +193,9 @@ class adjacencies(PybindBase):
 
     YANG Description: List of the local system's IS-IS adjacencies.
     """
+    if self.__adjacency is None:
+        self.__adjacency = YANGDynClass(base=YANGListType("system_id",adjacency.adjacency, yang_name="adjacency", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='system-id', extensions=None), is_container='list', yang_name="adjacency", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

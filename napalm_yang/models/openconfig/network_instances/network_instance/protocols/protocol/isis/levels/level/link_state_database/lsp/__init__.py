@@ -43,10 +43,10 @@ class lsp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__undefined_tlvs = None
+    self.__lsp_id = None
+    self.__state = None
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,12 +75,17 @@ class lsp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp']
 
+  def _initialized_lsp_id(self):
+    return self.__lsp_id is not None
+
   def _get_lsp_id(self):
     """
     Getter method for lsp_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/lsp_id (leafref)
 
     YANG Description: A reference to the Link State PDU ID.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__lsp_id
       
   def _set_lsp_id(self, v, load=False):
@@ -93,6 +98,9 @@ class lsp(PybindBase):
 
     YANG Description: A reference to the Link State PDU ID.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -117,12 +125,17 @@ class lsp(PybindBase):
     self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state (container)
 
     YANG Description: State parameters of Link State PDU.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -135,6 +148,9 @@ class lsp(PybindBase):
 
     YANG Description: State parameters of Link State PDU.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ class lsp(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs (container)
 
     YANG Description: This container defines Link State PDU State TLVs.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -172,6 +193,9 @@ class lsp(PybindBase):
 
     YANG Description: This container defines Link State PDU State TLVs.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,12 +215,17 @@ class lsp(PybindBase):
     self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_undefined_tlvs(self):
+    return self.__undefined_tlvs is not None
+
   def _get_undefined_tlvs(self):
     """
     Getter method for undefined_tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs (container)
 
     YANG Description: Surrounding container for a list of unknown TLVs.
     """
+    if self.__undefined_tlvs is None:
+        self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__undefined_tlvs
       
   def _set_undefined_tlvs(self, v, load=False):
@@ -209,6 +238,9 @@ class lsp(PybindBase):
 
     YANG Description: Surrounding container for a list of unknown TLVs.
     """
+    if self.__undefined_tlvs is None:
+        self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -259,10 +291,10 @@ class lsp(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__undefined_tlvs = None
+    self.__lsp_id = None
+    self.__state = None
+    self.__tlvs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -291,12 +323,17 @@ class lsp(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp']
 
+  def _initialized_lsp_id(self):
+    return self.__lsp_id is not None
+
   def _get_lsp_id(self):
     """
     Getter method for lsp_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/lsp_id (leafref)
 
     YANG Description: A reference to the Link State PDU ID.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__lsp_id
       
   def _set_lsp_id(self, v, load=False):
@@ -309,6 +346,9 @@ class lsp(PybindBase):
 
     YANG Description: A reference to the Link State PDU ID.
     """
+    if self.__lsp_id is None:
+        self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -333,12 +373,17 @@ class lsp(PybindBase):
     self.__lsp_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="lsp-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/state (container)
 
     YANG Description: State parameters of Link State PDU.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -351,6 +396,9 @@ class lsp(PybindBase):
 
     YANG Description: State parameters of Link State PDU.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -370,12 +418,17 @@ class lsp(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_tlvs(self):
+    return self.__tlvs is not None
+
   def _get_tlvs(self):
     """
     Getter method for tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs (container)
 
     YANG Description: This container defines Link State PDU State TLVs.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__tlvs
       
   def _set_tlvs(self, v, load=False):
@@ -388,6 +441,9 @@ class lsp(PybindBase):
 
     YANG Description: This container defines Link State PDU State TLVs.
     """
+    if self.__tlvs is None:
+        self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -407,12 +463,17 @@ class lsp(PybindBase):
     self.__tlvs = YANGDynClass(base=tlvs.tlvs, is_container='container', yang_name="tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_undefined_tlvs(self):
+    return self.__undefined_tlvs is not None
+
   def _get_undefined_tlvs(self):
     """
     Getter method for undefined_tlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs (container)
 
     YANG Description: Surrounding container for a list of unknown TLVs.
     """
+    if self.__undefined_tlvs is None:
+        self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__undefined_tlvs
       
   def _set_undefined_tlvs(self, v, load=False):
@@ -425,6 +486,9 @@ class lsp(PybindBase):
 
     YANG Description: Surrounding container for a list of unknown TLVs.
     """
+    if self.__undefined_tlvs is None:
+        self.__undefined_tlvs = YANGDynClass(base=undefined_tlvs.undefined_tlvs, is_container='container', yang_name="undefined-tlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

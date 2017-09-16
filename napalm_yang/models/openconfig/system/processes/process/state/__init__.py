@@ -40,16 +40,16 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__uptime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="uptime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
-    self.__cpu_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="cpu-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
-    self.__start_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="start-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
-    self.__args = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="args", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
-    self.__pid = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
-    self.__memory_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="memory-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
-    self.__cpu_usage_system = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
-    self.__cpu_usage_user = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
-    self.__memory_usage = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="memory-usage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    self.__uptime = None
+    self.__cpu_utilization = None
+    self.__name = None
+    self.__start_time = None
+    self.__args = None
+    self.__pid = None
+    self.__memory_utilization = None
+    self.__cpu_usage_system = None
+    self.__cpu_usage_user = None
+    self.__memory_usage = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,12 +78,17 @@ class state(PybindBase):
     else:
       return [u'system', u'processes', u'process', u'state']
 
+  def _initialized_pid(self):
+    return self.__pid is not None
+
   def _get_pid(self):
     """
     Getter method for pid, mapped from YANG variable /system/processes/process/state/pid (uint64)
 
     YANG Description: The process pid
     """
+    if self.__pid is None:
+        self.__pid = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__pid
       
   def _set_pid(self, v, load=False):
@@ -96,6 +101,9 @@ class state(PybindBase):
 
     YANG Description: The process pid
     """
+    if self.__pid is None:
+        self.__pid = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,12 +123,17 @@ class state(PybindBase):
     self.__pid = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="pid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /system/processes/process/state/name (string)
 
     YANG Description: The process name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -133,6 +146,9 @@ class state(PybindBase):
 
     YANG Description: The process name
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ class state(PybindBase):
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
 
 
+  def _initialized_args(self):
+    return self.__args is not None
+
   def _get_args(self):
     """
     Getter method for args, mapped from YANG variable /system/processes/process/state/args (string)
@@ -163,6 +182,8 @@ argument name and parameter together.  Flag arguments, i.e.,
 those without a parameter should also be in their own list
 element.
     """
+    if self.__args is None:
+        self.__args = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="args", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
     return self.__args
       
   def _set_args(self, v, load=False):
@@ -180,6 +201,9 @@ argument name and parameter together.  Flag arguments, i.e.,
 those without a parameter should also be in their own list
 element.
     """
+    if self.__args is None:
+        self.__args = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="args", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -199,6 +223,9 @@ element.
     self.__args = YANGDynClass(base=TypedListType(allowed_type=unicode), is_leaf=False, yang_name="args", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
 
 
+  def _initialized_start_time(self):
+    return self.__start_time is not None
+
   def _get_start_time(self):
     """
     Getter method for start_time, mapped from YANG variable /system/processes/process/state/start_time (uint64)
@@ -209,6 +236,8 @@ system must be synchronized such that the start-time
 can be reported accurately, otherwise it should not be
 reported.
     """
+    if self.__start_time is None:
+        self.__start_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="start-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__start_time
       
   def _set_start_time(self, v, load=False):
@@ -225,6 +254,9 @@ system must be synchronized such that the start-time
 can be reported accurately, otherwise it should not be
 reported.
     """
+    if self.__start_time is None:
+        self.__start_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="start-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -244,12 +276,17 @@ reported.
     self.__start_time = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="start-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_uptime(self):
+    return self.__uptime is not None
+
   def _get_uptime(self):
     """
     Getter method for uptime, mapped from YANG variable /system/processes/process/state/uptime (oc-types:timeticks64)
 
     YANG Description: Amount of time elapsed since this process started.
     """
+    if self.__uptime is None:
+        self.__uptime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="uptime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
     return self.__uptime
       
   def _set_uptime(self, v, load=False):
@@ -262,6 +299,9 @@ reported.
 
     YANG Description: Amount of time elapsed since this process started.
     """
+    if self.__uptime is None:
+        self.__uptime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="uptime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -281,12 +321,17 @@ reported.
     self.__uptime = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="uptime", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
 
 
+  def _initialized_cpu_usage_user(self):
+    return self.__cpu_usage_user is not None
+
   def _get_cpu_usage_user(self):
     """
     Getter method for cpu_usage_user, mapped from YANG variable /system/processes/process/state/cpu_usage_user (oc-types:timeticks64)
 
     YANG Description: CPU time consumed by this process in user mode.
     """
+    if self.__cpu_usage_user is None:
+        self.__cpu_usage_user = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
     return self.__cpu_usage_user
       
   def _set_cpu_usage_user(self, v, load=False):
@@ -299,6 +344,9 @@ reported.
 
     YANG Description: CPU time consumed by this process in user mode.
     """
+    if self.__cpu_usage_user is None:
+        self.__cpu_usage_user = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -318,12 +366,17 @@ reported.
     self.__cpu_usage_user = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-user", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
 
 
+  def _initialized_cpu_usage_system(self):
+    return self.__cpu_usage_system is not None
+
   def _get_cpu_usage_system(self):
     """
     Getter method for cpu_usage_system, mapped from YANG variable /system/processes/process/state/cpu_usage_system (oc-types:timeticks64)
 
     YANG Description: CPU time consumed by this process in kernel mode.
     """
+    if self.__cpu_usage_system is None:
+        self.__cpu_usage_system = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
     return self.__cpu_usage_system
       
   def _set_cpu_usage_system(self, v, load=False):
@@ -336,6 +389,9 @@ reported.
 
     YANG Description: CPU time consumed by this process in kernel mode.
     """
+    if self.__cpu_usage_system is None:
+        self.__cpu_usage_system = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -355,12 +411,17 @@ reported.
     self.__cpu_usage_system = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="cpu-usage-system", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:timeticks64', is_config=False)
 
 
+  def _initialized_cpu_utilization(self):
+    return self.__cpu_utilization is not None
+
   def _get_cpu_utilization(self):
     """
     Getter method for cpu_utilization, mapped from YANG variable /system/processes/process/state/cpu_utilization (oc-types:percentage)
 
     YANG Description: The percentage of CPU that is being used by the process.
     """
+    if self.__cpu_utilization is None:
+        self.__cpu_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="cpu-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
     return self.__cpu_utilization
       
   def _set_cpu_utilization(self, v, load=False):
@@ -373,6 +434,9 @@ reported.
 
     YANG Description: The percentage of CPU that is being used by the process.
     """
+    if self.__cpu_utilization is None:
+        self.__cpu_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="cpu-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -392,12 +456,17 @@ reported.
     self.__cpu_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="cpu-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
 
 
+  def _initialized_memory_usage(self):
+    return self.__memory_usage is not None
+
   def _get_memory_usage(self):
     """
     Getter method for memory_usage, mapped from YANG variable /system/processes/process/state/memory_usage (uint64)
 
     YANG Description: Bytes allocated and still in use by the process
     """
+    if self.__memory_usage is None:
+        self.__memory_usage = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="memory-usage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
     return self.__memory_usage
       
   def _set_memory_usage(self, v, load=False):
@@ -410,6 +479,9 @@ reported.
 
     YANG Description: Bytes allocated and still in use by the process
     """
+    if self.__memory_usage is None:
+        self.__memory_usage = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="memory-usage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -429,12 +501,17 @@ reported.
     self.__memory_usage = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="memory-usage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint64', is_config=False)
 
 
+  def _initialized_memory_utilization(self):
+    return self.__memory_utilization is not None
+
   def _get_memory_utilization(self):
     """
     Getter method for memory_utilization, mapped from YANG variable /system/processes/process/state/memory_utilization (oc-types:percentage)
 
     YANG Description: The percentage of RAM that is being used by the process.
     """
+    if self.__memory_utilization is None:
+        self.__memory_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="memory-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
     return self.__memory_utilization
       
   def _set_memory_utilization(self, v, load=False):
@@ -447,6 +524,9 @@ reported.
 
     YANG Description: The percentage of RAM that is being used by the process.
     """
+    if self.__memory_utilization is None:
+        self.__memory_utilization = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..100']}), is_leaf=True, yang_name="memory-utilization", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-types:percentage', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

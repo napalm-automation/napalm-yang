@@ -44,10 +44,10 @@ class global_(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__hellos = None
+    self.__state = None
+    self.__graceful_restart = None
+    self.__soft_preemption = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -76,6 +76,9 @@ class global_(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global']
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart (container)
@@ -83,6 +86,8 @@ class global_(PybindBase):
     YANG Description: Operational state and configuration parameters relating to
 graceful-restart for RSVP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -96,6 +101,9 @@ graceful-restart for RSVP
     YANG Description: Operational state and configuration parameters relating to
 graceful-restart for RSVP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,6 +123,9 @@ graceful-restart for RSVP
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_soft_preemption(self):
+    return self.__soft_preemption is not None
+
   def _get_soft_preemption(self):
     """
     Getter method for soft_preemption, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption (container)
@@ -122,6 +133,8 @@ graceful-restart for RSVP
     YANG Description: Protocol options relating to RSVP
 soft preemption
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__soft_preemption
       
   def _set_soft_preemption(self, v, load=False):
@@ -135,6 +148,9 @@ soft preemption
     YANG Description: Protocol options relating to RSVP
 soft preemption
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,12 +170,17 @@ soft preemption
     self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hellos(self):
+    return self.__hellos is not None
+
   def _get_hellos(self):
     """
     Getter method for hellos, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos (container)
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hellos
       
   def _set_hellos(self, v, load=False):
@@ -172,6 +193,9 @@ soft preemption
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -191,12 +215,17 @@ soft preemption
     self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state (container)
 
     YANG Description: Platform wide RSVP state, including counters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -209,6 +238,9 @@ soft preemption
 
     YANG Description: Platform wide RSVP state, including counters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -260,10 +292,10 @@ class global_(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__hellos = None
+    self.__state = None
+    self.__graceful_restart = None
+    self.__soft_preemption = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -292,6 +324,9 @@ class global_(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global']
 
+  def _initialized_graceful_restart(self):
+    return self.__graceful_restart is not None
+
   def _get_graceful_restart(self):
     """
     Getter method for graceful_restart, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/graceful_restart (container)
@@ -299,6 +334,8 @@ class global_(PybindBase):
     YANG Description: Operational state and configuration parameters relating to
 graceful-restart for RSVP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__graceful_restart
       
   def _set_graceful_restart(self, v, load=False):
@@ -312,6 +349,9 @@ graceful-restart for RSVP
     YANG Description: Operational state and configuration parameters relating to
 graceful-restart for RSVP
     """
+    if self.__graceful_restart is None:
+        self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -331,6 +371,9 @@ graceful-restart for RSVP
     self.__graceful_restart = YANGDynClass(base=graceful_restart.graceful_restart, is_container='container', yang_name="graceful-restart", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_soft_preemption(self):
+    return self.__soft_preemption is not None
+
   def _get_soft_preemption(self):
     """
     Getter method for soft_preemption, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/soft_preemption (container)
@@ -338,6 +381,8 @@ graceful-restart for RSVP
     YANG Description: Protocol options relating to RSVP
 soft preemption
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__soft_preemption
       
   def _set_soft_preemption(self, v, load=False):
@@ -351,6 +396,9 @@ soft preemption
     YANG Description: Protocol options relating to RSVP
 soft preemption
     """
+    if self.__soft_preemption is None:
+        self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -370,12 +418,17 @@ soft preemption
     self.__soft_preemption = YANGDynClass(base=soft_preemption.soft_preemption, is_container='container', yang_name="soft-preemption", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_hellos(self):
+    return self.__hellos is not None
+
   def _get_hellos(self):
     """
     Getter method for hellos, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/hellos (container)
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__hellos
       
   def _set_hellos(self, v, load=False):
@@ -388,6 +441,9 @@ soft preemption
 
     YANG Description: Top level container for RSVP hello parameters
     """
+    if self.__hellos is None:
+        self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -407,12 +463,17 @@ soft preemption
     self.__hellos = YANGDynClass(base=hellos.hellos, is_container='container', yang_name="hellos", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state (container)
 
     YANG Description: Platform wide RSVP state, including counters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -425,6 +486,9 @@ soft preemption
 
     YANG Description: Platform wide RSVP state, including counters
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

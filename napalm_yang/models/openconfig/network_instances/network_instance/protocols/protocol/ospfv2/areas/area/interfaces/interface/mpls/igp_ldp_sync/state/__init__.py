@@ -41,9 +41,9 @@ synchronization
     self._path_helper = False
 
     self._extmethods = False
-    self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__post_session_up_delay = None
+    self.__enabled = None
+    self.__synchronized = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ synchronization
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'mpls', u'igp-ldp-sync', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/enabled (boolean)
@@ -80,6 +83,8 @@ synchronization
 forwarding via the IGP until such time as LDP adjacencies to
 the neighbor(s) over the link are established.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -94,6 +99,9 @@ the neighbor(s) over the link are established.
 forwarding via the IGP until such time as LDP adjacencies to
 the neighbor(s) over the link are established.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -113,6 +121,9 @@ the neighbor(s) over the link are established.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_post_session_up_delay(self):
+    return self.__post_session_up_delay is not None
+
   def _get_post_session_up_delay(self):
     """
     Getter method for post_session_up_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/post_session_up_delay (uint32)
@@ -121,6 +132,8 @@ the neighbor(s) over the link are established.
 between the LDP session to the IGP neighbor being established, and
 it being considered synchronized by the IGP.
     """
+    if self.__post_session_up_delay is None:
+        self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__post_session_up_delay
       
   def _set_post_session_up_delay(self, v, load=False):
@@ -135,6 +148,9 @@ it being considered synchronized by the IGP.
 between the LDP session to the IGP neighbor being established, and
 it being considered synchronized by the IGP.
     """
+    if self.__post_session_up_delay is None:
+        self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -154,6 +170,9 @@ it being considered synchronized by the IGP.
     self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_synchronized(self):
+    return self.__synchronized is not None
+
   def _get_synchronized(self):
     """
     Getter method for synchronized, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/synchronized (boolean)
@@ -163,6 +182,8 @@ LDP neighbors reachable via this interface are considered
 to be synchronized, and hence the link is considered
 usable by the IGP.
     """
+    if self.__synchronized is None:
+        self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__synchronized
       
   def _set_synchronized(self, v, load=False):
@@ -178,6 +199,9 @@ LDP neighbors reachable via this interface are considered
 to be synchronized, and hence the link is considered
 usable by the IGP.
     """
+    if self.__synchronized is None:
+        self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -225,9 +249,9 @@ synchronization
     self._path_helper = False
 
     self._extmethods = False
-    self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
-    self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__post_session_up_delay = None
+    self.__enabled = None
+    self.__synchronized = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -256,6 +280,9 @@ synchronization
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'interfaces', u'interface', u'mpls', u'igp-ldp-sync', u'state']
 
+  def _initialized_enabled(self):
+    return self.__enabled is not None
+
   def _get_enabled(self):
     """
     Getter method for enabled, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/enabled (boolean)
@@ -264,6 +291,8 @@ synchronization
 forwarding via the IGP until such time as LDP adjacencies to
 the neighbor(s) over the link are established.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__enabled
       
   def _set_enabled(self, v, load=False):
@@ -278,6 +307,9 @@ the neighbor(s) over the link are established.
 forwarding via the IGP until such time as LDP adjacencies to
 the neighbor(s) over the link are established.
     """
+    if self.__enabled is None:
+        self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -297,6 +329,9 @@ the neighbor(s) over the link are established.
     self.__enabled = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_post_session_up_delay(self):
+    return self.__post_session_up_delay is not None
+
   def _get_post_session_up_delay(self):
     """
     Getter method for post_session_up_delay, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/post_session_up_delay (uint32)
@@ -305,6 +340,8 @@ the neighbor(s) over the link are established.
 between the LDP session to the IGP neighbor being established, and
 it being considered synchronized by the IGP.
     """
+    if self.__post_session_up_delay is None:
+        self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
     return self.__post_session_up_delay
       
   def _set_post_session_up_delay(self, v, load=False):
@@ -319,6 +356,9 @@ it being considered synchronized by the IGP.
 between the LDP session to the IGP neighbor being established, and
 it being considered synchronized by the IGP.
     """
+    if self.__post_session_up_delay is None:
+        self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -338,6 +378,9 @@ it being considered synchronized by the IGP.
     self.__post_session_up_delay = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="post-session-up-delay", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint32', is_config=False)
 
 
+  def _initialized_synchronized(self):
+    return self.__synchronized is not None
+
   def _get_synchronized(self):
     """
     Getter method for synchronized, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/mpls/igp_ldp_sync/state/synchronized (boolean)
@@ -347,6 +390,8 @@ LDP neighbors reachable via this interface are considered
 to be synchronized, and hence the link is considered
 usable by the IGP.
     """
+    if self.__synchronized is None:
+        self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__synchronized
       
   def _set_synchronized(self, v, load=False):
@@ -362,6 +407,9 @@ LDP neighbors reachable via this interface are considered
 to be synchronized, and hence the link is considered
 usable by the IGP.
     """
+    if self.__synchronized is None:
+        self.__synchronized = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="synchronized", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

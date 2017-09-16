@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__bfd_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,6 +69,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'bfd', u'config']
 
+  def _initialized_bfd_tlv(self):
+    return self.__bfd_tlv is not None
+
   def _get_bfd_tlv(self):
     """
     Getter method for bfd_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/bfd/config/bfd_tlv (boolean)
@@ -79,6 +82,8 @@ before an IS-IS adjacency can transition to the established state.
 This option should be enabled on all IS-IS neighbors on a shared
 interface.
     """
+    if self.__bfd_tlv is None:
+        self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__bfd_tlv
       
   def _set_bfd_tlv(self, v, load=False):
@@ -95,6 +100,9 @@ before an IS-IS adjacency can transition to the established state.
 This option should be enabled on all IS-IS neighbors on a shared
 interface.
     """
+    if self.__bfd_tlv is None:
+        self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -139,7 +147,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__bfd_tlv = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -168,6 +176,9 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'interfaces', u'interface', u'bfd', u'config']
 
+  def _initialized_bfd_tlv(self):
+    return self.__bfd_tlv is not None
+
   def _get_bfd_tlv(self):
     """
     Getter method for bfd_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/bfd/config/bfd_tlv (boolean)
@@ -178,6 +189,8 @@ before an IS-IS adjacency can transition to the established state.
 This option should be enabled on all IS-IS neighbors on a shared
 interface.
     """
+    if self.__bfd_tlv is None:
+        self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__bfd_tlv
       
   def _set_bfd_tlv(self, v, load=False):
@@ -194,6 +207,9 @@ before an IS-IS adjacency can transition to the established state.
 This option should be enabled on all IS-IS neighbors on a shared
 interface.
     """
+    if self.__bfd_tlv is None:
+        self.__bfd_tlv = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="bfd-tlv", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

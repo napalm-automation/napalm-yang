@@ -41,7 +41,7 @@ class bandwidth_reservations(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__bandwidth_reservation = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ class bandwidth_reservations(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'bandwidth-reservations']
 
+  def _initialized_bandwidth_reservation(self):
+    return self.__bandwidth_reservation is not None
+
   def _get_bandwidth_reservation(self):
     """
     Getter method for bandwidth_reservation, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation (list)
@@ -77,6 +80,8 @@ class bandwidth_reservations(PybindBase):
     YANG Description: Available and reserved bandwidth by priority on
 the interface.
     """
+    if self.__bandwidth_reservation is None:
+        self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__bandwidth_reservation
       
   def _set_bandwidth_reservation(self, v, load=False):
@@ -90,6 +95,9 @@ the interface.
     YANG Description: Available and reserved bandwidth by priority on
 the interface.
     """
+    if self.__bandwidth_reservation is None:
+        self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ class bandwidth_reservations(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__bandwidth_reservation = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ class bandwidth_reservations(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'interface-attributes', u'interface', u'bandwidth-reservations']
 
+  def _initialized_bandwidth_reservation(self):
+    return self.__bandwidth_reservation is not None
+
   def _get_bandwidth_reservation(self):
     """
     Getter method for bandwidth_reservation, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/interface_attributes/interface/bandwidth_reservations/bandwidth_reservation (list)
@@ -171,6 +182,8 @@ class bandwidth_reservations(PybindBase):
     YANG Description: Available and reserved bandwidth by priority on
 the interface.
     """
+    if self.__bandwidth_reservation is None:
+        self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__bandwidth_reservation
       
   def _set_bandwidth_reservation(self, v, load=False):
@@ -184,6 +197,9 @@ the interface.
     YANG Description: Available and reserved bandwidth by priority on
 the interface.
     """
+    if self.__bandwidth_reservation is None:
+        self.__bandwidth_reservation = YANGDynClass(base=YANGListType("priority",bandwidth_reservation.bandwidth_reservation, yang_name="bandwidth-reservation", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='priority', extensions=None), is_container='list', yang_name="bandwidth-reservation", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

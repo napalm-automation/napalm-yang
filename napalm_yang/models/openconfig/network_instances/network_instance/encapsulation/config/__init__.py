@@ -41,9 +41,9 @@ of the network instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__encapsulation_type = None
+    self.__label_allocation_mode = None
+    self.__control_word = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ of the network instance
     else:
       return [u'network-instances', u'network-instance', u'encapsulation', u'config']
 
+  def _initialized_encapsulation_type(self):
+    return self.__encapsulation_type is not None
+
   def _get_encapsulation_type(self):
     """
     Getter method for encapsulation_type, mapped from YANG variable /network_instances/network_instance/encapsulation/config/encapsulation_type (identityref)
@@ -79,6 +82,8 @@ of the network instance
     YANG Description: The on-the-wire encapsulation that should be used when
 sending traffic from this network instance
     """
+    if self.__encapsulation_type is None:
+        self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__encapsulation_type
       
   def _set_encapsulation_type(self, v, load=False):
@@ -92,6 +97,9 @@ sending traffic from this network instance
     YANG Description: The on-the-wire encapsulation that should be used when
 sending traffic from this network instance
     """
+    if self.__encapsulation_type is None:
+        self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ sending traffic from this network instance
     self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_label_allocation_mode(self):
+    return self.__label_allocation_mode is not None
+
   def _get_label_allocation_mode(self):
     """
     Getter method for label_allocation_mode, mapped from YANG variable /network_instances/network_instance/encapsulation/config/label_allocation_mode (identityref)
@@ -118,6 +129,8 @@ sending traffic from this network instance
     YANG Description: The label allocation mode to be used for L3 entries
 in the network instance
     """
+    if self.__label_allocation_mode is None:
+        self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__label_allocation_mode
       
   def _set_label_allocation_mode(self, v, load=False):
@@ -131,6 +144,9 @@ in the network instance
     YANG Description: The label allocation mode to be used for L3 entries
 in the network instance
     """
+    if self.__label_allocation_mode is None:
+        self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ in the network instance
     self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_control_word(self):
+    return self.__control_word is not None
+
   def _get_control_word(self):
     """
     Getter method for control_word, mapped from YANG variable /network_instances/network_instance/encapsulation/config/control_word (boolean)
@@ -157,6 +176,8 @@ in the network instance
     YANG Description: Whether the control-word should be used for the network
 instance
     """
+    if self.__control_word is None:
+        self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__control_word
       
   def _set_control_word(self, v, load=False):
@@ -170,6 +191,9 @@ instance
     YANG Description: Whether the control-word should be used for the network
 instance
     """
+    if self.__control_word is None:
+        self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -217,9 +241,9 @@ of the network instance
     self._path_helper = False
 
     self._extmethods = False
-    self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
-    self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    self.__encapsulation_type = None
+    self.__label_allocation_mode = None
+    self.__control_word = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -248,6 +272,9 @@ of the network instance
     else:
       return [u'network-instances', u'network-instance', u'encapsulation', u'config']
 
+  def _initialized_encapsulation_type(self):
+    return self.__encapsulation_type is not None
+
   def _get_encapsulation_type(self):
     """
     Getter method for encapsulation_type, mapped from YANG variable /network_instances/network_instance/encapsulation/config/encapsulation_type (identityref)
@@ -255,6 +282,8 @@ of the network instance
     YANG Description: The on-the-wire encapsulation that should be used when
 sending traffic from this network instance
     """
+    if self.__encapsulation_type is None:
+        self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__encapsulation_type
       
   def _set_encapsulation_type(self, v, load=False):
@@ -268,6 +297,9 @@ sending traffic from this network instance
     YANG Description: The on-the-wire encapsulation that should be used when
 sending traffic from this network instance
     """
+    if self.__encapsulation_type is None:
+        self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -287,6 +319,9 @@ sending traffic from this network instance
     self.__encapsulation_type = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'oc-ni-types:VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'MPLS': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'VXLAN': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="encapsulation-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_label_allocation_mode(self):
+    return self.__label_allocation_mode is not None
+
   def _get_label_allocation_mode(self):
     """
     Getter method for label_allocation_mode, mapped from YANG variable /network_instances/network_instance/encapsulation/config/label_allocation_mode (identityref)
@@ -294,6 +329,8 @@ sending traffic from this network instance
     YANG Description: The label allocation mode to be used for L3 entries
 in the network instance
     """
+    if self.__label_allocation_mode is None:
+        self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
     return self.__label_allocation_mode
       
   def _set_label_allocation_mode(self, v, load=False):
@@ -307,6 +344,9 @@ in the network instance
     YANG Description: The label allocation mode to be used for L3 entries
 in the network instance
     """
+    if self.__label_allocation_mode is None:
+        self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -326,6 +366,9 @@ in the network instance
     self.__label_allocation_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:INSTANCE_LABEL': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'oc-ni-types:PER_PREFIX': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}, u'PER_NEXTHOP': {'@namespace': u'http://openconfig.net/yang/network-instance-types', '@module': u'openconfig-network-instance-types'}},), is_leaf=True, yang_name="label-allocation-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='identityref', is_config=True)
 
 
+  def _initialized_control_word(self):
+    return self.__control_word is not None
+
   def _get_control_word(self):
     """
     Getter method for control_word, mapped from YANG variable /network_instances/network_instance/encapsulation/config/control_word (boolean)
@@ -333,6 +376,8 @@ in the network instance
     YANG Description: Whether the control-word should be used for the network
 instance
     """
+    if self.__control_word is None:
+        self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
     return self.__control_word
       
   def _set_control_word(self, v, load=False):
@@ -346,6 +391,9 @@ instance
     YANG Description: Whether the control-word should be used for the network
 instance
     """
+    if self.__control_word is None:
+        self.__control_word = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="control-word", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -45,11 +45,11 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__default_metric = None
+    self.__delay_metric = None
+    self.__state = None
+    self.__error_metric = None
+    self.__expense_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -78,12 +78,17 @@ class prefixes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-internal-reachability', u'prefixes', u'prefixes']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/state (container)
 
     YANG Description: State parameters of IPv4 standard prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -96,6 +101,9 @@ class prefixes(PybindBase):
 
     YANG Description: State parameters of IPv4 standard prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -115,12 +123,17 @@ class prefixes(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/default_metric (container)
 
     YANG Description: This container defines ISIS Default Metric.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -133,6 +146,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines ISIS Default Metric.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,12 +168,17 @@ class prefixes(PybindBase):
     self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_delay_metric(self):
+    return self.__delay_metric is not None
+
   def _get_delay_metric(self):
     """
     Getter method for delay_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/delay_metric (container)
 
     YANG Description: This container defines the ISIS delay metric.
     """
+    if self.__delay_metric is None:
+        self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__delay_metric
       
   def _set_delay_metric(self, v, load=False):
@@ -170,6 +191,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS delay metric.
     """
+    if self.__delay_metric is None:
+        self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,12 +213,17 @@ class prefixes(PybindBase):
     self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_expense_metric(self):
+    return self.__expense_metric is not None
+
   def _get_expense_metric(self):
     """
     Getter method for expense_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/expense_metric (container)
 
     YANG Description: This container defines the ISIS expense metric.
     """
+    if self.__expense_metric is None:
+        self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__expense_metric
       
   def _set_expense_metric(self, v, load=False):
@@ -207,6 +236,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS expense metric.
     """
+    if self.__expense_metric is None:
+        self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -226,12 +258,17 @@ class prefixes(PybindBase):
     self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_error_metric(self):
+    return self.__error_metric is not None
+
   def _get_error_metric(self):
     """
     Getter method for error_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/error_metric (container)
 
     YANG Description: This container defines the ISIS error metric.
     """
+    if self.__error_metric is None:
+        self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__error_metric
       
   def _set_error_metric(self, v, load=False):
@@ -244,6 +281,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS error metric.
     """
+    if self.__error_metric is None:
+        self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -297,11 +337,11 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__default_metric = None
+    self.__delay_metric = None
+    self.__state = None
+    self.__error_metric = None
+    self.__expense_metric = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -330,12 +370,17 @@ class prefixes(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'ipv4-internal-reachability', u'prefixes', u'prefixes']
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/state (container)
 
     YANG Description: State parameters of IPv4 standard prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -348,6 +393,9 @@ class prefixes(PybindBase):
 
     YANG Description: State parameters of IPv4 standard prefix.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -367,12 +415,17 @@ class prefixes(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_default_metric(self):
+    return self.__default_metric is not None
+
   def _get_default_metric(self):
     """
     Getter method for default_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/default_metric (container)
 
     YANG Description: This container defines ISIS Default Metric.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__default_metric
       
   def _set_default_metric(self, v, load=False):
@@ -385,6 +438,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines ISIS Default Metric.
     """
+    if self.__default_metric is None:
+        self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -404,12 +460,17 @@ class prefixes(PybindBase):
     self.__default_metric = YANGDynClass(base=default_metric.default_metric, is_container='container', yang_name="default-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_delay_metric(self):
+    return self.__delay_metric is not None
+
   def _get_delay_metric(self):
     """
     Getter method for delay_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/delay_metric (container)
 
     YANG Description: This container defines the ISIS delay metric.
     """
+    if self.__delay_metric is None:
+        self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__delay_metric
       
   def _set_delay_metric(self, v, load=False):
@@ -422,6 +483,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS delay metric.
     """
+    if self.__delay_metric is None:
+        self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -441,12 +505,17 @@ class prefixes(PybindBase):
     self.__delay_metric = YANGDynClass(base=delay_metric.delay_metric, is_container='container', yang_name="delay-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_expense_metric(self):
+    return self.__expense_metric is not None
+
   def _get_expense_metric(self):
     """
     Getter method for expense_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/expense_metric (container)
 
     YANG Description: This container defines the ISIS expense metric.
     """
+    if self.__expense_metric is None:
+        self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__expense_metric
       
   def _set_expense_metric(self, v, load=False):
@@ -459,6 +528,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS expense metric.
     """
+    if self.__expense_metric is None:
+        self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -478,12 +550,17 @@ class prefixes(PybindBase):
     self.__expense_metric = YANGDynClass(base=expense_metric.expense_metric, is_container='container', yang_name="expense-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_error_metric(self):
+    return self.__error_metric is not None
+
   def _get_error_metric(self):
     """
     Getter method for error_metric, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability/prefixes/prefixes/error_metric (container)
 
     YANG Description: This container defines the ISIS error metric.
     """
+    if self.__error_metric is None:
+        self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__error_metric
       
   def _set_error_metric(self, v, load=False):
@@ -496,6 +573,9 @@ class prefixes(PybindBase):
 
     YANG Description: This container defines the ISIS error metric.
     """
+    if self.__error_metric is None:
+        self.__error_metric = YANGDynClass(base=error_metric.error_metric, is_container='container', yang_name="error-metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

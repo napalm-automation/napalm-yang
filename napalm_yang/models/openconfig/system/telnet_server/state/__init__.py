@@ -40,10 +40,10 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
-    self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
-    self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
-    self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    self.__enable = None
+    self.__rate_limit = None
+    self.__session_limit = None
+    self.__timeout = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ class state(PybindBase):
     else:
       return [u'system', u'telnet-server', u'state']
 
+  def _initialized_enable(self):
+    return self.__enable is not None
+
   def _get_enable(self):
     """
     Getter method for enable, mapped from YANG variable /system/telnet_server/state/enable (boolean)
@@ -79,6 +82,8 @@ class state(PybindBase):
     YANG Description: Enables the telnet server.  Telnet is disabled by
 default
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
     return self.__enable
       
   def _set_enable(self, v, load=False):
@@ -92,6 +97,9 @@ default
     YANG Description: Enables the telnet server.  Telnet is disabled by
 default
     """
+    if self.__enable is None:
+        self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ default
     self.__enable = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="enable", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='boolean', is_config=False)
 
 
+  def _initialized_timeout(self):
+    return self.__timeout is not None
+
   def _get_timeout(self):
     """
     Getter method for timeout, mapped from YANG variable /system/telnet_server/state/timeout (uint16)
@@ -118,6 +129,8 @@ default
     YANG Description: Set the idle timeout in seconds on terminal connections to
 the system for the protocol.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
     return self.__timeout
       
   def _set_timeout(self, v, load=False):
@@ -131,6 +144,9 @@ the system for the protocol.
     YANG Description: Set the idle timeout in seconds on terminal connections to
 the system for the protocol.
     """
+    if self.__timeout is None:
+        self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -150,6 +166,9 @@ the system for the protocol.
     self.__timeout = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="timeout", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
 
 
+  def _initialized_rate_limit(self):
+    return self.__rate_limit is not None
+
   def _get_rate_limit(self):
     """
     Getter method for rate_limit, mapped from YANG variable /system/telnet_server/state/rate_limit (uint16)
@@ -157,6 +176,8 @@ the system for the protocol.
     YANG Description: Set a limit on the number of connection attempts per
 minute to the system for the protocol.
     """
+    if self.__rate_limit is None:
+        self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
     return self.__rate_limit
       
   def _set_rate_limit(self, v, load=False):
@@ -170,6 +191,9 @@ minute to the system for the protocol.
     YANG Description: Set a limit on the number of connection attempts per
 minute to the system for the protocol.
     """
+    if self.__rate_limit is None:
+        self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -189,6 +213,9 @@ minute to the system for the protocol.
     self.__rate_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="rate-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
 
 
+  def _initialized_session_limit(self):
+    return self.__session_limit is not None
+
   def _get_session_limit(self):
     """
     Getter method for session_limit, mapped from YANG variable /system/telnet_server/state/session_limit (uint16)
@@ -197,6 +224,8 @@ minute to the system for the protocol.
 sessions to the system for the protocol (e.g., ssh,
 telnet, ...) 
     """
+    if self.__session_limit is None:
+        self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
     return self.__session_limit
       
   def _set_session_limit(self, v, load=False):
@@ -211,6 +240,9 @@ telnet, ...)
 sessions to the system for the protocol (e.g., ssh,
 telnet, ...) 
     """
+    if self.__session_limit is None:
+        self.__session_limit = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="session-limit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='uint16', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -42,7 +42,7 @@ Binding sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__segment = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ Binding sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments']
 
+  def _initialized_segment(self):
+    return self.__segment is not None
+
   def _get_segment(self):
     """
     Getter method for segment, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment (list)
 
     YANG Description: A segment of the path described within the sub-TLV
     """
+    if self.__segment is None:
+        self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__segment
       
   def _set_segment(self, v, load=False):
@@ -89,6 +94,9 @@ Binding sub-TLV
 
     YANG Description: A segment of the path described within the sub-TLV
     """
+    if self.__segment is None:
+        self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ Binding sub-TLV
     self._path_helper = False
 
     self._extmethods = False
-    self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__segment = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,12 +172,17 @@ Binding sub-TLV
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'ospfv2', u'areas', u'area', u'lsdb', u'lsa-types', u'lsa-type', u'lsas', u'lsa', u'opaque-lsa', u'extended-prefix', u'tlvs', u'tlv', u'sid-label-binding', u'tlvs', u'tlv', u'ero-path', u'segments']
 
+  def _initialized_segment(self):
+    return self.__segment is not None
+
   def _get_segment(self):
     """
     Getter method for segment, mapped from YANG variable /network_instances/network_instance/protocols/protocol/ospfv2/areas/area/lsdb/lsa_types/lsa_type/lsas/lsa/opaque_lsa/extended_prefix/tlvs/tlv/sid_label_binding/tlvs/tlv/ero_path/segments/segment (list)
 
     YANG Description: A segment of the path described within the sub-TLV
     """
+    if self.__segment is None:
+        self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     return self.__segment
       
   def _set_segment(self, v, load=False):
@@ -182,6 +195,9 @@ Binding sub-TLV
 
     YANG Description: A segment of the path described within the sub-TLV
     """
+    if self.__segment is None:
+        self.__segment = YANGDynClass(base=YANGListType(False,segment.segment, yang_name="segment", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="segment", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

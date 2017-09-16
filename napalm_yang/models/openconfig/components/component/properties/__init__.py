@@ -41,7 +41,7 @@ class properties(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__property_ = YANGDynClass(base=YANGListType("name",property_.property_, yang_name="property", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="property", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    self.__property_ = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,12 +70,17 @@ class properties(PybindBase):
     else:
       return [u'components', u'component', u'properties']
 
+  def _initialized_property_(self):
+    return self.__property_ is not None
+
   def _get_property_(self):
     """
     Getter method for property_, mapped from YANG variable /components/component/properties/property (list)
 
     YANG Description: List of system properties for the component
     """
+    if self.__property_ is None:
+        self.__property_ = YANGDynClass(base=YANGListType("name",property_.property_, yang_name="property", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="property", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
     return self.__property_
       
   def _set_property_(self, v, load=False):
@@ -88,6 +93,9 @@ class properties(PybindBase):
 
     YANG Description: List of system properties for the component
     """
+    if self.__property_ is None:
+        self.__property_ = YANGDynClass(base=YANGListType("name",property_.property_, yang_name="property", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='name', extensions=None), is_container='list', yang_name="property", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

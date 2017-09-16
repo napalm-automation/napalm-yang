@@ -43,10 +43,10 @@ class subtlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__subtlv_type = None
+    self.__state = None
+    self.__segment_routing_algorithm = None
+    self.__segment_routing_capability = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ class subtlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability', u'subtlvs', u'subtlvs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/subtlv_type (leafref)
@@ -82,6 +85,8 @@ class subtlvs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -95,6 +100,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -119,12 +127,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/state (container)
 
     YANG Description: State parameters of IS Router Capabilities
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -137,6 +150,9 @@ the LSDB
 
     YANG Description: State parameters of IS Router Capabilities
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -156,12 +172,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_algorithm (container)
 
     YANG Description: This container defines SR algorithm sub-TLV 19.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -174,6 +195,9 @@ the LSDB
 
     YANG Description: This container defines SR algorithm sub-TLV 19.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -193,12 +217,17 @@ the LSDB
     self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_capability(self):
+    return self.__segment_routing_capability is not None
+
   def _get_segment_routing_capability(self):
     """
     Getter method for segment_routing_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_capability (container)
 
     YANG Description: This container defines SR Capability sub-TLV 2.
     """
+    if self.__segment_routing_capability is None:
+        self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_capability
       
   def _set_segment_routing_capability(self, v, load=False):
@@ -211,6 +240,9 @@ the LSDB
 
     YANG Description: This container defines SR Capability sub-TLV 2.
     """
+    if self.__segment_routing_capability is None:
+        self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -261,10 +293,10 @@ class subtlvs(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__subtlv_type = None
+    self.__state = None
+    self.__segment_routing_algorithm = None
+    self.__segment_routing_capability = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -293,6 +325,9 @@ class subtlvs(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'router-capabilities', u'router-capability', u'subtlvs', u'subtlvs']
 
+  def _initialized_subtlv_type(self):
+    return self.__subtlv_type is not None
+
   def _get_subtlv_type(self):
     """
     Getter method for subtlv_type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/subtlv_type (leafref)
@@ -300,6 +335,8 @@ class subtlvs(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__subtlv_type
       
   def _set_subtlv_type(self, v, load=False):
@@ -313,6 +350,9 @@ the LSDB
     YANG Description: A reference for the TLV type being described within
 the LSDB
     """
+    if self.__subtlv_type is None:
+        self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -337,12 +377,17 @@ the LSDB
     self.__subtlv_type = YANGDynClass(base=unicode, is_leaf=True, yang_name="subtlv-type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/state (container)
 
     YANG Description: State parameters of IS Router Capabilities
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -355,6 +400,9 @@ the LSDB
 
     YANG Description: State parameters of IS Router Capabilities
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -374,12 +422,17 @@ the LSDB
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_algorithm(self):
+    return self.__segment_routing_algorithm is not None
+
   def _get_segment_routing_algorithm(self):
     """
     Getter method for segment_routing_algorithm, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_algorithm (container)
 
     YANG Description: This container defines SR algorithm sub-TLV 19.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_algorithm
       
   def _set_segment_routing_algorithm(self, v, load=False):
@@ -392,6 +445,9 @@ the LSDB
 
     YANG Description: This container defines SR algorithm sub-TLV 19.
     """
+    if self.__segment_routing_algorithm is None:
+        self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -411,12 +467,17 @@ the LSDB
     self.__segment_routing_algorithm = YANGDynClass(base=segment_routing_algorithm.segment_routing_algorithm, is_container='container', yang_name="segment-routing-algorithm", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_segment_routing_capability(self):
+    return self.__segment_routing_capability is not None
+
   def _get_segment_routing_capability(self):
     """
     Getter method for segment_routing_capability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities/router_capability/subtlvs/subtlvs/segment_routing_capability (container)
 
     YANG Description: This container defines SR Capability sub-TLV 2.
     """
+    if self.__segment_routing_capability is None:
+        self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__segment_routing_capability
       
   def _set_segment_routing_capability(self, v, load=False):
@@ -429,6 +490,9 @@ the LSDB
 
     YANG Description: This container defines SR Capability sub-TLV 2.
     """
+    if self.__segment_routing_capability is None:
+        self.__segment_routing_capability = YANGDynClass(base=segment_routing_capability.segment_routing_capability, is_container='container', yang_name="segment-routing-capability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

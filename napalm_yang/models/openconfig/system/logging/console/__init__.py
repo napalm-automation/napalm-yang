@@ -42,7 +42,7 @@ logging
     self._path_helper = False
 
     self._extmethods = False
-    self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    self.__selectors = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,12 +71,17 @@ logging
     else:
       return [u'system', u'logging', u'console']
 
+  def _initialized_selectors(self):
+    return self.__selectors is not None
+
   def _get_selectors(self):
     """
     Getter method for selectors, mapped from YANG variable /system/logging/console/selectors (container)
 
     YANG Description: Enclosing container 
     """
+    if self.__selectors is None:
+        self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
     return self.__selectors
       
   def _set_selectors(self, v, load=False):
@@ -89,6 +94,9 @@ logging
 
     YANG Description: Enclosing container 
     """
+    if self.__selectors is None:
+        self.__selectors = YANGDynClass(base=selectors.selectors, is_container='container', yang_name="selectors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

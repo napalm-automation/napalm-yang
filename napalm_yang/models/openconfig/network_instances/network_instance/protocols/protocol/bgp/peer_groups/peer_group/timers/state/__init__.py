@@ -41,10 +41,10 @@ group
     self._path_helper = False
 
     self._extmethods = False
-    self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    self.__keepalive_interval = None
+    self.__hold_time = None
+    self.__minimum_advertisement_interval = None
+    self.__connect_retry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'timers', u'state']
 
+  def _initialized_connect_retry(self):
+    return self.__connect_retry is not None
+
   def _get_connect_retry(self):
     """
     Getter method for connect_retry, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/connect_retry (decimal64)
@@ -80,6 +83,8 @@ group
     YANG Description: Time interval in seconds between attempts to establish a
 session with the peer.
     """
+    if self.__connect_retry is None:
+        self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__connect_retry
       
   def _set_connect_retry(self, v, load=False):
@@ -93,6 +98,9 @@ session with the peer.
     YANG Description: Time interval in seconds between attempts to establish a
 session with the peer.
     """
+    if self.__connect_retry is None:
+        self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ session with the peer.
     self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_hold_time(self):
+    return self.__hold_time is not None
+
   def _get_hold_time(self):
     """
     Getter method for hold_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/hold_time (decimal64)
@@ -121,6 +132,8 @@ considered active in the absence of keepalive or other
 messages from the peer.  The hold-time is typically
 set to 3x the keepalive-interval.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__hold_time
       
   def _set_hold_time(self, v, load=False):
@@ -136,6 +149,9 @@ considered active in the absence of keepalive or other
 messages from the peer.  The hold-time is typically
 set to 3x the keepalive-interval.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -155,6 +171,9 @@ set to 3x the keepalive-interval.
     self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_keepalive_interval(self):
+    return self.__keepalive_interval is not None
+
   def _get_keepalive_interval(self):
     """
     Getter method for keepalive_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/keepalive_interval (decimal64)
@@ -163,6 +182,8 @@ set to 3x the keepalive-interval.
 messages to the neighbor.  Typically set to 1/3 the
 hold-time.
     """
+    if self.__keepalive_interval is None:
+        self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__keepalive_interval
       
   def _set_keepalive_interval(self, v, load=False):
@@ -177,6 +198,9 @@ hold-time.
 messages to the neighbor.  Typically set to 1/3 the
 hold-time.
     """
+    if self.__keepalive_interval is None:
+        self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -196,6 +220,9 @@ hold-time.
     self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_minimum_advertisement_interval(self):
+    return self.__minimum_advertisement_interval is not None
+
   def _get_minimum_advertisement_interval(self):
     """
     Getter method for minimum_advertisement_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/minimum_advertisement_interval (decimal64)
@@ -207,6 +234,8 @@ MinRouteAdvertisementIntervalTimer by RFC 4721 and serves to
 reduce the number of UPDATE messages transmitted when a
 particular set of NLRI exhibit instability.
     """
+    if self.__minimum_advertisement_interval is None:
+        self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__minimum_advertisement_interval
       
   def _set_minimum_advertisement_interval(self, v, load=False):
@@ -224,6 +253,9 @@ MinRouteAdvertisementIntervalTimer by RFC 4721 and serves to
 reduce the number of UPDATE messages transmitted when a
 particular set of NLRI exhibit instability.
     """
+    if self.__minimum_advertisement_interval is None:
+        self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -272,10 +304,10 @@ group
     self._path_helper = False
 
     self._extmethods = False
-    self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
-    self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    self.__keepalive_interval = None
+    self.__hold_time = None
+    self.__minimum_advertisement_interval = None
+    self.__connect_retry = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -304,6 +336,9 @@ group
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'timers', u'state']
 
+  def _initialized_connect_retry(self):
+    return self.__connect_retry is not None
+
   def _get_connect_retry(self):
     """
     Getter method for connect_retry, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/connect_retry (decimal64)
@@ -311,6 +346,8 @@ group
     YANG Description: Time interval in seconds between attempts to establish a
 session with the peer.
     """
+    if self.__connect_retry is None:
+        self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__connect_retry
       
   def _set_connect_retry(self, v, load=False):
@@ -324,6 +361,9 @@ session with the peer.
     YANG Description: Time interval in seconds between attempts to establish a
 session with the peer.
     """
+    if self.__connect_retry is None:
+        self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -343,6 +383,9 @@ session with the peer.
     self.__connect_retry = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="connect-retry", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_hold_time(self):
+    return self.__hold_time is not None
+
   def _get_hold_time(self):
     """
     Getter method for hold_time, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/hold_time (decimal64)
@@ -352,6 +395,8 @@ considered active in the absence of keepalive or other
 messages from the peer.  The hold-time is typically
 set to 3x the keepalive-interval.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__hold_time
       
   def _set_hold_time(self, v, load=False):
@@ -367,6 +412,9 @@ considered active in the absence of keepalive or other
 messages from the peer.  The hold-time is typically
 set to 3x the keepalive-interval.
     """
+    if self.__hold_time is None:
+        self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -386,6 +434,9 @@ set to 3x the keepalive-interval.
     self.__hold_time = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(90), is_leaf=True, yang_name="hold-time", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_keepalive_interval(self):
+    return self.__keepalive_interval is not None
+
   def _get_keepalive_interval(self):
     """
     Getter method for keepalive_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/keepalive_interval (decimal64)
@@ -394,6 +445,8 @@ set to 3x the keepalive-interval.
 messages to the neighbor.  Typically set to 1/3 the
 hold-time.
     """
+    if self.__keepalive_interval is None:
+        self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__keepalive_interval
       
   def _set_keepalive_interval(self, v, load=False):
@@ -408,6 +461,9 @@ hold-time.
 messages to the neighbor.  Typically set to 1/3 the
 hold-time.
     """
+    if self.__keepalive_interval is None:
+        self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -427,6 +483,9 @@ hold-time.
     self.__keepalive_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="keepalive-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
 
 
+  def _initialized_minimum_advertisement_interval(self):
+    return self.__minimum_advertisement_interval is not None
+
   def _get_minimum_advertisement_interval(self):
     """
     Getter method for minimum_advertisement_interval, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/timers/state/minimum_advertisement_interval (decimal64)
@@ -438,6 +497,8 @@ MinRouteAdvertisementIntervalTimer by RFC 4721 and serves to
 reduce the number of UPDATE messages transmitted when a
 particular set of NLRI exhibit instability.
     """
+    if self.__minimum_advertisement_interval is None:
+        self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
     return self.__minimum_advertisement_interval
       
   def _set_minimum_advertisement_interval(self, v, load=False):
@@ -455,6 +516,9 @@ MinRouteAdvertisementIntervalTimer by RFC 4721 and serves to
 reduce the number of UPDATE messages transmitted when a
 particular set of NLRI exhibit instability.
     """
+    if self.__minimum_advertisement_interval is None:
+        self.__minimum_advertisement_interval = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), default=Decimal(30), is_leaf=True, yang_name="minimum-advertisement-interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='decimal64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

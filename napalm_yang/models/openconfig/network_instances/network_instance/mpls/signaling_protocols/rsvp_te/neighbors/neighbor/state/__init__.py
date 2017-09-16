@@ -41,10 +41,10 @@ RSVP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
+    self.__neighbor_status = None
+    self.__detected_interface = None
+    self.__refresh_reduction = None
+    self.__address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,12 +73,17 @@ RSVP neighbor
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'neighbors', u'neighbor', u'state']
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/address (inet:ip-address)
 
     YANG Description: Address of RSVP neighbor
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -91,6 +96,9 @@ RSVP neighbor
 
     YANG Description: Address of RSVP neighbor
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,12 +118,17 @@ RSVP neighbor
     self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
 
 
+  def _initialized_detected_interface(self):
+    return self.__detected_interface is not None
+
   def _get_detected_interface(self):
     """
     Getter method for detected_interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/detected_interface (string)
 
     YANG Description: Interface where RSVP neighbor was detected
     """
+    if self.__detected_interface is None:
+        self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__detected_interface
       
   def _set_detected_interface(self, v, load=False):
@@ -128,6 +141,9 @@ RSVP neighbor
 
     YANG Description: Interface where RSVP neighbor was detected
     """
+    if self.__detected_interface is None:
+        self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -147,12 +163,17 @@ RSVP neighbor
     self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_neighbor_status(self):
+    return self.__neighbor_status is not None
+
   def _get_neighbor_status(self):
     """
     Getter method for neighbor_status, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/neighbor_status (enumeration)
 
     YANG Description: Enumuration of possible RSVP neighbor states
     """
+    if self.__neighbor_status is None:
+        self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__neighbor_status
       
   def _set_neighbor_status(self, v, load=False):
@@ -165,6 +186,9 @@ RSVP neighbor
 
     YANG Description: Enumuration of possible RSVP neighbor states
     """
+    if self.__neighbor_status is None:
+        self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -184,12 +208,17 @@ RSVP neighbor
     self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_refresh_reduction(self):
+    return self.__refresh_reduction is not None
+
   def _get_refresh_reduction(self):
     """
     Getter method for refresh_reduction, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/refresh_reduction (boolean)
 
     YANG Description: Suppport of neighbor for RSVP refresh reduction
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__refresh_reduction
       
   def _set_refresh_reduction(self, v, load=False):
@@ -202,6 +231,9 @@ RSVP neighbor
 
     YANG Description: Suppport of neighbor for RSVP refresh reduction
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -250,10 +282,10 @@ RSVP neighbor
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
+    self.__neighbor_status = None
+    self.__detected_interface = None
+    self.__refresh_reduction = None
+    self.__address = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -282,12 +314,17 @@ RSVP neighbor
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'neighbors', u'neighbor', u'state']
 
+  def _initialized_address(self):
+    return self.__address is not None
+
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/address (inet:ip-address)
 
     YANG Description: Address of RSVP neighbor
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
     return self.__address
       
   def _set_address(self, v, load=False):
@@ -300,6 +337,9 @@ RSVP neighbor
 
     YANG Description: Address of RSVP neighbor
     """
+    if self.__address is None:
+        self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -319,12 +359,17 @@ RSVP neighbor
     self.__address = YANGDynClass(base=[RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}),], is_leaf=True, yang_name="address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ip-address', is_config=False)
 
 
+  def _initialized_detected_interface(self):
+    return self.__detected_interface is not None
+
   def _get_detected_interface(self):
     """
     Getter method for detected_interface, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/detected_interface (string)
 
     YANG Description: Interface where RSVP neighbor was detected
     """
+    if self.__detected_interface is None:
+        self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__detected_interface
       
   def _set_detected_interface(self, v, load=False):
@@ -337,6 +382,9 @@ RSVP neighbor
 
     YANG Description: Interface where RSVP neighbor was detected
     """
+    if self.__detected_interface is None:
+        self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -356,12 +404,17 @@ RSVP neighbor
     self.__detected_interface = YANGDynClass(base=unicode, is_leaf=True, yang_name="detected-interface", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_neighbor_status(self):
+    return self.__neighbor_status is not None
+
   def _get_neighbor_status(self):
     """
     Getter method for neighbor_status, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/neighbor_status (enumeration)
 
     YANG Description: Enumuration of possible RSVP neighbor states
     """
+    if self.__neighbor_status is None:
+        self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__neighbor_status
       
   def _set_neighbor_status(self, v, load=False):
@@ -374,6 +427,9 @@ RSVP neighbor
 
     YANG Description: Enumuration of possible RSVP neighbor states
     """
+    if self.__neighbor_status is None:
+        self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -393,12 +449,17 @@ RSVP neighbor
     self.__neighbor_status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DOWN': {}, u'UP': {}},), is_leaf=True, yang_name="neighbor-status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_refresh_reduction(self):
+    return self.__refresh_reduction is not None
+
   def _get_refresh_reduction(self):
     """
     Getter method for refresh_reduction, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/neighbors/neighbor/state/refresh_reduction (boolean)
 
     YANG Description: Suppport of neighbor for RSVP refresh reduction
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__refresh_reduction
       
   def _set_refresh_reduction(self, v, load=False):
@@ -411,6 +472,9 @@ RSVP neighbor
 
     YANG Description: Suppport of neighbor for RSVP refresh reduction
     """
+    if self.__refresh_reduction is None:
+        self.__refresh_reduction = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="refresh-reduction", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

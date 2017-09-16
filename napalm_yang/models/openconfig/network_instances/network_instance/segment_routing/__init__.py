@@ -43,8 +43,8 @@ segment routing.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__srlbs = None
+    self.__srgbs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -73,6 +73,9 @@ segment routing.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing']
 
+  def _initialized_srgbs(self):
+    return self.__srgbs is not None
+
   def _get_srgbs(self):
     """
     Getter method for srgbs, mapped from YANG variable /network_instances/network_instance/segment_routing/srgbs (container)
@@ -80,6 +83,8 @@ segment routing.
     YANG Description: Configuration and operational state parameters relating to the
 SRGBs defined for the system.
     """
+    if self.__srgbs is None:
+        self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srgbs
       
   def _set_srgbs(self, v, load=False):
@@ -93,6 +98,9 @@ SRGBs defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 SRGBs defined for the system.
     """
+    if self.__srgbs is None:
+        self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -112,6 +120,9 @@ SRGBs defined for the system.
     self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_srlbs(self):
+    return self.__srlbs is not None
+
   def _get_srlbs(self):
     """
     Getter method for srlbs, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs (container)
@@ -119,6 +130,8 @@ SRGBs defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 Segment Routing Local Blocks (SRLBs) defined for the system.
     """
+    if self.__srlbs is None:
+        self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srlbs
       
   def _set_srlbs(self, v, load=False):
@@ -132,6 +145,9 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 Segment Routing Local Blocks (SRLBs) defined for the system.
     """
+    if self.__srlbs is None:
+        self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -180,8 +196,8 @@ segment routing.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__srlbs = None
+    self.__srgbs = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -210,6 +226,9 @@ segment routing.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing']
 
+  def _initialized_srgbs(self):
+    return self.__srgbs is not None
+
   def _get_srgbs(self):
     """
     Getter method for srgbs, mapped from YANG variable /network_instances/network_instance/segment_routing/srgbs (container)
@@ -217,6 +236,8 @@ segment routing.
     YANG Description: Configuration and operational state parameters relating to the
 SRGBs defined for the system.
     """
+    if self.__srgbs is None:
+        self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srgbs
       
   def _set_srgbs(self, v, load=False):
@@ -230,6 +251,9 @@ SRGBs defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 SRGBs defined for the system.
     """
+    if self.__srgbs is None:
+        self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -249,6 +273,9 @@ SRGBs defined for the system.
     self.__srgbs = YANGDynClass(base=srgbs.srgbs, is_container='container', yang_name="srgbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
+  def _initialized_srlbs(self):
+    return self.__srlbs is not None
+
   def _get_srlbs(self):
     """
     Getter method for srlbs, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs (container)
@@ -256,6 +283,8 @@ SRGBs defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 Segment Routing Local Blocks (SRLBs) defined for the system.
     """
+    if self.__srlbs is None:
+        self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     return self.__srlbs
       
   def _set_srlbs(self, v, load=False):
@@ -269,6 +298,9 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     YANG Description: Configuration and operational state parameters relating to the
 Segment Routing Local Blocks (SRLBs) defined for the system.
     """
+    if self.__srlbs is None:
+        self.__srlbs = YANGDynClass(base=srlbs.srlbs, is_container='container', yang_name="srlbs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

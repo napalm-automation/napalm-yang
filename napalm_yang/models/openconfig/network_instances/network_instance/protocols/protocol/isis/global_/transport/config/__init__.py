@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__lsp_mtu_size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -69,12 +69,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'transport', u'config']
 
+  def _initialized_lsp_mtu_size(self):
+    return self.__lsp_mtu_size is not None
+
   def _get_lsp_mtu_size(self):
     """
     Getter method for lsp_mtu_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/transport/config/lsp_mtu_size (uint16)
 
     YANG Description: The maximum size in bytes of an IS-IS Link state PDU.
     """
+    if self.__lsp_mtu_size is None:
+        self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_mtu_size
       
   def _set_lsp_mtu_size(self, v, load=False):
@@ -87,6 +92,9 @@ class config(PybindBase):
 
     YANG Description: The maximum size in bytes of an IS-IS Link state PDU.
     """
+    if self.__lsp_mtu_size is None:
+        self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -131,7 +139,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    self.__lsp_mtu_size = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -160,12 +168,17 @@ class config(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'global', u'transport', u'config']
 
+  def _initialized_lsp_mtu_size(self):
+    return self.__lsp_mtu_size is not None
+
   def _get_lsp_mtu_size(self):
     """
     Getter method for lsp_mtu_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/global/transport/config/lsp_mtu_size (uint16)
 
     YANG Description: The maximum size in bytes of an IS-IS Link state PDU.
     """
+    if self.__lsp_mtu_size is None:
+        self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
     return self.__lsp_mtu_size
       
   def _set_lsp_mtu_size(self, v, load=False):
@@ -178,6 +191,9 @@ class config(PybindBase):
 
     YANG Description: The maximum size in bytes of an IS-IS Link state PDU.
     """
+    if self.__lsp_mtu_size is None:
+        self.__lsp_mtu_size = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), is_leaf=True, yang_name="lsp-mtu-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint16', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

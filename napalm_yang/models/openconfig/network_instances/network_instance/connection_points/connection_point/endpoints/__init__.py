@@ -42,7 +42,7 @@ connection point
     self._path_helper = False
 
     self._extmethods = False
-    self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__endpoint = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ connection point
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints']
 
+  def _initialized_endpoint(self):
+    return self.__endpoint is not None
+
   def _get_endpoint(self):
     """
     Getter method for endpoint, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint (list)
@@ -81,6 +84,8 @@ connection point). The active endpoint is selected
 based on the precedence that it is configured
 with
     """
+    if self.__endpoint is None:
+        self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__endpoint
       
   def _set_endpoint(self, v, load=False):
@@ -97,6 +102,9 @@ connection point). The active endpoint is selected
 based on the precedence that it is configured
 with
     """
+    if self.__endpoint is None:
+        self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -143,7 +151,7 @@ connection point
     self._path_helper = False
 
     self._extmethods = False
-    self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__endpoint = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -172,6 +180,9 @@ connection point
     else:
       return [u'network-instances', u'network-instance', u'connection-points', u'connection-point', u'endpoints']
 
+  def _initialized_endpoint(self):
+    return self.__endpoint is not None
+
   def _get_endpoint(self):
     """
     Getter method for endpoint, mapped from YANG variable /network_instances/network_instance/connection_points/connection_point/endpoints/endpoint (list)
@@ -182,6 +193,8 @@ connection point). The active endpoint is selected
 based on the precedence that it is configured
 with
     """
+    if self.__endpoint is None:
+        self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__endpoint
       
   def _set_endpoint(self, v, load=False):
@@ -198,6 +211,9 @@ connection point). The active endpoint is selected
 based on the precedence that it is configured
 with
     """
+    if self.__endpoint is None:
+        self.__endpoint = YANGDynClass(base=YANGListType("endpoint_id",endpoint.endpoint, yang_name="endpoint", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='endpoint-id', extensions=None), is_container='list', yang_name="endpoint", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

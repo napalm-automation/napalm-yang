@@ -41,7 +41,7 @@ policy.
     self._path_helper = False
 
     self._extmethods = False
-    self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__policy_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -70,6 +70,9 @@ policy.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'config']
 
+  def _initialized_policy_id(self):
+    return self.__policy_id is not None
+
   def _get_policy_id(self):
     """
     Getter method for policy_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/config/policy_id (string)
@@ -77,6 +80,8 @@ policy.
     YANG Description: A unique name identifying the forwarding policy. This name is
 used when applying the policy to a particular interface.
     """
+    if self.__policy_id is None:
+        self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__policy_id
       
   def _set_policy_id(self, v, load=False):
@@ -90,6 +95,9 @@ used when applying the policy to a particular interface.
     YANG Description: A unique name identifying the forwarding policy. This name is
 used when applying the policy to a particular interface.
     """
+    if self.__policy_id is None:
+        self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -135,7 +143,7 @@ policy.
     self._path_helper = False
 
     self._extmethods = False
-    self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    self.__policy_id = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -164,6 +172,9 @@ policy.
     else:
       return [u'network-instances', u'network-instance', u'policy-forwarding', u'policies', u'policy', u'config']
 
+  def _initialized_policy_id(self):
+    return self.__policy_id is not None
+
   def _get_policy_id(self):
     """
     Getter method for policy_id, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/config/policy_id (string)
@@ -171,6 +182,8 @@ policy.
     YANG Description: A unique name identifying the forwarding policy. This name is
 used when applying the policy to a particular interface.
     """
+    if self.__policy_id is None:
+        self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
     return self.__policy_id
       
   def _set_policy_id(self, v, load=False):
@@ -184,6 +197,9 @@ used when applying the policy to a particular interface.
     YANG Description: A unique name identifying the forwarding policy. This name is
 used when applying the policy to a particular interface.
     """
+    if self.__policy_id is None:
+        self.__policy_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="policy-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

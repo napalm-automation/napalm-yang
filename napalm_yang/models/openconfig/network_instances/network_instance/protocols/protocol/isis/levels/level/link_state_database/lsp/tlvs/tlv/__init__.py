@@ -68,35 +68,35 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__mt_isis_neighbor_attribute = None
+    self.__type_block = None
+    self.__ipv6_te_router_id = None
+    self.__mt_ipv6_reachability = None
+    self.__mt_ipv4_reachability = None
+    self.__mt_isn = None
+    self.__isis_alias_id = None
+    self.__extended_ipv4_reachability = None
+    self.__hostname = None
+    self.__purge_oi = None
+    self.__authentication = None
+    self.__state = None
+    self.__ipv4_srlg = None
+    self.__ipv4_te_router_id = None
+    self.__ipv4_internal_reachability = None
+    self.__router_capabilities = None
+    self.__type = None
+    self.__multi_topology = None
+    self.__is_reachability = None
+    self.__isis_neighbor_attribute = None
+    self.__ipv4_interface_addresses = None
+    self.__extended_is_reachability = None
+    self.__ipv6_interface_addresses = None
+    self.__ipv4_external_reachability = None
+    self.__nlpid = None
+    self.__ipv6_reachability = None
+    self.__instance_id = None
+    self.__area_address = None
+    self.__ipv6_srlg = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -125,6 +125,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type (leafref)
@@ -132,6 +135,8 @@ class tlv(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -145,6 +150,9 @@ the LSDB.
     YANG Description: A reference for the TLV type being described within
 the LSDB.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -169,12 +177,17 @@ the LSDB.
     self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/state (container)
 
     YANG Description: This container defines TLV State.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -187,6 +200,9 @@ the LSDB.
 
     YANG Description: This container defines TLV State.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -206,12 +222,17 @@ the LSDB.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_area_address(self):
+    return self.__area_address is not None
+
   def _get_area_address(self):
     """
     Getter method for area_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/area_address (container)
 
     YANG Description: This container defines TLV 1.
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__area_address
       
   def _set_area_address(self, v, load=False):
@@ -224,6 +245,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 1.
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -243,12 +267,17 @@ the LSDB.
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_nlpid(self):
+    return self.__nlpid is not None
+
   def _get_nlpid(self):
     """
     Getter method for nlpid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/nlpid (container)
 
     YANG Description: This container defines TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__nlpid
       
   def _set_nlpid(self, v, load=False):
@@ -261,6 +290,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -280,12 +312,17 @@ the LSDB.
     self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_hostname(self):
+    return self.__hostname is not None
+
   def _get_hostname(self):
     """
     Getter method for hostname, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/hostname (container)
 
     YANG Description: This container defines TLV 137.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__hostname
       
   def _set_hostname(self, v, load=False):
@@ -298,6 +335,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 137.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -317,12 +357,17 @@ the LSDB.
     self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_interface_addresses(self):
+    return self.__ipv4_interface_addresses is not None
+
   def _get_ipv4_interface_addresses(self):
     """
     Getter method for ipv4_interface_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_interface_addresses (container)
 
     YANG Description: This container defines TLV 132.
     """
+    if self.__ipv4_interface_addresses is None:
+        self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_interface_addresses
       
   def _set_ipv4_interface_addresses(self, v, load=False):
@@ -335,6 +380,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 132.
     """
+    if self.__ipv4_interface_addresses is None:
+        self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -354,12 +402,17 @@ the LSDB.
     self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_interface_addresses(self):
+    return self.__ipv6_interface_addresses is not None
+
   def _get_ipv6_interface_addresses(self):
     """
     Getter method for ipv6_interface_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_interface_addresses (container)
 
     YANG Description: This container defines TLV 232.
     """
+    if self.__ipv6_interface_addresses is None:
+        self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_interface_addresses
       
   def _set_ipv6_interface_addresses(self, v, load=False):
@@ -372,6 +425,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 232.
     """
+    if self.__ipv6_interface_addresses is None:
+        self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -391,12 +447,17 @@ the LSDB.
     self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_te_router_id(self):
+    return self.__ipv4_te_router_id is not None
+
   def _get_ipv4_te_router_id(self):
     """
     Getter method for ipv4_te_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_te_router_id (container)
 
     YANG Description: This container defines TLV 134.
     """
+    if self.__ipv4_te_router_id is None:
+        self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_te_router_id
       
   def _set_ipv4_te_router_id(self, v, load=False):
@@ -409,6 +470,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 134.
     """
+    if self.__ipv4_te_router_id is None:
+        self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -428,12 +492,17 @@ the LSDB.
     self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_te_router_id(self):
+    return self.__ipv6_te_router_id is not None
+
   def _get_ipv6_te_router_id(self):
     """
     Getter method for ipv6_te_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_te_router_id (container)
 
     YANG Description: This container defines TLV 140.
     """
+    if self.__ipv6_te_router_id is None:
+        self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_te_router_id
       
   def _set_ipv6_te_router_id(self, v, load=False):
@@ -446,6 +515,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 140.
     """
+    if self.__ipv6_te_router_id is None:
+        self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -465,12 +537,17 @@ the LSDB.
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_instance_id(self):
+    return self.__instance_id is not None
+
   def _get_instance_id(self):
     """
     Getter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
+    if self.__instance_id is None:
+        self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__instance_id
       
   def _set_instance_id(self, v, load=False):
@@ -483,6 +560,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
+    if self.__instance_id is None:
+        self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -502,12 +582,17 @@ the LSDB.
     self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_srlg(self):
+    return self.__ipv4_srlg is not None
+
   def _get_ipv4_srlg(self):
     """
     Getter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
+    if self.__ipv4_srlg is None:
+        self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_srlg
       
   def _set_ipv4_srlg(self, v, load=False):
@@ -520,6 +605,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
+    if self.__ipv4_srlg is None:
+        self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -539,12 +627,17 @@ the LSDB.
     self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_srlg(self):
+    return self.__ipv6_srlg is not None
+
   def _get_ipv6_srlg(self):
     """
     Getter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
+    if self.__ipv6_srlg is None:
+        self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_srlg
       
   def _set_ipv6_srlg(self, v, load=False):
@@ -557,6 +650,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
+    if self.__ipv6_srlg is None:
+        self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -576,12 +672,17 @@ the LSDB.
     self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_purge_oi(self):
+    return self.__purge_oi is not None
+
   def _get_purge_oi(self):
     """
     Getter method for purge_oi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/purge_oi (container)
 
     YANG Description: This container defines ISIS purge TLV.
     """
+    if self.__purge_oi is None:
+        self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__purge_oi
       
   def _set_purge_oi(self, v, load=False):
@@ -594,6 +695,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS purge TLV.
     """
+    if self.__purge_oi is None:
+        self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -613,12 +717,17 @@ the LSDB.
     self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_capabilities(self):
+    return self.__router_capabilities is not None
+
   def _get_router_capabilities(self):
     """
     Getter method for router_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities (container)
 
     YANG Description: This container defines router capabilities.
     """
+    if self.__router_capabilities is None:
+        self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_capabilities
       
   def _set_router_capabilities(self, v, load=False):
@@ -631,6 +740,9 @@ the LSDB.
 
     YANG Description: This container defines router capabilities.
     """
+    if self.__router_capabilities is None:
+        self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -650,12 +762,17 @@ the LSDB.
     self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_is_reachability(self):
+    return self.__is_reachability is not None
+
   def _get_is_reachability(self):
     """
     Getter method for is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability (container)
 
     YANG Description: This container describes list of ISIS neighbors and attributes.
     """
+    if self.__is_reachability is None:
+        self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__is_reachability
       
   def _set_is_reachability(self, v, load=False):
@@ -668,6 +785,9 @@ the LSDB.
 
     YANG Description: This container describes list of ISIS neighbors and attributes.
     """
+    if self.__is_reachability is None:
+        self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -687,6 +807,9 @@ the LSDB.
     self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_internal_reachability(self):
+    return self.__ipv4_internal_reachability is not None
+
   def _get_ipv4_internal_reachability(self):
     """
     Getter method for ipv4_internal_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability (container)
@@ -694,6 +817,8 @@ the LSDB.
     YANG Description: This container defines list of IPv4 internal reachability
 information.
     """
+    if self.__ipv4_internal_reachability is None:
+        self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_internal_reachability
       
   def _set_ipv4_internal_reachability(self, v, load=False):
@@ -707,6 +832,9 @@ information.
     YANG Description: This container defines list of IPv4 internal reachability
 information.
     """
+    if self.__ipv4_internal_reachability is None:
+        self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -726,6 +854,9 @@ information.
     self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_external_reachability(self):
+    return self.__ipv4_external_reachability is not None
+
   def _get_ipv4_external_reachability(self):
     """
     Getter method for ipv4_external_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability (container)
@@ -733,6 +864,8 @@ information.
     YANG Description: This container defines list of IPv4 external reachability
 information.
     """
+    if self.__ipv4_external_reachability is None:
+        self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_external_reachability
       
   def _set_ipv4_external_reachability(self, v, load=False):
@@ -746,6 +879,9 @@ information.
     YANG Description: This container defines list of IPv4 external reachability
 information.
     """
+    if self.__ipv4_external_reachability is None:
+        self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -765,12 +901,17 @@ information.
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_type_block(self):
+    return self.__type_block is not None
+
   def _get_type_block(self):
     """
     Getter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
 
     YANG Description: This container defines LSP Type Block. 
     """
+    if self.__type_block is None:
+        self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__type_block
       
   def _set_type_block(self, v, load=False):
@@ -783,6 +924,9 @@ information.
 
     YANG Description: This container defines LSP Type Block. 
     """
+    if self.__type_block is None:
+        self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -802,6 +946,9 @@ information.
     self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_authentication(self):
+    return self.__authentication is not None
+
   def _get_authentication(self):
     """
     Getter method for authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/authentication (container)
@@ -809,6 +956,8 @@ information.
     YANG Description: This container defines authentication information of the
 node.
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__authentication
       
   def _set_authentication(self, v, load=False):
@@ -822,6 +971,9 @@ node.
     YANG Description: This container defines authentication information of the
 node.
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -841,6 +993,9 @@ node.
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_is_reachability(self):
+    return self.__extended_is_reachability is not None
+
   def _get_extended_is_reachability(self):
     """
     Getter method for extended_is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability (container)
@@ -848,6 +1003,8 @@ node.
     YANG Description: This container defines list of ISIS extended reachability
 neighbors.
     """
+    if self.__extended_is_reachability is None:
+        self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_is_reachability
       
   def _set_extended_is_reachability(self, v, load=False):
@@ -861,6 +1018,9 @@ neighbors.
     YANG Description: This container defines list of ISIS extended reachability
 neighbors.
     """
+    if self.__extended_is_reachability is None:
+        self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -880,6 +1040,9 @@ neighbors.
     self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_ipv4_reachability(self):
+    return self.__extended_ipv4_reachability is not None
+
   def _get_extended_ipv4_reachability(self):
     """
     Getter method for extended_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability (container)
@@ -887,6 +1050,8 @@ neighbors.
     YANG Description: This container defines list of IPv4 extended reachability
 information.
     """
+    if self.__extended_ipv4_reachability is None:
+        self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_ipv4_reachability
       
   def _set_extended_ipv4_reachability(self, v, load=False):
@@ -900,6 +1065,9 @@ information.
     YANG Description: This container defines list of IPv4 extended reachability
 information.
     """
+    if self.__extended_ipv4_reachability is None:
+        self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -919,6 +1087,9 @@ information.
     self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_reachability(self):
+    return self.__ipv6_reachability is not None
+
   def _get_ipv6_reachability(self):
     """
     Getter method for ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability (container)
@@ -926,6 +1097,8 @@ information.
     YANG Description: This container defines list of IPv6 reachability
 information.
     """
+    if self.__ipv6_reachability is None:
+        self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_reachability
       
   def _set_ipv6_reachability(self, v, load=False):
@@ -939,6 +1112,9 @@ information.
     YANG Description: This container defines list of IPv6 reachability
 information.
     """
+    if self.__ipv6_reachability is None:
+        self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -958,12 +1134,17 @@ information.
     self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_multi_topology(self):
+    return self.__multi_topology is not None
+
   def _get_multi_topology(self):
     """
     Getter method for multi_topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology (container)
 
     YANG Description: This container defines the topology supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__multi_topology
       
   def _set_multi_topology(self, v, load=False):
@@ -976,6 +1157,9 @@ information.
 
     YANG Description: This container defines the topology supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -995,6 +1179,9 @@ information.
     self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_isis_neighbor_attribute(self):
+    return self.__isis_neighbor_attribute is not None
+
   def _get_isis_neighbor_attribute(self):
     """
     Getter method for isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute (container)
@@ -1002,6 +1189,8 @@ information.
     YANG Description: This container defines list of ISIS topology neighbors
 for extended ISIS LSP(multiple system IDs). 
     """
+    if self.__isis_neighbor_attribute is None:
+        self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__isis_neighbor_attribute
       
   def _set_isis_neighbor_attribute(self, v, load=False):
@@ -1015,6 +1204,9 @@ for extended ISIS LSP(multiple system IDs).
     YANG Description: This container defines list of ISIS topology neighbors
 for extended ISIS LSP(multiple system IDs). 
     """
+    if self.__isis_neighbor_attribute is None:
+        self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1034,6 +1226,9 @@ for extended ISIS LSP(multiple system IDs).
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_isis_alias_id(self):
+    return self.__isis_alias_id is not None
+
   def _get_isis_alias_id(self):
     """
     Getter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
@@ -1043,6 +1238,8 @@ extension-capable ISs to recognize the Originating System of an
 Extended LSP set. It identifies the Normal system-id of the
 Originating System.
     """
+    if self.__isis_alias_id is None:
+        self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__isis_alias_id
       
   def _set_isis_alias_id(self, v, load=False):
@@ -1058,6 +1255,9 @@ extension-capable ISs to recognize the Originating System of an
 Extended LSP set. It identifies the Normal system-id of the
 Originating System.
     """
+    if self.__isis_alias_id is None:
+        self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1077,6 +1277,9 @@ Originating System.
     self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_isn(self):
+    return self.__mt_isn is not None
+
   def _get_mt_isn(self):
     """
     Getter method for mt_isn, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn (container)
@@ -1084,6 +1287,8 @@ Originating System.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isn is None:
+        self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_isn
       
   def _set_mt_isn(self, v, load=False):
@@ -1097,6 +1302,9 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isn is None:
+        self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1116,6 +1324,9 @@ neighbors.
     self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_isis_neighbor_attribute(self):
+    return self.__mt_isis_neighbor_attribute is not None
+
   def _get_mt_isis_neighbor_attribute(self):
     """
     Getter method for mt_isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute (container)
@@ -1123,6 +1334,8 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isis_neighbor_attribute is None:
+        self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_isis_neighbor_attribute
       
   def _set_mt_isis_neighbor_attribute(self, v, load=False):
@@ -1136,6 +1349,9 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isis_neighbor_attribute is None:
+        self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1155,6 +1371,9 @@ neighbors.
     self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_ipv4_reachability(self):
+    return self.__mt_ipv4_reachability is not None
+
   def _get_mt_ipv4_reachability(self):
     """
     Getter method for mt_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv4_reachability (container)
@@ -1162,6 +1381,8 @@ neighbors.
     YANG Description: This container defines list of IPv4 reachability Information
 in multi-topology environment.
     """
+    if self.__mt_ipv4_reachability is None:
+        self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_ipv4_reachability
       
   def _set_mt_ipv4_reachability(self, v, load=False):
@@ -1175,6 +1396,9 @@ in multi-topology environment.
     YANG Description: This container defines list of IPv4 reachability Information
 in multi-topology environment.
     """
+    if self.__mt_ipv4_reachability is None:
+        self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1194,6 +1418,9 @@ in multi-topology environment.
     self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_ipv6_reachability(self):
+    return self.__mt_ipv6_reachability is not None
+
   def _get_mt_ipv6_reachability(self):
     """
     Getter method for mt_ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability (container)
@@ -1201,6 +1428,8 @@ in multi-topology environment.
     YANG Description: This container defines list of IPv6 reachability information
 in multi - topology environment.
     """
+    if self.__mt_ipv6_reachability is None:
+        self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_ipv6_reachability
       
   def _set_mt_ipv6_reachability(self, v, load=False):
@@ -1214,6 +1443,9 @@ in multi - topology environment.
     YANG Description: This container defines list of IPv6 reachability information
 in multi - topology environment.
     """
+    if self.__mt_ipv6_reachability is None:
+        self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1314,35 +1546,35 @@ class tlv(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
-    self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__mt_isis_neighbor_attribute = None
+    self.__type_block = None
+    self.__ipv6_te_router_id = None
+    self.__mt_ipv6_reachability = None
+    self.__mt_ipv4_reachability = None
+    self.__mt_isn = None
+    self.__isis_alias_id = None
+    self.__extended_ipv4_reachability = None
+    self.__hostname = None
+    self.__purge_oi = None
+    self.__authentication = None
+    self.__state = None
+    self.__ipv4_srlg = None
+    self.__ipv4_te_router_id = None
+    self.__ipv4_internal_reachability = None
+    self.__router_capabilities = None
+    self.__type = None
+    self.__multi_topology = None
+    self.__is_reachability = None
+    self.__isis_neighbor_attribute = None
+    self.__ipv4_interface_addresses = None
+    self.__extended_is_reachability = None
+    self.__ipv6_interface_addresses = None
+    self.__ipv4_external_reachability = None
+    self.__nlpid = None
+    self.__ipv6_reachability = None
+    self.__instance_id = None
+    self.__area_address = None
+    self.__ipv6_srlg = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -1371,6 +1603,9 @@ class tlv(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv']
 
+  def _initialized_type(self):
+    return self.__type is not None
+
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type (leafref)
@@ -1378,6 +1613,8 @@ class tlv(PybindBase):
     YANG Description: A reference for the TLV type being described within
 the LSDB.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__type
       
   def _set_type(self, v, load=False):
@@ -1391,6 +1628,9 @@ the LSDB.
     YANG Description: A reference for the TLV type being described within
 the LSDB.
     """
+    if self.__type is None:
+        self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
       raise AttributeError("Cannot set keys directly when" +
@@ -1415,12 +1655,17 @@ the LSDB.
     self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/state (container)
 
     YANG Description: This container defines TLV State.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -1433,6 +1678,9 @@ the LSDB.
 
     YANG Description: This container defines TLV State.
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1452,12 +1700,17 @@ the LSDB.
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_area_address(self):
+    return self.__area_address is not None
+
   def _get_area_address(self):
     """
     Getter method for area_address, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/area_address (container)
 
     YANG Description: This container defines TLV 1.
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__area_address
       
   def _set_area_address(self, v, load=False):
@@ -1470,6 +1723,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 1.
     """
+    if self.__area_address is None:
+        self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1489,12 +1745,17 @@ the LSDB.
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_nlpid(self):
+    return self.__nlpid is not None
+
   def _get_nlpid(self):
     """
     Getter method for nlpid, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/nlpid (container)
 
     YANG Description: This container defines TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__nlpid
       
   def _set_nlpid(self, v, load=False):
@@ -1507,6 +1768,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 129.
     """
+    if self.__nlpid is None:
+        self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1526,12 +1790,17 @@ the LSDB.
     self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_hostname(self):
+    return self.__hostname is not None
+
   def _get_hostname(self):
     """
     Getter method for hostname, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/hostname (container)
 
     YANG Description: This container defines TLV 137.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__hostname
       
   def _set_hostname(self, v, load=False):
@@ -1544,6 +1813,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 137.
     """
+    if self.__hostname is None:
+        self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1563,12 +1835,17 @@ the LSDB.
     self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_interface_addresses(self):
+    return self.__ipv4_interface_addresses is not None
+
   def _get_ipv4_interface_addresses(self):
     """
     Getter method for ipv4_interface_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_interface_addresses (container)
 
     YANG Description: This container defines TLV 132.
     """
+    if self.__ipv4_interface_addresses is None:
+        self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_interface_addresses
       
   def _set_ipv4_interface_addresses(self, v, load=False):
@@ -1581,6 +1858,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 132.
     """
+    if self.__ipv4_interface_addresses is None:
+        self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1600,12 +1880,17 @@ the LSDB.
     self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_interface_addresses(self):
+    return self.__ipv6_interface_addresses is not None
+
   def _get_ipv6_interface_addresses(self):
     """
     Getter method for ipv6_interface_addresses, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_interface_addresses (container)
 
     YANG Description: This container defines TLV 232.
     """
+    if self.__ipv6_interface_addresses is None:
+        self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_interface_addresses
       
   def _set_ipv6_interface_addresses(self, v, load=False):
@@ -1618,6 +1903,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 232.
     """
+    if self.__ipv6_interface_addresses is None:
+        self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1637,12 +1925,17 @@ the LSDB.
     self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_te_router_id(self):
+    return self.__ipv4_te_router_id is not None
+
   def _get_ipv4_te_router_id(self):
     """
     Getter method for ipv4_te_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_te_router_id (container)
 
     YANG Description: This container defines TLV 134.
     """
+    if self.__ipv4_te_router_id is None:
+        self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_te_router_id
       
   def _set_ipv4_te_router_id(self, v, load=False):
@@ -1655,6 +1948,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 134.
     """
+    if self.__ipv4_te_router_id is None:
+        self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1674,12 +1970,17 @@ the LSDB.
     self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_te_router_id(self):
+    return self.__ipv6_te_router_id is not None
+
   def _get_ipv6_te_router_id(self):
     """
     Getter method for ipv6_te_router_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_te_router_id (container)
 
     YANG Description: This container defines TLV 140.
     """
+    if self.__ipv6_te_router_id is None:
+        self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_te_router_id
       
   def _set_ipv6_te_router_id(self, v, load=False):
@@ -1692,6 +1993,9 @@ the LSDB.
 
     YANG Description: This container defines TLV 140.
     """
+    if self.__ipv6_te_router_id is None:
+        self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1711,12 +2015,17 @@ the LSDB.
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_instance_id(self):
+    return self.__instance_id is not None
+
   def _get_instance_id(self):
     """
     Getter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
+    if self.__instance_id is None:
+        self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__instance_id
       
   def _set_instance_id(self, v, load=False):
@@ -1729,6 +2038,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
+    if self.__instance_id is None:
+        self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1748,12 +2060,17 @@ the LSDB.
     self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_srlg(self):
+    return self.__ipv4_srlg is not None
+
   def _get_ipv4_srlg(self):
     """
     Getter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
+    if self.__ipv4_srlg is None:
+        self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_srlg
       
   def _set_ipv4_srlg(self, v, load=False):
@@ -1766,6 +2083,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
+    if self.__ipv4_srlg is None:
+        self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1785,12 +2105,17 @@ the LSDB.
     self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_srlg(self):
+    return self.__ipv6_srlg is not None
+
   def _get_ipv6_srlg(self):
     """
     Getter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
+    if self.__ipv6_srlg is None:
+        self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_srlg
       
   def _set_ipv6_srlg(self, v, load=False):
@@ -1803,6 +2128,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
+    if self.__ipv6_srlg is None:
+        self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1822,12 +2150,17 @@ the LSDB.
     self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_purge_oi(self):
+    return self.__purge_oi is not None
+
   def _get_purge_oi(self):
     """
     Getter method for purge_oi, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/purge_oi (container)
 
     YANG Description: This container defines ISIS purge TLV.
     """
+    if self.__purge_oi is None:
+        self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__purge_oi
       
   def _set_purge_oi(self, v, load=False):
@@ -1840,6 +2173,9 @@ the LSDB.
 
     YANG Description: This container defines ISIS purge TLV.
     """
+    if self.__purge_oi is None:
+        self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1859,12 +2195,17 @@ the LSDB.
     self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_router_capabilities(self):
+    return self.__router_capabilities is not None
+
   def _get_router_capabilities(self):
     """
     Getter method for router_capabilities, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/router_capabilities (container)
 
     YANG Description: This container defines router capabilities.
     """
+    if self.__router_capabilities is None:
+        self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__router_capabilities
       
   def _set_router_capabilities(self, v, load=False):
@@ -1877,6 +2218,9 @@ the LSDB.
 
     YANG Description: This container defines router capabilities.
     """
+    if self.__router_capabilities is None:
+        self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1896,12 +2240,17 @@ the LSDB.
     self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_is_reachability(self):
+    return self.__is_reachability is not None
+
   def _get_is_reachability(self):
     """
     Getter method for is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability (container)
 
     YANG Description: This container describes list of ISIS neighbors and attributes.
     """
+    if self.__is_reachability is None:
+        self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__is_reachability
       
   def _set_is_reachability(self, v, load=False):
@@ -1914,6 +2263,9 @@ the LSDB.
 
     YANG Description: This container describes list of ISIS neighbors and attributes.
     """
+    if self.__is_reachability is None:
+        self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1933,6 +2285,9 @@ the LSDB.
     self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_internal_reachability(self):
+    return self.__ipv4_internal_reachability is not None
+
   def _get_ipv4_internal_reachability(self):
     """
     Getter method for ipv4_internal_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_internal_reachability (container)
@@ -1940,6 +2295,8 @@ the LSDB.
     YANG Description: This container defines list of IPv4 internal reachability
 information.
     """
+    if self.__ipv4_internal_reachability is None:
+        self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_internal_reachability
       
   def _set_ipv4_internal_reachability(self, v, load=False):
@@ -1953,6 +2310,9 @@ information.
     YANG Description: This container defines list of IPv4 internal reachability
 information.
     """
+    if self.__ipv4_internal_reachability is None:
+        self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1972,6 +2332,9 @@ information.
     self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv4_external_reachability(self):
+    return self.__ipv4_external_reachability is not None
+
   def _get_ipv4_external_reachability(self):
     """
     Getter method for ipv4_external_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_external_reachability (container)
@@ -1979,6 +2342,8 @@ information.
     YANG Description: This container defines list of IPv4 external reachability
 information.
     """
+    if self.__ipv4_external_reachability is None:
+        self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv4_external_reachability
       
   def _set_ipv4_external_reachability(self, v, load=False):
@@ -1992,6 +2357,9 @@ information.
     YANG Description: This container defines list of IPv4 external reachability
 information.
     """
+    if self.__ipv4_external_reachability is None:
+        self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2011,12 +2379,17 @@ information.
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_type_block(self):
+    return self.__type_block is not None
+
   def _get_type_block(self):
     """
     Getter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
 
     YANG Description: This container defines LSP Type Block. 
     """
+    if self.__type_block is None:
+        self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__type_block
       
   def _set_type_block(self, v, load=False):
@@ -2029,6 +2402,9 @@ information.
 
     YANG Description: This container defines LSP Type Block. 
     """
+    if self.__type_block is None:
+        self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2048,6 +2424,9 @@ information.
     self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_authentication(self):
+    return self.__authentication is not None
+
   def _get_authentication(self):
     """
     Getter method for authentication, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/authentication (container)
@@ -2055,6 +2434,8 @@ information.
     YANG Description: This container defines authentication information of the
 node.
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__authentication
       
   def _set_authentication(self, v, load=False):
@@ -2068,6 +2449,9 @@ node.
     YANG Description: This container defines authentication information of the
 node.
     """
+    if self.__authentication is None:
+        self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2087,6 +2471,9 @@ node.
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_is_reachability(self):
+    return self.__extended_is_reachability is not None
+
   def _get_extended_is_reachability(self):
     """
     Getter method for extended_is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_is_reachability (container)
@@ -2094,6 +2481,8 @@ node.
     YANG Description: This container defines list of ISIS extended reachability
 neighbors.
     """
+    if self.__extended_is_reachability is None:
+        self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_is_reachability
       
   def _set_extended_is_reachability(self, v, load=False):
@@ -2107,6 +2496,9 @@ neighbors.
     YANG Description: This container defines list of ISIS extended reachability
 neighbors.
     """
+    if self.__extended_is_reachability is None:
+        self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2126,6 +2518,9 @@ neighbors.
     self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_extended_ipv4_reachability(self):
+    return self.__extended_ipv4_reachability is not None
+
   def _get_extended_ipv4_reachability(self):
     """
     Getter method for extended_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability (container)
@@ -2133,6 +2528,8 @@ neighbors.
     YANG Description: This container defines list of IPv4 extended reachability
 information.
     """
+    if self.__extended_ipv4_reachability is None:
+        self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__extended_ipv4_reachability
       
   def _set_extended_ipv4_reachability(self, v, load=False):
@@ -2146,6 +2543,9 @@ information.
     YANG Description: This container defines list of IPv4 extended reachability
 information.
     """
+    if self.__extended_ipv4_reachability is None:
+        self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2165,6 +2565,9 @@ information.
     self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_ipv6_reachability(self):
+    return self.__ipv6_reachability is not None
+
   def _get_ipv6_reachability(self):
     """
     Getter method for ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_reachability (container)
@@ -2172,6 +2575,8 @@ information.
     YANG Description: This container defines list of IPv6 reachability
 information.
     """
+    if self.__ipv6_reachability is None:
+        self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__ipv6_reachability
       
   def _set_ipv6_reachability(self, v, load=False):
@@ -2185,6 +2590,9 @@ information.
     YANG Description: This container defines list of IPv6 reachability
 information.
     """
+    if self.__ipv6_reachability is None:
+        self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2204,12 +2612,17 @@ information.
     self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_multi_topology(self):
+    return self.__multi_topology is not None
+
   def _get_multi_topology(self):
     """
     Getter method for multi_topology, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology (container)
 
     YANG Description: This container defines the topology supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__multi_topology
       
   def _set_multi_topology(self, v, load=False):
@@ -2222,6 +2635,9 @@ information.
 
     YANG Description: This container defines the topology supported.
     """
+    if self.__multi_topology is None:
+        self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2241,6 +2657,9 @@ information.
     self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_isis_neighbor_attribute(self):
+    return self.__isis_neighbor_attribute is not None
+
   def _get_isis_neighbor_attribute(self):
     """
     Getter method for isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute (container)
@@ -2248,6 +2667,8 @@ information.
     YANG Description: This container defines list of ISIS topology neighbors
 for extended ISIS LSP(multiple system IDs). 
     """
+    if self.__isis_neighbor_attribute is None:
+        self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__isis_neighbor_attribute
       
   def _set_isis_neighbor_attribute(self, v, load=False):
@@ -2261,6 +2682,9 @@ for extended ISIS LSP(multiple system IDs).
     YANG Description: This container defines list of ISIS topology neighbors
 for extended ISIS LSP(multiple system IDs). 
     """
+    if self.__isis_neighbor_attribute is None:
+        self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2280,6 +2704,9 @@ for extended ISIS LSP(multiple system IDs).
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_isis_alias_id(self):
+    return self.__isis_alias_id is not None
+
   def _get_isis_alias_id(self):
     """
     Getter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
@@ -2289,6 +2716,8 @@ extension-capable ISs to recognize the Originating System of an
 Extended LSP set. It identifies the Normal system-id of the
 Originating System.
     """
+    if self.__isis_alias_id is None:
+        self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__isis_alias_id
       
   def _set_isis_alias_id(self, v, load=False):
@@ -2304,6 +2733,9 @@ extension-capable ISs to recognize the Originating System of an
 Extended LSP set. It identifies the Normal system-id of the
 Originating System.
     """
+    if self.__isis_alias_id is None:
+        self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2323,6 +2755,9 @@ Originating System.
     self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_isn(self):
+    return self.__mt_isn is not None
+
   def _get_mt_isn(self):
     """
     Getter method for mt_isn, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn (container)
@@ -2330,6 +2765,8 @@ Originating System.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isn is None:
+        self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_isn
       
   def _set_mt_isn(self, v, load=False):
@@ -2343,6 +2780,9 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isn is None:
+        self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2362,6 +2802,9 @@ neighbors.
     self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_isis_neighbor_attribute(self):
+    return self.__mt_isis_neighbor_attribute is not None
+
   def _get_mt_isis_neighbor_attribute(self):
     """
     Getter method for mt_isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute (container)
@@ -2369,6 +2812,8 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isis_neighbor_attribute is None:
+        self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_isis_neighbor_attribute
       
   def _set_mt_isis_neighbor_attribute(self, v, load=False):
@@ -2382,6 +2827,9 @@ neighbors.
     YANG Description: This container defines list of ISIS multi-topology
 neighbors.
     """
+    if self.__mt_isis_neighbor_attribute is None:
+        self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2401,6 +2849,9 @@ neighbors.
     self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_ipv4_reachability(self):
+    return self.__mt_ipv4_reachability is not None
+
   def _get_mt_ipv4_reachability(self):
     """
     Getter method for mt_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv4_reachability (container)
@@ -2408,6 +2859,8 @@ neighbors.
     YANG Description: This container defines list of IPv4 reachability Information
 in multi-topology environment.
     """
+    if self.__mt_ipv4_reachability is None:
+        self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_ipv4_reachability
       
   def _set_mt_ipv4_reachability(self, v, load=False):
@@ -2421,6 +2874,9 @@ in multi-topology environment.
     YANG Description: This container defines list of IPv4 reachability Information
 in multi-topology environment.
     """
+    if self.__mt_ipv4_reachability is None:
+        self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -2440,6 +2896,9 @@ in multi-topology environment.
     self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
+  def _initialized_mt_ipv6_reachability(self):
+    return self.__mt_ipv6_reachability is not None
+
   def _get_mt_ipv6_reachability(self):
     """
     Getter method for mt_ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability (container)
@@ -2447,6 +2906,8 @@ in multi-topology environment.
     YANG Description: This container defines list of IPv6 reachability information
 in multi - topology environment.
     """
+    if self.__mt_ipv6_reachability is None:
+        self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     return self.__mt_ipv6_reachability
       
   def _set_mt_ipv6_reachability(self, v, load=False):
@@ -2460,6 +2921,9 @@ in multi - topology environment.
     YANG Description: This container defines list of IPv6 reachability information
 in multi - topology environment.
     """
+    if self.__mt_ipv6_reachability is None:
+        self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

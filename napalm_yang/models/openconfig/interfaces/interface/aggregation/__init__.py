@@ -44,9 +44,9 @@ aggregates
     self._path_helper = False
 
     self._extmethods = False
-    self.__switched_vlan = YANGDynClass(base=switched_vlan.switched_vlan, is_container='container', yang_name="switched-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
-    self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
+    self.__switched_vlan = None
+    self.__state = None
+    self.__config = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,6 +75,9 @@ aggregates
     else:
       return [u'interfaces', u'interface', u'aggregation']
 
+  def _initialized_config(self):
+    return self.__config is not None
+
   def _get_config(self):
     """
     Getter method for config, mapped from YANG variable /interfaces/interface/aggregation/config (container)
@@ -82,6 +85,8 @@ aggregates
     YANG Description: Configuration variables for logical aggregate /
 LAG interfaces
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
     return self.__config
       
   def _set_config(self, v, load=False):
@@ -95,6 +100,9 @@ LAG interfaces
     YANG Description: Configuration variables for logical aggregate /
 LAG interfaces
     """
+    if self.__config is None:
+        self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -114,6 +122,9 @@ LAG interfaces
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
 
 
+  def _initialized_state(self):
+    return self.__state is not None
+
   def _get_state(self):
     """
     Getter method for state, mapped from YANG variable /interfaces/interface/aggregation/state (container)
@@ -121,6 +132,8 @@ LAG interfaces
     YANG Description: Operational state variables for logical
 aggregate / LAG interfaces
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
     return self.__state
       
   def _set_state(self, v, load=False):
@@ -134,6 +147,9 @@ aggregate / LAG interfaces
     YANG Description: Operational state variables for logical
 aggregate / LAG interfaces
     """
+    if self.__state is None:
+        self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -153,6 +169,9 @@ aggregate / LAG interfaces
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='container', is_config=True)
 
 
+  def _initialized_switched_vlan(self):
+    return self.__switched_vlan is not None
+
   def _get_switched_vlan(self):
     """
     Getter method for switched_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan (container)
@@ -161,6 +180,8 @@ aggregate / LAG interfaces
 data on Ethernet interfaces.  These are for standard
 L2, switched-style VLANs.
     """
+    if self.__switched_vlan is None:
+        self.__switched_vlan = YANGDynClass(base=switched_vlan.switched_vlan, is_container='container', yang_name="switched-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
     return self.__switched_vlan
       
   def _set_switched_vlan(self, v, load=False):
@@ -175,6 +196,9 @@ L2, switched-style VLANs.
 data on Ethernet interfaces.  These are for standard
 L2, switched-style VLANs.
     """
+    if self.__switched_vlan is None:
+        self.__switched_vlan = YANGDynClass(base=switched_vlan.switched_vlan, is_container='container', yang_name="switched-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='container', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

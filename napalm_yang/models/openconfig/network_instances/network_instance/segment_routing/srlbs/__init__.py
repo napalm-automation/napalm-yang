@@ -42,7 +42,7 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srlb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srlbs']
 
+  def _initialized_srlb(self):
+    return self.__srlb is not None
+
   def _get_srlb(self):
     """
     Getter method for srlb, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb (list)
@@ -80,6 +83,8 @@ a set of Segment Identifiers (specified as MPLS labels or
 IPv6 addreses) that are defined for local allocation by the
 system. A block may optionally be advertised into an IGP.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srlb
       
   def _set_srlb(self, v, load=False):
@@ -95,6 +100,9 @@ a set of Segment Identifiers (specified as MPLS labels or
 IPv6 addreses) that are defined for local allocation by the
 system. A block may optionally be advertised into an IGP.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -141,7 +149,7 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     self._path_helper = False
 
     self._extmethods = False
-    self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    self.__srlb = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -170,6 +178,9 @@ Segment Routing Local Blocks (SRLBs) defined for the system.
     else:
       return [u'network-instances', u'network-instance', u'segment-routing', u'srlbs']
 
+  def _initialized_srlb(self):
+    return self.__srlb is not None
+
   def _get_srlb(self):
     """
     Getter method for srlb, mapped from YANG variable /network_instances/network_instance/segment_routing/srlbs/srlb (list)
@@ -179,6 +190,8 @@ a set of Segment Identifiers (specified as MPLS labels or
 IPv6 addreses) that are defined for local allocation by the
 system. A block may optionally be advertised into an IGP.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
     return self.__srlb
       
   def _set_srlb(self, v, load=False):
@@ -194,6 +207,9 @@ a set of Segment Identifiers (specified as MPLS labels or
 IPv6 addreses) that are defined for local allocation by the
 system. A block may optionally be advertised into an IGP.
     """
+    if self.__srlb is None:
+        self.__srlb = YANGDynClass(base=YANGListType("local_id",srlb.srlb, yang_name="srlb", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='local-id', extensions=None), is_container='list', yang_name="srlb", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=True)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

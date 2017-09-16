@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__receive = None
+    self.__send_max = None
+    self.__eligible_prefix_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,6 +71,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'add-paths', u'state']
 
+  def _initialized_receive(self):
+    return self.__receive is not None
+
   def _get_receive(self):
     """
     Getter method for receive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/receive (boolean)
@@ -78,6 +81,8 @@ class state(PybindBase):
     YANG Description: Enable ability to receive multiple path advertisements
 for an NLRI from the neighbor or group
     """
+    if self.__receive is None:
+        self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__receive
       
   def _set_receive(self, v, load=False):
@@ -91,6 +96,9 @@ for an NLRI from the neighbor or group
     YANG Description: Enable ability to receive multiple path advertisements
 for an NLRI from the neighbor or group
     """
+    if self.__receive is None:
+        self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -110,6 +118,9 @@ for an NLRI from the neighbor or group
     self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_send_max(self):
+    return self.__send_max is not None
+
   def _get_send_max(self):
     """
     Getter method for send_max, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/send_max (uint8)
@@ -117,6 +128,8 @@ for an NLRI from the neighbor or group
     YANG Description: The maximum number of paths to advertise to neighbors
 for a single NLRI
     """
+    if self.__send_max is None:
+        self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__send_max
       
   def _set_send_max(self, v, load=False):
@@ -130,6 +143,9 @@ for a single NLRI
     YANG Description: The maximum number of paths to advertise to neighbors
 for a single NLRI
     """
+    if self.__send_max is None:
+        self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -149,6 +165,9 @@ for a single NLRI
     self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_eligible_prefix_policy(self):
+    return self.__eligible_prefix_policy is not None
+
   def _get_eligible_prefix_policy(self):
     """
     Getter method for eligible_prefix_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/eligible_prefix_policy (leafref)
@@ -156,6 +175,8 @@ for a single NLRI
     YANG Description: A reference to a routing policy which can be used to
 restrict the prefixes for which add-paths is enabled
     """
+    if self.__eligible_prefix_policy is None:
+        self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__eligible_prefix_policy
       
   def _set_eligible_prefix_policy(self, v, load=False):
@@ -169,6 +190,9 @@ restrict the prefixes for which add-paths is enabled
     YANG Description: A reference to a routing policy which can be used to
 restrict the prefixes for which add-paths is enabled
     """
+    if self.__eligible_prefix_policy is None:
+        self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -215,9 +239,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
-    self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__receive = None
+    self.__send_max = None
+    self.__eligible_prefix_policy = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -246,6 +270,9 @@ class state(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'bgp', u'peer-groups', u'peer-group', u'add-paths', u'state']
 
+  def _initialized_receive(self):
+    return self.__receive is not None
+
   def _get_receive(self):
     """
     Getter method for receive, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/receive (boolean)
@@ -253,6 +280,8 @@ class state(PybindBase):
     YANG Description: Enable ability to receive multiple path advertisements
 for an NLRI from the neighbor or group
     """
+    if self.__receive is None:
+        self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__receive
       
   def _set_receive(self, v, load=False):
@@ -266,6 +295,9 @@ for an NLRI from the neighbor or group
     YANG Description: Enable ability to receive multiple path advertisements
 for an NLRI from the neighbor or group
     """
+    if self.__receive is None:
+        self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -285,6 +317,9 @@ for an NLRI from the neighbor or group
     self.__receive = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="receive", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
+  def _initialized_send_max(self):
+    return self.__send_max is not None
+
   def _get_send_max(self):
     """
     Getter method for send_max, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/send_max (uint8)
@@ -292,6 +327,8 @@ for an NLRI from the neighbor or group
     YANG Description: The maximum number of paths to advertise to neighbors
 for a single NLRI
     """
+    if self.__send_max is None:
+        self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
     return self.__send_max
       
   def _set_send_max(self, v, load=False):
@@ -305,6 +342,9 @@ for a single NLRI
     YANG Description: The maximum number of paths to advertise to neighbors
 for a single NLRI
     """
+    if self.__send_max is None:
+        self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -324,6 +364,9 @@ for a single NLRI
     self.__send_max = YANGDynClass(base=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), is_leaf=True, yang_name="send-max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='uint8', is_config=False)
 
 
+  def _initialized_eligible_prefix_policy(self):
+    return self.__eligible_prefix_policy is not None
+
   def _get_eligible_prefix_policy(self):
     """
     Getter method for eligible_prefix_policy, mapped from YANG variable /network_instances/network_instance/protocols/protocol/bgp/peer_groups/peer_group/add_paths/state/eligible_prefix_policy (leafref)
@@ -331,6 +374,8 @@ for a single NLRI
     YANG Description: A reference to a routing policy which can be used to
 restrict the prefixes for which add-paths is enabled
     """
+    if self.__eligible_prefix_policy is None:
+        self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     return self.__eligible_prefix_policy
       
   def _set_eligible_prefix_policy(self, v, load=False):
@@ -344,6 +389,9 @@ restrict the prefixes for which add-paths is enabled
     YANG Description: A reference to a routing policy which can be used to
 restrict the prefixes for which add-paths is enabled
     """
+    if self.__eligible_prefix_policy is None:
+        self.__eligible_prefix_policy = YANGDynClass(base=unicode, is_leaf=True, yang_name="eligible-prefix-policy", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

@@ -40,27 +40,27 @@ class counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__out_reservation_error_messages = None
+    self.__out_path_error_messages = None
+    self.__out_reservation_tear_messages = None
+    self.__in_reservation_messages = None
+    self.__out_hello_messages = None
+    self.__out_ack_messages = None
+    self.__out_path_messages = None
+    self.__in_ack_messages = None
+    self.__in_path_messages = None
+    self.__out_srefresh_messages = None
+    self.__out_reservation_messages = None
+    self.__in_path_error_messages = None
+    self.__reservation_timeouts = None
+    self.__out_path_tear_messages = None
+    self.__in_srefresh_messages = None
+    self.__in_reservation_tear_messages = None
+    self.__path_timeouts = None
+    self.__in_path_tear_messages = None
+    self.__in_hello_messages = None
+    self.__in_reservation_error_messages = None
+    self.__rate_limited_messages = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -89,12 +89,17 @@ class counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'state', u'counters']
 
+  def _initialized_path_timeouts(self):
+    return self.__path_timeouts is not None
+
   def _get_path_timeouts(self):
     """
     Getter method for path_timeouts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/path_timeouts (yang:counter64)
 
     YANG Description: TODO
     """
+    if self.__path_timeouts is None:
+        self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__path_timeouts
       
   def _set_path_timeouts(self, v, load=False):
@@ -107,6 +112,9 @@ class counters(PybindBase):
 
     YANG Description: TODO
     """
+    if self.__path_timeouts is None:
+        self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -126,12 +134,17 @@ class counters(PybindBase):
     self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_reservation_timeouts(self):
+    return self.__reservation_timeouts is not None
+
   def _get_reservation_timeouts(self):
     """
     Getter method for reservation_timeouts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/reservation_timeouts (yang:counter64)
 
     YANG Description: TODO
     """
+    if self.__reservation_timeouts is None:
+        self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__reservation_timeouts
       
   def _set_reservation_timeouts(self, v, load=False):
@@ -144,6 +157,9 @@ class counters(PybindBase):
 
     YANG Description: TODO
     """
+    if self.__reservation_timeouts is None:
+        self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -163,12 +179,17 @@ class counters(PybindBase):
     self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_rate_limited_messages(self):
+    return self.__rate_limited_messages is not None
+
   def _get_rate_limited_messages(self):
     """
     Getter method for rate_limited_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/rate_limited_messages (yang:counter64)
 
     YANG Description: RSVP messages dropped due to rate limiting
     """
+    if self.__rate_limited_messages is None:
+        self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__rate_limited_messages
       
   def _set_rate_limited_messages(self, v, load=False):
@@ -181,6 +202,9 @@ class counters(PybindBase):
 
     YANG Description: RSVP messages dropped due to rate limiting
     """
+    if self.__rate_limited_messages is None:
+        self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -200,12 +224,17 @@ class counters(PybindBase):
     self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_messages(self):
+    return self.__in_path_messages is not None
+
   def _get_in_path_messages(self):
     """
     Getter method for in_path_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path messages
     """
+    if self.__in_path_messages is None:
+        self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_messages
       
   def _set_in_path_messages(self, v, load=False):
@@ -218,6 +247,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path messages
     """
+    if self.__in_path_messages is None:
+        self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -237,12 +269,17 @@ class counters(PybindBase):
     self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_error_messages(self):
+    return self.__in_path_error_messages is not None
+
   def _get_in_path_error_messages(self):
     """
     Getter method for in_path_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_error_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path Error messages
     """
+    if self.__in_path_error_messages is None:
+        self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_error_messages
       
   def _set_in_path_error_messages(self, v, load=False):
@@ -255,6 +292,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path Error messages
     """
+    if self.__in_path_error_messages is None:
+        self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -274,12 +314,17 @@ class counters(PybindBase):
     self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_tear_messages(self):
+    return self.__in_path_tear_messages is not None
+
   def _get_in_path_tear_messages(self):
     """
     Getter method for in_path_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_tear_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path Tear messages
     """
+    if self.__in_path_tear_messages is None:
+        self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_tear_messages
       
   def _set_in_path_tear_messages(self, v, load=False):
@@ -292,6 +337,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path Tear messages
     """
+    if self.__in_path_tear_messages is None:
+        self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -311,12 +359,17 @@ class counters(PybindBase):
     self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_messages(self):
+    return self.__in_reservation_messages is not None
+
   def _get_in_reservation_messages(self):
     """
     Getter method for in_reservation_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv messages
     """
+    if self.__in_reservation_messages is None:
+        self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_messages
       
   def _set_in_reservation_messages(self, v, load=False):
@@ -329,6 +382,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv messages
     """
+    if self.__in_reservation_messages is None:
+        self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -348,12 +404,17 @@ class counters(PybindBase):
     self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_error_messages(self):
+    return self.__in_reservation_error_messages is not None
+
   def _get_in_reservation_error_messages(self):
     """
     Getter method for in_reservation_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_error_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv Error messages
     """
+    if self.__in_reservation_error_messages is None:
+        self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_error_messages
       
   def _set_in_reservation_error_messages(self, v, load=False):
@@ -366,6 +427,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv Error messages
     """
+    if self.__in_reservation_error_messages is None:
+        self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -385,12 +449,17 @@ class counters(PybindBase):
     self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_tear_messages(self):
+    return self.__in_reservation_tear_messages is not None
+
   def _get_in_reservation_tear_messages(self):
     """
     Getter method for in_reservation_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_tear_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv Tear messages
     """
+    if self.__in_reservation_tear_messages is None:
+        self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_tear_messages
       
   def _set_in_reservation_tear_messages(self, v, load=False):
@@ -403,6 +472,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv Tear messages
     """
+    if self.__in_reservation_tear_messages is None:
+        self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -422,12 +494,17 @@ class counters(PybindBase):
     self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_hello_messages(self):
+    return self.__in_hello_messages is not None
+
   def _get_in_hello_messages(self):
     """
     Getter method for in_hello_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_hello_messages (yang:counter64)
 
     YANG Description: Number of received RSVP hello messages
     """
+    if self.__in_hello_messages is None:
+        self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_hello_messages
       
   def _set_in_hello_messages(self, v, load=False):
@@ -440,6 +517,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP hello messages
     """
+    if self.__in_hello_messages is None:
+        self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -459,12 +539,17 @@ class counters(PybindBase):
     self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_srefresh_messages(self):
+    return self.__in_srefresh_messages is not None
+
   def _get_in_srefresh_messages(self):
     """
     Getter method for in_srefresh_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_srefresh_messages (yang:counter64)
 
     YANG Description: Number of received RSVP summary refresh messages
     """
+    if self.__in_srefresh_messages is None:
+        self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_srefresh_messages
       
   def _set_in_srefresh_messages(self, v, load=False):
@@ -477,6 +562,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP summary refresh messages
     """
+    if self.__in_srefresh_messages is None:
+        self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -496,6 +584,9 @@ class counters(PybindBase):
     self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_ack_messages(self):
+    return self.__in_ack_messages is not None
+
   def _get_in_ack_messages(self):
     """
     Getter method for in_ack_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_ack_messages (yang:counter64)
@@ -503,6 +594,8 @@ class counters(PybindBase):
     YANG Description: Number of received RSVP refresh reduction ack
 messages
     """
+    if self.__in_ack_messages is None:
+        self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_ack_messages
       
   def _set_in_ack_messages(self, v, load=False):
@@ -516,6 +609,9 @@ messages
     YANG Description: Number of received RSVP refresh reduction ack
 messages
     """
+    if self.__in_ack_messages is None:
+        self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -535,12 +631,17 @@ messages
     self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_messages(self):
+    return self.__out_path_messages is not None
+
   def _get_out_path_messages(self):
     """
     Getter method for out_path_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP PATH messages
     """
+    if self.__out_path_messages is None:
+        self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_messages
       
   def _set_out_path_messages(self, v, load=False):
@@ -553,6 +654,9 @@ messages
 
     YANG Description: Number of sent RSVP PATH messages
     """
+    if self.__out_path_messages is None:
+        self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -572,12 +676,17 @@ messages
     self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_error_messages(self):
+    return self.__out_path_error_messages is not None
+
   def _get_out_path_error_messages(self):
     """
     Getter method for out_path_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_error_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Path Error messages
     """
+    if self.__out_path_error_messages is None:
+        self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_error_messages
       
   def _set_out_path_error_messages(self, v, load=False):
@@ -590,6 +699,9 @@ messages
 
     YANG Description: Number of sent RSVP Path Error messages
     """
+    if self.__out_path_error_messages is None:
+        self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -609,12 +721,17 @@ messages
     self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_tear_messages(self):
+    return self.__out_path_tear_messages is not None
+
   def _get_out_path_tear_messages(self):
     """
     Getter method for out_path_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_tear_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Path Tear messages
     """
+    if self.__out_path_tear_messages is None:
+        self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_tear_messages
       
   def _set_out_path_tear_messages(self, v, load=False):
@@ -627,6 +744,9 @@ messages
 
     YANG Description: Number of sent RSVP Path Tear messages
     """
+    if self.__out_path_tear_messages is None:
+        self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -646,12 +766,17 @@ messages
     self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_messages(self):
+    return self.__out_reservation_messages is not None
+
   def _get_out_reservation_messages(self):
     """
     Getter method for out_reservation_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv messages
     """
+    if self.__out_reservation_messages is None:
+        self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_messages
       
   def _set_out_reservation_messages(self, v, load=False):
@@ -664,6 +789,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv messages
     """
+    if self.__out_reservation_messages is None:
+        self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -683,12 +811,17 @@ messages
     self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_error_messages(self):
+    return self.__out_reservation_error_messages is not None
+
   def _get_out_reservation_error_messages(self):
     """
     Getter method for out_reservation_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_error_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv Error messages
     """
+    if self.__out_reservation_error_messages is None:
+        self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_error_messages
       
   def _set_out_reservation_error_messages(self, v, load=False):
@@ -701,6 +834,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv Error messages
     """
+    if self.__out_reservation_error_messages is None:
+        self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -720,12 +856,17 @@ messages
     self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_tear_messages(self):
+    return self.__out_reservation_tear_messages is not None
+
   def _get_out_reservation_tear_messages(self):
     """
     Getter method for out_reservation_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_tear_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv Tear messages
     """
+    if self.__out_reservation_tear_messages is None:
+        self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_tear_messages
       
   def _set_out_reservation_tear_messages(self, v, load=False):
@@ -738,6 +879,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv Tear messages
     """
+    if self.__out_reservation_tear_messages is None:
+        self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -757,12 +901,17 @@ messages
     self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_hello_messages(self):
+    return self.__out_hello_messages is not None
+
   def _get_out_hello_messages(self):
     """
     Getter method for out_hello_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_hello_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP hello messages
     """
+    if self.__out_hello_messages is None:
+        self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_hello_messages
       
   def _set_out_hello_messages(self, v, load=False):
@@ -775,6 +924,9 @@ messages
 
     YANG Description: Number of sent RSVP hello messages
     """
+    if self.__out_hello_messages is None:
+        self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -794,12 +946,17 @@ messages
     self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_srefresh_messages(self):
+    return self.__out_srefresh_messages is not None
+
   def _get_out_srefresh_messages(self):
     """
     Getter method for out_srefresh_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_srefresh_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP summary refresh messages
     """
+    if self.__out_srefresh_messages is None:
+        self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_srefresh_messages
       
   def _set_out_srefresh_messages(self, v, load=False):
@@ -812,6 +969,9 @@ messages
 
     YANG Description: Number of sent RSVP summary refresh messages
     """
+    if self.__out_srefresh_messages is None:
+        self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -831,12 +991,17 @@ messages
     self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_ack_messages(self):
+    return self.__out_ack_messages is not None
+
   def _get_out_ack_messages(self):
     """
     Getter method for out_ack_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_ack_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP refresh reduction ack messages
     """
+    if self.__out_ack_messages is None:
+        self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_ack_messages
       
   def _set_out_ack_messages(self, v, load=False):
@@ -849,6 +1014,9 @@ messages
 
     YANG Description: Number of sent RSVP refresh reduction ack messages
     """
+    if self.__out_ack_messages is None:
+        self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -913,27 +1081,27 @@ class counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
-    self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    self.__out_reservation_error_messages = None
+    self.__out_path_error_messages = None
+    self.__out_reservation_tear_messages = None
+    self.__in_reservation_messages = None
+    self.__out_hello_messages = None
+    self.__out_ack_messages = None
+    self.__out_path_messages = None
+    self.__in_ack_messages = None
+    self.__in_path_messages = None
+    self.__out_srefresh_messages = None
+    self.__out_reservation_messages = None
+    self.__in_path_error_messages = None
+    self.__reservation_timeouts = None
+    self.__out_path_tear_messages = None
+    self.__in_srefresh_messages = None
+    self.__in_reservation_tear_messages = None
+    self.__path_timeouts = None
+    self.__in_path_tear_messages = None
+    self.__in_hello_messages = None
+    self.__in_reservation_error_messages = None
+    self.__rate_limited_messages = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -962,12 +1130,17 @@ class counters(PybindBase):
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'signaling-protocols', u'rsvp-te', u'global', u'state', u'counters']
 
+  def _initialized_path_timeouts(self):
+    return self.__path_timeouts is not None
+
   def _get_path_timeouts(self):
     """
     Getter method for path_timeouts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/path_timeouts (yang:counter64)
 
     YANG Description: TODO
     """
+    if self.__path_timeouts is None:
+        self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__path_timeouts
       
   def _set_path_timeouts(self, v, load=False):
@@ -980,6 +1153,9 @@ class counters(PybindBase):
 
     YANG Description: TODO
     """
+    if self.__path_timeouts is None:
+        self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -999,12 +1175,17 @@ class counters(PybindBase):
     self.__path_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="path-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_reservation_timeouts(self):
+    return self.__reservation_timeouts is not None
+
   def _get_reservation_timeouts(self):
     """
     Getter method for reservation_timeouts, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/reservation_timeouts (yang:counter64)
 
     YANG Description: TODO
     """
+    if self.__reservation_timeouts is None:
+        self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__reservation_timeouts
       
   def _set_reservation_timeouts(self, v, load=False):
@@ -1017,6 +1198,9 @@ class counters(PybindBase):
 
     YANG Description: TODO
     """
+    if self.__reservation_timeouts is None:
+        self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1036,12 +1220,17 @@ class counters(PybindBase):
     self.__reservation_timeouts = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="reservation-timeouts", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_rate_limited_messages(self):
+    return self.__rate_limited_messages is not None
+
   def _get_rate_limited_messages(self):
     """
     Getter method for rate_limited_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/rate_limited_messages (yang:counter64)
 
     YANG Description: RSVP messages dropped due to rate limiting
     """
+    if self.__rate_limited_messages is None:
+        self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__rate_limited_messages
       
   def _set_rate_limited_messages(self, v, load=False):
@@ -1054,6 +1243,9 @@ class counters(PybindBase):
 
     YANG Description: RSVP messages dropped due to rate limiting
     """
+    if self.__rate_limited_messages is None:
+        self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1073,12 +1265,17 @@ class counters(PybindBase):
     self.__rate_limited_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="rate-limited-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_messages(self):
+    return self.__in_path_messages is not None
+
   def _get_in_path_messages(self):
     """
     Getter method for in_path_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path messages
     """
+    if self.__in_path_messages is None:
+        self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_messages
       
   def _set_in_path_messages(self, v, load=False):
@@ -1091,6 +1288,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path messages
     """
+    if self.__in_path_messages is None:
+        self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1110,12 +1310,17 @@ class counters(PybindBase):
     self.__in_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_error_messages(self):
+    return self.__in_path_error_messages is not None
+
   def _get_in_path_error_messages(self):
     """
     Getter method for in_path_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_error_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path Error messages
     """
+    if self.__in_path_error_messages is None:
+        self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_error_messages
       
   def _set_in_path_error_messages(self, v, load=False):
@@ -1128,6 +1333,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path Error messages
     """
+    if self.__in_path_error_messages is None:
+        self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1147,12 +1355,17 @@ class counters(PybindBase):
     self.__in_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_path_tear_messages(self):
+    return self.__in_path_tear_messages is not None
+
   def _get_in_path_tear_messages(self):
     """
     Getter method for in_path_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_path_tear_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Path Tear messages
     """
+    if self.__in_path_tear_messages is None:
+        self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_path_tear_messages
       
   def _set_in_path_tear_messages(self, v, load=False):
@@ -1165,6 +1378,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Path Tear messages
     """
+    if self.__in_path_tear_messages is None:
+        self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1184,12 +1400,17 @@ class counters(PybindBase):
     self.__in_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_messages(self):
+    return self.__in_reservation_messages is not None
+
   def _get_in_reservation_messages(self):
     """
     Getter method for in_reservation_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv messages
     """
+    if self.__in_reservation_messages is None:
+        self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_messages
       
   def _set_in_reservation_messages(self, v, load=False):
@@ -1202,6 +1423,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv messages
     """
+    if self.__in_reservation_messages is None:
+        self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1221,12 +1445,17 @@ class counters(PybindBase):
     self.__in_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_error_messages(self):
+    return self.__in_reservation_error_messages is not None
+
   def _get_in_reservation_error_messages(self):
     """
     Getter method for in_reservation_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_error_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv Error messages
     """
+    if self.__in_reservation_error_messages is None:
+        self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_error_messages
       
   def _set_in_reservation_error_messages(self, v, load=False):
@@ -1239,6 +1468,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv Error messages
     """
+    if self.__in_reservation_error_messages is None:
+        self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1258,12 +1490,17 @@ class counters(PybindBase):
     self.__in_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_reservation_tear_messages(self):
+    return self.__in_reservation_tear_messages is not None
+
   def _get_in_reservation_tear_messages(self):
     """
     Getter method for in_reservation_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_reservation_tear_messages (yang:counter64)
 
     YANG Description: Number of received RSVP Resv Tear messages
     """
+    if self.__in_reservation_tear_messages is None:
+        self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_reservation_tear_messages
       
   def _set_in_reservation_tear_messages(self, v, load=False):
@@ -1276,6 +1513,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP Resv Tear messages
     """
+    if self.__in_reservation_tear_messages is None:
+        self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1295,12 +1535,17 @@ class counters(PybindBase):
     self.__in_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_hello_messages(self):
+    return self.__in_hello_messages is not None
+
   def _get_in_hello_messages(self):
     """
     Getter method for in_hello_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_hello_messages (yang:counter64)
 
     YANG Description: Number of received RSVP hello messages
     """
+    if self.__in_hello_messages is None:
+        self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_hello_messages
       
   def _set_in_hello_messages(self, v, load=False):
@@ -1313,6 +1558,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP hello messages
     """
+    if self.__in_hello_messages is None:
+        self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1332,12 +1580,17 @@ class counters(PybindBase):
     self.__in_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_srefresh_messages(self):
+    return self.__in_srefresh_messages is not None
+
   def _get_in_srefresh_messages(self):
     """
     Getter method for in_srefresh_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_srefresh_messages (yang:counter64)
 
     YANG Description: Number of received RSVP summary refresh messages
     """
+    if self.__in_srefresh_messages is None:
+        self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_srefresh_messages
       
   def _set_in_srefresh_messages(self, v, load=False):
@@ -1350,6 +1603,9 @@ class counters(PybindBase):
 
     YANG Description: Number of received RSVP summary refresh messages
     """
+    if self.__in_srefresh_messages is None:
+        self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1369,6 +1625,9 @@ class counters(PybindBase):
     self.__in_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_in_ack_messages(self):
+    return self.__in_ack_messages is not None
+
   def _get_in_ack_messages(self):
     """
     Getter method for in_ack_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/in_ack_messages (yang:counter64)
@@ -1376,6 +1635,8 @@ class counters(PybindBase):
     YANG Description: Number of received RSVP refresh reduction ack
 messages
     """
+    if self.__in_ack_messages is None:
+        self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__in_ack_messages
       
   def _set_in_ack_messages(self, v, load=False):
@@ -1389,6 +1650,9 @@ messages
     YANG Description: Number of received RSVP refresh reduction ack
 messages
     """
+    if self.__in_ack_messages is None:
+        self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1408,12 +1672,17 @@ messages
     self.__in_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_messages(self):
+    return self.__out_path_messages is not None
+
   def _get_out_path_messages(self):
     """
     Getter method for out_path_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP PATH messages
     """
+    if self.__out_path_messages is None:
+        self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_messages
       
   def _set_out_path_messages(self, v, load=False):
@@ -1426,6 +1695,9 @@ messages
 
     YANG Description: Number of sent RSVP PATH messages
     """
+    if self.__out_path_messages is None:
+        self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1445,12 +1717,17 @@ messages
     self.__out_path_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_error_messages(self):
+    return self.__out_path_error_messages is not None
+
   def _get_out_path_error_messages(self):
     """
     Getter method for out_path_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_error_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Path Error messages
     """
+    if self.__out_path_error_messages is None:
+        self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_error_messages
       
   def _set_out_path_error_messages(self, v, load=False):
@@ -1463,6 +1740,9 @@ messages
 
     YANG Description: Number of sent RSVP Path Error messages
     """
+    if self.__out_path_error_messages is None:
+        self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1482,12 +1762,17 @@ messages
     self.__out_path_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_path_tear_messages(self):
+    return self.__out_path_tear_messages is not None
+
   def _get_out_path_tear_messages(self):
     """
     Getter method for out_path_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_path_tear_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Path Tear messages
     """
+    if self.__out_path_tear_messages is None:
+        self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_path_tear_messages
       
   def _set_out_path_tear_messages(self, v, load=False):
@@ -1500,6 +1785,9 @@ messages
 
     YANG Description: Number of sent RSVP Path Tear messages
     """
+    if self.__out_path_tear_messages is None:
+        self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1519,12 +1807,17 @@ messages
     self.__out_path_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-path-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_messages(self):
+    return self.__out_reservation_messages is not None
+
   def _get_out_reservation_messages(self):
     """
     Getter method for out_reservation_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv messages
     """
+    if self.__out_reservation_messages is None:
+        self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_messages
       
   def _set_out_reservation_messages(self, v, load=False):
@@ -1537,6 +1830,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv messages
     """
+    if self.__out_reservation_messages is None:
+        self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1556,12 +1852,17 @@ messages
     self.__out_reservation_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_error_messages(self):
+    return self.__out_reservation_error_messages is not None
+
   def _get_out_reservation_error_messages(self):
     """
     Getter method for out_reservation_error_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_error_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv Error messages
     """
+    if self.__out_reservation_error_messages is None:
+        self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_error_messages
       
   def _set_out_reservation_error_messages(self, v, load=False):
@@ -1574,6 +1875,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv Error messages
     """
+    if self.__out_reservation_error_messages is None:
+        self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1593,12 +1897,17 @@ messages
     self.__out_reservation_error_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-error-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_reservation_tear_messages(self):
+    return self.__out_reservation_tear_messages is not None
+
   def _get_out_reservation_tear_messages(self):
     """
     Getter method for out_reservation_tear_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_reservation_tear_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP Resv Tear messages
     """
+    if self.__out_reservation_tear_messages is None:
+        self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_reservation_tear_messages
       
   def _set_out_reservation_tear_messages(self, v, load=False):
@@ -1611,6 +1920,9 @@ messages
 
     YANG Description: Number of sent RSVP Resv Tear messages
     """
+    if self.__out_reservation_tear_messages is None:
+        self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1630,12 +1942,17 @@ messages
     self.__out_reservation_tear_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-reservation-tear-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_hello_messages(self):
+    return self.__out_hello_messages is not None
+
   def _get_out_hello_messages(self):
     """
     Getter method for out_hello_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_hello_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP hello messages
     """
+    if self.__out_hello_messages is None:
+        self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_hello_messages
       
   def _set_out_hello_messages(self, v, load=False):
@@ -1648,6 +1965,9 @@ messages
 
     YANG Description: Number of sent RSVP hello messages
     """
+    if self.__out_hello_messages is None:
+        self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1667,12 +1987,17 @@ messages
     self.__out_hello_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-hello-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_srefresh_messages(self):
+    return self.__out_srefresh_messages is not None
+
   def _get_out_srefresh_messages(self):
     """
     Getter method for out_srefresh_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_srefresh_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP summary refresh messages
     """
+    if self.__out_srefresh_messages is None:
+        self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_srefresh_messages
       
   def _set_out_srefresh_messages(self, v, load=False):
@@ -1685,6 +2010,9 @@ messages
 
     YANG Description: Number of sent RSVP summary refresh messages
     """
+    if self.__out_srefresh_messages is None:
+        self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -1704,12 +2032,17 @@ messages
     self.__out_srefresh_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-srefresh-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
 
 
+  def _initialized_out_ack_messages(self):
+    return self.__out_ack_messages is not None
+
   def _get_out_ack_messages(self):
     """
     Getter method for out_ack_messages, mapped from YANG variable /network_instances/network_instance/mpls/signaling_protocols/rsvp_te/global/state/counters/out_ack_messages (yang:counter64)
 
     YANG Description: Number of sent RSVP refresh reduction ack messages
     """
+    if self.__out_ack_messages is None:
+        self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
     return self.__out_ack_messages
       
   def _set_out_ack_messages(self, v, load=False):
@@ -1722,6 +2055,9 @@ messages
 
     YANG Description: Number of sent RSVP refresh reduction ack messages
     """
+    if self.__out_ack_messages is None:
+        self.__out_ack_messages = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-ack-messages", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='yang:counter64', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:

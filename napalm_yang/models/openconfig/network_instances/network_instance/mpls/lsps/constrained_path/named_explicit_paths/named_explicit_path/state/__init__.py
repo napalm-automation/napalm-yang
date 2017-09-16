@@ -41,9 +41,9 @@ explicit paths
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__sid_selection_mode = None
+    self.__name = None
+    self.__sid_protection_required = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -72,6 +72,9 @@ explicit paths
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/name (string)
@@ -79,6 +82,8 @@ explicit paths
     YANG Description: A string name that uniquely identifies an explicit
 path
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -92,6 +97,9 @@ path
     YANG Description: A string name that uniquely identifies an explicit
 path
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -111,6 +119,9 @@ path
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_sid_selection_mode(self):
+    return self.__sid_selection_mode is not None
+
   def _get_sid_selection_mode(self):
     """
     Getter method for sid_selection_mode, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/sid_selection_mode (enumeration)
@@ -119,6 +130,8 @@ path
 calculation method for the explicit path when it is
 instantiated for a SR-TE LSP
     """
+    if self.__sid_selection_mode is None:
+        self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_selection_mode
       
   def _set_sid_selection_mode(self, v, load=False):
@@ -133,6 +146,9 @@ instantiated for a SR-TE LSP
 calculation method for the explicit path when it is
 instantiated for a SR-TE LSP
     """
+    if self.__sid_selection_mode is None:
+        self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -152,6 +168,9 @@ instantiated for a SR-TE LSP
     self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_sid_protection_required(self):
+    return self.__sid_protection_required is not None
+
   def _get_sid_protection_required(self):
     """
     Getter method for sid_protection_required, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/sid_protection_required (boolean)
@@ -160,6 +179,8 @@ instantiated for a SR-TE LSP
 protected are to be selected by the calculating method
 when the explicit path is instantiated by a SR-TE LSP.
     """
+    if self.__sid_protection_required is None:
+        self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__sid_protection_required
       
   def _set_sid_protection_required(self, v, load=False):
@@ -174,6 +195,9 @@ when the explicit path is instantiated by a SR-TE LSP.
 protected are to be selected by the calculating method
 when the explicit path is instantiated by a SR-TE LSP.
     """
+    if self.__sid_protection_required is None:
+        self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -221,9 +245,9 @@ explicit paths
     self._path_helper = False
 
     self._extmethods = False
-    self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
-    self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    self.__sid_selection_mode = None
+    self.__name = None
+    self.__sid_protection_required = None
 
     load = kwargs.pop("load", None)
     if args:
@@ -252,6 +276,9 @@ explicit paths
     else:
       return [u'network-instances', u'network-instance', u'mpls', u'lsps', u'constrained-path', u'named-explicit-paths', u'named-explicit-path', u'state']
 
+  def _initialized_name(self):
+    return self.__name is not None
+
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/name (string)
@@ -259,6 +286,8 @@ explicit paths
     YANG Description: A string name that uniquely identifies an explicit
 path
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
     return self.__name
       
   def _set_name(self, v, load=False):
@@ -272,6 +301,9 @@ path
     YANG Description: A string name that uniquely identifies an explicit
 path
     """
+    if self.__name is None:
+        self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -291,6 +323,9 @@ path
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='string', is_config=False)
 
 
+  def _initialized_sid_selection_mode(self):
+    return self.__sid_selection_mode is not None
+
   def _get_sid_selection_mode(self):
     """
     Getter method for sid_selection_mode, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/sid_selection_mode (enumeration)
@@ -299,6 +334,8 @@ path
 calculation method for the explicit path when it is
 instantiated for a SR-TE LSP
     """
+    if self.__sid_selection_mode is None:
+        self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
     return self.__sid_selection_mode
       
   def _set_sid_selection_mode(self, v, load=False):
@@ -313,6 +350,9 @@ instantiated for a SR-TE LSP
 calculation method for the explicit path when it is
 instantiated for a SR-TE LSP
     """
+    if self.__sid_selection_mode is None:
+        self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
@@ -332,6 +372,9 @@ instantiated for a SR-TE LSP
     self.__sid_selection_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'MIXED_MODE': {}, u'ADJ_SID_ONLY': {}},), default=unicode("MIXED_MODE"), is_leaf=True, yang_name="sid-selection-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='enumeration', is_config=False)
 
 
+  def _initialized_sid_protection_required(self):
+    return self.__sid_protection_required is not None
+
   def _get_sid_protection_required(self):
     """
     Getter method for sid_protection_required, mapped from YANG variable /network_instances/network_instance/mpls/lsps/constrained_path/named_explicit_paths/named_explicit_path/state/sid_protection_required (boolean)
@@ -340,6 +383,8 @@ instantiated for a SR-TE LSP
 protected are to be selected by the calculating method
 when the explicit path is instantiated by a SR-TE LSP.
     """
+    if self.__sid_protection_required is None:
+        self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     return self.__sid_protection_required
       
   def _set_sid_protection_required(self, v, load=False):
@@ -354,6 +399,9 @@ when the explicit path is instantiated by a SR-TE LSP.
 protected are to be selected by the calculating method
 when the explicit path is instantiated by a SR-TE LSP.
     """
+    if self.__sid_protection_required is None:
+        self.__sid_protection_required = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="sid-protection-required", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
+    
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
