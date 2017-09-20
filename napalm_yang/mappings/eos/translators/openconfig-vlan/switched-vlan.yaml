@@ -24,7 +24,7 @@ switched-vlan:
                 negate: "    default switchport trunk native vlan\n"
         trunk-vlans:
             _process:
-              - value: "    switchport trunk vlan {{ model|oc_to_vlan_range }}\n"
-                negate: "    default switchport trunk vlan\n"
+              - value: "    switchport trunk allowed vlan {{ model|oc_to_vlan_range }}\n"
+                negate: "    default switchport trunk allowed vlan\n"
     state:
         _process: not_implemented
