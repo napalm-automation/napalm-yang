@@ -20,8 +20,8 @@ switched-vlan:
                 when: "{{ model != 'ACCESS' }}"
         native-vlan:
             _process:
-              - value: "    switchport native vlan {{ model }}\n"
-                negate: "    default switchport native vlan\n"
+              - value: "    switchport trunk native vlan {{ model }}\n"
+                negate: "    default switchport trunk native vlan\n"
         trunk-vlans:
             _process:
               - value: "    switchport trunk vlan {{ model|oc_to_vlan_range }}\n"
