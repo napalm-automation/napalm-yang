@@ -1,7 +1,7 @@
 interface Ethernet2
-    switchport native vlan 1
+    switchport trunk native vlan 1
     switchport access vlan 30
-    switchport trunk vlan 1-4094
+    switchport trunk allowed vlan 1-4094
     switchport mode access
     exit
 interface Management1
@@ -9,8 +9,8 @@ interface Management1
     mtu 1500
     exit
 interface Ethernet1
-    switchport native vlan 30
+    switchport trunk native vlan 30
     switchport access vlan 1
-    switchport trunk vlan 20-22,40
+    switchport trunk allowed vlan 20-22,40
     switchport mode trunk
     exit

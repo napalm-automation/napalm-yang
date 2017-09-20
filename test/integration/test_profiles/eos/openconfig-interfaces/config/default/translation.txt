@@ -24,9 +24,9 @@ interface Management1
     mtu 1500
     exit
 interface Ethernet1
-    switchport native vlan 1
+    switchport trunk native vlan 1
     switchport access vlan 1
-    switchport trunk vlan 1-4094
+    switchport trunk allowed vlan 1-4094
     switchport mode access
     description This is a description
     exit
