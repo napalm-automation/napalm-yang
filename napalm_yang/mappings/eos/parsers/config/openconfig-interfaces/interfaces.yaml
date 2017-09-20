@@ -29,7 +29,7 @@ interfaces:
             type:
                 _process:
                     - value: "{{ interface_key }}"
-                      regexp: "(?P<value>(\\w|-)*)\\d+"
+                      regexp: "(?P<value>(\\w|-)*?)\\d+"
                       map:
                           ethernet: ethernetCsmacd
                           management: ethernetCsmacd
