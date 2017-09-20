@@ -32,7 +32,6 @@ class Root(object):
 
     def elements(self):
         return self._elements
-    "base",
 
     def add_model(self, model, force=False):
         """
