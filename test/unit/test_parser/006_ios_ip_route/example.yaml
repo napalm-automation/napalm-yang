@@ -1,0 +1,159 @@
+---
+documentation:
+    title: Parsing static route next-hop on IOS (flattening flattened keys)
+    summary: |
+        We've used this rule to parse the IP prefix part of a static route::
+
+            - path: "ip.route.?prefix.?mask"
+              regexp: "^(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+\\/\\d+)$"
+              key: "{{ prefix }}/{{ mask|netmask_to_cidr }}"
+
+        This gave us the data that looks like this::
+
+            ip:
+              route:
+                1.1.1.0:
+                  255.255.255.0:
+                    FastEthernet0/1:
+                      10.1.1.1:
+                        '#standalone': true
+                    mask: 255.255.255.0
+                    prefix: 1.1.1.0
+                2.2.2.0:
+                  255.255.255.0:
+                    FastEthernet0/2:
+                      '#standalone': true
+                    mask: 255.255.255.0
+                    prefix: 2.2.2.0
+                3.3.3.0:
+                  255.255.255.0:
+                    10.1.1.3:
+                      '#standalone': true
+                    mask: 255.255.255.0
+                    prefix: 3.3.3.0
+
+        Now we need to parse the next-hop value. This can be specified three
+        different ways:
+
+        - ``[output_interface] [next_hop_address]``
+        - ``[output_interface]``
+        - ``[next_hop_address]``
+
+        We'll need to use multiple parser rules to parse all three variants.
+    rule: |
+        The first rule will cover the first variant. It will flatten the first
+        and second level keys into keys ``interface_ref`` and ``next_hop_addr``.
+        The ``regex`` ensures that we only match values that look like IOS
+        interface names and IPv4 or IPv6 addresses.
+
+        The second rule covers the second variant. The ``when`` expression
+        ensures it will only be processed if the previous rule did not match.
+        (FIXME - runs always) It will flatten the first level key into ``interface_ref``.
+        The ``regex`` will only match values that look like IOS interface names.
+
+        The third rule is similar to the second. It will flatten the first key
+        into ``next_hop_addr`` variable and match it to an IPv4 or IPv6 address.
+        This covers the third variant.
+
+        ``regex`es will also capture the relevant interface and address values
+        into their respective variables so they are available for use later in
+        the tree.
+    result: ""
+
+processor:
+    name: TextTree
+    attribute: next-hop
+    root_name: network-instances
+    node_type: list
+    mode: config
+data:
+    - keys:
+        network_instance_key: global
+        parent_key: 1.1.1.0/24
+        static_key: 1.1.1.0/24
+      extra_vars:
+        parent:
+          value: 1.1.1.0/24
+        static:
+          value: 1.1.1.0/24
+      bookmarks:
+        parent:
+          '#text': FastEthernet0/1 10.1.1.1
+          FastEthernet0/1:
+            '#text': 10.1.1.1
+            10.1.1.1:
+              '#standalone': true
+          mask: 255.255.255.0
+          prefix: 1.1.1.0
+    - keys:
+        network_instance_key: global
+        parent_key: 2.2.2.0/24
+        static_key: 2.2.2.0/24
+      extra_vars:
+        next-hop:
+          value: FastEthernet0/1 10.1.1.1
+        parent:
+          value: 2.2.2.0/24
+        static:
+          value: 2.2.2.0/24
+      bookmarks:
+        parent:
+          '#text': FastEthernet0/2
+          FastEthernet0/2:
+            '#standalone': true
+          mask: 255.255.255.0
+          prefix: 2.2.2.0
+    - keys:
+        network_instance_key: global
+        parent_key: 3.3.3.0/24
+        static_key: 3.3.3.0/24
+      extra_vars:
+        next-hop:
+          value: FastEthernet0/2
+        parent:
+          value: 3.3.3.0/24
+        static:
+          value: 3.3.3.0/24
+      bookmarks:
+        parent:
+          '#text': 10.1.1.3
+          10.1.1.3:
+            '#standalone': true
+          mask: 255.255.255.0
+          prefix: 3.3.3.0
+rule:
+    - path: "?interface_ref.?next_hop_addr"
+      regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?)\\s(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))$"
+      key: "{{ interface_ref }} {{ next_hop_addr|normalize_address }}"
+    - path: "?interface_ref"
+      regexp: "^(?P<value>(?P<interface_ref>[a-zA-Z][\\w\\-/]+(?::\\d+)?(?:\\.\\d+)?))$"
+      key: "{{ interface_ref }}"
+    - path: "?next_hop_addr"
+      regexp: "^(?P<value>(?P<next_hop_addr>(?:\\d+\\.\\d+\\.\\d+\\.\\d+|[0-9a-fA-F:]+:[0-9a-fA-F:]+)))$"
+      key: "{{ next_hop_addr|normalize_address }}"
+
+expected:
+    - - key: FastEthernet0/1 10.1.1.1
+        block:
+          '#standalone': true
+          interface_ref: FastEthernet0/1
+          next_hop_addr: 10.1.1.1
+        extra_vars:
+          interface_ref: FastEthernet0/1
+          next_hop_addr: 10.1.1.1
+          value: FastEthernet0/1 10.1.1.1
+    - - key: FastEthernet0/2
+        block:
+          '#standalone': true
+          interface_ref: FastEthernet0/2
+        extra_vars:
+          interface_ref: FastEthernet0/2
+          value: FastEthernet0/2
+    - - key: 10.1.1.3
+        block:
+          '#standalone': true
+          interface_ref: 10.1.1.3
+          next_hop_addr: 10.1.1.3
+        extra_vars:
+          next_hop_addr: 10.1.1.3
+          value: 10.1.1.3

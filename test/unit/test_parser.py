@@ -51,6 +51,7 @@ class Tests(object):
                 processed = True
                 parser.keys = d["keys"]
                 parser.extra_vars = d["extra_vars"]
+                bookmarks.update(d.get("bookmarks", {}))
                 i = 0
                 for k, b, e in parser.parse_list(attribute, example["rule"], bookmarks):
                     assert k == example["expected"][case][i]["key"]
