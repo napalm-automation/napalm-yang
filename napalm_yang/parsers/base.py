@@ -4,74 +4,114 @@ import copy
 from napalm_yang import helpers
 
 
+def _flatten_dictionary(obj, path, key_name):
+    """
+    This method tries to use the path `?my_field` to convert:
+
+    a:
+        aa: 1
+        ab: 2
+    b:
+        ba: 3
+        ba: 4
+
+    into:
+
+    - my_field: a
+      aa: 1
+      ab: 2
+    - my_field: b
+      ba: 3
+      ba: 4
+    """
+    result = []
+    if ">" in key_name:
+        key_name, group_key = key_name.split(">")
+    else:
+        group_key = None
+
+    for k, v in obj.items():
+        if path:
+            if k == path[0]:
+                path.pop(0)
+        if k.startswith("#"):
+            continue
+        r = _resolve_path(v, list(path))
+
+        if isinstance(r, dict):
+            # You can either have a dict here, which means your path is like ?a.b
+            # or a list, which means you have a path like ?a.?b
+            r = [r]
+
+        for e in r:
+            if group_key:
+                e[group_key] = {kk: vv for kk, vv in v.items() if kk not in path}
+            e[key_name] = k
+            result.append(e)
+    return result
+
+
+def _flatten_list(obj, path, key_name):
+    new_key, key = key_name.split(":")
+    result = []
+
+    for o in obj:
+        r = _resolve_path(o, list(path))
+
+        if isinstance(r, dict):
+            # XML gets confused when there is a list with only one element
+            # and is treated as a dict when converting to a dict
+            r = [r]
+        old_value = o.pop(key)
+        for e in r:
+            e[new_key] = old_value
+            merged_dict = dict({kk: vv for kk, vv in o.items() if kk not in path})
+            merged_dict.update(e)
+            result.append(merged_dict)
+
+    return result
+
+
+def _resolve_path(obj, path):
+    if not path:
+        return obj
+    current = path.pop(0)
+    if current[0] != "?":
+        if isinstance(obj, dict):
+            obj = obj[current]
+        elif isinstance(obj, list):
+            obj = obj[int(current)]
+        return _resolve_path(obj, path)
+    else:
+        if isinstance(obj, dict) and ":" in current:
+            # We assume that this is supposed to be a list but xmldict
+            # turned a one element list into a dict
+            obj = [obj]
+
+        if isinstance(obj, dict):
+            return _flatten_dictionary(obj, path, current[1:])
+        elif isinstance(obj, list):
+            return _flatten_list(obj, path, current[1:])
+
+
 class BaseParser(object):
 
     def __init__(self, keys, extra_vars):
         self.keys = keys
         self.extra_vars = extra_vars
 
-    def resolve_path(self, my_dict, path, default=None, check_presence=False):
-        if path is None:
-            return
+    def resolve_path(self, obj, path, default=None, check_presence=False):
+        if path == "":
+            return obj
+        path = path.split(".")
+        try:
+            r = _resolve_path(obj, path)
+        except (KeyError, IndexError):
+            return default
 
-        b = my_dict
-        path_split = path.split(".") if len(path) else []
-        result = None
-
-        while True:
-            if not path_split:
-                break
-            p = path_split.pop(0)
-            if p[0] == "?":
-                result = [] if result is None else result
-
-                if isinstance(b, dict) and ":" not in p:
-                    iterator = b.items()
-                else:
-                    if isinstance(b, dict):
-                        b = [b]
-                    p, var_name = p.split(":")
-                    try:
-                        iterator = {e[var_name]: e for e in b}.items()
-                    except Exception:
-                        iterator = {e[var_name]["#text"]: e for e in b}.items()
-
-                for k, v in iterator:
-                    if k.startswith("#"):
-                        continue
-                    r = self.resolve_path(v, ".".join(path_split), default, check_presence)
-                    if not r:
-                        break
-                    if isinstance(r, list):
-                        for rr in r:
-                            rr[p[1:]] = k
-                            if isinstance(v, dict):
-                                for kk, vv in v.items():
-                                    if kk != path_split[0] and path_split[0][0] != "?":
-                                        rr[kk] = vv
-                            result.append(rr)
-                    else:
-                        r[p[1:]] = k
-                        result.append(r)
-                break
-            try:
-                if isinstance(b, dict):
-                    b = b[p]
-                elif isinstance(b, list):
-                    b = b[int(p)]
-                elif p == "#text":
-                    continue
-                else:
-                    raise Exception(b)
-            except (KeyError, TypeError, IndexError, ValueError):
-                return default
         if check_presence:
-            return not path_split
-
-        if not result:
-            result = b
-
-        return result
+            return not bool(path)
+        return r
 
     def init_native(self, native):
         return native
@@ -81,6 +121,11 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars,
                                        None, process_all=False)
         for m in mapping:
+            pdb = m.get("pdb", {})
+            if pdb:
+                import pdb
+                pdb.set_trace()
+                continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
@@ -97,6 +142,11 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys,
                                        self.extra_vars, None, process_all=False)
         for m in mapping:
+            pdb = m.get("pdb", {})
+            if pdb:
+                import pdb
+                pdb.set_trace()
+                continue
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result = self._parse_leaf_default(attribute, m, data)
 
@@ -111,6 +161,11 @@ class BaseParser(object):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
         for m in mapping:
+            pdb = m.get("pdb", {})
+            if pdb:
+                import pdb
+                pdb.set_trace()
+                continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]

@@ -1,0 +1,31 @@
+<configuration>
+  <system>
+    <ntp>
+      <authentication-key>
+        <name>3</name>
+        <type>md5</type>
+        <value>$9$pUmM0ORSrvXxd9AMXxNY2</value>
+      </authentication-key>
+      <authentication-key delete="delete">
+        <name>2</name>
+      </authentication-key>
+      <source-address>
+        <name>1.2.3.4</name>
+      </source-address>
+      <peer>
+        <name>1.2.3.5</name>
+        <version>1</version>
+        <prefer/>
+      </peer>
+      <server>
+        <name>172.17.19.1</name>
+      </server>
+      <peer delete="delete">
+        <name>1.2.3.4</name>
+      </peer>
+      <server delete="delete">
+        <name>172.17.19.2</name>
+      </server>
+    </ntp>
+  </system>
+</configuration>

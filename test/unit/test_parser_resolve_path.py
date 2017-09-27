@@ -72,13 +72,25 @@ class Tests(object):
                 }
             }
         }
-        path = "group.?name.subgroup.?subname"
+        path = "group.?name>group.subgroup.?subname"
         result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
-            {'name': 'group_1', 'path': 2, 'subname': 'subgroup_1', "data": {"whatever": 1}},
-            {'name': 'group_1', 'path': 3, 'subname': 'subgroup_2', "data": {"whatever": 1}},
-            {'name': 'group_2', 'path': 5, 'subname': 'subgroup_3', "data": {"whatever": 4}},
-            {'name': 'group_2', 'path': 6, 'subname': 'subgroup_4', "data": {"whatever": 4}}]
+            {'group': {'data': {'whatever': 1}},
+             'name': 'group_1',
+             'path': 2,
+             'subname': 'subgroup_1'},
+            {'group': {'data': {'whatever': 1}},
+             'name': 'group_1',
+             'path': 3,
+             'subname': 'subgroup_2'},
+            {'group': {'data': {'whatever': 4}},
+             'name': 'group_2',
+             'path': 5,
+             'subname': 'subgroup_3'},
+            {'group': {'data': {'whatever': 4}},
+             'name': 'group_2',
+             'path': 6,
+             'subname': 'subgroup_4'}]
         assert sorted(result, key=lambda k: k['subname']) == expected
 
     def test_extract_value_nested_list(self):
@@ -94,13 +106,13 @@ class Tests(object):
         path = "group.?group:name.subgroup.?subgroup:name"
         result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
-            {'data': {'whatever': 1}, 'group': 'group_1', 'name': 'group_1',
+            {'data': {'whatever': 1}, 'group': 'group_1',
              'path': 2, 'subgroup': 'subgroup_1'},
-            {'data': {'whatever': 1}, 'group': 'group_1', 'name': 'group_1',
+            {'data': {'whatever': 1}, 'group': 'group_1',
              'path': 3, 'subgroup': 'subgroup_2'},
-            {'data': {'whatever': 4}, 'group': 'group_2', 'name': 'group_2',
+            {'data': {'whatever': 4}, 'group': 'group_2',
              'path': 5, 'subgroup': 'subgroup_3'},
-            {'data': {'whatever': 4}, 'group': 'group_2', 'name': 'group_2',
+            {'data': {'whatever': 4}, 'group': 'group_2',
              'path': 6, 'subgroup': 'subgroup_4'}]
         assert sorted(result, key=lambda k: k['subgroup']) == expected
 
@@ -122,19 +134,16 @@ class Tests(object):
         path = "group.?peer_group:name.neighbor.?neighbor:name"
         result = napalm_yang.parsers.base.BaseParser({}, {}).resolve_path(data, path)
         expected = [
-            {'name': {'#text': 'my_other_peers'},
-             'neighbor': '172.20.0.1',
+            {'neighbor': {'#text': '172.20.0.1'},
              'peer-as': {'#text': '65200'},
-             'peer_group': 'my_other_peers'},
+             'peer_group': {'#text': 'my_other_peers'}},
             {'description': {'#text': 'adsasd'},
-             'name': {'#text': 'my_peers'},
-             'neighbor': '192.168.100.2',
+             'neighbor': {'#text': '192.168.100.2'},
              'peer-as': {'#text': '65100'},
-             'peer_group': 'my_peers'},
-            {'name': {'#text': 'my_peers'},
-             'neighbor': '192.168.100.3',
+             'peer_group': {'#text': 'my_peers'}},
+            {'neighbor': {'#text': '192.168.100.3'},
              'peer-as': {'#text': '65100'},
-             'peer_group': 'my_peers'}]
+             'peer_group': {'#text': 'my_peers'}}]
         assert sorted(result, key=lambda k: k['neighbor']) == expected
 
     def test_ios_ip_addresses(self):

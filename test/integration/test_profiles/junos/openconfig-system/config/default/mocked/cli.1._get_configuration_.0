@@ -1,0 +1,28 @@
+<configuration>
+    <system>
+        <ntp>
+            <authentication-key>
+                <name>2</name>
+                <type>md5</type>
+                <value>$9$pUmM0ORSrvXxd9AMXxNY2</value>
+            </authentication-key>
+            <peer>
+                <name>172.17.19.1</name>
+            </peer>
+            <peer>
+                <name>1.2.3.4</name>
+                <key>1</key>
+                <version>1</version>
+                <prefer/>
+            </peer>
+            <server>
+                <name>172.17.19.2</name>
+            </server>
+            <trusted-key>1</trusted-key>
+            <source-address>
+                <name>1.2.3.4</name>
+            </source-address>
+        </ntp>
+    </system>
+</configuration>
+

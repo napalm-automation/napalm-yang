@@ -1,0 +1,35 @@
+---
+documentation:
+    title: Parsing ntp peers Junos
+    summary: |
+        Junos groups ntp servers and peers by type and then lists them
+    rule: ""
+    result: ""
+processor:
+    name: XMLParser
+    attribute: ntp
+    root_name: system
+    node_type: list
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - path: configuration.system.ntp.?type.name
+      key: '#text'
+expected:
+    - - key: 172.17.19.1
+        block:
+            '#text': 172.17.19.1
+            type: peer
+        extra_vars: {}
+      - key: 172.17.19.2
+        block:
+            '#text': 172.17.19.2
+            type: server
+        extra_vars: {}
+      - key: 172.17.19.3
+        block:
+            '#text': 172.17.19.3
+            type: server
+        extra_vars: {}
