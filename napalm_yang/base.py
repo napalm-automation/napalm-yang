@@ -214,7 +214,7 @@ class Root(object):
             >>>
             >>> running_config = napalm_yang.base.Root()
             >>> running_config.add_model(napalm_yang.models.openconfig_interfaces)
-            >>> running_config.parse_config(native=config, profile="junos")
+            >>> running_config.parse_config(native=[config], profile="junos")
         """
         if attrs is None:
             attrs = self.elements().values()
@@ -250,7 +250,7 @@ class Root(object):
             >>>
             >>> state = napalm_yang.base.Root()
             >>> state.add_model(napalm_yang.models.openconfig_interfaces)
-            >>> state.parse_config(native=state_data, profile="junos")
+            >>> state.parse_config(native=[state_data], profile="junos")
         """
         if attrs is None:
             attrs = self.elements().values()
