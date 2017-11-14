@@ -1,4 +1,4 @@
-Below you can find all the YANG models supported and which profiles implements which ones. Note that all the iplementations are not necessarily complete, in the next section you can find links to each individual profile so you can instpect them yourself
+Below you can find all the YANG models supported and which profiles implements which ones. Note that all the implementations are not necessarily complete, in the next section you can find links to each individual profile so you can inspect them yourself.
 
 .. raw:: html
 
@@ -70,7 +70,7 @@ Below you can find all the YANG models supported and which profiles implements w
 Profiles
 ========
 
-Profiles are responsible from mapping native data/configuration to a YANG model and viceversa. Below you can find links to all the profiles so you can inspect what each one does.
+Profiles are responsible from mapping native data/configuration to a YANG model and vice versa. Below you can find links to all the profiles so you can inspect what each one does.
 
 .. raw:: html
 
