@@ -70,8 +70,10 @@ class Parser(object):
             if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
                 # Some vendors like junos return commands enclosed by a key
                 r = "\n".join(r.values())
-
-            result.append(r)
+            if isinstance(r, list):
+                result.extend(r)
+            else:
+                result.append(r)
 
         return result
 
