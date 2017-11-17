@@ -106,7 +106,7 @@ class JSONParser(BaseParser):
                 match = re.search(mapping['regexp'], d)
                 d = match.group('value') if match else None
 
-        if d and "map" in mapping:
+        if d and "map" in mapping and d.lower() in mapping['map']:
             d = mapping['map'][d.lower()]
 
         if check_presence:
