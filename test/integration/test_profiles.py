@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
-#  from napalm_base import get_network_driver
+#  from napalm.base import get_network_driver
 
 import napalm_yang
-from napalm_base.mock import MockDriver
+from napalm.base.mock import MockDriver
 
 import pytest
 
