@@ -52,18 +52,17 @@ def find_yang_file(profile, filename, path):
 def read_yang_map(yang_prefix, attribute, profile, parser_path):
     logger.info("Finding parser for {}:{}".format(yang_prefix, attribute))
 
-    found = False
     for p in profile:
         filename = os.path.join(yang_prefix, "{}.yaml".format(attribute))
 
         try:
             filepath = find_yang_file(p, filename, parser_path)
-            found = True
             logger.debug("Found on profile: {}, {}".format(p, filepath))
+            break
         except IOError:
             pass
-
-    if not found:
+    else:
+        logger.debug("Parser not found")
         return
 
     with open(filepath, "r") as f:

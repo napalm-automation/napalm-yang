@@ -1,11 +1,9 @@
 ---
 metadata:
-    processor: XMLTranslator
+    processor: TextTranslator
 
 ipv4:
-    _process:
-        - container: "family/inet"
-          when: "{{ model.config.enabled or model.addresses.address|length }}"
+    _process: unnecessary
     config:
         _process: unnecessary
         enabled:
@@ -16,7 +14,8 @@ ipv4:
         _process: unnecessary
         address:
             _process:
-                - container: address
+                - key_value: "    ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
+                  negate: "    no ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
                   replace: false
             ip:
                 _process: unnecessary
@@ -25,10 +24,7 @@ ipv4:
                 ip:
                     _process: unnecessary
                 prefix-length:
-                    _process:
-                        - element: name
-                          value: "{{ model._parent.ip }}/{{ model }}"
-                          when: "{{ model }}"
+                    _process: unnecessary
             vrrp:
                 _process: not_implemented
                 vrrp-group:
@@ -73,5 +69,6 @@ ipv4:
                 _process: not_implemented
                 ip:
                     _process: not_implemented
-                link-layer-address:
+                link_layer_address:
                     _process: not_implemented
+

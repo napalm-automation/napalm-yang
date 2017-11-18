@@ -52,12 +52,16 @@ class Root(object):
             >>> config.interfaces
             <pyangbind.lib.yangtypes.YANGBaseClass object at 0x10bef6680>
         """
+        if isinstance(model, str):
+            self._load_model(model)
+            return
+
         try:
             model = model()
         except Exception:
             pass
 
-        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS]:
+        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS] and not force:
             raise ValueError("Only models in SUPPORTED_MODELS can be added without `force=True`")
 
         for k, v in model:
