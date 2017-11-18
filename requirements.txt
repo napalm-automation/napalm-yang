@@ -3,5 +3,5 @@ netaddr
 jinja2
 xmltodict
 PyYAML
-napalm-base
+napalm
 -e git://github.com/napalm-automation/pyangbind.git@napalm_custom#egg=pyangbind

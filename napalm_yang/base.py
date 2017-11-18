@@ -5,7 +5,7 @@ from napalm_yang.supported_models import SUPPORTED_MODELS
 from napalm_yang.parser import Parser
 from napalm_yang.translator import Translator
 
-from napalm_base import validate
+from napalm.base import validate
 
 from napalm_yang import models
 
