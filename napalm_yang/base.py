@@ -7,6 +7,7 @@ from napalm_yang.translator import Translator
 
 from napalm_base import validate
 
+from napalm_yang import models
 
 from pyangbind.lib import yangtypes
 
@@ -51,12 +52,16 @@ class Root(object):
             >>> config.interfaces
             <pyangbind.lib.yangtypes.YANGBaseClass object at 0x10bef6680>
         """
+        if isinstance(model, str):
+            self._load_model(model)
+            return
+
         try:
             model = model()
         except Exception:
             pass
 
-        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS]:
+        if model._yang_name not in [a[0] for a in SUPPORTED_MODELS] and not force:
             raise ValueError("Only models in SUPPORTED_MODELS can be added without `force=True`")
 
         for k, v in model:
@@ -112,14 +117,23 @@ class Root(object):
         for k, v in self.elements().items():
             yield k, v
 
-    def load_dict(self, data, overwrite=False):
+    def _load_model(self, model):
+        for k, v in SUPPORTED_MODELS:
+            if model in v:
+                self.add_model(getattr(models, k.replace('-', '_')))
+                return
+        else:
+            raise ValueError("Couldn't find model {}".format(model))
+
+    def load_dict(self, data, overwrite=False, auto_load_model=True):
         """
         Load a dictionary into the model.
 
         Args:
             data(dict): Dictionary to loead
             overwrite(bool): Whether the data present in the model should be overwritten by the
-            data in the dict or not.
+                data in the dict or not.
+            auto_load_model(bool): If set to true models will be loaded as they are needed
 
         Examples:
 
@@ -139,8 +153,11 @@ class Root(object):
             ... (200, u'dev')
         """
         for k, v in data.items():
-            if k not in self._elements.keys():
+            if k not in self._elements.keys() and not auto_load_model:
                 raise AttributeError("Model {} is not loaded".format(k))
+            elif k not in self._elements.keys() and auto_load_model:
+                self._load_model(k)
+
             attr = getattr(self, k)
             _load_dict(attr, v)
 
