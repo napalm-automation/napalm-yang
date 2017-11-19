@@ -1,0 +1,13 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "default": {
+                "config": {
+                    "description": "default-vrf [read-only]",
+                    "name": "default",
+                    "type": "DEFAULT_INSTANCE"
+                },                                                                                                                                                                                                          "name": "default"
+            }
+        }
+    }
+}

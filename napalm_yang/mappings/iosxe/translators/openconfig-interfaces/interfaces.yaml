@@ -1,0 +1,71 @@
+---
+metadata:
+    processor: JSONTranslator
+    xml_root: interfaces
+
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - container: interface
+              key_element: name
+              key_value: "{{ interface_key }}"
+        config:
+            _process:
+              - container: config
+            description:
+                _process:
+                    - element: description
+            enabled:
+                _process:
+                    - element: "enabled"
+            mtu:
+                _process:
+                    - element: mtu
+            name:
+                _process:
+                    - element: name
+            type:
+                _process:
+                    - element: type
+        hold-time:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        name:
+            _process: unnecessary
+        state:
+            _process: not_implemented
+        subinterfaces:
+            _process: 
+                - container: subinterfaces
+            subinterface:
+                _process:
+                    - container: subinterface
+                      key_element: index
+                      key_value: "{{ subinterface_key }}"
+                config:
+                    _process: 
+                        - container: config
+                    description:
+                        _process:
+                            - element: description
+                    enabled:
+                        _process:
+                            - element: enabled
+                    index:
+                        _process:
+                            - element: index
+                    name:
+                        _process:
+                            - element: name
+                index:
+                    _process: unnecessary
+                state:
+                    _process: unnecessary

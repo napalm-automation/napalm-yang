@@ -8,12 +8,6 @@
             "dhcp": {
             }
           }
-        },
-        "mop": {
-          "enabled": false
-        },
-        "Cisco-IOS-XE-ethernet:negotiation": {
-          "auto": true
         }
       },
       {
@@ -49,6 +43,21 @@
               "mask": "255.255.255.0"
             }
           }
+        }
+      },
+      {
+        "name": "3",
+        "shutdown": [null],
+        "ip": {
+          "no-address": {
+            "address": false
+          }
+        },
+        "mop": {
+          "enabled": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
         }
       }
       ],
