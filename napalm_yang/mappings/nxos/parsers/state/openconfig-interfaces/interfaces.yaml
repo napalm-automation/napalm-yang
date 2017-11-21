@@ -14,6 +14,8 @@ interfaces:
               from: root_interfaces.0
               key: '{{interface}}'
               regexp: ^(?P<value>(\w|-)*\d+(\/\d+)*)$
+        config:
+            _process: unnecessary
         hold-time:
             _process: not_implemented
             state:
@@ -25,41 +27,47 @@ interfaces:
         state:
             _process: unnecessary
             admin-status:
-                _process:
-                    - path: state
-                      map:
-                          "up": UP
-                          "down": DOWN
-            counters:
                 _process: not_implemented
+            counters:
+                _process: unnecessary
                 in-broadcast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_inbcast
                 in-discards:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_indiscard
                 in-errors:
                     _process: not_implemented
                 in-multicast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_inmcast
                 in-octets:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_inbytes
                 in-unicast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_ucast
                 in-unknown-protos:
                     _process: not_implemented
                 last-clear:
                     _process: not_implemented
                 out-broadcast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_outbcast
                 out-discards:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_outdiscard
                 out-errors:
                     _process: not_implemented
                 out-multicast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_outmcast
                 out-octets:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_outbytes
                 out-unicast-pkts:
-                    _process: not_implemented
+                    _process:
+                        - path: eth_outucast
             description:
                 _process: not_implemented
             enabled:
@@ -73,7 +81,11 @@ interfaces:
             name:
                 _process: not_implemented
             oper-status:
-                _process: not_implemented
+                _process:
+                    - path: state
+                      map:
+                          "up": UP
+                          "down": DOWN
             type:
                 _process: not_implemented
         subinterfaces:
