@@ -155,15 +155,19 @@ system:
         state:
             _process: not_implemented
     config:
-        _process: not_implemented
+        _process: unnecessary
         domain-name:
-            _process: not_implemented
+            _process:
+                - element: domain-name
         hostname:
-            _process: not_implemented
+            _process:
+                - element: host-name
         login-banner:
-            _process: not_implemented
+            _process:
+                - element: login/message
         motd-banner:
-            _process: not_implemented
+            _process:
+                - element: login/announcement
     dns:
         _process: not_implemented
         config:
