@@ -163,9 +163,11 @@ system:
             _process:
                 - element: host-name
         login-banner:
-            _process: not_implemented
+            _process:
+                - element: login/message
         motd-banner:
-            _process: not_implemented
+            _process:
+                - element: login/announcement
     dns:
         _process: not_implemented
         config:
