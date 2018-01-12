@@ -1,0 +1,12 @@
+---
+metadata:
+    processor: TextTranslator
+
+vlan:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+        vlan-id:
+            _process:
+                - value: "    encapsulation dot1q {{ model }}\n"
+                  negate: "    no encapsulation dot1q\n"

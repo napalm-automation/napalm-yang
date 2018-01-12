@@ -1,0 +1,38 @@
+---
+metadata:
+    processor: TextTranslator
+    root: true
+
+vlans:
+    _process: unnecessary
+    vlan:
+        _process:
+            - key_value: "vlan {{ vlan_key }}\n"
+              negate: "no vlan {{ vlan_key }}\n"
+              end: "    exit\n"
+        config:
+            _process: unnecessary
+            name:
+                _process:
+                    - value: "    name {{ model }}\n"
+                      negate: "    default name\n"
+            status:
+                _process:
+                    - value: "    state active\n"
+                      negate: "    default state\n"
+                      when: "{{ model == 'ACTIVE' }}"
+                    - value: "    state suspend\n"
+                      negate: "    default state\n"
+                      when: "{{ model != 'ACTIVE' }}"
+            tpid:
+                _process: not_implemented
+            vlan-id:
+                _process: unnecessary
+        members:
+            _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        vlan-id:
+            _process: not_implemented
