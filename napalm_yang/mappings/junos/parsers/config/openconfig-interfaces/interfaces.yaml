@@ -44,6 +44,7 @@ interfaces:
                           ae: ieee8023adLag
                           fxp: ethernetCsmacd
                           lt: tunnel
+                          st: tunnel
             enabled:
                 _process:
                     - path: "disable"
