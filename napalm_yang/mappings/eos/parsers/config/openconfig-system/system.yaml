@@ -50,25 +50,23 @@ system:
             state:
                 _process: not_implemented
             users:
-                _process:
-                    - path: "username"
-                      regexp: "(?P<value>\\S+) secret.*"
-                      from: root_systems.0
+                _process: unnecessary
                 user:
-                    _process: unnecessary
+                    _process:
+                        - path: "username"
+                          from: root_system.0
                     config:
                         _process: unnecessary
                         password:
-                            _process: not_implemented
+                            _process: unnecessary
                         password-encrypted:
-                            _process: not_implemented
+                            _process: unnecessary
                         role:
                             _process: not_implemented
                         ssh-key:
                             _process: not_implemented
                         username:
-                            _process:
-                                - value: "{{user_key}}"
+                            _process: unnecessary
                     state:
                         _process: not_implemented
                     username:
