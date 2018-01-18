@@ -1,0 +1,78 @@
+---
+metadata:
+    processor: TextTranslator
+
+ipv4:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+        enabled:
+            _process:
+                - value: "    no switchport\n"
+                  negate: "    switchport\n"
+                  in: "interface.{{ interface_key }}"
+                  when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
+        mtu:
+            _process: not_implemented
+    addresses:
+        _process: unnecessary
+        address:
+            _process:
+                - key_value: "    ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
+                  negate: "    no ip address {{ model.config.ip }} {{ model.config.prefix_length|cidr_to_netmask }}{{ ' secondary' if model.config.secondary else '' }}\n"
+                  replace: false
+            ip:
+                _process: unnecessary
+            config:
+                _process: unnecessary
+                ip:
+                    _process: unnecessary
+                prefix-length:
+                    _process: unnecessary
+            vrrp:
+                _process: not_implemented
+                vrrp-group:
+                    _process: not_implemented
+                    virtual-router-id:
+                    config:
+                        virtual-address:
+                            _process: not_implemented
+                        priority:
+                            _process: not_implemented
+                        preempt:
+                            _process: not_implemented
+                        advertisement-interval:
+                            _process: not_implemented
+                        virtual-router-id:
+                            _process: not_implemented
+                        preempt-delay:
+                            _process: not_implemented
+                        accept-mode:
+                            _process: not_implemented
+    unnumbered:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enabled:
+                _process: not_implemented
+        interface-ref:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                interface:
+                    _process: not_implemented
+                subinterface:
+                    _process: not_implemented
+    neighbors:
+        _process: not_implemented
+        neighbor:
+            _process: not_implemented
+            ip:
+                _process: not_implemented
+            config:
+                _process: not_implemented
+                ip:
+                    _process: not_implemented
+                link_layer_address:
+                    _process: not_implemented
+
