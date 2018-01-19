@@ -58,11 +58,27 @@ system:
                     config:
                         _process: unnecessary
                         password:
-                            _process: unnecessary
-                        password-encrypted:
-                            _process: unnecessary
-                        role:
                             _process: not_implemented
+                        password-encrypted:
+                            # Since we are using the show run all command
+                            # the username commands will always start with privilege
+                            _process:
+                                - path: "privilege"
+                                  regexp: "\\d+ role \\S+ secret (5|sha512) (?P<value>\\S+)$"
+                                - path: "privilege"
+                                  regexp: "\\d+ secret (5|sha512) (?P<value>\\S+)$"
+                        #
+                        # In EOS there is privilege and roles which are similar
+                        # here we try to grab both if they are set or just one
+                        # luckily the ordering is consistent regardless how it
+                        # was entered(in eos at least), privilege then role
+                        #
+                        role:
+                            _process:
+                                - path: "privilege"
+                                  regexp: "(?P<value>\\d+) secret"
+                                - path: "privilege"
+                                  regexp: "(?P<value>\\d+ role \\S+) secret"
                         ssh-key:
                             _process: not_implemented
                         username:
