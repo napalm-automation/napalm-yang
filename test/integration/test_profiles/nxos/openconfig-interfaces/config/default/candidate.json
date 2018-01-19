@@ -1,0 +1,173 @@
+{
+    "interfaces": {
+        "interface": {
+            "Ethernet1/1": {
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "interface-mode": "ACCESS", 
+                            "access-vlan": 200
+                        }
+                    }
+                }, 
+                "config": {
+                    "enabled": true, 
+                    "type": "ethernetCsmacd", 
+                    "description": "Candidate Description"
+                }, 
+                "name": "Ethernet1/1", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            }, 
+            "Ethernet1/2": {
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "interface-mode": "ACCESS"
+                        }
+                    }
+                }, 
+                "config": {
+                    "enabled": true, 
+                    "type": "ethernetCsmacd"
+                }, 
+                "name": "Ethernet1/2", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            }, 
+            "Ethernet1/3": {
+                "config": {
+                    "enabled": false, 
+                    "type": "ethernetCsmacd"
+                }, 
+                "name": "Ethernet1/3", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }, 
+                        "addresses": {
+                            "address": {
+                                "3.3.3.1": {
+                                    "ip": "3.3.3.1", 
+                                    "config": {
+                                        "ip": "3.3.3.1", 
+                                        "prefix-length": 24
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 
+            "Ethernet1/4": {
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "trunk-vlans": [
+                                20, 
+                                30, 
+                                40
+                            ], 
+                            "interface-mode": "TRUNK", 
+                            "native-vlan": 11
+                        }
+                    }
+                }, 
+                "config": {
+                    "enabled": true, 
+                    "type": "ethernetCsmacd"
+                }, 
+                "name": "Ethernet1/4", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            }, 
+            "mgmt0": {
+                "config": {
+                    "enabled": true, 
+                    "type": "ethernetCsmacd"
+                }, 
+                "name": "mgmt0", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }, 
+                        "addresses": {
+                            "address": {
+                                "10.10.1.155": {
+                                    "ip": "10.10.1.155", 
+                                    "config": {
+                                        "ip": "10.10.1.155", 
+                                        "prefix-length": 26
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 
+            "port-channel11": {
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "interface-mode": "ACCESS"
+                        }
+                    }
+                }, 
+                "config": {
+                    "enabled": true, 
+                    "type": "ieee8023adLag"
+                }, 
+                "name": "port-channel11", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                }
+            }, 
+            "loopback1": {
+                "config": {
+                    "enabled": true, 
+                    "type": "softwareLoopback"
+                }, 
+                "name": "loopback1", 
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": true
+                        }, 
+                        "addresses": {
+                            "address": {
+                                "1.1.1.1": {
+                                    "ip": "1.1.1.1", 
+                                    "config": {
+                                        "ip": "1.1.1.1", 
+                                        "prefix-length": 32
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

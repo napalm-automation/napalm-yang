@@ -5,7 +5,6 @@ metadata:
         - method: cli
           kwargs:
               commands: ["show running-config all"]
-
 interfaces:
     _process: unnecessary
     interface:
@@ -19,13 +18,23 @@ interfaces:
                 _process:
                     - path: description
             enabled:
-                _process: not_implemented
+                _process:
+                    - path: "shutdown"
+                      present: no
             mtu:
                 _process: not_implemented
             name:
-                _process: not_implemented
+                _process: unnecessary
             type:
-                _process: not_implemented
+                _process:
+                    - value: "{{ interface_key }}"
+                      regexp: "(?P<value>(\\w|-)*?)\\d+"
+                      map:
+                          ethernet: ethernetCsmacd
+                          mgmt: ethernetCsmacd
+                          loopback: softwareLoopback
+                          port-channel: ieee8023adLag
+                          vlan: l3ipvlan
         hold-time:
             _process: not_implemented
             config:

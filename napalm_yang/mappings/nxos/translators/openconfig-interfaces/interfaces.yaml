@@ -1,0 +1,62 @@
+---
+metadata:
+    processor: TextTranslator
+    root: true
+
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - key_value: "interface {{ interface_key }}\n"
+              negate: "{{ 'no' if interface_key[0:4] in ['Port', 'Loop'] else 'default' }} interface {{ interface_key }}\n"
+              end: "    exit\n"
+        name:
+            _process: unnecessary
+        hold-time:
+            _process: unnecessary
+            config:
+                _process: unnecessary
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+        config:
+            _process: unnecessary
+            name:
+                _process: unnecessary
+            type:
+                _process: unnecessary
+            enabled:
+                _process:
+                    - value: "    shutdown\n"
+                      when: "{{ not model }}"
+            description:
+                _process:
+                    - value: "    description {{ model }}\n"
+                      negate: "    no description"
+            mtu:
+                _process: not_implemented
+        subinterfaces:
+            _process: unnecessary
+            subinterface:
+                _process:
+                    - key_value: "interface {{ interface_key}}.{{ subinterface_key }}\n"
+                      negate: "no interface {{ interface_key}}.{{ subinterface_key }}\n"
+                      in: "interfaces"
+                      end: "    exit\n"
+                index:
+                    _process: unnecessary
+                config:
+                    _process: unnecessary
+                    index:
+                        _process: unnecessary
+                    name:
+                        _process: unnecessary
+                    enabled:
+                        _process:
+                            - value: "    shutdown\n"
+                              when: "{{ not model }}"
+                    description:
+                        _process:
+                            - value: "    description {{ model }}\n"
+                              negate: "    default description"
