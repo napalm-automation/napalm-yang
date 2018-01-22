@@ -1,5 +1,7 @@
 ---
-_process: not_implemented
+_process: 
+    - gate: true
+      when: "{{ protocol_key != 'isis isis' }}"
 global:
     _process: not_implemented
     afi-safi:
@@ -221,9 +223,11 @@ global:
         state:
             _process: not_implemented
 interfaces:
-    _process: not_implemented
+    _process: unnecessary
     interface:
-        _process: not_implemented
+        _process: 
+            - path: "interface"
+              key: name
         afi-safi:
             _process: not_implemented
             af:
