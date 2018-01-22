@@ -75,10 +75,16 @@ system:
                         #
                         role:
                             _process:
+								- path: "privilege"
+                                  regexp: "(?P<value>\\d+) nopassword"
+                                  value: "{{value}}:network-operator"
                                 - path: "privilege"
-                                  regexp: "(?P<value>\\d+) secret"
+                                  regexp: "(?P<value>\\d+) secret \\S+"
+                                  value: "{{value}}:network-operator"
                                 - path: "privilege"
-                                  regexp: "(?P<value>\\d+ role \\S+) secret"
+                                  regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
+                                  value: "{{ privilege }}:{{ role }}"
+
                         ssh-key:
                             _process: not_implemented
                         username:
