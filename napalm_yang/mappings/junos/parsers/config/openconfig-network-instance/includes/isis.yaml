@@ -35,7 +35,7 @@ global:
             state:
                 _process: not_implemented
     config:
-        _process: not_implemented
+        _process: unnecessary 
         authentication-check:
             _process: not_implemented
         fast-flooding:
@@ -51,7 +51,9 @@ global:
         maximum-area-addresses:
             _process: not_implemented
         net:
-            _process: not_implemented
+            _process: 
+              - path: "interfaces.interface.name.lo0.unit.name.0.family.iso.address"
+                key: name 
         poi-tlv:
             _process: not_implemented
     graceful-restart:
@@ -445,9 +447,11 @@ interfaces:
             state:
                 _process: not_implemented
 levels:
-    _process: not_implemented
+    _process: unnecessary
     level:
-        _process: not_implemented
+        _process: 
+        - path: "level" 
+          key: name
         authentication:
             _process: not_implemented
             config:
@@ -469,17 +473,26 @@ levels:
             state:
                 _process: not_implemented
         config:
-            _process: not_implemented
+            _process: unnecessary
+            name:
+                _process:
+                    - value: "{{ level_key }}" 
             authentication-check:
                 _process: not_implemented
             enabled:
-                _process: not_implemented
+                _process: 
+                    - value: "true"
             level-number:
-                _process: not_implemented
+                _process: 
+                    - value: "{{ level_key }}"
             metric-style:
-                _process: not_implemented
+                _process: 
+                    - path: "wide-metrics-only"
+                      default: "NARROW_METRIC"
+                      value: "WIDE_METRIC"
         level-number:
-            _process: not_implemented
+            _process: 
+                - value: "{{ level_key }}"
         link-state-database:
             _process: not_implemented
         route-preference:
