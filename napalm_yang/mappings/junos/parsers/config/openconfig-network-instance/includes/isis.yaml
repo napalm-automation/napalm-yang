@@ -487,7 +487,8 @@ levels:
                     - value: "{{ level_key }}"
             metric-style:
                 _process: 
-                    - path: "wide-metrics-only"
+                    - present: true
+                      path: "wide-metrics-only"
                       default: "NARROW_METRIC"
                       value: "WIDE_METRIC"
         level-number:
