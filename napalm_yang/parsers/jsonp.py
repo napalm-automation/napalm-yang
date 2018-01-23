@@ -93,26 +93,31 @@ class JSONParser(BaseParser):
         check_presence = present is not None
 
         if "path" in mapping:
-            d = self.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
+            d = self.resolve_path(data, mapping["path"], None, check_presence)
         else:
             d = None
-
-        if "value" in mapping:
-            d = self._parse_post_process_filter(mapping["value"], value=d)
-
-        if d:
-            regexp = mapping.get('regexp', None)
-            if regexp:
-                match = re.search(mapping['regexp'], d)
-                d = match.group('value') if match else None
-
-        if d and "map" in mapping:
-            d = mapping['map'][d.lower()]
 
         if check_presence:
             d = bool(d and present or not d and not present)
 
-        d = mapping.get('default', None) if d is None else d
+            if d and "value" in mapping:
+                d = self._parse_post_process_filter(mapping["value"], value=d)
+            elif not d and "default" in mapping:
+                d = mapping['default']
+        else:
+            if "value" in mapping:
+                d = self._parse_post_process_filter(mapping["value"], value=d)
+
+            if d:
+                regexp = mapping.get('regexp', None)
+                if regexp:
+                    match = re.search(mapping['regexp'], d)
+                    d = match.group('value') if match else None
+
+            if d and "map" in mapping:
+                d = mapping['map'][d.lower()]
+
+            d = mapping.get('default', None) if d is None else d
         return d
 
     def _parse_container_default(self, attribute, mapping, data):
