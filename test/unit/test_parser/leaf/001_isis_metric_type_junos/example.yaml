@@ -7,7 +7,7 @@ documentation:
     result: ""
 processor:
     name: XMLParser
-    attribute: ntp
+    attribute: metric-style
     root_name: network_instances
     node_type: leaf
     mode: config
@@ -30,7 +30,7 @@ rule:
     - present: true
       path: "wide-metrics-only"
       default: "NARROW_METRIC"
-      value: "WIDE_METRIC"
+      post: "WIDE_METRIC"
 expected:
     - - "WIDE_METRIC"
       - "NARROW_METRIC"

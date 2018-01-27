@@ -9,4 +9,4 @@ vlan:
         vlan-id:
             _process:
                 - path: "vlan-id"
-                  value: "{{ value|int or None }}"
+                  post: "{{ value|int or None }}"
