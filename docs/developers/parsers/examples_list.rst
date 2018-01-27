@@ -587,8 +587,8 @@ ___________
 
 .. code-block:: yaml
 
-    - key: neighbor
-      path: group.?peer_group:name.neighbor.?neighbor:name
+    - key: ip
+      path: group.?peer_group:name.neighbor.?ip:name
 
 Note that this time the path contains a couple of ``?identifier:field``. That pattern
 is used to flatten lists and what it does is assign the contents of that sublist to the
@@ -641,32 +641,32 @@ Example 1
         </tr>
         <tbody>
             <tr>
-            <td style="vertical-align: top;">192.168.100.3</pre></td>
+            <td style="vertical-align: top;">192.168.100.2</pre></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
-    name:
-      '#text': my_peers
-    neighbor: 192.168.100.3
+    description:
+      '#text': adsasd
+    ip:
+      '#text': 192.168.100.2
     peer-as:
       '#text': '65100'
-    peer_group: my_peers</pre></div></div></td>
+    peer_group:
+      '#text': my_peers</pre></div></div></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
     {}</pre></div></div></td>
             </td>
         </tr>
             <tr>
-            <td style="vertical-align: top;">192.168.100.2</pre></td>
+            <td style="vertical-align: top;">192.168.100.3</pre></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
-    description:
-      '#text': adsasd
-    name:
-      '#text': my_peers
-    neighbor: 192.168.100.2
+    ip:
+      '#text': 192.168.100.3
     peer-as:
       '#text': '65100'
-    peer_group: my_peers</pre></div></div></td>
+    peer_group:
+      '#text': my_peers</pre></div></div></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
     {}</pre></div></div></td>
@@ -676,12 +676,12 @@ Example 1
             <td style="vertical-align: top;">172.20.0.1</pre></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
-    name:
-      '#text': my_other_peers
-    neighbor: 172.20.0.1
+    ip:
+      '#text': 172.20.0.1
     peer-as:
       '#text': '65200'
-    peer_group: my_other_peers</pre></div></div></td>
+    peer_group:
+      '#text': my_other_peers</pre></div></div></td>
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
     {}</pre></div></div></td>
@@ -1174,6 +1174,102 @@ Example 1
             <td style="vertical-align: top;">
                 <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
     value: Loopback1</pre></div></div></td>
+            </td>
+        </tr>
+            </tbody>
+    </table></div>
+
+Parsing ntp peers Junos
+-----------------------
+
+Junos groups ntp servers and peers by type and then lists them
+
+
+Original data
+_____________
+
+.. code::
+
+    <configuration>
+            <system>
+                <ntp>
+                    <peer>
+                        <name>172.17.19.1</name>
+                    </peer>
+                    <server>
+                        <name>172.17.19.2</name>
+                        <name>172.17.19.3</name>
+                    </server>
+                </ntp>
+            </system>
+    </configuration>
+
+
+
+Parser rule
+___________
+
+.. code-block:: yaml
+
+    - key: '#text'
+      path: configuration.system.ntp.?type.name
+
+
+
+Result
+______
+
+
+
+
+Example 1
+^^^^^^^^^^
+
+.. code-block:: yaml
+
+    extra_vars: {}
+    keys: {}
+
+.. raw:: html
+
+    <div><table border="1" class="docutils">
+        <tr>
+            <th class="head">ntp_key</th>
+            <th class="head">block</th>
+            <th class="head">extra_vars</th>
+        </tr>
+        <tbody>
+            <tr>
+            <td style="vertical-align: top;">172.17.19.1</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    '#text': 172.17.19.1
+    type: peer</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    {}</pre></div></div></td>
+            </td>
+        </tr>
+            <tr>
+            <td style="vertical-align: top;">172.17.19.2</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    '#text': 172.17.19.2
+    type: server</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    {}</pre></div></div></td>
+            </td>
+        </tr>
+            <tr>
+            <td style="vertical-align: top;">172.17.19.3</pre></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    '#text': 172.17.19.3
+    type: server</pre></div></div></td>
+            <td style="vertical-align: top;">
+                <div class="code highlight-default"><div class="highlight" style="background:inherit; border:0px;"><pre>
+    {}</pre></div></div></td>
             </td>
         </tr>
             </tbody>
