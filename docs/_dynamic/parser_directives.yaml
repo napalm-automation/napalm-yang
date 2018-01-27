@@ -64,3 +64,8 @@
   description: |
     This attribute is specific to the XMLParser. XML documents can add information in the form of attributes.
     You can complement a <code class="docutils literal">path</code> with this field to extract the attribute from the element found in <code class="docutils literal">path</code>.
+
+- name: pdb
+  abialble_on: list, container, leaf
+  description: |
+    Start ``pdb`` for debugging.
