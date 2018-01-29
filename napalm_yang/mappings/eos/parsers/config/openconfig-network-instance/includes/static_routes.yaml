@@ -12,7 +12,7 @@ static:
         _process: unnecessary
         prefix:
             _process:
-                - value: "{{ static_key }}"
+                - pre: "{{ static_key }}"
         set-tag:
             _process: not_implemented
     next-hops:
@@ -29,7 +29,7 @@ static:
                         - regexp: "(?P<value>\\d+)"
                 next-hop:
                     _process:
-                        - value: "{{ next_hop_key }}"
+                        - pre: "{{ next_hop_key }}"
                 recurse:
                     _process: not_implemented
             index:

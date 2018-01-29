@@ -8,15 +8,17 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 
 BASE_PATH = os.path.dirname(__file__) or "."
-EXAMPLES_PATH = "{}/../test/unit/test_parser/".format(BASE_PATH)
-EXAMPLES = sorted([x for x in glob('{}/*'.format(EXAMPLES_PATH))])
+LIST_EXAMPLES_PATH = "{}/../test/unit/test_parser/list/".format(BASE_PATH)
+LIST_EXAMPLES = sorted([x for x in glob('{}/*'.format(LIST_EXAMPLES_PATH))])
 
+LEAF_EXAMPLES_PATH = "{}/../test/unit/test_parser/leaf/".format(BASE_PATH)
+LEAF_EXAMPLES = sorted([x for x in glob('{}/*'.format(LEAF_EXAMPLES_PATH))])
 
 def indent_text(text, indent=4):
     return "\n".join(["{}{}".format(" " * indent, l) for l in text.splitlines()])
 
 
-def get_examples():
+def get_examples(EXAMPLES):
     examples = []
     for e in EXAMPLES:
         with open("{}/mocked.txt".format(e), "r") as f:
@@ -54,9 +56,13 @@ def save_text(text, filename):
 
 
 if __name__ == "__main__":
-    examples = get_examples()
+    examples = get_examples(LIST_EXAMPLES)
     text = render('_dynamic/examples_list.j2', examples=examples)
     save_text(text, "developers/parsers/examples_list.rst")
+
+    examples = get_examples(LEAF_EXAMPLES)
+    text = render('_dynamic/examples_leaf.j2', examples=examples)
+    save_text(text, "developers/parsers/examples_leaf.rst")
 
     directives = get_directives()
     text = render('_dynamic/parsers.j2', directives=directives)

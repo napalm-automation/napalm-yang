@@ -30,10 +30,15 @@
     On <b>lists</b> regexp will be applied over the key. Use it to filter results and capture extra data.</br>
     On <b>leaves</b>, regexp will assign as value the capture group <code class="docutils literal">value</code>
 
-- name: value
+- name: pre
   available_on: leaf
   description: |
-    Post processing/formatting of the value
+    Pre processing/formatting of the value. Useful when you want to statically set it based on ``when`` conditions or from values extracted previously in parent containers/leaves/lists.
+
+- name: post
+  available_on: leaf
+  description: |
+    Post processing/formatting of the value. Useful when you need to combine data extracted in a regular expression or post-process it with a jinja2 filter to transform the value.
 
 - name: map
   available_on: leaf
@@ -59,3 +64,8 @@
   description: |
     This attribute is specific to the XMLParser. XML documents can add information in the form of attributes.
     You can complement a <code class="docutils literal">path</code> with this field to extract the attribute from the element found in <code class="docutils literal">path</code>.
+
+- name: pdb
+  abialble_on: list, container, leaf
+  description: |
+    Start ``pdb`` for debugging.

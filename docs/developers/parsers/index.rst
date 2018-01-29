@@ -73,3 +73,4 @@ Examples
    :maxdepth: 1
 
    examples_list
+   examples_leaf

@@ -28,7 +28,7 @@ interfaces:
             _process: unnecessary
             name:
                 _process:
-                    - value: "{{ interface_key }}"
+                    - pre: "{{ interface_key }}"
             type:
                 _process:
                     - path: name
@@ -69,7 +69,7 @@ interfaces:
                         _process: not_implemented
                     name:
                         _process:
-                            - value: "{{ subinterface_key }}"
+                            - pre: "{{ subinterface_key }}"
                     enabled:
                         _process:
                             - path: "disable"

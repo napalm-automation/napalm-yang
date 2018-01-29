@@ -1,0 +1,31 @@
+<configuration>
+    <isis>
+        <level>
+            <name>1</name>
+            <wide-metrics-only/>
+        </level>
+        <level>
+            <name>2</name>
+            <preference>50</preference>
+        </level>
+        <interface>
+            <name>ge-0/0/0.0</name>
+            <point-to-point/>
+        </interface>
+        <interface>
+            <name>ge-0/0/1.0</name>
+            <point-to-point/>
+        </interface>
+        <interface>
+            <name>ge-0/0/2.0</name>
+            <point-to-point/>
+        </interface>
+        <interface>
+            <name>ge-0/0/3.0</name>
+            <point-to-point/>
+        </interface>
+        <interface>
+            <name>lo0.0</name>
+        </interface>
+    </isis>
+</configuration>

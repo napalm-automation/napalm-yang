@@ -628,7 +628,7 @@ neighbors:
                   - path: "local-as.as-number"
             neighbor-address:
                 _process:
-                  - value: "{{ neighbor_key }}"
+                  - pre: "{{ neighbor_key }}"
             peer-as:
                 _process:
                   - path: "peer-as"

@@ -320,10 +320,10 @@ system:
                     _process: unnecessary
                     address:
                         _process:
-                            - value: "{{ server_key }}"
+                            - pre: "{{ server_key }}"
                     association-type:
                         _process:
-                            - value: "{{ extra_vars.server.assoctype }}"
+                            - pre: "{{ extra_vars.server.assoctype }}"
                     iburst:
                         _process: not_implemented
                     port:
