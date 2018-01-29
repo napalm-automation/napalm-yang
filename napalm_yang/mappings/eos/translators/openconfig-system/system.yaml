@@ -51,7 +51,16 @@ system:
                 _process: unnecessary
                 user:
                     _process:
-                        - key_value: "username {{user_key}} privilege {{model.config.role if model.config.role != '' else 1}} secret {{ model.config.password_encrypted if model.config.password_encrypted != '' else 'no-secret'}}\n"
+                        - key_value: "
+{% set priv_role = model.config.role.split(':') %}
+username {{user_key}} privilege {{priv_role[0]}} role {{priv_role[1]}}
+{% if model.config.password_encrypted %}
+    secret {{model.config.password_encrypted}}
+{% else %}
+    nopassword
+{%endif%}
+\n
+"
                           negate: "no username {{user_key}}\n"
                     config:
                         _process: not_implemented

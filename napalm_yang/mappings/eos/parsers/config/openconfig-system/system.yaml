@@ -64,7 +64,7 @@ system:
                             # the username commands will always start with privilege
                             _process:
                                 - path: "privilege"
-                                  regexp: "\\d+ role \\S+ secret (5|sha512) (?P<value>\\S+)$"
+                                  regexp: "\\d+ role \\S+ secret \\S+ (?P<value>\\S+)$"
                                 - path: "privilege"
                                   regexp: "\\d+ secret (5|sha512) (?P<value>\\S+)$"
                         #
@@ -75,16 +75,15 @@ system:
                         #
                         role:
                             _process:
-								- path: "privilege"
+                                - path: "privilege"
                                   regexp: "(?P<value>\\d+) nopassword"
-                                  value: "{{value}}:network-operator"
+                                  post: "{{value}}:network-operator"
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) secret \\S+"
-                                  value: "{{value}}:network-operator"
+                                  post: "{{value}}:network-operator"
                                 - path: "privilege"
                                   regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
-                                  value: "{{ privilege }}:{{ role }}"
-
+                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
                         ssh-key:
                             _process: not_implemented
                         username:
