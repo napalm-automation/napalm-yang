@@ -1,0 +1,319 @@
+{
+    "interfaces": {
+        "interface": {
+            "fxp0": {
+                "config": {
+                    "enabled": true,
+                    "name": "fxp0",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "fxp0",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "10.134.250.31": {
+                                            "config": {
+                                                "ip": "10.134.250.31",
+                                                "prefix-length": 9
+                                            },
+                                            "ip": "10.134.250.31"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ge-0/0/0": {
+                "config": {
+                    "enabled": true,
+                    "name": "ge-0/0/0",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "ge-0/0/0",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "description": "R1@ge-0/0/0.0->R2-ge-0/0/0.0",
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.16.12.1": {
+                                            "config": {
+                                                "ip": "172.16.12.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "172.16.12.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ge-0/0/1": {
+                "config": {
+                    "enabled": true,
+                    "name": "ge-0/0/1",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "ge-0/0/1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "description": "R1@ge-0/0/1.0->R3@ge-0/0/0.0",
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.16.13.1": {
+                                            "config": {
+                                                "ip": "172.16.13.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "172.16.13.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ge-0/0/2": {
+                "config": {
+                    "enabled": true,
+                    "name": "ge-0/0/2",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "ge-0/0/2",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "description": "R1@ge-0/0/2.0->R5@ge-0/0/0.0",
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.16.15.1": {
+                                            "config": {
+                                                "ip": "172.16.15.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "172.16.15.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ge-0/0/3": {
+                "config": {
+                    "enabled": true,
+                    "name": "ge-0/0/3",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "ge-0/0/3",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.16.16.1": {
+                                            "config": {
+                                                "ip": "172.16.16.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "172.16.16.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        },
+                        "6": {
+                            "config": {
+                                "enabled": true,
+                                "name": "6"
+                            },
+                            "index": "6",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "192.168.16.1": {
+                                            "config": {
+                                                "ip": "192.168.16.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "192.168.16.1"
+                                        },
+                                        "192.168.17.1": {
+                                            "config": {
+                                                "ip": "192.168.17.1",
+                                                "prefix-length": 24
+                                            },
+                                            "ip": "192.168.17.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            },
+                            "vlan": {
+                                "config": {
+                                    "vlan-id": 6
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "lo0": {
+                "config": {
+                    "enabled": true,
+                    "name": "lo0",
+                    "type": "softwareLoopback"
+                },
+                "name": "lo0",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    }
+                },
+                "subinterfaces": {
+                    "subinterface": {
+                        "0": {
+                            "config": {
+                                "enabled": true,
+                                "name": "0"
+                            },
+                            "index": "0",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "172.16.1.1": {
+                                            "config": {
+                                                "ip": "172.16.1.1",
+                                                "prefix-length": 32
+                                            },
+                                            "ip": "172.16.1.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        },
+                        "4225": {
+                            "config": {
+                                "enabled": true,
+                                "name": "4225"
+                            },
+                            "index": "4225",
+                            "ipv4": {
+                                "addresses": {
+                                    "address": {
+                                        "1.1.1.1": {
+                                            "config": {
+                                                "ip": "1.1.1.1",
+                                                "prefix-length": 32
+                                            },
+                                            "ip": "1.1.1.1"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "enabled": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
