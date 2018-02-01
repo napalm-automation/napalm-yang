@@ -1,4 +1,0 @@
-username test1 privilege 1 secret $1$NKhJ$PUfYNtJF2tIneEBZztchy.
-username newsecure privilege 1 secret $1$NKhJ$PUfYNtJF2tIneEBZztchy.
-username new privilege 1 secret no-secret
-no username test2
