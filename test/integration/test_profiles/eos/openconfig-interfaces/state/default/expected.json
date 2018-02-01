@@ -2,6 +2,21 @@
     "interfaces": {
         "interface": {
             "Ethernet1": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0,
+                            "in-fragment-frames": 0,
+                            "in-mac-pause-frames": 0,
+                            "in-oversize-frames": 0,
+                            "out-mac-pause-frames": 0
+                        },
+                        "duplex-mode": "FULL",
+                        "effective-speed": 0,
+                        "hw-mac-address": "08:00:27:76:17:76",
+                        "mac-address": "08:00:27:76:17:76"
+                    }
+                },
                 "name": "Ethernet1",
                 "state": {
                     "admin-status": "UP",
@@ -28,6 +43,20 @@
                 }
             },
             "Ethernet2": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0,
+                            "in-fragment-frames": 0,
+                            "in-mac-pause-frames": 0,
+                            "in-oversize-frames": 0,
+                            "out-mac-pause-frames": 0
+                        },
+                        "duplex-mode": "FULL",
+                        "effective-speed": 0,
+                        "mac-address": "08:00:27:78:47:29"
+                    }
+                },
                 "name": "Ethernet2",
                 "state": {
                     "admin-status": "DOWN",
@@ -78,6 +107,11 @@
                 }
             },
             "Loopback1": {
+                "ethernet": {
+                    "state": {
+                        "effective-speed": 0
+                    }
+                },
                 "name": "Loopback1",
                 "state": {
                     "admin-status": "UP",
@@ -90,6 +124,21 @@
                 }
             },
             "Management1": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0,
+                            "in-fragment-frames": 0,
+                            "in-mac-pause-frames": 0,
+                            "in-oversize-frames": 0,
+                            "out-mac-pause-frames": 0
+                        },
+                        "duplex-mode": "FULL",
+                        "effective-speed": 1000000,
+                        "hw-mac-address": "08:00:27:7d:44:c1",
+                        "mac-address": "08:00:27:7d:44:c1"
+                    }
+                },
                 "name": "Management1",
                 "state": {
                     "admin-status": "UP",
@@ -116,6 +165,12 @@
                 }
             },
             "Port-Channel1": {
+                "ethernet": {
+                    "state": {
+                        "effective-speed": 0,
+                        "mac-address": "08:00:27:78:47:29"
+                    }
+                },
                 "name": "Port-Channel1",
                 "state": {
                     "admin-status": "UP",
@@ -158,4 +213,3 @@
         }
     }
 }
-

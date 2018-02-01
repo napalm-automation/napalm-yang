@@ -57,6 +57,12 @@ In this case we are using the ``XMLParser`` parser. In order to get the data we 
 device we have to call the method ``_rpc`` with the ``args`` and ``kwargs`` parameters. This is, 
 by the way, an RPC call for a junos device.
 
+**Note:** If a model is called by other models, like openconfig-if-ethernet is called by openconfig-interfaces,
+there is no need to specify the execute section in the metadata, if the commands will be the same.
+Since the first model executes the commands, the data from the commands will be shared with the 
+models that the first model calls. While it will work it to specify the same commands in the metadata
+section for the second model, it could cause the commands to be executed multiple times.
+
 * **vlan** - This is the part that follows the model specification. In this case is ``vlan`` but in
   others it might be ``interfaces``, ``addressess`` or something else, this will be model dependent
   but it's basically whatever it's not ``metadata``. This part will follow the model specification
