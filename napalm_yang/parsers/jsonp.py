@@ -127,6 +127,11 @@ class JSONParser(BaseParser):
             return "", {}
         elif "gate" in mapping:
             return None, {}
+        elif "config_default" in mapping:
+            key = mapping.get('key', 'config_default')
+            config_default = self.resolve_path(
+                data[0], mapping["config_default"], mapping.get("default"))
+            return "", {key: config_default['#text']}
 
         d = self.resolve_path(data, mapping["path"], mapping.get("default"))
         return d, {}

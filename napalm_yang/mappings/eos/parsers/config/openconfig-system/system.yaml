@@ -50,7 +50,9 @@ system:
             state:
                 _process: not_implemented
             users:
-                _process: unnecessary
+                _process:
+                    - config_default: "aaa.authorization.policy.local.default-role"
+                      key: "default_role"
                 user:
                     _process:
                         - path: "username"
@@ -77,10 +79,10 @@ system:
                             _process:
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) nopassword"
-                                  post: "{{value}}:network-operator"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) secret \\S+"
-                                  post: "{{value}}:network-operator"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
                                   post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
