@@ -123,9 +123,14 @@ class BaseParser(object):
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                import pdb
-                pdb.set_trace()
-                continue
+                try:
+                    import pdb
+                    pdb.set_trace()
+                    continue
+                except ImportError:
+                    import pdb
+                    pdb.set_trace()
+                    continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
@@ -144,9 +149,14 @@ class BaseParser(object):
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                import pdb
-                pdb.set_trace()
-                continue
+                try:
+                    import pdb
+                    pdb.set_trace()
+                    continue
+                except ImportError:
+                    import pdb
+                    pdb.set_trace()
+                    continue
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result = self._parse_leaf_default(attribute, m, data)
 
@@ -160,23 +170,32 @@ class BaseParser(object):
     def parse_container(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
+        #if attribute == "users":
+        #    import ipdb; ipdb.set_trace()
+        all_extra_vars = {}
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                import pdb
-                pdb.set_trace()
-                continue
+                try:
+                    import ipdb
+                    ipdb.set_trace()
+                    continue
+                except ImportError:
+                    import pdb
+                    pdb.set_trace()
+                    continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result, extra_vars = self._parse_container_default(attribute, m, data)
-            if result or extra_vars:
+            all_extra_vars.update(extra_vars)
+            if result:
                 break
 
             # we restore the parent
             bookmarks["parent"] = parent
-        return result, extra_vars
+        return result, all_extra_vars
 
     def _parse_post_process_filter(self, post_process_filter, **kwargs):
         kwargs.update(self.keys)

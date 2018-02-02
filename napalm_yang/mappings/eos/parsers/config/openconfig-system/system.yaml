@@ -34,13 +34,16 @@ system:
         authentication:
             _process: unnecessary
             admin-user:
-                _process: not_implemented
+                _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     admin-password:
                         _process: not_implemented
                     admin-password-encrypted:
-                        _process: not_implemented
+                        _process:
+                            - path: "aaa.root.secret"
+                              from: root_system.0
+                              regexp: "(5|sha512) (?P<value>\\S+)$"
                 state:
                     _process: not_implemented
             config:
@@ -51,12 +54,18 @@ system:
                 _process: not_implemented
             users:
                 _process:
-                    - config_default: "aaa.authorization.policy.local.default-role"
-                      key: "default_role"
+                    - path: "aaa.authorization.policy.local.default-role"
+                      save: "default_role"
+                    - path: "aaa.authentication.enable.default"
+                      save: "thing"
                 user:
                     _process:
                         - path: "username"
                           from: root_system.0
+                          #- path: "aaa.authorization.policy.local.default-role"
+                          #save: "default_role"
+                          #pdb:
+                          #    enabled: true
                     config:
                         _process: unnecessary
                         password:
@@ -79,13 +88,13 @@ system:
                             _process:
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) nopassword"
-                                  post: "{{value}}:{{extra_vars.users.default_role}}"
+                                  post: "{{value}}:{{extra_vars.users.default_role}} {{extra_vars.users.thing}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) secret \\S+"
-                                  post: "{{value}}:{{extra_vars.users.default_role}}"
+                                  post: "{{value}}:{{extra_vars.users.default_role}} thing {{extra_vars.users.thing}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
-                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
+                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }} thing {{extra_vars.users.thing}}"
                         ssh-key:
                             _process: not_implemented
                         username:
