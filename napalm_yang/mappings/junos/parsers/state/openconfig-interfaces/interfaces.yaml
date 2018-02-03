@@ -147,7 +147,7 @@ interfaces:
                         _process: not_implemented
                     name:
                         _process:
-                            - value: "{{ subinterface_key }}"
+                            - pre: "{{ subinterface_key }}"
                     oper-status:
                         _process: not_implemented
                     counters:

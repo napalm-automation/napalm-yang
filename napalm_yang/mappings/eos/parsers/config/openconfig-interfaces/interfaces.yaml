@@ -28,7 +28,7 @@ interfaces:
                 _process: unnecessary
             type:
                 _process:
-                    - value: "{{ interface_key }}"
+                    - pre: "{{ interface_key }}"
                       regexp: "(?P<value>(\\w|-)*?)\\d+"
                       map:
                           ethernet: ethernetCsmacd
@@ -61,7 +61,7 @@ interfaces:
                         _process: unnecessary
                     name:
                         _process:
-                            - value: "{{ interface_key }}.{{ subinterface_key}}"
+                            - pre: "{{ interface_key }}.{{ subinterface_key}}"
                     enabled:
                         _process:
                             - path: "shutdown"
