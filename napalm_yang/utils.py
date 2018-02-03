@@ -1,7 +1,9 @@
 from napalm_yang import base
 
 
-def model_to_dict(model, mode=""):
+def model_to_dict(model,
+                  mode="",
+                  show_defaults=False):
     """
     Given a model, return a representation of the model in a dict.
 
@@ -52,9 +54,10 @@ def model_to_dict(model, mode=""):
         else:
             raise ValueError("mode can only be config, state or ''. Passed: {}".format(mode))
 
-    def get_key(key, model, parent_defining_module):
-        key = "{} {}".format(key, "[rw]" if model._is_config else "[ro]")
-
+    def get_key(key, model, parent_defining_module, show_defaults):
+        if not show_defaults:
+            # No need to display rw/ro when showing the defaults.
+            key = "{} {}".format(key, "[rw]" if model._is_config else "[ro]")
         if parent_defining_module != model._defining_module:
             key = "{}:{}".format(model._defining_module, key)
         return key
@@ -63,11 +66,19 @@ def model_to_dict(model, mode=""):
         cls = model if model._yang_type in ("container", ) else model._contained_class()
         result = {}
         for k, v in cls:
-            r = model_to_dict(v, mode)
+            r = model_to_dict(v, mode=mode, show_defaults=show_defaults)
             if r:
-                result[get_key(k, v, model._defining_module)] = r
+                result[get_key(k, v, model._defining_module, show_defaults)] = r
         return result
     else:
+        if show_defaults:
+            if model._default is False:
+                if model._yang_type != 'boolean':
+                    # Unless the datatype is bool, when the _default attribute
+                    # is False, it means there is not default value defined in
+                    # the YANG model.
+                    return None
+            return model._default
         return model._yang_type if is_mode(model, mode) else None
 
 
