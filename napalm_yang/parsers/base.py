@@ -125,7 +125,7 @@ class BaseParser(object):
             if pdb:
                 try:
                     import ipdb
-                    pdb.set_trace()
+                    ipdb.set_trace()
                     continue
                 except ImportError:
                     import pdb
@@ -193,7 +193,7 @@ class BaseParser(object):
 
             # we restore the parent
             bookmarks["parent"] = parent
-        return result, all_extra_vars
+        return result, extra_vars
 
     def _parse_post_process_filter(self, post_process_filter, **kwargs):
         kwargs.update(self.keys)

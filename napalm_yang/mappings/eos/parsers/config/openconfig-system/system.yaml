@@ -55,9 +55,8 @@ system:
             users:
                 _process:
                     - path: "aaa.authorization.policy.local.default-role"
-                      save: "default_role"
-                    - path: "aaa.authentication.enable.default"
-                      save: "thing"
+                      save_as: "default_role"
+                      from: root_system.0
                 user:
                     _process:
                         - path: "username"

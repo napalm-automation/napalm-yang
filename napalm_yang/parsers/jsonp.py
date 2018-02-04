@@ -127,10 +127,6 @@ class JSONParser(BaseParser):
             return "", {}
         elif "gate" in mapping:
             return None, {}
-        elif "save" in mapping:
-            d = self.resolve_path(
-                    data[0], mapping["path"], mapping.get("default"))
-            return "", {mapping['save']: d['#text']}
 
         d = self.resolve_path(data, mapping["path"], mapping.get("default"))
         if d:
