@@ -160,6 +160,7 @@ class BaseParser(object):
     def parse_container(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
+        extra_vars = {}
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
@@ -170,8 +171,9 @@ class BaseParser(object):
             # so we can restore it
             parent = bookmarks["parent"]
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
-            result, extra_vars = self._parse_container_default(attribute, m, data)
-            if result or extra_vars:
+            result, e = self._parse_container_default(attribute, m, data)
+            extra_vars.update(e)
+            if result:
                 break
 
             # we restore the parent
