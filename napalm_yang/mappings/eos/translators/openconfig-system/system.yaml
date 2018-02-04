@@ -32,13 +32,15 @@ system:
         authentication:
             _process: unnecessary
             admin-user:
-                _process: not_implemented
+                _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary 
                     admin-password:
                         _process: not_implemented
                     admin-password-encrypted:
-                        _process: not_implemented
+                        _process:
+                            - value: "aaa root secret {{ model }}\n"
+                              negate: "no aaa root secret\n"
                 state:
                     _process: not_implemented
             config:
@@ -51,16 +53,7 @@ system:
                 _process: unnecessary
                 user:
                     _process:
-                        - key_value: "
-{% set priv_role = model.config.role.split(':') %}
-username {{user_key}} privilege {{priv_role[0]}} role {{priv_role[1]}}
-{% if model.config.password_encrypted %}
-    secret {{model.config.password_encrypted}}
-{% else %}
-    nopassword
-{%endif%}
-\n
-"
+                        - key_value: "{% set priv_role = model.config.role.split(':') %}username {{user_key}} privilege {{priv_role[0]}} role {{priv_role[1]}} {% if model.config.password_encrypted %} secret {{model.config.password_encrypted}} {% else %} nopassword {%endif%}\n"
                           negate: "no username {{user_key}}\n"
                     config:
                         _process: not_implemented

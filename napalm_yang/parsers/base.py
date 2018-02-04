@@ -124,7 +124,7 @@ class BaseParser(object):
             pdb = m.get("pdb", {})
             if pdb:
                 try:
-                    import pdb
+                    import ipdb
                     pdb.set_trace()
                     continue
                 except ImportError:
@@ -150,8 +150,8 @@ class BaseParser(object):
             pdb = m.get("pdb", {})
             if pdb:
                 try:
-                    import pdb
-                    pdb.set_trace()
+                    import ipdb
+                    ipdb.set_trace()
                     continue
                 except ImportError:
                     import pdb
@@ -170,8 +170,6 @@ class BaseParser(object):
     def parse_container(self, attribute, mapping, bookmarks):
         mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
                                        process_all=False)
-        #if attribute == "users":
-        #    import ipdb; ipdb.set_trace()
         all_extra_vars = {}
         for m in mapping:
             pdb = m.get("pdb", {})

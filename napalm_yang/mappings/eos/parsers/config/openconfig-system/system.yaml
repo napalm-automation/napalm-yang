@@ -62,10 +62,6 @@ system:
                     _process:
                         - path: "username"
                           from: root_system.0
-                          #- path: "aaa.authorization.policy.local.default-role"
-                          #save: "default_role"
-                          #pdb:
-                          #    enabled: true
                     config:
                         _process: unnecessary
                         password:
@@ -79,22 +75,21 @@ system:
                                 - path: "privilege"
                                   regexp: "\\d+ secret (5|sha512) (?P<value>\\S+)$"
                         #
-                        # In EOS there is privilege and roles which are similar
-                        # here we try to grab both if they are set or just one
-                        # luckily the ordering is consistent regardless how it
-                        # was entered(in eos at least), privilege then role
+                        # In EOS there are privilege and roles which are similar
+                        # here we try to grab both and join the two, delimited
+                        # by a colon, into one string to set as the role
                         #
                         role:
                             _process:
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) nopassword"
-                                  post: "{{value}}:{{extra_vars.users.default_role}} {{extra_vars.users.thing}}"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>\\d+) secret \\S+"
-                                  post: "{{value}}:{{extra_vars.users.default_role}} thing {{extra_vars.users.thing}}"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
                                 - path: "privilege"
                                   regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
-                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }} thing {{extra_vars.users.thing}}"
+                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
                         ssh-key:
                             _process: not_implemented
                         username:
