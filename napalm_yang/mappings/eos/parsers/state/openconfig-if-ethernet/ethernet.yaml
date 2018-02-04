@@ -1,0 +1,67 @@
+---
+metadata:
+    processor: JSONParser
+ethernet:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+    state:
+        _process: unnecessary
+        auto-negotiate:
+            _process: not_implemented
+        counters:
+            _process:
+                - path: interfaceCounters
+            in-8021q-frames:
+                _process: not_implemented
+            in-crc-errors:
+                _process:
+                    - path: inputErrorsDetail.fcsErrors
+            in-fragment-frames:
+                _process:
+                    - path: inputErrorsDetail.runtFrames
+            in-jabber-frames:
+                _process: not_implemented
+            in-mac-control-frames:
+                _process: not_implemented
+            in-mac-pause-frames:
+                _process:
+                    - path: inputErrorsDetail.rxPause
+            in-oversize-frames:
+                _process:
+                    - path: inputErrorsDetail.giantFrames
+            out-8021q-frames:
+                _process: not_implemented
+            out-mac-control-frames:
+                _process: not_implemented
+            out-mac-pause-frames:
+                _process:
+                    - path: outputErrorsDetail.txPause
+        duplex-mode:
+            _process:
+                - path: duplex
+                  # Note the value string is .lower() after the regex is parsed
+                  # but before the map, hence the difference
+                  regexp: "(?P<value>duplexFull|duplexHalf)"
+                  map:
+                      duplexfull: FULL
+                      duplexhalf: HALF
+        effective-speed:
+            _process:
+                # OC effective-speed units are Mbps
+                - path: bandwidth
+                  post: "{{ value / 1000 }}"
+        enable-flow-control:
+            _process: not_implemented
+        hw-mac-address:
+            _process:
+                - path: burnedInAddress
+        mac-address:
+            _process:
+                - path: physicalAddress
+        negotiated-duplex-mode:
+            _process: not_implemented
+        negotiated-port-speed:
+            _process: not_implemented
+        port-speed:
+            _process: not_implemented

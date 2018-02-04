@@ -133,4 +133,8 @@ class JSONParser(BaseParser):
             return "", {mapping['save']: d['#text']}
 
         d = self.resolve_path(data, mapping["path"], mapping.get("default"))
+        if d:
+            d = d["#text"] if "#text" in d else d
+        if "save_as" in mapping:
+            return "", {mapping["save_as"]: d}
         return d, {}
