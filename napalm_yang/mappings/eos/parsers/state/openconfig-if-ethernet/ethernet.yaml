@@ -50,8 +50,7 @@ ethernet:
             _process:
                 # OC effective-speed units are Mbps
                 - path: bandwidth
-                  regexp: "(?P<value>\\d+)"
-                  value: "{{ value / 1000 }}"
+                  post: "{{ value / 1000 }}"
         enable-flow-control:
             _process: not_implemented
         hw-mac-address:

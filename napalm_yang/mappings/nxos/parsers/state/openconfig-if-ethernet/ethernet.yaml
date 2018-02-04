@@ -42,8 +42,7 @@ ethernet:
         effective-speed:
             _process:
                 - path: eth_bw
-                  regexp: "(?P<value>\\d+)"
-                  value: "{{ value / 1000 }}"
+                  post: "{{ value / 1000 }}"
         enable-flow-control:
             _process:
                 - path: eth_in_flowctrl
@@ -54,13 +53,13 @@ ethernet:
             _process:
                 - path: eth_bia_addr
                   regexp: "(?P<value>\\S+)"
-                  value: "{{ value | dotted_mac_to_colon }}"
+                  post: "{{ value | dotted_mac_to_colon }}"
                   when: "{{ interface_key[0:4] not in ['loop'] }}"
         mac-address:
             _process:
                 - path: eth_hw_addr
                   regexp: "(?P<value>\\S+)"
-                  value: "{{ value | dotted_mac_to_colon }}"
+                  post: "{{ value | dotted_mac_to_colon }}"
                   when: "{{ interface_key[0:4] not in ['loop'] }}"
         negotiated-duplex-mode:
             _process: not_implemented
