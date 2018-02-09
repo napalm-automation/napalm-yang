@@ -1,0 +1,28 @@
+---
+documentation:
+    title: Parse EOS privilege:role
+    summary: |
+        The role in eos is the combination of the privilege level and the role itself. In this example we should how to use a regular expression to capture data and postprocess it to set the correct role.
+    rule: ""
+    result: ""
+processor:
+    name: TextTree
+    attribute: role
+    root_name: system
+    node_type: leaf
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+rule:
+    - path: "aaa.authorization.policy.local.default-role"
+      save_as: "default_role"
+      default: "network-operator"
+    - path: "some.other.default.parameter"
+      save_as: "other"
+      default: "asdasd"
+expected:
+    - result: ""
+      extra_vars:
+        default_role: network-admin
+        other: asdasd
