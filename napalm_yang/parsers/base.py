@@ -93,6 +93,15 @@ def _resolve_path(obj, path):
         elif isinstance(obj, list):
             return _flatten_list(obj, path, current[1:])
 
+def _set_pdb_trace():
+    try:
+        import ipdb
+        ipdb.set_trace()
+    except ImportError:
+        import pdb
+        pdb.set_trace()
+
+
 
 class BaseParser(object):
 
@@ -123,14 +132,8 @@ class BaseParser(object):
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                try:
-                    import ipdb
-                    ipdb.set_trace()
-                    continue
-                except ImportError:
-                    import pdb
-                    pdb.set_trace()
-                    continue
+                _set_pdb_trace()
+                continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
@@ -149,14 +152,8 @@ class BaseParser(object):
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                try:
-                    import ipdb
-                    ipdb.set_trace()
-                    continue
-                except ImportError:
-                    import pdb
-                    pdb.set_trace()
-                    continue
+                _set_pdb_trace()
+                continue
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result = self._parse_leaf_default(attribute, m, data)
 
@@ -174,14 +171,8 @@ class BaseParser(object):
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
-                try:
-                    import ipdb
-                    ipdb.set_trace()
-                    continue
-                except ImportError:
-                    import pdb
-                    pdb.set_trace()
-                    continue
+                _set_pdb_trace()
+                continue
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
