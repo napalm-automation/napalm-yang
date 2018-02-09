@@ -93,6 +93,7 @@ def _resolve_path(obj, path):
         elif isinstance(obj, list):
             return _flatten_list(obj, path, current[1:])
 
+
 def _set_pdb_trace():
     try:
         import ipdb
@@ -100,7 +101,6 @@ def _set_pdb_trace():
     except ImportError:
         import pdb
         pdb.set_trace()
-
 
 
 class BaseParser(object):
