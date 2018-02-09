@@ -28,7 +28,7 @@ class neighbors(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: This container describes IS neighbors.
+  YANG Description: MT-IS neigbor attributes.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__neighbor',)
 
@@ -41,7 +41,7 @@ class neighbors(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbor = YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,7 +74,7 @@ class neighbors(PybindBase):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor (list)
 
-    YANG Description: MT-ISN neighbor attributes
+    YANG Description: This container describes IS neighbors.
     """
     return self.__neighbor
       
@@ -86,17 +86,17 @@ class neighbors(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_neighbor() directly.
 
-    YANG Description: MT-ISN neighbor attributes
+    YANG Description: This container describes IS neighbors.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+      t = YANGDynClass(v,base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """neighbor must be of a type compatible with list""",
           'defined-type': "list",
-          'generated-type': """YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
+          'generated-type': """YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
         })
 
     self.__neighbor = t
@@ -104,7 +104,7 @@ class neighbors(PybindBase):
       self._set()
 
   def _unset_neighbor(self):
-    self.__neighbor = YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbor = YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
   neighbor = __builtin__.property(_get_neighbor)
 
@@ -120,7 +120,7 @@ class neighbors(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: This container describes IS neighbors.
+  YANG Description: MT-IS neigbor attributes.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__neighbor',)
 
@@ -133,7 +133,7 @@ class neighbors(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__neighbor = YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbor = YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,7 +166,7 @@ class neighbors(PybindBase):
     """
     Getter method for neighbor, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor (list)
 
-    YANG Description: MT-ISN neighbor attributes
+    YANG Description: This container describes IS neighbors.
     """
     return self.__neighbor
       
@@ -178,17 +178,17 @@ class neighbors(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_neighbor() directly.
 
-    YANG Description: MT-ISN neighbor attributes
+    YANG Description: This container describes IS neighbors.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+      t = YANGDynClass(v,base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """neighbor must be of a type compatible with list""",
           'defined-type': "list",
-          'generated-type': """YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
+          'generated-type': """YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
         })
 
     self.__neighbor = t
@@ -196,7 +196,7 @@ class neighbors(PybindBase):
       self._set()
 
   def _unset_neighbor(self):
-    self.__neighbor = YANGDynClass(base=YANGListType(False,neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__neighbor = YANGDynClass(base=YANGListType("mt_id system_id",neighbor.neighbor, yang_name="neighbor", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='mt-id system-id', extensions=None), is_container='list', yang_name="neighbor", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
   neighbor = __builtin__.property(_get_neighbor)
 

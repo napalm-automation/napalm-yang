@@ -40,16 +40,16 @@ class counters(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__in_oversize_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__out_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_jabber_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_fragment_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__out_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__out_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
-    self.__in_crc_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_oversize_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__out_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_jabber_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_fragment_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__out_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__out_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
+    self.__in_crc_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -80,7 +80,7 @@ class counters(PybindBase):
 
   def _get_in_mac_control_frames(self):
     """
-    Getter method for in_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_control_frames (yang:counter64)
+    Getter method for in_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_control_frames (oc-yang:counter64)
 
     YANG Description: MAC layer control frames received on the interface
     """
@@ -88,7 +88,7 @@ class counters(PybindBase):
       
   def _set_in_mac_control_frames(self, v, load=False):
     """
-    Setter method for in_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_control_frames (yang:counter64)
+    Setter method for in_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_control_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_mac_control_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -99,12 +99,12 @@ class counters(PybindBase):
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_mac_control_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_mac_control_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_mac_control_frames = t
@@ -112,12 +112,12 @@ class counters(PybindBase):
       self._set()
 
   def _unset_in_mac_control_frames(self):
-    self.__in_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_mac_pause_frames(self):
     """
-    Getter method for in_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_pause_frames (yang:counter64)
+    Getter method for in_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_pause_frames (oc-yang:counter64)
 
     YANG Description: MAC layer PAUSE frames received on the interface
     """
@@ -125,7 +125,7 @@ class counters(PybindBase):
       
   def _set_in_mac_pause_frames(self, v, load=False):
     """
-    Setter method for in_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_pause_frames (yang:counter64)
+    Setter method for in_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_mac_pause_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_mac_pause_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -136,12 +136,12 @@ class counters(PybindBase):
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_mac_pause_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_mac_pause_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_mac_pause_frames = t
@@ -149,12 +149,12 @@ class counters(PybindBase):
       self._set()
 
   def _unset_in_mac_pause_frames(self):
-    self.__in_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_oversize_frames(self):
     """
-    Getter method for in_oversize_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_oversize_frames (yang:counter64)
+    Getter method for in_oversize_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_oversize_frames (oc-yang:counter64)
 
     YANG Description: Number of oversize frames received on the interface
     """
@@ -162,7 +162,7 @@ class counters(PybindBase):
       
   def _set_in_oversize_frames(self, v, load=False):
     """
-    Setter method for in_oversize_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_oversize_frames (yang:counter64)
+    Setter method for in_oversize_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_oversize_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_oversize_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -173,12 +173,12 @@ class counters(PybindBase):
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_oversize_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_oversize_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_oversize_frames = t
@@ -186,12 +186,12 @@ class counters(PybindBase):
       self._set()
 
   def _unset_in_oversize_frames(self):
-    self.__in_oversize_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_oversize_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-oversize-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_jabber_frames(self):
     """
-    Getter method for in_jabber_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_jabber_frames (yang:counter64)
+    Getter method for in_jabber_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_jabber_frames (oc-yang:counter64)
 
     YANG Description: Number of jabber frames received on the
 interface.  Jabber frames are typically defined as oversize
@@ -203,7 +203,7 @@ frame.  Often indicative of a NIC hardware problem.
       
   def _set_in_jabber_frames(self, v, load=False):
     """
-    Setter method for in_jabber_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_jabber_frames (yang:counter64)
+    Setter method for in_jabber_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_jabber_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_jabber_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -218,12 +218,12 @@ frame.  Often indicative of a NIC hardware problem.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_jabber_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_jabber_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_jabber_frames = t
@@ -231,12 +231,12 @@ frame.  Often indicative of a NIC hardware problem.
       self._set()
 
   def _unset_in_jabber_frames(self):
-    self.__in_jabber_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_jabber_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-jabber-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_fragment_frames(self):
     """
-    Getter method for in_fragment_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_fragment_frames (yang:counter64)
+    Getter method for in_fragment_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_fragment_frames (oc-yang:counter64)
 
     YANG Description: Number of fragment frames received on the interface.
     """
@@ -244,7 +244,7 @@ frame.  Often indicative of a NIC hardware problem.
       
   def _set_in_fragment_frames(self, v, load=False):
     """
-    Setter method for in_fragment_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_fragment_frames (yang:counter64)
+    Setter method for in_fragment_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_fragment_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_fragment_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -255,12 +255,12 @@ frame.  Often indicative of a NIC hardware problem.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_fragment_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_fragment_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_fragment_frames = t
@@ -268,12 +268,12 @@ frame.  Often indicative of a NIC hardware problem.
       self._set()
 
   def _unset_in_fragment_frames(self):
-    self.__in_fragment_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_fragment_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-fragment-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_8021q_frames(self):
     """
-    Getter method for in_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_8021q_frames (yang:counter64)
+    Getter method for in_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_8021q_frames (oc-yang:counter64)
 
     YANG Description: Number of 802.1q tagged frames received on the interface
     """
@@ -281,7 +281,7 @@ frame.  Often indicative of a NIC hardware problem.
       
   def _set_in_8021q_frames(self, v, load=False):
     """
-    Setter method for in_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_8021q_frames (yang:counter64)
+    Setter method for in_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_8021q_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_8021q_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -292,12 +292,12 @@ frame.  Often indicative of a NIC hardware problem.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_8021q_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_8021q_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_8021q_frames = t
@@ -305,12 +305,12 @@ frame.  Often indicative of a NIC hardware problem.
       self._set()
 
   def _unset_in_8021q_frames(self):
-    self.__in_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_in_crc_errors(self):
     """
-    Getter method for in_crc_errors, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_crc_errors (yang:counter64)
+    Getter method for in_crc_errors, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_crc_errors (oc-yang:counter64)
 
     YANG Description: Number of receive error events due to FCS/CRC check
 failure
@@ -319,7 +319,7 @@ failure
       
   def _set_in_crc_errors(self, v, load=False):
     """
-    Setter method for in_crc_errors, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_crc_errors (yang:counter64)
+    Setter method for in_crc_errors, mapped from YANG variable /interfaces/interface/ethernet/state/counters/in_crc_errors (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_in_crc_errors is considered as a private
     method. Backends looking to populate this variable should
@@ -331,12 +331,12 @@ failure
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """in_crc_errors must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """in_crc_errors must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__in_crc_errors = t
@@ -344,12 +344,12 @@ failure
       self._set()
 
   def _unset_in_crc_errors(self):
-    self.__in_crc_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__in_crc_errors = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="in-crc-errors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_out_mac_control_frames(self):
     """
-    Getter method for out_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_control_frames (yang:counter64)
+    Getter method for out_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_control_frames (oc-yang:counter64)
 
     YANG Description: MAC layer control frames sent on the interface
     """
@@ -357,7 +357,7 @@ failure
       
   def _set_out_mac_control_frames(self, v, load=False):
     """
-    Setter method for out_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_control_frames (yang:counter64)
+    Setter method for out_mac_control_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_control_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_out_mac_control_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -368,12 +368,12 @@ failure
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """out_mac_control_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """out_mac_control_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__out_mac_control_frames = t
@@ -381,12 +381,12 @@ failure
       self._set()
 
   def _unset_out_mac_control_frames(self):
-    self.__out_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__out_mac_control_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-control-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_out_mac_pause_frames(self):
     """
-    Getter method for out_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_pause_frames (yang:counter64)
+    Getter method for out_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_pause_frames (oc-yang:counter64)
 
     YANG Description: MAC layer PAUSE frames sent on the interface
     """
@@ -394,7 +394,7 @@ failure
       
   def _set_out_mac_pause_frames(self, v, load=False):
     """
-    Setter method for out_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_pause_frames (yang:counter64)
+    Setter method for out_mac_pause_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_mac_pause_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_out_mac_pause_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -405,12 +405,12 @@ failure
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """out_mac_pause_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """out_mac_pause_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__out_mac_pause_frames = t
@@ -418,12 +418,12 @@ failure
       self._set()
 
   def _unset_out_mac_pause_frames(self):
-    self.__out_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__out_mac_pause_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-mac-pause-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
 
   def _get_out_8021q_frames(self):
     """
-    Getter method for out_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_8021q_frames (yang:counter64)
+    Getter method for out_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_8021q_frames (oc-yang:counter64)
 
     YANG Description: Number of 802.1q tagged frames sent on the interface
     """
@@ -431,7 +431,7 @@ failure
       
   def _set_out_8021q_frames(self, v, load=False):
     """
-    Setter method for out_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_8021q_frames (yang:counter64)
+    Setter method for out_8021q_frames, mapped from YANG variable /interfaces/interface/ethernet/state/counters/out_8021q_frames (oc-yang:counter64)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_out_8021q_frames is considered as a private
     method. Backends looking to populate this variable should
@@ -442,12 +442,12 @@ failure
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """out_8021q_frames must be of a type compatible with yang:counter64""",
-          'defined-type': "yang:counter64",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)""",
+          'error-string': """out_8021q_frames must be of a type compatible with oc-yang:counter64""",
+          'defined-type': "oc-yang:counter64",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)""",
         })
 
     self.__out_8021q_frames = t
@@ -455,7 +455,7 @@ failure
       self._set()
 
   def _unset_out_8021q_frames(self):
-    self.__out_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:counter64', is_config=False)
+    self.__out_8021q_frames = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="out-8021q-frames", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:counter64', is_config=False)
 
   in_mac_control_frames = __builtin__.property(_get_in_mac_control_frames)
   in_mac_pause_frames = __builtin__.property(_get_in_mac_pause_frames)

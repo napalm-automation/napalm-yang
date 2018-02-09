@@ -42,8 +42,8 @@ configured on the interface
 
     self._extmethods = False
     self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'DYNAMIC': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='neighbor-origin', is_config=False)
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=False)
-    self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
+    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv4-address', is_config=False)
+    self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?$'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-yang:phys-address', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,7 +74,7 @@ configured on the interface
 
   def _get_ip(self):
     """
-    Getter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/ip (inet:ipv4-address-no-zone)
+    Getter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/ip (oc-inet:ipv4-address)
 
     YANG Description: The IPv4 address of the neighbor node.
     """
@@ -82,7 +82,7 @@ configured on the interface
       
   def _set_ip(self, v, load=False):
     """
-    Setter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/ip (inet:ipv4-address-no-zone)
+    Setter method for ip, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/ip (oc-inet:ipv4-address)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_ip is considered as a private
     method. Backends looking to populate this variable should
@@ -93,12 +93,12 @@ configured on the interface
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv4-address', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ip must be of a type compatible with inet:ipv4-address-no-zone""",
-          'defined-type': "inet:ipv4-address-no-zone",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=False)""",
+          'error-string': """ip must be of a type compatible with oc-inet:ipv4-address""",
+          'defined-type': "oc-inet:ipv4-address",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv4-address', is_config=False)""",
         })
 
     self.__ip = t
@@ -106,12 +106,12 @@ configured on the interface
       self._set()
 
   def _unset_ip(self):
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv4-address-no-zone', is_config=False)
+    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv4-address', is_config=False)
 
 
   def _get_link_layer_address(self):
     """
-    Getter method for link_layer_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/link_layer_address (yang:phys-address)
+    Getter method for link_layer_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/link_layer_address (oc-yang:phys-address)
 
     YANG Description: The link-layer address of the neighbor node.
     """
@@ -119,7 +119,7 @@ configured on the interface
       
   def _set_link_layer_address(self, v, load=False):
     """
-    Setter method for link_layer_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/link_layer_address (yang:phys-address)
+    Setter method for link_layer_address, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/neighbors/neighbor/state/link_layer_address (oc-yang:phys-address)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_link_layer_address is considered as a private
     method. Backends looking to populate this variable should
@@ -130,12 +130,12 @@ configured on the interface
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?$'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-yang:phys-address', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """link_layer_address must be of a type compatible with yang:phys-address""",
-          'defined-type': "yang:phys-address",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)""",
+          'error-string': """link_layer_address must be of a type compatible with oc-yang:phys-address""",
+          'defined-type': "oc-yang:phys-address",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?$'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-yang:phys-address', is_config=False)""",
         })
 
     self.__link_layer_address = t
@@ -143,7 +143,7 @@ configured on the interface
       self._set()
 
   def _unset_link_layer_address(self):
-    self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='yang:phys-address', is_config=False)
+    self.__link_layer_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^([0-9a-fA-F]{2}(:[0-9a-fA-F]{2})*)?$'}), is_leaf=True, yang_name="link-layer-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-yang:phys-address', is_config=False)
 
 
   def _get_origin(self):

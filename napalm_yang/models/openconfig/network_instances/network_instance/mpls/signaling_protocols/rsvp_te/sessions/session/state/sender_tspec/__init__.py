@@ -41,9 +41,9 @@ received for the RSVP session
     self._path_helper = False
 
     self._extmethods = False
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -95,12 +95,12 @@ expressed in bytes per second.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """rate must be of a type compatible with oc-types:ieeefloat32""",
           'defined-type': "oc-types:ieeefloat32",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
         })
 
     self.__rate = t
@@ -108,7 +108,7 @@ expressed in bytes per second.
       self._set()
 
   def _unset_rate(self):
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
   def _get_size(self):
@@ -136,12 +136,12 @@ expressed in bytes per second.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """size must be of a type compatible with oc-types:ieeefloat32""",
           'defined-type': "oc-types:ieeefloat32",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
         })
 
     self.__size = t
@@ -149,7 +149,7 @@ expressed in bytes per second.
       self._set()
 
   def _unset_size(self):
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
   def _get_peak_data_rate(self):
@@ -175,12 +175,12 @@ device sends traffic at.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+      t = YANGDynClass(v,base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """peak_data_rate must be of a type compatible with union""",
           'defined-type': "openconfig-network-instance:union",
-          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)""",
+          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)""",
         })
 
     self.__peak_data_rate = t
@@ -188,7 +188,7 @@ device sends traffic at.
       self._set()
 
   def _unset_peak_data_rate(self):
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
   rate = __builtin__.property(_get_rate)
   size = __builtin__.property(_get_size)
@@ -219,9 +219,9 @@ received for the RSVP session
     self._path_helper = False
 
     self._extmethods = False
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -273,12 +273,12 @@ expressed in bytes per second.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """rate must be of a type compatible with oc-types:ieeefloat32""",
           'defined-type': "oc-types:ieeefloat32",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
         })
 
     self.__rate = t
@@ -286,7 +286,7 @@ expressed in bytes per second.
       self._set()
 
   def _unset_rate(self):
-    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__rate = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
   def _get_size(self):
@@ -314,12 +314,12 @@ expressed in bytes per second.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """size must be of a type compatible with oc-types:ieeefloat32""",
           'defined-type': "oc-types:ieeefloat32",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)""",
         })
 
     self.__size = t
@@ -327,7 +327,7 @@ expressed in bytes per second.
       self._set()
 
   def _unset_size(self):
-    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
+    self.__size = YANGDynClass(base=RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-types:ieeefloat32', is_config=False)
 
 
   def _get_peak_data_rate(self):
@@ -353,12 +353,12 @@ device sends traffic at.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+      t = YANGDynClass(v,base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """peak_data_rate must be of a type compatible with union""",
           'defined-type': "openconfig-network-instance:union",
-          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)""",
+          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)""",
         })
 
     self.__peak_data_rate = t
@@ -366,7 +366,7 @@ device sends traffic at.
       self._set()
 
   def _unset_peak_data_rate(self):
-    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'32']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
+    self.__peak_data_rate = YANGDynClass(base=[RestrictedClassType(base_type=bitarray, restriction_dict={'length': [u'4']}),RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'INFINITY': {}},),], is_leaf=True, yang_name="peak-data-rate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='union', is_config=False)
 
   rate = __builtin__.property(_get_rate)
   size = __builtin__.property(_get_size)

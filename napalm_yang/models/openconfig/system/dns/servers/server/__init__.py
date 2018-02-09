@@ -29,9 +29,7 @@ class server(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: [adapted from IETF system model RFC 7317]
-
-List of the DNS servers that the resolver should query.
+  YANG Description: List of the DNS servers that the resolver should query.
 
 When the resolver is invoked by a calling application, it
 sends the query to the first name server in this list.  If

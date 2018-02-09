@@ -74,7 +74,7 @@ class link_state_database(PybindBase):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp (list)
 
-    YANG Description: This list describes LSPs in LSDB.
+    YANG Description: This list describes LSPs in the LSDB.
     """
     return self.__lsp
       
@@ -86,7 +86,7 @@ class link_state_database(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_lsp() directly.
 
-    YANG Description: This list describes LSPs in LSDB.
+    YANG Description: This list describes LSPs in the LSDB.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -166,7 +166,7 @@ class link_state_database(PybindBase):
     """
     Getter method for lsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp (list)
 
-    YANG Description: This list describes LSPs in LSDB.
+    YANG Description: This list describes LSPs in the LSDB.
     """
     return self.__lsp
       
@@ -178,7 +178,7 @@ class link_state_database(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_lsp() directly.
 
-    YANG Description: This list describes LSPs in LSDB.
+    YANG Description: This list describes LSPs in the LSDB.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

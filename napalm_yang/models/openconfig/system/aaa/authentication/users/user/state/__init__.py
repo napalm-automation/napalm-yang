@@ -29,7 +29,7 @@ class state(PybindBase):
 
   YANG Description: Operational state data for local users
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__username','__password','__password_encrypted','__ssh_key','__role',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__username','__password','__password_hashed','__ssh_key','__role',)
 
   _yang_name = 'state'
 
@@ -41,9 +41,9 @@ class state(PybindBase):
 
     self._extmethods = False
     self.__username = YANGDynClass(base=unicode, is_leaf=True, yang_name="username", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
-    self.__role = YANGDynClass(base=[unicode,RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SYSTEM_ROLE_ADMIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:SYSTEM_ROLE_ADMIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),], is_leaf=True, yang_name="role", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=False)
+    self.__password_hashed = YANGDynClass(base=unicode, is_leaf=True, yang_name="password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
     self.__password = YANGDynClass(base=unicode, is_leaf=True, yang_name="password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
-    self.__password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
+    self.__role = YANGDynClass(base=[unicode,RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SYSTEM_ROLE_ADMIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}, u'oc-aaa-types:SYSTEM_ROLE_ADMIN': {'@namespace': u'http://openconfig.net/yang/aaa/types', '@module': u'openconfig-aaa-types'}},),], is_leaf=True, yang_name="role", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='union', is_config=False)
     self.__ssh_key = YANGDynClass(base=unicode, is_leaf=True, yang_name="ssh-key", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
 
     load = kwargs.pop("load", None)
@@ -115,7 +115,7 @@ class state(PybindBase):
     Getter method for password, mapped from YANG variable /system/aaa/authentication/users/user/state/password (string)
 
     YANG Description: The user password, supplied as cleartext.  The system
-must encrypt the value and only store the encrypted value.
+must hash the value and only store the hashed value.
     """
     return self.__password
       
@@ -128,7 +128,7 @@ must encrypt the value and only store the encrypted value.
     do so via calling thisObj._set_password() directly.
 
     YANG Description: The user password, supplied as cleartext.  The system
-must encrypt the value and only store the encrypted value.
+must hash the value and only store the hashed value.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -149,45 +149,45 @@ must encrypt the value and only store the encrypted value.
     self.__password = YANGDynClass(base=unicode, is_leaf=True, yang_name="password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=False)
 
 
-  def _get_password_encrypted(self):
+  def _get_password_hashed(self):
     """
-    Getter method for password_encrypted, mapped from YANG variable /system/aaa/authentication/users/user/state/password_encrypted (oc-aaa-types:crypt-password-type)
+    Getter method for password_hashed, mapped from YANG variable /system/aaa/authentication/users/user/state/password_hashed (oc-aaa-types:crypt-password-type)
 
-    YANG Description: The user password, supplied as an encrypted value
+    YANG Description: The user password, supplied as a hashed value
 using the notation described in the definition of the
 crypt-password-type.
     """
-    return self.__password_encrypted
+    return self.__password_hashed
       
-  def _set_password_encrypted(self, v, load=False):
+  def _set_password_hashed(self, v, load=False):
     """
-    Setter method for password_encrypted, mapped from YANG variable /system/aaa/authentication/users/user/state/password_encrypted (oc-aaa-types:crypt-password-type)
+    Setter method for password_hashed, mapped from YANG variable /system/aaa/authentication/users/user/state/password_hashed (oc-aaa-types:crypt-password-type)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_password_encrypted is considered as a private
+    source YANG file, then _set_password_hashed is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_password_encrypted() directly.
+    do so via calling thisObj._set_password_hashed() directly.
 
-    YANG Description: The user password, supplied as an encrypted value
+    YANG Description: The user password, supplied as a hashed value
 using the notation described in the definition of the
 crypt-password-type.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """password_encrypted must be of a type compatible with oc-aaa-types:crypt-password-type""",
+          'error-string': """password_hashed must be of a type compatible with oc-aaa-types:crypt-password-type""",
           'defined-type': "oc-aaa-types:crypt-password-type",
-          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)""",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)""",
         })
 
-    self.__password_encrypted = t
+    self.__password_hashed = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_password_encrypted(self):
-    self.__password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
+  def _unset_password_hashed(self):
+    self.__password_hashed = YANGDynClass(base=unicode, is_leaf=True, yang_name="password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=False)
 
 
   def _get_ssh_key(self):
@@ -269,11 +269,11 @@ identity.
 
   username = __builtin__.property(_get_username)
   password = __builtin__.property(_get_password)
-  password_encrypted = __builtin__.property(_get_password_encrypted)
+  password_hashed = __builtin__.property(_get_password_hashed)
   ssh_key = __builtin__.property(_get_ssh_key)
   role = __builtin__.property(_get_role)
 
 
-  _pyangbind_elements = {'username': username, 'password': password, 'password_encrypted': password_encrypted, 'ssh_key': ssh_key, 'role': role, }
+  _pyangbind_elements = {'username': username, 'password': password, 'password_hashed': password_hashed, 'ssh_key': ssh_key, 'role': role, }
 
 

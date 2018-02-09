@@ -42,7 +42,7 @@ interface
 
     self._extmethods = False
     self.__origin = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'LINK_LAYER': {}, u'DHCP': {}, u'RANDOM': {}, u'OTHER': {}, u'STATIC': {}},), is_leaf=True, yang_name="origin", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='ip-address-origin', is_config=False)
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
+    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv6-address', is_config=False)
     self.__status = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'TENTATIVE': {}, u'DEPRECATED': {}, u'INACCESSIBLE': {}, u'INVALID': {}, u'DUPLICATE': {}, u'PREFERRED': {}, u'UNKNOWN': {}, u'OPTIMISTIC': {}},), is_leaf=True, yang_name="status", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='enumeration', is_config=False)
     self.__prefix_length = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..255']}, int_size=8), restriction_dict={'range': [u'0..128']}), is_leaf=True, yang_name="prefix-length", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint8', is_config=False)
 
@@ -75,35 +75,31 @@ interface
 
   def _get_ip(self):
     """
-    Getter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/ip (inet:ipv6-address-no-zone)
+    Getter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/ip (oc-inet:ipv6-address)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The IPv6 address on the interface.
+    YANG Description: The IPv6 address on the interface.
     """
     return self.__ip
       
   def _set_ip(self, v, load=False):
     """
-    Setter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/ip (inet:ipv6-address-no-zone)
+    Setter method for ip, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/ip (oc-inet:ipv6-address)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_ip is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_ip() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The IPv6 address on the interface.
+    YANG Description: The IPv6 address on the interface.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv6-address', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ip must be of a type compatible with inet:ipv6-address-no-zone""",
-          'defined-type': "inet:ipv6-address-no-zone",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)""",
+          'error-string': """ip must be of a type compatible with oc-inet:ipv6-address""",
+          'defined-type': "oc-inet:ipv6-address",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv6-address', is_config=False)""",
         })
 
     self.__ip = t
@@ -111,16 +107,14 @@ The IPv6 address on the interface.
       self._set()
 
   def _unset_ip(self):
-    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\\p{N}\\p{L}]+)?'}), restriction_dict={'pattern': u'[0-9a-fA-F:\\.]*'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='inet:ipv6-address-no-zone', is_config=False)
+    self.__ip = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$'}), is_leaf=True, yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='oc-inet:ipv6-address', is_config=False)
 
 
   def _get_prefix_length(self):
     """
     Getter method for prefix_length, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/prefix_length (uint8)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The length of the subnet prefix.
+    YANG Description: The length of the subnet prefix.
     """
     return self.__prefix_length
       
@@ -132,9 +126,7 @@ The length of the subnet prefix.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_prefix_length() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The length of the subnet prefix.
+    YANG Description: The length of the subnet prefix.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -159,9 +151,7 @@ The length of the subnet prefix.
     """
     Getter method for origin, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/origin (ip-address-origin)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The origin of this address, e.g., static, dhcp, etc.
+    YANG Description: The origin of this address, e.g., static, dhcp, etc.
     """
     return self.__origin
       
@@ -173,9 +163,7 @@ The origin of this address, e.g., static, dhcp, etc.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_origin() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The origin of this address, e.g., static, dhcp, etc.
+    YANG Description: The origin of this address, e.g., static, dhcp, etc.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -200,9 +188,7 @@ The origin of this address, e.g., static, dhcp, etc.
     """
     Getter method for status, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/addresses/address/state/status (enumeration)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The status of an address.  Most of the states correspond
+    YANG Description: The status of an address.  Most of the states correspond
 to states from the IPv6 Stateless Address
 Autoconfiguration protocol.
     """
@@ -216,9 +202,7 @@ Autoconfiguration protocol.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_status() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The status of an address.  Most of the states correspond
+    YANG Description: The status of an address.  Most of the states correspond
 to states from the IPv6 Stateless Address
 Autoconfiguration protocol.
     """

@@ -21,7 +21,7 @@ elif six.PY2:
   import __builtin__
 
 from . import state
-from . import subTLVs
+from . import subtlvs
 from . import undefined_subtlvs
 class neighbor(PybindBase):
   """
@@ -30,9 +30,9 @@ class neighbor(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: MT-ISN neighbor attributes
+  YANG Description: This container describes IS neighbors.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__state','__subTLVs','__undefined_subtlvs',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__mt_id','__system_id','__state','__subtlvs','__undefined_subtlvs',)
 
   _yang_name = 'neighbor'
 
@@ -43,8 +43,10 @@ class neighbor(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subTLVs = YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__mt_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__system_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
@@ -73,6 +75,92 @@ class neighbor(PybindBase):
       return self._parent._path()+[self._yang_name]
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-isn', u'neighbors', u'neighbor']
+
+  def _get_mt_id(self):
+    """
+    Getter method for mt_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/mt_id (leafref)
+
+    YANG Description: Reference to the topology that the neighbor is
+within.
+    """
+    return self.__mt_id
+      
+  def _set_mt_id(self, v, load=False):
+    """
+    Setter method for mt_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/mt_id (leafref)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_mt_id is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_mt_id() directly.
+
+    YANG Description: Reference to the topology that the neighbor is
+within.
+    """
+    parent = getattr(self, "_parent", None)
+    if parent is not None and load is False:
+      raise AttributeError("Cannot set keys directly when" +
+                             " within an instantiated list")
+
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """mt_id must be of a type compatible with leafref""",
+          'defined-type': "leafref",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)""",
+        })
+
+    self.__mt_id = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_mt_id(self):
+    self.__mt_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+
+
+  def _get_system_id(self):
+    """
+    Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/system_id (leafref)
+
+    YANG Description: Reference to the System ID of the neighbor.
+    """
+    return self.__system_id
+      
+  def _set_system_id(self, v, load=False):
+    """
+    Setter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/system_id (leafref)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_system_id is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_system_id() directly.
+
+    YANG Description: Reference to the System ID of the neighbor.
+    """
+    parent = getattr(self, "_parent", None)
+    if parent is not None and load is False:
+      raise AttributeError("Cannot set keys directly when" +
+                             " within an instantiated list")
+
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """system_id must be of a type compatible with leafref""",
+          'defined-type': "leafref",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)""",
+        })
+
+    self.__system_id = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_system_id(self):
+    self.__system_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+
 
   def _get_state(self):
     """
@@ -111,41 +199,41 @@ class neighbor(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_subTLVs(self):
+  def _get_subtlvs(self):
     """
-    Getter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subTLVs (container)
+    Getter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subtlvs (container)
 
     YANG Description: This container describes IS Neighbor sub-TLVs.
     """
-    return self.__subTLVs
+    return self.__subtlvs
       
-  def _set_subTLVs(self, v, load=False):
+  def _set_subtlvs(self, v, load=False):
     """
-    Setter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subTLVs (container)
+    Setter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subtlvs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_subTLVs is considered as a private
+    source YANG file, then _set_subtlvs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_subTLVs() directly.
+    do so via calling thisObj._set_subtlvs() directly.
 
     YANG Description: This container describes IS Neighbor sub-TLVs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """subTLVs must be of a type compatible with container""",
+          'error-string': """subtlvs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__subTLVs = t
+    self.__subtlvs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_subTLVs(self):
-    self.__subTLVs = YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_subtlvs(self):
+    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_undefined_subtlvs(self):
@@ -184,16 +272,18 @@ class neighbor(PybindBase):
   def _unset_undefined_subtlvs(self):
     self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
+  mt_id = __builtin__.property(_get_mt_id)
+  system_id = __builtin__.property(_get_system_id)
   state = __builtin__.property(_get_state)
-  subTLVs = __builtin__.property(_get_subTLVs)
+  subtlvs = __builtin__.property(_get_subtlvs)
   undefined_subtlvs = __builtin__.property(_get_undefined_subtlvs)
 
 
-  _pyangbind_elements = {'state': state, 'subTLVs': subTLVs, 'undefined_subtlvs': undefined_subtlvs, }
+  _pyangbind_elements = {'mt_id': mt_id, 'system_id': system_id, 'state': state, 'subtlvs': subtlvs, 'undefined_subtlvs': undefined_subtlvs, }
 
 
 from . import state
-from . import subTLVs
+from . import subtlvs
 from . import undefined_subtlvs
 class neighbor(PybindBase):
   """
@@ -202,9 +292,9 @@ class neighbor(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: MT-ISN neighbor attributes
+  YANG Description: This container describes IS neighbors.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__state','__subTLVs','__undefined_subtlvs',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__mt_id','__system_id','__state','__subtlvs','__undefined_subtlvs',)
 
   _yang_name = 'neighbor'
 
@@ -215,8 +305,10 @@ class neighbor(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__subTLVs = YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__mt_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__system_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
     self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
@@ -245,6 +337,92 @@ class neighbor(PybindBase):
       return self._parent._path()+[self._yang_name]
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'mt-isn', u'neighbors', u'neighbor']
+
+  def _get_mt_id(self):
+    """
+    Getter method for mt_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/mt_id (leafref)
+
+    YANG Description: Reference to the topology that the neighbor is
+within.
+    """
+    return self.__mt_id
+      
+  def _set_mt_id(self, v, load=False):
+    """
+    Setter method for mt_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/mt_id (leafref)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_mt_id is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_mt_id() directly.
+
+    YANG Description: Reference to the topology that the neighbor is
+within.
+    """
+    parent = getattr(self, "_parent", None)
+    if parent is not None and load is False:
+      raise AttributeError("Cannot set keys directly when" +
+                             " within an instantiated list")
+
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """mt_id must be of a type compatible with leafref""",
+          'defined-type': "leafref",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)""",
+        })
+
+    self.__mt_id = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_mt_id(self):
+    self.__mt_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="mt-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+
+
+  def _get_system_id(self):
+    """
+    Getter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/system_id (leafref)
+
+    YANG Description: Reference to the System ID of the neighbor.
+    """
+    return self.__system_id
+      
+  def _set_system_id(self, v, load=False):
+    """
+    Setter method for system_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/system_id (leafref)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_system_id is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_system_id() directly.
+
+    YANG Description: Reference to the System ID of the neighbor.
+    """
+    parent = getattr(self, "_parent", None)
+    if parent is not None and load is False:
+      raise AttributeError("Cannot set keys directly when" +
+                             " within an instantiated list")
+
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """system_id must be of a type compatible with leafref""",
+          'defined-type': "leafref",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)""",
+        })
+
+    self.__system_id = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_system_id(self):
+    self.__system_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="system-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+
 
   def _get_state(self):
     """
@@ -283,41 +461,41 @@ class neighbor(PybindBase):
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_subTLVs(self):
+  def _get_subtlvs(self):
     """
-    Getter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subTLVs (container)
+    Getter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subtlvs (container)
 
     YANG Description: This container describes IS Neighbor sub-TLVs.
     """
-    return self.__subTLVs
+    return self.__subtlvs
       
-  def _set_subTLVs(self, v, load=False):
+  def _set_subtlvs(self, v, load=False):
     """
-    Setter method for subTLVs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subTLVs (container)
+    Setter method for subtlvs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isn/neighbors/neighbor/subtlvs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_subTLVs is considered as a private
+    source YANG file, then _set_subtlvs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_subTLVs() directly.
+    do so via calling thisObj._set_subtlvs() directly.
 
     YANG Description: This container describes IS Neighbor sub-TLVs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """subTLVs must be of a type compatible with container""",
+          'error-string': """subtlvs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__subTLVs = t
+    self.__subtlvs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_subTLVs(self):
-    self.__subTLVs = YANGDynClass(base=subTLVs.subTLVs, is_container='container', yang_name="subTLVs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_subtlvs(self):
+    self.__subtlvs = YANGDynClass(base=subtlvs.subtlvs, is_container='container', yang_name="subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_undefined_subtlvs(self):
@@ -356,11 +534,13 @@ class neighbor(PybindBase):
   def _unset_undefined_subtlvs(self):
     self.__undefined_subtlvs = YANGDynClass(base=undefined_subtlvs.undefined_subtlvs, is_container='container', yang_name="undefined-subtlvs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
+  mt_id = __builtin__.property(_get_mt_id)
+  system_id = __builtin__.property(_get_system_id)
   state = __builtin__.property(_get_state)
-  subTLVs = __builtin__.property(_get_subTLVs)
+  subtlvs = __builtin__.property(_get_subtlvs)
   undefined_subtlvs = __builtin__.property(_get_undefined_subtlvs)
 
 
-  _pyangbind_elements = {'state': state, 'subTLVs': subTLVs, 'undefined_subtlvs': undefined_subtlvs, }
+  _pyangbind_elements = {'mt_id': mt_id, 'system_id': system_id, 'state': state, 'subtlvs': subtlvs, 'undefined_subtlvs': undefined_subtlvs, }
 
 

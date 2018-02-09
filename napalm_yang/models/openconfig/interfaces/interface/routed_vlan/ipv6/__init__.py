@@ -21,6 +21,7 @@ elif six.PY2:
   import __builtin__
 
 from . import addresses
+from . import router_advertisement
 from . import neighbors
 from . import unnumbered
 from . import config
@@ -34,7 +35,7 @@ class ipv6(PybindBase):
 
   YANG Description: Parameters for the IPv6 address family.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__addresses','__neighbors','__unnumbered','__config','__state',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__addresses','__router_advertisement','__neighbors','__unnumbered','__config','__state',)
 
   _yang_name = 'ipv6'
 
@@ -46,10 +47,11 @@ class ipv6(PybindBase):
 
     self._extmethods = False
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__router_advertisement = YANGDynClass(base=router_advertisement.router_advertisement, is_container='container', yang_name="router-advertisement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -113,6 +115,45 @@ class ipv6(PybindBase):
 
   def _unset_addresses(self):
     self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+
+
+  def _get_router_advertisement(self):
+    """
+    Getter method for router_advertisement, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/router_advertisement (container)
+
+    YANG Description: Configuration and operational state parameters relating to
+router advertisements.
+    """
+    return self.__router_advertisement
+      
+  def _set_router_advertisement(self, v, load=False):
+    """
+    Setter method for router_advertisement, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/router_advertisement (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_router_advertisement is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_router_advertisement() directly.
+
+    YANG Description: Configuration and operational state parameters relating to
+router advertisements.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=router_advertisement.router_advertisement, is_container='container', yang_name="router-advertisement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """router_advertisement must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=router_advertisement.router_advertisement, is_container='container', yang_name="router-advertisement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)""",
+        })
+
+    self.__router_advertisement = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_router_advertisement(self):
+    self.__router_advertisement = YANGDynClass(base=router_advertisement.router_advertisement, is_container='container', yang_name="router-advertisement", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
   def _get_neighbors(self):
@@ -267,12 +308,13 @@ address information
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
   addresses = __builtin__.property(_get_addresses, _set_addresses)
+  router_advertisement = __builtin__.property(_get_router_advertisement, _set_router_advertisement)
   neighbors = __builtin__.property(_get_neighbors, _set_neighbors)
   unnumbered = __builtin__.property(_get_unnumbered, _set_unnumbered)
   config = __builtin__.property(_get_config, _set_config)
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'addresses': addresses, 'neighbors': neighbors, 'unnumbered': unnumbered, 'config': config, 'state': state, }
+  _pyangbind_elements = {'addresses': addresses, 'router_advertisement': router_advertisement, 'neighbors': neighbors, 'unnumbered': unnumbered, 'config': config, 'state': state, }
 
 

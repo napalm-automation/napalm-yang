@@ -40,9 +40,9 @@ class state(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__native_vlan = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
-    self.__access_vlan = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
-    self.__trunk_vlans = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(\\*|(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9]))\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+    self.__native_vlan = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
+    self.__access_vlan = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
+    self.__trunk_vlans = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])$'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
     self.__interface_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'ACCESS': {}, u'TRUNK': {}},), is_leaf=True, yang_name="interface-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-mode-type', is_config=False)
 
     load = kwargs.pop("load", None)
@@ -113,35 +113,39 @@ VLANs
 
   def _get_native_vlan(self):
     """
-    Getter method for native_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/native_vlan (union)
+    Getter method for native_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/native_vlan (oc-vlan-types:vlan-id)
 
     YANG Description: Set the native VLAN id for untagged frames arriving on
-a trunk interface.  This configuration is only valid on
-a trunk interface.
+a trunk interface.  Tagged frames sent on an interface
+configured with a native VLAN should have their tags
+stripped prior to transmission. This configuration is only
+valid on a trunk interface.
     """
     return self.__native_vlan
       
   def _set_native_vlan(self, v, load=False):
     """
-    Setter method for native_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/native_vlan (union)
+    Setter method for native_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/native_vlan (oc-vlan-types:vlan-id)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_native_vlan is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_native_vlan() directly.
 
     YANG Description: Set the native VLAN id for untagged frames arriving on
-a trunk interface.  This configuration is only valid on
-a trunk interface.
+a trunk interface.  Tagged frames sent on an interface
+configured with a native VLAN should have their tags
+stripped prior to transmission. This configuration is only
+valid on a trunk interface.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """native_vlan must be of a type compatible with union""",
-          'defined-type': "openconfig-vlan:union",
-          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)""",
+          'error-string': """native_vlan must be of a type compatible with oc-vlan-types:vlan-id""",
+          'defined-type': "oc-vlan-types:vlan-id",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)""",
         })
 
     self.__native_vlan = t
@@ -149,12 +153,12 @@ a trunk interface.
       self._set()
 
   def _unset_native_vlan(self):
-    self.__native_vlan = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+    self.__native_vlan = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="native-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
 
 
   def _get_access_vlan(self):
     """
-    Getter method for access_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/access_vlan (union)
+    Getter method for access_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/access_vlan (oc-vlan-types:vlan-id)
 
     YANG Description: Assign the access vlan to the access port.
     """
@@ -162,7 +166,7 @@ a trunk interface.
       
   def _set_access_vlan(self, v, load=False):
     """
-    Setter method for access_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/access_vlan (union)
+    Setter method for access_vlan, mapped from YANG variable /interfaces/interface/aggregation/switched_vlan/state/access_vlan (oc-vlan-types:vlan-id)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_access_vlan is considered as a private
     method. Backends looking to populate this variable should
@@ -173,12 +177,12 @@ a trunk interface.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """access_vlan must be of a type compatible with union""",
-          'defined-type': "openconfig-vlan:union",
-          'generated-type': """YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)""",
+          'error-string': """access_vlan must be of a type compatible with oc-vlan-types:vlan-id""",
+          'defined-type': "oc-vlan-types:vlan-id",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)""",
         })
 
     self.__access_vlan = t
@@ -186,7 +190,7 @@ a trunk interface.
       self._set()
 
   def _unset_access_vlan(self):
-    self.__access_vlan = YANGDynClass(base=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),], is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+    self.__access_vlan = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}), is_leaf=True, yang_name="access-vlan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='oc-vlan-types:vlan-id', is_config=False)
 
 
   def _get_trunk_vlans(self):
@@ -218,12 +222,12 @@ that the VLAN range is x <= range <= y.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(\\*|(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9]))\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+      t = YANGDynClass(v,base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])$'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """trunk_vlans must be of a type compatible with union""",
           'defined-type': "openconfig-vlan:union",
-          'generated-type': """YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(\\*|(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9]))\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)""",
+          'generated-type': """YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])$'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)""",
         })
 
     self.__trunk_vlans = t
@@ -231,7 +235,7 @@ that the VLAN range is x <= range <= y.
       self._set()
 
   def _unset_trunk_vlans(self):
-    self.__trunk_vlans = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.((409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])|\\*)'}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(\\*|(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9]))\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
+    self.__trunk_vlans = YANGDynClass(base=TypedListType(allowed_type=[RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'1..4094']}),RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])\\.\\.(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])$'}),]), is_leaf=False, yang_name="trunk-vlans", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/vlan', defining_module='openconfig-vlan', yang_type='union', is_config=False)
 
   interface_mode = __builtin__.property(_get_interface_mode)
   native_vlan = __builtin__.property(_get_native_vlan)

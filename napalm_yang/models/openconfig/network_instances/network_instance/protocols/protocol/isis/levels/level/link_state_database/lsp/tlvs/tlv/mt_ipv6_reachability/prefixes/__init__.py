@@ -41,7 +41,7 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix = YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefix = YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -74,7 +74,8 @@ class prefixes(PybindBase):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability/prefixes/prefix (list)
 
-    YANG Description: List of IPv6 prefixes contained within MT reachability TLV.
+    YANG Description: List of IPv6 prefixes contained within MT
+reachability TLV.
     """
     return self.__prefix
       
@@ -86,17 +87,18 @@ class prefixes(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_prefix() directly.
 
-    YANG Description: List of IPv6 prefixes contained within MT reachability TLV.
+    YANG Description: List of IPv6 prefixes contained within MT
+reachability TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+      t = YANGDynClass(v,base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """prefix must be of a type compatible with list""",
           'defined-type': "list",
-          'generated-type': """YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
+          'generated-type': """YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
         })
 
     self.__prefix = t
@@ -104,7 +106,7 @@ class prefixes(PybindBase):
       self._set()
 
   def _unset_prefix(self):
-    self.__prefix = YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefix = YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
   prefix = __builtin__.property(_get_prefix)
 
@@ -133,7 +135,7 @@ class prefixes(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__prefix = YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefix = YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -166,7 +168,8 @@ class prefixes(PybindBase):
     """
     Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability/prefixes/prefix (list)
 
-    YANG Description: List of IPv6 prefixes contained within MT reachability TLV.
+    YANG Description: List of IPv6 prefixes contained within MT
+reachability TLV.
     """
     return self.__prefix
       
@@ -178,17 +181,18 @@ class prefixes(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_prefix() directly.
 
-    YANG Description: List of IPv6 prefixes contained within MT reachability TLV.
+    YANG Description: List of IPv6 prefixes contained within MT
+reachability TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+      t = YANGDynClass(v,base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """prefix must be of a type compatible with list""",
           'defined-type': "list",
-          'generated-type': """YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
+          'generated-type': """YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)""",
         })
 
     self.__prefix = t
@@ -196,7 +200,7 @@ class prefixes(PybindBase):
       self._set()
 
   def _unset_prefix(self):
-    self.__prefix = YANGDynClass(base=YANGListType(False,prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='False', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
+    self.__prefix = YANGDynClass(base=YANGListType("prefix mt_id",prefix.prefix, yang_name="prefix", parent=self, is_container='list', user_ordered=False, path_helper=self._path_helper, yang_keys='prefix mt-id', extensions=None), is_container='list', yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='list', is_config=False)
 
   prefix = __builtin__.property(_get_prefix)
 

@@ -23,7 +23,8 @@ elif six.PY2:
 from . import config
 from . import state
 from . import l2
-from . import ip
+from . import ipv4
+from . import ipv6
 from . import transport
 from . import action
 class rule(PybindBase):
@@ -34,9 +35,10 @@ class rule(PybindBase):
   YANG type.
 
   YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__sequence_id','__config','__state','__l2','__ip','__transport','__action',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__sequence_id','__config','__state','__l2','__ipv4','__ipv6','__transport','__action',)
 
   _yang_name = 'rule'
 
@@ -47,10 +49,11 @@ criteria are specified within a single
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ipv4 = YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ipv6 = YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
@@ -239,41 +242,78 @@ rule.
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
-  def _get_ip(self):
+  def _get_ipv4(self):
     """
-    Getter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
+    Getter method for ipv4, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv4 (container)
 
-    YANG Description: Top level container
+    YANG Description: Top level container for IPv4 match field data
     """
-    return self.__ip
+    return self.__ipv4
       
-  def _set_ip(self, v, load=False):
+  def _set_ipv4(self, v, load=False):
     """
-    Setter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
+    Setter method for ipv4, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv4 (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ip is considered as a private
+    source YANG file, then _set_ipv4 is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ip() directly.
+    do so via calling thisObj._set_ipv4() directly.
 
-    YANG Description: Top level container
+    YANG Description: Top level container for IPv4 match field data
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+      t = YANGDynClass(v,base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ip must be of a type compatible with container""",
+          'error-string': """ipv4 must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+          'generated-type': """YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
         })
 
-    self.__ip = t
+    self.__ipv4 = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ip(self):
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+  def _unset_ipv4(self):
+    self.__ipv4 = YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+
+
+  def _get_ipv6(self):
+    """
+    Getter method for ipv6, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv6 (container)
+
+    YANG Description: Top-level container for IPv6 match field data
+    """
+    return self.__ipv6
+      
+  def _set_ipv6(self, v, load=False):
+    """
+    Setter method for ipv6, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv6 (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_ipv6 is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_ipv6() directly.
+
+    YANG Description: Top-level container for IPv6 match field data
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """ipv6 must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+        })
+
+    self.__ipv6 = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_ipv6(self):
+    self.__ipv6 = YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
   def _get_transport(self):
@@ -355,18 +395,20 @@ packets matching the rule.
   config = __builtin__.property(_get_config, _set_config)
   state = __builtin__.property(_get_state, _set_state)
   l2 = __builtin__.property(_get_l2, _set_l2)
-  ip = __builtin__.property(_get_ip, _set_ip)
+  ipv4 = __builtin__.property(_get_ipv4, _set_ipv4)
+  ipv6 = __builtin__.property(_get_ipv6, _set_ipv6)
   transport = __builtin__.property(_get_transport, _set_transport)
   action = __builtin__.property(_get_action, _set_action)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ip': ip, 'transport': transport, 'action': action, }
+  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ipv4': ipv4, 'ipv6': ipv6, 'transport': transport, 'action': action, }
 
 
 from . import config
 from . import state
 from . import l2
-from . import ip
+from . import ipv4
+from . import ipv6
 from . import transport
 from . import action
 class rule(PybindBase):
@@ -377,9 +419,10 @@ class rule(PybindBase):
   YANG type.
 
   YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__sequence_id','__config','__state','__l2','__ip','__transport','__action',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__sequence_id','__config','__state','__l2','__ipv4','__ipv6','__transport','__action',)
 
   _yang_name = 'rule'
 
@@ -390,10 +433,11 @@ criteria are specified within a single
     self._path_helper = False
 
     self._extmethods = False
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__sequence_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="sequence-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=True)
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ipv4 = YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__ipv6 = YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__action = YANGDynClass(base=action.action, is_container='container', yang_name="action", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__transport = YANGDynClass(base=transport.transport, is_container='container', yang_name="transport", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
@@ -582,41 +626,78 @@ rule.
     self.__l2 = YANGDynClass(base=l2.l2, is_container='container', yang_name="l2", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
-  def _get_ip(self):
+  def _get_ipv4(self):
     """
-    Getter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
+    Getter method for ipv4, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv4 (container)
 
-    YANG Description: Top level container
+    YANG Description: Top level container for IPv4 match field data
     """
-    return self.__ip
+    return self.__ipv4
       
-  def _set_ip(self, v, load=False):
+  def _set_ipv4(self, v, load=False):
     """
-    Setter method for ip, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ip (container)
+    Setter method for ipv4, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv4 (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ip is considered as a private
+    source YANG file, then _set_ipv4 is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ip() directly.
+    do so via calling thisObj._set_ipv4() directly.
 
-    YANG Description: Top level container
+    YANG Description: Top level container for IPv4 match field data
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+      t = YANGDynClass(v,base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ip must be of a type compatible with container""",
+          'error-string': """ipv4 must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+          'generated-type': """YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
         })
 
-    self.__ip = t
+    self.__ipv4 = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ip(self):
-    self.__ip = YANGDynClass(base=ip.ip, is_container='container', yang_name="ip", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+  def _unset_ipv4(self):
+    self.__ipv4 = YANGDynClass(base=ipv4.ipv4, is_container='container', yang_name="ipv4", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+
+
+  def _get_ipv6(self):
+    """
+    Getter method for ipv6, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv6 (container)
+
+    YANG Description: Top-level container for IPv6 match field data
+    """
+    return self.__ipv6
+      
+  def _set_ipv6(self, v, load=False):
+    """
+    Setter method for ipv6, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule/ipv6 (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_ipv6 is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_ipv6() directly.
+
+    YANG Description: Top-level container for IPv6 match field data
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """ipv6 must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+        })
+
+    self.__ipv6 = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_ipv6(self):
+    self.__ipv6 = YANGDynClass(base=ipv6.ipv6, is_container='container', yang_name="ipv6", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
   def _get_transport(self):
@@ -698,11 +779,12 @@ packets matching the rule.
   config = __builtin__.property(_get_config, _set_config)
   state = __builtin__.property(_get_state, _set_state)
   l2 = __builtin__.property(_get_l2, _set_l2)
-  ip = __builtin__.property(_get_ip, _set_ip)
+  ipv4 = __builtin__.property(_get_ipv4, _set_ipv4)
+  ipv6 = __builtin__.property(_get_ipv6, _set_ipv6)
   transport = __builtin__.property(_get_transport, _set_transport)
   action = __builtin__.property(_get_action, _set_action)
 
 
-  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ip': ip, 'transport': transport, 'action': action, }
+  _pyangbind_elements = {'sequence_id': sequence_id, 'config': config, 'state': state, 'l2': l2, 'ipv4': ipv4, 'ipv6': ipv6, 'transport': transport, 'action': action, }
 
 

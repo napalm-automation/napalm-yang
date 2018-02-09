@@ -29,7 +29,7 @@ class config(PybindBase):
 
   YANG Description: Top-level IPv4 configuration data for the interface
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__enabled','__mtu',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__enabled','__mtu','__dhcp_client',)
 
   _yang_name = 'config'
 
@@ -41,6 +41,7 @@ class config(PybindBase):
 
     self._extmethods = False
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    self.__dhcp_client = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
     self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'68..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
 
     load = kwargs.pop("load", None)
@@ -163,10 +164,50 @@ depends on the interface's type.
   def _unset_mtu(self):
     self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=int, restriction_dict={'range': ['0..65535']},int_size=16), restriction_dict={'range': [u'68..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint16', is_config=True)
 
+
+  def _get_dhcp_client(self):
+    """
+    Getter method for dhcp_client, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/config/dhcp_client (boolean)
+
+    YANG Description: Enables a DHCP client on the interface in order to request
+an address
+    """
+    return self.__dhcp_client
+      
+  def _set_dhcp_client(self, v, load=False):
+    """
+    Setter method for dhcp_client, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/ipv4/config/dhcp_client (boolean)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_dhcp_client is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_dhcp_client() directly.
+
+    YANG Description: Enables a DHCP client on the interface in order to request
+an address
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """dhcp_client must be of a type compatible with boolean""",
+          'defined-type': "boolean",
+          'generated-type': """YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)""",
+        })
+
+    self.__dhcp_client = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_dhcp_client(self):
+    self.__dhcp_client = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+
   enabled = __builtin__.property(_get_enabled, _set_enabled)
   mtu = __builtin__.property(_get_mtu, _set_mtu)
+  dhcp_client = __builtin__.property(_get_dhcp_client, _set_dhcp_client)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, }
+  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, 'dhcp_client': dhcp_client, }
 
 

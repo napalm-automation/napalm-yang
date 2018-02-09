@@ -40,7 +40,7 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__search = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
+    self.__search = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-inet:domain-name', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,37 +71,33 @@ class config(PybindBase):
 
   def _get_search(self):
     """
-    Getter method for search, mapped from YANG variable /system/dns/config/search (inet:domain-name)
+    Getter method for search, mapped from YANG variable /system/dns/config/search (oc-inet:domain-name)
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-An ordered list of domains to search when resolving
+    YANG Description: An ordered list of domains to search when resolving
 a host name.
     """
     return self.__search
       
   def _set_search(self, v, load=False):
     """
-    Setter method for search, mapped from YANG variable /system/dns/config/search (inet:domain-name)
+    Setter method for search, mapped from YANG variable /system/dns/config/search (oc-inet:domain-name)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_search is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_search() directly.
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-An ordered list of domains to search when resolving
+    YANG Description: An ordered list of domains to search when resolving
 a host name.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
+      t = YANGDynClass(v,base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-inet:domain-name', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """search must be of a type compatible with inet:domain-name""",
-          'defined-type': "inet:domain-name",
-          'generated-type': """YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)""",
+          'error-string': """search must be of a type compatible with oc-inet:domain-name""",
+          'defined-type': "oc-inet:domain-name",
+          'generated-type': """YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-inet:domain-name', is_config=True)""",
         })
 
     self.__search = t
@@ -109,7 +105,7 @@ a host name.
       self._set()
 
   def _unset_search(self):
-    self.__search = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='inet:domain-name', is_config=True)
+    self.__search = YANGDynClass(base=TypedListType(allowed_type=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'((([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.)*([a-zA-Z0-9_]([a-zA-Z0-9\\-_]){0,61})?[a-zA-Z0-9]\\.?)|\\.', 'length': [u'1..253']})), is_leaf=False, yang_name="search", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-inet:domain-name', is_config=True)
 
   search = __builtin__.property(_get_search, _set_search)
 

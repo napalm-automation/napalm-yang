@@ -29,7 +29,7 @@ class config(PybindBase):
 
   YANG Description: Configurable items at the subinterface level
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__index','__name','__description','__enabled',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__index','__description','__enabled',)
 
   _yang_name = 'config'
 
@@ -42,7 +42,6 @@ class config(PybindBase):
     self._extmethods = False
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=True)
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=True)
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=True)
     self.__description = YANGDynClass(base=unicode, is_leaf=True, yang_name="description", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=True)
 
     load = kwargs.pop("load", None)
@@ -115,116 +114,11 @@ default subinterface.
     self.__index = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(0), is_leaf=True, yang_name="index", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='uint32', is_config=True)
 
 
-  def _get_name(self):
-    """
-    Getter method for name, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/config/name (string)
-
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-The name of the interface.
-
-A device MAY restrict the allowed values for this leaf,
-possibly depending on the type of the interface.
-For system-controlled interfaces, this leaf is the
-device-specific name of the interface.  The 'config false'
-list interfaces/interface[name]/state contains the currently
-existing interfaces on the device.
-
-If a client tries to create configuration for a
-system-controlled interface that is not present in the
-corresponding state list, the server MAY reject
-the request if the implementation does not support
-pre-provisioning of interfaces or if the name refers to
-an interface that can never exist in the system.  A
-NETCONF server MUST reply with an rpc-error with the
-error-tag 'invalid-value' in this case.
-
-The IETF model in RFC 7223 provides YANG features for the
-following (i.e., pre-provisioning and arbitrary-names),
-however they are omitted here:
-
- If the device supports pre-provisioning of interface
- configuration, the 'pre-provisioning' feature is
- advertised.
-
- If the device allows arbitrarily named user-controlled
- interfaces, the 'arbitrary-names' feature is advertised.
-
-When a configured user-controlled interface is created by
-the system, it is instantiated with the same name in the
-/interfaces/interface[name]/state list.
-    """
-    return self.__name
-      
-  def _set_name(self, v, load=False):
-    """
-    Setter method for name, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/config/name (string)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_name is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_name() directly.
-
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-The name of the interface.
-
-A device MAY restrict the allowed values for this leaf,
-possibly depending on the type of the interface.
-For system-controlled interfaces, this leaf is the
-device-specific name of the interface.  The 'config false'
-list interfaces/interface[name]/state contains the currently
-existing interfaces on the device.
-
-If a client tries to create configuration for a
-system-controlled interface that is not present in the
-corresponding state list, the server MAY reject
-the request if the implementation does not support
-pre-provisioning of interfaces or if the name refers to
-an interface that can never exist in the system.  A
-NETCONF server MUST reply with an rpc-error with the
-error-tag 'invalid-value' in this case.
-
-The IETF model in RFC 7223 provides YANG features for the
-following (i.e., pre-provisioning and arbitrary-names),
-however they are omitted here:
-
- If the device supports pre-provisioning of interface
- configuration, the 'pre-provisioning' feature is
- advertised.
-
- If the device allows arbitrarily named user-controlled
- interfaces, the 'arbitrary-names' feature is advertised.
-
-When a configured user-controlled interface is created by
-the system, it is instantiated with the same name in the
-/interfaces/interface[name]/state list.
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=True)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """name must be of a type compatible with string""",
-          'defined-type': "string",
-          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=True)""",
-        })
-
-    self.__name = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_name(self):
-    self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='string', is_config=True)
-
-
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/config/description (string)
 
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-A textual description of the interface.
+    YANG Description: A textual description of the interface.
 
 A server implementation MAY map this leaf to the ifAlias
 MIB object.  Such an implementation needs to use some
@@ -261,9 +155,7 @@ datastore.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_description() directly.
 
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-A textual description of the interface.
+    YANG Description: A textual description of the interface.
 
 A server implementation MAY map this leaf to the ifAlias
 MIB object.  Such an implementation needs to use some
@@ -313,9 +205,7 @@ datastore.
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/subinterfaces/subinterface/config/enabled (boolean)
 
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-This leaf contains the configured, desired state of the
+    YANG Description: This leaf contains the configured, desired state of the
 interface.
 
 Systems that implement the IF-MIB use the value of this
@@ -337,9 +227,7 @@ changed over SNMP, this leaf is not affected.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_enabled() directly.
 
-    YANG Description: [adapted from IETF interfaces model (RFC 7223)]
-
-This leaf contains the configured, desired state of the
+    YANG Description: This leaf contains the configured, desired state of the
 interface.
 
 Systems that implement the IF-MIB use the value of this
@@ -370,11 +258,10 @@ changed over SNMP, this leaf is not affected.
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces', defining_module='openconfig-interfaces', yang_type='boolean', is_config=True)
 
   index = __builtin__.property(_get_index, _set_index)
-  name = __builtin__.property(_get_name, _set_name)
   description = __builtin__.property(_get_description, _set_description)
   enabled = __builtin__.property(_get_enabled, _set_enabled)
 
 
-  _pyangbind_elements = {'index': index, 'name': name, 'description': description, 'enabled': enabled, }
+  _pyangbind_elements = {'index': index, 'description': description, 'enabled': enabled, }
 
 

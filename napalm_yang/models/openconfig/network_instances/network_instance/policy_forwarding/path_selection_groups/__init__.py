@@ -86,7 +86,10 @@ the destination IP address is used such that the packet is
 routed to the entity within the path-selection-group that
 corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
-destination MAC address.
+destination MAC address. If multiple paths within the
+selection group are eligible to be used for forwarding,
+the packets are load-balanced between them according to
+the system's usual load balancing logic.
     """
     return self.__path_selection_group
       
@@ -109,7 +112,10 @@ the destination IP address is used such that the packet is
 routed to the entity within the path-selection-group that
 corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
-destination MAC address.
+destination MAC address. If multiple paths within the
+selection group are eligible to be used for forwarding,
+the packets are load-balanced between them according to
+the system's usual load balancing logic.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -201,7 +207,10 @@ the destination IP address is used such that the packet is
 routed to the entity within the path-selection-group that
 corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
-destination MAC address.
+destination MAC address. If multiple paths within the
+selection group are eligible to be used for forwarding,
+the packets are load-balanced between them according to
+the system's usual load balancing logic.
     """
     return self.__path_selection_group
       
@@ -224,7 +233,10 @@ the destination IP address is used such that the packet is
 routed to the entity within the path-selection-group that
 corresponds to the next-hop for the destination IP address
 of the packet; for L2 packets, the selection is based on the
-destination MAC address.
+destination MAC address. If multiple paths within the
+selection group are eligible to be used for forwarding,
+the packets are load-balanced between them according to
+the system's usual load balancing logic.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
