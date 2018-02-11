@@ -278,7 +278,7 @@
                 "share_state": "Dedicated", 
                 "state": "down", 
                 "state_rsn_desc": "Member port of 40G"
-            }, 
+            } 
         ]
     }
 }

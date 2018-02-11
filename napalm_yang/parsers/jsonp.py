@@ -92,27 +92,34 @@ class JSONParser(BaseParser):
         present = mapping.get("present", None)
         check_presence = present is not None
 
-        if "path" in mapping:
-            d = self.resolve_path(data, mapping["path"], mapping.get("default"), check_presence)
+        if "pre" in mapping:
+            d = self._parse_post_process_filter(mapping["pre"])
+        elif "path" in mapping:
+            d = self.resolve_path(data, mapping["path"], None, check_presence)
         else:
             d = None
 
-        if "value" in mapping:
-            d = self._parse_post_process_filter(mapping["value"], value=d)
-
-        if d:
-            regexp = mapping.get('regexp', None)
-            if regexp:
-                match = re.search(mapping['regexp'], d)
-                d = match.group('value') if match else None
-
-        if d and "map" in mapping:
-            d = mapping['map'][d.lower()]
-
         if check_presence:
             d = bool(d and present or not d and not present)
+        else:
+            if d:
+                regexp = mapping.get('regexp', None)
+                if regexp:
+                    match = re.search(mapping['regexp'], d)
 
-        d = mapping.get('default', None) if d is None else d
+                    if match:
+                        d = match.group('value') if match else None
+                        self.extra_vars.update(match.groupdict())
+                    else:
+                        d = None
+
+            if d and "map" in mapping:
+                d = mapping['map'][d.lower()]
+
+        if d and "post" in mapping:
+            d = self._parse_post_process_filter(mapping["post"], value=d)
+        elif d is not None and "default" in mapping:
+            d = mapping['default']
         return d
 
     def _parse_container_default(self, attribute, mapping, data):
@@ -122,4 +129,8 @@ class JSONParser(BaseParser):
             return None, {}
 
         d = self.resolve_path(data, mapping["path"], mapping.get("default"))
+        if d:
+            d = d["#text"] if "#text" in d else d
+        if "save_as" in mapping:
+            return "", {mapping["save_as"]: d}
         return d, {}

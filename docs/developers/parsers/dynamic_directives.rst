@@ -45,9 +45,14 @@
     On <b>leaves</b>, regexp will assign as value the capture group <code class="docutils literal">value</code></td>
         </tr>
             <tr>
+            <th style="vertical-align: top;">    pre</th>
+            <td style="vertical-align: top;">    leaf</td>
+            <td style="vertical-align: top;">    Pre processing/formatting of the value. Useful when you want to statically set it based on ``when`` conditions or from values extracted previously in parent containers/leaves/lists.</td>
+        </tr>
+            <tr>
             <th style="vertical-align: top;">    value</th>
             <td style="vertical-align: top;">    leaf</td>
-            <td style="vertical-align: top;">    Post processing/formatting of the value</td>
+            <td style="vertical-align: top;">    Post processing/formatting of the value. Useful when you need to combine data extracted in a regular expression or post-process it with a jinja2 filter to transform the value.</td>
         </tr>
             <tr>
             <th style="vertical-align: top;">    map</th>

@@ -25,7 +25,7 @@ network-instances:
                     - path: description
             enabled:
                 _process:
-                    - value: "true"
+                    - pre: "true"
             enabled-address-families:
                 _process: not_implemented
             mtu:
@@ -38,7 +38,7 @@ network-instances:
                 _process: not_implemented
             type:
                 _process:
-                  - value: DEFAULT_INSTANCE
+                  - pre: DEFAULT_INSTANCE
                     when: "{{ network_instance_key == 'global' }}"
                   - path: instance-type
                     map:

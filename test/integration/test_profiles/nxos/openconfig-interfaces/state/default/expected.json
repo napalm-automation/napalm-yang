@@ -1,0 +1,134 @@
+{
+    "interfaces": {
+        "interface": {
+            "Ethernet1/1": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0, 
+                            "in-fragment-frames": 0, 
+                            "in-mac-pause-frames": 0, 
+                            "in-oversize-frames": 0, 
+                            "out-mac-pause-frames": 0
+                        }, 
+                        "effective-speed": 40000, 
+                        "enable-flow-control": false, 
+                        "hw-mac-address": "00:c8:8b:bd:de:e8", 
+                        "mac-address": "00:c8:8b:bd:de:e8"
+                    }
+                }, 
+                "name": "Ethernet1/1", 
+                "state": {
+                    "counters": {
+                        "in-broadcast-pkts": 0, 
+                        "in-discards": 0, 
+                        "in-multicast-pkts": 1154731, 
+                        "in-octets": 261237940, 
+                        "out-broadcast-pkts": 0, 
+                        "out-discards": 0, 
+                        "out-multicast-pkts": 0, 
+                        "out-octets": 1109620799, 
+                        "out-unicast-pkts": 12701532
+                    }, 
+                    "oper-status": "UP"
+                }
+            }, 
+            "Ethernet1/2": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0, 
+                            "in-fragment-frames": 0, 
+                            "in-mac-pause-frames": 0, 
+                            "in-oversize-frames": 0, 
+                            "out-mac-pause-frames": 0
+                        }, 
+                        "effective-speed": 10000, 
+                        "enable-flow-control": false, 
+                        "hw-mac-address": "00:c8:8b:bd:de:e9", 
+                        "mac-address": "00:c8:8b:bd:de:e9"
+                    }
+                }, 
+                "name": "Ethernet1/2", 
+                "state": {
+                    "counters": {
+                        "in-broadcast-pkts": 0, 
+                        "in-discards": 0, 
+                        "in-multicast-pkts": 0, 
+                        "in-octets": 0, 
+                        "out-broadcast-pkts": 0, 
+                        "out-discards": 0, 
+                        "out-multicast-pkts": 0, 
+                        "out-octets": 0, 
+                        "out-unicast-pkts": 0
+                    }, 
+                    "oper-status": "DOWN"
+                }
+            }, 
+            "Ethernet1/3": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0, 
+                            "in-fragment-frames": 0, 
+                            "in-mac-pause-frames": 0, 
+                            "in-oversize-frames": 0, 
+                            "out-mac-pause-frames": 0
+                        }, 
+                        "effective-speed": 10000, 
+                        "enable-flow-control": false, 
+                        "hw-mac-address": "00:c8:8b:bd:de:ea", 
+                        "mac-address": "00:c8:8b:bd:de:ea"
+                    }
+                }, 
+                "name": "Ethernet1/3", 
+                "state": {
+                    "counters": {
+                        "in-broadcast-pkts": 0, 
+                        "in-discards": 0, 
+                        "in-multicast-pkts": 0, 
+                        "in-octets": 0, 
+                        "out-broadcast-pkts": 0, 
+                        "out-discards": 0, 
+                        "out-multicast-pkts": 0, 
+                        "out-octets": 0, 
+                        "out-unicast-pkts": 0
+                    }, 
+                    "oper-status": "DOWN"
+                }
+            }, 
+            "Ethernet1/4": {
+                "ethernet": {
+                    "state": {
+                        "counters": {
+                            "in-crc-errors": 0, 
+                            "in-fragment-frames": 0, 
+                            "in-mac-pause-frames": 0, 
+                            "in-oversize-frames": 0, 
+                            "out-mac-pause-frames": 0
+                        }, 
+                        "effective-speed": 10000, 
+                        "enable-flow-control": false, 
+                        "hw-mac-address": "00:c8:8b:bd:de:eb", 
+                        "mac-address": "00:c8:8b:bd:de:eb"
+                    }
+                }, 
+                "name": "Ethernet1/4", 
+                "state": {
+                    "counters": {
+                        "in-broadcast-pkts": 0, 
+                        "in-discards": 0, 
+                        "in-multicast-pkts": 0, 
+                        "in-octets": 0, 
+                        "out-broadcast-pkts": 0, 
+                        "out-discards": 0, 
+                        "out-multicast-pkts": 0, 
+                        "out-octets": 0, 
+                        "out-unicast-pkts": 0
+                    }, 
+                    "oper-status": "DOWN"
+                }
+            }
+        }
+    }
+}

@@ -7,7 +7,6 @@ WIP. Information here is a bit chaotic, sorry about that.
    :maxdepth: 1
 
    profiles
-   profiles/index
    writing_profiles
    parsers/index
    translators

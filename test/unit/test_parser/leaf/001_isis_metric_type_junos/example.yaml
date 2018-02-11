@@ -1,0 +1,36 @@
+---
+documentation:
+    title: Parsing metric style for junos ISIS level
+    summary: |
+        Junos sometimes indicates the value of something not by using an element with a specific value but by the presence of it. For instance, the metric style of an ISIS level can either be NARROW or WIDE but instead of indicating explicitly junos will do it with the presence or not of the element ``</wide-metrics-only>``.
+    rule: ""
+    result: ""
+processor:
+    name: XMLParser
+    attribute: metric-style
+    root_name: network_instances
+    node_type: leaf
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+parent_rule:
+    - path: configuration.isis.level
+      key: name
+blocks:
+   - <level>
+        <name>1</name>
+        <wide-metrics-only/>
+     </level>
+   - <level>
+        <name>2</name>
+        <preference>50</preference>
+     </level>
+rule:
+    - present: true
+      path: "wide-metrics-only"
+      default: "NARROW_METRIC"
+      post: "WIDE_METRIC"
+expected:
+    - - "WIDE_METRIC"
+      - "NARROW_METRIC"

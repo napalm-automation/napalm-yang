@@ -103,8 +103,8 @@ def resolve_rule(rule, attribute, keys, extra_vars=None, translation_model=None,
     kwargs["negating"] = negating
 
     for k, v in rule.items():
-        if k in ["key", "value"] and not process_all:
-            # don't process keys or values as we will do it at "processing time"
+        if k in ["key", "pre", "post"] and not process_all:
+            # don't process keys, pre or post as we will do it at "processing time"
             # instead of ahead of time
             rule[k] = v
         else:
