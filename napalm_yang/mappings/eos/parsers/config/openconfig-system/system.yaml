@@ -43,7 +43,7 @@ system:
                         _process:
                             - path: "aaa.root.secret"
                               from: root_system.0
-                              regexp: "(5|sha512) (?P<value>\\S+)$"
+                              regexp: "(?P<value>(5|sha512) \\S+)$"
                 state:
                     _process: not_implemented
             config:
@@ -70,9 +70,9 @@ system:
                             # the username commands will always start with privilege
                             _process:
                                 - path: "privilege"
-                                  regexp: "\\d+ role \\S+ secret \\S+ (?P<value>\\S+)$"
+                                  regexp: "\\d+ role \\S+ secret (?P<value>(5|sha512) \\S+)$"
                                 - path: "privilege"
-                                  regexp: "\\d+ secret (5|sha512) (?P<value>\\S+)$"
+                                  regexp: "\\d+ secret (?P<value>(5|sha512) \\S+)$"
                         #
                         # In EOS there are privilege and roles which are similar
                         # here we try to grab both and join the two, delimited
