@@ -44,6 +44,7 @@ test_parse_models = [
     ["junos", "config", napalm_yang.models.openconfig_system, "default"],
     ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
     ["nxos", "config", napalm_yang.models.openconfig_interfaces, "default"],
+    ["nxos", "config", napalm_yang.models.openconfig_system, "default"],
     ["nxos", "state", napalm_yang.models.openconfig_interfaces, "default"],
 ]
 

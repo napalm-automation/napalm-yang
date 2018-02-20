@@ -1,10 +1,8 @@
 ---
 metadata:
-    processor: TextTree
-    execute:
-        - method: cli
-          kwargs:
-              commands: ["show running-config all"]
+    processor: TextTranslator
+    root: true
+
 system:
     _process: unnecessary
     aaa:
@@ -34,13 +32,13 @@ system:
         authentication:
             _process: unnecessary
             admin-user:
-                _process: not_implemented
+                _process: unnecessary
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     admin-password:
                         _process: not_implemented
                     admin-password-encrypted:
-                        _process: not_implemented
+                        _process: unnecessary
                 state:
                     _process: not_implemented
             config:
@@ -53,20 +51,16 @@ system:
                 _process: unnecessary
                 user:
                     _process:
-                        - path: "username"
-                          from: root_system.0
+                        - key_value: "username {{user_key}} password {{model.config.password_encrypted}} role {{model.config.role}}\n"
+                          negate: "no username {{user_key}}\n"
                     config:
-                        _process: unnecessary
+                        _process: not_implemented
                         password:
                             _process: not_implemented
                         password-encrypted:
-                            _process:
-                                - path: "password"
-                                  regexp: "(?P<value>\\d+ \\S+)"
+                            _process: not_implemented
                         role:
-                            _process:
-                                - path: "password"
-                                  regexp: "\\d+ \\S+\\s+role (?P<value>\\S+)"
+                            _process: not_implemented
                         ssh-key:
                             _process: not_implemented
                         username:

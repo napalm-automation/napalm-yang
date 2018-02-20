@@ -1,0 +1,8 @@
+no username test1
+username test1 password 5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71 role network-admin
+no username test2
+username test2 password 5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71 role dev-ops
+no username test5
+username test5 password 5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71 role network-operator
+no username test3
+no username test4

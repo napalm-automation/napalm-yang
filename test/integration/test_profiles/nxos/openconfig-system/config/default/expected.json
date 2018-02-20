@@ -1,0 +1,40 @@
+{
+    "system": {
+        "aaa": {
+            "authentication": {
+                "users": {
+                    "user": {
+                        "test1": {
+                            "config": {
+                                "password-encrypted": "5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71",
+                                "role": "network-operator"
+                            },
+                            "username": "test1"
+                        },
+                        "test2": {
+                            "config": {
+                                "password-encrypted": "5 $5$6t7JzbPs$7hcXZdElzz/IV6oBlr1msDygj3EvZKEn4pRjfZZ3KH1",
+                                "role": "dev-ops"
+                            },
+                            "username": "test2"
+                        },
+                        "test3": {
+                            "config": {
+                                "password-encrypted": "5 $5$N4RLVroq$avHnzGMNKTrQghMvkPWojBCopn195K0jyOhrsIM2tR8",
+                                "role": "priv-0"
+                            },
+                            "username": "test3"
+                        },
+                        "test4": {
+                            "config": {
+                                "password-encrypted": "5 $5$n0s8iBMn$pLZ1BYBGhUcQg0FpUovORxLJBXIMXYhPI8pTeiYrae8",
+                                "role": "network-operator"
+                            },
+                            "username": "test4"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
