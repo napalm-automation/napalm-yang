@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+output-voltage:
+    _process: not_implemented

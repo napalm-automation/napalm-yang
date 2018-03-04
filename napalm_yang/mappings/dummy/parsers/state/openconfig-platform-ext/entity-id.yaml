@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+entity-id:
+    _process: not_implemented

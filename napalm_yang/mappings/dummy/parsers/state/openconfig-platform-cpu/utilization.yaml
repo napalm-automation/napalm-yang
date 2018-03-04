@@ -1,0 +1,18 @@
+---
+metadata:
+    processor: unset
+
+utilization:
+    _process: not_implemented
+    state:
+        _process: not_implemented
+        avg:
+            _process: not_implemented
+        instant:
+            _process: not_implemented
+        interval:
+            _process: not_implemented
+        max:
+            _process: not_implemented
+        min:
+            _process: not_implemented

@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+output-current:
+    _process: not_implemented

@@ -8,58 +8,192 @@ network-instances:
         _process: not_implemented
         afts:
             _process: not_implemented
-            aft:
+            ethernet:
                 _process: not_implemented
-                address-family:
+                mac-entry:
                     _process: not_implemented
-                config:
-                    _process: not_implemented
-                    address-family:
+                    config:
                         _process: not_implemented
-                entries:
-                    _process: not_implemented
-                    entry:
-                        _process: not_implemented
-                        config:
+                        mac-address:
                             _process: not_implemented
+                    mac-address:
+                        _process: not_implemented
+                    next-hops:
+                        _process: not_implemented
+                        next-hop:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                index:
+                                    _process: not_implemented
                             index:
                                 _process: not_implemented
-                        index:
-                            _process: not_implemented
-                        match:
-                            _process: not_implemented
                             interface-ref:
                                 _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    interface:
+                                        _process: not_implemented
+                                    subinterface:
+                                        _process: not_implemented
                                 state:
                                     _process: not_implemented
                             state:
                                 _process: not_implemented
-                        next-hops:
+                    state:
+                        _process: not_implemented
+            ipv4-unicast:
+                _process: not_implemented
+                ipv4-entry:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        prefix:
                             _process: not_implemented
-                            next-hop:
+                    next-hops:
+                        _process: not_implemented
+                        next-hop:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                index:
+                                    _process: not_implemented
+                            index:
+                                _process: not_implemented
+                            interface-ref:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
-                                    index:
+                                    interface:
                                         _process: not_implemented
-                                index:
-                                    _process: not_implemented
-                                interface-ref:
-                                    _process: not_implemented
-                                    config:
-                                        _process: not_implemented
-                                        interface:
-                                            _process: not_implemented
-                                        subinterface:
-                                            _process: not_implemented
-                                    state:
+                                    subinterface:
                                         _process: not_implemented
                                 state:
                                     _process: not_implemented
-                        state:
-                            _process: not_implemented
-                state:
+                            state:
+                                _process: not_implemented
+                    prefix:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            ipv6-unicast:
+                _process: not_implemented
+                ipv6-entry:
                     _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        prefix:
+                            _process: not_implemented
+                    next-hops:
+                        _process: not_implemented
+                        next-hop:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                index:
+                                    _process: not_implemented
+                            index:
+                                _process: not_implemented
+                            interface-ref:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    interface:
+                                        _process: not_implemented
+                                    subinterface:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    prefix:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            mpls:
+                _process: not_implemented
+                label-entry:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        label:
+                            _process: not_implemented
+                    label:
+                        _process: not_implemented
+                    next-hops:
+                        _process: not_implemented
+                        next-hop:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                index:
+                                    _process: not_implemented
+                            index:
+                                _process: not_implemented
+                            interface-ref:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    interface:
+                                        _process: not_implemented
+                                    subinterface:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    state:
+                        _process: not_implemented
+            policy-forwarding:
+                _process: not_implemented
+                policy-forwarding-entry:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        index:
+                            _process: not_implemented
+                        ip-dscp:
+                            _process: not_implemented
+                        ip-prefix:
+                            _process: not_implemented
+                        ip-protocol:
+                            _process: not_implemented
+                        l4-dst-port:
+                            _process: not_implemented
+                        l4-src-port:
+                            _process: not_implemented
+                        mac-address:
+                            _process: not_implemented
+                        mpls-label:
+                            _process: not_implemented
+                        mpls-tc:
+                            _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    next-hops:
+                        _process: not_implemented
+                        next-hop:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                index:
+                                    _process: not_implemented
+                            index:
+                                _process: not_implemented
+                            interface-ref:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    interface:
+                                        _process: not_implemented
+                                    subinterface:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                    state:
+                        _process: not_implemented
         config:
             _process: not_implemented
             description:
@@ -866,31 +1000,71 @@ network-instances:
                                         _process: not_implemented
                                     path-selection-group:
                                         _process: not_implemented
+                                encapsulate-gre:
+                                    _process: not_implemented
+                                    config:
+                                        _process: not_implemented
+                                        identifying-prefix:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
+                                    targets:
+                                        _process: not_implemented
+                                        target:
+                                            _process: not_implemented
+                                            config:
+                                                _process: not_implemented
+                                                destination:
+                                                    _process: not_implemented
+                                                id:
+                                                    _process: not_implemented
+                                                ip-ttl:
+                                                    _process: not_implemented
+                                                source:
+                                                    _process: not_implemented
+                                            id:
+                                                _process: not_implemented
+                                            state:
+                                                _process: not_implemented
                                 state:
                                     _process: not_implemented
                             config:
                                 _process: not_implemented
                                 sequence-id:
                                     _process: not_implemented
-                            ip:
+                            ipv4:
                                 _process: not_implemented
                                 config:
                                     _process: not_implemented
-                                    destination-ip-address:
-                                        _process: not_implemented
-                                    destination-ip-flow-label:
+                                    destination-address:
                                         _process: not_implemented
                                     dscp:
                                         _process: not_implemented
                                     hop-limit:
                                         _process: not_implemented
-                                    ip-version:
+                                    protocol:
+                                        _process: not_implemented
+                                    source-address:
+                                        _process: not_implemented
+                                state:
+                                    _process: not_implemented
+                            ipv6:
+                                _process: not_implemented
+                                config:
+                                    _process: not_implemented
+                                    destination-address:
+                                        _process: not_implemented
+                                    destination-flow-label:
+                                        _process: not_implemented
+                                    dscp:
+                                        _process: not_implemented
+                                    hop-limit:
                                         _process: not_implemented
                                     protocol:
                                         _process: not_implemented
-                                    source-ip-address:
+                                    source-address:
                                         _process: not_implemented
-                                    source-ip-flow-label:
+                                    source-flow-label:
                                         _process: not_implemented
                                 state:
                                     _process: not_implemented
@@ -940,6 +1114,20 @@ network-instances:
                             _process: not_implemented
                             afi-safi:
                                 _process: not_implemented
+                                add-paths:
+                                    _process: not_implemented
+                                    config:
+                                        _process: not_implemented
+                                        eligible-prefix-policy:
+                                            _process: not_implemented
+                                        receive:
+                                            _process: not_implemented
+                                        send:
+                                            _process: not_implemented
+                                        send-max:
+                                            _process: not_implemented
+                                    state:
+                                        _process: not_implemented
                                 afi-safi-name:
                                     _process: not_implemented
                                 config:
@@ -1178,8 +1366,6 @@ network-instances:
                             _process: not_implemented
                             config:
                                 _process: not_implemented
-                                enabled:
-                                    _process: not_implemented
                                 identifier:
                                     _process: not_implemented
                                 member-as:
@@ -1280,22 +1466,24 @@ network-instances:
                         _process: not_implemented
                         neighbor:
                             _process: not_implemented
-                            add-paths:
-                                _process: not_implemented
-                                config:
-                                    _process: not_implemented
-                                    eligible-prefix-policy:
-                                        _process: not_implemented
-                                    receive:
-                                        _process: not_implemented
-                                    send-max:
-                                        _process: not_implemented
-                                state:
-                                    _process: not_implemented
                             afi-safis:
                                 _process: not_implemented
                                 afi-safi:
                                     _process: not_implemented
+                                    add-paths:
+                                        _process: not_implemented
+                                        config:
+                                            _process: not_implemented
+                                            eligible-prefix-policy:
+                                                _process: not_implemented
+                                            receive:
+                                                _process: not_implemented
+                                            send:
+                                                _process: not_implemented
+                                            send-max:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     afi-safi-name:
                                         _process: not_implemented
                                     apply-policy:
@@ -1535,6 +1723,8 @@ network-instances:
                                 config:
                                     _process: not_implemented
                                     allow-own-as:
+                                        _process: not_implemented
+                                    disable-peer-as-filter:
                                         _process: not_implemented
                                     replace-peer-as:
                                         _process: not_implemented
@@ -1666,22 +1856,24 @@ network-instances:
                         _process: not_implemented
                         peer-group:
                             _process: not_implemented
-                            add-paths:
-                                _process: not_implemented
-                                config:
-                                    _process: not_implemented
-                                    eligible-prefix-policy:
-                                        _process: not_implemented
-                                    receive:
-                                        _process: not_implemented
-                                    send-max:
-                                        _process: not_implemented
-                                state:
-                                    _process: not_implemented
                             afi-safis:
                                 _process: not_implemented
                                 afi-safi:
                                     _process: not_implemented
+                                    add-paths:
+                                        _process: not_implemented
+                                        config:
+                                            _process: not_implemented
+                                            eligible-prefix-policy:
+                                                _process: not_implemented
+                                            receive:
+                                                _process: not_implemented
+                                            send:
+                                                _process: not_implemented
+                                            send-max:
+                                                _process: not_implemented
+                                        state:
+                                            _process: not_implemented
                                     afi-safi-name:
                                         _process: not_implemented
                                     apply-policy:
@@ -1884,24 +2076,6 @@ network-instances:
                                                     _process: not_implemented
                                             state:
                                                 _process: not_implemented
-                                    route-selection-options:
-                                        _process: not_implemented
-                                        config:
-                                            _process: not_implemented
-                                            advertise-inactive-routes:
-                                                _process: not_implemented
-                                            always-compare-med:
-                                                _process: not_implemented
-                                            enable-aigp:
-                                                _process: not_implemented
-                                            external-compare-router-id:
-                                                _process: not_implemented
-                                            ignore-as-path-length:
-                                                _process: not_implemented
-                                            ignore-next-hop-igp-metric:
-                                                _process: not_implemented
-                                        state:
-                                            _process: not_implemented
                                     state:
                                         _process: not_implemented
                                     use-multiple-paths:
@@ -1949,6 +2123,8 @@ network-instances:
                                 config:
                                     _process: not_implemented
                                     allow-own-as:
+                                        _process: not_implemented
+                                    disable-peer-as-filter:
                                         _process: not_implemented
                                     replace-peer-as:
                                         _process: not_implemented
@@ -2484,7 +2660,7 @@ network-instances:
                                         _process: not_implemented
                                     packet-counters:
                                         _process: not_implemented
-                                        cnsp:
+                                        csnp:
                                             _process: not_implemented
                                             state:
                                                 _process: not_implemented
@@ -2977,8 +3153,6 @@ network-instances:
                     name:
                         _process: not_implemented
                     status:
-                        _process: not_implemented
-                    tpid:
                         _process: not_implemented
                     vlan-id:
                         _process: not_implemented

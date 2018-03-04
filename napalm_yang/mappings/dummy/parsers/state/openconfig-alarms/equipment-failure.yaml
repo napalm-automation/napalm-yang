@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+equipment-failure:
+    _process: not_implemented

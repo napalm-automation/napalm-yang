@@ -1,0 +1,14 @@
+---
+metadata:
+    processor: unset
+
+breakout-mode:
+    _process: not_implemented
+    config:
+        _process: not_implemented
+        channel-speed:
+            _process: not_implemented
+        num-channels:
+            _process: not_implemented
+    state:
+        _process: not_implemented

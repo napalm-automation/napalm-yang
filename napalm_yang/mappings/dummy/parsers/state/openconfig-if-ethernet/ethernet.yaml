@@ -32,8 +32,6 @@ ethernet:
                 _process: not_implemented
         duplex-mode:
             _process: not_implemented
-        effective-speed:
-            _process: not_implemented
         enable-flow-control:
             _process: not_implemented
         hw-mac-address:

@@ -30,7 +30,7 @@ system:
                     _process: not_implemented
                     admin-password:
                         _process: not_implemented
-                    admin-password-encrypted:
+                    admin-password-hashed:
                         _process: not_implemented
                     admin-username:
                         _process: not_implemented
@@ -46,7 +46,7 @@ system:
                         _process: not_implemented
                         password:
                             _process: not_implemented
-                        password-encrypted:
+                        password-hashed:
                             _process: not_implemented
                         role:
                             _process: not_implemented
@@ -84,6 +84,16 @@ system:
                                     _process: not_implemented
                                 auth-port:
                                     _process: not_implemented
+                                counters:
+                                    _process: not_implemented
+                                    access-accepts:
+                                        _process: not_implemented
+                                    access-rejects:
+                                        _process: not_implemented
+                                    retried-access-requests:
+                                        _process: not_implemented
+                                    timeout-access-requests:
+                                        _process: not_implemented
                                 retransmit-attempts:
                                     _process: not_implemented
                                 secret-key:
@@ -130,12 +140,138 @@ system:
                         _process: not_implemented
                     type:
                         _process: not_implemented
+    alarms:
+        _process: not_implemented
+        alarm:
+            _process: not_implemented
+            id:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+                id:
+                    _process: not_implemented
+                resource:
+                    _process: not_implemented
+                severity:
+                    _process: not_implemented
+                text:
+                    _process: not_implemented
+                time-created:
+                    _process: not_implemented
+                type-id:
+                    _process: not_implemented
     clock:
         _process: not_implemented
         state:
             _process: not_implemented
             timezone-name:
                 _process: not_implemented
+    cpus:
+        _process: not_implemented
+        cpu:
+            _process: not_implemented
+            index:
+                _process: not_implemented
+            state:
+                _process: not_implemented
+                hardware-interrupt:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                idle:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                index:
+                    _process: not_implemented
+                kernel:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                nice:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                software-interrupt:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                total:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                user:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
+                wait:
+                    _process: not_implemented
+                    avg:
+                        _process: not_implemented
+                    instant:
+                        _process: not_implemented
+                    interval:
+                        _process: not_implemented
+                    max:
+                        _process: not_implemented
+                    min:
+                        _process: not_implemented
     dns:
         _process: not_implemented
         host-entries:

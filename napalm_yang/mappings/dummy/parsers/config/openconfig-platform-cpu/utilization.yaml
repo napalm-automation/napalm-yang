@@ -1,0 +1,8 @@
+---
+metadata:
+    processor: unset
+
+utilization:
+    _process: not_implemented
+    state:
+        _process: not_implemented

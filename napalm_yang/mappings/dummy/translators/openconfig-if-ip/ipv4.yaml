@@ -54,6 +54,8 @@ ipv4:
                         _process: not_implemented
     config:
         _process: not_implemented
+        dhcp-client:
+            _process: not_implemented
         enabled:
             _process: not_implemented
         mtu:
@@ -72,6 +74,14 @@ ipv4:
                 _process: not_implemented
             state:
                 _process: not_implemented
+    proxy-arp:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            mode:
+                _process: not_implemented
+        state:
+            _process: not_implemented
     state:
         _process: not_implemented
     unnumbered:

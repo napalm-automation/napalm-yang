@@ -12,6 +12,8 @@ interfaces:
                 _process: not_implemented
             enabled:
                 _process: not_implemented
+            loopback-mode:
+                _process: not_implemented
             mtu:
                 _process: not_implemented
             name:
@@ -43,8 +45,6 @@ interfaces:
                     enabled:
                         _process: not_implemented
                     index:
-                        _process: not_implemented
-                    name:
                         _process: not_implemented
                 index:
                     _process: not_implemented

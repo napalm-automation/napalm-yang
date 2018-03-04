@@ -20,11 +20,15 @@ interfaces:
                 _process: not_implemented
             counters:
                 _process: not_implemented
+                carrier-transitions:
+                    _process: not_implemented
                 in-broadcast-pkts:
                     _process: not_implemented
                 in-discards:
                     _process: not_implemented
                 in-errors:
+                    _process: not_implemented
+                in-fcs-errors:
                     _process: not_implemented
                 in-multicast-pkts:
                     _process: not_implemented
@@ -56,6 +60,8 @@ interfaces:
                 _process: not_implemented
             last-change:
                 _process: not_implemented
+            loopback-mode:
+                _process: not_implemented
             mtu:
                 _process: not_implemented
             name:
@@ -74,11 +80,15 @@ interfaces:
                         _process: not_implemented
                     counters:
                         _process: not_implemented
+                        carrier-transitions:
+                            _process: not_implemented
                         in-broadcast-pkts:
                             _process: not_implemented
                         in-discards:
                             _process: not_implemented
                         in-errors:
+                            _process: not_implemented
+                        in-fcs-errors:
                             _process: not_implemented
                         in-multicast-pkts:
                             _process: not_implemented

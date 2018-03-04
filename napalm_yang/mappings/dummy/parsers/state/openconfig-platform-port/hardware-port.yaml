@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+hardware-port:
+    _process: not_implemented

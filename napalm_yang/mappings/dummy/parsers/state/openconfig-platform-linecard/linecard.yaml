@@ -1,0 +1,12 @@
+---
+metadata:
+    processor: unset
+
+linecard:
+    _process: not_implemented
+    state:
+        _process: not_implemented
+        power-admin-state:
+            _process: not_implemented
+        slot-id:
+            _process: not_implemented

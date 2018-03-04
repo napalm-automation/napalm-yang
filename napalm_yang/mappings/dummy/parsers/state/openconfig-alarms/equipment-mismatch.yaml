@@ -1,0 +1,6 @@
+---
+metadata:
+    processor: unset
+
+equipment-mismatch:
+    _process: not_implemented

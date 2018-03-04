@@ -1,0 +1,188 @@
+---
+metadata:
+    processor: unset
+
+tunnel:
+    _process: not_implemented
+    ipv4:
+        _process: not_implemented
+        addresses:
+            _process: not_implemented
+            address:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    ip:
+                        _process: not_implemented
+                    origin:
+                        _process: not_implemented
+                    prefix-length:
+                        _process: not_implemented
+        neighbors:
+            _process: not_implemented
+            neighbor:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    ip:
+                        _process: not_implemented
+                    link-layer-address:
+                        _process: not_implemented
+                    origin:
+                        _process: not_implemented
+        proxy-arp:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                mode:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+            counters:
+                _process: not_implemented
+                in-discarded-pkts:
+                    _process: not_implemented
+                in-error-pkts:
+                    _process: not_implemented
+                in-forwarded-octets:
+                    _process: not_implemented
+                in-forwarded-pkts:
+                    _process: not_implemented
+                in-octets:
+                    _process: not_implemented
+                in-pkts:
+                    _process: not_implemented
+                out-discarded-pkts:
+                    _process: not_implemented
+                out-error-pkts:
+                    _process: not_implemented
+                out-forwarded-octets:
+                    _process: not_implemented
+                out-forwarded-pkts:
+                    _process: not_implemented
+                out-octets:
+                    _process: not_implemented
+                out-pkts:
+                    _process: not_implemented
+            dhcp-client:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            mtu:
+                _process: not_implemented
+        unnumbered:
+            _process: not_implemented
+            interface-ref:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+            state:
+                _process: not_implemented
+                enabled:
+                    _process: not_implemented
+    ipv6:
+        _process: not_implemented
+        addresses:
+            _process: not_implemented
+            address:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    ip:
+                        _process: not_implemented
+                    origin:
+                        _process: not_implemented
+                    prefix-length:
+                        _process: not_implemented
+                    status:
+                        _process: not_implemented
+        neighbors:
+            _process: not_implemented
+            neighbor:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    ip:
+                        _process: not_implemented
+                    is-router:
+                        _process: not_implemented
+                    link-layer-address:
+                        _process: not_implemented
+                    neighbor-state:
+                        _process: not_implemented
+                    origin:
+                        _process: not_implemented
+        router-advertisement:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+                interval:
+                    _process: not_implemented
+                lifetime:
+                    _process: not_implemented
+                suppress:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+            counters:
+                _process: not_implemented
+                in-discarded-pkts:
+                    _process: not_implemented
+                in-error-pkts:
+                    _process: not_implemented
+                in-forwarded-octets:
+                    _process: not_implemented
+                in-forwarded-pkts:
+                    _process: not_implemented
+                in-octets:
+                    _process: not_implemented
+                in-pkts:
+                    _process: not_implemented
+                out-discarded-pkts:
+                    _process: not_implemented
+                out-error-pkts:
+                    _process: not_implemented
+                out-forwarded-octets:
+                    _process: not_implemented
+                out-forwarded-pkts:
+                    _process: not_implemented
+                out-octets:
+                    _process: not_implemented
+                out-pkts:
+                    _process: not_implemented
+            dhcp-client:
+                _process: not_implemented
+            dup-addr-detect-transmits:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            mtu:
+                _process: not_implemented
+        unnumbered:
+            _process: not_implemented
+            interface-ref:
+                _process: not_implemented
+                state:
+                    _process: not_implemented
+                    interface:
+                        _process: not_implemented
+                    subinterface:
+                        _process: not_implemented
+            state:
+                _process: not_implemented
+                enabled:
+                    _process: not_implemented
+    state:
+        _process: not_implemented
+        dst:
+            _process: not_implemented
+        gre-key:
+            _process: not_implemented
+        src:
+            _process: not_implemented
+        ttl:
+            _process: not_implemented

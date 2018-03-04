@@ -36,7 +36,7 @@ system:
                     _process: not_implemented
                     admin-password:
                         _process: not_implemented
-                    admin-password-encrypted:
+                    admin-password-hashed:
                         _process: not_implemented
                 state:
                     _process: not_implemented
@@ -54,7 +54,7 @@ system:
                         _process: not_implemented
                         password:
                             _process: not_implemented
-                        password-encrypted:
+                        password-hashed:
                             _process: not_implemented
                         role:
                             _process: not_implemented
@@ -144,6 +144,8 @@ system:
                                 _process: not_implemented
                 state:
                     _process: not_implemented
+    alarms:
+        _process: not_implemented
     clock:
         _process: not_implemented
         config:
@@ -162,6 +164,8 @@ system:
             _process: not_implemented
         motd-banner:
             _process: not_implemented
+    cpus:
+        _process: not_implemented
     dns:
         _process: not_implemented
         config:

@@ -1,0 +1,14 @@
+---
+metadata:
+    processor: unset
+
+poe:
+    _process: not_implemented
+    state:
+        _process: not_implemented
+        enabled:
+            _process: not_implemented
+        power-class:
+            _process: not_implemented
+        power-used:
+            _process: not_implemented

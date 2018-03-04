@@ -66,8 +66,46 @@ ipv6:
                     _process: not_implemented
                 origin:
                     _process: not_implemented
+    router-advertisement:
+        _process: not_implemented
+        state:
+            _process: not_implemented
+            interval:
+                _process: not_implemented
+            lifetime:
+                _process: not_implemented
+            suppress:
+                _process: not_implemented
     state:
         _process: not_implemented
+        counters:
+            _process: not_implemented
+            in-discarded-pkts:
+                _process: not_implemented
+            in-error-pkts:
+                _process: not_implemented
+            in-forwarded-octets:
+                _process: not_implemented
+            in-forwarded-pkts:
+                _process: not_implemented
+            in-octets:
+                _process: not_implemented
+            in-pkts:
+                _process: not_implemented
+            out-discarded-pkts:
+                _process: not_implemented
+            out-error-pkts:
+                _process: not_implemented
+            out-forwarded-octets:
+                _process: not_implemented
+            out-forwarded-pkts:
+                _process: not_implemented
+            out-octets:
+                _process: not_implemented
+            out-pkts:
+                _process: not_implemented
+        dhcp-client:
+            _process: not_implemented
         dup-addr-detect-transmits:
             _process: not_implemented
         enabled:

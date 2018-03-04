@@ -6,12 +6,34 @@ components:
     _process: not_implemented
     component:
         _process: not_implemented
+        backplane:
+            _process: not_implemented
+        chassis:
+            _process: not_implemented
         config:
             _process: not_implemented
             name:
                 _process: not_implemented
+        cpu:
+            _process: not_implemented
+        fabric:
+            _process: not_implemented
+        fan:
+            _process: not_implemented
+            state:
+                _process: not_implemented
+        integrated-circuit:
+            _process: not_implemented
         name:
             _process: not_implemented
+        port:
+            _process: not_implemented
+        power-supply:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+            state:
+                _process: not_implemented
         properties:
             _process: not_implemented
             property:
@@ -27,6 +49,8 @@ components:
                 state:
                     _process: not_implemented
         state:
+            _process: not_implemented
+        storage:
             _process: not_implemented
         subcomponents:
             _process: not_implemented
