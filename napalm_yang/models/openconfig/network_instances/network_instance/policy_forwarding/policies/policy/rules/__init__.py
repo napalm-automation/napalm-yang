@@ -76,7 +76,8 @@ forwarded according to the policy action.
     Getter method for rule, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule (list)
 
     YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
     """
     return self.__rule
       
@@ -89,7 +90,8 @@ criteria are specified within a single
     do so via calling thisObj._set_rule() directly.
 
     YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -171,7 +173,8 @@ forwarded according to the policy action.
     Getter method for rule, mapped from YANG variable /network_instances/network_instance/policy_forwarding/policies/policy/rules/rule (list)
 
     YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
     """
     return self.__rule
       
@@ -184,7 +187,8 @@ criteria are specified within a single
     do so via calling thisObj._set_rule() directly.
 
     YANG Description: A match rule for the policy. In the case that multiple
-criteria are specified within a single 
+criteria are specified within a single rule, all criteria
+must be met for the rule to be applied to a packet.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

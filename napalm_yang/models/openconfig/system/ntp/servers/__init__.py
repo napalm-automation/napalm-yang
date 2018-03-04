@@ -74,9 +74,7 @@ class servers(PybindBase):
     """
     Getter method for server, mapped from YANG variable /system/ntp/servers/server (list)
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-List of NTP servers to use for system clock
+    YANG Description: List of NTP servers to use for system clock
 synchronization.  If '/system/ntp/enabled'
 is 'true', then the system will attempt to
 contact and utilize the specified NTP servers.
@@ -91,9 +89,7 @@ contact and utilize the specified NTP servers.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_server() directly.
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-List of NTP servers to use for system clock
+    YANG Description: List of NTP servers to use for system clock
 synchronization.  If '/system/ntp/enabled'
 is 'true', then the system will attempt to
 contact and utilize the specified NTP servers.

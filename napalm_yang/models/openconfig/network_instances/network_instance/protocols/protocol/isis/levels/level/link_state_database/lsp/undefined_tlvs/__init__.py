@@ -74,8 +74,8 @@ class undefined_tlvs(PybindBase):
     """
     Getter method for undefined_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv (list)
 
-    YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+    YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
     """
     return self.__undefined_tlv
       
@@ -87,8 +87,8 @@ recognised by the system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_undefined_tlv() directly.
 
-    YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+    YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -168,8 +168,8 @@ class undefined_tlvs(PybindBase):
     """
     Getter method for undefined_tlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv (list)
 
-    YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+    YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
     """
     return self.__undefined_tlv
       
@@ -181,8 +181,8 @@ recognised by the system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_undefined_tlv() directly.
 
-    YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+    YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

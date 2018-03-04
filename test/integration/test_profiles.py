@@ -12,7 +12,7 @@ import json
 import os
 
 
-#  napalm_yang.helpers.config_logging()
+napalm_yang.helpers.config_logging()
 
 
 device_configuration = {

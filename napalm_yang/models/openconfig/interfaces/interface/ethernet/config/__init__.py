@@ -41,7 +41,7 @@ class config(PybindBase):
 
     self._extmethods = False
     self.__duplex_mode = YANGDynClass(base=RestrictedClassType(base_type=unicode,                                     restriction_type="dict_key",                                     restriction_arg={u'FULL': {}, u'HALF': {}},), is_leaf=True, yang_name="duplex-mode", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='enumeration', is_config=True)
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:mac-address', is_config=True)
+    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:mac-address', is_config=True)
     self.__aggregate_id = YANGDynClass(base=unicode, is_leaf=True, yang_name="aggregate-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/aggregate', defining_module='openconfig-if-aggregate', yang_type='leafref', is_config=True)
     self.__auto_negotiate = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="auto-negotiate", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='boolean', is_config=True)
     self.__port_speed = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_type="dict_key", restriction_arg={u'SPEED_100GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_10GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_100GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_25GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_UNKNOWN': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_1GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_1GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_10GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_25GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_10MB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_40GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_40GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_UNKNOWN': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_100MB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_50GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_50GB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'oc-eth:SPEED_10MB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}, u'SPEED_100MB': {'@namespace': u'http://openconfig.net/yang/interfaces/ethernet', '@module': u'openconfig-if-ethernet'}},), is_leaf=True, yang_name="port-speed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='identityref', is_config=True)
@@ -76,7 +76,7 @@ class config(PybindBase):
 
   def _get_mac_address(self):
     """
-    Getter method for mac_address, mapped from YANG variable /interfaces/interface/ethernet/config/mac_address (yang:mac-address)
+    Getter method for mac_address, mapped from YANG variable /interfaces/interface/ethernet/config/mac_address (oc-yang:mac-address)
 
     YANG Description: Assigns a MAC address to the Ethernet interface.  If not
 specified, the corresponding operational state leaf is
@@ -86,7 +86,7 @@ expected to show the system-assigned MAC address.
       
   def _set_mac_address(self, v, load=False):
     """
-    Setter method for mac_address, mapped from YANG variable /interfaces/interface/ethernet/config/mac_address (yang:mac-address)
+    Setter method for mac_address, mapped from YANG variable /interfaces/interface/ethernet/config/mac_address (oc-yang:mac-address)
     If this variable is read-only (config: false) in the
     source YANG file, then _set_mac_address is considered as a private
     method. Backends looking to populate this variable should
@@ -99,12 +99,12 @@ expected to show the system-assigned MAC address.
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:mac-address', is_config=True)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:mac-address', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """mac_address must be of a type compatible with yang:mac-address""",
-          'defined-type': "yang:mac-address",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:mac-address', is_config=True)""",
+          'error-string': """mac_address must be of a type compatible with oc-yang:mac-address""",
+          'defined-type': "oc-yang:mac-address",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:mac-address', is_config=True)""",
         })
 
     self.__mac_address = t
@@ -112,7 +112,7 @@ expected to show the system-assigned MAC address.
       self._set()
 
   def _unset_mac_address(self):
-    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='yang:mac-address', is_config=True)
+    self.__mac_address = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$'}), is_leaf=True, yang_name="mac-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ethernet', defining_module='openconfig-if-ethernet', yang_type='oc-yang:mac-address', is_config=True)
 
 
   def _get_auto_negotiate(self):

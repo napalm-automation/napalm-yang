@@ -21,6 +21,7 @@ elif six.PY2:
   import __builtin__
 
 from . import addresses
+from . import proxy_arp
 from . import neighbors
 from . import unnumbered
 from . import config
@@ -34,7 +35,7 @@ class ipv4(PybindBase):
 
   YANG Description: Parameters for the IPv4 address family.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__addresses','__neighbors','__unnumbered','__config','__state',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__addresses','__proxy_arp','__neighbors','__unnumbered','__config','__state',)
 
   _yang_name = 'ipv4'
 
@@ -46,10 +47,11 @@ class ipv4(PybindBase):
 
     self._extmethods = False
     self.__neighbors = YANGDynClass(base=neighbors.neighbors, is_container='container', yang_name="neighbors", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__proxy_arp = YANGDynClass(base=proxy_arp.proxy_arp, is_container='container', yang_name="proxy-arp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__unnumbered = YANGDynClass(base=unnumbered.unnumbered, is_container='container', yang_name="unnumbered", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
-    self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -113,6 +115,49 @@ class ipv4(PybindBase):
 
   def _unset_addresses(self):
     self.__addresses = YANGDynClass(base=addresses.addresses, is_container='container', yang_name="addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+
+
+  def _get_proxy_arp(self):
+    """
+    Getter method for proxy_arp, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/proxy_arp (container)
+
+    YANG Description: Configuration and operational state parameters
+relating to proxy ARP. This functionality allows a
+system to respond to ARP requests that are not
+explicitly destined to the local system.
+    """
+    return self.__proxy_arp
+      
+  def _set_proxy_arp(self, v, load=False):
+    """
+    Setter method for proxy_arp, mapped from YANG variable /interfaces/interface/routed_vlan/ipv4/proxy_arp (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_proxy_arp is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_proxy_arp() directly.
+
+    YANG Description: Configuration and operational state parameters
+relating to proxy ARP. This functionality allows a
+system to respond to ARP requests that are not
+explicitly destined to the local system.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=proxy_arp.proxy_arp, is_container='container', yang_name="proxy-arp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """proxy_arp must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=proxy_arp.proxy_arp, is_container='container', yang_name="proxy-arp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)""",
+        })
+
+    self.__proxy_arp = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_proxy_arp(self):
+    self.__proxy_arp = YANGDynClass(base=proxy_arp.proxy_arp, is_container='container', yang_name="proxy-arp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
 
   def _get_neighbors(self):
@@ -267,12 +312,13 @@ address information
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='container', is_config=True)
 
   addresses = __builtin__.property(_get_addresses, _set_addresses)
+  proxy_arp = __builtin__.property(_get_proxy_arp, _set_proxy_arp)
   neighbors = __builtin__.property(_get_neighbors, _set_neighbors)
   unnumbered = __builtin__.property(_get_unnumbered, _set_unnumbered)
   config = __builtin__.property(_get_config, _set_config)
   state = __builtin__.property(_get_state, _set_state)
 
 
-  _pyangbind_elements = {'addresses': addresses, 'neighbors': neighbors, 'unnumbered': unnumbered, 'config': config, 'state': state, }
+  _pyangbind_elements = {'addresses': addresses, 'proxy_arp': proxy_arp, 'neighbors': neighbors, 'unnumbered': unnumbered, 'config': config, 'state': state, }
 
 

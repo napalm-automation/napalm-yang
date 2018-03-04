@@ -29,7 +29,7 @@ class state(PybindBase):
 
   YANG Description: State parameters of an IPv4 extended prefix.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__up_down','__s_bit','__ipv4_prefix','__metric',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__up_down','__s_bit','__prefix','__metric',)
 
   _yang_name = 'state'
 
@@ -41,7 +41,7 @@ class state(PybindBase):
 
     self._extmethods = False
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__ipv4_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
     self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
 
@@ -76,11 +76,12 @@ class state(PybindBase):
     """
     Getter method for up_down, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/up_down (boolean)
 
-    YANG Description: The up/down bit. Set if a prefix is advertised from a higher level to
-a lower level (e.g., level 2 to level 1), indicating that the prefix
-has traveled down the hierarchy. Prefixes that have the up/down bit
-set may only be advertised down the hierarchy, i.e., to lower levels.
-When a prefix is first injected into IS-IS, the bit is UNSET.
+    YANG Description: The up/down bit. Set if a prefix is advertised from a
+higher level to a lower level (e.g., level 2 to level 1),
+indicating that the prefix has traveled down the hierarchy.
+Prefixes that have the up/down bit set may only be
+advertised down the hierarchy, i.e., to lower levels. When a
+prefix is first injected into IS-IS, the bit is UNSET.
     """
     return self.__up_down
       
@@ -92,11 +93,12 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_up_down() directly.
 
-    YANG Description: The up/down bit. Set if a prefix is advertised from a higher level to
-a lower level (e.g., level 2 to level 1), indicating that the prefix
-has traveled down the hierarchy. Prefixes that have the up/down bit
-set may only be advertised down the hierarchy, i.e., to lower levels.
-When a prefix is first injected into IS-IS, the bit is UNSET.
+    YANG Description: The up/down bit. Set if a prefix is advertised from a
+higher level to a lower level (e.g., level 2 to level 1),
+indicating that the prefix has traveled down the hierarchy.
+Prefixes that have the up/down bit set may only be
+advertised down the hierarchy, i.e., to lower levels. When a
+prefix is first injected into IS-IS, the bit is UNSET.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -121,9 +123,10 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     """
     Getter method for s_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/s_bit (boolean)
 
-    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs are not
-present. Otherwise, the bit is set and the octet following the prefix
-will contain the length of the Sub-TLV portion of the structure.
+    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs
+are not present. Otherwise, the bit is set and the octet
+following the prefix will contain the length of the Sub-TLV
+portion of the structure.
     """
     return self.__s_bit
       
@@ -135,9 +138,10 @@ will contain the length of the Sub-TLV portion of the structure.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_s_bit() directly.
 
-    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs are not
-present. Otherwise, the bit is set and the octet following the prefix
-will contain the length of the Sub-TLV portion of the structure.
+    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs
+are not present. Otherwise, the bit is set and the octet
+following the prefix will contain the length of the Sub-TLV
+portion of the structure.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -158,41 +162,41 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
-  def _get_ipv4_prefix(self):
+  def _get_prefix(self):
     """
-    Getter method for ipv4_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/ipv4_prefix (inet:ipv4-prefix)
+    Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/prefix (inet:ipv4-prefix)
 
     YANG Description: IPv4 prefix contained within extended reachability TLVs.
     """
-    return self.__ipv4_prefix
+    return self.__prefix
       
-  def _set_ipv4_prefix(self, v, load=False):
+  def _set_prefix(self, v, load=False):
     """
-    Setter method for ipv4_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/ipv4_prefix (inet:ipv4-prefix)
+    Setter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/prefix (inet:ipv4-prefix)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv4_prefix is considered as a private
+    source YANG file, then _set_prefix is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv4_prefix() directly.
+    do so via calling thisObj._set_prefix() directly.
 
     YANG Description: IPv4 prefix contained within extended reachability TLVs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv4_prefix must be of a type compatible with inet:ipv4-prefix""",
+          'error-string': """prefix must be of a type compatible with inet:ipv4-prefix""",
           'defined-type': "inet:ipv4-prefix",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)""",
         })
 
-    self.__ipv4_prefix = t
+    self.__prefix = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv4_prefix(self):
-    self.__ipv4_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+  def _unset_prefix(self):
+    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
 
 
   def _get_metric(self):
@@ -233,11 +237,11 @@ will contain the length of the Sub-TLV portion of the structure.
 
   up_down = __builtin__.property(_get_up_down)
   s_bit = __builtin__.property(_get_s_bit)
-  ipv4_prefix = __builtin__.property(_get_ipv4_prefix)
+  prefix = __builtin__.property(_get_prefix)
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'up_down': up_down, 's_bit': s_bit, 'ipv4_prefix': ipv4_prefix, 'metric': metric, }
+  _pyangbind_elements = {'up_down': up_down, 's_bit': s_bit, 'prefix': prefix, 'metric': metric, }
 
 
 class state(PybindBase):
@@ -249,7 +253,7 @@ class state(PybindBase):
 
   YANG Description: State parameters of an IPv4 extended prefix.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__up_down','__s_bit','__ipv4_prefix','__metric',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__up_down','__s_bit','__prefix','__metric',)
 
   _yang_name = 'state'
 
@@ -261,7 +265,7 @@ class state(PybindBase):
 
     self._extmethods = False
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
-    self.__ipv4_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
     self.__up_down = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="up-down", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
     self.__metric = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1..16777215']}), is_leaf=True, yang_name="metric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='oc-isis-types:wide-metric', is_config=False)
 
@@ -296,11 +300,12 @@ class state(PybindBase):
     """
     Getter method for up_down, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/up_down (boolean)
 
-    YANG Description: The up/down bit. Set if a prefix is advertised from a higher level to
-a lower level (e.g., level 2 to level 1), indicating that the prefix
-has traveled down the hierarchy. Prefixes that have the up/down bit
-set may only be advertised down the hierarchy, i.e., to lower levels.
-When a prefix is first injected into IS-IS, the bit is UNSET.
+    YANG Description: The up/down bit. Set if a prefix is advertised from a
+higher level to a lower level (e.g., level 2 to level 1),
+indicating that the prefix has traveled down the hierarchy.
+Prefixes that have the up/down bit set may only be
+advertised down the hierarchy, i.e., to lower levels. When a
+prefix is first injected into IS-IS, the bit is UNSET.
     """
     return self.__up_down
       
@@ -312,11 +317,12 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_up_down() directly.
 
-    YANG Description: The up/down bit. Set if a prefix is advertised from a higher level to
-a lower level (e.g., level 2 to level 1), indicating that the prefix
-has traveled down the hierarchy. Prefixes that have the up/down bit
-set may only be advertised down the hierarchy, i.e., to lower levels.
-When a prefix is first injected into IS-IS, the bit is UNSET.
+    YANG Description: The up/down bit. Set if a prefix is advertised from a
+higher level to a lower level (e.g., level 2 to level 1),
+indicating that the prefix has traveled down the hierarchy.
+Prefixes that have the up/down bit set may only be
+advertised down the hierarchy, i.e., to lower levels. When a
+prefix is first injected into IS-IS, the bit is UNSET.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -341,9 +347,10 @@ When a prefix is first injected into IS-IS, the bit is UNSET.
     """
     Getter method for s_bit, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/s_bit (boolean)
 
-    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs are not
-present. Otherwise, the bit is set and the octet following the prefix
-will contain the length of the Sub-TLV portion of the structure.
+    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs
+are not present. Otherwise, the bit is set and the octet
+following the prefix will contain the length of the Sub-TLV
+portion of the structure.
     """
     return self.__s_bit
       
@@ -355,9 +362,10 @@ will contain the length of the Sub-TLV portion of the structure.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_s_bit() directly.
 
-    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs are not
-present. Otherwise, the bit is set and the octet following the prefix
-will contain the length of the Sub-TLV portion of the structure.
+    YANG Description: The Sub-TLV present bit. If UNSET, the octets of Sub-TLVs
+are not present. Otherwise, the bit is set and the octet
+following the prefix will contain the length of the Sub-TLV
+portion of the structure.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -378,41 +386,41 @@ will contain the length of the Sub-TLV portion of the structure.
     self.__s_bit = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="s-bit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='boolean', is_config=False)
 
 
-  def _get_ipv4_prefix(self):
+  def _get_prefix(self):
     """
-    Getter method for ipv4_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/ipv4_prefix (inet:ipv4-prefix)
+    Getter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/prefix (inet:ipv4-prefix)
 
     YANG Description: IPv4 prefix contained within extended reachability TLVs.
     """
-    return self.__ipv4_prefix
+    return self.__prefix
       
-  def _set_ipv4_prefix(self, v, load=False):
+  def _set_prefix(self, v, load=False):
     """
-    Setter method for ipv4_prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/ipv4_prefix (inet:ipv4-prefix)
+    Setter method for prefix, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/extended_ipv4_reachability/prefixes/prefix/state/prefix (inet:ipv4-prefix)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv4_prefix is considered as a private
+    source YANG file, then _set_prefix is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv4_prefix() directly.
+    do so via calling thisObj._set_prefix() directly.
 
     YANG Description: IPv4 prefix contained within extended reachability TLVs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv4_prefix must be of a type compatible with inet:ipv4-prefix""",
+          'error-string': """prefix must be of a type compatible with inet:ipv4-prefix""",
           'defined-type': "inet:ipv4-prefix",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)""",
         })
 
-    self.__ipv4_prefix = t
+    self.__prefix = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv4_prefix(self):
-    self.__ipv4_prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="ipv4-prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
+  def _unset_prefix(self):
+    self.__prefix = YANGDynClass(base=RestrictedClassType(base_type=unicode, restriction_dict={'pattern': u'(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/(([0-9])|([1-2][0-9])|(3[0-2]))'}), is_leaf=True, yang_name="prefix", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='inet:ipv4-prefix', is_config=False)
 
 
   def _get_metric(self):
@@ -453,10 +461,10 @@ will contain the length of the Sub-TLV portion of the structure.
 
   up_down = __builtin__.property(_get_up_down)
   s_bit = __builtin__.property(_get_s_bit)
-  ipv4_prefix = __builtin__.property(_get_ipv4_prefix)
+  prefix = __builtin__.property(_get_prefix)
   metric = __builtin__.property(_get_metric)
 
 
-  _pyangbind_elements = {'up_down': up_down, 's_bit': s_bit, 'ipv4_prefix': ipv4_prefix, 'metric': metric, }
+  _pyangbind_elements = {'up_down': up_down, 's_bit': s_bit, 'prefix': prefix, 'metric': metric, }
 
 

@@ -74,8 +74,8 @@ class undefined_subtlvs(PybindBase):
     """
     Getter method for undefined_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute/neighbors/neighbor/undefined_subtlvs/undefined_subtlv (list)
 
-    YANG Description: Sub-TLVs that are not defined in the model or not recognised by
-system.
+    YANG Description: Sub-TLVs that are not defined in the model or not
+recognised by system.
     """
     return self.__undefined_subtlv
       
@@ -87,8 +87,8 @@ system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_undefined_subtlv() directly.
 
-    YANG Description: Sub-TLVs that are not defined in the model or not recognised by
-system.
+    YANG Description: Sub-TLVs that are not defined in the model or not
+recognised by system.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -168,8 +168,8 @@ class undefined_subtlvs(PybindBase):
     """
     Getter method for undefined_subtlv, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_isis_neighbor_attribute/neighbors/neighbor/undefined_subtlvs/undefined_subtlv (list)
 
-    YANG Description: Sub-TLVs that are not defined in the model or not recognised by
-system.
+    YANG Description: Sub-TLVs that are not defined in the model or not
+recognised by system.
     """
     return self.__undefined_subtlv
       
@@ -181,8 +181,8 @@ system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_undefined_subtlv() directly.
 
-    YANG Description: Sub-TLVs that are not defined in the model or not recognised by
-system.
+    YANG Description: Sub-TLVs that are not defined in the model or not
+recognised by system.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

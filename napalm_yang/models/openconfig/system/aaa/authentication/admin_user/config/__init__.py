@@ -29,7 +29,7 @@ class config(PybindBase):
 
   YANG Description: Configuration data for the root user account
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__admin_password','__admin_password_encrypted',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__admin_password','__admin_password_hashed',)
 
   _yang_name = 'config'
 
@@ -40,8 +40,8 @@ class config(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
+    self.__admin_password_hashed = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
     self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
-    self.__admin_password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -75,8 +75,8 @@ class config(PybindBase):
     Getter method for admin_password, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password (string)
 
     YANG Description: The admin/root password, supplied as a cleartext string.
-The system should encrypt and only store the password as an
-encrypted value.
+The system should hash and only store the password as a
+hashed value.
     """
     return self.__admin_password
       
@@ -89,8 +89,8 @@ encrypted value.
     do so via calling thisObj._set_admin_password() directly.
 
     YANG Description: The admin/root password, supplied as a cleartext string.
-The system should encrypt and only store the password as an
-encrypted value.
+The system should hash and only store the password as a
+hashed value.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -111,50 +111,50 @@ encrypted value.
     self.__admin_password = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='string', is_config=True)
 
 
-  def _get_admin_password_encrypted(self):
+  def _get_admin_password_hashed(self):
     """
-    Getter method for admin_password_encrypted, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password_encrypted (oc-aaa-types:crypt-password-type)
+    Getter method for admin_password_hashed, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password_hashed (oc-aaa-types:crypt-password-type)
 
-    YANG Description: The admin/root password, supplied as an encrypted value
+    YANG Description: The admin/root password, supplied as a hashed value
 using the notation described in the definition of the
 crypt-password-type.
     """
-    return self.__admin_password_encrypted
+    return self.__admin_password_hashed
       
-  def _set_admin_password_encrypted(self, v, load=False):
+  def _set_admin_password_hashed(self, v, load=False):
     """
-    Setter method for admin_password_encrypted, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password_encrypted (oc-aaa-types:crypt-password-type)
+    Setter method for admin_password_hashed, mapped from YANG variable /system/aaa/authentication/admin_user/config/admin_password_hashed (oc-aaa-types:crypt-password-type)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_admin_password_encrypted is considered as a private
+    source YANG file, then _set_admin_password_hashed is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_admin_password_encrypted() directly.
+    do so via calling thisObj._set_admin_password_hashed() directly.
 
-    YANG Description: The admin/root password, supplied as an encrypted value
+    YANG Description: The admin/root password, supplied as a hashed value
 using the notation described in the definition of the
 crypt-password-type.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
+      t = YANGDynClass(v,base=unicode, is_leaf=True, yang_name="admin-password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """admin_password_encrypted must be of a type compatible with oc-aaa-types:crypt-password-type""",
+          'error-string': """admin_password_hashed must be of a type compatible with oc-aaa-types:crypt-password-type""",
           'defined-type': "oc-aaa-types:crypt-password-type",
-          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)""",
+          'generated-type': """YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)""",
         })
 
-    self.__admin_password_encrypted = t
+    self.__admin_password_hashed = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_admin_password_encrypted(self):
-    self.__admin_password_encrypted = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-encrypted", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
+  def _unset_admin_password_hashed(self):
+    self.__admin_password_hashed = YANGDynClass(base=unicode, is_leaf=True, yang_name="admin-password-hashed", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/system', defining_module='openconfig-system', yang_type='oc-aaa-types:crypt-password-type', is_config=True)
 
   admin_password = __builtin__.property(_get_admin_password, _set_admin_password)
-  admin_password_encrypted = __builtin__.property(_get_admin_password_encrypted, _set_admin_password_encrypted)
+  admin_password_hashed = __builtin__.property(_get_admin_password_hashed, _set_admin_password_hashed)
 
 
-  _pyangbind_elements = {'admin_password': admin_password, 'admin_password_encrypted': admin_password_encrypted, }
+  _pyangbind_elements = {'admin_password': admin_password, 'admin_password_hashed': admin_password_hashed, }
 
 

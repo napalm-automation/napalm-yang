@@ -27,15 +27,19 @@ class input_power(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: The input optical power of this port in units of 0.01dBm.
-If the port is an aggregate of multiple physical channels,
-this attribute is the total power or sum of all channels.
+  YANG Description: The input optical power of a physical channel in units
+of 0.01dBm, which may be associated with individual
+physical channels, or an aggregate of multiple physical
+channels (i.e., for the overall transceiver). For an
+aggregate, this may be a measurement from a photodetector
+or a a calculation performed on the device by summing up
+all of the related individual physical channels.
 Values include the instantaneous, average, minimum, and
 maximum statistics. If avg/min/max statistics are not
 supported, the target is expected to just supply the
 instant value
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__instant','__avg','__min_','__max_',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__instant','__avg','__min_','__max_','__interval',)
 
   _yang_name = 'input-power'
 
@@ -49,6 +53,7 @@ instant value
     self.__avg = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="avg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     self.__instant = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="instant", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
     self.__max_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
+    self.__interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-types:stat-interval', is_config=False)
     self.__min_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="min", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
     load = kwargs.pop("load", None)
@@ -231,12 +236,52 @@ period
   def _unset_max_(self):
     self.__max_ = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=2), is_leaf=True, yang_name="max", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='decimal64', is_config=False)
 
+
+  def _get_interval(self):
+    """
+    Getter method for interval, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/input_power/interval (oc-types:stat-interval)
+
+    YANG Description: The time interval over which the min/max/average statistics
+are computed by the system.
+    """
+    return self.__interval
+      
+  def _set_interval(self, v, load=False):
+    """
+    Setter method for interval, mapped from YANG variable /components/component/transceiver/physical_channels/channel/state/input_power/interval (oc-types:stat-interval)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_interval is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_interval() directly.
+
+    YANG Description: The time interval over which the min/max/average statistics
+are computed by the system.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-types:stat-interval', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """interval must be of a type compatible with oc-types:stat-interval""",
+          'defined-type': "oc-types:stat-interval",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-types:stat-interval', is_config=False)""",
+        })
+
+    self.__interval = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_interval(self):
+    self.__interval = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range':  ['0..18446744073709551615']}, int_size=64), is_leaf=True, yang_name="interval", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='oc-types:stat-interval', is_config=False)
+
   instant = __builtin__.property(_get_instant)
   avg = __builtin__.property(_get_avg)
   min_ = __builtin__.property(_get_min_)
   max_ = __builtin__.property(_get_max_)
+  interval = __builtin__.property(_get_interval)
 
 
-  _pyangbind_elements = {'instant': instant, 'avg': avg, 'min_': min_, 'max_': max_, }
+  _pyangbind_elements = {'instant': instant, 'avg': avg, 'min_': min_, 'max_': max_, 'interval': interval, }
 
 

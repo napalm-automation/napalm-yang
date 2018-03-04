@@ -25,7 +25,7 @@ from . import iih
 from . import ish
 from . import esh
 from . import psnp
-from . import cnsp
+from . import csnp
 from . import unknown
 class packet_counters(PybindBase):
   """
@@ -36,7 +36,7 @@ class packet_counters(PybindBase):
 
   YANG Description: This container defines ISIS interface packet counters.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp','__iih','__ish','__esh','__psnp','__cnsp','__unknown',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp','__iih','__ish','__esh','__psnp','__csnp','__unknown',)
 
   _yang_name = 'packet-counters'
 
@@ -48,9 +48,9 @@ class packet_counters(PybindBase):
 
     self._extmethods = False
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__csnp = YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
@@ -267,41 +267,41 @@ class packet_counters(PybindBase):
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
-  def _get_cnsp(self):
+  def _get_csnp(self):
     """
-    Getter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
+    Getter method for csnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/csnp (container)
 
-    YANG Description: Operational state parameters relating to CNSPs.
+    YANG Description: Operational state parameters relating to CSNPs.
     """
-    return self.__cnsp
+    return self.__csnp
       
-  def _set_cnsp(self, v, load=False):
+  def _set_csnp(self, v, load=False):
     """
-    Setter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
+    Setter method for csnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/csnp (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_cnsp is considered as a private
+    source YANG file, then _set_csnp is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_cnsp() directly.
+    do so via calling thisObj._set_csnp() directly.
 
-    YANG Description: Operational state parameters relating to CNSPs.
+    YANG Description: Operational state parameters relating to CSNPs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+      t = YANGDynClass(v,base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """cnsp must be of a type compatible with container""",
+          'error-string': """csnp must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+          'generated-type': """YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
         })
 
-    self.__cnsp = t
+    self.__csnp = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_cnsp(self):
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+  def _unset_csnp(self):
+    self.__csnp = YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
   def _get_unknown(self):
@@ -347,11 +347,11 @@ otherwise classified - referred to as Unknown PDUs.
   ish = __builtin__.property(_get_ish, _set_ish)
   esh = __builtin__.property(_get_esh, _set_esh)
   psnp = __builtin__.property(_get_psnp, _set_psnp)
-  cnsp = __builtin__.property(_get_cnsp, _set_cnsp)
+  csnp = __builtin__.property(_get_csnp, _set_csnp)
   unknown = __builtin__.property(_get_unknown, _set_unknown)
 
 
-  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'cnsp': cnsp, 'unknown': unknown, }
+  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'csnp': csnp, 'unknown': unknown, }
 
 
 from . import lsp
@@ -359,7 +359,7 @@ from . import iih
 from . import ish
 from . import esh
 from . import psnp
-from . import cnsp
+from . import csnp
 from . import unknown
 class packet_counters(PybindBase):
   """
@@ -370,7 +370,7 @@ class packet_counters(PybindBase):
 
   YANG Description: This container defines ISIS interface packet counters.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp','__iih','__ish','__esh','__psnp','__cnsp','__unknown',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp','__iih','__ish','__esh','__psnp','__csnp','__unknown',)
 
   _yang_name = 'packet-counters'
 
@@ -382,9 +382,9 @@ class packet_counters(PybindBase):
 
     self._extmethods = False
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__unknown = YANGDynClass(base=unknown.unknown, is_container='container', yang_name="unknown", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__ish = YANGDynClass(base=ish.ish, is_container='container', yang_name="ish", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+    self.__csnp = YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__lsp = YANGDynClass(base=lsp.lsp, is_container='container', yang_name="lsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__iih = YANGDynClass(base=iih.iih, is_container='container', yang_name="iih", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     self.__esh = YANGDynClass(base=esh.esh, is_container='container', yang_name="esh", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
@@ -601,41 +601,41 @@ class packet_counters(PybindBase):
     self.__psnp = YANGDynClass(base=psnp.psnp, is_container='container', yang_name="psnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
-  def _get_cnsp(self):
+  def _get_csnp(self):
     """
-    Getter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
+    Getter method for csnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/csnp (container)
 
-    YANG Description: Operational state parameters relating to CNSPs.
+    YANG Description: Operational state parameters relating to CSNPs.
     """
-    return self.__cnsp
+    return self.__csnp
       
-  def _set_cnsp(self, v, load=False):
+  def _set_csnp(self, v, load=False):
     """
-    Setter method for cnsp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/cnsp (container)
+    Setter method for csnp, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/interfaces/interface/levels/level/packet_counters/csnp (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_cnsp is considered as a private
+    source YANG file, then _set_csnp is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_cnsp() directly.
+    do so via calling thisObj._set_csnp() directly.
 
-    YANG Description: Operational state parameters relating to CNSPs.
+    YANG Description: Operational state parameters relating to CSNPs.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+      t = YANGDynClass(v,base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """cnsp must be of a type compatible with container""",
+          'error-string': """csnp must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
+          'generated-type': """YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)""",
         })
 
-    self.__cnsp = t
+    self.__csnp = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_cnsp(self):
-    self.__cnsp = YANGDynClass(base=cnsp.cnsp, is_container='container', yang_name="cnsp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
+  def _unset_csnp(self):
+    self.__csnp = YANGDynClass(base=csnp.csnp, is_container='container', yang_name="csnp", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=True)
 
 
   def _get_unknown(self):
@@ -681,10 +681,10 @@ otherwise classified - referred to as Unknown PDUs.
   ish = __builtin__.property(_get_ish, _set_ish)
   esh = __builtin__.property(_get_esh, _set_esh)
   psnp = __builtin__.property(_get_psnp, _set_psnp)
-  cnsp = __builtin__.property(_get_cnsp, _set_cnsp)
+  csnp = __builtin__.property(_get_csnp, _set_csnp)
   unknown = __builtin__.property(_get_unknown, _set_unknown)
 
 
-  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'cnsp': cnsp, 'unknown': unknown, }
+  _pyangbind_elements = {'lsp': lsp, 'iih': iih, 'ish': ish, 'esh': esh, 'psnp': psnp, 'csnp': csnp, 'unknown': unknown, }
 
 

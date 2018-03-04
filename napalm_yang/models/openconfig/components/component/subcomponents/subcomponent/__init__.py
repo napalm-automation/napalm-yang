@@ -119,7 +119,7 @@ class subcomponent(PybindBase):
     """
     Getter method for config, mapped from YANG variable /components/component/subcomponents/subcomponent/config (container)
 
-    YANG Description: Configuration data 
+    YANG Description: Configuration data for the subcomponent
     """
     return self.__config
       
@@ -131,7 +131,7 @@ class subcomponent(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_config() directly.
 
-    YANG Description: Configuration data 
+    YANG Description: Configuration data for the subcomponent
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -156,7 +156,7 @@ class subcomponent(PybindBase):
     """
     Getter method for state, mapped from YANG variable /components/component/subcomponents/subcomponent/state (container)
 
-    YANG Description: Operational state data 
+    YANG Description: Operational state data for the subcomponent
     """
     return self.__state
       
@@ -168,7 +168,7 @@ class subcomponent(PybindBase):
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_state() directly.
 
-    YANG Description: Operational state data 
+    YANG Description: Operational state data for the subcomponent
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

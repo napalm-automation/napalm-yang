@@ -22,28 +22,28 @@ elif six.PY2:
 
 from . import state
 from . import area_address
+from . import lsp_buffer_size
 from . import nlpid
 from . import hostname
 from . import ipv4_interface_addresses
 from . import ipv6_interface_addresses
 from . import ipv4_te_router_id
 from . import ipv6_te_router_id
-from . import instance_id
-from . import ipv4_srlg
-from . import ipv6_srlg
+from . import instance_ids
+from . import ipv4_srlgs
+from . import ipv6_srlgs
 from . import purge_oi
 from . import router_capabilities
 from . import is_reachability
 from . import ipv4_internal_reachability
 from . import ipv4_external_reachability
-from . import type_block
 from . import authentication
 from . import extended_is_reachability
 from . import extended_ipv4_reachability
 from . import ipv6_reachability
 from . import multi_topology
 from . import isis_neighbor_attribute
-from . import isis_alias_id
+from . import is_alias_id
 from . import mt_isn
 from . import mt_isis_neighbor_attribute
 from . import mt_ipv4_reachability
@@ -57,7 +57,7 @@ class tlv(PybindBase):
 
   YANG Description: List of TLV types in the LSDB for the specified LSP.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state','__area_address','__nlpid','__hostname','__ipv4_interface_addresses','__ipv6_interface_addresses','__ipv4_te_router_id','__ipv6_te_router_id','__instance_id','__ipv4_srlg','__ipv6_srlg','__purge_oi','__router_capabilities','__is_reachability','__ipv4_internal_reachability','__ipv4_external_reachability','__type_block','__authentication','__extended_is_reachability','__extended_ipv4_reachability','__ipv6_reachability','__multi_topology','__isis_neighbor_attribute','__isis_alias_id','__mt_isn','__mt_isis_neighbor_attribute','__mt_ipv4_reachability','__mt_ipv6_reachability',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state','__area_address','__lsp_buffer_size','__nlpid','__hostname','__ipv4_interface_addresses','__ipv6_interface_addresses','__ipv4_te_router_id','__ipv6_te_router_id','__instance_ids','__ipv4_srlgs','__ipv6_srlgs','__purge_oi','__router_capabilities','__is_reachability','__ipv4_internal_reachability','__ipv4_external_reachability','__authentication','__extended_is_reachability','__extended_ipv4_reachability','__ipv6_reachability','__multi_topology','__isis_neighbor_attribute','__is_alias_id','__mt_isn','__mt_isis_neighbor_attribute','__mt_ipv4_reachability','__mt_ipv6_reachability',)
 
   _yang_name = 'tlv'
 
@@ -69,34 +69,34 @@ class tlv(PybindBase):
 
     self._extmethods = False
     self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ipv6_srlgs = YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__lsp_buffer_size = YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__is_alias_id = YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ipv4_srlgs = YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__instance_ids = YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -129,8 +129,7 @@ class tlv(PybindBase):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type (leafref)
 
-    YANG Description: A reference for the TLV type being described within
-the LSDB.
+    YANG Description: Reference to the TLV's type.
     """
     return self.__type
       
@@ -142,8 +141,7 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
 
-    YANG Description: A reference for the TLV type being described within
-the LSDB.
+    YANG Description: Reference to the TLV's type.
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -173,7 +171,8 @@ the LSDB.
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/state (container)
 
-    YANG Description: This container defines TLV State.
+    YANG Description: Operational state parameters relating to the specified
+LSP
     """
     return self.__state
       
@@ -185,7 +184,8 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_state() directly.
 
-    YANG Description: This container defines TLV State.
+    YANG Description: Operational state parameters relating to the specified
+LSP
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -241,6 +241,45 @@ the LSDB.
 
   def _unset_area_address(self):
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+
+
+  def _get_lsp_buffer_size(self):
+    """
+    Getter method for lsp_buffer_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/lsp_buffer_size (container)
+
+    YANG Description: This container defines TLV 14 - the LSP Buffer Size
+TLV.
+    """
+    return self.__lsp_buffer_size
+      
+  def _set_lsp_buffer_size(self, v, load=False):
+    """
+    Setter method for lsp_buffer_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/lsp_buffer_size (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_lsp_buffer_size is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_lsp_buffer_size() directly.
+
+    YANG Description: This container defines TLV 14 - the LSP Buffer Size
+TLV.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """lsp_buffer_size must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+        })
+
+    self.__lsp_buffer_size = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_lsp_buffer_size(self):
+    self.__lsp_buffer_size = YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_nlpid(self):
@@ -465,115 +504,115 @@ the LSDB.
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_instance_id(self):
+  def _get_instance_ids(self):
     """
-    Getter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
+    Getter method for instance_ids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_ids (container)
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
-    return self.__instance_id
+    return self.__instance_ids
       
-  def _set_instance_id(self, v, load=False):
+  def _set_instance_ids(self, v, load=False):
     """
-    Setter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
+    Setter method for instance_ids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_ids (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_instance_id is considered as a private
+    source YANG file, then _set_instance_ids is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_instance_id() directly.
+    do so via calling thisObj._set_instance_ids() directly.
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """instance_id must be of a type compatible with container""",
+          'error-string': """instance_ids must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__instance_id = t
+    self.__instance_ids = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_instance_id(self):
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_instance_ids(self):
+    self.__instance_ids = YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_ipv4_srlg(self):
+  def _get_ipv4_srlgs(self):
     """
-    Getter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
+    Getter method for ipv4_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlgs (container)
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
-    return self.__ipv4_srlg
+    return self.__ipv4_srlgs
       
-  def _set_ipv4_srlg(self, v, load=False):
+  def _set_ipv4_srlgs(self, v, load=False):
     """
-    Setter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
+    Setter method for ipv4_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlgs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv4_srlg is considered as a private
+    source YANG file, then _set_ipv4_srlgs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv4_srlg() directly.
+    do so via calling thisObj._set_ipv4_srlgs() directly.
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv4_srlg must be of a type compatible with container""",
+          'error-string': """ipv4_srlgs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__ipv4_srlg = t
+    self.__ipv4_srlgs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv4_srlg(self):
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_ipv4_srlgs(self):
+    self.__ipv4_srlgs = YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_ipv6_srlg(self):
+  def _get_ipv6_srlgs(self):
     """
-    Getter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
+    Getter method for ipv6_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlgs (container)
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
-    return self.__ipv6_srlg
+    return self.__ipv6_srlgs
       
-  def _set_ipv6_srlg(self, v, load=False):
+  def _set_ipv6_srlgs(self, v, load=False):
     """
-    Setter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
+    Setter method for ipv6_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlgs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv6_srlg is considered as a private
+    source YANG file, then _set_ipv6_srlgs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv6_srlg() directly.
+    do so via calling thisObj._set_ipv6_srlgs() directly.
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv6_srlg must be of a type compatible with container""",
+          'error-string': """ipv6_srlgs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__ipv6_srlg = t
+    self.__ipv6_srlgs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv6_srlg(self):
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_ipv6_srlgs(self):
+    self.__ipv6_srlgs = YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_purge_oi(self):
@@ -654,7 +693,8 @@ the LSDB.
     """
     Getter method for is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability (container)
 
-    YANG Description: This container describes list of ISIS neighbors and attributes.
+    YANG Description: This container describes list of ISIS neighbors and
+attributes.
     """
     return self.__is_reachability
       
@@ -666,7 +706,8 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_is_reachability() directly.
 
-    YANG Description: This container describes list of ISIS neighbors and attributes.
+    YANG Description: This container describes list of ISIS neighbors and
+attributes.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -763,43 +804,6 @@ information.
 
   def _unset_ipv4_external_reachability(self):
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-
-
-  def _get_type_block(self):
-    """
-    Getter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
-
-    YANG Description: This container defines LSP Type Block. 
-    """
-    return self.__type_block
-      
-  def _set_type_block(self, v, load=False):
-    """
-    Setter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_type_block is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_type_block() directly.
-
-    YANG Description: This container defines LSP Type Block. 
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """type_block must be of a type compatible with container""",
-          'defined-type': "container",
-          'generated-type': """YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
-        })
-
-    self.__type_block = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_type_block(self):
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_authentication(self):
@@ -1000,7 +1004,7 @@ information.
     Getter method for isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute (container)
 
     YANG Description: This container defines list of ISIS topology neighbors
-for extended ISIS LSP(multiple system IDs). 
+for extended ISIS LSP (multiple system IDs). 
     """
     return self.__isis_neighbor_attribute
       
@@ -1013,7 +1017,7 @@ for extended ISIS LSP(multiple system IDs).
     do so via calling thisObj._set_isis_neighbor_attribute() directly.
 
     YANG Description: This container defines list of ISIS topology neighbors
-for extended ISIS LSP(multiple system IDs). 
+for extended ISIS LSP (multiple system IDs). 
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1034,47 +1038,47 @@ for extended ISIS LSP(multiple system IDs).
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_isis_alias_id(self):
+  def _get_is_alias_id(self):
     """
-    Getter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
+    Getter method for is_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_alias_id (container)
 
     YANG Description: This container defines the IS-Alias TLV which allows
-extension-capable ISs to recognize the Originating System of an
-Extended LSP set. It identifies the Normal system-id of the
-Originating System.
+extension-capable ISs to recognize the Originating System
+of an Extended LSP set. It identifies the Normal system-
+id of the Originating System.
     """
-    return self.__isis_alias_id
+    return self.__is_alias_id
       
-  def _set_isis_alias_id(self, v, load=False):
+  def _set_is_alias_id(self, v, load=False):
     """
-    Setter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
+    Setter method for is_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_alias_id (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_isis_alias_id is considered as a private
+    source YANG file, then _set_is_alias_id is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_isis_alias_id() directly.
+    do so via calling thisObj._set_is_alias_id() directly.
 
     YANG Description: This container defines the IS-Alias TLV which allows
-extension-capable ISs to recognize the Originating System of an
-Extended LSP set. It identifies the Normal system-id of the
-Originating System.
+extension-capable ISs to recognize the Originating System
+of an Extended LSP set. It identifies the Normal system-
+id of the Originating System.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """isis_alias_id must be of a type compatible with container""",
+          'error-string': """is_alias_id must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__isis_alias_id = t
+    self.__is_alias_id = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_isis_alias_id(self):
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_is_alias_id(self):
+    self.__is_alias_id = YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_mt_isn(self):
@@ -1159,8 +1163,8 @@ neighbors.
     """
     Getter method for mt_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv4_reachability (container)
 
-    YANG Description: This container defines list of IPv4 reachability Information
-in multi-topology environment.
+    YANG Description: This container defines list of IPv4 reachability
+Information in multi-topology environment.
     """
     return self.__mt_ipv4_reachability
       
@@ -1172,8 +1176,8 @@ in multi-topology environment.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_mt_ipv4_reachability() directly.
 
-    YANG Description: This container defines list of IPv4 reachability Information
-in multi-topology environment.
+    YANG Description: This container defines list of IPv4 reachability
+Information in multi-topology environment.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1198,8 +1202,8 @@ in multi-topology environment.
     """
     Getter method for mt_ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability (container)
 
-    YANG Description: This container defines list of IPv6 reachability information
-in multi - topology environment.
+    YANG Description: This container defines list of IPv6 reachability
+information in multi - topology environment.
     """
     return self.__mt_ipv6_reachability
       
@@ -1211,8 +1215,8 @@ in multi - topology environment.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_mt_ipv6_reachability() directly.
 
-    YANG Description: This container defines list of IPv6 reachability information
-in multi - topology environment.
+    YANG Description: This container defines list of IPv6 reachability
+information in multi - topology environment.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1235,61 +1239,61 @@ in multi - topology environment.
   type = __builtin__.property(_get_type)
   state = __builtin__.property(_get_state)
   area_address = __builtin__.property(_get_area_address)
+  lsp_buffer_size = __builtin__.property(_get_lsp_buffer_size)
   nlpid = __builtin__.property(_get_nlpid)
   hostname = __builtin__.property(_get_hostname)
   ipv4_interface_addresses = __builtin__.property(_get_ipv4_interface_addresses)
   ipv6_interface_addresses = __builtin__.property(_get_ipv6_interface_addresses)
   ipv4_te_router_id = __builtin__.property(_get_ipv4_te_router_id)
   ipv6_te_router_id = __builtin__.property(_get_ipv6_te_router_id)
-  instance_id = __builtin__.property(_get_instance_id)
-  ipv4_srlg = __builtin__.property(_get_ipv4_srlg)
-  ipv6_srlg = __builtin__.property(_get_ipv6_srlg)
+  instance_ids = __builtin__.property(_get_instance_ids)
+  ipv4_srlgs = __builtin__.property(_get_ipv4_srlgs)
+  ipv6_srlgs = __builtin__.property(_get_ipv6_srlgs)
   purge_oi = __builtin__.property(_get_purge_oi)
   router_capabilities = __builtin__.property(_get_router_capabilities)
   is_reachability = __builtin__.property(_get_is_reachability)
   ipv4_internal_reachability = __builtin__.property(_get_ipv4_internal_reachability)
   ipv4_external_reachability = __builtin__.property(_get_ipv4_external_reachability)
-  type_block = __builtin__.property(_get_type_block)
   authentication = __builtin__.property(_get_authentication)
   extended_is_reachability = __builtin__.property(_get_extended_is_reachability)
   extended_ipv4_reachability = __builtin__.property(_get_extended_ipv4_reachability)
   ipv6_reachability = __builtin__.property(_get_ipv6_reachability)
   multi_topology = __builtin__.property(_get_multi_topology)
   isis_neighbor_attribute = __builtin__.property(_get_isis_neighbor_attribute)
-  isis_alias_id = __builtin__.property(_get_isis_alias_id)
+  is_alias_id = __builtin__.property(_get_is_alias_id)
   mt_isn = __builtin__.property(_get_mt_isn)
   mt_isis_neighbor_attribute = __builtin__.property(_get_mt_isis_neighbor_attribute)
   mt_ipv4_reachability = __builtin__.property(_get_mt_ipv4_reachability)
   mt_ipv6_reachability = __builtin__.property(_get_mt_ipv6_reachability)
 
 
-  _pyangbind_elements = {'type': type, 'state': state, 'area_address': area_address, 'nlpid': nlpid, 'hostname': hostname, 'ipv4_interface_addresses': ipv4_interface_addresses, 'ipv6_interface_addresses': ipv6_interface_addresses, 'ipv4_te_router_id': ipv4_te_router_id, 'ipv6_te_router_id': ipv6_te_router_id, 'instance_id': instance_id, 'ipv4_srlg': ipv4_srlg, 'ipv6_srlg': ipv6_srlg, 'purge_oi': purge_oi, 'router_capabilities': router_capabilities, 'is_reachability': is_reachability, 'ipv4_internal_reachability': ipv4_internal_reachability, 'ipv4_external_reachability': ipv4_external_reachability, 'type_block': type_block, 'authentication': authentication, 'extended_is_reachability': extended_is_reachability, 'extended_ipv4_reachability': extended_ipv4_reachability, 'ipv6_reachability': ipv6_reachability, 'multi_topology': multi_topology, 'isis_neighbor_attribute': isis_neighbor_attribute, 'isis_alias_id': isis_alias_id, 'mt_isn': mt_isn, 'mt_isis_neighbor_attribute': mt_isis_neighbor_attribute, 'mt_ipv4_reachability': mt_ipv4_reachability, 'mt_ipv6_reachability': mt_ipv6_reachability, }
+  _pyangbind_elements = {'type': type, 'state': state, 'area_address': area_address, 'lsp_buffer_size': lsp_buffer_size, 'nlpid': nlpid, 'hostname': hostname, 'ipv4_interface_addresses': ipv4_interface_addresses, 'ipv6_interface_addresses': ipv6_interface_addresses, 'ipv4_te_router_id': ipv4_te_router_id, 'ipv6_te_router_id': ipv6_te_router_id, 'instance_ids': instance_ids, 'ipv4_srlgs': ipv4_srlgs, 'ipv6_srlgs': ipv6_srlgs, 'purge_oi': purge_oi, 'router_capabilities': router_capabilities, 'is_reachability': is_reachability, 'ipv4_internal_reachability': ipv4_internal_reachability, 'ipv4_external_reachability': ipv4_external_reachability, 'authentication': authentication, 'extended_is_reachability': extended_is_reachability, 'extended_ipv4_reachability': extended_ipv4_reachability, 'ipv6_reachability': ipv6_reachability, 'multi_topology': multi_topology, 'isis_neighbor_attribute': isis_neighbor_attribute, 'is_alias_id': is_alias_id, 'mt_isn': mt_isn, 'mt_isis_neighbor_attribute': mt_isis_neighbor_attribute, 'mt_ipv4_reachability': mt_ipv4_reachability, 'mt_ipv6_reachability': mt_ipv6_reachability, }
 
 
 from . import state
 from . import area_address
+from . import lsp_buffer_size
 from . import nlpid
 from . import hostname
 from . import ipv4_interface_addresses
 from . import ipv6_interface_addresses
 from . import ipv4_te_router_id
 from . import ipv6_te_router_id
-from . import instance_id
-from . import ipv4_srlg
-from . import ipv6_srlg
+from . import instance_ids
+from . import ipv4_srlgs
+from . import ipv6_srlgs
 from . import purge_oi
 from . import router_capabilities
 from . import is_reachability
 from . import ipv4_internal_reachability
 from . import ipv4_external_reachability
-from . import type_block
 from . import authentication
 from . import extended_is_reachability
 from . import extended_ipv4_reachability
 from . import ipv6_reachability
 from . import multi_topology
 from . import isis_neighbor_attribute
-from . import isis_alias_id
+from . import is_alias_id
 from . import mt_isn
 from . import mt_isis_neighbor_attribute
 from . import mt_ipv4_reachability
@@ -1303,7 +1307,7 @@ class tlv(PybindBase):
 
   YANG Description: List of TLV types in the LSDB for the specified LSP.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state','__area_address','__nlpid','__hostname','__ipv4_interface_addresses','__ipv6_interface_addresses','__ipv4_te_router_id','__ipv6_te_router_id','__instance_id','__ipv4_srlg','__ipv6_srlg','__purge_oi','__router_capabilities','__is_reachability','__ipv4_internal_reachability','__ipv4_external_reachability','__type_block','__authentication','__extended_is_reachability','__extended_ipv4_reachability','__ipv6_reachability','__multi_topology','__isis_neighbor_attribute','__isis_alias_id','__mt_isn','__mt_isis_neighbor_attribute','__mt_ipv4_reachability','__mt_ipv6_reachability',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state','__area_address','__lsp_buffer_size','__nlpid','__hostname','__ipv4_interface_addresses','__ipv6_interface_addresses','__ipv4_te_router_id','__ipv6_te_router_id','__instance_ids','__ipv4_srlgs','__ipv6_srlgs','__purge_oi','__router_capabilities','__is_reachability','__ipv4_internal_reachability','__ipv4_external_reachability','__authentication','__extended_is_reachability','__extended_ipv4_reachability','__ipv6_reachability','__multi_topology','__isis_neighbor_attribute','__is_alias_id','__mt_isn','__mt_isis_neighbor_attribute','__mt_ipv4_reachability','__mt_ipv6_reachability',)
 
   _yang_name = 'tlv'
 
@@ -1315,34 +1319,34 @@ class tlv(PybindBase):
 
     self._extmethods = False
     self.__mt_isis_neighbor_attribute = YANGDynClass(base=mt_isis_neighbor_attribute.mt_isis_neighbor_attribute, is_container='container', yang_name="mt-isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_ipv6_reachability = YANGDynClass(base=mt_ipv6_reachability.mt_ipv6_reachability, is_container='container', yang_name="mt-ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_ipv4_reachability = YANGDynClass(base=mt_ipv4_reachability.mt_ipv4_reachability, is_container='container', yang_name="mt-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__mt_isn = YANGDynClass(base=mt_isn.mt_isn, is_container='container', yang_name="mt-isn", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ipv6_srlgs = YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__extended_ipv4_reachability = YANGDynClass(base=extended_ipv4_reachability.extended_ipv4_reachability, is_container='container', yang_name="extended-ipv4-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__hostname = YANGDynClass(base=hostname.hostname, is_container='container', yang_name="hostname", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__purge_oi = YANGDynClass(base=purge_oi.purge_oi, is_container='container', yang_name="purge-oi", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__authentication = YANGDynClass(base=authentication.authentication, is_container='container', yang_name="authentication", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_te_router_id = YANGDynClass(base=ipv4_te_router_id.ipv4_te_router_id, is_container='container', yang_name="ipv4-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_internal_reachability = YANGDynClass(base=ipv4_internal_reachability.ipv4_internal_reachability, is_container='container', yang_name="ipv4-internal-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__router_capabilities = YANGDynClass(base=router_capabilities.router_capabilities, is_container='container', yang_name="router-capabilities", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__type = YANGDynClass(base=unicode, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='leafref', is_config=False)
+    self.__lsp_buffer_size = YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__multi_topology = YANGDynClass(base=multi_topology.multi_topology, is_container='container', yang_name="multi-topology", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__is_reachability = YANGDynClass(base=is_reachability.is_reachability, is_container='container', yang_name="is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__is_alias_id = YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_interface_addresses = YANGDynClass(base=ipv4_interface_addresses.ipv4_interface_addresses, is_container='container', yang_name="ipv4-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__ipv4_srlgs = YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    self.__instance_ids = YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__extended_is_reachability = YANGDynClass(base=extended_is_reachability.extended_is_reachability, is_container='container', yang_name="extended-is-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_interface_addresses = YANGDynClass(base=ipv6_interface_addresses.ipv6_interface_addresses, is_container='container', yang_name="ipv6-interface-addresses", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__nlpid = YANGDynClass(base=nlpid.nlpid, is_container='container', yang_name="nlpid", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__ipv6_reachability = YANGDynClass(base=ipv6_reachability.ipv6_reachability, is_container='container', yang_name="ipv6-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -1375,8 +1379,7 @@ class tlv(PybindBase):
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type (leafref)
 
-    YANG Description: A reference for the TLV type being described within
-the LSDB.
+    YANG Description: Reference to the TLV's type.
     """
     return self.__type
       
@@ -1388,8 +1391,7 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
 
-    YANG Description: A reference for the TLV type being described within
-the LSDB.
+    YANG Description: Reference to the TLV's type.
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1419,7 +1421,8 @@ the LSDB.
     """
     Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/state (container)
 
-    YANG Description: This container defines TLV State.
+    YANG Description: Operational state parameters relating to the specified
+LSP
     """
     return self.__state
       
@@ -1431,7 +1434,8 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_state() directly.
 
-    YANG Description: This container defines TLV State.
+    YANG Description: Operational state parameters relating to the specified
+LSP
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1487,6 +1491,45 @@ the LSDB.
 
   def _unset_area_address(self):
     self.__area_address = YANGDynClass(base=area_address.area_address, is_container='container', yang_name="area-address", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+
+
+  def _get_lsp_buffer_size(self):
+    """
+    Getter method for lsp_buffer_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/lsp_buffer_size (container)
+
+    YANG Description: This container defines TLV 14 - the LSP Buffer Size
+TLV.
+    """
+    return self.__lsp_buffer_size
+      
+  def _set_lsp_buffer_size(self, v, load=False):
+    """
+    Setter method for lsp_buffer_size, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/lsp_buffer_size (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_lsp_buffer_size is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_lsp_buffer_size() directly.
+
+    YANG Description: This container defines TLV 14 - the LSP Buffer Size
+TLV.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """lsp_buffer_size must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+        })
+
+    self.__lsp_buffer_size = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_lsp_buffer_size(self):
+    self.__lsp_buffer_size = YANGDynClass(base=lsp_buffer_size.lsp_buffer_size, is_container='container', yang_name="lsp-buffer-size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_nlpid(self):
@@ -1711,115 +1754,115 @@ the LSDB.
     self.__ipv6_te_router_id = YANGDynClass(base=ipv6_te_router_id.ipv6_te_router_id, is_container='container', yang_name="ipv6-te-router-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_instance_id(self):
+  def _get_instance_ids(self):
     """
-    Getter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
+    Getter method for instance_ids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_ids (container)
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
-    return self.__instance_id
+    return self.__instance_ids
       
-  def _set_instance_id(self, v, load=False):
+  def _set_instance_ids(self, v, load=False):
     """
-    Setter method for instance_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_id (container)
+    Setter method for instance_ids, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/instance_ids (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_instance_id is considered as a private
+    source YANG file, then _set_instance_ids is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_instance_id() directly.
+    do so via calling thisObj._set_instance_ids() directly.
 
     YANG Description: This container defines ISIS Instance Identifier TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """instance_id must be of a type compatible with container""",
+          'error-string': """instance_ids must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__instance_id = t
+    self.__instance_ids = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_instance_id(self):
-    self.__instance_id = YANGDynClass(base=instance_id.instance_id, is_container='container', yang_name="instance-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_instance_ids(self):
+    self.__instance_ids = YANGDynClass(base=instance_ids.instance_ids, is_container='container', yang_name="instance-ids", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_ipv4_srlg(self):
+  def _get_ipv4_srlgs(self):
     """
-    Getter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
+    Getter method for ipv4_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlgs (container)
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
-    return self.__ipv4_srlg
+    return self.__ipv4_srlgs
       
-  def _set_ipv4_srlg(self, v, load=False):
+  def _set_ipv4_srlgs(self, v, load=False):
     """
-    Setter method for ipv4_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlg (container)
+    Setter method for ipv4_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv4_srlgs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv4_srlg is considered as a private
+    source YANG file, then _set_ipv4_srlgs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv4_srlg() directly.
+    do so via calling thisObj._set_ipv4_srlgs() directly.
 
     YANG Description: This container defines ISIS SRLG TLV 138.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv4_srlg must be of a type compatible with container""",
+          'error-string': """ipv4_srlgs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__ipv4_srlg = t
+    self.__ipv4_srlgs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv4_srlg(self):
-    self.__ipv4_srlg = YANGDynClass(base=ipv4_srlg.ipv4_srlg, is_container='container', yang_name="ipv4-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_ipv4_srlgs(self):
+    self.__ipv4_srlgs = YANGDynClass(base=ipv4_srlgs.ipv4_srlgs, is_container='container', yang_name="ipv4-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_ipv6_srlg(self):
+  def _get_ipv6_srlgs(self):
     """
-    Getter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
+    Getter method for ipv6_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlgs (container)
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
-    return self.__ipv6_srlg
+    return self.__ipv6_srlgs
       
-  def _set_ipv6_srlg(self, v, load=False):
+  def _set_ipv6_srlgs(self, v, load=False):
     """
-    Setter method for ipv6_srlg, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlg (container)
+    Setter method for ipv6_srlgs, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/ipv6_srlgs (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_ipv6_srlg is considered as a private
+    source YANG file, then _set_ipv6_srlgs is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_ipv6_srlg() directly.
+    do so via calling thisObj._set_ipv6_srlgs() directly.
 
     YANG Description: This container defines ISIS SRLG TLV.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """ipv6_srlg must be of a type compatible with container""",
+          'error-string': """ipv6_srlgs must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__ipv6_srlg = t
+    self.__ipv6_srlgs = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_ipv6_srlg(self):
-    self.__ipv6_srlg = YANGDynClass(base=ipv6_srlg.ipv6_srlg, is_container='container', yang_name="ipv6-srlg", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_ipv6_srlgs(self):
+    self.__ipv6_srlgs = YANGDynClass(base=ipv6_srlgs.ipv6_srlgs, is_container='container', yang_name="ipv6-srlgs", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_purge_oi(self):
@@ -1900,7 +1943,8 @@ the LSDB.
     """
     Getter method for is_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_reachability (container)
 
-    YANG Description: This container describes list of ISIS neighbors and attributes.
+    YANG Description: This container describes list of ISIS neighbors and
+attributes.
     """
     return self.__is_reachability
       
@@ -1912,7 +1956,8 @@ the LSDB.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_is_reachability() directly.
 
-    YANG Description: This container describes list of ISIS neighbors and attributes.
+    YANG Description: This container describes list of ISIS neighbors and
+attributes.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2009,43 +2054,6 @@ information.
 
   def _unset_ipv4_external_reachability(self):
     self.__ipv4_external_reachability = YANGDynClass(base=ipv4_external_reachability.ipv4_external_reachability, is_container='container', yang_name="ipv4-external-reachability", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-
-
-  def _get_type_block(self):
-    """
-    Getter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
-
-    YANG Description: This container defines LSP Type Block. 
-    """
-    return self.__type_block
-      
-  def _set_type_block(self, v, load=False):
-    """
-    Setter method for type_block, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/type_block (container)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_type_block is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_type_block() directly.
-
-    YANG Description: This container defines LSP Type Block. 
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """type_block must be of a type compatible with container""",
-          'defined-type': "container",
-          'generated-type': """YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
-        })
-
-    self.__type_block = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_type_block(self):
-    self.__type_block = YANGDynClass(base=type_block.type_block, is_container='container', yang_name="type-block", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_authentication(self):
@@ -2246,7 +2254,7 @@ information.
     Getter method for isis_neighbor_attribute, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_neighbor_attribute (container)
 
     YANG Description: This container defines list of ISIS topology neighbors
-for extended ISIS LSP(multiple system IDs). 
+for extended ISIS LSP (multiple system IDs). 
     """
     return self.__isis_neighbor_attribute
       
@@ -2259,7 +2267,7 @@ for extended ISIS LSP(multiple system IDs).
     do so via calling thisObj._set_isis_neighbor_attribute() directly.
 
     YANG Description: This container defines list of ISIS topology neighbors
-for extended ISIS LSP(multiple system IDs). 
+for extended ISIS LSP (multiple system IDs). 
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2280,47 +2288,47 @@ for extended ISIS LSP(multiple system IDs).
     self.__isis_neighbor_attribute = YANGDynClass(base=isis_neighbor_attribute.isis_neighbor_attribute, is_container='container', yang_name="isis-neighbor-attribute", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
-  def _get_isis_alias_id(self):
+  def _get_is_alias_id(self):
     """
-    Getter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
+    Getter method for is_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_alias_id (container)
 
     YANG Description: This container defines the IS-Alias TLV which allows
-extension-capable ISs to recognize the Originating System of an
-Extended LSP set. It identifies the Normal system-id of the
-Originating System.
+extension-capable ISs to recognize the Originating System
+of an Extended LSP set. It identifies the Normal system-
+id of the Originating System.
     """
-    return self.__isis_alias_id
+    return self.__is_alias_id
       
-  def _set_isis_alias_id(self, v, load=False):
+  def _set_is_alias_id(self, v, load=False):
     """
-    Setter method for isis_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/isis_alias_id (container)
+    Setter method for is_alias_id, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/is_alias_id (container)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_isis_alias_id is considered as a private
+    source YANG file, then _set_is_alias_id is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_isis_alias_id() directly.
+    do so via calling thisObj._set_is_alias_id() directly.
 
     YANG Description: This container defines the IS-Alias TLV which allows
-extension-capable ISs to recognize the Originating System of an
-Extended LSP set. It identifies the Normal system-id of the
-Originating System.
+extension-capable ISs to recognize the Originating System
+of an Extended LSP set. It identifies the Normal system-
+id of the Originating System.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+      t = YANGDynClass(v,base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """isis_alias_id must be of a type compatible with container""",
+          'error-string': """is_alias_id must be of a type compatible with container""",
           'defined-type': "container",
-          'generated-type': """YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
+          'generated-type': """YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
         })
 
-    self.__isis_alias_id = t
+    self.__is_alias_id = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_isis_alias_id(self):
-    self.__isis_alias_id = YANGDynClass(base=isis_alias_id.isis_alias_id, is_container='container', yang_name="isis-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
+  def _unset_is_alias_id(self):
+    self.__is_alias_id = YANGDynClass(base=is_alias_id.is_alias_id, is_container='container', yang_name="is-alias-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
 
   def _get_mt_isn(self):
@@ -2405,8 +2413,8 @@ neighbors.
     """
     Getter method for mt_ipv4_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv4_reachability (container)
 
-    YANG Description: This container defines list of IPv4 reachability Information
-in multi-topology environment.
+    YANG Description: This container defines list of IPv4 reachability
+Information in multi-topology environment.
     """
     return self.__mt_ipv4_reachability
       
@@ -2418,8 +2426,8 @@ in multi-topology environment.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_mt_ipv4_reachability() directly.
 
-    YANG Description: This container defines list of IPv4 reachability Information
-in multi-topology environment.
+    YANG Description: This container defines list of IPv4 reachability
+Information in multi-topology environment.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2444,8 +2452,8 @@ in multi-topology environment.
     """
     Getter method for mt_ipv6_reachability, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/mt_ipv6_reachability (container)
 
-    YANG Description: This container defines list of IPv6 reachability information
-in multi - topology environment.
+    YANG Description: This container defines list of IPv6 reachability
+information in multi - topology environment.
     """
     return self.__mt_ipv6_reachability
       
@@ -2457,8 +2465,8 @@ in multi - topology environment.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_mt_ipv6_reachability() directly.
 
-    YANG Description: This container defines list of IPv6 reachability information
-in multi - topology environment.
+    YANG Description: This container defines list of IPv6 reachability
+information in multi - topology environment.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2481,34 +2489,34 @@ in multi - topology environment.
   type = __builtin__.property(_get_type)
   state = __builtin__.property(_get_state)
   area_address = __builtin__.property(_get_area_address)
+  lsp_buffer_size = __builtin__.property(_get_lsp_buffer_size)
   nlpid = __builtin__.property(_get_nlpid)
   hostname = __builtin__.property(_get_hostname)
   ipv4_interface_addresses = __builtin__.property(_get_ipv4_interface_addresses)
   ipv6_interface_addresses = __builtin__.property(_get_ipv6_interface_addresses)
   ipv4_te_router_id = __builtin__.property(_get_ipv4_te_router_id)
   ipv6_te_router_id = __builtin__.property(_get_ipv6_te_router_id)
-  instance_id = __builtin__.property(_get_instance_id)
-  ipv4_srlg = __builtin__.property(_get_ipv4_srlg)
-  ipv6_srlg = __builtin__.property(_get_ipv6_srlg)
+  instance_ids = __builtin__.property(_get_instance_ids)
+  ipv4_srlgs = __builtin__.property(_get_ipv4_srlgs)
+  ipv6_srlgs = __builtin__.property(_get_ipv6_srlgs)
   purge_oi = __builtin__.property(_get_purge_oi)
   router_capabilities = __builtin__.property(_get_router_capabilities)
   is_reachability = __builtin__.property(_get_is_reachability)
   ipv4_internal_reachability = __builtin__.property(_get_ipv4_internal_reachability)
   ipv4_external_reachability = __builtin__.property(_get_ipv4_external_reachability)
-  type_block = __builtin__.property(_get_type_block)
   authentication = __builtin__.property(_get_authentication)
   extended_is_reachability = __builtin__.property(_get_extended_is_reachability)
   extended_ipv4_reachability = __builtin__.property(_get_extended_ipv4_reachability)
   ipv6_reachability = __builtin__.property(_get_ipv6_reachability)
   multi_topology = __builtin__.property(_get_multi_topology)
   isis_neighbor_attribute = __builtin__.property(_get_isis_neighbor_attribute)
-  isis_alias_id = __builtin__.property(_get_isis_alias_id)
+  is_alias_id = __builtin__.property(_get_is_alias_id)
   mt_isn = __builtin__.property(_get_mt_isn)
   mt_isis_neighbor_attribute = __builtin__.property(_get_mt_isis_neighbor_attribute)
   mt_ipv4_reachability = __builtin__.property(_get_mt_ipv4_reachability)
   mt_ipv6_reachability = __builtin__.property(_get_mt_ipv6_reachability)
 
 
-  _pyangbind_elements = {'type': type, 'state': state, 'area_address': area_address, 'nlpid': nlpid, 'hostname': hostname, 'ipv4_interface_addresses': ipv4_interface_addresses, 'ipv6_interface_addresses': ipv6_interface_addresses, 'ipv4_te_router_id': ipv4_te_router_id, 'ipv6_te_router_id': ipv6_te_router_id, 'instance_id': instance_id, 'ipv4_srlg': ipv4_srlg, 'ipv6_srlg': ipv6_srlg, 'purge_oi': purge_oi, 'router_capabilities': router_capabilities, 'is_reachability': is_reachability, 'ipv4_internal_reachability': ipv4_internal_reachability, 'ipv4_external_reachability': ipv4_external_reachability, 'type_block': type_block, 'authentication': authentication, 'extended_is_reachability': extended_is_reachability, 'extended_ipv4_reachability': extended_ipv4_reachability, 'ipv6_reachability': ipv6_reachability, 'multi_topology': multi_topology, 'isis_neighbor_attribute': isis_neighbor_attribute, 'isis_alias_id': isis_alias_id, 'mt_isn': mt_isn, 'mt_isis_neighbor_attribute': mt_isis_neighbor_attribute, 'mt_ipv4_reachability': mt_ipv4_reachability, 'mt_ipv6_reachability': mt_ipv6_reachability, }
+  _pyangbind_elements = {'type': type, 'state': state, 'area_address': area_address, 'lsp_buffer_size': lsp_buffer_size, 'nlpid': nlpid, 'hostname': hostname, 'ipv4_interface_addresses': ipv4_interface_addresses, 'ipv6_interface_addresses': ipv6_interface_addresses, 'ipv4_te_router_id': ipv4_te_router_id, 'ipv6_te_router_id': ipv6_te_router_id, 'instance_ids': instance_ids, 'ipv4_srlgs': ipv4_srlgs, 'ipv6_srlgs': ipv6_srlgs, 'purge_oi': purge_oi, 'router_capabilities': router_capabilities, 'is_reachability': is_reachability, 'ipv4_internal_reachability': ipv4_internal_reachability, 'ipv4_external_reachability': ipv4_external_reachability, 'authentication': authentication, 'extended_is_reachability': extended_is_reachability, 'extended_ipv4_reachability': extended_ipv4_reachability, 'ipv6_reachability': ipv6_reachability, 'multi_topology': multi_topology, 'isis_neighbor_attribute': isis_neighbor_attribute, 'is_alias_id': is_alias_id, 'mt_isn': mt_isn, 'mt_isis_neighbor_attribute': mt_isis_neighbor_attribute, 'mt_ipv4_reachability': mt_ipv4_reachability, 'mt_ipv6_reachability': mt_ipv6_reachability, }
 
 

@@ -30,7 +30,7 @@ class lsp(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: This list describes LSPs in LSDB.
+  YANG Description: This list describes LSPs in the LSDB.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp_id','__state','__tlvs','__undefined_tlvs',)
 
@@ -246,7 +246,7 @@ class lsp(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: This list describes LSPs in LSDB.
+  YANG Description: This list describes LSPs in the LSDB.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__lsp_id','__state','__tlvs','__undefined_tlvs',)
 

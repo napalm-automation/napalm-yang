@@ -29,7 +29,7 @@ class config(PybindBase):
 
   YANG Description: Top-level config data for the IPv6 interface
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__enabled','__mtu','__dup_addr_detect_transmits',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__enabled','__mtu','__dup_addr_detect_transmits','__dhcp_client',)
 
   _yang_name = 'config'
 
@@ -42,6 +42,7 @@ class config(PybindBase):
     self._extmethods = False
     self.__dup_addr_detect_transmits = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="dup-addr-detect-transmits", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=True)
     self.__enabled = YANGDynClass(base=YANGBool, default=YANGBool("true"), is_leaf=True, yang_name="enabled", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    self.__dhcp_client = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
     self.__mtu = YANGDynClass(base=RestrictedClassType(base_type=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), restriction_dict={'range': [u'1280..max']}), is_leaf=True, yang_name="mtu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=True)
 
     load = kwargs.pop("load", None)
@@ -75,9 +76,7 @@ class config(PybindBase):
     """
     Getter method for enabled, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/config/enabled (boolean)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-Controls whether IPv6 is enabled or disabled on this
+    YANG Description: Controls whether IPv6 is enabled or disabled on this
 interface.  When IPv6 is enabled, this interface is
 connected to an IPv6 stack, and the interface can send
 and receive IPv6 packets.
@@ -92,9 +91,7 @@ and receive IPv6 packets.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_enabled() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-Controls whether IPv6 is enabled or disabled on this
+    YANG Description: Controls whether IPv6 is enabled or disabled on this
 interface.  When IPv6 is enabled, this interface is
 connected to an IPv6 stack, and the interface can send
 and receive IPv6 packets.
@@ -122,9 +119,7 @@ and receive IPv6 packets.
     """
     Getter method for mtu, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/config/mtu (uint32)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The size, in octets, of the largest IPv6 packet that the
+    YANG Description: The size, in octets, of the largest IPv6 packet that the
 interface will send and receive.
 
 The server may restrict the allowed values for this leaf,
@@ -143,9 +138,7 @@ depends on the interface's type.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_mtu() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The size, in octets, of the largest IPv6 packet that the
+    YANG Description: The size, in octets, of the largest IPv6 packet that the
 interface will send and receive.
 
 The server may restrict the allowed values for this leaf,
@@ -177,9 +170,7 @@ depends on the interface's type.
     """
     Getter method for dup_addr_detect_transmits, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/config/dup_addr_detect_transmits (uint32)
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The number of consecutive Neighbor Solicitation messages
+    YANG Description: The number of consecutive Neighbor Solicitation messages
 sent while performing Duplicate Address Detection on a
 tentative address.  A value of zero indicates that
 Duplicate Address Detection is not performed on
@@ -196,9 +187,7 @@ transmission with no follow-up retransmissions.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_dup_addr_detect_transmits() directly.
 
-    YANG Description: [adapted from IETF IP model RFC 7277]
-
-The number of consecutive Neighbor Solicitation messages
+    YANG Description: The number of consecutive Neighbor Solicitation messages
 sent while performing Duplicate Address Detection on a
 tentative address.  A value of zero indicates that
 Duplicate Address Detection is not performed on
@@ -223,11 +212,51 @@ transmission with no follow-up retransmissions.
   def _unset_dup_addr_detect_transmits(self):
     self.__dup_addr_detect_transmits = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), default=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32)(1), is_leaf=True, yang_name="dup-addr-detect-transmits", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='uint32', is_config=True)
 
+
+  def _get_dhcp_client(self):
+    """
+    Getter method for dhcp_client, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/config/dhcp_client (boolean)
+
+    YANG Description: Enables a DHCP client on the interface in order to request
+an address
+    """
+    return self.__dhcp_client
+      
+  def _set_dhcp_client(self, v, load=False):
+    """
+    Setter method for dhcp_client, mapped from YANG variable /interfaces/interface/routed_vlan/ipv6/config/dhcp_client (boolean)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_dhcp_client is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_dhcp_client() directly.
+
+    YANG Description: Enables a DHCP client on the interface in order to request
+an address
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """dhcp_client must be of a type compatible with boolean""",
+          'defined-type': "boolean",
+          'generated-type': """YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)""",
+        })
+
+    self.__dhcp_client = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_dhcp_client(self):
+    self.__dhcp_client = YANGDynClass(base=YANGBool, default=YANGBool("false"), is_leaf=True, yang_name="dhcp-client", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='http://openconfig.net/yang/interfaces/ip', defining_module='openconfig-if-ip', yang_type='boolean', is_config=True)
+
   enabled = __builtin__.property(_get_enabled, _set_enabled)
   mtu = __builtin__.property(_get_mtu, _set_mtu)
   dup_addr_detect_transmits = __builtin__.property(_get_dup_addr_detect_transmits, _set_dup_addr_detect_transmits)
+  dhcp_client = __builtin__.property(_get_dhcp_client, _set_dhcp_client)
 
 
-  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, 'dup_addr_detect_transmits': dup_addr_detect_transmits, }
+  _pyangbind_elements = {'enabled': enabled, 'mtu': mtu, 'dup_addr_detect_transmits': dup_addr_detect_transmits, 'dhcp_client': dhcp_client, }
 
 

@@ -28,8 +28,8 @@ class undefined_tlv(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+  YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state',)
 
@@ -76,7 +76,7 @@ recognised by the system.
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv/type (leafref)
 
-    YANG Description: Reference to the type of the undefined TLV.
+    YANG Description: Reference to the undefined TLV's type
     """
     return self.__type
       
@@ -88,7 +88,7 @@ recognised by the system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
 
-    YANG Description: Reference to the type of the undefined TLV.
+    YANG Description: Reference to the undefined TLV's type
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -165,8 +165,8 @@ class undefined_tlv(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: List of TLVs that are not defined within the model, or are not
-recognised by the system.
+  YANG Description: List of TLVs that are not defined within the model, or are
+not recognised by the system.
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__type','__state',)
 
@@ -213,7 +213,7 @@ recognised by the system.
     """
     Getter method for type, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/undefined_tlvs/undefined_tlv/type (leafref)
 
-    YANG Description: Reference to the type of the undefined TLV.
+    YANG Description: Reference to the undefined TLV's type
     """
     return self.__type
       
@@ -225,7 +225,7 @@ recognised by the system.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
 
-    YANG Description: Reference to the type of the undefined TLV.
+    YANG Description: Reference to the undefined TLV's type
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:

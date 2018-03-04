@@ -20,7 +20,6 @@ if six.PY3:
 elif six.PY2:
   import __builtin__
 
-from . import state
 from . import topologies
 class multi_topology(PybindBase):
   """
@@ -31,7 +30,7 @@ class multi_topology(PybindBase):
 
   YANG Description: This container defines the topology supported.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__state','__topologies',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__topologies',)
 
   _yang_name = 'multi-topology'
 
@@ -43,7 +42,6 @@ class multi_topology(PybindBase):
 
     self._extmethods = False
     self.__topologies = YANGDynClass(base=topologies.topologies, is_container='container', yang_name="topologies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -71,43 +69,6 @@ class multi_topology(PybindBase):
       return self._parent._path()+[self._yang_name]
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'multi-topology']
-
-  def _get_state(self):
-    """
-    Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/state (container)
-
-    YANG Description: This container describes IS multi-topology state
-    """
-    return self.__state
-      
-  def _set_state(self, v, load=False):
-    """
-    Setter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/state (container)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_state is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_state() directly.
-
-    YANG Description: This container describes IS multi-topology state
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """state must be of a type compatible with container""",
-          'defined-type': "container",
-          'generated-type': """YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
-        })
-
-    self.__state = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_state(self):
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-
 
   def _get_topologies(self):
     """
@@ -145,14 +106,12 @@ class multi_topology(PybindBase):
   def _unset_topologies(self):
     self.__topologies = YANGDynClass(base=topologies.topologies, is_container='container', yang_name="topologies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
-  state = __builtin__.property(_get_state)
   topologies = __builtin__.property(_get_topologies)
 
 
-  _pyangbind_elements = {'state': state, 'topologies': topologies, }
+  _pyangbind_elements = {'topologies': topologies, }
 
 
-from . import state
 from . import topologies
 class multi_topology(PybindBase):
   """
@@ -163,7 +122,7 @@ class multi_topology(PybindBase):
 
   YANG Description: This container defines the topology supported.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__state','__topologies',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__topologies',)
 
   _yang_name = 'multi-topology'
 
@@ -175,7 +134,6 @@ class multi_topology(PybindBase):
 
     self._extmethods = False
     self.__topologies = YANGDynClass(base=topologies.topologies, is_container='container', yang_name="topologies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
     load = kwargs.pop("load", None)
     if args:
@@ -203,43 +161,6 @@ class multi_topology(PybindBase):
       return self._parent._path()+[self._yang_name]
     else:
       return [u'network-instances', u'network-instance', u'protocols', u'protocol', u'isis', u'levels', u'level', u'link-state-database', u'lsp', u'tlvs', u'tlv', u'multi-topology']
-
-  def _get_state(self):
-    """
-    Getter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/state (container)
-
-    YANG Description: This container describes IS multi-topology state
-    """
-    return self.__state
-      
-  def _set_state(self, v, load=False):
-    """
-    Setter method for state, mapped from YANG variable /network_instances/network_instance/protocols/protocol/isis/levels/level/link_state_database/lsp/tlvs/tlv/multi_topology/state (container)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_state is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_state() directly.
-
-    YANG Description: This container describes IS multi-topology state
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """state must be of a type compatible with container""",
-          'defined-type': "container",
-          'generated-type': """YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)""",
-        })
-
-    self.__state = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_state(self):
-    self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
-
 
   def _get_topologies(self):
     """
@@ -277,10 +198,9 @@ class multi_topology(PybindBase):
   def _unset_topologies(self):
     self.__topologies = YANGDynClass(base=topologies.topologies, is_container='container', yang_name="topologies", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/network-instance', defining_module='openconfig-network-instance', yang_type='container', is_config=False)
 
-  state = __builtin__.property(_get_state)
   topologies = __builtin__.property(_get_topologies)
 
 
-  _pyangbind_elements = {'state': state, 'topologies': topologies, }
+  _pyangbind_elements = {'topologies': topologies, }
 
 

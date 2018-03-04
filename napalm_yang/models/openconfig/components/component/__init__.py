@@ -24,6 +24,16 @@ from . import config
 from . import state
 from . import properties
 from . import subcomponents
+from . import chassis
+from . import port
+from . import power_supply
+from . import fan
+from . import fabric
+from . import storage
+from . import cpu
+from . import integrated_circuit
+from . import backplane
+from . import linecard
 from . import transceiver
 class component(PybindBase):
   """
@@ -34,7 +44,7 @@ class component(PybindBase):
 
   YANG Description: List of components, keyed by component name.
   """
-  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__name','__config','__state','__properties','__subcomponents','__transceiver',)
+  __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__name','__config','__state','__properties','__subcomponents','__chassis','__port','__power_supply','__fan','__fabric','__storage','__cpu','__integrated_circuit','__backplane','__linecard','__transceiver',)
 
   _yang_name = 'component'
 
@@ -46,11 +56,21 @@ class component(PybindBase):
 
     self._extmethods = False
     self.__name = YANGDynClass(base=unicode, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='leafref', is_config=True)
+    self.__linecard = YANGDynClass(base=linecard.linecard, is_container='container', yang_name="linecard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/linecard', defining_module='openconfig-platform-linecard', yang_type='container', is_config=True)
+    self.__cpu = YANGDynClass(base=cpu.cpu, is_container='container', yang_name="cpu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__storage = YANGDynClass(base=storage.storage, is_container='container', yang_name="storage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__port = YANGDynClass(base=port.port, is_container='container', yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     self.__transceiver = YANGDynClass(base=transceiver.transceiver, is_container='container', yang_name="transceiver", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/transceiver', defining_module='openconfig-platform-transceiver', yang_type='container', is_config=True)
     self.__state = YANGDynClass(base=state.state, is_container='container', yang_name="state", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__chassis = YANGDynClass(base=chassis.chassis, is_container='container', yang_name="chassis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__fan = YANGDynClass(base=fan.fan, is_container='container', yang_name="fan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__fabric = YANGDynClass(base=fabric.fabric, is_container='container', yang_name="fabric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__backplane = YANGDynClass(base=backplane.backplane, is_container='container', yang_name="backplane", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__integrated_circuit = YANGDynClass(base=integrated_circuit.integrated_circuit, is_container='container', yang_name="integrated-circuit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     self.__config = YANGDynClass(base=config.config, is_container='container', yang_name="config", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
     self.__properties = YANGDynClass(base=properties.properties, is_container='container', yang_name="properties", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    self.__power_supply = YANGDynClass(base=power_supply.power_supply, is_container='container', yang_name="power-supply", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -269,6 +289,376 @@ class component(PybindBase):
     self.__subcomponents = YANGDynClass(base=subcomponents.subcomponents, is_container='container', yang_name="subcomponents", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
 
 
+  def _get_chassis(self):
+    """
+    Getter method for chassis, mapped from YANG variable /components/component/chassis (container)
+
+    YANG Description: Data for chassis components
+    """
+    return self.__chassis
+      
+  def _set_chassis(self, v, load=False):
+    """
+    Setter method for chassis, mapped from YANG variable /components/component/chassis (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_chassis is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_chassis() directly.
+
+    YANG Description: Data for chassis components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=chassis.chassis, is_container='container', yang_name="chassis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """chassis must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=chassis.chassis, is_container='container', yang_name="chassis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__chassis = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_chassis(self):
+    self.__chassis = YANGDynClass(base=chassis.chassis, is_container='container', yang_name="chassis", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_port(self):
+    """
+    Getter method for port, mapped from YANG variable /components/component/port (container)
+
+    YANG Description: Data for physical port components
+    """
+    return self.__port
+      
+  def _set_port(self, v, load=False):
+    """
+    Setter method for port, mapped from YANG variable /components/component/port (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_port is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_port() directly.
+
+    YANG Description: Data for physical port components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=port.port, is_container='container', yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """port must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=port.port, is_container='container', yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__port = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_port(self):
+    self.__port = YANGDynClass(base=port.port, is_container='container', yang_name="port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_power_supply(self):
+    """
+    Getter method for power_supply, mapped from YANG variable /components/component/power_supply (container)
+
+    YANG Description: Data for power supply components
+    """
+    return self.__power_supply
+      
+  def _set_power_supply(self, v, load=False):
+    """
+    Setter method for power_supply, mapped from YANG variable /components/component/power_supply (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_power_supply is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_power_supply() directly.
+
+    YANG Description: Data for power supply components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=power_supply.power_supply, is_container='container', yang_name="power-supply", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """power_supply must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=power_supply.power_supply, is_container='container', yang_name="power-supply", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__power_supply = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_power_supply(self):
+    self.__power_supply = YANGDynClass(base=power_supply.power_supply, is_container='container', yang_name="power-supply", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_fan(self):
+    """
+    Getter method for fan, mapped from YANG variable /components/component/fan (container)
+
+    YANG Description: Data for fan components
+    """
+    return self.__fan
+      
+  def _set_fan(self, v, load=False):
+    """
+    Setter method for fan, mapped from YANG variable /components/component/fan (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_fan is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_fan() directly.
+
+    YANG Description: Data for fan components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=fan.fan, is_container='container', yang_name="fan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """fan must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=fan.fan, is_container='container', yang_name="fan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__fan = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_fan(self):
+    self.__fan = YANGDynClass(base=fan.fan, is_container='container', yang_name="fan", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_fabric(self):
+    """
+    Getter method for fabric, mapped from YANG variable /components/component/fabric (container)
+
+    YANG Description: Data for fabric components
+    """
+    return self.__fabric
+      
+  def _set_fabric(self, v, load=False):
+    """
+    Setter method for fabric, mapped from YANG variable /components/component/fabric (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_fabric is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_fabric() directly.
+
+    YANG Description: Data for fabric components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=fabric.fabric, is_container='container', yang_name="fabric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """fabric must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=fabric.fabric, is_container='container', yang_name="fabric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__fabric = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_fabric(self):
+    self.__fabric = YANGDynClass(base=fabric.fabric, is_container='container', yang_name="fabric", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_storage(self):
+    """
+    Getter method for storage, mapped from YANG variable /components/component/storage (container)
+
+    YANG Description: Data for storage components
+    """
+    return self.__storage
+      
+  def _set_storage(self, v, load=False):
+    """
+    Setter method for storage, mapped from YANG variable /components/component/storage (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_storage is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_storage() directly.
+
+    YANG Description: Data for storage components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=storage.storage, is_container='container', yang_name="storage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """storage must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=storage.storage, is_container='container', yang_name="storage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__storage = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_storage(self):
+    self.__storage = YANGDynClass(base=storage.storage, is_container='container', yang_name="storage", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_cpu(self):
+    """
+    Getter method for cpu, mapped from YANG variable /components/component/cpu (container)
+
+    YANG Description: Data for cpu components
+    """
+    return self.__cpu
+      
+  def _set_cpu(self, v, load=False):
+    """
+    Setter method for cpu, mapped from YANG variable /components/component/cpu (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_cpu is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_cpu() directly.
+
+    YANG Description: Data for cpu components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=cpu.cpu, is_container='container', yang_name="cpu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """cpu must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=cpu.cpu, is_container='container', yang_name="cpu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__cpu = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_cpu(self):
+    self.__cpu = YANGDynClass(base=cpu.cpu, is_container='container', yang_name="cpu", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_integrated_circuit(self):
+    """
+    Getter method for integrated_circuit, mapped from YANG variable /components/component/integrated_circuit (container)
+
+    YANG Description: Data for chip components, such as ASIC, NPUs, etc.
+    """
+    return self.__integrated_circuit
+      
+  def _set_integrated_circuit(self, v, load=False):
+    """
+    Setter method for integrated_circuit, mapped from YANG variable /components/component/integrated_circuit (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_integrated_circuit is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_integrated_circuit() directly.
+
+    YANG Description: Data for chip components, such as ASIC, NPUs, etc.
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=integrated_circuit.integrated_circuit, is_container='container', yang_name="integrated-circuit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """integrated_circuit must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=integrated_circuit.integrated_circuit, is_container='container', yang_name="integrated-circuit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__integrated_circuit = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_integrated_circuit(self):
+    self.__integrated_circuit = YANGDynClass(base=integrated_circuit.integrated_circuit, is_container='container', yang_name="integrated-circuit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_backplane(self):
+    """
+    Getter method for backplane, mapped from YANG variable /components/component/backplane (container)
+
+    YANG Description: Data for backplane components
+    """
+    return self.__backplane
+      
+  def _set_backplane(self, v, load=False):
+    """
+    Setter method for backplane, mapped from YANG variable /components/component/backplane (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_backplane is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_backplane() directly.
+
+    YANG Description: Data for backplane components
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=backplane.backplane, is_container='container', yang_name="backplane", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """backplane must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=backplane.backplane, is_container='container', yang_name="backplane", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)""",
+        })
+
+    self.__backplane = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_backplane(self):
+    self.__backplane = YANGDynClass(base=backplane.backplane, is_container='container', yang_name="backplane", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform', defining_module='openconfig-platform', yang_type='container', is_config=True)
+
+
+  def _get_linecard(self):
+    """
+    Getter method for linecard, mapped from YANG variable /components/component/linecard (container)
+
+    YANG Description: Top-level container for linecard data
+    """
+    return self.__linecard
+      
+  def _set_linecard(self, v, load=False):
+    """
+    Setter method for linecard, mapped from YANG variable /components/component/linecard (container)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_linecard is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_linecard() directly.
+
+    YANG Description: Top-level container for linecard data
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=linecard.linecard, is_container='container', yang_name="linecard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/linecard', defining_module='openconfig-platform-linecard', yang_type='container', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """linecard must be of a type compatible with container""",
+          'defined-type': "container",
+          'generated-type': """YANGDynClass(base=linecard.linecard, is_container='container', yang_name="linecard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/linecard', defining_module='openconfig-platform-linecard', yang_type='container', is_config=True)""",
+        })
+
+    self.__linecard = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_linecard(self):
+    self.__linecard = YANGDynClass(base=linecard.linecard, is_container='container', yang_name="linecard", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, extensions=None, namespace='http://openconfig.net/yang/platform/linecard', defining_module='openconfig-platform-linecard', yang_type='container', is_config=True)
+
+
   def _get_transceiver(self):
     """
     Getter method for transceiver, mapped from YANG variable /components/component/transceiver (container)
@@ -310,9 +700,19 @@ class component(PybindBase):
   state = __builtin__.property(_get_state, _set_state)
   properties = __builtin__.property(_get_properties, _set_properties)
   subcomponents = __builtin__.property(_get_subcomponents, _set_subcomponents)
+  chassis = __builtin__.property(_get_chassis, _set_chassis)
+  port = __builtin__.property(_get_port, _set_port)
+  power_supply = __builtin__.property(_get_power_supply, _set_power_supply)
+  fan = __builtin__.property(_get_fan, _set_fan)
+  fabric = __builtin__.property(_get_fabric, _set_fabric)
+  storage = __builtin__.property(_get_storage, _set_storage)
+  cpu = __builtin__.property(_get_cpu, _set_cpu)
+  integrated_circuit = __builtin__.property(_get_integrated_circuit, _set_integrated_circuit)
+  backplane = __builtin__.property(_get_backplane, _set_backplane)
+  linecard = __builtin__.property(_get_linecard, _set_linecard)
   transceiver = __builtin__.property(_get_transceiver, _set_transceiver)
 
 
-  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'properties': properties, 'subcomponents': subcomponents, 'transceiver': transceiver, }
+  _pyangbind_elements = {'name': name, 'config': config, 'state': state, 'properties': properties, 'subcomponents': subcomponents, 'chassis': chassis, 'port': port, 'power_supply': power_supply, 'fan': fan, 'fabric': fabric, 'storage': storage, 'cpu': cpu, 'integrated_circuit': integrated_circuit, 'backplane': backplane, 'linecard': linecard, 'transceiver': transceiver, }
 
 

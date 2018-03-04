@@ -74,9 +74,7 @@ class servers(PybindBase):
     """
     Getter method for server, mapped from YANG variable /system/dns/servers/server (list)
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-List of the DNS servers that the resolver should query.
+    YANG Description: List of the DNS servers that the resolver should query.
 
 When the resolver is invoked by a calling application, it
 sends the query to the first name server in this list.  If
@@ -101,9 +99,7 @@ list.
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_server() directly.
 
-    YANG Description: [adapted from IETF system model RFC 7317]
-
-List of the DNS servers that the resolver should query.
+    YANG Description: List of the DNS servers that the resolver should query.
 
 When the resolver is invoked by a calling application, it
 sends the query to the first name server in this list.  If

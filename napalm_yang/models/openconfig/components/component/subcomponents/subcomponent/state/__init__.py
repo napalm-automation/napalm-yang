@@ -27,7 +27,7 @@ class state(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: Operational state data 
+  YANG Description: Operational state data for the subcomponent
   """
   __slots__ = ('_pybind_generated_by', '_path_helper', '_yang_name', '_extmethods', '__name',)
 
