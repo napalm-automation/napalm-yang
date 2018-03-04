@@ -1,0 +1,876 @@
+
+!Command: show running-config all
+!Time: Fri Jan  5 04:01:53 2018
+
+version 6.0(2)A8(4)
+license grace-period
+fan speed default
+
+hostname netlab
+
+no feature telnet
+no feature http-server
+feature bash-shell
+feature nxapi
+feature scp-server
+no feature sftp-server
+feature ssh
+cfs distribute
+cfs ipv4 mcast-address 239.255.70.83
+cfs ipv6 mcast-address ff15::efff:4653
+no cfs ipv4 distribute
+no cfs ipv6 distribute
+feature scheduler
+feature lldp
+clock protocol ntp
+
+logging level lldp 7
+logging level spanning-tree 7
+no password strength-check
+username test1 password 5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71  role network-operator
+username test1 role network-admin
+username test1 shelltype vsh
+username test2 password 5 $5$6t7JzbPs$7hcXZdElzz/IV6oBlr1msDygj3EvZKEn4pRjfZZ3KH1  role dev-ops
+username test2 shelltype vsh
+username test3 password 5 $5$N4RLVroq$avHnzGMNKTrQghMvkPWojBCopn195K0jyOhrsIM2tR8  role priv-0
+username test3 shelltype vsh
+username test4 password 5 $5$n0s8iBMn$pLZ1BYBGhUcQg0FpUovORxLJBXIMXYhPI8pTeiYrae8  role network-operator
+username test4 role network-admin
+username test4 role priv-15
+username test4 shelltype vsh
+no password prompt username
+nxapi http port 80
+nxapi https port 443
+
+banner motd #Nexus 3500 Switch
+#
+
+telnet login-attempts 3
+
+ssh key rsa 1024
+no ssh key dsa
+ip domain-lookup
+ip domain-name hudson-trading.com
+ip name-server 10.10.10.10 10.10.10.110 10.10.1.10 use-vrf management
+radius-server test username test password test idle-time 0 
+radius-server timeout 5
+radius-server retransmit 1
+radius-server deadtime 0
+aaa group server radius radius 
+    deadtime 0
+    use-vrf default
+    no source-interface
+keystore type default
+no feature password encryption aes
+crypto ca lookup local
+no vlan dot1Q tag native
+system default switchport
+system default interface 40g auto-negotiation
+logging message interface type ethernet description
+system jumbomtu 9216
+logging event link-status default
+no logging event trunk-status default
+logging event link-status enable
+logging event trunk-status enable
+service unsupported-transceiver
+no system default switchport fabricpath
+logging level ethpm link-up notif
+logging level ethpm link-down notif
+errdisable recovery interval 300
+errdisable detect cause link-flap
+no errdisable recovery cause link-flap
+no errdisable recovery cause udld
+no errdisable recovery cause bpduguard
+errdisable detect cause loopback
+no errdisable recovery cause loopback
+no errdisable recovery cause storm-control
+no errdisable recovery cause psecure-violation
+errdisable recovery cause failed-port-state
+no errdisable recovery cause dcbx-no-ack
+no errdisable recovery cause pause-rate-limit
+errdisable detect cause inline-power
+no errdisable recovery cause inline-power
+hardware profile multicast syslog-threshold 0 
+hardware profile multicast soak-interval 1000
+hardware profile unicast drop resolved-glean 
+no hardware profile mutlicast service-reflect 
+ip access-list copp-system-acl-bfd
+  10 permit udp any any eq 3784
+  20 permit udp any any eq 3785
+ip access-list copp-system-acl-eigrp
+  10 permit eigrp any any
+ip access-list copp-system-acl-ftp
+  10 permit tcp any any eq ftp-data
+  20 permit tcp any any eq ftp
+  30 permit tcp any eq ftp-data any
+  40 permit tcp any eq ftp any
+ip access-list copp-system-acl-http
+  10 permit tcp any any eq www
+  20 permit tcp any any eq 443
+ip access-list copp-system-acl-icmp
+  10 permit icmp any any
+ip access-list copp-system-acl-ntp
+  10 permit udp any any eq ntp
+  20 permit udp any eq ntp any
+ip access-list copp-system-acl-ping
+  10 permit icmp any any echo
+  20 permit icmp any any echo-reply
+ip access-list copp-system-acl-routingproto1
+  10 permit tcp any any eq bgp
+  20 permit tcp any eq bgp any
+  30 permit tcp any any eq 639
+  40 permit tcp any eq 639 any
+  50 permit ospf any any
+ip access-list copp-system-acl-routingproto2
+  10 permit 112 any 224.0.0.0/24
+ip access-list copp-system-acl-snmp
+  10 permit udp any any eq snmp
+  20 permit udp any eq snmp any
+  30 permit udp any any eq snmptrap
+ip access-list copp-system-acl-ssh
+  10 permit tcp any any eq 22
+  20 permit tcp any eq 22 any
+ip access-list copp-system-acl-stftp
+  10 permit udp any any eq tftp
+  20 permit udp any any eq 1758
+  30 permit udp any eq tftp any
+  40 permit udp any eq 1758 any
+  50 permit tcp any any eq 115
+  60 permit tcp any eq 115 any
+ip access-list copp-system-acl-tacacsradius
+  10 permit tcp any any eq tacacs
+  20 permit tcp any eq tacacs any
+  30 permit udp any any eq 1812
+  40 permit udp any any eq 1813
+  50 permit udp any any eq 1645
+  60 permit udp any any eq 1646
+  70 permit udp any eq 1812 any
+  80 permit udp any eq 1813 any
+  90 permit udp any eq 1645 any
+  100 permit udp any eq 1646 any
+ip access-list copp-system-acl-telnet
+  10 permit tcp any any eq telnet
+  20 permit tcp any any eq 107
+  30 permit tcp any eq telnet any
+  40 permit tcp any eq 107 any
+ip access-list copp-system-dhcp-relay
+  10 permit udp any eq bootps any eq bootps
+class-map type qos match-any class-default
+class-map type qos match-any trip-order-entry
+  match access-group name trip-order-entry
+class-map type queuing class-default
+  match qos-group 0
+policy-map type qos hrt-lan-qos
+  class trip-order-entry
+    set qos-group 2
+  class class-default
+policy-map type qos default-in-policy
+  class class-default
+policy-map type queuing default-out-policy
+  class type queuing class-default
+    bandwidth percent 100
+class-map type network-qos class-default
+  match qos-group 0
+policy-map type network-qos default-nq-policy
+  class type network-qos class-default
+system qos
+  service-policy type queuing output default-out-policy
+  service-policy type qos input default-in-policy
+  service-policy type network-qos default-nq-policy
+fex queue-limit
+control-plane
+  scale-factor 1.00 module 1
+class-map type control-plane match-any copp-ftp
+  match access-group name copp-system-acl-ftp
+class-map type control-plane match-any copp-http
+  match access-group name copp-system-acl-http
+class-map type control-plane match-any copp-icmp
+  match access-group name copp-system-acl-icmp
+class-map type control-plane match-any copp-ntp
+  match access-group name copp-system-acl-ntp
+class-map type control-plane match-any copp-s-arp
+class-map type control-plane match-any copp-s-bfd
+  match access-group name copp-system-acl-bfd
+class-map type control-plane match-any copp-s-bpdu
+class-map type control-plane match-any copp-s-cdp
+class-map type control-plane match-any copp-s-default
+class-map type control-plane match-any copp-s-dhcpreq
+class-map type control-plane match-any copp-s-dhcpresp
+  match access-group name copp-system-dhcp-relay
+class-map type control-plane match-any copp-s-dpss
+class-map type control-plane match-any copp-s-eigrp
+  match access-group name copp-system-acl-eigrp
+class-map type control-plane match-any copp-s-glean
+class-map type control-plane match-any copp-s-igmp
+class-map type control-plane match-any copp-s-ip-nat
+class-map type control-plane match-any copp-s-ip-options
+class-map type control-plane match-any copp-s-ipmc-g-hit
+class-map type control-plane match-any copp-s-ipmc-rpf-fail-g
+class-map type control-plane match-any copp-s-ipmc-rpf-fail-sg
+class-map type control-plane match-any copp-s-ipmcmiss
+class-map type control-plane match-any copp-s-l3destmiss
+class-map type control-plane match-any copp-s-l3mtufail
+class-map type control-plane match-any copp-s-lacp
+class-map type control-plane match-any copp-s-lldp
+class-map type control-plane match-any copp-s-pimautorp
+class-map type control-plane match-any copp-s-pimreg
+class-map type control-plane match-any copp-s-ping
+  match access-group name copp-system-acl-ping
+class-map type control-plane match-any copp-s-ptp
+class-map type control-plane match-any copp-s-routingProto1
+  match access-group name copp-system-acl-routingproto1
+class-map type control-plane match-any copp-s-routingProto2
+  match access-group name copp-system-acl-routingproto2
+class-map type control-plane match-any copp-s-ttl1
+class-map type control-plane match-any copp-snmp
+  match access-group name copp-system-acl-snmp
+class-map type control-plane match-any copp-ssh
+  match access-group name copp-system-acl-ssh
+class-map type control-plane match-any copp-stftp
+  match access-group name copp-system-acl-stftp
+class-map type control-plane match-any copp-tacacsradius
+  match access-group name copp-system-acl-tacacsradius
+class-map type control-plane match-any copp-telnet
+  match access-group name copp-system-acl-telnet
+policy-map type control-plane copp-system-policy 
+  class copp-s-default
+    police pps 400 
+  class copp-s-ping
+    police pps 100 
+  class copp-s-l3destmiss
+    police pps 100 
+  class copp-s-glean
+    police pps 500 
+  class copp-s-l3mtufail
+    police pps 100 
+  class copp-s-ttl1
+    police pps 100 
+  class copp-s-ip-options
+    police pps 100 
+  class copp-s-ip-nat
+    police pps 100 
+  class copp-s-ipmcmiss
+    police pps 400 
+  class copp-s-ipmc-g-hit
+    police pps 400 
+  class copp-s-ipmc-rpf-fail-g
+    police pps 400 
+  class copp-s-ipmc-rpf-fail-sg
+    police pps 400 
+  class copp-s-dhcpreq
+    police pps 300 
+  class copp-s-dhcpresp
+    police pps 300 
+  class copp-s-igmp
+    police pps 400 
+  class copp-s-routingProto2
+    police pps 1300 
+  class copp-s-eigrp
+    police pps 200 
+  class copp-s-pimreg
+    police pps 200 
+  class copp-s-pimautorp
+    police pps 200 
+  class copp-s-routingProto1
+    police pps 1000 
+  class copp-s-arp
+    police pps 200 
+  class copp-s-ptp
+    police pps 1000 
+  class copp-s-bfd
+    police pps 350 
+  class copp-s-bpdu
+    police pps 12000 
+  class copp-s-dpss
+    police pps 6400 
+  class copp-s-cdp
+    police pps 400 
+  class copp-s-lacp
+    police pps 400 
+  class copp-s-lldp
+    police pps 500 
+  class copp-icmp
+    police pps 200 
+  class copp-telnet
+    police pps 500 
+  class copp-ssh
+    police pps 500 
+  class copp-snmp
+    police pps 500 
+  class copp-ntp
+    police pps 100 
+  class copp-tacacsradius
+    police pps 400 
+  class copp-stftp
+    police pps 400 
+  class copp-ftp
+    police pps 100 
+  class copp-http
+    police pps 100 
+control-plane
+  service-policy input copp-system-policy 
+system urpf disable
+hardware profile tcam region rbacl 0
+hardware profile tcam region span 0
+hardware profile tcam region qoslbl 0
+hardware profile tcam region ipsg 0
+hardware profile tcam region arpacl 0
+hardware profile tcam region ipv6-racl 0
+hardware profile tcam region ipv6-e-racl 0
+hardware profile tcam region ipv6-sup 0
+hardware profile tcam region ipv6-qos 0
+hardware profile tcam region pbr 0
+hardware profile tcam region ipv6-pbr 0
+hardware profile tcam region sup 48
+hardware profile tcam region e-qos 64
+hardware profile tcam region copp 64
+hardware profile tcam region qos 192
+hardware profile tcam region e-racl 256
+hardware profile tcam region nat 256
+hardware profile tcam region ifacl 400
+hardware profile tcam region vacl 640
+hardware profile tcam region e-vacl 640
+hardware profile tcam region racl 1536
+hardware profile tcam syslog-threshold 90
+hardware access-list lou resource threshold 5
+hardware igmp police rate 0 burst 0
+congestion-control random-detect global-buffer minimum-threshold 13631280 packets maximum-threshold 13631280 packets
+wrr-queue qos-group-map 0 0 1 2 3 4 5 6 7 
+ip dns source-interface mgmt0 vrf management
+hardware profile latency monitor
+hardware profile latency monitor sampling 30
+hardware profile latency monitor threshold-avg 2000
+hardware profile latency monitor threshold-max 10000
+logging level mtc-usd 5
+snmp-server aaa-user cache-timeout 3600
+snmp-server protocol enable 
+no snmp-server globalEnforcePriv
+snmp-server tcp-session auth
+snmp-server enable traps entity entity_mib_change
+snmp-server enable traps entity entity_module_status_change
+snmp-server enable traps entity entity_power_status_change
+snmp-server enable traps entity entity_module_inserted
+snmp-server enable traps entity entity_module_removed
+snmp-server enable traps entity entity_unrecognised_module
+snmp-server enable traps entity entity_fan_status_change
+snmp-server enable traps entity entity_power_out_change
+snmp-server enable traps link linkDown
+snmp-server enable traps link linkUp
+snmp-server enable traps link extended-linkDown
+snmp-server enable traps link extended-linkUp
+snmp-server enable traps link cieLinkDown
+snmp-server enable traps link cieLinkUp
+snmp-server enable traps link delayed-link-state-change
+no snmp-server enable traps callhome event-notify
+no snmp-server enable traps callhome smtp-send-fail
+no snmp-server enable traps cfs state-change-notif
+no snmp-server enable traps cfs merge-failure
+snmp-server enable traps rf redundancy_framework
+no snmp-server enable traps aaa server-state-change
+snmp-server enable traps license notify-license-expiry
+snmp-server enable traps license notify-no-license-for-feature
+snmp-server enable traps license notify-licensefile-missing
+snmp-server enable traps license notify-license-expiry-warning
+no snmp-server enable traps upgrade UpgradeOpNotifyOnCompletion
+no snmp-server enable traps upgrade UpgradeJobStatusNotify
+no snmp-server enable traps feature-control FeatureOpStatusChange
+no snmp-server enable traps sysmgr cseFailSwCoreNotifyExtended
+snmp-server enable traps rmon risingAlarm
+snmp-server enable traps rmon fallingAlarm
+snmp-server enable traps rmon hcRisingAlarm
+snmp-server enable traps rmon hcFallingAlarm
+no snmp-server enable traps config ccmCLIRunningConfigChanged
+no snmp-server enable traps snmp authentication
+no snmp-server enable traps link cisco-xcvr-mon-status-chg
+no snmp-server enable traps vtp notifs
+no snmp-server enable traps vtp vlancreate
+no snmp-server enable traps vtp vlandelete
+no snmp-server enable traps bridge newroot
+no snmp-server enable traps bridge topologychange
+no snmp-server enable traps stpx inconsistency
+no snmp-server enable traps stpx root-inconsistency
+no snmp-server enable traps stpx loop-inconsistency
+snmp-server enable traps entity entity_sensor
+snmp-server enable traps storm-control 
+no snmp-server enable traps lldp lldpRemTablesChange
+callhome
+  switch-priority 7
+  destination-profile CiscoTAC-1
+  destination-profile CiscoTAC-1 format XML
+  destination-profile CiscoTAC-1 transport-method email
+  no destination-profile CiscoTAC-1 transport-method http
+  destination-profile CiscoTAC-1 message-size 5000000
+  destination-profile CiscoTAC-1 message-level 0
+  destination-profile full_txt
+  destination-profile full_txt format full-txt
+  destination-profile full_txt transport-method email
+  no destination-profile full_txt transport-method http
+  destination-profile full_txt message-size 2500000
+  destination-profile full_txt message-level 0
+  destination-profile short_txt
+  destination-profile short_txt format short-txt
+  destination-profile short_txt transport-method email
+  no destination-profile short_txt transport-method http
+  destination-profile short_txt message-size 4000
+  destination-profile short_txt message-level 0
+  destination-profile CiscoTAC-1 alert-group cisco-tac
+  destination-profile full_txt alert-group all
+  destination-profile short_txt alert-group all
+  transport http use-vrf default
+  no transport http proxy enable
+  no enable
+  duplicate-message throttle
+  periodic-inventory notification
+  periodic-inventory notification interval  7
+  periodic-inventory notification timeofday 08:00
+ntp server 10.5.228.20 use-vrf management
+ntp source-interface  mgmt0
+aaa authentication login default local 
+aaa authorization ssh-publickey default local 
+aaa authorization ssh-certificate default local 
+aaa accounting default local 
+aaa user default-role 
+aaa authentication login default fallback error local 
+aaa authentication login console fallback error local 
+no aaa authentication login error-enable 
+no aaa authentication login mschap enable 
+no aaa authentication login mschapv2 enable 
+no aaa authentication login chap enable 
+no aaa authentication login ascii-authentication 
+no radius-server directed-request 
+
+vlan 1
+  state active
+vlan 10
+  state active
+  name hello
+vlan 20,30,100,200
+  state active
+cdp advertise v2
+cdp enable
+cdp holdtime 180
+cdp timer 60
+cdp format device-id system-name
+spanning-tree mode rapid-pvst
+spanning-tree pathcost method short
+no spanning-tree port type edge default
+no spanning-tree port type network default
+spanning-tree bridge assurance
+no spanning-tree loopguard default
+spanning-tree vlan 1,10,20,30,100,200
+spanning-tree vlan 1 priority 61440
+spanning-tree vlan 10,20,30,200 priority 32768
+spanning-tree vlan 100 priority 8192
+spanning-tree vlan 1,10,20,30,100,200 hello-time 2
+spanning-tree vlan 1,10,20,30,100,200 fex-hello-time 12
+spanning-tree vlan 1,10,20,30,100,200 forward-time 15
+spanning-tree vlan 1,10,20,30,100,200 max-age 20
+spanning-tree pseudo-information
+  vlan 1,100 root priority 65535
+  vlan 1,100 designated priority 65535
+vrf context management
+  ip domain-name hudson-trading.com
+  ip name-server 10.10.10.10 10.10.10.110
+  ip route 0.0.0.0/0 10.10.10.1 
+port-channel load-balance ethernet source-dest-ip
+port-channel load-balance ethernet source-dest-ip module 1
+system config reload-pending syslog-interval 1
+hardware proxy layer-3 replication rebalance-mode manual
+
+system fast-reload stabilization-timer 300
+
+
+interface port-channel11
+  speed 10000
+  lacp graceful-convergence
+  no lacp suspend-individual
+  lacp min-links 1
+  lacp max-bundle 32
+  no port-channel port load-defer
+  lacp fast-select-hot-standby
+  no switchport block unicast
+  no switchport block multicast
+  no hardware multicast hw-hash
+  no hardware vethernet mac filtering per-vlan
+  no description
+  switchport
+  switchport mode access
+  no switchport monitor
+  no switchport dot1q ethertype
+  no switchport priority extend
+  spanning-tree port-priority 128
+  spanning-tree cost auto
+  spanning-tree link-type auto
+  spanning-tree port type normal
+  no spanning-tree bpduguard
+  no spanning-tree bpdufilter
+  logging event port link-status default
+  logging event port trunk-status default
+  duplex full
+  flowcontrol receive off
+  flowcontrol send off
+  no negotiate auto
+  mtu 1500
+  delay 1
+  snmp trap link-status
+  bandwidth 100000
+  no bandwidth inherit
+  storm-control broadcast level 100.00
+  storm-control multicast level 100.00
+  storm-control port level 100.00
+  no storm-control action
+  no shutdown lan
+  load-interval counter 1 30
+  load-interval counter 2 300
+  no load-interval counter 3
+  medium broadcast
+  no shutdown
+
+interface Ethernet1/1
+  speed 40000
+  lldp transmit
+  lldp receive
+  no lldp tlv-set management-address :: ipv6 
+  no lldp tlv-set management-address 0.0.0.0
+  no lldp tlv-set vlan 
+  no switchport block unicast
+  no switchport block multicast
+  no hardware multicast hw-hash
+  no hardware vethernet mac filtering per-vlan
+  description This is my description
+  switchport
+  switchport mode access
+  no switchport monitor
+  no switchport dot1q ethertype
+  no switchport priority extend
+  switchport access vlan 100
+  cdp enable
+  spanning-tree port-priority 128
+  spanning-tree cost auto
+  spanning-tree link-type auto
+  spanning-tree port type normal
+  no spanning-tree bpduguard
+  no spanning-tree bpdufilter
+  duplex full
+  flowcontrol receive off
+  flowcontrol send off
+  negotiate auto
+  link debounce time 100
+  no beacon
+  mtu 1500
+  delay 1
+  snmp trap link-status
+  logging event port link-status default
+  logging event port trunk-status default
+  bandwidth 40000000
+  no bandwidth inherit
+  mdix auto
+  storm-control broadcast level 100.00
+  storm-control multicast level 100.00
+  storm-control port level 100.00
+  no storm-control action
+  no shutdown lan
+  load-interval counter 1 30
+  load-interval counter 2 300
+  no load-interval counter 3
+  medium broadcast
+  no shutdown
+
+interface Ethernet1/2
+  speed 10000
+  lldp transmit
+  lldp receive
+  no lldp tlv-set management-address :: ipv6 
+  no lldp tlv-set management-address 0.0.0.0
+  no lldp tlv-set vlan 
+  no switchport block unicast
+  no switchport block multicast
+  no hardware multicast hw-hash
+  no hardware vethernet mac filtering per-vlan
+  no description
+  switchport
+  switchport mode access
+  no switchport monitor
+  no switchport dot1q ethertype
+  no switchport priority extend
+  cdp enable
+  spanning-tree port-priority 128
+  spanning-tree cost auto
+  spanning-tree link-type auto
+  spanning-tree port type normal
+  no spanning-tree bpduguard
+  no spanning-tree bpdufilter
+  duplex full
+  flowcontrol receive off
+  flowcontrol send off
+  no negotiate auto
+  link debounce time 100
+  no beacon
+  mtu 1500
+  delay 1
+  snmp trap link-status
+  logging event port link-status default
+  logging event port trunk-status default
+  bandwidth 10000000
+  no bandwidth inherit
+  mdix auto
+  storm-control broadcast level 100.00
+  storm-control multicast level 100.00
+  storm-control port level 100.00
+  no storm-control action
+  no shutdown lan
+  load-interval counter 1 30
+  load-interval counter 2 300
+  no load-interval counter 3
+  medium broadcast
+
+interface Ethernet1/3
+  speed 10000
+  lldp transmit
+  lldp receive
+  no lldp tlv-set management-address 0.0.0.0
+  no lldp tlv-set management-address ::
+  no lldp tlv-set vlan 
+  no switchport block unicast
+  no switchport block multicast
+  no hardware multicast hw-hash
+  no hardware vethernet mac filtering per-vlan
+  no description
+  shutdown
+  no switchport
+  cdp enable
+  spanning-tree port-priority 128
+  spanning-tree cost auto
+  spanning-tree link-type auto
+  spanning-tree port type normal
+  no spanning-tree bpduguard
+  no spanning-tree bpdufilter
+  duplex full
+  flowcontrol receive off
+  flowcontrol send off
+  no negotiate auto
+  link debounce time 100
+  no beacon
+  mtu 1500
+  delay 1
+  snmp trap link-status
+  logging event port link-status default
+  logging event port trunk-status default
+  bandwidth 10000000
+  no bandwidth inherit
+  mdix auto
+  storm-control broadcast level 100.00
+  storm-control multicast level 100.00
+  storm-control port level 100.00
+  no storm-control action
+  no shutdown lan
+  load-interval counter 1 30
+  load-interval counter 2 300
+  no load-interval counter 3
+  no mac-address
+  medium broadcast
+  ip address 2.2.2.1/30
+
+interface Ethernet1/4
+  speed 10000
+  lldp transmit
+  lldp receive
+  no lldp tlv-set management-address 0.0.0.0
+  no lldp tlv-set management-address ::
+  no lldp tlv-set vlan 
+  no switchport block unicast
+  no switchport block multicast
+  no hardware multicast hw-hash
+  no hardware vethernet mac filtering per-vlan
+  no description
+  switchport
+  switchport mode trunk
+  no switchport monitor
+  no switchport dot1q ethertype
+  no switchport priority extend
+  switchport trunk native vlan 10
+  switchport trunk allowed vlan 20,30
+  cdp enable
+  spanning-tree port-priority 128
+  spanning-tree cost auto
+  spanning-tree link-type auto
+  spanning-tree port type normal
+  no spanning-tree bpduguard
+  no spanning-tree bpdufilter
+  duplex full
+  flowcontrol receive off
+  flowcontrol send off
+  no negotiate auto
+  link debounce time 100
+  no beacon
+  mtu 1500
+  delay 1
+  snmp trap link-status
+  logging event port link-status default
+  logging event port trunk-status default
+  bandwidth 10000000
+  no bandwidth inherit
+  mdix auto
+  storm-control broadcast level 100.00
+  storm-control multicast level 100.00
+  storm-control port level 100.00
+  no storm-control action
+  no shutdown lan
+  load-interval counter 1 30
+  load-interval counter 2 300
+  no load-interval counter 3
+  medium broadcast
+  no shutdown
+
+interface mgmt0
+  no description
+  speed auto
+  duplex auto
+  snmp trap link-status
+  no shutdown
+  lldp transmit
+  lldp receive
+  no lldp tlv-set management-address 0.0.0.0
+  no lldp tlv-set management-address ::
+  no lldp tlv-set vlan
+  cdp enable
+  vrf member management
+  ip address 10.10.1.155/26
+
+interface loopback1
+  no description
+  logging event port trunk-status default
+  ip address 1.1.1.1/32
+  no shutdown
+cli alias name backmeup python bootflash:/confBackup.py
+no terminal log-all
+line console
+  exec-timeout 30
+  terminal length 24
+  terminal width 80
+line vty
+  absolute-timeout 0
+  logout-warning 20
+  session-limit 32
+  exec-timeout 30
+boot kickstart bootflash:/n3500-uk9-kickstart.6.0.2.A8.4.bin 
+boot system bootflash:/n3500-uk9.6.0.2.A8.4.bin 
+no boot poap enable
+no ip radius source-interface
+ip internal event-history dampening size small
+ip internal event-history arp-miss size small
+ip internal event-history vrf-errors size small
+ip internal event-history cli size small
+ip internal event-history ppf size small
+ip internal event-history ha size small
+ip internal event-history snmp size small
+ip internal event-history ipc size small
+ip internal event-history log size small
+ip internal event-history errors size small
+ip source-route
+ip igmp event-history mtrace size small
+ip igmp event-history igmp-internal size small
+ip igmp event-history vrf size small
+ip igmp event-history group-events size medium
+ip igmp event-history group-debugs size medium
+ip igmp event-history policy size small
+ip igmp event-history cli size small
+ip igmp event-history ha size medium
+ip igmp syslog-threshold 90
+ip igmp snooping
+ip igmp snooping report-suppression
+ip igmp snooping link-local-groups-suppression
+ip igmp snooping optimise-multicast-flood
+ip igmp snooping mrouter vpc-peer-link
+ip mfwd event-history packet size small
+ip mfwd event-history internal size small
+ip mfwd event-history vrf size small
+ip mfwd event-history l2 size large
+ip mfwd event-history cli size small
+ipv4 routing multicast holddown 210
+ip routing multicast event-history rib size large
+ip routing multicast event-history rib-summary size large
+ip routing multicast event-history mfdm-debugs size small
+ip routing multicast event-history mfdm-stats size small
+ip routing multicast event-history mfdm-events size small
+ip routing multicast event-history vrf size small
+ip routing multicast event-history cli size medium
+ipv6 routing multicast holddown 210
+ipv6 routing multicast event-history rib size small
+ipv6 routing multicast event-history rib-summary size large
+ipv6 routing multicast event-history mfdm-debugs size small
+ipv6 routing multicast event-history mfdm-stats size small
+ipv6 routing multicast event-history mfdm-events size small
+ipv6 routing multicast event-history vrf size small
+ipv6 routing multicast event-history cli size medium
+ip igmp snooping event-history vlan size medium
+ip igmp snooping event-history vlan-events size small
+ip igmp snooping event-history igmp-snoop-internal size medium
+ip igmp snooping event-history mfdm size small
+ip igmp snooping event-history mfdm-sum size small
+ip igmp snooping event-history vpc size small
+ip igmp snooping event-history rib size large
+ip igmp snooping syslog-threshold 90
+ip arp timeout 1500
+ip arp syslog-threshold 90
+ip arp event-history cli size small
+ip arp event-history snmp size small
+ip arp event-history client-errors size small
+ip arp event-history client-event size small
+ip arp event-history lcache-errors size small
+ip arp event-history lcache size small
+ip arp event-history errors size small
+ip arp event-history ha size small
+ip arp event-history control size small
+ip arp event-history event size small
+ip arp event-history packet size small
+ip adjmgr internal event-history snmp size small
+ip adjmgr internal event-history sdb size small
+ip adjmgr internal event-history cli size small
+ip adjmgr internal event-history ha size small
+ip adjmgr internal event-history stats size small
+ip adjmgr internal event-history ipc size small
+ip adjmgr internal event-history errors size small
+ip adjmgr internal event-history control size small
+hardware ip glean throttle maximum 1000
+hardware ip glean throttle timeout 300
+ip arp cache limit 131072
+hardware ipv6 glean throttle maximum 1000
+hardware ipv6 glean throttle timeout 300
+ipv6 nd cache limit 131072
+ip adjacency route distance 250
+ipv6 adjacency route distance 250
+no system default switchport shutdown
+xml server max-session 8
+no xml server validate all
+xml server timeout 1200
+xml server exec-mode 
+logging ip access-list cache entries 8000
+logging ip access-list cache interval 300
+logging ip access-list cache threshold 0
+acllog match-log-level 6
+no fabricpath multicast aggregate-routes
+lldp timer 30
+lldp holdtime 120
+lldp reinit 2
+lldp portid-subtype 0
+lldp tlv-select port-description
+lldp tlv-select system-name
+lldp tlv-select system-description
+lldp tlv-select system-capabilities
+lldp tlv-select management-address v4
+lldp tlv-select dcbxp
+lldp tlv-select port-vlan
+lldp tlv-select management-address v6
+ttag-marker-interval 1
+mac address-table aging-time 1800
+mac address-table notification mac-move
+hardware ecmp hash-offset 0
+hardware ecmp hash-polynomial CRC16
+no hardware rate-limit erspan-egress
+virtual-service
+  signing level cisco
+logging logfile messages 7 size 512000
+logging monitor 5
+logging level user 5
+logging level syslog 7
