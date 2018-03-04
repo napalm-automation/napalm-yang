@@ -1,0 +1,578 @@
+! Command: show running-config all
+! device: localhost (vEOS, EOS-4.15.2.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+hardware access-list ipv6 implicit-permit icmpv6 all
+!
+no deep-inspection payload l2 skip
+no deep-inspection payload l4 skip
+!
+agent fatal-error action reload
+!
+bfd slow-timer 2000
+bfd interval 300 min_rx 300 multiplier 3 default
+!
+prompt %H%R%v%P
+no service configuration session max completed
+no service configuration session max pending
+!
+schedule config max-concurrent-jobs 1 
+schedule tech-support interval 60 max-log-files 100 command show tech-support
+!
+no logging event storm-control discards global
+no logging event storm-control discards interval
+!
+cvx
+   shutdown
+   port 9979
+   heartbeat-interval 20
+   heartbeat-timeout 60
+   no ssl profile
+   service debug
+      no shutdown
+      interval 1
+   service hsc
+      vtep flood list type any
+   service openstack
+      shutdown
+      grace-period 60
+      name-resolution interval 21600
+   service vxlan
+      shutdown
+      vtep mac-learning control-plane
+      resync-period 300
+!
+no dcbx application
+!
+no ip dhcp relay information option
+no ip dhcp relay always-on
+no ip dhcp smart-relay global
+!
+no ip dhcp snooping
+no ip dhcp snooping information option
+ip dhcp snooping information option circuit-id type 0 format %p:%v
+!
+default switch forwarding-mode
+!
+vlan internal allocation policy ascending
+!
+email
+   no from-user
+   no server
+   no auth username
+   no auth password
+   no tls
+!
+errdisable detect cause arp-inspection
+errdisable detect cause link-flap
+no errdisable recovery cause arp-inspection
+no errdisable recovery cause bpduguard
+no errdisable recovery cause hitless-reload-down
+no errdisable recovery cause link-flap
+no errdisable recovery cause loopprotectguard
+no errdisable recovery cause no-internal-vlan
+no errdisable recovery cause portchannelguard
+no errdisable recovery cause portsec
+no errdisable recovery cause tapagg
+no errdisable recovery cause uplink-failure-detection
+no errdisable recovery cause xcvr-unsupported
+errdisable recovery interval 300
+!
+event-handler dhclient
+   trigger on-boot
+   action bash sudo /mnt/flash/initialize_ma1.sh
+   delay 20
+   no asynchronous
+   timeout 10
+!
+ip igmp snooping
+no ip igmp snooping report-flooding
+ip igmp snooping robustness-variable 2
+no ip igmp snooping restart query-interval
+ip igmp snooping immediate-leave
+default ip igmp snooping vlan 1
+default ip igmp snooping vlan 1 querier
+no ip igmp snooping vlan 1 querier address
+no ip igmp snooping vlan 1 querier query-interval
+no ip igmp snooping vlan 1 querier max-response-time
+no ip igmp snooping vlan 1 querier last-member-query-interval
+no ip igmp snooping vlan 1 querier last-member-query-count
+no ip igmp snooping vlan 1 querier startup-query-interval
+no ip igmp snooping vlan 1 querier startup-query-count
+no ip igmp snooping vlan 1 querier version
+no ip igmp snooping vlan 1 max-groups
+default ip igmp snooping vlan 1 immediate-leave
+no ip igmp snooping querier
+no ip igmp snooping querier address
+ip igmp snooping querier query-interval 125
+ip igmp snooping querier max-response-time 10
+ip igmp snooping querier last-member-query-interval 1
+no ip igmp snooping querier last-member-query-count
+no ip igmp snooping querier startup-query-interval
+no ip igmp snooping querier startup-query-count
+no ip igmp snooping querier version
+!
+default logging event congestion-drops
+!
+no service interface inactive expose
+!
+no service interface unconnected expose
+!
+default load-interval default
+!
+transceiver qsfp default-mode 4x10G
+!
+ip pim log-neighbor-changes
+no ip pim bfd
+no ip pim ssm range
+ip pim sparse-mode sg-expiry-timer 210
+ip pim spt-threshold 0
+!
+ip msdp timer 30
+!
+no ip pim rp-candidate
+no ip pim bsr-holdtime
+no ip pim bsr-sztimeout
+no ip pim bsr-candidate
+no ip pim bsr rp-candidate advertisement-filter
+!
+no ip pim register-source
+!
+lacp system-priority 32768
+!
+no queue-monitor length
+no queue-monitor length notifying
+!
+queue-monitor length global-buffer thresholds 512 256
+no queue-monitor length mirror
+!
+queue-monitor length global-buffer
+!
+errdisable flap-setting cause link-flap max-flaps 5 time 10
+!
+lldp timer 30
+lldp holdtime 120
+lldp reinit 2
+lldp tlv-select link-aggregation
+lldp tlv-select management-address
+lldp tlv-select max-frame-size
+lldp tlv-select port-description
+lldp tlv-select port-vlan
+lldp tlv-select system-capabilities
+lldp tlv-select system-description
+lldp tlv-select system-name
+lldp run
+no lldp management-address
+!
+logging on
+logging buffered 32 debugging
+logging trap informational
+logging console errors
+no logging synchronous
+logging format timestamp traditional
+no logging format hostname fqdn
+logging facility local4
+no logging source-interface
+!
+logging level AAA debugging
+logging level ACCOUNTING debugging
+logging level ACL debugging
+logging level AGENT debugging
+logging level ALE debugging
+logging level ARP debugging
+logging level BFD debugging
+logging level BGP debugging
+logging level CAPACITY debugging
+logging level CAPI debugging
+logging level CLEAR debugging
+logging level DATAPLANE debugging
+logging level DOT1X debugging
+logging level ENVMON debugging
+logging level ETH debugging
+logging level EVENTMON debugging
+logging level EXTENSION debugging
+logging level FHRP debugging
+logging level FLOW debugging
+logging level FORWARDING debugging
+logging level FRU debugging
+logging level FWK debugging
+logging level GMP debugging
+logging level HARDWARE debugging
+logging level IGMP debugging
+logging level IGMPSNOOPING debugging
+logging level INTF debugging
+logging level IP6ROUTING debugging
+logging level IRA debugging
+logging level ISIS debugging
+logging level KERNELFIB debugging
+logging level LACP debugging
+logging level LAG debugging
+logging level LAUNCHER debugging
+logging level LINEPROTO debugging
+logging level LLDP debugging
+logging level LOGMGR debugging
+logging level LOOPBACK debugging
+logging level LOOPPROTECT debugging
+logging level MAPREDUCEMONITOR debugging
+logging level MDIO debugging
+logging level MIRRORING debugging
+logging level MLAG debugging
+logging level MMODE debugging
+logging level MROUTE debugging
+logging level MRP debugging
+logging level MSDP debugging
+logging level MSRP debugging
+logging level MVRP debugging
+logging level NAT debugging
+logging level OPENFLOW debugging
+logging level OSPF debugging
+logging level OSPF3 debugging
+logging level PFC debugging
+logging level PIM debugging
+logging level PIMBSR debugging
+logging level PORTSECURITY debugging
+logging level PTP debugging
+logging level PWRMGMT debugging
+logging level QOS debugging
+logging level QUEUEMONITOR debugging
+logging level REACHABILITYMONITOR debugging
+logging level REDUNDANCY debugging
+logging level RIB debugging
+logging level ROUTING debugging
+logging level SECURITY debugging
+logging level SERVERMONITOR debugging
+logging level SPANTREE debugging
+logging level STAGEMGR debugging
+logging level SYS debugging
+logging level SYSDB debugging
+logging level TAPAGG debugging
+logging level TCP debugging
+logging level TRANSCEIVER debugging
+logging level TUNNEL debugging
+logging level VM debugging
+logging level VMTRACERSESS debugging
+logging level VMWAREVI debugging
+logging level VMWAREVS debugging
+logging level VRF debugging
+logging level VRRP debugging
+logging level VXLAN debugging
+logging level XMPP debugging
+logging level ZTP debugging
+!
+logging event link-status global
+!
+no ip virtual-router mac-address mlag-peer
+!
+no msrp streams load-file
+!
+no hostname
+no ip domain lookup source-interface
+no ip name-server
+no ip domain-name
+no ip host
+no ipv6 host
+!
+no ntp trusted-key
+no ntp authenticate
+no ntp serve all
+!
+power poll-interval 5
+!
+no radius-server key
+radius-server timeout 5
+radius-server retransmit 3
+no radius-server deadtime
+no radius-server attribute 32 include-in-access-req format
+!
+router msdp
+   vrf devel
+      ip msdp timer 30
+   !
+   vrf prod
+      ip msdp timer 30
+!
+sflow sample 1048576
+sflow polling-interval 2
+no sflow source
+no sflow source-interface
+sflow sample output interface
+sflow extension switch
+sflow extension router
+no sflow sample rewrite dscp
+no sflow run
+!
+no sflow extension bgp
+!
+no snmp-server engineID local
+no snmp-server chassis-id
+no snmp-server contact
+no snmp-server location
+no snmp-server source-interface
+default snmp-server enable traps
+default snmp-server enable traps bgp
+default snmp-server enable traps bgp arista-backward-transition
+default snmp-server enable traps bgp arista-established
+default snmp-server enable traps bgp backward-transition
+default snmp-server enable traps bgp established
+default snmp-server enable traps entity
+default snmp-server enable traps entity arista-ent-sensor-alarm
+default snmp-server enable traps entity ent-config-change
+default snmp-server enable traps entity ent-state-oper-disabled
+default snmp-server enable traps entity ent-state-oper-enabled
+default snmp-server enable traps lldp
+default snmp-server enable traps lldp rem-tables-change
+default snmp-server enable traps msdp
+default snmp-server enable traps msdp backward-transition
+default snmp-server enable traps msdp established
+default snmp-server enable traps ospf
+default snmp-server enable traps ospf if-auth-failure
+default snmp-server enable traps ospf if-config-error
+default snmp-server enable traps ospf if-state-change
+default snmp-server enable traps ospf nbr-state-change
+default snmp-server enable traps pim
+default snmp-server enable traps pim neighbor-loss
+default snmp-server enable traps snmp
+default snmp-server enable traps snmp authentication
+default snmp-server enable traps snmp link-down
+default snmp-server enable traps snmp link-up
+default snmp-server enable traps snmpConfigManEvent
+default snmp-server enable traps snmpConfigManEvent arista-config-man-event
+default snmp-server enable traps switchover
+default snmp-server enable traps switchover arista-redundancy-switch-over-notif
+default snmp-server enable traps test
+default snmp-server enable traps test arista-test-notification
+default snmp-server enable traps vrrp
+default snmp-server enable traps vrrp trap-new-master
+snmp-server vrf default
+!
+spanning-tree mode mstp
+spanning-tree hello-time 2000
+spanning-tree max-age 20
+spanning-tree forward-time 15
+spanning-tree transmit hold-count 6
+spanning-tree max-hops 20
+no spanning-tree mst pvst border
+no spanning-tree portfast bpduguard default
+no spanning-tree portfast bpdufilter default
+spanning-tree bridge assurance
+no spanning-tree loopguard default
+no spanning-tree portchannel guard misconfig
+spanning-tree bpduguard rate-limit default
+logging event spanning-tree global
+spanning-tree mst 0 priority 32768
+!
+spanning-tree mst configuration
+   no name
+   revision 0
+!
+no service sequence-numbers
+no service running-config timestamp
+!
+no tacacs-server key
+tacacs-server timeout 5
+!
+aaa authentication login default local
+no aaa authentication login console
+aaa authentication enable default local
+no aaa authentication policy on-success log
+no aaa authentication policy on-failure log
+no aaa authorization console
+aaa authorization exec default local
+no aaa authorization commands all default
+aaa authorization config-commands
+no aaa accounting exec console
+no aaa accounting commands all console
+no aaa accounting exec default
+no aaa accounting system default
+no aaa accounting dot1x default
+no aaa accounting commands all default
+!
+no enable secret
+aaa root secret 5 $1$1s8ATte8$cvMSZw6BlLGJVo61p88cP.
+no aaa authentication policy local allow-nopassword-remote-login
+aaa authorization policy local default-role network-admin
+!
+username test1 privilege 1 nopassword
+username test2 privilege 1 secret sha512 $6$WL/ibPpzPJ/C7c/E$.bVF08dYhlNp0rxER0P3SNdsA2wUtK2Ru1YuKkRRZQGl609DA1JvX.dSFgKXaq.LWjDRlZoHudfk7hamod0Th/
+username test3 privilege 15 role network-operator secret sha512 $6$Vd6.7k2FybfsTKKp$S.AHfdwicaWEoA41sPd6ZXOOdruJMrKJh70WNfiX/eZKH1oYBtFz9VbrPlYNDkhM/pi54gcYKH2hviy/xrUav.
+username test4 privilege 1 secret 5 $1$NKhJ$PUfYNtJF2tIneEBZztchy.
+username test5 privilege 15 secret sha512 $6$d3fdbbZBrhplknVB$FILKNelLURwd/xT74ktjxJ4XP1vTfJ53H7OWJHgAqeuY/lF3BDyP3SWpH/MeBRnl7lLi8hU2oy6hkbnB7jvtA.
+username test6 privilege 1 role network-admin secret sha512 $6$zaalm5RTm6/26XVS$I/f3kmOqfvTbjwjzepCe1O9eYfPJRdUrRLe9NoMsbgNz9T48nj0AlOsm2LmoFp6aI5B6Q/xlseJdNrTL/jiXH0
+username test7 privilege 15 role network-admin secret 5 $1$NKhJ$PUfYNtJF2tIneEBZztchy.
+!
+role network-admin
+   10 permit command .*
+!
+role network-operator
+   10 deny mode exec command configure|bash|python-shell|\|
+   20 permit mode exec command .*
+!
+tap aggregation
+   no mode
+   no service-policy type tapagg mac access-list match ip
+!
+environment overheat action shutdown
+environment insufficient-fans action shutdown
+environment fan-speed auto
+!
+clock timezone UTC
+!
+no virtual-cable
+!
+vlan 1
+   name default
+   state active
+   no private-vlan
+   no mac-address-table sharing
+!
+vrf definition devel
+   rd 1:2
+   no description
+!
+vrf definition prod
+   rd 1:1
+   description Production VRF
+!
+interface Port-Channel1
+   description blah
+   no shutdown
+   default load-interval
+   mtu 9000
+   logging event link-status use-global
+   switchport dot1q ethertype 0x8100
+   no switchport
+   default encapsulation dot1q vlan
+   no l2-protocol encapsulation dot1q vlan 0
+   snmp trap link-status
+   no ip proxy-arp
+   no ip local-proxy-arp
+   no ip address
+   no ip verify unicast
+   default arp timeout 14400
+   default ipv6 nd cache expire 14400
+   bfd interval 300 min_rx 300 multiplier 3
+   no bfd echo
+   no bfd per-link
+   default ip dhcp smart-relay
+   no ip helper-address
+   no ipv6 dhcp relay destination
+   ip dhcp relay information option circuit-id Port-Channel1
+   no ip igmp
+   ip igmp version 3
+   ip igmp last-member-query-count 2
+   ip igmp last-member-query-interval 10
+   ip igmp query-max-response-time 100
+   ip igmp query-interval 125
+   ip igmp startup-query-count 2
+   ip igmp startup-query-interval 310
+   ip igmp router-alert optional connected
+   no ip igmp host-proxy
+   no ipv6 enable
+   no ipv6 address
+   no ipv6 verify unicast
+   no ipv6 nd ra suppress
+   ipv6 nd ra interval msec 200000
+   ipv6 nd ra lifetime 1800
+   no ipv6 nd ra mtu suppress
+   no ipv6 nd managed-config-flag
+   no ipv6 nd other-config-flag
+   ipv6 nd reachable-time 0
+   ipv6 nd router-preference medium
+   ipv6 nd ra dns-servers lifetime 300
+   ipv6 nd ra dns-suffixes lifetime 300
+   ipv6 nd ra hop-limit 64
+   no port-channel min-links
+   no port-channel lacp fallback
+   port-channel lacp fallback timeout 90
+   no l2 mtu
+   no ip multicast static
+   ip mfib fastdrop
+   no mlag
+   default ntp serve
+   no ip pim sparse-mode
+   no ip pim bidirectional
+   no ip pim border-router
+   ip pim query-interval 30
+   ip pim join-prune-interval 60
+   ip pim dr-priority 1
+   no ip pim neighbor-filter
+   default ip pim bfd-instance
+   no ip pim bsr-border
+   default qos trust
+   qos cos 5
+   qos dscp 2
+   no shape rate
+   mc-tx-queue 0
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   mc-tx-queue 1
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   mc-tx-queue 2
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   mc-tx-queue 3
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 0
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 1
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 2
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 3
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 4
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 5
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 6
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   !
+   uc-tx-queue 7
+      priority strict
+      no bandwidth percent
+      no shape rate
+      no bandwidth guaranteed
+   sflow enable
+!

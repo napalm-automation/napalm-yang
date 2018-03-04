@@ -12,6 +12,7 @@ models = [
     napalm_yang.models.openconfig_interfaces,
     napalm_yang.models.openconfig_platform,
     napalm_yang.models.openconfig_vlan,
+    napalm_yang.models.openconfig_system,
 ]
 
 profile = "dummy"

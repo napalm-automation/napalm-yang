@@ -1,0 +1,16 @@
+aaa root secret 5 123458ATte8$cvMSZw6BlLGJVo61p88cP.
+no username test1
+username test1 privilege 1 role network-admin  nopassword 
+no username test3
+username test3 privilege 15 role network-operator  secret sha512 $6$Vd6.7k2FybfsTKKp$S.AHfdwicaWEoA41sPd6ZXOOdruJMrKJh70WNfiX/eZKH1oYBtFz9VbrPlYNDkhM/pi54gcYKH2hviy/xrUav. 
+no username test2
+username test2 privilege 1 role network-admin  secret sha512 $6$WL/ibPpzPJ/C7c/E$.bVF08dYhlNp0rxER0P3SNdsA2wUtK2Ru1YuKkRRZQGl609DA1JvX.dSFgKXaq.LWjDRlZoHudfk7hamod0Th/ 
+no username test5
+username test5 privilege 1 role network-admin  secret sha512 $6$d3fdbbZBrhplknVB$FILKNelLURwd/xT74ktjxJ4XP1vTfJ53H7OWJHgAqeuY/lF3BDyP3SWpH/MeBRnl7lLi8hU2oy6hkbnB7jvtA. 
+no username test4
+username test4 privilege 1 role network-admin  secret 5 $1$NKhJ$PUfYNtJF2tIneEBZztchy. 
+no username test6
+username test6 privilege 1 role network-operator  secret sha512 $6$zaalm5RTm6/26XVS$I/f3kmOqfvTbjwjzepCe1O9eYfPJRdUrRLe9NoMsbgNz9T48nj0AlOsm2LmoFp6aI5B6Q/xlseJdNrTL/jiXH0 
+no username test8
+username test8 privilege 15 role network-admin  secret sha512 $1$NKhJ$PUfYNtJF2tIneEBZztchy. 
+no username test7

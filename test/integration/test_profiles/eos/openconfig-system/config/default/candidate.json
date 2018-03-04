@@ -1,0 +1,65 @@
+{
+    "system": {
+        "aaa": {
+            "authentication": {
+                "admin-user": {
+                    "config": {
+                        "admin-password-encrypted": "5 123458ATte8$cvMSZw6BlLGJVo61p88cP."
+                    }
+                },
+                "users": {
+                    "user": {
+                        "test1": {
+                            "config": {
+                                "role": "1:network-admin"
+                            },
+                            "username": "test1"
+                        },
+                        "test2": {
+                            "config": {
+                                "password-encrypted": "sha512 $6$WL/ibPpzPJ/C7c/E$.bVF08dYhlNp0rxER0P3SNdsA2wUtK2Ru1YuKkRRZQGl609DA1JvX.dSFgKXaq.LWjDRlZoHudfk7hamod0Th/",
+                                "role": "1:network-admin"
+                            },
+                            "username": "test2"
+                        },
+                        "test3": {
+                            "config": {
+                                "password-encrypted": "sha512 $6$Vd6.7k2FybfsTKKp$S.AHfdwicaWEoA41sPd6ZXOOdruJMrKJh70WNfiX/eZKH1oYBtFz9VbrPlYNDkhM/pi54gcYKH2hviy/xrUav.",
+                                "role": "15:network-operator"
+                            },
+                            "username": "test3"
+                        },
+                        "test4": {
+                            "config": {
+                                "password-encrypted": "5 $1$NKhJ$PUfYNtJF2tIneEBZztchy.",
+                                "role": "1:network-admin"
+                            },
+                            "username": "test4"
+                        },
+                        "test5": {
+                            "config": {
+                                "password-encrypted": "sha512 $6$d3fdbbZBrhplknVB$FILKNelLURwd/xT74ktjxJ4XP1vTfJ53H7OWJHgAqeuY/lF3BDyP3SWpH/MeBRnl7lLi8hU2oy6hkbnB7jvtA.",
+                                "role": "1:network-admin"
+                            },
+                            "username": "test5"
+                        },
+                        "test6": {
+                            "config": {
+                                "password-encrypted": "sha512 $6$zaalm5RTm6/26XVS$I/f3kmOqfvTbjwjzepCe1O9eYfPJRdUrRLe9NoMsbgNz9T48nj0AlOsm2LmoFp6aI5B6Q/xlseJdNrTL/jiXH0",
+                                "role": "1:network-operator"
+                            },
+                            "username": "test6"
+                        },
+                        "test8": {
+                            "config": {
+                                "password-encrypted": "sha512 $1$NKhJ$PUfYNtJF2tIneEBZztchy.",
+                                "role": "15:network-admin"
+                            },
+                            "username": "test7"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
