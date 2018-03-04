@@ -5,6 +5,7 @@
                 "config": {
                     "description": "Changed description",
                     "enabled": true,
+                    "loopback-mode": false,
                     "type": "ethernetCsmacd"
                 },
                 "ethernet": {
@@ -32,6 +33,7 @@
                 "config": {
                     "description": "so much oc",
                     "enabled": false,
+                    "loopback-mode": false,
                     "mtu": 1500,
                     "type": "ethernetCsmacd"
                 },
@@ -69,7 +71,7 @@
                             "config": {
                                 "description": "another subiface",
                                 "enabled": false,
-                                "name": "Ethernet2.1"
+                                "index": "1"
                             },
                             "index": "1",
                             "ipv4": {
@@ -107,7 +109,7 @@
                             "config": {
                                 "description": "asdasdasd",
                                 "enabled": true,
-                                "name": "Ethernet2.2"
+                                "index": "2"
                             },
                             "index": "2",
                             "ipv4": {
@@ -141,6 +143,7 @@
                     "description": "a loopback",
                     "enabled": true,
                     "mtu": 1500,
+                    "loopback-mode": true,
                     "type": "softwareLoopback"
                 },
                 "name": "Loopback0",
@@ -156,6 +159,7 @@
                 "config": {
                     "enabled": true,
                     "mtu": 1500,
+                    "loopback-mode": false,
                     "type": "ethernetCsmacd"
                 },
                 "name": "Management1",
@@ -183,6 +187,7 @@
                 "config": {
                     "description": "blah",
                     "enabled": true,
+                    "loopback-mode": false,
                     "mtu": 9000,
                     "type": "ieee8023adLag"
                 },
@@ -199,7 +204,7 @@
                         "1": {
                             "config": {
                                 "enabled": true,
-                                "name": "Port-Channel1.1"
+                                "index": "1"
                             },
                             "index": "1",
                             "ipv4": {

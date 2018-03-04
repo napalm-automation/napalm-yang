@@ -37,6 +37,8 @@ interfaces:
             description:
                 _process: 
                     - path: "description"
+            loopback-mode:
+                _process: unnecessary
             enabled:
                 _process: 
                     - path: "admin-status"
@@ -119,6 +121,10 @@ interfaces:
                 out-unicast-pkts:
                     _process:
                         - path: "ethernet-mac-statistics.output-unicasts"
+                in-fcs-errors:
+                    _process: not_implemented
+                carrier-transitions:
+                    _process: not_implemented
         subinterfaces:
             _process: unnecessary
             subinterface:
@@ -179,4 +185,6 @@ interfaces:
                         out-octets:
                             _process: not_implemented
                         out-unicast-pkts:
+                            _process: not_implemented
+                        in-fcs-errors:
                             _process: not_implemented

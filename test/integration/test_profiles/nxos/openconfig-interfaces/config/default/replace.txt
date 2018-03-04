@@ -10,8 +10,8 @@ interface Ethernet1/2
     exit
 default interface Ethernet1/3
 interface Ethernet1/3
-    no switchport
     ip address 3.3.3.1 255.255.255.0
+    no switchport
     shutdown
     exit
 default interface Ethernet1/4
@@ -22,8 +22,8 @@ interface Ethernet1/4
     exit
 default interface mgmt0
 interface mgmt0
-    no switchport
     ip address 10.10.1.155 255.255.255.192
+    no switchport
     exit
 default interface port-channel11
 interface port-channel11
@@ -31,6 +31,6 @@ interface port-channel11
     exit
 default interface loopback1
 interface loopback1
-    no switchport
     ip address 1.1.1.1 255.255.255.255
+    no switchport
     exit

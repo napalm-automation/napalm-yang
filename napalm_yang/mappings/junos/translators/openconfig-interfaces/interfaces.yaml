@@ -26,6 +26,8 @@ interfaces:
             _process: unnecessary
             name:
                 _process: unnecessary
+            loopback-mode:
+                _process: unnecessary
             type:
                 _process: unnecessary
             enabled:
@@ -51,8 +53,6 @@ interfaces:
                 config:
                     _process: unnecessary
                     index:
-                        _process: unnecessary
-                    name:
                         _process: unnecessary
                     enabled:
                         _process:

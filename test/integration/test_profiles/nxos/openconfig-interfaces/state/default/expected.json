@@ -11,7 +11,6 @@
                             "in-oversize-frames": 0, 
                             "out-mac-pause-frames": 0
                         }, 
-                        "effective-speed": 40000, 
                         "enable-flow-control": false, 
                         "hw-mac-address": "00:c8:8b:bd:de:e8", 
                         "mac-address": "00:c8:8b:bd:de:e8"
@@ -43,7 +42,6 @@
                             "in-oversize-frames": 0, 
                             "out-mac-pause-frames": 0
                         }, 
-                        "effective-speed": 10000, 
                         "enable-flow-control": false, 
                         "hw-mac-address": "00:c8:8b:bd:de:e9", 
                         "mac-address": "00:c8:8b:bd:de:e9"
@@ -75,7 +73,6 @@
                             "in-oversize-frames": 0, 
                             "out-mac-pause-frames": 0
                         }, 
-                        "effective-speed": 10000, 
                         "enable-flow-control": false, 
                         "hw-mac-address": "00:c8:8b:bd:de:ea", 
                         "mac-address": "00:c8:8b:bd:de:ea"
@@ -107,7 +104,6 @@
                             "in-oversize-frames": 0, 
                             "out-mac-pause-frames": 0
                         }, 
-                        "effective-speed": 10000, 
                         "enable-flow-control": false, 
                         "hw-mac-address": "00:c8:8b:bd:de:eb", 
                         "mac-address": "00:c8:8b:bd:de:eb"

@@ -25,6 +25,8 @@ interfaces:
                     _process: not_implemented
         state:
             _process: unnecessary
+            loopback-mode:
+                _process: unnecessary
             admin-status:
                 _process:
                     - path: interfaceStatus
@@ -80,6 +82,10 @@ interfaces:
                 out-unicast-pkts:
                     _process:
                         - path:  outUcastPkts
+                in-fcs-errors:
+                    _process: not_implemented
+                carrier-transitions:
+                    _process: not_implemented
             description:
                 _process:
                     - path: description

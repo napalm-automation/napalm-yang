@@ -3,6 +3,7 @@
         "interface": {
             "Ethernet1": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "type": "ethernetCsmacd"
                 },
@@ -30,6 +31,7 @@
             },
             "Ethernet2": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "type": "ethernetCsmacd"
                 },
@@ -56,6 +58,7 @@
             },
             "Management1": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "mtu": 1500,
                     "type": "ethernetCsmacd"

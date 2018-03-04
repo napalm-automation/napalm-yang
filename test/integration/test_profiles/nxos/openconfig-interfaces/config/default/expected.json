@@ -3,6 +3,7 @@
         "interface": {
             "Ethernet1/1": {
                 "config": {
+                    "loopback-mode": false,
                     "description": "This is my description", 
                     "enabled": true, 
                     "type": "ethernetCsmacd"
@@ -26,6 +27,7 @@
             }, 
             "Ethernet1/2": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true, 
                     "type": "ethernetCsmacd"
                 }, 
@@ -47,6 +49,7 @@
             }, 
             "Ethernet1/3": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": false, 
                     "type": "ethernetCsmacd"
                 }, 
@@ -72,6 +75,7 @@
             }, 
             "Ethernet1/4": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true, 
                     "type": "ethernetCsmacd"
                 }, 
@@ -98,6 +102,7 @@
             }, 
             "loopback1": {
                 "config": {
+                    "loopback-mode": true,
                     "enabled": true, 
                     "type": "softwareLoopback"
                 }, 
@@ -123,6 +128,7 @@
             }, 
             "mgmt0": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true, 
                     "type": "ethernetCsmacd"
                 }, 
@@ -148,6 +154,7 @@
             }, 
             "port-channel11": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true, 
                     "type": "ieee8023adLag"
                 }, 

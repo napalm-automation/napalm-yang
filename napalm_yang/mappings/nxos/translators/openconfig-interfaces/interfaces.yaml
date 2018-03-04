@@ -36,6 +36,8 @@ interfaces:
                       negate: "    no description"
             mtu:
                 _process: not_implemented
+            loopback-mode:
+                _process: unnecessary
         subinterfaces:
             _process: unnecessary
             subinterface:
@@ -49,8 +51,6 @@ interfaces:
                 config:
                     _process: unnecessary
                     index:
-                        _process: unnecessary
-                    name:
                         _process: unnecessary
                     enabled:
                         _process:

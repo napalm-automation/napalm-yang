@@ -3,6 +3,7 @@
         "interface": {
             "fxp0": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "name": "fxp0",
                     "type": "ethernetCsmacd"
@@ -20,7 +21,7 @@
                         "0": {
                             "config": {
                                 "enabled": false,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -34,6 +35,7 @@
             },
             "ge-0/0/0": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "name": "ge-0/0/0",
                     "type": "ethernetCsmacd"
@@ -52,7 +54,7 @@
                             "config": {
                                 "description": "R1@ge-0/0/0.0->R2-ge-0/0/0.0",
                                 "enabled": true,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -77,6 +79,7 @@
             },
             "ge-0/0/1": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "name": "ge-0/0/1",
                     "type": "ethernetCsmacd"
@@ -95,7 +98,7 @@
                             "config": {
                                 "description": "R1@ge-0/0/1.0->R3@ge-0/0/0.0",
                                 "enabled": true,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -120,6 +123,7 @@
             },
             "ge-0/0/2": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "name": "ge-0/0/2",
                     "type": "ethernetCsmacd"
@@ -138,7 +142,7 @@
                             "config": {
                                 "description": "R1@ge-0/0/2.0->R5@ge-0/0/0.0",
                                 "enabled": true,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -163,6 +167,7 @@
             },
             "ge-0/0/3": {
                 "config": {
+                    "loopback-mode": false,
                     "enabled": true,
                     "name": "ge-0/0/3",
                     "type": "ethernetCsmacd"
@@ -180,7 +185,7 @@
                         "0": {
                             "config": {
                                 "enabled": true,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -203,7 +208,7 @@
                         "6": {
                             "config": {
                                 "enabled": true,
-                                "name": "6"
+                                "index": "6"
                             },
                             "index": "6",
                             "ipv4": {
@@ -240,6 +245,7 @@
             },
             "lo0": {
                 "config": {
+                    "loopback-mode": true,
                     "enabled": true,
                     "name": "lo0",
                     "type": "softwareLoopback"
@@ -257,7 +263,7 @@
                         "0": {
                             "config": {
                                 "enabled": true,
-                                "name": "0"
+                                "index": "0"
                             },
                             "index": "0",
                             "ipv4": {
@@ -280,7 +286,7 @@
                         "4225": {
                             "config": {
                                 "enabled": true,
-                                "name": "4225"
+                                "index": "4225"
                             },
                             "index": "4225",
                             "ipv4": {

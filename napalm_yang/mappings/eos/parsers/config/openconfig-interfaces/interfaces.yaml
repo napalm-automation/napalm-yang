@@ -46,6 +46,9 @@ interfaces:
             mtu:
                 _process:
                     - path: mtu
+            loopback-mode:
+                _process:
+                    - pre: "{{ interface_key.startswith('Loop') }}"
         subinterfaces:
             _process: unnecessary
             subinterface:
@@ -58,10 +61,8 @@ interfaces:
                 config:
                     _process: unnecessary
                     index:
-                        _process: unnecessary
-                    name:
                         _process:
-                            - pre: "{{ interface_key }}.{{ subinterface_key}}"
+                            - pre: "{{ subinterface_key }}"
                     enabled:
                         _process:
                             - path: "shutdown"

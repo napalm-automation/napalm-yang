@@ -39,10 +39,6 @@ ethernet:
                     - path: eth_outpause
         duplex-mode:
             _process: not_implemented
-        effective-speed:
-            _process:
-                - path: eth_bw
-                  post: "{{ value / 1000 }}"
         enable-flow-control:
             _process:
                 - path: eth_in_flowctrl

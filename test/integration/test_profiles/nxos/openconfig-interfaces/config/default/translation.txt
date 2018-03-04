@@ -7,8 +7,8 @@ interface Ethernet1/2
     switchport mode access
     exit
 interface Ethernet1/3
-    no switchport
     ip address 2.2.2.1 255.255.255.252
+    no switchport
     shutdown
     exit
 interface Ethernet1/4
@@ -17,13 +17,13 @@ interface Ethernet1/4
     switchport mode trunk
     exit
 interface mgmt0
-    no switchport
     ip address 10.10.1.155 255.255.255.192
+    no switchport
     exit
 interface port-channel11
     switchport mode access
     exit
 interface loopback1
-    no switchport
     ip address 1.1.1.1 255.255.255.255
+    no switchport
     exit

@@ -28,6 +28,8 @@ interfaces:
             _process: unnecessary
             admin-status:
                 _process: not_implemented
+            loopback-mode:
+                _process: unnecessary
             counters:
                 _process: unnecessary
                 in-broadcast-pkts:
@@ -68,6 +70,10 @@ interfaces:
                 out-unicast-pkts:
                     _process:
                         - path: eth_outucast
+                in-fcs-errors:
+                    _process: not_implemented
+                carrier-transitions:
+                    _process: not_implemented
             description:
                 _process: not_implemented
             enabled:
@@ -125,6 +131,8 @@ interfaces:
                         out-octets:
                             _process: not_implemented
                         out-unicast-pkts:
+                            _process: not_implemented
+                        in-fcs-errors:
                             _process: not_implemented
                     description:
                         _process: not_implemented

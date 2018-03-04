@@ -17,6 +17,9 @@ interfaces:
             description:
                 _process:
                     - path: description
+            loopback-mode:
+                _process:
+                    - pre: "{{ interface_key.startswith('loop') }}"
             enabled:
                 _process:
                     - path: "shutdown"
@@ -60,8 +63,6 @@ interfaces:
                     enabled:
                         _process: not_implemented
                     index:
-                        _process: not_implemented
-                    name:
                         _process: not_implemented
                 index:
                     _process: not_implemented

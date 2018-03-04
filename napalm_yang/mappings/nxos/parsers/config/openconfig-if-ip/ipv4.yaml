@@ -58,6 +58,8 @@ ipv4:
                         _process: not_implemented
     config:
         _process: unnecessary
+        dhcp-client:
+            _process: not_implemented
         enabled:
             _process:
                 - path: switchport
@@ -95,6 +97,14 @@ ipv4:
                 subinterface:
                     _process: not_implemented
             state:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    proxy-arp:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            mode:
                 _process: not_implemented
         state:
             _process: not_implemented
