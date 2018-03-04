@@ -30,6 +30,8 @@ interfaces:
                 _process:
                     - value: "    shutdown\n"
                       when: "{{ not model }}"
+            loopback-mode:
+                _process: unnecessary
             description:
                 _process:
                     - value: "    description {{ model }}\n"
@@ -53,8 +55,6 @@ interfaces:
                 config:
                     _process: unnecessary
                     index:
-                        _process: unnecessary
-                    name:
                         _process: unnecessary
                     enabled:
                         _process:

@@ -12,6 +12,8 @@ ipv4:
                   negate: "    switchport\n"
                   in: "interface.{{ interface_key }}"
                   when: "{{ model and interface_key[0:4] not in ['Mana', 'Loop'] }}"
+        dhcp-client:
+            _process: not_implemented
         mtu:
             _process: not_implemented
     addresses:
@@ -75,4 +77,11 @@ ipv4:
                     _process: not_implemented
                 link_layer_address:
                     _process: not_implemented
-
+    proxy-arp:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            mode:
+                _process: not_implemented
+        state:
+            _process: not_implemented

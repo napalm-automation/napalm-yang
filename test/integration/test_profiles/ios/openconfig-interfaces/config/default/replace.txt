@@ -19,12 +19,12 @@ interface GigabitEthernet1
     exit
 default interface GigabitEthernet2
 interface GigabitEthernet2
-    no switchport
     ip address 192.168.0.1 255.255.255.0
     no switchport
     no switchport
-    shutdown
+    no switchport
     description so much oc
+    shutdown
     mtu 9000
     exit
 no interface GigabitEthernet2.1
