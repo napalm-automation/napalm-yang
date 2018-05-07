@@ -378,6 +378,9 @@ def _to_dict_leaf(element, filter):
         try:
             value = ast.literal_eval(element.__repr__())
         except Exception:
-            value = element.__repr__()
+            if hasattr(element, '_list'):
+                value = element._list
+            else:
+                value = element.__repr__()
 
     return value
