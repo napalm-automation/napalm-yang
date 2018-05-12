@@ -1,4 +1,4 @@
-PYBINDPLUGIN=$(shell /usr/bin/env python -c 'import pyangbind; import os; print "%s/plugin" % os.path.dirname(pyangbind.__file__)')
+PYBINDPLUGIN=$(shell /usr/bin/env python -c 'import pyangbind; import os; print("{}/plugin".format(os.path.dirname(pyangbind.__file__)))')
 
 MODELS_PATH=napalm_yang/models
 
@@ -6,7 +6,7 @@ YANG_OC=yang_oc/release/models
 YANG_IETF=yang_ietf/standard/ietf
 YANG_NAPALM=yang_napalm
 
-PYANGBING=pyang --plugindir $(PYBINDPLUGIN) -f pybind --lax-quote-checks
+PYANGBIND=pyang --plugindir $(PYBINDPLUGIN) -f pybind --lax-quote-checks
 
 
 clean:
@@ -22,7 +22,7 @@ openconfig_tree:
 .PHONY: models_openconfig
 models_openconfig:
 	rm -rf $(MODELS_PATH)/openconfig/
-	$(PYANGBING) \
+	$(PYANGBIND) \
 		--path $(YANG_OC) \
 		--split-class-dir=$(MODELS_PATH)/openconfig/ \
 		$(YANG_OC)/network-instance/openconfig-network-instance.yang \
@@ -35,7 +35,7 @@ models_openconfig:
 # .PHONY: models_ietf
 # models_ietf:
 #     rm -rf $(MODELS_PATH)/ietf/
-#     $(PYANGBING) \
+#     $(PYANGBIND) \
 #         --path $(YANG_IETF)/RFC \
 #         --path $(YANG_IETF)/DRAFT \
 #         --split-class-dir=$(MODELS_PATH)/ietf/ \

@@ -3,4 +3,5 @@ pytest
 pytest-cov
 pytest-json
 pytest-pythonpath
+tox
 -r requirements.txt
