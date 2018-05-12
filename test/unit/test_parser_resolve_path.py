@@ -144,7 +144,7 @@ class Tests(object):
             {'neighbor': {'#text': '192.168.100.3'},
              'peer-as': {'#text': '65100'},
              'peer_group': {'#text': 'my_peers'}}]
-        assert sorted(result, key=lambda k: k['neighbor']) == expected
+        assert sorted(result, key=lambda k: k['neighbor']['#text']) == expected
 
     def test_ios_ip_addresses(self):
         data = {"ip": {"address": {"192.168.2.1": {

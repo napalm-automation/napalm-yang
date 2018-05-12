@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 #  from napalm.base import get_network_driver
 
 import napalm_yang
@@ -57,8 +59,16 @@ def read_file_content(base, profile, model, mode, case, filename):
         return f.read()
 
 
+def save_file_content(base, profile, model, mode, case, filename, content):
+    full_path = os.path.join(BASE_PATH, base,
+                             profile, model._yang_name, mode, case, filename)
+    with open(full_path, "w+") as f:
+        return f.write(content)
+
+
 def read_json(base, profile, model, mode, case, filename):
-    return json.loads(read_file_content(base, profile, model, mode, case, filename))
+    return json.loads(read_file_content(base, profile, model, mode, case, filename),
+                      object_pairs_hook=OrderedDict)
 
 
 def load_json_model(base, profile, model, mode, case, filename):
@@ -99,8 +109,6 @@ class Tests(object):
             return
 
         json_blob = read_json("test_profiles", profile, model, mode, case, "expected.json")
-        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
-                                                 "translation.txt")
 
         config = napalm_yang.base.Root()
         config.add_model(model)
@@ -113,6 +121,12 @@ class Tests(object):
         #     d.load_merge_candidate(config=configuration)
         #     print(d.compare_config())
 
+        #  save_file_content("test_profiles", profile, model, mode, case,
+        #                    "translation.txt", configuration)
+
+        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
+                                                 "translation.txt")
+
         assert configuration == expected_translation
 
     @pytest.mark.parametrize("action", ["merge", "replace"])
@@ -123,9 +137,6 @@ class Tests(object):
 
         json_running = read_json("test_profiles", profile, model, mode, case, "expected.json")
         json_candidate = read_json("test_profiles", profile, model, mode, case, "candidate.json")
-
-        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
-                                                 "{}.txt".format(action))
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(model)
@@ -148,5 +159,11 @@ class Tests(object):
         #      d.load_merge_candidate(config=configuration)
         #      print(d.compare_config())
         #      d.discard_config()
+
+        #  save_file_content("test_profiles", profile, model, mode, case,
+        #                    "{}.txt".format(action), configuration)
+
+        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
+                                                 "{}.txt".format(action))
 
         assert configuration == expected_translation

@@ -2,25 +2,26 @@
   <interfaces>
     <interface>
       <name>ge-0/0/0</name>
+      <mtu delete="delete"/>
+      <description>management interface</description>
       <unit>
         <name>0</name>
+        <description>ge-0/0/0.0</description>
         <family>
           <inet/>
         </family>
-        <description>ge-0/0/0.0</description>
       </unit>
-      <description>management interface</description>
-      <mtu delete="delete"/>
     </interface>
     <interface>
       <name>ge-0/0/1</name>
-      <disable/>
       <description>ge-0/0/1</description>
+      <disable/>
     </interface>
     <interface>
       <name>ae0</name>
       <unit>
         <name>0</name>
+        <description>ASDASDASD</description>
         <vlan-id>100</vlan-id>
         <family>
           <inet>
@@ -32,11 +33,11 @@
             </address>
           </inet>
         </family>
-        <description>ASDASDASD</description>
       </unit>
       <vlan-tagging/>
       <unit>
         <name>1</name>
+        <description>ae0.1</description>
         <vlan-id>1</vlan-id>
         <family>
           <inet>
@@ -45,11 +46,11 @@
             </address>
           </inet>
         </family>
-        <description>ae0.1</description>
       </unit>
       <vlan-tagging/>
       <unit>
         <name>2</name>
+        <description>ae0.2</description>
         <vlan-id>2</vlan-id>
         <family>
           <inet>
@@ -58,12 +59,12 @@
             </address>
           </inet>
         </family>
-        <description>ae0.2</description>
       </unit>
       <vlan-tagging/>
     </interface>
     <interface>
       <name>lo0</name>
+      <description>lo0</description>
       <unit>
         <name>1</name>
         <description>new loopback</description>
@@ -71,7 +72,6 @@
       <unit delete="delete">
         <name>0</name>
       </unit>
-      <description>lo0</description>
     </interface>
   </interfaces>
 </configuration>

@@ -40,6 +40,12 @@ def read_file_content(filename):
         return f.read()
 
 
+def save_file_content(filename, content):
+    full_path = os.path.join(BASE_PATH, "tutorial_data", filename)
+    with open(full_path, "w") as f:
+        return f.write(content)
+
+
 def read_json(filename):
     return json.loads(read_file_content(filename))
 
@@ -88,9 +94,9 @@ class Tests(object):
 
         assert not assert_against, "We didn't iterate over all the interfaces"
 
-        assert config.interfaces.interface.keys() == ['et1', 'et2']
+        assert list(config.interfaces.interface.keys()) == ['et1', 'et2']
         config.interfaces.interface.delete("et1")
-        assert config.interfaces.interface.keys() == ['et2']
+        assert list(config.interfaces.interface.keys()) == ['et2']
 
     def test_populating_from_a_dict(self):
         config = napalm_yang.base.Root()
@@ -104,7 +110,7 @@ class Tests(object):
                                     "config": {
                                         "vlan_id": 200, "name": "dev"}}}}}
         config.load_dict(vlans_dict)
-        assert config.vlans.vlan.keys() == [200, 100]
+        assert sorted(list(config.vlans.vlan.keys())) == [100, 200]
         assert config.vlans.vlan[100].config.name == "production"
         assert config.vlans.vlan[200].config.name == "dev"
 
@@ -167,9 +173,11 @@ class Tests(object):
         running.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         merge_config = candidate.translate_config(profile=profile, merge=running)
+        #  save_file_content(merge_file, merge_config)
         assert merge_config == read_file_content(merge_file)
 
         replace_config = candidate.translate_config(profile=profile, replace=running)
+        #  save_file_content(replace_file, replace_config)
         assert replace_config == read_file_content(replace_file)
 
     def test_advanced_manipulation_eos(self):
@@ -197,9 +205,11 @@ class Tests(object):
         running.parse_config(native=[read_file_content(config_file)], profile=profile)
 
         merge_config = candidate.translate_config(profile=profile, merge=running)
+        #  save_file_content(merge_file, merge_config)
         assert merge_config == read_file_content(merge_file)
 
         replace_config = candidate.translate_config(profile=profile, replace=running)
+        #  save_file_content(replace_file, replace_config)
         assert replace_config == read_file_content(replace_file)
 
     def test_diffing_objects(self):
