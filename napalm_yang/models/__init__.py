@@ -1,1 +1,1 @@
-from openconfig import *
+from .openconfig import *
