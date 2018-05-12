@@ -36,8 +36,12 @@ from __future__ import (absolute_import, division, print_function)
 
 import difflib
 import os
+import sys
 
 from ansible.plugins.callback import CallbackBase
+
+if sys.version_info[0] > 2:
+    unicode = str
 
 __metaclass__ = type
 
