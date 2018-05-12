@@ -124,6 +124,7 @@ class Root(object):
             if model in v:
                 self.add_model(getattr(models, k.replace("-", "_")))
                 return
+
         else:
             raise ValueError("Couldn't find model {}".format(model))
 
@@ -157,6 +158,7 @@ class Root(object):
         for k, v in data.items():
             if k not in self._elements.keys() and not auto_load_model:
                 raise AttributeError("Model {} is not loaded".format(k))
+
             elif k not in self._elements.keys() and auto_load_model:
                 self._load_model(k)
 
@@ -384,7 +386,10 @@ def _to_dict_leaf(element, filter):
     value = None
     if element._changed() or not filter:
         try:
-            value = ast.literal_eval(element.__repr__())
+            if hasattr(element, "_list"):
+                value = element._list
+            else:
+                value = ast.literal_eval(element.__repr__())
         except Exception:
             value = element.__repr__()
 
