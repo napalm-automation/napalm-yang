@@ -56,3 +56,20 @@ templates:
 .PHONY: tests
 tests:
 	py.test
+
+.PHONY: test_black
+test_black:
+	find . \
+		-not -path "./.tox*" \
+		-not -path "./napalm_yang/models*" \
+		-not -path "./napalm_yang/mappings*" \
+		-name "*.py" \
+		-exec black --check {} \+
+
+.PHONY: test_sphinx
+test_sphinx:
+	sphinx-build -W -b html -d docs/_build/doctrees docs docs/_build/html
+
+.PHONY: test_pylama
+test_pylama:
+	pylama .
