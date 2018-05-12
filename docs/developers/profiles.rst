@@ -22,11 +22,11 @@ If you are using a napalm driver and have access to your device, you will have a
   is useful as there might be small variances between different systems
   but not enough to justify reimplementing everything.
 
-You can find the profiles `here <https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings>`_ but what exactly is a profile? A profile is a bunch of YAML files that follows the structure of a YANG model and describes two things:
+You can find the profiles `here <https://github.com/napalm-automation/napalm-yang/tree/develop/napalm_yang/mappings>`__ but what exactly is a profile? A profile is a bunch of YAML files that follows the structure of a YANG model and describes two things:
 
 #. How to parse native configuration/state and map it into a model.
 #. How to translate a model and map it into native configuration.
 
-For example, `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml>`_ you can see how to map native configuration from an EOS device into the ``openconfig-interface`` model and `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/translators/openconfig-interfaces/interfaces.yaml>`_ how to map the model to native configuration.
+For example, `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml>`__ you can see how to map native configuration from an EOS device into the ``openconfig-interface`` model and `here <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/translators/openconfig-interfaces/interfaces.yaml>`__ how to map the model to native configuration.
 
 As you can see it's not extremely difficult to understand what they are doing, in the next section we will learn how to write our own profiles.
