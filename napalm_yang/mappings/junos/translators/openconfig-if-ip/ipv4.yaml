@@ -17,6 +17,7 @@ ipv4:
         address:
             _process:
                 - container: address
+                  replace: false
             ip:
                 _process: unnecessary
             config:

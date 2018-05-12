@@ -1,0 +1,377 @@
+---
+metadata:
+    processor: TextTree
+    execute:
+        - method: cli
+          kwargs:
+              commands: ["show running-config all"]
+system:
+    _process: unnecessary
+    aaa:
+        _process: unnecessary
+        accounting:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                accounting-method:
+                    _process: not_implemented
+            events:
+                _process: not_implemented
+                event:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        event-type:
+                            _process: not_implemented
+                        record:
+                            _process: not_implemented
+                    event-type:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            state:
+                _process: not_implemented
+        authentication:
+            _process: unnecessary
+            admin-user:
+                _process: unnecessary
+                config:
+                    _process: unnecessary
+                    admin-password:
+                        _process: not_implemented
+                    admin-password-encrypted:
+                        _process:
+                            - path: "aaa.root.secret"
+                              from: root_system.0
+                              regexp: "(?P<value>(5|sha512) \\S+)$"
+                state:
+                    _process: not_implemented
+            config:
+                _process: not_implemented
+                authentication-method:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+            users:
+                _process:
+                    - path: "aaa.authorization.policy.local.default-role"
+                      save_as: "default_role"
+                      from: root_system.0
+                user:
+                    _process:
+                        - path: "username"
+                          from: root_system.0
+                    config:
+                        _process: unnecessary
+                        password:
+                            _process: not_implemented
+                        password-encrypted:
+                            # Since we are using the show run all command
+                            # the username commands will always start with privilege
+                            _process:
+                                - path: "privilege"
+                                  regexp: "\\d+ role \\S+ secret (?P<value>(5|sha512) \\S+)$"
+                                - path: "privilege"
+                                  regexp: "\\d+ secret (?P<value>(5|sha512) \\S+)$"
+                        #
+                        # In EOS there are privilege and roles which are similar
+                        # here we try to grab both and join the two, delimited
+                        # by a colon, into one string to set as the role
+                        #
+                        role:
+                            _process:
+                                - path: "privilege"
+                                  regexp: "(?P<value>\\d+) nopassword"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
+                                - path: "privilege"
+                                  regexp: "(?P<value>\\d+) secret \\S+"
+                                  post: "{{value}}:{{extra_vars.users.default_role}}"
+                                - path: "privilege"
+                                  regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
+                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
+                        ssh-key:
+                            _process: not_implemented
+                        username:
+                            _process: unnecessary
+                    state:
+                        _process: not_implemented
+                    username:
+                        _process: not_implemented
+        authorization:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                authorization-method:
+                    _process: not_implemented
+            events:
+                _process: not_implemented
+                event:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        event-type:
+                            _process: not_implemented
+                    event-type:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+            state:
+                _process: not_implemented
+        server-groups:
+            _process: not_implemented
+            server-group:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    name:
+                        _process: not_implemented
+                    type:
+                        _process: not_implemented
+                name:
+                    _process: not_implemented
+                servers:
+                    _process: not_implemented
+                    server:
+                        _process: not_implemented
+                        address:
+                            _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            address:
+                                _process: not_implemented
+                            name:
+                                _process: not_implemented
+                            timeout:
+                                _process: not_implemented
+                        radius:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                acct-port:
+                                    _process: not_implemented
+                                auth-port:
+                                    _process: not_implemented
+                                retransmit-attempts:
+                                    _process: not_implemented
+                                secret-key:
+                                    _process: not_implemented
+                                source-address:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                        state:
+                            _process: not_implemented
+                        tacacs:
+                            _process: not_implemented
+                            config:
+                                _process: not_implemented
+                                port:
+                                    _process: not_implemented
+                                secret-key:
+                                    _process: not_implemented
+                                source-address:
+                                    _process: not_implemented
+                            state:
+                                _process: not_implemented
+                state:
+                    _process: not_implemented
+    clock:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            timezone-name:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    config:
+        _process: not_implemented
+        domain-name:
+            _process: not_implemented
+        hostname:
+            _process: not_implemented
+        login-banner:
+            _process: not_implemented
+        motd-banner:
+            _process: not_implemented
+    dns:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            search:
+                _process: not_implemented
+        host-entries:
+            _process: not_implemented
+            host-entry:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    alias:
+                        _process: not_implemented
+                    hostname:
+                        _process: not_implemented
+                    ipv4-address:
+                        _process: not_implemented
+                    ipv6-address:
+                        _process: not_implemented
+                hostname:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        servers:
+            _process: not_implemented
+            server:
+                _process: not_implemented
+                address:
+                    _process: not_implemented
+                config:
+                    _process: not_implemented
+                    address:
+                        _process: not_implemented
+                    port:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+    logging:
+        _process: not_implemented
+        console:
+            _process: not_implemented
+            selectors:
+                _process: not_implemented
+                selector:
+                    _process: not_implemented
+                    config:
+                        _process: not_implemented
+                        facility:
+                            _process: not_implemented
+                        severity:
+                            _process: not_implemented
+                    facility:
+                        _process: not_implemented
+                    severity:
+                        _process: not_implemented
+                    state:
+                        _process: not_implemented
+        remote-servers:
+            _process: not_implemented
+            remote-server:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    host:
+                        _process: not_implemented
+                    remote-port:
+                        _process: not_implemented
+                    source-address:
+                        _process: not_implemented
+                host:
+                    _process: not_implemented
+                selectors:
+                    _process: not_implemented
+                    selector:
+                        _process: not_implemented
+                        config:
+                            _process: not_implemented
+                            facility:
+                                _process: not_implemented
+                            severity:
+                                _process: not_implemented
+                        facility:
+                            _process: not_implemented
+                        severity:
+                            _process: not_implemented
+                        state:
+                            _process: not_implemented
+                state:
+                    _process: not_implemented
+    memory:
+        _process: not_implemented
+        state:
+            _process: not_implemented
+    ntp:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enable-ntp-auth:
+                _process: not_implemented
+            enabled:
+                _process: not_implemented
+            ntp-source-address:
+                _process: not_implemented
+        ntp-keys:
+            _process: not_implemented
+            ntp-key:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    key-id:
+                        _process: not_implemented
+                    key-type:
+                        _process: not_implemented
+                    key-value:
+                        _process: not_implemented
+                key-id:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented
+        servers:
+            _process: not_implemented
+            server:
+                _process: not_implemented
+                address:
+                    _process: not_implemented
+                config:
+                    _process: not_implemented
+                    address:
+                        _process: not_implemented
+                    association-type:
+                        _process:  not_implemented
+                    iburst:
+                        _process: not_implemented
+                    port:
+                        _process: not_implemented
+                    prefer:
+                        _process: not_implemented
+                    version:
+                        _process: not_implemented
+                state:
+                    _process: not_implemented
+        state:
+            _process: not_implemented
+    processes:
+        _process: not_implemented
+        process:
+            _process: not_implemented
+    ssh-server:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enable:
+                _process: not_implemented
+            protocol-version:
+                _process: not_implemented
+            rate-limit:
+                _process: not_implemented
+            session-limit:
+                _process: not_implemented
+            timeout:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+    state:
+        _process: not_implemented
+    telnet-server:
+        _process: not_implemented
+        config:
+            _process: not_implemented
+            enable:
+                _process: not_implemented
+            rate-limit:
+                _process: not_implemented
+            session-limit:
+                _process: not_implemented
+            timeout:
+                _process: not_implemented
+        state:
+            _process: not_implemented

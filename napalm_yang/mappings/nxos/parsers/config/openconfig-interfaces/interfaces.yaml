@@ -1,0 +1,69 @@
+---
+metadata:
+    processor: TextTree
+    execute:
+        - method: cli
+          kwargs:
+              commands: ["show running-config all"]
+interfaces:
+    _process: unnecessary
+    interface:
+        _process:
+            - path: interface
+              regexp: "^(?P<value>(\\w|-)*\\d+(\\/\\d+)*)$"
+              from: root_interfaces.0
+        config:
+            _process: unnecessary
+            description:
+                _process:
+                    - path: description
+            enabled:
+                _process:
+                    - path: "shutdown"
+                      present: no
+            mtu:
+                _process: not_implemented
+            name:
+                _process: unnecessary
+            type:
+                _process:
+                    - pre: "{{ interface_key }}"
+                      regexp: "(?P<value>(\\w|-)*?)\\d+"
+                      map:
+                          ethernet: ethernetCsmacd
+                          mgmt: ethernetCsmacd
+                          loopback: softwareLoopback
+                          port-channel: ieee8023adLag
+                          vlan: l3ipvlan
+        hold-time:
+            _process: not_implemented
+            config:
+                _process: not_implemented
+                down:
+                    _process: not_implemented
+                up:
+                    _process: not_implemented
+            state:
+                _process: not_implemented
+        name:
+            _process: not_implemented
+        state:
+            _process: not_implemented
+        subinterfaces:
+            _process: not_implemented
+            subinterface:
+                _process: not_implemented
+                config:
+                    _process: not_implemented
+                    description:
+                        _process: not_implemented
+                    enabled:
+                        _process: not_implemented
+                    index:
+                        _process: not_implemented
+                    name:
+                        _process: not_implemented
+                index:
+                    _process: not_implemented
+                state:
+                    _process: not_implemented

@@ -1,0 +1,29 @@
+interface Ethernet1/1
+    description This is my description
+    switchport mode access
+    switchport access vlan 100
+    exit
+interface Ethernet1/2
+    switchport mode access
+    exit
+interface Ethernet1/3
+    shutdown
+    ip address 2.2.2.1 255.255.255.252
+    no switchport
+    exit
+interface Ethernet1/4
+    switchport mode trunk
+    switchport trunk native vlan 10
+    switchport trunk allowed vlan 20,30
+    exit
+interface loopback1
+    ip address 1.1.1.1 255.255.255.255
+    no switchport
+    exit
+interface mgmt0
+    ip address 10.10.1.155 255.255.255.192
+    no switchport
+    exit
+interface port-channel11
+    switchport mode access
+    exit

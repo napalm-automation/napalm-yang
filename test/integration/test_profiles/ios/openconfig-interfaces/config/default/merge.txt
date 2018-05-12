@@ -7,5 +7,5 @@ interface GigabitEthernet2
 interface GigabitEthernet2.1
     no encapsulation dot1q
     ip address 192.168.20.1 255.255.255.0 secondary
-    default ip address 172.20.0.1 255.255.255.0 secondary
+    no ip address 172.20.0.1 255.255.255.0 secondary
     exit

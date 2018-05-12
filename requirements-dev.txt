@@ -3,4 +3,6 @@ pytest
 pytest-cov
 pytest-json
 pytest-pythonpath
+tox
+black==18.4a1; python_version >= '3.6'
 -r requirements.txt

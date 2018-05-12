@@ -39,11 +39,15 @@ Rule Directives
 
 .. include:: dynamic_directives.rst
 
+.. _yang_special_field_keys:
+
 Keys
 ----
 
 When a list is traversed you will always have available a key with name ``$(attribute)_key``. In
-addition, you will have ``parent_key`` as the key of the immediate parent object. `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml#L63>`_.
+addition, you will have ``parent_key`` as the key of the immediate parent object. `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml#L63>`__.
+
+.. _yang_special_field_bookmarks:
 
 Bookmarks
 ---------
@@ -55,7 +59,7 @@ configuration.
 
 Bookmarks are created automatically according to these rules:
 
-* At the begining of each model a bookmark of name ``root_$first_attribute_name`` will point to the list of data that the parser requires. `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml#L14>`_
+* At the begining of each model a bookmark of name ``root_$first_attribute_name`` will point to the list of data that the parser requires. `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-interfaces/interfaces.yaml#L14>`__
 * When a container is traversed, a bookmark will be created with name ``$attribure_name``
 * When a list is traveresed, each element of the list will have its own bookmark with name ``$attribute_name.$key``.
 
@@ -64,7 +68,7 @@ Bookmarks are created automatically according to these rules:
 
 The ``regexp`` directive lets you capture any arbitary amount of information you want. All captured
 groups will be avaible to you inside the ``extra_vars.$attribute`` (``$attribute`` is the attribute where the
-additional information was captured). `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-if-ip/ipv4.yaml#L27>`_.
+additional information was captured). `Example <https://github.com/napalm-automation/napalm-yang/blob/develop/napalm_yang/mappings/eos/parsers/config/openconfig-if-ip/ipv4.yaml#L27>`__.
 
 Examples
 --------
@@ -73,3 +77,4 @@ Examples
    :maxdepth: 1
 
    examples_list
+   examples_leaf

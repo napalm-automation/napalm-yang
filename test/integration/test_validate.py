@@ -11,13 +11,14 @@ import sys
 
 
 import logging
+
 logger = logging.getLogger("napalm-yang")
 
 
 def config_logging():
     logger.setLevel(logging.DEBUG)
     ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
@@ -39,8 +40,7 @@ test_validate = [
 
 
 def read_file_content(profile, model, case, filename):
-    full_path = os.path.join(BASE_PATH, "validate",
-                             profile, case, filename)
+    full_path = os.path.join(BASE_PATH, "validate", profile, case, filename)
     with open(full_path, "r") as f:
         return f.read()
 
@@ -64,7 +64,9 @@ class Tests(object):
 
         #  print(pretty_json(config.to_dict(filter=True)))
 
-        validation_file = os.path.join(BASE_PATH, "validate", profile, case, validate_file)
+        validation_file = os.path.join(
+            BASE_PATH, "validate", profile, case, validate_file
+        )
 
         report = config.compliance_report(validation_file)
 

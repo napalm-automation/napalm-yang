@@ -629,7 +629,7 @@ neighbors:
                       regexp: "(?P<value>\\d+)"
             neighbor-address:
                 _process:
-                    - value: "{{ neighbor_key }}"
+                    - pre: "{{ neighbor_key }}"
             peer-as:
                 _process:
                     - path: remote-as

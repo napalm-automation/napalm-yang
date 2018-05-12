@@ -2,6 +2,8 @@
   <interfaces>
     <interface>
       <name>et1</name>
+      <mtu>9000</mtu>
+      <description>Uplink1</description>
       <family>
         <inet>
           <address>
@@ -9,11 +11,11 @@
           </address>
         </inet>
       </family>
-      <description>Uplink1</description>
-      <mtu>9000</mtu>
     </interface>
     <interface>
       <name>et2</name>
+      <mtu>9000</mtu>
+      <description>Uplink2</description>
       <family>
         <inet>
           <address>
@@ -21,8 +23,6 @@
           </address>
         </inet>
       </family>
-      <description>Uplink2</description>
-      <mtu>9000</mtu>
     </interface>
   </interfaces>
 </configuration>

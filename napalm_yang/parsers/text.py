@@ -24,7 +24,9 @@ class TextParser(BaseParser):
                 key = extra_vars.pop("key")
 
             if post_process_filter:
-                key = self._parse_post_process_filter(post_process_filter, key, extra_vars)
+                key = self._parse_post_process_filter(
+                    post_process_filter, key, extra_vars
+                )
 
             extra_vars["_get_duplicates"] = mapping.get("flat", False)
 

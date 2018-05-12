@@ -1,0 +1,52 @@
+{
+    "system": {
+        "ntp": {
+            "config": {
+                "enable-ntp-auth": true,
+                "enabled": true,
+                "ntp-source-address": "1.2.3.4"
+            },
+            "ntp-keys": {
+                "ntp-key": {
+                    "2": {
+                        "config": {
+                            "key-id": 2,
+                            "key-type": "NTP_AUTH_MD5",
+                            "key-value": "$9$pUmM0ORSrvXxd9AMXxNY2"
+                        },
+                        "key-id": "2"
+                    }
+                }
+            },
+            "servers": {
+                "server": {
+                    "1.2.3.4": {
+                        "address": "1.2.3.4",
+                        "config": {
+                            "address": "1.2.3.4",
+                            "association-type": "PEER",
+                            "prefer": true,
+                            "version": 1
+                        }
+                    },
+                    "172.17.19.1": {
+                        "address": "172.17.19.1",
+                        "config": {
+                            "address": "172.17.19.1",
+                            "association-type": "PEER",
+                            "prefer": false
+                        }
+                    },
+                    "172.17.19.2": {
+                        "address": "172.17.19.2",
+                        "config": {
+                            "address": "172.17.19.2",
+                            "association-type": "SERVER",
+                            "prefer": false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

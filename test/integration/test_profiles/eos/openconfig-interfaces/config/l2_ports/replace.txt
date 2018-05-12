@@ -1,19 +1,19 @@
+default interface Ethernet1
+interface Ethernet1
+    switchport mode access
+    switchport trunk native vlan 30
+    switchport access vlan 20
+    switchport trunk allowed vlan 1-4094
+    exit
 default interface Ethernet2
 interface Ethernet2
-    switchport native vlan 20
-    switchport access vlan 1
-    switchport trunk vlan 30
     switchport mode trunk
+    switchport trunk native vlan 20
+    switchport access vlan 1
+    switchport trunk allowed vlan 30
     exit
 default interface Management1
 interface Management1
-    ip address 10.0.2.15/24 
     mtu 1500
-    exit
-default interface Ethernet1
-interface Ethernet1
-    switchport native vlan 30
-    switchport access vlan 20
-    switchport trunk vlan 1-4094
-    switchport mode access
+    ip address 10.0.2.15/24 
     exit

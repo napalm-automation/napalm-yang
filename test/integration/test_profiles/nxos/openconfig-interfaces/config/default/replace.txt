@@ -1,0 +1,36 @@
+default interface Ethernet1/1
+interface Ethernet1/1
+    description Candidate Description
+    switchport mode access
+    switchport access vlan 200
+    exit
+default interface Ethernet1/2
+interface Ethernet1/2
+    switchport mode access
+    exit
+default interface Ethernet1/3
+interface Ethernet1/3
+    shutdown
+    ip address 3.3.3.1 255.255.255.0
+    no switchport
+    exit
+default interface Ethernet1/4
+interface Ethernet1/4
+    switchport mode trunk
+    switchport trunk native vlan 11
+    switchport trunk allowed vlan 20,30,40
+    exit
+default interface mgmt0
+interface mgmt0
+    ip address 10.10.1.155 255.255.255.192
+    no switchport
+    exit
+default interface port-channel11
+interface port-channel11
+    switchport mode access
+    exit
+default interface loopback1
+interface loopback1
+    ip address 1.1.1.1 255.255.255.255
+    no switchport
+    exit
