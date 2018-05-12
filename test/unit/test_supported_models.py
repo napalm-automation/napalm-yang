@@ -9,4 +9,4 @@ class Tests(object):
     def test_supported_models(self, module, models):
         obj = getattr(napalm_yang.models, module.replace("-", "_"), None)
         assert obj, "{} not supported"
-        assert obj._pyangbind_elements.keys() == models
+        assert list(obj._pyangbind_elements.keys()) == models

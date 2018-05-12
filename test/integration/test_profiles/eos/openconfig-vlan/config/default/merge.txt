@@ -1,8 +1,8 @@
-vlan 31
-    state suspend
-    name devel
-    exit
 vlan 20
     default state
+    exit
+vlan 31
+    name devel
+    state suspend
     exit
 no vlan 30

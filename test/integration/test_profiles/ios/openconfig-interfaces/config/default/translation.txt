@@ -1,41 +1,41 @@
-interface Port-channel1
+interface GigabitEthernet1
+    mtu 1500
+    description This is a description
     no switchport
-    no switchport
-    description blah
-    mtu 9000
     exit
-interface Port-channel1.1
+interface GigabitEthernet2
+    mtu 1500
+    description so much oc
+    shutdown
+    no switchport
+    no switchport
+    ip address 192.168.0.1 255.255.255.0
+    no switchport
+    exit
+interface GigabitEthernet2.1
+    description another subiface
+    encapsulation dot1q 1
+    ip address 172.20.0.1 255.255.255.0 secondary
+    ip address 192.168.1.1 255.255.255.0
+    exit
+interface GigabitEthernet2.2
+    description asdasdasd
+    encapsulation dot1q 2
+    ip address 192.168.2.1 255.255.255.0
+    exit
+interface GigabitEthernet3
+    mtu 1500
+    shutdown
+    no switchport
     exit
 interface Loopback1
     description a loopback
     exit
-interface GigabitEthernet1
+interface Port-channel1
+    mtu 9000
+    description blah
     no switchport
-    description This is a description
-    mtu 1500
+    no switchport
     exit
-interface GigabitEthernet2
-    no switchport
-    ip address 192.168.0.1 255.255.255.0
-    no switchport
-    no switchport
-    shutdown
-    description so much oc
-    mtu 1500
-    exit
-interface GigabitEthernet2.1
-    encapsulation dot1q 1
-    ip address 172.20.0.1 255.255.255.0 secondary
-    ip address 192.168.1.1 255.255.255.0
-    description another subiface
-    exit
-interface GigabitEthernet2.2
-    encapsulation dot1q 2
-    ip address 192.168.2.1 255.255.255.0
-    description asdasdasd
-    exit
-interface GigabitEthernet3
-    no switchport
-    shutdown
-    mtu 1500
+interface Port-channel1.1
     exit
