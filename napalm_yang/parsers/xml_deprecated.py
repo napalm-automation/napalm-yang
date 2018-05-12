@@ -38,7 +38,9 @@ class XMLParser(BaseParser):
         return cls._parse_list_container_helper(mapping, iterators, data, list_vars)
 
     @classmethod
-    def _parse_list_nested_recursive(cls, data, path, iterators, list_vars, cur_vars=None):
+    def _parse_list_nested_recursive(
+        cls, data, path, iterators, list_vars, cur_vars=None
+    ):
         """
         This helps parsing shit like:
 
@@ -81,7 +83,9 @@ class XMLParser(BaseParser):
             for x in data:
                 key, var_path = p.split(".")
                 cur_vars.update({key.lstrip("?"): x.xpath(var_path)[0].text})
-                cls._parse_list_nested_recursive(x, path, iterators, list_vars, cur_vars)
+                cls._parse_list_nested_recursive(
+                    x, path, iterators, list_vars, cur_vars
+                )
         else:
             x = data.xpath(p)
             cls._parse_list_nested_recursive(x, path, iterators, list_vars, cur_vars)
@@ -96,11 +100,10 @@ class XMLParser(BaseParser):
             if isinstance(element, dict):
                 yield element["key"], element["block"], element["extra_vars"]
             else:
-                key_name = "{}_name".format(root.tag if mapping.get("nested", False)
-                                            else root[0].tag)
-                extra_vars = {
-                    key_name: element.tag
-                }
+                key_name = "{}_name".format(
+                    root.tag if mapping.get("nested", False) else root[0].tag
+                )
+                extra_vars = {key_name: element.tag}
 
                 if list_vars:
                     extra_vars.update(list_vars.pop(0))
@@ -120,7 +123,9 @@ class XMLParser(BaseParser):
                     key = element.tag
 
                 if post_process_filter:
-                    key = cls._parse_post_process_filter(post_process_filter, key, extra_vars)
+                    key = cls._parse_post_process_filter(
+                        post_process_filter, key, extra_vars
+                    )
 
                 yield key, element, extra_vars
 
@@ -134,7 +139,9 @@ class XMLParser(BaseParser):
         return cls._parse_list_container_helper(mapping, [root], root)
 
     @classmethod
-    def _parse_leaf_default(cls, mapping, data, check_default=True, check_presence=False):
+    def _parse_leaf_default(
+        cls, mapping, data, check_default=True, check_presence=False
+    ):
         element = data.xpath(mapping["xpath"])
 
         if element and not check_presence:
@@ -168,8 +175,12 @@ class XMLParser(BaseParser):
 
     @classmethod
     def _parse_leaf_is_present(cls, mapping, data):
-        return cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
+        return cls._parse_leaf_default(
+            mapping, data, check_default=False, check_presence=True
+        )
 
     @classmethod
     def _parse_leaf_is_absent(cls, mapping, data):
-        return not cls._parse_leaf_default(mapping, data, check_default=False, check_presence=True)
+        return not cls._parse_leaf_default(
+            mapping, data, check_default=False, check_presence=True
+        )

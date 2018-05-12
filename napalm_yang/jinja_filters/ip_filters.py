@@ -48,7 +48,7 @@ def normalize_prefix(value):
         >>> "{{ '192.168/255.255.255.0'|normalize_prefix }}" -> "192.168.0.0/24"
         >>> "{{ '2001:DB8:0:0:1:0:0:1/64'|normalize_prefix }}" -> "2001:db8::1:0:0:1/64"
     """
-    value = value.replace(' ', '/')
+    value = value.replace(" ", "/")
     return str(netaddr.IPNetwork(value))
 
 
@@ -70,7 +70,7 @@ def normalize_address(value):
 
 
 @check_empty()
-def prefix_to_addrmask(value, sep=' '):
+def prefix_to_addrmask(value, sep=" "):
     """
     Converts a CIDR formatted prefix into an address netmask representation.
     Argument sep specifies the separator between the address and netmask parts.
@@ -81,4 +81,4 @@ def prefix_to_addrmask(value, sep=' '):
         >>> "{{ '192.168.0.1/24|prefix_to_addrmask('/') }}" -> "192.168.0.1/255.255.255.0"
     """
     prefix = netaddr.IPNetwork(value)
-    return '{}{}{}'.format(prefix.ip, sep, prefix.netmask)
+    return "{}{}{}".format(prefix.ip, sep, prefix.netmask)

@@ -64,7 +64,9 @@ class XMLTranslator(BaseTranslator):
 
         return t, {}
 
-    def _translate_leaf_default(self, attribute, model, other, mapping, translation, force=False):
+    def _translate_leaf_default(
+        self, attribute, model, other, mapping, translation, force=False
+    ):
         delete = False
         if not model._changed() and other and self.merge:
             delete = True

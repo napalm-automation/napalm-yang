@@ -65,7 +65,9 @@ class BaseTranslator(object):
             method_name = "_translate_leaf_{}".format(mode)
             getattr(self, method_name)(attribute, model, other, m, t)
 
-    def translate_container(self, attribute, model, other, mapping, translation, bookmarks):
+    def translate_container(
+        self, attribute, model, other, mapping, translation, bookmarks
+    ):
         et = translation
         extra_vars = {}
         for m in mapping:

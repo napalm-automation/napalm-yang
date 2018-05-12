@@ -2,10 +2,7 @@ from napalm_yang.jinja_filters.helpers import check_empty
 
 
 def filters():
-    return {
-        "vlan_range_to_oc": vlan_range_to_oc,
-        "oc_to_vlan_range": oc_to_vlan_range,
-    }
+    return {"vlan_range_to_oc": vlan_range_to_oc, "oc_to_vlan_range": oc_to_vlan_range}
 
 
 @check_empty(default=None)
