@@ -30,7 +30,9 @@ class TextTranslator(XMLTranslator):
             return
 
         mapping["element"] = "command"
-        super()._translate_leaf_default(attribute, model, other, mapping, translation, force)
+        super()._translate_leaf_default(
+            attribute, model, other, mapping, translation, force
+        )
 
     def _init_element_default(self, attribute, model, other, mapping, translation):
         extra_vars = {}
@@ -48,7 +50,7 @@ class TextTranslator(XMLTranslator):
         mapping["key_element"] = "command"
         mapping["container"] = model._yang_name
 
-        for i in ('prefix', 'negate_prefix'):
+        for i in ("prefix", "negate_prefix"):
             if i in mapping:
                 extra_vars[i] = mapping.get(i)
 
@@ -76,7 +78,7 @@ class TextTranslator(XMLTranslator):
         e = etree.SubElement(translation, "command")
         e.text = mapping["negate"]
 
-        for i in ('prefix', 'negate_prefix'):
+        for i in ("prefix", "negate_prefix"):
             if i in mapping:
                 extra_vars[i] = mapping.get(i)
 

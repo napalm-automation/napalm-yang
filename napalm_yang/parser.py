@@ -7,6 +7,7 @@ from napalm_yang import helpers
 from napalm_yang.parsers import get_parser
 
 import logging
+
 logger = logging.getLogger("napalm-yang")
 
 if sys.version_info[0] > 2:
@@ -15,8 +16,17 @@ if sys.version_info[0] > 2:
 
 class Parser(object):
 
-    def __init__(self, model, device=None, profile=None, is_config=None,
-                 native=None, keys=None, bookmarks=None, extra_vars=None):
+    def __init__(
+        self,
+        model,
+        device=None,
+        profile=None,
+        is_config=None,
+        native=None,
+        keys=None,
+        bookmarks=None,
+        extra_vars=None,
+    ):
         self.model = model
         self.device = device
         self.profile = profile or device.profile
@@ -25,15 +35,17 @@ class Parser(object):
         self._yang_name = model._yang_name
 
         parser_path = os.path.join("parsers", "config" if is_config else "state")
-        self.mapping = helpers.read_yang_map(model._defining_module, model._yang_name,
-                                             self.profile, parser_path)
+        self.mapping = helpers.read_yang_map(
+            model._defining_module, model._yang_name, self.profile, parser_path
+        )
 
         self.keys = keys or {"parent_key": None}
         self.extra_vars = extra_vars or {}
 
         if self.mapping and device:
-            device_output = self._execute_methods(device,
-                                                  self.mapping["metadata"].get("execute", []))
+            device_output = self._execute_methods(
+                device, self.mapping["metadata"].get("execute", [])
+            )
 
         else:
             device_output = []
@@ -52,8 +64,9 @@ class Parser(object):
             raise Exception("I don't have any data to operate with")
 
         if self.mapping:
-            self.parser = get_parser(self.mapping["metadata"]["processor"])(self.keys,
-                                                                            self.extra_vars)
+            self.parser = get_parser(self.mapping["metadata"]["processor"])(
+                self.keys, self.extra_vars
+            )
 
         self.bookmarks = bookmarks or {}
 
@@ -65,13 +78,20 @@ class Parser(object):
                 attr = getattr(attr, p)
             args = m.get("args", [])
             if not isinstance(args, list):
-                raise TypeError("args must be type list, not type {}".format(type(args)))
+                raise TypeError(
+                    "args must be type list, not type {}".format(type(args))
+                )
             kwargs = m.get("kwargs", {})
             if not isinstance(kwargs, dict):
-                raise TypeError("kwargs must be type dict, not type {}".format(type(kwargs)))
+                raise TypeError(
+                    "kwargs must be type dict, not type {}".format(type(kwargs))
+                )
             r = attr(*args, **kwargs)
 
-            if isinstance(r, dict) and all([isinstance(x, (str, unicode)) for x in r.values()]):
+            if (
+                isinstance(r, dict)
+                and all([isinstance(x, (str, unicode)) for x in r.values()])
+            ):
                 # Some vendors like junos return commands enclosed by a key
                 r = "\n".join(r.values())
             if isinstance(r, list):
@@ -93,9 +113,9 @@ class Parser(object):
     def _parse(self, attribute, model, mapping):
         logger.debug("Parsing attribute: {}".format(model._yang_path()))
 
-        if model._is_container in ("container", ):
+        if model._is_container in ("container",):
             self._parse_container(attribute, model, mapping)
-        elif model._yang_type in ("list", ):
+        elif model._yang_type in ("list",):
             self._parse_list(attribute, model, mapping)
         else:
             self._parse_leaf(attribute, model, mapping)
@@ -108,8 +128,9 @@ class Parser(object):
 
         if model._yang_type is not None:
             # None means it's an element of a list
-            block, extra_vars = self.parser.parse_container(attribute,
-                                                            mapping["_process"], self.bookmarks)
+            block, extra_vars = self.parser.parse_container(
+                attribute, mapping["_process"], self.bookmarks
+            )
 
             if block is None:
                 return
@@ -122,14 +143,30 @@ class Parser(object):
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
                 continue
-            elif not self.is_config and (v._is_config or k == "config") \
-                    and v._yang_type not in ("container", "list"):
+            elif not self.is_config and (
+                v._is_config or k == "config"
+            ) and v._yang_type not in (
+                "container", "list"
+            ):
                 continue
 
-            if v._defining_module != self._defining_module and v._defining_module is not None:
-                logger.debug("Skipping attribute: {}:{}".format(v._defining_module, attribute))
-                parser = Parser(v, self.device, self.profile, self.is_config, self.native,
-                                self.keys, self.bookmarks, self.extra_vars)
+            if (
+                v._defining_module != self._defining_module
+                and v._defining_module is not None
+            ):
+                logger.debug(
+                    "Skipping attribute: {}:{}".format(v._defining_module, attribute)
+                )
+                parser = Parser(
+                    v,
+                    self.device,
+                    self.profile,
+                    self.is_config,
+                    self.native,
+                    self.keys,
+                    self.bookmarks,
+                    self.extra_vars,
+                )
                 parser.parse()
             else:
                 self._parse(k, v, mapping[v._yang_name])
@@ -149,15 +186,18 @@ class Parser(object):
         # for each individual element of the list
         self.bookmarks[attribute] = {}
 
-        for key, block, extra_vars in self.parser.parse_list(attribute, mapping["_process"],
-                                                             self.bookmarks):
+        for key, block, extra_vars in self.parser.parse_list(
+            attribute, mapping["_process"], self.bookmarks
+        ):
             logger.debug("Parsing element {}[{}]".format(attribute, key))
 
             try:
                 obj = model.add(key)
             except KeyError as e:
-                if "is already defined as a list entry" in e.message and \
-                   extra_vars.get("_get_duplicates"):
+                if (
+                    "is already defined as a list entry" in e.message
+                    and extra_vars.get("_get_duplicates")
+                ):
                     obj = model[key]
                 else:
                     raise

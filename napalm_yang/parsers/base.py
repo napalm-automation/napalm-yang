@@ -97,9 +97,11 @@ def _resolve_path(obj, path):
 def _set_pdb_trace():
     try:
         import ipdb
+
         ipdb.set_trace()
     except ImportError:
         import pdb
+
         pdb.set_trace()
 
 
@@ -127,8 +129,9 @@ class BaseParser(object):
 
     def parse_list(self, attribute, mapping, bookmarks):
         mapping = copy.deepcopy(mapping)
-        mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars,
-                                       None, process_all=False)
+        mapping = helpers.resolve_rule(
+            mapping, attribute, self.keys, self.extra_vars, None, process_all=False
+        )
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
@@ -147,8 +150,9 @@ class BaseParser(object):
             bookmarks["parent"] = parent
 
     def parse_leaf(self, attribute, mapping, bookmarks):
-        mapping = helpers.resolve_rule(mapping, attribute, self.keys,
-                                       self.extra_vars, None, process_all=False)
+        mapping = helpers.resolve_rule(
+            mapping, attribute, self.keys, self.extra_vars, None, process_all=False
+        )
         for m in mapping:
             pdb = m.get("pdb", {})
             if pdb:
@@ -165,8 +169,9 @@ class BaseParser(object):
                 return result
 
     def parse_container(self, attribute, mapping, bookmarks):
-        mapping = helpers.resolve_rule(mapping, attribute, self.keys, self.extra_vars, None,
-                                       process_all=False)
+        mapping = helpers.resolve_rule(
+            mapping, attribute, self.keys, self.extra_vars, None, process_all=False
+        )
         extra_vars = {}
         for m in mapping:
             pdb = m.get("pdb", {})
@@ -188,4 +193,6 @@ class BaseParser(object):
 
     def _parse_post_process_filter(self, post_process_filter, **kwargs):
         kwargs.update(self.keys)
-        return helpers.template(post_process_filter, extra_vars=self.extra_vars, **kwargs)
+        return helpers.template(
+            post_process_filter, extra_vars=self.extra_vars, **kwargs
+        )

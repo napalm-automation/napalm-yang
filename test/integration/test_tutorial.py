@@ -11,13 +11,14 @@ import sys
 
 
 import logging
+
 logger = logging.getLogger("napalm-yang")
 
 
 def config_logging():
     logger.setLevel(logging.DEBUG)
     ch = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
@@ -28,10 +29,7 @@ def config_logging():
 BASE_PATH = os.path.dirname(__file__)
 
 
-test_populating_from_file = [
-    ["eos"],
-    ["junos"],
-]
+test_populating_from_file = [["eos"], ["junos"]]
 
 
 def read_file_content(filename):
@@ -59,7 +57,10 @@ class Tests(object):
         config.add_model(napalm_yang.models.openconfig_interfaces)
         config.add_model(napalm_yang.models.openconfig_vlan)
 
-        assert napalm_yang.utils.model_to_dict(config) == read_json("test_create_binding.expected")
+        assert (
+            napalm_yang.utils.model_to_dict(config)
+            == read_json("test_create_binding.expected")
+        )
 
     def test_populate_models_programmatically(self):
         config = napalm_yang.base.Root()
@@ -74,19 +75,21 @@ class Tests(object):
         config.interfaces.interface.add("et2")
         config.interfaces.interface["et2"].config.description = "Another description"
         config.interfaces.interface["et2"].config.mtu = 9000
-        assert config.interfaces.interface["et2"].config.description == "Another description"
+        assert (
+            config.interfaces.interface["et2"].config.description
+            == "Another description"
+        )
         assert config.interfaces.interface["et2"].config.mtu == 9000
 
-        assert config.get(filter=True) == \
-            read_json("test_populate_models_programmatically.expected")
+        assert (
+            config.get(filter=True)
+            == read_json("test_populate_models_programmatically.expected")
+        )
 
         with pytest.raises(ValueError):
             et1.config.mtu = -1
 
-        assert_against = [
-            ("et1", 'My description'),
-            ('et2', 'Another description'),
-        ]
+        assert_against = [("et1", "My description"), ("et2", "Another description")]
         for iface, data in config.interfaces.interface.items():
             expected = assert_against.pop(0)
             assert iface == expected[0]
@@ -94,21 +97,22 @@ class Tests(object):
 
         assert not assert_against, "We didn't iterate over all the interfaces"
 
-        assert list(config.interfaces.interface.keys()) == ['et1', 'et2']
+        assert list(config.interfaces.interface.keys()) == ["et1", "et2"]
         config.interfaces.interface.delete("et1")
-        assert list(config.interfaces.interface.keys()) == ['et2']
+        assert list(config.interfaces.interface.keys()) == ["et2"]
 
     def test_populating_from_a_dict(self):
         config = napalm_yang.base.Root()
         config.add_model(napalm_yang.models.openconfig_vlan)
 
         vlans_dict = {
-            "vlans": {"vlan": {100: {
-                                    "config": {
-                                        "vlan_id": 100, "name": "production"}},
-                               200: {
-                                    "config": {
-                                        "vlan_id": 200, "name": "dev"}}}}}
+            "vlans": {
+                "vlan": {
+                    100: {"config": {"vlan_id": 100, "name": "production"}},
+                    200: {"config": {"vlan_id": 200, "name": "dev"}},
+                }
+            }
+        }
         config.load_dict(vlans_dict)
         assert sorted(list(config.vlans.vlan.keys())) == [100, 200]
         assert config.vlans.vlan[100].config.name == "production"
@@ -153,7 +157,9 @@ class Tests(object):
 
         config_file = "test_advanced_manipulation/{}/config.txt".format(profile[0])
         merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile[0])
-        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile[0])
+        replace_file = "test_advanced_manipulation/{}/replace.expected".format(
+            profile[0]
+        )
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)
@@ -185,7 +191,9 @@ class Tests(object):
 
         config_file = "test_advanced_manipulation/{}/config.txt".format(profile[0])
         merge_file = "test_advanced_manipulation/{}/merge.expected".format(profile[0])
-        replace_file = "test_advanced_manipulation/{}/replace.expected".format(profile[0])
+        replace_file = "test_advanced_manipulation/{}/replace.expected".format(
+            profile[0]
+        )
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(napalm_yang.models.openconfig_interfaces)

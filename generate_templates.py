@@ -23,7 +23,7 @@ def nested_dd():
 
 
 def process(model, r_config, r_state):
-    if model._yang_type in ("container", ):
+    if model._yang_type in ("container",):
         ctr = model
     elif model._yang_type in ("list", None):
         ctr = model._contained_class()
@@ -52,10 +52,12 @@ def process(model, r_config, r_state):
 
 def process_module(model, module, r_config=None, r_state=None):
     if model._defining_module != module:
-        r_config = result["config"][os.path.join(model._defining_module,
-                                                 "{}.yaml".format(model._yang_name))]
-        r_state = result["state"][os.path.join(model._defining_module,
-                                               "{}.yaml".format(model._yang_name))]
+        r_config = result["config"][
+            os.path.join(model._defining_module, "{}.yaml".format(model._yang_name))
+        ]
+        r_state = result["state"][
+            os.path.join(model._defining_module, "{}.yaml".format(model._yang_name))
+        ]
 
     process(model, r_config, r_state)
 
@@ -84,10 +86,13 @@ def main():
                 if action == "translators" and mode == "state":
                     continue
                 elif action == "translators":
-                    directory = os.path.join("napalm_yang", "mappings", "dummy", action, module)
+                    directory = os.path.join(
+                        "napalm_yang", "mappings", "dummy", action, module
+                    )
                 else:
-                    directory = os.path.join("napalm_yang", "mappings", "dummy", action,
-                                             mode, module)
+                    directory = os.path.join(
+                        "napalm_yang", "mappings", "dummy", action, mode, module
+                    )
 
                 if not os.path.exists(directory):
                     os.makedirs(directory)
@@ -95,8 +100,11 @@ def main():
                 model = ddict2dict(model)
                 metadata = "---\nmetadata:\n    processor: unset\n\n"
 
-                with open(os.path.join(directory, filename), 'w+') as f:
-                    f.write(metadata + yaml.safe_dump(model, indent=4, default_flow_style=False))
+                with open(os.path.join(directory, filename), "w+") as f:
+                    f.write(
+                        metadata
+                        + yaml.safe_dump(model, indent=4, default_flow_style=False)
+                    )
 
 
 if __name__ == "__main__":

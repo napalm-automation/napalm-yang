@@ -71,14 +71,18 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
         #        current_indent, previous_indent, leading_spaces, line))
 
         if leading_spaces > current_indent:
-            current = parse_indented_config(config, leading_spaces, current_indent, True)
+            current = parse_indented_config(
+                config, leading_spaces, current_indent, True
+            )
             _attach_data_to_path(parsed, last, current, nested)
         elif leading_spaces < current_indent:
             config.insert(0, line)
             break
         else:
             if not nested:
-                current = parse_indented_config(config, leading_spaces, current_indent, True)
+                current = parse_indented_config(
+                    config, leading_spaces, current_indent, True
+                )
                 _attach_data_to_path(parsed, last, current, nested)
             else:
                 config.insert(0, line)

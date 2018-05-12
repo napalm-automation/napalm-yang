@@ -19,10 +19,10 @@ import os
 
 device_configuration = {
     "junos": {
-        'hostname': '127.0.0.1',
-        'username': 'vagrant',
-        'password': '',
-        'optional_args': {'port': 12203, 'config_lock': False}
+        "hostname": "127.0.0.1",
+        "username": "vagrant",
+        "password": "",
+        "optional_args": {"port": 12203, "config_lock": False},
     }
 }
 
@@ -53,22 +53,26 @@ test_parse_models = [
 
 
 def read_file_content(base, profile, model, mode, case, filename):
-    full_path = os.path.join(BASE_PATH, base,
-                             profile, model._yang_name, mode, case, filename)
+    full_path = os.path.join(
+        BASE_PATH, base, profile, model._yang_name, mode, case, filename
+    )
     with open(full_path, "r") as f:
         return f.read()
 
 
 def save_file_content(base, profile, model, mode, case, filename, content):
-    full_path = os.path.join(BASE_PATH, base,
-                             profile, model._yang_name, mode, case, filename)
+    full_path = os.path.join(
+        BASE_PATH, base, profile, model._yang_name, mode, case, filename
+    )
     with open(full_path, "w+") as f:
         return f.write(content)
 
 
 def read_json(base, profile, model, mode, case, filename):
-    return json.loads(read_file_content(base, profile, model, mode, case, filename),
-                      object_pairs_hook=OrderedDict)
+    return json.loads(
+        read_file_content(base, profile, model, mode, case, filename),
+        object_pairs_hook=OrderedDict,
+    )
 
 
 def load_json_model(base, profile, model, mode, case, filename):
@@ -83,14 +87,25 @@ class Tests(object):
 
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
     def test_parse(self, profile, mode, model, case):
-        expected = load_json_model("test_profiles", profile, model, mode, case, "expected.json")
+        expected = load_json_model(
+            "test_profiles", profile, model, mode, case, "expected.json"
+        )
 
         optional_args = {
-            "path": os.path.join(BASE_PATH, "test_profiles",
-                                 profile, model._yang_name, mode, case, "mocked"),
+            "path": os.path.join(
+                BASE_PATH,
+                "test_profiles",
+                profile,
+                model._yang_name,
+                mode,
+                case,
+                "mocked",
+            ),
             "profile": profile if isinstance(profile, list) else [profile],
         }
-        with MockDriver("hostname", "username", "password", optional_args=optional_args) as d:
+        with MockDriver(
+            "hostname", "username", "password", optional_args=optional_args
+        ) as d:
             yang = napalm_yang.base.Root()
             yang.add_model(model)
 
@@ -101,14 +116,18 @@ class Tests(object):
 
         #  print(pretty_json(yang.get(filter=True)))
         #  print(pretty_json(expected.get(filter=True)))
-        assert pretty_json(yang.get(filter=True)) == pretty_json(expected.get(filter=True))
+        assert (
+            pretty_json(yang.get(filter=True)) == pretty_json(expected.get(filter=True))
+        )
 
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
     def test_translate(self, profile, mode, model, case):
         if mode == "state":
             return
 
-        json_blob = read_json("test_profiles", profile, model, mode, case, "expected.json")
+        json_blob = read_json(
+            "test_profiles", profile, model, mode, case, "expected.json"
+        )
 
         config = napalm_yang.base.Root()
         config.add_model(model)
@@ -124,8 +143,9 @@ class Tests(object):
         #  save_file_content("test_profiles", profile, model, mode, case,
         #                    "translation.txt", configuration)
 
-        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
-                                                 "translation.txt")
+        expected_translation = read_file_content(
+            "test_profiles", profile, model, mode, case, "translation.txt"
+        )
 
         assert configuration == expected_translation
 
@@ -135,8 +155,12 @@ class Tests(object):
         if mode == "state":
             return
 
-        json_running = read_json("test_profiles", profile, model, mode, case, "expected.json")
-        json_candidate = read_json("test_profiles", profile, model, mode, case, "candidate.json")
+        json_running = read_json(
+            "test_profiles", profile, model, mode, case, "expected.json"
+        )
+        json_candidate = read_json(
+            "test_profiles", profile, model, mode, case, "candidate.json"
+        )
 
         candidate = napalm_yang.base.Root()
         candidate.add_model(model)
@@ -149,7 +173,9 @@ class Tests(object):
         if action == "merge":
             configuration = candidate.translate_config(profile=[profile], merge=running)
         elif action == "replace":
-            configuration = candidate.translate_config(profile=[profile], replace=running)
+            configuration = candidate.translate_config(
+                profile=[profile], replace=running
+            )
 
         #  print(pretty_json(napalm_yang.utils.diff(candidate, running)))
         #  print(configuration)
@@ -163,7 +189,8 @@ class Tests(object):
         #  save_file_content("test_profiles", profile, model, mode, case,
         #                    "{}.txt".format(action), configuration)
 
-        expected_translation = read_file_content("test_profiles", profile, model, mode, case,
-                                                 "{}.txt".format(action))
+        expected_translation = read_file_content(
+            "test_profiles", profile, model, mode, case, "{}.txt".format(action)
+        )
 
         assert configuration == expected_translation

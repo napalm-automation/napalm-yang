@@ -30,6 +30,7 @@ class JSONParser(BaseParser):
         return resp
 
     def _parse_list_default(self, attribute, mapping, data, key=None):
+
         def _eval_key(key_mapping, **kwargs):
             if "{{" in key_mapping:
                 try:
@@ -62,7 +63,7 @@ class JSONParser(BaseParser):
             if regexp:
                 match = regexp.match(key)
                 if match:
-                    key = match.group('value')
+                    key = match.group("value")
                     extra_vars = match.groupdict()
                 else:
                     return None, {}
@@ -73,7 +74,7 @@ class JSONParser(BaseParser):
 
         d = self.resolve_path(data, mapping.get("path", ""), mapping.get("default"))
 
-        regexp = mapping.get('regexp')
+        regexp = mapping.get("regexp")
         if regexp:
             regexp = re.compile(regexp)
 
@@ -103,23 +104,23 @@ class JSONParser(BaseParser):
             d = bool(d and present or not d and not present)
         else:
             if d:
-                regexp = mapping.get('regexp', None)
+                regexp = mapping.get("regexp", None)
                 if regexp:
-                    match = re.search(mapping['regexp'], d)
+                    match = re.search(mapping["regexp"], d)
 
                     if match:
-                        d = match.group('value') if match else None
+                        d = match.group("value") if match else None
                         self.extra_vars.update(match.groupdict())
                     else:
                         d = None
 
             if d and "map" in mapping:
-                d = mapping['map'][d.lower()]
+                d = mapping["map"][d.lower()]
 
         if d and "post" in mapping:
             d = self._parse_post_process_filter(mapping["post"], value=d)
         elif d is not None and "default" in mapping:
-            d = mapping['default']
+            d = mapping["default"]
         return d
 
     def _parse_container_default(self, attribute, mapping, data):
