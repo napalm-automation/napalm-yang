@@ -1,7 +1,7 @@
-import ip_filters
-import json_filters
-import vlan_filters
-import mac_filters
+from napalm_yang.jinja_filters import ip_filters
+from napalm_yang.jinja_filters import json_filters
+from napalm_yang.jinja_filters import vlan_filters
+from napalm_yang.jinja_filters import mac_filters
 
 JINJA_FILTERS = [
     ip_filters,

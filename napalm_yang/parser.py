@@ -1,4 +1,5 @@
 import os
+import sys
 
 import copy
 
@@ -7,6 +8,9 @@ from napalm_yang.parsers import get_parser
 
 import logging
 logger = logging.getLogger("napalm-yang")
+
+if sys.version_info[0] > 2:
+    unicode = str
 
 
 class Parser(object):
@@ -39,7 +43,7 @@ class Parser(object):
         self.native = []
 
         for n in native + device_output:
-            if isinstance(n, basestring):
+            if isinstance(n, (str, unicode)):
                 self.native.append(n.replace("\r", ""))  # Parsing will be easier
             else:
                 self.native.append(n)
