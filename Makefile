@@ -63,6 +63,8 @@ test_black:
 		-not -path "./.tox*" \
 		-not -path "./napalm_yang/models*" \
 		-not -path "./napalm_yang/mappings*" \
+		-not -path "./yang_ietf*" \
+		-not -path "./yang_oc*" \
 		-name "*.py" \
 		-exec black --check {} \+
 
