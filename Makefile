@@ -55,7 +55,7 @@ templates:
 
 .PHONY: tests
 tests:
-	py.test
+	pytest
 
 .PHONY: test_black
 test_black:
