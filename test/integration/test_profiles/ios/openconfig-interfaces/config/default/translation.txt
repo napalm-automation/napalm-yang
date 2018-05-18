@@ -1,6 +1,7 @@
 interface GigabitEthernet1
     mtu 1500
     description This is a description
+    no shutdown
     no switchport
     exit
 interface GigabitEthernet2
@@ -14,12 +15,14 @@ interface GigabitEthernet2
     exit
 interface GigabitEthernet2.1
     description another subiface
+    no shutdown
     encapsulation dot1q 1
     ip address 172.20.0.1 255.255.255.0 secondary
     ip address 192.168.1.1 255.255.255.0
     exit
 interface GigabitEthernet2.2
     description asdasdasd
+    no shutdown
     encapsulation dot1q 2
     ip address 192.168.2.1 255.255.255.0
     exit
@@ -30,12 +33,15 @@ interface GigabitEthernet3
     exit
 interface Loopback1
     description a loopback
+    no shutdown
     exit
 interface Port-channel1
     mtu 9000
     description blah
+    no shutdown
     no switchport
     no switchport
     exit
 interface Port-channel1.1
+    no shutdown
     exit

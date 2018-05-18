@@ -1,5 +1,6 @@
 interface Ethernet1
     description This is a description
+    no shutdown
     switchport mode access
     switchport trunk native vlan 1
     switchport access vlan 1
@@ -23,22 +24,27 @@ interface Ethernet2.1
     exit
 interface Ethernet2.2
     description asdasdasd
+    no shutdown
     encapsulation dot1q vlan 2
     ip address 192.168.2.1/24 
     exit
 interface Loopback1
     mtu 1500
     description a loopback
+    no shutdown
     exit
 interface Management1
     mtu 1500
+    no shutdown
     ip address 10.0.2.15/24 
     exit
 interface Port-Channel1
     mtu 9000
     description blah
+    no shutdown
     no switchport
     no switchport
     exit
 interface Port-Channel1.1
+    no shutdown
     exit

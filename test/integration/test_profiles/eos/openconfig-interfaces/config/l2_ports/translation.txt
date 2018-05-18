@@ -1,10 +1,12 @@
 interface Ethernet1
+    no shutdown
     switchport mode trunk
     switchport trunk native vlan 30
     switchport access vlan 1
     switchport trunk allowed vlan 20-22,40
     exit
 interface Ethernet2
+    no shutdown
     switchport mode access
     switchport trunk native vlan 1
     switchport access vlan 30
@@ -12,5 +14,6 @@ interface Ethernet2
     exit
 interface Management1
     mtu 1500
+    no shutdown
     ip address 10.0.2.15/24 
     exit
