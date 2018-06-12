@@ -1,3 +1,6 @@
+no logging host 1.2.3.4
+logging host 1.2.3.4 514 protocol udp
+no logging host 10.20.30.40
 aaa root secret 5 123458ATte8$cvMSZw6BlLGJVo61p88cP.
 no username test1
 username test1 privilege 1 role network-admin  nopassword 

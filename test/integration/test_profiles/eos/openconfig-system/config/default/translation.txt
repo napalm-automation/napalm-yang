@@ -1,3 +1,5 @@
+logging host 1.2.3.4 514 protocol udp
+logging host 10.20.30.40 5555 protocol udp
 aaa root secret 5 $1$1s8ATte8$cvMSZw6BlLGJVo61p88cP.
 username test1 privilege 1 role network-admin  nopassword 
 username test2 privilege 1 role network-admin  secret sha512 $6$WL/ibPpzPJ/C7c/E$.bVF08dYhlNp0rxER0P3SNdsA2wUtK2Ru1YuKkRRZQGl609DA1JvX.dSFgKXaq.LWjDRlZoHudfk7hamod0Th/ 

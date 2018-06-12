@@ -60,6 +60,18 @@
                     }
                 }
             }
+        },
+        "logging": {
+            "remote-servers": {
+                "remote-server": {
+                    "1.2.3.4": {
+                        "config": {
+                            "remote-port": 514
+                        },
+                        "host": "1.2.3.4"
+                    }
+                }
+            }
         }
     }
 }
