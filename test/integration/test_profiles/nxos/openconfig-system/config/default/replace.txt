@@ -1,3 +1,8 @@
+no logging server 10.20.30.40
+logging server 10.20.30.40
+no logging server 20.20.20.20
+logging server 20.20.20.20
+no logging server 1.2.3.4
 no username test1
 username test1 password 5 $5$G/wrYQuM$WtG/HPx25QFThpU2XXX5tjaUiQW34uWJx4Sr9U/WL71 role network-admin
 no username test2

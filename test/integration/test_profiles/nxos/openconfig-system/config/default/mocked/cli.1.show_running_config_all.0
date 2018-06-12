@@ -871,6 +871,9 @@ no hardware rate-limit erspan-egress
 virtual-service
   signing level cisco
 logging logfile messages 7 size 512000
+logging server 10.20.30.40
+logging server 1.2.3.4
+logging source-interface mgmt0
 logging monitor 5
 logging level user 5
 logging level syslog 7
