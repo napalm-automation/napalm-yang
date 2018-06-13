@@ -116,7 +116,7 @@ class Tests(object):
         assert processed
 
     @pytest.mark.parametrize("case", test_parser_container)
-    def test_parser_cointainer(self, case):
+    def test_parser_container(self, case):
         with open(
             "{}/test_parser/container/{}/mocked.txt".format(BASE_PATH, case), "r"
         ) as f:
