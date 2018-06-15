@@ -8,7 +8,7 @@ metadata:
 
 network-instances:
     _process:
-        - path: "configuration.routing-instances"
+        - path: "configuration"
           from: root_network-instances.0
     network-instance:
         _process:
