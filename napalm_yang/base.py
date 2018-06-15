@@ -133,7 +133,7 @@ class Root(object):
         Load a dictionary into the model.
 
         Args:
-            data(dict): Dictionary to loead
+            data(dict): Dictionary to load
             overwrite(bool): Whether the data present in the model should be overwritten by the
                 data in the dict or not.
             auto_load_model(bool): If set to true models will be loaded as they are needed
