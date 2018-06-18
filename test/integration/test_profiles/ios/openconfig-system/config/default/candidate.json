@@ -1,0 +1,54 @@
+{
+    "system": {
+        "aaa": {
+            "authentication": {
+                "users": {
+                    "user": {
+                        "test1": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "15"
+                            },
+                            "username": "test1"
+                        },
+                        "test2": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "10"
+                            },
+                            "username": "test2"
+                        },
+                        "vagrant": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "15"
+                            },
+                            "username": "vagrant"
+                        }
+                    }
+                }
+            }
+        },
+        "logging": {
+            "remote-servers": {
+                "remote-server": {
+                    "1.2.3.4": {
+                        "config": {
+                            "remote-port": 1514
+                        },
+                        "host": "1.2.3.4"
+                    },
+                    "20.20.30.40": {
+                        "config": {
+                            "remote-port": 514
+                        },
+                        "host": "20.20.30.40"
+                    },
+                    "100.200.3.4": {
+                        "host": "100.200.3.4"
+                    }
+                }
+            }
+        }
+    }
+}

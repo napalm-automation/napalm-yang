@@ -206,7 +206,7 @@ system:
         state:
             _process: not_implemented
     logging:
-        _process: not_implemented
+        _process: unnecessary
         console:
             _process: not_implemented
             selectors:
@@ -226,9 +226,11 @@ system:
                     state:
                         _process: not_implemented
         remote-servers:
-            _process: not_implemented
+            _process: unnecessary 
             remote-server:
-                _process: not_implemented
+                _process:
+                    - key_value: "logging server {{ remote_server_key }}\n"
+                      negate: "no logging server {{ remote_server_key }}\n"
                 config:
                     _process: not_implemented
                     host:

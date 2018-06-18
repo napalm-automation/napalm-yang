@@ -170,6 +170,8 @@ logging buffered 32 debugging
 logging trap informational
 logging console errors
 no logging synchronous
+logging host 1.2.3.4 514 protocol udp
+logging host 10.20.30.40 5555 protocol udp
 logging format timestamp traditional
 no logging format hostname fqdn
 logging facility local4

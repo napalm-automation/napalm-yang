@@ -1,0 +1,61 @@
+{
+    "system": {
+        "aaa": {
+            "authentication": {
+                "users": {
+                    "user": {
+                        "test1": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "15"
+                            },
+                            "username": "test1"
+                        },
+                        "test2": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "15"
+                            },
+                            "username": "test2"
+                        },
+                        "test3": {
+                            "config": {
+                                "password-encrypted": "5 $1$5SGR$fakepasswordhashAbCd12",
+                                "role": "10"
+                            },
+                            "username": "test3"
+                        },
+                        "vagrant": {
+                            "config": {
+                                "password": "0 vagrant",
+                                "role": "15"
+                            },
+                            "username": "vagrant"
+                        }
+                    }
+                }
+            }
+        },
+        "logging": {
+            "remote-servers": {
+                "remote-server": {
+                    "1.2.3.4": {
+                        "config": {
+                            "remote-port": 514
+                        },
+                        "host": "1.2.3.4"
+                    },
+                    "10.20.30.40": {
+                        "config": {
+                            "remote-port": 514
+                        },
+                        "host": "10.20.30.40"
+                    },
+                    "100.200.10.1": {
+                        "host": "100.200.10.1"
+                    }
+                }
+            }
+        }
+    }
+}

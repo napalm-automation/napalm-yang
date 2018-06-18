@@ -34,7 +34,7 @@ system:
             admin-user:
                 _process: unnecessary
                 config:
-                    _process: unnecessary 
+                    _process: unnecessary
                     admin-password:
                         _process: not_implemented
                     admin-password-encrypted:
@@ -208,7 +208,7 @@ system:
         state:
             _process: not_implemented
     logging:
-        _process: not_implemented
+        _process: unnecessary
         console:
             _process: not_implemented
             selectors:
@@ -228,9 +228,11 @@ system:
                     state:
                         _process: not_implemented
         remote-servers:
-            _process: not_implemented
+            _process: unnecessary
             remote-server:
-                _process: not_implemented
+                _process:
+                    - key_value: "logging host {{ remote_server_key }} {{ model.config.remote_port }} protocol udp\n"
+                      negate: "no logging host {{ remote_server_key }}\n"
                 config:
                     _process: not_implemented
                     host:

@@ -212,7 +212,7 @@ system:
         state:
             _process: not_implemented
     logging:
-        _process: not_implemented
+        _process: unnecessary
         console:
             _process: not_implemented
             selectors:
@@ -232,9 +232,11 @@ system:
                     state:
                         _process: not_implemented
         remote-servers:
-            _process: not_implemented
+            _process: unnecessary
             remote-server:
-                _process: not_implemented
+                _process:
+                    - path: "logging.server"
+                      from: root_system.0
                 config:
                     _process: not_implemented
                     host:

@@ -1,10 +1,8 @@
 ---
 metadata:
-    processor: TextTree
-    execute:
-        - method: cli
-          kwargs:
-              commands: ["show running-config all"]
+    processor: TextTranslator
+    root: True
+
 system:
     _process: unnecessary
     aaa:
@@ -32,18 +30,15 @@ system:
             state:
                 _process: not_implemented
         authentication:
-            _process: unnecessary
+            _process: unnecessary 
             admin-user:
-                _process: unnecessary
+                _process: not_implemented
                 config:
-                    _process: unnecessary
+                    _process: not_implemented
                     admin-password:
                         _process: not_implemented
                     admin-password-encrypted:
-                        _process:
-                            - path: "aaa.root.secret"
-                              from: root_system.0
-                              regexp: "(?P<value>(5|sha512) \\S+)$"
+                        _process: not_implemented
                 state:
                     _process: not_implemented
             config:
@@ -53,46 +48,23 @@ system:
             state:
                 _process: not_implemented
             users:
-                _process:
-                    - path: "aaa.authorization.policy.local.default-role"
-                      save_as: "default_role"
-                      from: root_system.0
+                _process: unnecessary 
                 user:
                     _process:
-                        - path: "username"
-                          from: root_system.0
+                        - key_value: "username {{user_key}} privilege {{model.config.role}} secret {% if model.config.password_encrypted %}{{model.config.password_encrypted}}{%else%}{{model.config.password}}{%endif%}\n"
+                          negate: "no username {{user_key}}\n"
                     config:
-                        _process: unnecessary
+                        _process: not_implemented
                         password:
                             _process: not_implemented
                         password-encrypted:
-                            # Since we are using the show run all command
-                            # the username commands will always start with privilege
-                            _process:
-                                - path: "privilege"
-                                  regexp: "\\d+ role \\S+ secret (?P<value>(5|sha512) \\S+)$"
-                                - path: "privilege"
-                                  regexp: "\\d+ secret (?P<value>(5|sha512) \\S+)$"
-                        #
-                        # In EOS there are privilege and roles which are similar
-                        # here we try to grab both and join the two, delimited
-                        # by a colon, into one string to set as the role
-                        #
+                            _process: not_implemented
                         role:
-                            _process:
-                                - path: "privilege"
-                                  regexp: "(?P<value>\\d+) nopassword"
-                                  post: "{{value}}:{{extra_vars.users.default_role}}"
-                                - path: "privilege"
-                                  regexp: "(?P<value>\\d+) secret \\S+"
-                                  post: "{{value}}:{{extra_vars.users.default_role}}"
-                                - path: "privilege"
-                                  regexp: "(?P<value>(?P<privilege>\\d+) role (?P<role>\\S+)) secret \\S+"
-                                  post: "{{ extra_vars.privilege }}:{{ extra_vars.role }}"
+                            _process: not_implemented
                         ssh-key:
                             _process: not_implemented
                         username:
-                            _process: unnecessary
+                            _process: not_implemented
                     state:
                         _process: not_implemented
                     username:
@@ -234,7 +206,7 @@ system:
         state:
             _process: not_implemented
     logging:
-        _process: unnecessary
+        _process: unnecessary 
         console:
             _process: not_implemented
             selectors:
@@ -254,19 +226,17 @@ system:
                     state:
                         _process: not_implemented
         remote-servers:
-            _process: unnecessary
+            _process: unnecessary 
             remote-server:
                 _process:
-                    - path: "logging.host.?host.?port"
-                      key: host
-                      from: root_system.0
+                    - key_value: "{% if model.config.remote_port%}logging host {{remote_server_key}} transport udp port {{model.config.remote_port}}{% else %}logging {{remote_server_key}}{% endif %}\n"
+                      negate: "{% if model.config.remote_port %}no logging host {{remote_server_key}}{% else %}no logging {{remote_server_key}}{% endif %}\n"
                 config:
-                    _process: unnecessary
+                    _process: not_implemented
                     host:
-                        _process: unnecessary
+                        _process: not_implemented
                     remote-port:
-                        _process:
-                            - path: port
+                        _process: not_implemented
                     source-address:
                         _process: not_implemented
                 host:
@@ -330,7 +300,7 @@ system:
                     address:
                         _process: not_implemented
                     association-type:
-                        _process:  not_implemented
+                        _process: not_implemented
                     iburst:
                         _process: not_implemented
                     port:
