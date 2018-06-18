@@ -1,0 +1,6 @@
+logging host 1.2.3.4 transport udp port 1514
+logging host 20.20.30.40 transport udp port 514
+no logging host 10.20.30.40
+username test2 privilege 10 secret 5 $1$5SGR$fakepasswordhashAbCd12
+username vagrant privilege 15 secret 5 $1$5SGR$fakepasswordhashAbCd12
+no username test3
