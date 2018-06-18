@@ -36,6 +36,7 @@ interfaces:
                       map:
                           ge: ethernetCsmacd
                           xe: ethernetCsmacd
+                          em: ethernetCsmacd
                           et: ethernetCsmacd
                           irb: ethernetCsmacd
                           me: ethernetCsmacd
