@@ -229,8 +229,8 @@ system:
             _process: unnecessary 
             remote-server:
                 _process:
-                    - key_value: "logging host {{remote_server_key}} transport udp port {{model.config.remote_port}}\n"
-                      negate: "no logging host {{remote_server_key}}\n"
+                    - key_value: "{% if model.config.remote_port%}logging host {{remote_server_key}} transport udp port {{model.config.remote_port}}{% else %}logging {{remote_server_key}}{% endif %}\n"
+                      negate: "{% if model.config.remote_port %}no logging host {{remote_server_key}}{% else %}no logging {{remote_server_key}}{% endif %}\n"
                 config:
                     _process: not_implemented
                     host:

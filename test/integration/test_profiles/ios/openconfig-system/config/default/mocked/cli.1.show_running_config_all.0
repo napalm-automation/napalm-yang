@@ -3164,6 +3164,7 @@ logging facility local7
 no logging source-interface
 logging host 1.2.3.4 transport udp port 514
 logging host 10.20.30.40 transport udp port 514
+logging 100.200.10.1
 logging server-arp
 ethernet cfm mep crosscheck start-delay 30
 terminal-queue entry-retry-interval 60

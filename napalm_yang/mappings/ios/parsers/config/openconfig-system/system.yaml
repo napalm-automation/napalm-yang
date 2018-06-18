@@ -246,6 +246,9 @@ system:
                     - path: "logging.host.?host.transport.?proto.port.?port"
                       key: host
                       from: root_system.0
+                    - path: "logging"
+                      from: root_system.0
+                      regexp: "(?P<value>\\d+\\.\\d+\\.\\d+\\.\\d+)"
                 config:
                     _process: unnecessary
                     host:
