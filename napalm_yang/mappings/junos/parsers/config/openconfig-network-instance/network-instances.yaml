@@ -12,10 +12,8 @@ network-instances:
           from: root_network-instances.0
     network-instance:
         _process:
-            - path: "configuration"
-              key: "{{ 'global' }}"
-              from: root_network-instances.0
-            - path: "instance"
+            - key: "{{ 'global' }}"
+            - path: "routing-instances.instance"
               key: name
         afts: !include includes/afts.yaml
         config:
