@@ -1,13 +1,16 @@
 ---
-_process: not_implemented
+_process: unnecessary
 areas:
-    _process: not_implemented
+    _process: unnecessary
     area:
-        _process: not_implemented
+        _process:
+          - path: area
+            key: name
         config:
-            _process: not_implemented
+            _process: unnecessary
             identifier:
-                _process: not_implemented
+                _process:
+                  - pre: "{{ area_key }}"
         identifier:
             _process: not_implemented
         interfaces:
