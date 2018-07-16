@@ -120,6 +120,7 @@ def resolve_rule(
             )
     kwargs = dict(keys)
     rule = dict(rule)
+    print(rule)
     kwargs["model"] = translation_model
     kwargs["attribute"] = attribute
     kwargs["extra_vars"] = extra_vars

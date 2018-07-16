@@ -14,27 +14,42 @@ areas:
         identifier:
             _process: not_implemented
         interfaces:
-            _process: not_implemented
+            _process: unnecessary
             interface:
-                _process: not_implemented
+                _process: 
+                  - path: interface
+                    key: name
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     authentication-type:
-                        _process: not_implemented
+                        _process:
+                          - path: authentication
                     hide-network:
                         _process: not_implemented
                     id:
                         _process: not_implemented
                     metric:
-                        _process: not_implemented
+                        _process: 
+                          - path: metric
                     multi-area-adjacency-primary:
                         _process: not_implemented
                     network-type:
-                        _process: not_implemented
+                        _process:
+                          - path: interface_type
+                            regexp: "(?P<value>.*)"
+                            map: 
+                                p2p: POINT_TO_POINT_NETWORK
+                                p2mp: POINT_TO_MULTIPOINT_NETWORK
+                                nbma: NON_BROADCAST_NETWORK
+                            default: BROADCAST_NETWORK
+                            present: False
                     passive:
-                        _process: not_implemented
+                        _process: 
+                          - path: passive
+                            present: True
                     priority:
-                        _process: not_implemented
+                        _process:
+                          - path: priority
                 id:
                     _process: not_implemented
                 interface-ref:
