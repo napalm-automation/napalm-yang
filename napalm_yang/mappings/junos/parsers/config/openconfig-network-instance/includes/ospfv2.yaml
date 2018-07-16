@@ -16,7 +16,7 @@ areas:
         interfaces:
             _process: unnecessary
             interface:
-                _process: 
+                _process:
                   - path: interface
                     key: name
                 config:
@@ -51,7 +51,8 @@ areas:
                         _process:
                           - path: priority
                 id:
-                    _process: not_implemented
+                    _process:
+                      - pre: "{{ interface_key }}"
                 interface-ref:
                     _process: not_implemented
                     config:
@@ -105,15 +106,18 @@ areas:
                 state:
                     _process: not_implemented
                 timers:
-                    _process: not_implemented
+                    _process: unnecessary
                     config:
-                        _process: not_implemented
+                        _process: unnecessary
                         dead-interval:
-                            _process: not_implemented
+                            _process:
+                              - key: dead_interval
                         hello-interval:
-                            _process: not_implemented
+                            _process:
+                              - path: hello_interval
                         retransmission-interval:
-                            _process: not_implemented
+                            _process:
+                              - path: retransmit_interval
                     state:
                         _process: not_implemented
         lsdb:
@@ -141,7 +145,7 @@ areas:
                 state:
                     _process: not_implemented
 global:
-    _process: not_implemented
+    _process: unnecessary
     config:
         _process: not_implemented
         hide-transit-only-networks:
@@ -155,11 +159,13 @@ global:
         summary-route-cost-mode:
             _process: not_implemented
     graceful-restart:
-        _process: not_implemented
+        _process: unnecessary
         config:
-            _process: not_implemented
+            _process: unnecessary 
             enabled:
-                _process: not_implemented
+                _process:
+                  - path: graceful_restart.disable
+                    enabled: False
             helper-only:
                 _process: not_implemented
         state:
@@ -205,7 +211,7 @@ global:
     state:
         _process: not_implemented
     timers:
-        _process: not_implemented
+        _process: unnecessary
         lsa-generation:
             _process: not_implemented
             config:
@@ -231,12 +237,14 @@ global:
             state:
                 _process: not_implemented
         spf:
-            _process: not_implemented
+            _process: unnecessary
             config:
-                _process: not_implemented
+                _process: unnecessary
                 initial-delay:
-                    _process: not_implemented
+                    _process:
+                      - path: delay
                 maximum-delay:
-                    _process: not_implemented
+                    _process: 
+                      - path: holddown
             state:
                 _process: not_implemented
