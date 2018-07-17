@@ -45,7 +45,9 @@ areas:
                             regexp: "(?P<value>.*)"
                             map: 
                                 p2p: POINT_TO_POINT_NETWORK
-                                p2mp: POINT_TO_MULTIPOINT_NETWORK
+                                # p2mp not supported in Openconfig model
+                                # return p2p to avoid the error
+                                p2mp: POINT_TO_POINT_NETWORK
                                 nbma: NON_BROADCAST_NETWORK
                             default: BROADCAST_NETWORK
                             present: False
@@ -161,7 +163,9 @@ global:
         log-adjacency-changes:
             _process: not_implemented
         router-id:
-            _process: not_implemented
+            _process:
+              - path: "routing-options.router-id"
+                from: "network_instance.{{ network_instance_key }}"
         summary-route-cost-mode:
             _process: not_implemented
     graceful-restart:
