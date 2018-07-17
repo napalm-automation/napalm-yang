@@ -12,7 +12,7 @@ areas:
                 _process:
                   - pre: "{{ area_key }}"
         identifier:
-            _process: not_implemented
+            _process: unnecessary
         interfaces:
             _process: unnecessary
             interface:
@@ -23,13 +23,19 @@ areas:
                     _process: unnecessary
                     authentication-type:
                         _process:
+                          - path: authentication.md5.name
+                            post: "md5"
+                          - path: "authentication.simple-password"
+                            post: "simple-password"
                           - path: authentication
+                            present: False
+                            post: "none"
                     hide-network:
                         _process: not_implemented
                     id:
                         _process: not_implemented
                     metric:
-                        _process: 
+                        _process:
                           - path: metric
                     multi-area-adjacency-primary:
                         _process: not_implemented
@@ -44,7 +50,7 @@ areas:
                             default: BROADCAST_NETWORK
                             present: False
                     passive:
-                        _process: 
+                        _process:
                           - path: passive
                             present: True
                     priority:
@@ -111,13 +117,13 @@ areas:
                         _process: unnecessary
                         dead-interval:
                             _process:
-                              - key: dead_interval
+                              - key: "dead-interval"
                         hello-interval:
                             _process:
-                              - path: hello_interval
+                              - path: "hello-interval"
                         retransmission-interval:
                             _process:
-                              - path: retransmit_interval
+                              - path: "retransmit-interval"
                     state:
                         _process: not_implemented
         lsdb:
@@ -159,13 +165,11 @@ global:
         summary-route-cost-mode:
             _process: not_implemented
     graceful-restart:
-        _process: unnecessary
+        _process: not_implemented
         config:
-            _process: unnecessary 
+            _process: not_implemented
             enabled:
-                _process:
-                  - path: graceful_restart.disable
-                    enabled: False
+                _process: not_implemented
             helper-only:
                 _process: not_implemented
         state:
@@ -242,9 +246,9 @@ global:
                 _process: unnecessary
                 initial-delay:
                     _process:
-                      - path: delay
+                      - path: "spf-options.delay"
                 maximum-delay:
-                    _process: 
-                      - path: holddown
+                    _process:
+                      - path: "spf-options.holddown"
             state:
                 _process: not_implemented
