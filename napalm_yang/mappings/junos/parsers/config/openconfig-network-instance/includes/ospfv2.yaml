@@ -119,7 +119,7 @@ areas:
                         _process: unnecessary
                         dead-interval:
                             _process:
-                              - key: "dead-interval"
+                              - path: "dead-interval"
                         hello-interval:
                             _process:
                               - path: "hello-interval"
