@@ -66,25 +66,35 @@
                                                 }
                                             }
                                         }, 
-                                        "3.3.3.3": {
+                                        "2.2.2.2": {
                                             "config": {
-                                                "identifier": "3.3.3.3"
+                                                "identifier": "2.2.2.2"
                                             }, 
-                                            "identifier": "3.3.3.3", 
+                                            "identifier": "2.2.2.2", 
                                             "interfaces": {
                                                 "interface": {
-                                                    "ge-0/0/5.5": {
+                                                    "ge-0/0/3.3": {
                                                         "config": {
-                                                            "authentication-type": "none", 
-                                                            "metric": 55, 
-                                                            "network-type": "POINT_TO_POINT_NETWORK", 
+                                                            "authentication-type": "md5", 
+                                                            "network-type": "BROADCAST_NETWORK", 
                                                             "passive": False
                                                         }, 
-                                                        "id": "ge-0/0/5.5", 
+                                                        "id": "ge-0/0/3.3"
+                                                    }, 
+                                                    "ge-0/0/4.4": {
+                                                        "config": {
+                                                            "authentication-type": "simple-password", 
+                                                            "metric": 100, 
+                                                            "network-type": "POINT_TO_POINT_NETWORK", 
+                                                            "passive": False, 
+                                                            "priority": 1
+                                                        }, 
+                                                        "id": "ge-0/0/4.4", 
                                                         "timers": {
                                                             "config": {
-                                                                "dead-interval": 40, 
-                                                                "hello-interval": 10
+                                                                "dead-interval": 20, 
+                                                                "hello-interval": 5, 
+                                                                "retransmission-interval": 10
                                                             }
                                                         }
                                                     }
