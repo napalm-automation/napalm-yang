@@ -25,12 +25,13 @@
                                                     "all": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "BROADCAST_NETWORK", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
                                                             "passive": False
                                                         }, 
                                                         "id": "all", 
                                                         "timers": {
                                                             "config": {
+                                                                "dead-interval": 20, 
                                                                 "hello-interval": 5, 
                                                                 "retransmission-interval": 10
                                                             }
@@ -49,7 +50,7 @@
                                                     "ge-0/0/1.1": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "BROADCAST_NETWORK", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
                                                             "passive": False
                                                         }, 
                                                         "id": "ge-0/0/1.1"
@@ -57,7 +58,7 @@
                                                     "ge-0/0/2.2": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "BROADCAST_NETWORK", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
                                                             "passive": True
                                                         }, 
                                                         "id": "ge-0/0/2.2"
@@ -84,13 +85,14 @@
                                                         "config": {
                                                             "authentication-type": "simple-password", 
                                                             "metric": 100, 
-                                                            "network-type": "BROADCAST_NETWORK", 
+                                                            "network-type": "POINT_TO_POINT_NETWORK", 
                                                             "passive": False, 
                                                             "priority": 1
                                                         }, 
                                                         "id": "ge-0/0/4.4", 
                                                         "timers": {
                                                             "config": {
+                                                                "dead-interval": 20, 
                                                                 "hello-interval": 5, 
                                                                 "retransmission-interval": 10
                                                             }

@@ -41,15 +41,16 @@ areas:
                         _process: not_implemented
                     network-type:
                         _process:
-                          - path: interface_type
-                            regexp: "(?P<value>.*)"
+                          - path: "interface-type"
+                            regexp: "(?P<value>\\w+)"
                             map: 
                                 p2p: POINT_TO_POINT_NETWORK
                                 # p2mp not supported in Openconfig model
                                 # return p2p to avoid the error
                                 p2mp: POINT_TO_POINT_NETWORK
                                 nbma: NON_BROADCAST_NETWORK
-                            default: BROADCAST_NETWORK
+                          - path: "interface-type"
+                            post: BROADCAST_NETWORK
                             present: False
                     passive:
                         _process:
