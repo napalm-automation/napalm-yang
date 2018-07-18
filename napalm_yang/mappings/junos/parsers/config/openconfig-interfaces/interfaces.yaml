@@ -46,6 +46,7 @@ interfaces:
                           fxp: ethernetCsmacd
                           lt: tunnel
                           st: tunnel
+                          gr: tunnel
             enabled:
                 _process:
                     - path: "disable"
