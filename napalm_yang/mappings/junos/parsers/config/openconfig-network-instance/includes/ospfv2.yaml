@@ -28,7 +28,7 @@ areas:
                           - path: "authentication.simple-password"
                             post: "simple-password"
                           - path: authentication
-                            present: False
+                            present: false
                             post: "none"
                     hide-network:
                         _process: not_implemented
@@ -51,11 +51,11 @@ areas:
                                 nbma: NON_BROADCAST_NETWORK
                           - path: "interface-type"
                             post: BROADCAST_NETWORK
-                            present: False
+                            present: false
                     passive:
                         _process:
                           - path: passive
-                            present: True
+                            present: true
                     priority:
                         _process:
                           - path: priority
