@@ -31,8 +31,8 @@ interfaces:
             enabled:
                 _process:
                     - element: "disable"
+                      negate: null
                       when: "{{ not model }}"
-                      value: null
             description:
                 _process:
                     - element: description
@@ -57,8 +57,8 @@ interfaces:
                     enabled:
                         _process:
                             - element: "disable"
+                              negate: null
                               when: "{{ not model }}"
-                              value: null
                     description:
                             _process:
                                 - element: description

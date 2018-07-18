@@ -11,5 +11,6 @@ interface Ethernet2.1
 interface Loopback0
     mtu 1500
     description a loopback
+    no shutdown
     exit
 no interface Loopback1

@@ -28,8 +28,8 @@ interfaces:
                 _process: unnecessary
             enabled:
                 _process:
-                    - value: "    shutdown\n"
-                      when: "{{ not model }}"
+                    - value: "    no shutdown\n"
+                      negate: "    shutdown\n"
             description:
                 _process:
                     - value: "    description {{ model }}\n"
@@ -58,8 +58,8 @@ interfaces:
                         _process: unnecessary
                     enabled:
                         _process:
-                            - value: "    shutdown\n"
-                              when: "{{ not model }}"
+                            - value: "    no shutdown\n"
+                              negate: "    shutdown\n"
                     description:
                         _process:
                             - value: "    description {{ model }}\n"

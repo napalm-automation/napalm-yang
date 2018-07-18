@@ -12,6 +12,7 @@ class TextTranslator(XMLTranslator):
     def init_translation(self, metadata, translation):
         if metadata.get("root", False):
             return etree.Element("configuration")
+
         return translation
 
     def post_processing(self, translator):
@@ -25,8 +26,9 @@ class TextTranslator(XMLTranslator):
 
         if not model._changed() and other is not None and not self.replace:
             force = True
-            mapping["value"] = mapping["negate"]
-        if not model._changed() and other is not None and self.replace:
+            if other:
+                mapping["value"] = mapping["negate"]
+        elif not model._changed() and other is not None and self.replace:
             return
 
         mapping["element"] = "command"

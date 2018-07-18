@@ -1,6 +1,7 @@
 default interface GigabitEthernet1
 interface GigabitEthernet1
     mtu 1500
+    no shutdown
     no switchport
     exit
 default interface GigabitEthernet2
@@ -16,12 +17,14 @@ interface GigabitEthernet2
 no interface GigabitEthernet2.1
 interface GigabitEthernet2.1
     description another subiface
+    no shutdown
     ip address 192.168.20.1 255.255.255.0 secondary
     ip address 192.168.1.1 255.255.255.0
     exit
 no interface GigabitEthernet2.2
 interface GigabitEthernet2.2
     description asdasdasd
+    no shutdown
     encapsulation dot1q 2
     ip address 192.168.2.1 255.255.255.0
     exit
@@ -34,14 +37,17 @@ interface GigabitEthernet3
 no interface Loopback1
 interface Loopback1
     description a loopback
+    no shutdown
     exit
 no interface Port-channel1
 interface Port-channel1
     mtu 9000
     description blah
+    no shutdown
     no switchport
     no switchport
     exit
 no interface Port-channel1.1
 interface Port-channel1.1
+    no shutdown
     exit

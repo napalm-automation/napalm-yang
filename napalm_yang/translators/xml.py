@@ -11,6 +11,7 @@ class XMLTranslator(BaseTranslator):
     def init_translation(self, metadata, translation):
         if "xml_root" in metadata.keys():
             return etree.Element(metadata["xml_root"])
+
         else:
             return translation
 
@@ -75,8 +76,11 @@ class XMLTranslator(BaseTranslator):
 
         try:
             # We want to make sure we capture None
-            value = mapping["value"]
-        except Exception:
+            if model:
+                value = mapping["value"]
+            else:
+                value = mapping["negate"]
+        except KeyError:
             value = None if not model._changed() else model
 
         e = translation
