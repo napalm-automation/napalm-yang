@@ -135,13 +135,6 @@
         </routing-options>
         <protocols>
             <ospf>
-                <spf-options>
-                    <delay>60</delay>
-                    <holddown>3000</holddown>
-                </spf-options>
-                <graceful-restart>
-                    <disable/>
-                </graceful-restart>
                 <area>
                     <name>0.0.0.0</name>
                     <interface>
@@ -163,30 +156,6 @@
                         <interface-type>nbma</interface-type>
                         <passive>
                         </passive>
-                    </interface>
-                </area>
-                <area>
-                    <name>2.2.2.2</name>
-                    <interface>
-                        <name>ge-0/0/3.3</name>
-                        <authentication>
-                            <md5>
-                                <name>1</name>
-                                <key>$9$yvXlWL</key>
-                            </md5>
-                        </authentication>
-                    </interface>
-                    <interface>
-                        <name>ge-0/0/4.4</name>
-                        <interface-type>p2p</interface-type>
-                        <metric>100</metric>
-                        <priority>1</priority>
-                        <retransmit-interval>10</retransmit-interval>
-                        <hello-interval>5</hello-interval>
-                        <dead-interval>20</dead-interval>
-                        <authentication>
-                            <simple-password>$9$McNLNbsYoaGireVYgJHk</simple-password>
-                        </authentication>
                     </interface>
                 </area>
             </ospf>

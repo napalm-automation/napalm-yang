@@ -1,46 +1,5 @@
 <configuration>
-        <protocols>
-            <ospf replace="replace">
-                <spf-options>
-                    <delay>60</delay>
-                    <holddown>3000</holddown>
-                </spf-options>
-                <graceful-restart>
-                    <disable/>
-                </graceful-restart>
-                <area>
-                    <name>0.0.0.0</name>
-                    <interface>
-                        <name>all</name>
-                        <interface-type>nbma</interface-type>
-                        <retransmit-interval>10</retransmit-interval>
-                        <hello-interval>5</hello-interval>
-                        <dead-interval>20</dead-interval>
-                    </interface>
-                </area>
-                <area>
-                    <name>1.1.1.1</name>
-                    <interface>
-                        <name>ge-0/0/1.1</name>
-                        <interface-type>nbma</interface-type>
-                    </interface>
-                    <interface>
-                        <name>ge-0/0/2.2</name>
-                        <interface-type>nbma</interface-type>
-                        <passive>
-                        </passive>
-                    </interface>
-                </area>
-                <area>
-                    <name>3.3.3.3</name>
-                    <interface>
-                        <name>ge-0/0/5.5</name>
-                        <interface-type>p2p</interface-type>
-                        <metric>55</metric>
-                        <hello-interval>10</hello-interval>
-                        <dead-interval>40</dead-interval>
-                    </interface>
-                </area>
-            </ospf>
-        </protocols>
+  <protocols>
+    <ospf replace="replace"/>
+  </protocols>
 </configuration>
