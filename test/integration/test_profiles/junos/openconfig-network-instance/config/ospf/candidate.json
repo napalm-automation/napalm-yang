@@ -1,0 +1,123 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "global": {
+                "config": {
+                    "enabled": true, 
+                    "type": "DEFAULT_INSTANCE"
+                }, 
+                "name": "global", 
+                "protocols": {
+                    "protocol": {
+                        "ospf ospf": {
+                            "identifier": "ospf", 
+                            "name": "ospf", 
+                            "ospfv2": {
+                                "areas": {
+                                    "area": {
+                                        "0.0.0.0": {
+                                            "config": {
+                                                "identifier": "0.0.0.0"
+                                            }, 
+                                            "identifier": "0.0.0.0", 
+                                            "interfaces": {
+                                                "interface": {
+                                                    "all": {
+                                                        "config": {
+                                                            "authentication-type": "none", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
+                                                            "passive": false
+                                                        }, 
+                                                        "id": "all", 
+                                                        "timers": {
+                                                            "config": {
+                                                                "dead-interval": 20, 
+                                                                "hello-interval": 5, 
+                                                                "retransmission-interval": 10
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }, 
+                                        "1.1.1.1": {
+                                            "config": {
+                                                "identifier": "1.1.1.1"
+                                            }, 
+                                            "identifier": "1.1.1.1", 
+                                            "interfaces": {
+                                                "interface": {
+                                                    "ge-0/0/1.1": {
+                                                        "config": {
+                                                            "authentication-type": "none", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
+                                                            "passive": false
+                                                        }, 
+                                                        "id": "ge-0/0/1.1"
+                                                    }, 
+                                                    "ge-0/0/2.2": {
+                                                        "config": {
+                                                            "authentication-type": "none", 
+                                                            "network-type": "NON_BROADCAST_NETWORK", 
+                                                            "passive": true
+                                                        }, 
+                                                        "id": "ge-0/0/2.2"
+                                                    }
+                                                }
+                                            }
+                                        }, 
+                                        "2.2.2.2": {
+                                            "config": {
+                                                "identifier": "2.2.2.2"
+                                            }, 
+                                            "identifier": "2.2.2.2", 
+                                            "interfaces": {
+                                                "interface": {
+                                                    "ge-0/0/3.3": {
+                                                        "config": {
+                                                            "authentication-type": "md5", 
+                                                            "network-type": "BROADCAST_NETWORK", 
+                                                            "passive": false
+                                                        }, 
+                                                        "id": "ge-0/0/3.3"
+                                                    }, 
+                                                    "ge-0/0/4.4": {
+                                                        "config": {
+                                                            "authentication-type": "simple-password", 
+                                                            "metric": 100, 
+                                                            "network-type": "POINT_TO_POINT_NETWORK", 
+                                                            "passive": false, 
+                                                            "priority": 1
+                                                        }, 
+                                                        "id": "ge-0/0/4.4", 
+                                                        "timers": {
+                                                            "config": {
+                                                                "dead-interval": 20, 
+                                                                "hello-interval": 5, 
+                                                                "retransmission-interval": 10
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }, 
+                                "global": {
+                                    "timers": {
+                                        "spf": {
+                                            "config": {
+                                                "initial-delay": 60, 
+                                                "maximum-delay": 3000
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

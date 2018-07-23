@@ -1,39 +1,67 @@
 ---
-_process: not_implemented
+_process: unnecessary
 areas:
-    _process: not_implemented
+    _process: unnecessary
     area:
-        _process: not_implemented
+        _process:
+          - path: area
+            key: name
         config:
-            _process: not_implemented
+            _process: unnecessary
             identifier:
-                _process: not_implemented
+                _process:
+                  - pre: "{{ area_key }}"
         identifier:
-            _process: not_implemented
+            _process: unnecessary
         interfaces:
-            _process: not_implemented
+            _process: unnecessary
             interface:
-                _process: not_implemented
+                _process:
+                  - path: interface
+                    key: name
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     authentication-type:
-                        _process: not_implemented
+                        _process:
+                          - path: authentication.md5.name
+                            post: "md5"
+                          - path: "authentication.simple-password"
+                            post: "simple-password"
+                          - path: authentication
+                            present: false
+                            post: "none"
                     hide-network:
                         _process: not_implemented
                     id:
                         _process: not_implemented
                     metric:
-                        _process: not_implemented
+                        _process:
+                          - path: metric
                     multi-area-adjacency-primary:
                         _process: not_implemented
                     network-type:
-                        _process: not_implemented
+                        _process:
+                          - path: "interface-type"
+                            regexp: "(?P<value>\\w+)"
+                            map: 
+                                p2p: POINT_TO_POINT_NETWORK
+                                # p2mp not supported in Openconfig model
+                                # return p2p to avoid the error
+                                p2mp: POINT_TO_POINT_NETWORK
+                                nbma: NON_BROADCAST_NETWORK
+                          - path: "interface-type"
+                            post: BROADCAST_NETWORK
+                            present: false
                     passive:
-                        _process: not_implemented
+                        _process:
+                          - path: passive
+                            present: true
                     priority:
-                        _process: not_implemented
+                        _process:
+                          - path: priority
                 id:
-                    _process: not_implemented
+                    _process:
+                      - pre: "{{ interface_key }}"
                 interface-ref:
                     _process: not_implemented
                     config:
@@ -87,15 +115,18 @@ areas:
                 state:
                     _process: not_implemented
                 timers:
-                    _process: not_implemented
+                    _process: unnecessary
                     config:
-                        _process: not_implemented
+                        _process: unnecessary
                         dead-interval:
-                            _process: not_implemented
+                            _process:
+                              - path: "dead-interval"
                         hello-interval:
-                            _process: not_implemented
+                            _process:
+                              - path: "hello-interval"
                         retransmission-interval:
-                            _process: not_implemented
+                            _process:
+                              - path: "retransmit-interval"
                     state:
                         _process: not_implemented
         lsdb:
@@ -123,7 +154,7 @@ areas:
                 state:
                     _process: not_implemented
 global:
-    _process: not_implemented
+    _process: unnecessary
     config:
         _process: not_implemented
         hide-transit-only-networks:
@@ -133,7 +164,9 @@ global:
         log-adjacency-changes:
             _process: not_implemented
         router-id:
-            _process: not_implemented
+            _process:
+              - path: "routing-options.router-id"
+                from: "network_instance.{{ network_instance_key }}"
         summary-route-cost-mode:
             _process: not_implemented
     graceful-restart:
@@ -187,7 +220,7 @@ global:
     state:
         _process: not_implemented
     timers:
-        _process: not_implemented
+        _process: unnecessary
         lsa-generation:
             _process: not_implemented
             config:
@@ -213,12 +246,14 @@ global:
             state:
                 _process: not_implemented
         spf:
-            _process: not_implemented
+            _process: unnecessary
             config:
-                _process: not_implemented
+                _process: unnecessary
                 initial-delay:
-                    _process: not_implemented
+                    _process:
+                      - path: "spf-options.delay"
                 maximum-delay:
-                    _process: not_implemented
+                    _process:
+                      - path: "spf-options.holddown"
             state:
                 _process: not_implemented

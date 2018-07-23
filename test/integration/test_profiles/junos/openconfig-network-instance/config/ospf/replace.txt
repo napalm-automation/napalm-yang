@@ -1,0 +1,5 @@
+<configuration>
+  <protocols>
+    <ospf replace="replace"/>
+  </protocols>
+</configuration>
