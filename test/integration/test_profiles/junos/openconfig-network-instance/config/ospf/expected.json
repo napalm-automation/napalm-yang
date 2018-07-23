@@ -25,7 +25,7 @@
                                                     "all": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "NON_BROADCAST_NETWORK", 
+                                                            "network-type": "BROADCAST_NETWORK",
                                                             "passive": false
                                                         }, 
                                                         "id": "all", 
@@ -50,7 +50,7 @@
                                                     "ge-0/0/1.1": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "NON_BROADCAST_NETWORK", 
+                                                            "network-type": "NON_BROADCAST_NETWORK",
                                                             "passive": false
                                                         }, 
                                                         "id": "ge-0/0/1.1"
@@ -58,10 +58,43 @@
                                                     "ge-0/0/2.2": {
                                                         "config": {
                                                             "authentication-type": "none", 
-                                                            "network-type": "NON_BROADCAST_NETWORK", 
-                                                            "passive": true
+                                                            "network-type": "NON_BROADCAST_NETWORK",
+                                                            "passive": false
                                                         }, 
                                                         "id": "ge-0/0/2.2"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "2.2.2.2": {
+                                            "config": {
+                                                "identifier": "2.2.2.2"
+                                            },
+                                            "identifier": "2.2.2.2",
+                                            "interfaces": {
+                                                "interface": {
+                                                    "ge-0/0/3.3": {
+                                                        "config": {
+                                                            "authentication-type": "none",
+                                                            "metric": 56,
+                                                            "network-type": "BROADCAST_NETWORK",
+                                                            "passive": false,
+                                                            "priority": 34
+                                                        },
+                                                        "id": "ge-0/0/3.3",
+                                                        "timers": {
+                                                            "config": {
+                                                                "hello-interval": 10
+                                                            }
+                                                        }
+                                                    },
+                                                    "ge-0/0/4.4": {
+                                                        "config": {
+                                                            "authentication-type": "none",
+                                                            "network-type": "BROADCAST_NETWORK",
+                                                            "passive": false
+                                                        },
+                                                        "id": "ge-0/0/4.4"
                                                     }
                                                 }
                                             }
