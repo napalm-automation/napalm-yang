@@ -1,0 +1,27 @@
+<configuration>
+  <protocols>
+    <ospf replace="replace">
+      <area>
+        <name>1.1.1.1</name>
+        <interface>
+          <name>ge-0/0/1.1</name>
+        </interface>
+        <interface>
+          <name>ge-0/0/2.2</name>
+          <interface-type>p2p</interface-type>
+          <priority>88</priority>
+        </interface>
+      </area>
+      <area>
+        <name>3.3.3.3</name>
+        <interface>
+          <name>ge-0/0/5.5</name>
+          <interface-type>nbma</interface-type>
+          <priority>1</priority>
+          <metric>100</metric>
+          <hello-interval>10</hello-interval>
+        </interface>
+      </area>
+    </ospf>
+  </protocols>
+</configuration>

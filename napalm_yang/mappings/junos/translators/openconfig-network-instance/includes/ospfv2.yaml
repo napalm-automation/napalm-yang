@@ -1,9 +1,12 @@
 ---
-_process: not_implemented
+_process: unnecessary
 areas:
-    _process: not_implemented
+    _process: unnecessary
     area:
-        _process: not_implemented
+        _process:
+          - container: area
+            key_element: name
+            key_value: "{{ model.config.identifier }}"
         config:
             _process: not_implemented
             identifier:
@@ -11,27 +14,46 @@ areas:
         identifier:
             _process: not_implemented
         interfaces:
-            _process: not_implemented
+            _process: unnecessary
             interface:
-                _process: not_implemented
+                _process:
+                  - container: interface
+                    key_element: name
+                    key_value: "{{ interface_key }}"
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     authentication-type:
-                        _process: not_implemented
+                        _process:
+                          - element: "authentication/simple-password"
+                            value: ""
+                            when: "{{ model == 'simple-password' }}"
                     hide-network:
                         _process: not_implemented
                     id:
                         _process: not_implemented
                     metric:
-                        _process: not_implemented
+                        _process:
+                          - element: metric
                     multi-area-adjacency-primary:
                         _process: not_implemented
                     network-type:
-                        _process: not_implemented
+                        _process:
+                          - element: null
+                            when: "{{ 'network_type' == 'BROADCAST_NETWORK' }}"
+                          - element: "{{ 'interface-type' }}"
+                            value: "{{ 'nbma' }}"
+                            when: "{{ model == 'NON_BROADCAST_NETWORK' }}"
+                          - element: "{{ 'interface-type' }}"
+                            value: "{{ 'p2p' }}"
+                            when: "{{ model == 'POINT_TO_POINT_NETWORK' }}"
                     passive:
-                        _process: not_implemented
+                        _process:
+                          - element: passive
+                            value: ""
+                            when: "{{ model }}"
                     priority:
-                        _process: not_implemented
+                        _process:
+                          - element: priority
                 id:
                     _process: not_implemented
                 interface-ref:
@@ -87,15 +109,18 @@ areas:
                 state:
                     _process: not_implemented
                 timers:
-                    _process: not_implemented
+                    _process: unnecessary
                     config:
-                        _process: not_implemented
+                        _process: unnecessary
                         dead-interval:
-                            _process: not_implemented
+                            _process:
+                              - element: dead-interval
                         hello-interval:
-                            _process: not_implemented
+                            _process:
+                              - element: hello-interval
                         retransmission-interval:
-                            _process: not_implemented
+                            _process:
+                              - element: retransmit-interval
                     state:
                         _process: not_implemented
         lsdb:
@@ -123,7 +148,7 @@ areas:
                 state:
                     _process: not_implemented
 global:
-    _process: not_implemented
+    _process: unnecessary
     config:
         _process: not_implemented
         hide-transit-only-networks:
@@ -187,7 +212,7 @@ global:
     state:
         _process: not_implemented
     timers:
-        _process: not_implemented
+        _process: unnecessary
         lsa-generation:
             _process: not_implemented
             config:
@@ -213,12 +238,16 @@ global:
             state:
                 _process: not_implemented
         spf:
-            _process: not_implemented
+            _process:
+              - container: spf-options
+                when: "{{ model.config.initial_delay or model.config.maximum_delay }}"
             config:
-                _process: not_implemented
+                _process: unnecessary
                 initial-delay:
-                    _process: not_implemented
+                    _process:
+                      - element: delay
                 maximum-delay:
-                    _process: not_implemented
+                    _process:
+                      - element: holddown
             state:
                 _process: not_implemented

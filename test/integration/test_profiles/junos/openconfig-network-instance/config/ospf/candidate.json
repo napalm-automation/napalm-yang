@@ -1,0 +1,79 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "global": {
+                "config": {
+                    "enabled": true, 
+                    "type": "DEFAULT_INSTANCE"
+                }, 
+                "name": "global", 
+                "protocols": {
+                    "protocol": {
+                        "ospf ospf": {
+                            "identifier": "ospf", 
+                            "name": "ospf", 
+                            "ospfv2": {
+                                "areas": {
+                                    "area": {
+                                        "1.1.1.1": {
+                                            "config": {
+                                                "identifier": "1.1.1.1"
+                                            }, 
+                                            "identifier": "1.1.1.1", 
+                                            "interfaces": {
+                                                "interface": {
+                                                    "ge-0/0/1.1": {
+                                                        "config": {
+                                                            "authentication-type": "none", 
+                                                            "network-type": "BROADCAST_NETWORK",
+                                                            "passive": false
+                                                        }, 
+                                                        "id": "ge-0/0/1.1"
+                                                    }, 
+                                                    "ge-0/0/2.2": {
+                                                        "config": {
+                                                            "authentication-type": "none", 
+                                                            "network-type": "POINT_TO_POINT_NETWORK",
+                                                            "passive": false,
+                                                            "priority": 88
+                                                        }, 
+                                                        "id": "ge-0/0/2.2"
+                                                    }
+                                                }
+                                            }
+                                        }, 
+                                        "3.3.3.3": {
+                                            "config": {
+                                                "identifier": "3.3.3.3"
+                                            }, 
+                                            "identifier": "3.3.3.3",
+                                            "interfaces": {
+                                                "interface": {
+                                                    "ge-0/0/5.5": {
+                                                        "config": {
+                                                            "authentication-type": "none",
+                                                            "metric": 100, 
+                                                            "network-type": "NON_BROADCAST_NETWORK",
+                                                            "passive": false,
+                                                            "priority":1
+                                                        }, 
+                                                        "id": "ge-0/0/5.5",
+                                                        "timers": {
+                                                            "config": {
+                                                                "hello-interval": 10
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
