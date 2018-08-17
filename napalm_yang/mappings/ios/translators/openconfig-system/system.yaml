@@ -156,9 +156,11 @@ system:
         state:
             _process: not_implemented
     config:
-        _process: not_implemented
+        _process: unnecessary
         domain-name:
-            _process: not_implemented
+            _process:
+                - value: "ip domain-name {{ model }}\n"
+                  negate: "no ip domain-name\n"
         hostname:
             _process: not_implemented
         login-banner:
