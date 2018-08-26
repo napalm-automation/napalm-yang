@@ -29,6 +29,9 @@
                 }
             }
         },
+        "config": {
+          "domain_name": "acme.com"
+        },
         "logging": {
             "remote-servers": {
                 "remote-server": {

@@ -1,3 +1,4 @@
+ip domain-name acme.com
 logging host 1.2.3.4 transport udp port 1514
 logging host 20.20.30.40 transport udp port 514
 logging 100.200.3.4
