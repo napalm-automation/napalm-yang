@@ -1,0 +1,55 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "global": {
+                "config": {
+                    "enabled": true,
+                    "type": "DEFAULT_INSTANCE"
+                },
+                "mpls": {
+                    "lsps": {
+                        "constrained-path": {
+                            "tunnels": {
+                                "tunnel": {
+                                    "to_r1": {
+                                        "bandwidth": {
+                                            "auto-bandwidth": {
+                                                "config": {
+                                                    "adjust-interval": 300,
+                                                    "adjust-threshold": 50,
+                                                    "max-bw": 100,
+                                                    "min-bw": 2
+                                                },
+                                                "overflow": {
+                                                    "config": {
+                                                        "overflow-threshold": 10
+                                                    }
+                                                },
+                                                "underflow": {
+                                                    "config": {
+                                                        "underflow-threshold": 10
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "config": {
+                                            "description": "lsp to r1",
+                                            "metric": 10,
+                                            "name": "to_r1",
+                                            "preference": 100,
+                                            "reoptimize-timer": 30,
+                                            "setup-priority": 1,
+                                            "soft-preemption": true,
+                                            "source": "2.2.2.2"
+                                        },
+                                        "name": "to_r1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

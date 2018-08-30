@@ -1,0 +1,44 @@
+{
+    "network_instances": {
+        "network-instance": {
+            "global": {
+                "config": {
+                    "enabled": true,
+                    "type": "DEFAULT_INSTANCE"
+                },
+                "mpls": {
+                    "lsps": {
+                        "constrained-path": {
+                            "tunnels": {
+                                "tunnel": {
+                                    "to_r1": {
+                                        "config": {
+                                            "description": "lsp to r1",
+                                            "metric": 1,
+                                            "name": "to_r1",
+                                            "preference": 10,
+                                            "reoptimize-timer": 30,
+                                            "setup-priority": 1,
+                                            "soft-preemption": true,
+                                            "source": "2.2.2.2"
+                                        },
+                                        "name": "to_r1"
+                                    },
+                                    "to_r2": {
+                                        "config": {
+                                            "metric": 20,
+                                            "name": "to_r2",
+                                            "preference": 200,
+                                            "soft-preemption": false
+                                        },
+                                        "name": "to_r2"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

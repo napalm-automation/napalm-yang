@@ -1,0 +1,24 @@
+<configuration>
+  <protocols>
+    <mpls>
+      <label-switched-path>
+        <name>to_r1</name>
+        <description>lsp to r1</description>
+        <preference>100</preference>
+        <metric>10</metric>
+        <optimize-timer>30</optimize-timer>
+        <from>2.2.2.2</from>
+        <soft-preemption/>
+        <setup-priority>1</setup-priority>
+        <auto-bandwidth>
+          <minimum-bandwidth>2</minimum-bandwidth>
+          <maximum-bandwidth>100</maximum-bandwidth>
+          <adjust-interval>300</adjust-interval>
+          <adjust-threshold>50</adjust-threshold>
+          <adjust-threshold-overflow-limit>10</adjust-threshold-overflow-limit>
+          <adjust-threshold-underflow-limit>10</adjust-threshold-underflow-limit>
+        </auto-bandwidth>
+      </label-switched-path>
+    </mpls>
+  </protocols>
+</configuration>
