@@ -269,7 +269,9 @@ network-instances:
                   - container: "protocols/{{ model.identifier }}"
                     replace: true
                     when: "{{ protocol_key != 'static static' }}"
-                  - container: "routing-options/static"
+                  - container: "routing-options"
+                    reuse: true
+                    in: "network_instance.{{ network_instance_key }}"
                     when: "{{ protocol_key == 'static static' }}"
                 bgp: !include includes/bgp.yaml
                 config:
