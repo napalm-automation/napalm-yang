@@ -316,6 +316,7 @@ network-instances:
                 _process:
                   - path: "protocols.?protocol"
                     key: "{{ protocol }} {{ protocol }}"
+                    regexp: "(?P<value>^(?!mpls).*)"
                   - path: "routing-options.static"
                     key: "{{ 'static static' }}"
                 bgp: !include includes/bgp.yaml
