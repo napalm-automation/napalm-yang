@@ -268,7 +268,7 @@ network-instances:
                 _process:
                   - container: "protocols/{{ model.identifier }}"
                     replace: true
-                    when: "{{ protocol_key != 'static static' }}"
+                    when: "{{ protocol_key != 'static static' and protocol_key != 'mpls mpls' }}"
                   - container: "routing-options/static"
                     when: "{{ protocol_key == 'static static' }}"
                 bgp: !include includes/bgp.yaml

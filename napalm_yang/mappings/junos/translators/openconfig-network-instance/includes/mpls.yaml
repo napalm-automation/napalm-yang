@@ -1,5 +1,5 @@
 ---
-_process: not_implemented
+_process: unnecessary
 global:
     _process: not_implemented
     config:
@@ -49,9 +49,9 @@ global:
     state:
         _process: not_implemented
 lsps:
-    _process: not_implemented
+    _process: unnecessary
     constrained-path:
-        _process: not_implemented
+        _process: unnecessary
         named-explicit-paths:
             _process: not_implemented
             named-explicit-path:
@@ -85,33 +85,45 @@ lsps:
                 state:
                     _process: not_implemented
         tunnels:
-            _process: not_implemented
+            _process: unnecessary
             tunnel:
-                _process: not_implemented
+                _process:
+                  - container: "protocols/mpls"
+                    reuse: true
+                  - container: "label-switched-path"
+                    key_element: name
+                    key_value: "{{ tunnel_key }}"
                 bandwidth:
-                    _process: not_implemented
+                    _process: unnecessary
                     auto-bandwidth:
-                        _process: not_implemented
+                        _process:
+                          - container: "auto-bandwidth"
+                            when: "{{ model.config.adjust_interval or model.config.adjust_threshold or model.config.max_bw or model.config.min_bw }}"
                         config:
-                            _process: not_implemented
+                            _process: unnecessary
                             adjust-interval:
-                                _process: not_implemented
+                                _process:
+                                  - element: adjust-interval
                             adjust-threshold:
-                                _process: not_implemented
+                                _process:
+                                  - element: adjust-threshold
                             enabled:
                                 _process: not_implemented
                             max-bw:
-                                _process: not_implemented
+                                _process:
+                                  - element: maximum-bandwidth
                             min-bw:
-                                _process: not_implemented
+                                _process:
+                                  - element: minimum-bandwidth
                         overflow:
-                            _process: not_implemented
+                            _process: unnecessary
                             config:
-                                _process: not_implemented
+                                _process: unnecessary
                                 enabled:
                                     _process: not_implemented
                                 overflow-threshold:
-                                    _process: not_implemented
+                                    _process:
+                                      - element: adjust-threshold-overflow-limit
                                 trigger-event-count:
                                     _process: not_implemented
                             state:
@@ -119,15 +131,16 @@ lsps:
                         state:
                             _process: not_implemented
                         underflow:
-                            _process: not_implemented
+                            _process: unnecessary
                             config:
-                                _process: not_implemented
+                                _process: unnecessary
                                 enabled:
                                     _process: not_implemented
                                 trigger-event-count:
                                     _process: not_implemented
                                 underflow-threshold:
-                                    _process: not_implemented
+                                    _process:
+                                      - element: adjust-threshold-underflow-limit
                             state:
                                 _process: not_implemented
                     config:
@@ -139,35 +152,45 @@ lsps:
                     state:
                         _process: not_implemented
                 config:
-                    _process: not_implemented
+                    _process: unnecessary
                     admin-status:
                         _process: not_implemented
                     description:
-                        _process: not_implemented
+                        _process:
+                          - element: description
                     hold-priority:
                         _process: not_implemented
                     metric:
-                        _process: not_implemented
+                        _process:
+                          - element: metric
                     metric-type:
                         _process: not_implemented
                     name:
                         _process: not_implemented
                     preference:
-                        _process: not_implemented
+                        _process:
+                          - element: preference
                     protection-style-requested:
                         _process: not_implemented
                     reoptimize-timer:
-                        _process: not_implemented
+                        _process:
+                          - element: optimize-timer
                     setup-priority:
-                        _process: not_implemented
+                        _process:
+                          - element: setup-priority
                     shortcut-eligible:
                         _process: not_implemented
                     signaling-protocol:
                         _process: not_implemented
                     soft-preemption:
-                        _process: not_implemented
+                        _process:
+                          - container: "label-switched-path"
+                            element: soft-preemption
+                            when: "{{ model }}"
+                            value: null
                     source:
-                        _process: not_implemented
+                        _process:
+                          - element: from
                     type:
                         _process: not_implemented
                 name:
