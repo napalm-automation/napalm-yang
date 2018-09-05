@@ -80,6 +80,7 @@ interfaces:
                           pimd: null
                           pime: null
                           pppoe: null
+                          unspecified: null
             counters:
                 _process: unnecessary
                 in-broadcast-pkts:
