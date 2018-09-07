@@ -96,7 +96,8 @@ interfaces:
                     _process:
                         - path: "ethernet-mac-statistics.input-multicasts"
                 in-octets:
-                    _process: not_implemented
+                    _process:
+                        - path: "ethernet-mac-statistics.input-bytes"
                 in-unicast-pkts:
                     _process: 
                         - path: "ethernet-mac-statistics.input-unicasts"
@@ -108,7 +109,8 @@ interfaces:
                     _process: 
                         - path: "ethernet-mac-statistics.output-broadcasts"
                 out-discards:
-                    _process: not_implemented
+                    _process:
+                        - path: "output-error-list.output-drops"
                 out-errors:
                     _process: 
                         - path: "output-error-list.output-errors"
@@ -116,7 +118,8 @@ interfaces:
                     _process:
                         - path: "ethernet-mac-statistics.output-multicasts"
                 out-octets:
-                    _process: not_implemented
+                    _process:
+                        - path: "ethernet-mac-statistics.output-bytes"
                 out-unicast-pkts:
                     _process:
                         - path: "ethernet-mac-statistics.output-unicasts"
