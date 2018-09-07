@@ -21,36 +21,56 @@
                         ".local..0": {
                             "index": ".local..0",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 0,
-                                "name": ".local..0"
+                                "index": 0,
+                                "name": ".local..0",
+                                "oper-status": "UP"
                             }
                         },
                         ".local..1": {
                             "index": ".local..1",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 0,
-                                "name": ".local..1"
+                                "index": 1,
+                                "name": ".local..1",
+                                "oper-status": "UP"
                             }
                         },
                         ".local..2": {
                             "index": ".local..2",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 0,
-                                "name": ".local..2"
+                                "index": 2,
+                                "name": ".local..2",
+                                "oper-status": "UP"
                             }
                         },
                         ".local..3": {
                             "index": ".local..3",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 0,
-                                "name": ".local..3"
+                                "index": 67,
+                                "name": ".local..3",
+                                "oper-status": "UP"
                             }
                         },
                         ".local..4": {
                             "index": ".local..4",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 0,
-                                "name": ".local..4"
+                                "index": 68,
+                                "name": ".local..4",
+                                "oper-status": "UP"
                             }
                         }
                     }
@@ -76,32 +96,48 @@
                         "ae0.0": {
                             "index": "ae0.0",
                             "state": {
+                                "admin-status": "UP",
                                 "description": "ASDASDASD",
+                                "enabled": true,
                                 "ifindex": 532,
-                                "name": "ae0.0"
+                                "index": 77,
+                                "name": "ae0.0",
+                                "oper-status": "DOWN"
                             }
                         },
                         "ae0.1": {
                             "index": "ae0.1",
                             "state": {
+                                "admin-status": "DOWN",
                                 "description": "ae0.1",
+                                "enabled": false,
                                 "ifindex": 533,
-                                "name": "ae0.1"
+                                "index": 78,
+                                "name": "ae0.1",
+                                "oper-status": "DOWN"
                             }
                         },
                         "ae0.2": {
                             "index": "ae0.2",
                             "state": {
+                                "admin-status": "UP",
                                 "description": "ae0.2",
+                                "enabled": true,
                                 "ifindex": 534,
-                                "name": "ae0.2"
+                                "index": 79,
+                                "name": "ae0.2",
+                                "oper-status": "DOWN"
                             }
                         },
                         "ae0.32767": {
                             "index": "ae0.32767",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 535,
-                                "name": "ae0.32767"
+                                "index": 72,
+                                "name": "ae0.32767",
+                                "oper-status": "DOWN"
                             }
                         }
                     }
@@ -149,9 +185,13 @@
                         "ge-0/0/0.0": {
                             "index": "ge-0/0/0.0",
                             "state": {
+                                "admin-status": "UP",
                                 "description": "ge-0/0/0.0",
+                                "enabled": true,
                                 "ifindex": 521,
-                                "name": "ge-0/0/0.0"
+                                "index": 69,
+                                "name": "ge-0/0/0.0",
+                                "oper-status": "UP"
                             }
                         }
                     }
@@ -280,30 +320,46 @@
                         "lo0.0": {
                             "index": "lo0.0",
                             "state": {
+                                "admin-status": "UP",
                                 "description": "lo0.0",
+                                "enabled": true,
                                 "ifindex": 16,
-                                "name": "lo0.0"
+                                "index": 76,
+                                "name": "lo0.0",
+                                "oper-status": "UP"
                             }
                         },
                         "lo0.16384": {
                             "index": "lo0.16384",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 21,
-                                "name": "lo0.16384"
+                                "index": 65,
+                                "name": "lo0.16384",
+                                "oper-status": "UP"
                             }
                         },
                         "lo0.16385": {
                             "index": "lo0.16385",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 22,
-                                "name": "lo0.16385"
+                                "index": 66,
+                                "name": "lo0.16385",
+                                "oper-status": "UP"
                             }
                         },
                         "lo0.32768": {
                             "index": "lo0.32768",
                             "state": {
+                                "admin-status": "DOWN",
+                                "enabled": false,
                                 "ifindex": 248,
-                                "name": "lo0.32768"
+                                "index": 64,
+                                "name": "lo0.32768",
+                                "oper-status": "DOWN"
                             }
                         }
                     }
@@ -443,15 +499,23 @@
                         "sp-0/0/0.0": {
                             "index": "sp-0/0/0.0",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 522,
-                                "name": "sp-0/0/0.0"
+                                "index": 70,
+                                "name": "sp-0/0/0.0",
+                                "oper-status": "UP"
                             }
                         },
                         "sp-0/0/0.16383": {
                             "index": "sp-0/0/0.16383",
                             "state": {
+                                "admin-status": "UP",
+                                "enabled": true,
                                 "ifindex": 523,
-                                "name": "sp-0/0/0.16383"
+                                "index": 71,
+                                "name": "sp-0/0/0.16383",
+                                "oper-status": "UP"
                             }
                         }
                     }
