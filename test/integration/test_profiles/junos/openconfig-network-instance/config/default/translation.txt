@@ -92,11 +92,7 @@
     <autonomous-system>
       <as-number>65000</as-number>
     </autonomous-system>
-  </routing-options>
-  <routing-options>
     <router-id>1.1.1.1</router-id>
-  </routing-options>
-  <routing-options>
     <static>
       <route>
         <name>10.0.0.0/24</name>
