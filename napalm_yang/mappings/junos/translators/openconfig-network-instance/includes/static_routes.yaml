@@ -4,6 +4,8 @@ _process:
       when: "{{ protocol_key != 'static static' }}"
 static:
     _process:
+      - container: "static"
+        reuse: true
       - container: "route"
         key_element: name
         key_value: "{{ static_key }}"

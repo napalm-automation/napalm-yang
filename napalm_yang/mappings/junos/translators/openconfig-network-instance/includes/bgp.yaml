@@ -3,7 +3,10 @@ _process:
     - gate: true
       when: "{{ protocol_key != 'bgp bgp' }}"
 global:
-    _process: unnecessary
+    _process:
+      - container: routing-options
+        reuse: true
+        in: "network_instance.{{ network_instance_key }}"
     afi-safis:
         _process: not_implemented
         afi-safi:
@@ -258,12 +261,10 @@ global:
         _process: unnecessary
         as:
             _process:
-              - element: "routing-options/autonomous-system/as-number"
-                in: "network_instance.{{ network_instance_key }}"
+              - element: "autonomous-system/as-number"
         router-id:
             _process:
-              - element: "routing-options/router-id"
-                in: "network_instance.{{ network_instance_key }}"
+              - element: "router-id"
     default-route-distance:
         _process: not_implemented
         config:
