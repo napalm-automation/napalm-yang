@@ -136,14 +136,21 @@ interfaces:
                 state:
                     _process: unnecessary
                     index:
-                        _process: not_implemented
+                        _process:
+                            - path: "local-index"
                     description:
                         _process: 
                             - path: "description"
                     enabled:
-                        _process: not_implemented
+                        _process:
+                            - path: "if-config-flags.iff-down"
+                              present: false
                     admin-status:
-                        _process: not_implemented
+                        _process:
+                            - path: "if-config-flags.iff-down"
+                              default: UP
+                              present: true
+                              post: DOWN
                     ifindex:
                         _process: 
                             - path: "snmp-index"
@@ -153,7 +160,11 @@ interfaces:
                         _process:
                             - pre: "{{ subinterface_key }}"
                     oper-status:
-                        _process: not_implemented
+                        _process:
+                            - default: UP
+                              path: "if-config-flags.iff-device-down"
+                              present: true
+                              post: DOWN
                     counters:
                         _process: not_implemented
                         in-broadcast-pkts:
@@ -165,9 +176,11 @@ interfaces:
                         in-multicast-pkts:
                             _process: not_implemented
                         in-octets:
-                            _process: not_implemented
+                            _process:
+                                - path: "traffic-statistics.input-bytes"
                         in-unicast-pkts:
-                            _process: not_implemented
+                            _process:
+                                - path: "traffic-statistics.input-packets"
                         in-unknown-protos:
                             _process: not_implemented
                         last-clear:
@@ -181,6 +194,8 @@ interfaces:
                         out-multicast-pkts:
                             _process: not_implemented
                         out-octets:
-                            _process: not_implemented
+                            _process:
+                                - path: "traffic-statistics.output-bytes"
                         out-unicast-pkts:
-                            _process: not_implemented
+                            _process:
+                                - path: "traffic-statistics.output-packets"
