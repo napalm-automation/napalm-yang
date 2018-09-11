@@ -8,6 +8,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -63,6 +64,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -114,6 +116,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -131,10 +134,13 @@
                         "in-discards": 0,
                         "in-errors": 0,
                         "in-multicast-pkts": 0,
+                        "in-octets": 0,
                         "in-unicast-pkts": 11627,
                         "out-broadcast-pkts": 0,
+                        "out-discards": 0,
                         "out-errors": 0,
                         "out-multicast-pkts": 0,
+                        "out-octets": 0,
                         "out-unicast-pkts": 10927
                     },
                     "description": "management interface",
@@ -166,10 +172,13 @@
                         "in-discards": 1,
                         "in-errors": 0,
                         "in-multicast-pkts": 0,
+                        "in-octets": 0,
                         "in-unicast-pkts": 2931,
                         "out-broadcast-pkts": 0,
+                        "out-discards": 0,
                         "out-errors": 0,
                         "out-multicast-pkts": 0,
+                        "out-octets": 0,
                         "out-unicast-pkts": 0
                     },
                     "description": "ge-0/0/1",
@@ -189,10 +198,13 @@
                         "in-discards": 2,
                         "in-errors": 0,
                         "in-multicast-pkts": 0,
+                        "in-octets": 0,
                         "in-unicast-pkts": 371,
                         "out-broadcast-pkts": 0,
+                        "out-discards": 0,
                         "out-errors": 0,
                         "out-multicast-pkts": 0,
+                        "out-octets": 0,
                         "out-unicast-pkts": 0
                     },
                     "enabled": true,
@@ -249,6 +261,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -266,6 +279,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "description": "lo0",
@@ -316,6 +330,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -343,6 +358,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -397,6 +413,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -430,6 +447,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -475,6 +493,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
@@ -490,6 +509,7 @@
                     "counters": {
                         "in-discards": 0,
                         "in-errors": 0,
+                        "out-discards": 0,
                         "out-errors": 0
                     },
                     "enabled": true,
