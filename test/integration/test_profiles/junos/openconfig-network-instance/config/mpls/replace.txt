@@ -1,0 +1,21 @@
+<configuration>
+  <protocols>
+    <mpls>
+      <label-switched-path>
+        <name>to_r1</name>
+        <description>lsp to r1</description>
+        <preference>10</preference>
+        <metric>1</metric>
+        <optimize-timer>30</optimize-timer>
+        <from>2.2.2.2</from>
+        <soft-preemption/>
+        <setup-priority>1</setup-priority>
+      </label-switched-path>
+      <label-switched-path>
+        <name>to_r2</name>
+        <preference>200</preference>
+        <metric>20</metric>
+      </label-switched-path>
+    </mpls>
+  </protocols>
+</configuration>
