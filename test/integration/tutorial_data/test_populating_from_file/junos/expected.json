@@ -12,6 +12,11 @@
                                     "enabled": true
                                 }
                             },
+                            "ipv6": {
+                                "config": {
+                                    "enabled": false
+                                }
+                            },
                             "config": {
                                 "enabled": true,
                                 "name": "0",
@@ -22,6 +27,11 @@
                 },
                 "routed-vlan": {
                     "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    },
+                   "ipv6": {
                         "config": {
                             "enabled": false
                         }
@@ -39,6 +49,11 @@
                 "name": "ge-0/0/1",
                 "routed-vlan": {
                     "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    },
+                   "ipv6": {
                         "config": {
                             "enabled": false
                         }
@@ -85,6 +100,11 @@
                                     }
                                 }
                             },
+                            "ipv6": {
+                                "config": {
+                                    "enabled": false
+                                }
+                            },
                             "config": {
                                 "enabled": true,
                                 "name": "0",
@@ -112,6 +132,11 @@
                                             }
                                         }
                                     }
+                                }
+                            },
+                            "ipv6": {
+                                "config": {
+                                    "enabled": false
                                 }
                             },
                             "config": {
@@ -143,6 +168,11 @@
                                     }
                                 }
                             },
+                            "ipv6": {
+                                "config": {
+                                    "enabled": false
+                                }
+                            },
                             "config": {
                                 "enabled": true,
                                 "name": "2",
@@ -153,6 +183,11 @@
                 },
                 "routed-vlan": {
                     "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    },
+                   "ipv6": {
                         "config": {
                             "enabled": false
                         }
@@ -175,6 +210,11 @@
                                     "enabled": false
                                 }
                             },
+                            "ipv6": {
+                                "config": {
+                                    "enabled": false
+                                }
+                            },
                             "config": {
                                 "enabled": true,
                                 "name": "0",
@@ -185,6 +225,11 @@
                 },
                 "routed-vlan": {
                     "ipv4": {
+                        "config": {
+                            "enabled": false
+                        }
+                    },
+                   "ipv6": {
                         "config": {
                             "enabled": false
                         }
