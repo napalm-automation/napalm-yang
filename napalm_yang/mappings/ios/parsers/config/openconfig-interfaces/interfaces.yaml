@@ -25,7 +25,8 @@ interfaces:
         config:
             _process: unnecessary
             name:
-                _process: unnecessary
+                _process:
+                    - pre: "{{ interface_key }}"
             type:
                 _process:
                     - pre: "{{ interface_key }}"

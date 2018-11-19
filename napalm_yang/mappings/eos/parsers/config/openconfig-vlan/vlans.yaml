@@ -28,7 +28,8 @@ vlans:
             tpid:
                 _process: not_implemented
             vlan-id:
-                _process: unnecessary
+                _process:
+                    - post: "{{ vlan_key }}"
         members:
             _process: not_implemented
             member:
@@ -36,4 +37,4 @@ vlans:
         state:
             _process: not_implemented
         vlan-id:
-            _process: not_implemented
+            _process: unnecessary
