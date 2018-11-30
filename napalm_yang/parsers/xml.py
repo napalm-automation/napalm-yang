@@ -6,7 +6,6 @@ import xmltodict
 
 
 class XMLParser(JSONParser):
-
     def init_native(self, native):
         resp = []
         for n in native:

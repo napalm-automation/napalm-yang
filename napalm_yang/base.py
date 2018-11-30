@@ -25,6 +25,7 @@ class Root(object):
         >>> config.add_model(napalm_yang.models.openconfig_vlan())
 
     """
+
     _yang_type = "container"
     _defining_module = ""
 

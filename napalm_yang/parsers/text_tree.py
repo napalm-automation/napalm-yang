@@ -92,7 +92,6 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
 
 
 class TextTree(JSONParser):
-
     def init_native(self, native):
         resp = []
         for n in native:

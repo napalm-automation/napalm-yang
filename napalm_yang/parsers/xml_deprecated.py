@@ -8,7 +8,6 @@ from napalm_yang.parsers.base import BaseParser
 
 
 class XMLParser(BaseParser):
-
     @classmethod
     def init_native(cls, native):
         r = []

@@ -1,4 +1,3 @@
-
 from operator import attrgetter
 from pyangbind.lib.yangtypes import RestrictedPrecisionDecimalType
 from pyangbind.lib.yangtypes import RestrictedClassType
@@ -29,6 +28,7 @@ class yc_individual_napalm_star_wars__universe_individual(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
   """
+
     __slots__ = (
         "_pybind_generated_by",
         "_path_helper",
@@ -395,6 +395,7 @@ class yc_universe_napalm_star_wars__universe(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
   """
+
     __slots__ = (
         "_pybind_generated_by",
         "_path_helper",
@@ -557,6 +558,7 @@ class napalm_star_wars(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
   """
+
     __slots__ = (
         "_pybind_generated_by",
         "_path_helper",

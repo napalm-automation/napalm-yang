@@ -12,7 +12,6 @@ def check_empty(default=""):
     """
 
     def real_decorator(func):
-
         @wraps(func)
         def wrapper(value, *args, **kwargs):
             if not value:

@@ -11,7 +11,6 @@ def _find_translation_point(rule, bookmarks, translation):
 
 
 class BaseTranslator(object):
-
     def __init__(self, merge, replace):
         self.merge = merge
         self.replace = replace

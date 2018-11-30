@@ -50,7 +50,6 @@ def read_json(profile, model, case, filename):
 
 
 class Tests(object):
-
     @pytest.mark.parametrize("profile, model, case, result", test_validate)
     def test_validate(self, profile, model, case, result):
         data_file = "candidate.json"

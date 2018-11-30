@@ -49,7 +49,6 @@ def read_json(filename):
 
 
 class Tests(object):
-
     def test_create_binding(self):
         config = napalm_yang.base.Root()
 
@@ -57,9 +56,8 @@ class Tests(object):
         config.add_model(napalm_yang.models.openconfig_interfaces)
         config.add_model(napalm_yang.models.openconfig_vlan)
 
-        assert (
-            napalm_yang.utils.model_to_dict(config)
-            == read_json("test_create_binding.expected")
+        assert napalm_yang.utils.model_to_dict(config) == read_json(
+            "test_create_binding.expected"
         )
 
     def test_populate_models_programmatically(self):
@@ -81,9 +79,8 @@ class Tests(object):
         )
         assert config.interfaces.interface["et2"].config.mtu == 9000
 
-        assert (
-            config.get(filter=True)
-            == read_json("test_populate_models_programmatically.expected")
+        assert config.get(filter=True) == read_json(
+            "test_populate_models_programmatically.expected"
         )
 
         with pytest.raises(ValueError):

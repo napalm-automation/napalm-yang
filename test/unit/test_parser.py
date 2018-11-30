@@ -34,7 +34,6 @@ def to_dict(d):
 
 
 class Tests(object):
-
     @pytest.mark.parametrize("case", test_parser_list)
     def test_parser_list(self, case):
         with open(

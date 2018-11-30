@@ -15,7 +15,6 @@ if sys.version_info[0] > 2:
 
 
 class Parser(object):
-
     def __init__(
         self,
         model,
@@ -88,9 +87,8 @@ class Parser(object):
                 )
             r = attr(*args, **kwargs)
 
-            if (
-                isinstance(r, dict)
-                and all([isinstance(x, (str, unicode)) for x in r.values()])
+            if isinstance(r, dict) and all(
+                [isinstance(x, (str, unicode)) for x in r.values()]
             ):
                 # Some vendors like junos return commands enclosed by a key
                 r = "\n".join(r.values())
@@ -143,10 +141,10 @@ class Parser(object):
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
                 continue
-            elif not self.is_config and (
-                v._is_config or k == "config"
-            ) and v._yang_type not in (
-                "container", "list"
+            elif (
+                not self.is_config
+                and (v._is_config or k == "config")
+                and v._yang_type not in ("container", "list")
             ):
                 continue
 

@@ -21,7 +21,6 @@ from napalm_yang.jinja_filters import ip_filters, load_filters, vlan_filters
 
 
 class TestJinjaFilters(unittest.TestCase):
-
     def test_netmask_to_cidr(self):
         """
         Tests Jinja2 filter ```netmask_to_cidr```:

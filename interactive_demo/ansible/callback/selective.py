@@ -195,10 +195,10 @@ class CallbackModule(CallbackBase):
         ):
             self._print_task()
             self.last_skipped = False
-            msg = unicode(result._result.get("msg", "")) or unicode(
-                result._result.get("reason", "")
-            ) or unicode(
-                result._result.get("message", "")
+            msg = (
+                unicode(result._result.get("msg", ""))
+                or unicode(result._result.get("reason", ""))
+                or unicode(result._result.get("message", ""))
             )
 
             stderr = [

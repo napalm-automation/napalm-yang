@@ -106,7 +106,6 @@ def _set_pdb_trace():
 
 
 class BaseParser(object):
-
     def __init__(self, keys, extra_vars):
         self.keys = keys
         self.extra_vars = extra_vars

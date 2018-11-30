@@ -18,7 +18,6 @@ def get_element_with_cdata(dictionary, element):
 
 
 class JSONParser(BaseParser):
-
     def init_native(self, native):
         resp = []
         for k in native:
@@ -30,7 +29,6 @@ class JSONParser(BaseParser):
         return resp
 
     def _parse_list_default(self, attribute, mapping, data, key=None):
-
         def _eval_key(key_mapping, **kwargs):
             if "{{" in key_mapping:
                 try:
