@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import ast
 import re
 import json
 
@@ -81,8 +82,16 @@ class JSONParser(BaseParser):
                 continue
             key, extra_vars = _process_key_value(k, v, regexp, mapping)
             if key:
+                if key is not None and "post" in mapping:
+                    key = ast.literal_eval(
+                        self._parse_post_process_filter(mapping["post"], value=key)
+                    )
                 extra_vars.update(mapping.get("extra_vars", {}))
-                yield key, v, extra_vars
+                if isinstance(key, list):
+                    for k in key:
+                        yield str(k), v, extra_vars
+                else:
+                    yield key, v, extra_vars
 
     def _parse_leaf_default(self, attribute, mapping, data):
         if any([x in mapping for x in ["skip", "gate"]]):
@@ -115,7 +124,7 @@ class JSONParser(BaseParser):
             if d and "map" in mapping:
                 d = mapping["map"][d.lower()]
 
-        if d and "post" in mapping:
+        if d is not None and "post" in mapping:
             d = self._parse_post_process_filter(mapping["post"], value=d)
         elif d is not None and "default" in mapping:
             d = mapping["default"]
