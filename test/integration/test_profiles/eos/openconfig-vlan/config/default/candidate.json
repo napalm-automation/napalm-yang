@@ -4,19 +4,22 @@
             "1": {
                 "config": {
                     "name": "default",
-                    "status": "ACTIVE"
+                    "status": "ACTIVE",
+                    "vlan-id": "1"
                 },
                 "vlan-id": "1"
             },
             "20": {
                 "config": {
-                    "name": "prod"
+                    "name": "prod",
+                    "vlan-id": "20"
                 },
                 "vlan-id": "20"
             },
             "31": {
                 "config": {
                     "name": "devel",
+                    "vlan-id": "31",
                     "status": "SUSPENDED"
                 },
                 "vlan-id": "31"

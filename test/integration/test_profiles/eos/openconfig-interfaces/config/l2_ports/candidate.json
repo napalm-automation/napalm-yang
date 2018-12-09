@@ -4,6 +4,7 @@
             "Ethernet1": {
                 "config": {
                     "enabled": true,
+                    "name": "Ethernet1",
                     "type": "ethernetCsmacd"
                 },
                 "ethernet": {
@@ -30,6 +31,7 @@
             "Ethernet2": {
                 "config": {
                     "enabled": true,
+                    "name": "Ethernet2",
                     "type": "ethernetCsmacd"
                 },
                 "ethernet": {
@@ -57,6 +59,7 @@
                 "config": {
                     "enabled": true,
                     "mtu": 1500,
+                    "name": "Management1",
                     "type": "ethernetCsmacd"
                 },
                 "name": "Management1",

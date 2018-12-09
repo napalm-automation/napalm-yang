@@ -5,6 +5,7 @@
                 "config": {
                     "enabled": true,
                     "mtu": 1500,
+                    "name": "GigabitEthernet1",
                     "type": "ethernetCsmacd"
                 },
                 "name": "GigabitEthernet1",
@@ -20,6 +21,7 @@
                 "config": {
                     "description": "so much oc",
                     "enabled": false,
+                    "name": "GigabitEthernet2",
                     "mtu": 9000,
                     "type": "ethernetCsmacd"
                 },
@@ -115,6 +117,7 @@
                 "config": {
                     "enabled": false,
                     "mtu": 1500,
+                    "name": "GigabitEthernet3",
                     "type": "ethernetCsmacd"
                 },
                 "name": "GigabitEthernet3",
@@ -131,6 +134,7 @@
                     "description": "a loopback",
                     "enabled": true,
                     "mtu": 1514,
+                    "name": "Loopback1",
                     "type": "softwareLoopback"
                 },
                 "name": "Loopback1",
@@ -147,6 +151,7 @@
                     "description": "blah",
                     "enabled": true,
                     "mtu": 9000,
+                    "name": "Port-channel1",
                     "type": "ieee8023adLag"
                 },
                 "name": "Port-channel1",

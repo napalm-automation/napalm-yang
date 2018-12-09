@@ -148,9 +148,8 @@ interfaces:
                     admin-status:
                         _process:
                             - path: "if-config-flags.iff-down"
-                              default: UP
                               present: true
-                              post: DOWN
+                              post: "{{ 'DOWN' if value else 'UP' }}"
                     ifindex:
                         _process: 
                             - path: "snmp-index"
@@ -161,10 +160,9 @@ interfaces:
                             - pre: "{{ subinterface_key }}"
                     oper-status:
                         _process:
-                            - default: UP
-                              path: "if-config-flags.iff-device-down"
+                            - path: "if-config-flags.iff-device-down"
                               present: true
-                              post: DOWN
+                              post: "{{ 'DOWN' if value else 'UP' }}"
                     counters:
                         _process: not_implemented
                         in-broadcast-pkts:
