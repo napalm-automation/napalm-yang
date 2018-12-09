@@ -1,0 +1,21 @@
+---
+metadata:
+    prefix: "oc-ethernet"
+    processor: TextTree
+
+ethernet:
+    _process: unnecessary
+    config:
+        _process: unnecessary
+        auto-negotiate:
+            _process: not_implemented
+        duplex-mode:
+            _process: not_implemented
+        enable-flow-control:
+            _process: not_implemented
+        mac-address:
+            _process: not_implemented
+        port-speed:
+            _process: not_implemented
+    state:
+        _process: not_implemented

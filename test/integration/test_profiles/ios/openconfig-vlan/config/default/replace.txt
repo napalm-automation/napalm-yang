@@ -1,0 +1,45 @@
+no vlan 10
+vlan 10
+    shutdown
+    exit
+no vlan 110
+vlan 110
+    no shutdown
+    exit
+no vlan 133
+vlan 133
+    no shutdown
+    exit
+no vlan 20
+vlan 20
+    shutdown
+    exit
+no vlan 200
+vlan 200
+    no shutdown
+    exit
+no vlan 201
+vlan 201
+    no shutdown
+    exit
+no vlan 202
+vlan 202
+    no shutdown
+    exit
+no vlan 30
+vlan 30
+    no shutdown
+    exit
+no vlan 40
+vlan 40
+    no shutdown
+    exit
+no vlan 60
+vlan 60
+    no shutdown
+    exit
+no vlan 70
+vlan 70
+    no shutdown
+    exit
+no vlan 100

@@ -1,0 +1,30 @@
+interface GigabitEthernet0/0
+    mtu 1500
+    no shutdown
+    ip address 10.1.100.52 255.255.255.0
+    no switchport
+    exit
+interface GigabitEthernet1/0/1
+    description Computer
+    no shutdown
+    switchport mode access
+    switchport access vlan 10
+    exit
+interface GigabitEthernet1/0/10
+    description Printer
+    no shutdown
+    switchport mode trunk
+    switchport trunk native vlan 20
+    switchport access vlan 100
+    switchport trunk allowed vlan 1-999,1001-4094
+    exit
+interface GigabitEthernet1/0/3
+    description Conference Room Port
+    no shutdown
+    switchport mode access
+    switchport access vlan 20
+    exit
+interface Loopback0
+    description Test
+    no shutdown
+    exit

@@ -1,0 +1,128 @@
+{
+    "interfaces": {
+        "interface": {
+            "GigabitEthernet0/0": {
+                "config": {
+                    "enabled": 1,
+                    "mtu": 1500,
+                    "name": "GigabitEthernet0/0",
+                    "type": "ethernetCsmacd"
+                },
+                "name": "GigabitEthernet0/0",
+                "routed-vlan": {
+                    "ipv4": {
+                        "addresses": {
+                            "address": {
+                                "10.1.100.52": {
+                                    "config": {
+                                        "ip": "10.1.100.52",
+                                        "prefix-length": 24,
+                                        "secondary": 0
+                                    },
+                                    "ip": "10.1.100.52"
+                                }
+                            }
+                        },
+                        "config": {
+                            "enabled": 1
+                        }
+                    }
+                }
+            },
+            "GigabitEthernet1/0/1": {
+                "config": {
+                    "description": "Computer",
+                    "enabled": 1,
+                    "name": "GigabitEthernet1/0/1",
+                    "type": "ethernetCsmacd"
+                },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 10,
+                            "interface-mode": "ACCESS"
+                        }
+                    }
+                },
+                "name": "GigabitEthernet1/0/1",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": 0
+                        }
+                    }
+                }
+            },
+            "GigabitEthernet1/0/10": {
+                "config": {
+                    "description": "Printer",
+                    "enabled": 1,
+                    "name": "GigabitEthernet1/0/10",
+                    "type": "ethernetCsmacd"
+                },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 100,
+                            "interface-mode": "TRUNK",
+                            "native-vlan": 20,
+                            "trunk-vlans": [
+                                "1..999",
+                                "1001..4094"
+                            ]
+                        }
+                    }
+                },
+                "name": "GigabitEthernet1/0/10",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": 0
+                        }
+                    }
+                }
+            },
+            "GigabitEthernet1/0/3": {
+                "config": {
+                    "description": "Conference Room Port",
+                    "enabled": 1,
+                    "name": "GigabitEthernet1/0/3",
+                    "type": "ethernetCsmacd"
+                },
+                "ethernet": {
+                    "switched-vlan": {
+                        "config": {
+                            "access-vlan": 20,
+                            "interface-mode": "ACCESS"
+                        }
+                    }
+                },
+                "name": "GigabitEthernet1/0/3",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": 0
+                        }
+                    }
+                }
+            },
+            "Loopback0": {
+                "config": {
+                    "description": "Test",
+                    "enabled": 1,
+                    "mtu": 1514,
+                    "name": "Loopback0",
+                    "type": "softwareLoopback"
+                },
+                "name": "Loopback0",
+                "routed-vlan": {
+                    "ipv4": {
+                        "config": {
+                            "enabled": 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

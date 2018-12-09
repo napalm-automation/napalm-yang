@@ -1,0 +1,14 @@
+interface GigabitEthernet1/0/1
+    switchport access vlan 20
+    exit
+interface GigabitEthernet1/0/10
+    switchport trunk native vlan 10
+    switchport access vlan 10
+    switchport trunk allowed vlan 10-998,1001-4094
+    exit
+interface GigabitEthernet1/0/3
+    switchport mode trunk
+    switchport trunk native vlan 1
+    switchport access vlan 1
+    switchport trunk allowed vlan 10-998,1001-4094
+    exit

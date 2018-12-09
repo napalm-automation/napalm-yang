@@ -1,0 +1,7 @@
+vlan 10
+ name test
+!
+vlan 20
+ shutdown
+!
+vlan 30,40,60,70,100,133,200-202

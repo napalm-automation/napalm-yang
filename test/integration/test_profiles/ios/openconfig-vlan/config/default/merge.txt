@@ -1,0 +1,8 @@
+vlan 10
+    default name
+    shutdown
+    exit
+vlan 110
+    no shutdown
+    exit
+no vlan 100

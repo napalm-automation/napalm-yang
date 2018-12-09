@@ -1,0 +1,34 @@
+vlan 10
+    name test
+    no shutdown
+    exit
+vlan 100
+    no shutdown
+    exit
+vlan 133
+    no shutdown
+    exit
+vlan 20
+    shutdown
+    exit
+vlan 200
+    no shutdown
+    exit
+vlan 201
+    no shutdown
+    exit
+vlan 202
+    no shutdown
+    exit
+vlan 30
+    no shutdown
+    exit
+vlan 40
+    no shutdown
+    exit
+vlan 60
+    no shutdown
+    exit
+vlan 70
+    no shutdown
+    exit

@@ -1,0 +1,43 @@
+---
+metadata:
+    prefix: "oc-vlan"
+    processor: TextTree
+    execute:
+        - method: cli
+          kwargs:
+              commands: ["show running-config all"]
+
+vlans:
+    _process: unnecessary
+    vlan:
+        _process:
+            - path: vlan
+              regexp: "(?P<value>((\\w+)(,|-))+\\w+)"
+              post: "{{ value|expand_range }}"
+              from: root_vlans.0
+            - path: vlan
+              regexp: "(?P<value>\\d+)$"
+              from: root_vlans.0
+        config:
+            _process: unnecessary
+            name:
+                _process:
+                    - path: name
+            status:
+                _process:
+                    - path: "shutdown"
+                      present: no
+                      post: "{{ 'ACTIVE' if value else 'SUSPENDED' }}"
+            tpid:
+                _process: not_implemented
+            vlan-id:
+                _process:
+                    - post: "{{ vlan_key }}"
+        members:
+            _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        vlan-id:
+            _process: unnecessary

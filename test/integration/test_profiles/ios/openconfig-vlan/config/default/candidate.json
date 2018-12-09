@@ -1,0 +1,75 @@
+{
+    "vlans": {
+        "vlan": {
+            "10": {
+                "config": {
+                    "status": "SUSPENDED",
+                    "vlan-id": 10
+                },
+                "vlan-id": "10"
+            },
+            "110": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "110"
+            },
+            "133": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "133"
+            },
+            "20": {
+                "config": {
+                    "status": "SUSPENDED",
+                    "vlan-id": 20
+                },
+                "vlan-id": "20"
+            },
+            "200": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "200"
+            },
+            "201": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "201"
+            },
+            "202": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "202"
+            },
+            "30": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "30"
+            },
+            "40": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "40"
+            },
+            "60": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "60"
+            },
+            "70": {
+                "config": {
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "70"
+            }
+        }
+    }
+}
+
