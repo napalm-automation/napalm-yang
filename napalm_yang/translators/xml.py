@@ -4,6 +4,7 @@ from lxml import etree
 
 
 class XMLTranslator(BaseTranslator):
+
     def post_processing(self, translator):
         return etree.tounicode(translator.translation, pretty_print=True)
 

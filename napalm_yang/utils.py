@@ -46,10 +46,13 @@ def model_to_dict(model, mode="", show_defaults=False):
     def is_mode(obj, mode):
         if mode == "":
             return True
+
         elif mode == "config":
             return obj._yang_name == "config" or obj._is_config
+
         elif mode == "state":
             return obj._yang_name == "state" or not obj._is_config
+
         else:
             raise ValueError(
                 "mode can only be config, state or ''. Passed: {}".format(mode)
@@ -71,6 +74,7 @@ def model_to_dict(model, mode="", show_defaults=False):
             if r:
                 result[get_key(k, v, model._defining_module, show_defaults)] = r
         return result
+
     else:
         if show_defaults:
             if model._default is False:
@@ -79,7 +83,9 @@ def model_to_dict(model, mode="", show_defaults=False):
                     # is False, it means there is not default value defined in
                     # the YANG model.
                     return None
+
             return model._default
+
         return model._yang_type if is_mode(model, mode) else None
 
 

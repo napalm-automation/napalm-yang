@@ -11,6 +11,7 @@ def _find_translation_point(rule, bookmarks, translation):
 
 
 class BaseTranslator(object):
+
     def __init__(self, merge, replace):
         self.merge = merge
         self.replace = replace
@@ -21,6 +22,7 @@ class BaseTranslator(object):
         for m in mapping:
             if "skip" in m:
                 continue
+
             elif "gate" in m:
                 return None, {}
 
@@ -34,6 +36,7 @@ class BaseTranslator(object):
             if et is False:
                 # if it's False we want to return None to signal we want to abort
                 return None, {}
+
         return et, extra_vars
 
     def default_element(self, mapping, translation, bookmarks, replacing=False):
@@ -42,6 +45,7 @@ class BaseTranslator(object):
         for m in mapping:
             if "skip" in m:
                 continue
+
             elif "gate" in m:
                 return {}
 
@@ -56,6 +60,7 @@ class BaseTranslator(object):
         for m in mapping:
             if "skip" in m:
                 continue
+
             elif "gate" in m:
                 return
 
@@ -72,6 +77,7 @@ class BaseTranslator(object):
         for m in mapping:
             if "skip" in m:
                 continue
+
             elif "gate" in m:
                 return None, {}
 
@@ -85,4 +91,5 @@ class BaseTranslator(object):
             if et is False:
                 # if it's False we want to return None to signal we want to abort
                 return None, {}
+
         return et, extra_vars

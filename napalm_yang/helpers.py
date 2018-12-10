@@ -44,6 +44,7 @@ def find_yang_file(profile, filename, path):
 
     if os.path.exists(full_path):
         return full_path
+
     else:
         msg = "Couldn't find parsing file: {}".format(full_path)
         logger.error(msg)
@@ -60,6 +61,7 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
             filepath = find_yang_file(p, filename, parser_path)
             logger.debug("Found on profile: {}, {}".format(p, filepath))
             break
+
         except IOError:
             pass
     else:
@@ -73,10 +75,13 @@ def read_yang_map(yang_prefix, attribute, profile, parser_path):
 def _resolve_rule(rule, **kwargs):
     if isinstance(rule, dict):
         return {k: _resolve_rule(v, **kwargs) for k, v in rule.items()}
+
     elif isinstance(rule, list):
         return [_resolve_rule(e, **kwargs) for e in rule]
+
     elif isinstance(rule, str) and "{{" in rule:
         return template(rule, **kwargs)
+
     else:
         return rule
 
@@ -107,17 +112,21 @@ def resolve_rule(
             )
             for r in rule
         ]
+
     elif isinstance(rule, str):
         if rule in ["unnecessary"]:
             return [{"skip": True, "reason": rule}]
+
         elif rule in ["not_implemented", "not_supported"]:
             return [{"gate": True, "reason": rule}]
+
         else:
             raise Exception(
                 "Not sure what to do with rule {} on attribute {}".format(
                     rule, attribute
                 )
             )
+
     kwargs = dict(keys)
     rule = dict(rule)
     kwargs["model"] = translation_model
@@ -145,6 +154,7 @@ def resolve_rule(
             w = True if w in ["true", "True"] else False
         if not w:
             return {"skip": True, "reason": "criteria failed"}
+
         rule["when"] = bool(w)
 
     return rule

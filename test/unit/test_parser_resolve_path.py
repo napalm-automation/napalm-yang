@@ -2,6 +2,7 @@ import napalm_yang
 
 
 class Tests(object):
+
     def test_resolve_path_dict(self):
         data = {"simple": {"path": 123}}
         path = "simple.path"
@@ -157,8 +158,7 @@ class Tests(object):
                 {
                     "name": {"#text": "my_other_peers"},
                     "neighbor": {
-                        "name": {"#text": "172.20.0.1"},
-                        "peer-as": {"#text": "65200"},
+                        "name": {"#text": "172.20.0.1"}, "peer-as": {"#text": "65200"}
                     },
                 },
             ]

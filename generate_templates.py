@@ -85,6 +85,7 @@ def main():
             for action in ["parsers", "translators"]:
                 if action == "translators" and mode == "state":
                     continue
+
                 elif action == "translators":
                     directory = os.path.join(
                         "napalm_yang", "mappings", "dummy", action, module

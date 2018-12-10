@@ -36,6 +36,7 @@ def _flatten_dictionary(obj, path, key_name):
                 path.pop(0)
         if k.startswith("#"):
             continue
+
         r = _resolve_path(v, list(path))
 
         if isinstance(r, dict):
@@ -75,6 +76,7 @@ def _flatten_list(obj, path, key_name):
 def _resolve_path(obj, path):
     if not path:
         return obj
+
     current = path.pop(0)
     if current[0] != "?":
         if isinstance(obj, dict):
@@ -82,6 +84,7 @@ def _resolve_path(obj, path):
         elif isinstance(obj, list):
             obj = obj[int(current)]
         return _resolve_path(obj, path)
+
     else:
         if isinstance(obj, dict) and ":" in current:
             # We assume that this is supposed to be a list but xmldict
@@ -90,6 +93,7 @@ def _resolve_path(obj, path):
 
         if isinstance(obj, dict):
             return _flatten_dictionary(obj, path, current[1:])
+
         elif isinstance(obj, list):
             return _flatten_list(obj, path, current[1:])
 
@@ -106,6 +110,7 @@ def _set_pdb_trace():
 
 
 class BaseParser(object):
+
     def __init__(self, keys, extra_vars):
         self.keys = keys
         self.extra_vars = extra_vars
@@ -113,6 +118,7 @@ class BaseParser(object):
     def resolve_path(self, obj, path, default=None, check_presence=False):
         if path == "":
             return obj
+
         path = path.split(".")
         try:
             r = _resolve_path(obj, path)
@@ -121,6 +127,7 @@ class BaseParser(object):
 
         if check_presence:
             return not bool(path)
+
         return r
 
     def init_native(self, native):
@@ -136,6 +143,7 @@ class BaseParser(object):
             if pdb:
                 _set_pdb_trace()
                 continue
+
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]
@@ -157,6 +165,7 @@ class BaseParser(object):
             if pdb:
                 _set_pdb_trace()
                 continue
+
             data = self.resolve_path(bookmarks, m.get("from", "parent"))
             result = self._parse_leaf_default(attribute, m, data)
 
@@ -177,6 +186,7 @@ class BaseParser(object):
             if pdb:
                 _set_pdb_trace()
                 continue
+
             # parent will change as the tree is processed so we save it
             # so we can restore it
             parent = bookmarks["parent"]

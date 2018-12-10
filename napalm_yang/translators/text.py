@@ -8,6 +8,7 @@ import napalm_yang
 
 
 class TextTranslator(XMLTranslator):
+
     def init_translation(self, metadata, translation):
         if metadata.get("root", False):
             return etree.Element("configuration")

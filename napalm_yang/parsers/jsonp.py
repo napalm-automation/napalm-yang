@@ -14,11 +14,13 @@ def get_element_with_cdata(dictionary, element):
     if isinstance(e, OrderedDict):
         # this is for xmltodict
         return e["#text"]
+
     else:
         return e
 
 
 class JSONParser(BaseParser):
+
     def init_native(self, native):
         resp = []
         for k in native:
@@ -30,12 +32,15 @@ class JSONParser(BaseParser):
         return resp
 
     def _parse_list_default(self, attribute, mapping, data, key=None):
+
         def _eval_key(key_mapping, **kwargs):
             if "{{" in key_mapping:
                 try:
                     return self._parse_post_process_filter(key_mapping, **kwargs)
+
                 except Exception as e:
                     return "{}".format(e)
+
             else:
                 return get_element_with_cdata(kwargs, key_mapping)
 
@@ -51,6 +56,7 @@ class JSONParser(BaseParser):
                     else:
                         k = _eval_key(key_mapping, **v)
                     yield k, v
+
             elif d:
                 # If there is no key_mapping we can only assume it's a dict
                 # so the key is implicit
@@ -66,6 +72,7 @@ class JSONParser(BaseParser):
                     extra_vars = match.groupdict()
                 else:
                     return None, {}
+
             return key, extra_vars
 
         if any([x in mapping for x in ["skip", "gate"]]):
@@ -80,6 +87,7 @@ class JSONParser(BaseParser):
         for k, v in _iterator(d, mapping.get("key")):
             if k.startswith("#"):
                 continue
+
             key, extra_vars = _process_key_value(k, v, regexp, mapping)
             if key:
                 if key is not None and "post" in mapping:
@@ -90,6 +98,7 @@ class JSONParser(BaseParser):
                 if isinstance(key, list):
                     for k in key:
                         yield str(k), v, extra_vars
+
                 else:
                     yield key, v, extra_vars
 
@@ -133,6 +142,7 @@ class JSONParser(BaseParser):
     def _parse_container_default(self, attribute, mapping, data):
         if "skip" in mapping:
             return "", {}
+
         elif "gate" in mapping:
             return None, {}
 
@@ -141,4 +151,5 @@ class JSONParser(BaseParser):
             d = d["#text"] if "#text" in d else d
         if "save_as" in mapping:
             return "", {mapping["save_as"]: d}
+
         return d, {}

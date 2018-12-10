@@ -9,6 +9,7 @@ logger = logging.getLogger("napalm-yang")
 
 
 class Translator(object):
+
     def __init__(
         self,
         model,
@@ -48,13 +49,13 @@ class Translator(object):
                 )
 
         self.bookmarks = bookmarks or {
-            "root_{}".format(self._yang_name): translation,
-            "parent": translation,
+            "root_{}".format(self._yang_name): translation, "parent": translation
         }
 
     def translate(self):
         if not self.mapping:
             return ""
+
         self._translate(
             self._yang_name,
             self.model,
@@ -269,11 +270,13 @@ class Translator(object):
             for k, v in running:
                 if not v._is_config or k == "state":
                     continue
+
                 elif (
                     v._defining_module != self._defining_module
                     and v._defining_module is not None
                 ):
                     continue
+
                 else:
                     self._default_child(k, v, mapping[v._yang_name], translation)
         elif running._yang_type in ("list",):

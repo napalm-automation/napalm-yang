@@ -8,6 +8,7 @@ from napalm_yang.parsers.base import BaseParser
 
 
 class XMLParser(BaseParser):
+
     @classmethod
     def init_native(cls, native):
         r = []
@@ -98,6 +99,7 @@ class XMLParser(BaseParser):
         for element in itertools.chain(iterators, mandatory_elements):
             if isinstance(element, dict):
                 yield element["key"], element["block"], element["extra_vars"]
+
             else:
                 key_name = "{}_name".format(
                     root.tag if mapping.get("nested", False) else root[0].tag
@@ -154,12 +156,16 @@ class XMLParser(BaseParser):
                 match = re.search(mapping["regexp"], element)
                 if match:
                     return match.group("value")
+
             else:
                 return element
+
         elif element and check_presence:
             return True
+
         elif check_default:
             return mapping.get("default", None)
+
         else:
             return None
 

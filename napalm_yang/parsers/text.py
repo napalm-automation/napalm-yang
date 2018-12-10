@@ -4,6 +4,7 @@ import re
 
 
 class TextParser(BaseParser):
+
     def _parse_list_default(self, mapping, data):
         block_matches = re.finditer(mapping["regexp"], data, re.MULTILINE + re.I)
 
@@ -36,8 +37,10 @@ class TextParser(BaseParser):
 
         if match:
             return match.group("value")
+
         elif check_default:
             return mapping.get("default", None)
+
         else:
             return None
 

@@ -74,6 +74,7 @@ def colorize(msg, color):
     """Given a string add necessary codes to format the string."""
     if DONT_COLORIZE:
         return msg
+
     else:
         return "{}{}{}".format(COLORS[color], msg, COLORS["endc"])
 

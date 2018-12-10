@@ -15,6 +15,7 @@ test_case_text_parser = [
 
 
 class Tests(object):
+
     @pytest.mark.parametrize("case", test_case_text_parser)
     def test_text_tree_parser(self, case):
         path = os.path.join(BASE_PATH, "text_tree", case, "config.txt")

@@ -50,6 +50,7 @@ def get_profiles():
         sp = path.split("/")
         if len(sp) != 8 or "translator" in path:
             continue
+
         profile = sp[4]
         mode = sp[6]
         module = sp[7]

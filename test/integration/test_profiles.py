@@ -89,6 +89,7 @@ def load_json_model(base, profile, model, mode, case, filename):
 
 
 class Tests(object):
+
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)
     def test_parse(self, profile, mode, model, case):
         expected = load_json_model(
@@ -120,8 +121,8 @@ class Tests(object):
 
         #  print(pretty_json(yang.get(filter=True)))
         #  print(pretty_json(expected.get(filter=True)))
-        assert pretty_json(yang.get(filter=True)) == pretty_json(
-            expected.get(filter=True)
+        assert (
+            pretty_json(yang.get(filter=True)) == pretty_json(expected.get(filter=True))
         )
 
     @pytest.mark.parametrize("profile, mode, model, case", test_parse_models)

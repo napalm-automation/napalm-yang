@@ -17,6 +17,7 @@ def _attach_data_to_path(obj, path, data, list_=False):
         p = path.pop(0)
         if not path:
             break
+
         else:
             if p not in o:
                 o[p] = OrderedDict()
@@ -59,6 +60,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
     while True:
         if not config:
             break
+
         line = config.pop(0)
 
         if line.lstrip().startswith("!"):
@@ -78,6 +80,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
         elif leading_spaces < current_indent:
             config.insert(0, line)
             break
+
         else:
             if not nested:
                 current = parse_indented_config(
@@ -92,6 +95,7 @@ def parse_indented_config(config, current_indent=0, previous_indent=0, nested=Fa
 
 
 class TextTree(JSONParser):
+
     def init_native(self, native):
         resp = []
         for n in native:

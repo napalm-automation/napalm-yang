@@ -15,6 +15,7 @@ if sys.version_info[0] > 2:
 
 
 class Parser(object):
+
     def __init__(
         self,
         model,
@@ -80,15 +81,18 @@ class Parser(object):
                 raise TypeError(
                     "args must be type list, not type {}".format(type(args))
                 )
+
             kwargs = m.get("kwargs", {})
             if not isinstance(kwargs, dict):
                 raise TypeError(
                     "kwargs must be type dict, not type {}".format(type(kwargs))
                 )
+
             r = attr(*args, **kwargs)
 
-            if isinstance(r, dict) and all(
-                [isinstance(x, (str, unicode)) for x in r.values()]
+            if (
+                isinstance(r, dict)
+                and all([isinstance(x, (str, unicode)) for x in r.values()])
             ):
                 # Some vendors like junos return commands enclosed by a key
                 r = "\n".join(r.values())
@@ -102,6 +106,7 @@ class Parser(object):
     def parse(self):
         if not self.mapping:
             return
+
         self.native = self.parser.init_native(self.native)
         self.bookmarks["root_{}".format(self._yang_name)] = self.native
         if "parent" not in self.bookmarks:
@@ -132,6 +137,7 @@ class Parser(object):
 
             if block is None:
                 return
+
             elif block != "" or extra_vars:
                 self.bookmarks["parent"] = block
                 self.bookmarks[attribute] = block
@@ -141,6 +147,7 @@ class Parser(object):
             logger.debug("Parsing attribute: {}".format(v._yang_path()))
             if self.is_config and (not v._is_config or k == "state"):
                 continue
+
             elif (
                 not self.is_config
                 and (v._is_config or k == "config")
