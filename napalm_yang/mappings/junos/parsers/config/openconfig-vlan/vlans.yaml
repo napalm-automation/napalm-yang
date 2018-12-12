@@ -1,23 +1,19 @@
 ---
 metadata:
-    prefix: "oc-vlan"
-    processor: TextTree
+    processor: XMLParser
     execute:
-        - method: cli
+        - method: _rpc
           kwargs:
-              commands: ["show running-config all"]
+              get: "<get-configuration/>"
 
 vlans:
-    _process: unnecessary
+    _process:
+        - path: "configuration.vlans"
+          from: root_vlans.0
     vlan:
         _process:
             - path: vlan
-              regexp: "(?P<value>((\\w+)(,|-))+\\w+)"
-              post: "{{ value|expand_range }}"
-              from: root_vlans.0
-            - path: vlan
-              regexp: "(?P<value>\\d+)$"
-              from: root_vlans.0
+              key: vlan-id
         config:
             _process: unnecessary
             name:
@@ -25,7 +21,7 @@ vlans:
                     - path: name
             status:
                 _process:
-                    - path: "shutdown"
+                    - path: "@inactive"
                       present: no
                       map:
                           true: ACTIVE
@@ -34,7 +30,7 @@ vlans:
                 _process: not_implemented
             vlan-id:
                 _process:
-                    - post: "{{ vlan_key }}"
+                    - pre: "{{ vlan_key }}"
         members:
             _process: not_implemented
             member:

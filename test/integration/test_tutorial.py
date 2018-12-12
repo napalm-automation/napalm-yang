@@ -123,13 +123,16 @@ class Tests(object):
         config_path = "test_populating_from_file/{}/config.txt".format(profile[0])
         expected_path = "test_populating_from_file/{}/expected.json".format(profile[0])
 
-        config = napalm_yang.base.Root()
-        config.add_model(napalm_yang.models.openconfig_interfaces)
+        parsed = napalm_yang.base.Root()
+        parsed.add_model(napalm_yang.models.openconfig_interfaces)
+        parsed.parse_config(native=[read_file_content(config_path)], profile=profile)
 
-        config.parse_config(native=[read_file_content(config_path)], profile=profile)
+        loaded = napalm_yang.base.Root()
+        loaded.add_model(napalm_yang.models.openconfig_interfaces)
+        loaded.load_dict(read_json(expected_path))
 
-        #  print(json.dumps(config.get(filter=True), indent=4))
-        assert config.get(filter=True) == read_json(expected_path)
+        #  print(json.dumps(napalm_yang.utils.diff(parsed, loaded), indent=4))
+        assert not napalm_yang.utils.diff(parsed, loaded)
 
     def test_translating_models(self):
         candidate = napalm_yang.base.Root()

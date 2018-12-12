@@ -1,0 +1,31 @@
+{
+    "vlans": {
+        "vlan": {
+            "1": {
+                "config": {
+                    "name": "default",
+                    "vlan-id": "1",
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "1"
+            },
+            "10": {
+                "config": {
+                    "name": "test",
+                    "vlan-id": "10",
+                    "status": "ACTIVE"
+                },
+                "vlan-id": "10"
+            },
+            "30": {
+                "config": {
+                    "name": "prod",
+                    "vlan-id": "30",
+                    "status": "SUSPENDED"
+                },
+                "vlan-id": "30"
+            }
+        }
+    }
+}
+

@@ -98,6 +98,7 @@
                     "type": "ethernetCsmacd",
                     "enabled": false,
                     "description": "so much oc",
+					"name": "Ethernet2",
                     "mtu": 1500
                 }
             },
@@ -130,6 +131,7 @@
                     "type": "ieee8023adLag",
                     "enabled": true,
                     "description": "blah",
+					"name": "Port-Channel1",
                     "mtu": 9000
                 }
             },
@@ -156,6 +158,7 @@
                 },
                 "config": {
                     "type": "ethernetCsmacd",
+					"name": "Ethernet1",
                     "enabled": true,
                     "description": "This is a description"
                 }
@@ -171,6 +174,7 @@
                 },
                 "config": {
                     "type": "softwareLoopback",
+					"name": "Loopback1",
                     "enabled": true,
                     "description": "a loopback",
                     "mtu": 1500
@@ -198,6 +202,7 @@
                     }
                 },
                 "config": {
+					"name": "Management1",
                     "type": "ethernetCsmacd",
                     "enabled": true,
                     "mtu": 1500

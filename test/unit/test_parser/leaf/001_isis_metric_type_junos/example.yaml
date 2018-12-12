@@ -29,8 +29,9 @@ blocks:
 rule:
     - present: true
       path: "wide-metrics-only"
-      default: "NARROW_METRIC"
-      post: "WIDE_METRIC"
+      map:
+          true: WIDE_METRIC
+          false: NARROW_METRIC
 expected:
     - - "WIDE_METRIC"
       - "NARROW_METRIC"

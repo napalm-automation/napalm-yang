@@ -130,8 +130,10 @@ class JSONParser(BaseParser):
                     else:
                         d = None
 
-            if d and "map" in mapping:
-                d = mapping["map"][d.lower()]
+        if d is not None and "map" in mapping:
+            if isinstance(d, str):
+                d = d.lower()
+            d = mapping["map"][d]
 
         if d is not None and "post" in mapping:
             d = self._parse_post_process_filter(mapping["post"], value=d)

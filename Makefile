@@ -57,6 +57,17 @@ templates:
 tests:
 	pytest
 
+.PHONY: black
+black:
+	find . \
+		-not -path "./.tox*" \
+		-not -path "./napalm_yang/models*" \
+		-not -path "./napalm_yang/mappings*" \
+		-not -path "./yang_ietf*" \
+		-not -path "./yang_oc*" \
+		-name "*.py" \
+		-exec black {} \+
+
 .PHONY: test_black
 test_black:
 	find . \

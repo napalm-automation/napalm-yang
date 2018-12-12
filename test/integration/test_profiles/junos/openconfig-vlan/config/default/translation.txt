@@ -1,0 +1,16 @@
+<configuration>
+  <vlans>
+    <vlan>
+      <name>default</name>
+      <vlan-id>1</vlan-id>
+    </vlan>
+    <vlan inactive="inactive">
+      <name>test</name>
+      <vlan-id>10</vlan-id>
+    </vlan>
+    <vlan>
+      <name>prod</name>
+      <vlan-id>20</vlan-id>
+    </vlan>
+  </vlans>
+</configuration>

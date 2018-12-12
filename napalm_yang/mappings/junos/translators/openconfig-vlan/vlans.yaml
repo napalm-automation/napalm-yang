@@ -1,0 +1,37 @@
+---
+metadata:
+    processor: XMLTranslator
+    xml_root: configuration
+
+vlans:
+    _process:
+        - container: vlans
+          replace: true
+    vlan:
+        _process:
+            - container: vlan
+              key_element: name
+              key_value: "{{ model.config.name }}"
+        config:
+            _process: unnecessary
+            name:
+                _process: unnecessary
+            status:
+                _process:
+                    - attribute: inactive
+                      value: "inactive"
+                      when: "{{ model == 'SUSPENDED' }}"
+                      pdb: true
+            tpid:
+                _process: not_implemented
+            vlan-id:
+                _process:
+                    - element: "vlan-id"
+        members:
+            _process: not_implemented
+            member:
+                _process: not_implemented
+        state:
+            _process: not_implemented
+        vlan-id:
+            _process: not_implemented

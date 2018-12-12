@@ -84,14 +84,18 @@ class XMLTranslator(BaseTranslator):
             value = None if not model._changed() else model
 
         e = translation
-        for element in mapping["element"].split("/"):
-            e = etree.SubElement(e, element)
+        if mapping.get("element"):
+            for element in mapping["element"].split("/"):
+                e = etree.SubElement(e, element)
 
         if delete:
             e.set("delete", "delete")
 
         if value is not None:
-            e.text = "{}".format(value)
+            if mapping.get("attribute"):
+                e.attrib[mapping["attribute"]] = "{}".format(value)
+            else:
+                e.text = "{}".format(value)
 
     def _translate_leaf_map(self, attribute, model, other, mapping, translation):
         mapping["value"] = mapping["map"][model]

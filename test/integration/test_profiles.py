@@ -50,6 +50,7 @@ test_parse_models = [
     ["junos", "config", napalm_yang.models.openconfig_network_instance, "ospf"],
     ["junos", "config", napalm_yang.models.openconfig_network_instance, "mpls"],
     ["junos", "config", napalm_yang.models.openconfig_system, "default"],
+    ["junos", "config", napalm_yang.models.openconfig_vlan, "default"],
     ["junos", "state", napalm_yang.models.openconfig_interfaces, "default"],
     ["nxos", "config", napalm_yang.models.openconfig_interfaces, "default"],
     ["nxos", "config", napalm_yang.models.openconfig_system, "default"],
