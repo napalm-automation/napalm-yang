@@ -7,8 +7,9 @@ from lxml import etree
 
 class JunosTranslator(XMLTranslator):
 
-    def openconfig_vlan_vlan_members(self, attribute, model,
-            other, mapping, translation, bookmarks):
+    def openconfig_vlan_vlan_members(
+        self, attribute, model, other, mapping, translation, bookmarks
+    ):
         vlans = ast.literal_eval(str(model))
         vlan_xml = translation.find("vlan") or etree.SubElement(translation, "vlan")
         for v in vlans:

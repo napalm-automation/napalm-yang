@@ -68,7 +68,9 @@ class Parser(object):
                 self.keys, self.extra_vars
             )
             if self.mapping["metadata"].get("pre_processor"):
-                self._pre_processor = getattr(self.parser, self.mapping["metadata"]["pre_processor"])
+                self._pre_processor = getattr(
+                    self.parser, self.mapping["metadata"]["pre_processor"]
+                )
             else:
                 self._pre_processor = None
 

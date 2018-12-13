@@ -10,9 +10,12 @@ class JunosConfig(JSONParser):
         config = result["switched-vlan"]["config"]
 
         try:
-            d = _resolve_path(parser.bookmarks["parent"], ["unit", "family", "ethernet-switching"])
+            d = _resolve_path(
+                parser.bookmarks["parent"], ["unit", "family", "ethernet-switching"]
+            )
         except Exception:
             return
+
         vlans = _resolve_path(d, ["vlan", "members"])
         if isinstance(vlans, list):
             vlans = ",".join([v["#text"] for v in vlans])

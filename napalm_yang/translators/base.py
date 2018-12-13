@@ -27,7 +27,9 @@ class BaseTranslator(object):
                 return None, {}
 
             if "function" in m:
-                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
+                return getattr(self, m["function"])(
+                    attribute, model, other, mapping, translation, bookmarks
+                )
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)
@@ -53,7 +55,9 @@ class BaseTranslator(object):
                 return {}
 
             if "function" in m:
-                return getattr(self, m["function"])(mapping, translation, bookmarks, replacing)
+                return getattr(self, m["function"])(
+                    mapping, translation, bookmarks, replacing
+                )
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, t)
@@ -71,7 +75,9 @@ class BaseTranslator(object):
                 return
 
             if "function" in m:
-                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
+                return getattr(self, m["function"])(
+                    attribute, model, other, mapping, translation, bookmarks
+                )
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, translation)
@@ -91,7 +97,9 @@ class BaseTranslator(object):
                 return None, {}
 
             if "function" in m:
-                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
+                return getattr(self, m["function"])(
+                    attribute, model, other, mapping, translation, bookmarks
+                )
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)
