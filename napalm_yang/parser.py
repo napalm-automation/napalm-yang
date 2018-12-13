@@ -67,6 +67,10 @@ class Parser(object):
             self.parser = get_parser(self.mapping["metadata"]["processor"])(
                 self.keys, self.extra_vars
             )
+            if self.mapping["metadata"].get("pre_processor"):
+                self._pre_processor = getattr(self.parser, self.mapping["metadata"]["pre_processor"])
+            else:
+                self._pre_processor = None
 
         self.bookmarks = bookmarks or {}
 
@@ -111,6 +115,8 @@ class Parser(object):
         self.bookmarks["root_{}".format(self._yang_name)] = self.native
         if "parent" not in self.bookmarks:
             self.bookmarks["parent".format(self._yang_name)] = self.native
+        if self._pre_processor:
+            self._pre_processor(self)
         self._parse(self._yang_name, self.model, self.mapping[self._yang_name])
 
     def _parse(self, attribute, model, mapping):

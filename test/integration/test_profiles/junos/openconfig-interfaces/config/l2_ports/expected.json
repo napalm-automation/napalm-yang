@@ -1,0 +1,129 @@
+{
+  "interfaces": {
+    "interface": {
+      "xe-0/0/0": {
+        "config": {
+          "enabled": 1,
+          "name": "xe-0/0/0",
+          "type": "ethernetCsmacd"
+        },
+        "ethernet": {
+          "switched-vlan": {
+            "config": {
+              "interface-mode": "TRUNK",
+              "trunk-vlans": [
+                "1..4094"
+              ]
+            }
+          }
+        },
+        "name": "xe-0/0/0",
+        "routed-vlan": {
+          "ipv4": {
+            "config": {
+              "enabled": 0
+            }
+          }
+        },
+        "subinterfaces": {
+          "subinterface": {
+            "0": {
+              "config": {
+                "enabled": 1,
+                "name": "0"
+              },
+              "index": "0",
+              "ipv4": {
+                "config": {
+                  "enabled": 0
+                }
+              }
+            }
+          }
+        }
+      },
+      "xe-0/0/1": {
+        "config": {
+          "enabled": 1,
+          "name": "xe-0/0/1",
+          "type": "ethernetCsmacd"
+        },
+        "ethernet": {
+          "switched-vlan": {
+            "config": {
+              "access-vlan": 10,
+              "interface-mode": "ACCESS"
+            }
+          }
+        },
+        "name": "xe-0/0/1",
+        "routed-vlan": {
+          "ipv4": {
+            "config": {
+              "enabled": 0
+            }
+          }
+        },
+        "subinterfaces": {
+          "subinterface": {
+            "0": {
+              "config": {
+                "enabled": 1,
+                "name": "0"
+              },
+              "index": "0",
+              "ipv4": {
+                "config": {
+                  "enabled": 0
+                }
+              }
+            }
+          }
+        }
+      },
+      "xe-0/0/3": {
+        "config": {
+          "enabled": 1,
+          "name": "xe-0/0/3",
+          "type": "ethernetCsmacd"
+        },
+        "ethernet": {
+          "switched-vlan": {
+            "config": {
+              "interface-mode": "TRUNK",
+              "trunk-vlans": [
+                10,
+                20,
+                100
+              ]
+            }
+          }
+        },
+        "name": "xe-0/0/3",
+        "routed-vlan": {
+          "ipv4": {
+            "config": {
+              "enabled": 0
+            }
+          }
+        },
+        "subinterfaces": {
+          "subinterface": {
+            "0": {
+              "config": {
+                "enabled": 1,
+                "name": "0"
+              },
+              "index": "0",
+              "ipv4": {
+                "config": {
+                  "enabled": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

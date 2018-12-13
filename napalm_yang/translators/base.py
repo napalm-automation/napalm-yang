@@ -26,6 +26,9 @@ class BaseTranslator(object):
             elif "gate" in m:
                 return None, {}
 
+            if "function" in m:
+                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
+
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)
             method_name = "_init_element_{}".format(mode)
@@ -49,6 +52,9 @@ class BaseTranslator(object):
             elif "gate" in m:
                 return {}
 
+            if "function" in m:
+                return getattr(self, m["function"])(mapping, translation, bookmarks, replacing)
+
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, t)
             method_name = "_default_element_{}".format(mode)
@@ -63,6 +69,9 @@ class BaseTranslator(object):
 
             elif "gate" in m:
                 return
+
+            if "function" in m:
+                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, translation)
@@ -80,6 +89,9 @@ class BaseTranslator(object):
 
             elif "gate" in m:
                 return None, {}
+
+            if "function" in m:
+                return getattr(self, m["function"])(attribute, model, other, mapping, translation, bookmarks)
 
             mode = m.get("mode", "default")
             t = _find_translation_point(m, bookmarks, et)

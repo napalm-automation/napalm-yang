@@ -1,0 +1,23 @@
+---
+metadata:
+    processor: JunosConfig
+    pre_processor: openconfig_vlan_switched_vlan
+
+switched-vlan:
+    _process:
+        - path: "switched-vlan.config"
+    config:
+        _process: unnecessary
+        interface-mode:
+            _process:
+                - path: "interface-mode"
+        access-vlan:
+            _process:
+                - path: "access-vlans"
+        native-vlan:
+            _process: not_implemented
+        trunk-vlans:
+            _process:
+                - path: "trunk-vlans"
+    state:
+        _process: not_implemented

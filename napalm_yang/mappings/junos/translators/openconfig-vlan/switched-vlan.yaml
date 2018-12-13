@@ -1,0 +1,26 @@
+---
+metadata:
+    processor: JunosTranslator
+
+switched-vlan:
+    _process:
+        - gate: true
+          when: "{{ not model.config.interface_mode }}"
+        - in: subinterface.0
+          container: family/ethernet-switching
+    config:
+        _process: unnecessary
+        access-vlan:
+            _process:
+                - element: vlan/members
+        interface-mode:
+            _process:
+                - element: interface-mode
+                  value: "{{ model|lower }}"
+        native-vlan:
+            _process: not_implemented
+        trunk-vlans:
+            _process:
+                - function: openconfig_vlan_vlan_members
+    state:
+        _process: not_implemented
