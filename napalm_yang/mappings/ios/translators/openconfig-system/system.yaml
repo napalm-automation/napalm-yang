@@ -162,7 +162,9 @@ system:
                 - value: "ip domain-name {{ model }}\n"
                   negate: "no ip domain-name\n"
         hostname:
-            _process: not_implemented
+            _process:
+                - value: "hostname {{ model }}\n"
+                  negate: "hostname {{ model }}\n"
         login-banner:
             _process: not_implemented
         motd-banner:
