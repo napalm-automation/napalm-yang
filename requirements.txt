@@ -4,4 +4,4 @@ jinja2
 xmltodict
 PyYAML
 napalm
-pyangbind>=0.8.0<1.0.0
+pyangbind>=0.8.0,<1.0.0
