@@ -1,0 +1,24 @@
+---
+documentation:
+    title: Parse IOS Hostname:role
+    summary: |
+       IOS Hostname Parser
+    rule: ""
+    result: ""
+processor:
+    name: TextTree
+    attribute: role
+    root_name: system
+    node_type: leaf
+    mode: config
+data:
+    - keys: {}
+      extra_vars: {}
+parent_rule:
+    - path: hostname
+blocks:
+    - hostname vagrant_box
+rule:
+    - from: root_system.0
+expected:
+    - - hostname vagrant_box

@@ -170,11 +170,13 @@ system:
         state:
             _process: not_implemented
     config:
-        _process: not_implemented
+        _process: unnecessary
         domain-name:
             _process: not_implemented
         hostname:
-            _process: not_implemented
+            _process:
+                - path: "hostname"
+                  from: root_system.0
         login-banner:
             _process: not_implemented
         motd-banner:
