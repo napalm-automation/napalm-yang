@@ -29,7 +29,7 @@ interfaces:
             type:
                 _process:
                     - pre: "{{ interface_key }}"
-                      regexp: "(?P<value>(\\w|-)*)\\d+"
+                      regexp: "^(?P<value>.*?)\\s|\\d"
                       map:
                           fastethernet: ethernetCsmacd
                           gigabitethernet: ethernetCsmacd
